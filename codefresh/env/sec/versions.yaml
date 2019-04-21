@@ -55,6 +55,9 @@ pipeline-manager:
 cfsign:
   imageTag: v2
 
+cronus:
+  imageTag: secimprovements
+
 engineImage: "codefresh/engine:104"
 
 
