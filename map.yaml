@@ -8,7 +8,7 @@ environments:
   cluster: cf-staging@codefresh-staging
   namespace: default
   dns: app-staging.codefresh.io
-  useHelmLockFile: false
+  useHelmLockFile: true
 - name: load
   cluster: cf-load@codefresh-load
   namespace: default
