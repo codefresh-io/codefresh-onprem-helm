@@ -78,11 +78,14 @@ then
 	exit 1
 fi
 
-echo "Available kubernetes contexts"
+msg "Available kubernetes contexts"
 kubectl config get-contexts
 KUBE_CONTEXT=$(echo $env | yq .cluster | sed s/\"//g )
 namespaceName=$ENVIRONMENT
 USE_LOCK="false"
+
+echo "Using context $KUBE_CONTEXT and namespace $NAMESPACE"
+kubectl config use-context $KUBE_CONTEXT
 
 [[ -z "$AWS_ACCESS_KEY_ID" || -z "$AWS_SECRET_ACCESS_KEY" ]] && err "Please set your AWS credentials"
 
