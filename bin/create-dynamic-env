@@ -8,7 +8,7 @@ readonly KEY_FILE="service-account.json"
 source "$BASEPATH/helpers"
 
 usage() {
-	echo "$0 [-h] namespace-name project-name cluster-name [zone]"
+	echo "$0 [-h] namespace-name"
 	exit 0
 }
 
@@ -31,25 +31,6 @@ processCustomVals() {
 	done
 
 	echo "$resultedArgs"
-}
-
-activateServiceAccount() {
-	local clusterName="$1"
-	local zone="$2"
-	local projectName="$3"
-
-	[[ -z "$GOOGLE_SERVICE_ACCOUNT" ]] && err "Please set the service-account env var!"
-
-	# To encrypt the service account file use: `cat service-account.json | base64 -w 0`
-	msg "Decrypting the GOOGLE_SERVICE_ACCOUNT env variable"
-	echo "$GOOGLE_SERVICE_ACCOUNT" | base64 -d > $KEY_FILE
-
-	msg "Logging in with the service account to google cloud and generating Kubernetes config"
-	gcloud config set container/cluster $clusterName
-	gcloud config set compute/zone $zone
-	gcloud config set project $projectName
-	gcloud auth activate-service-account --key-file $KEY_FILE
-	gcloud container clusters get-credentials $clusterName
 }
 
 waitForHelm() {
@@ -89,21 +70,22 @@ check aws
 
 [ "$1" == "-h" ] && usage
 
-namespaceName="${1:-$(git rev-parse --abbrev-ref HEAD)}"
-projectName="${2:-savvy-badge-103912}"
-clusterName="${3:-cf-staging}"
-zone="${4:-us-central1-a}"
 
-[ -z "$namespaceName" ] && err "Please specify the namespace name!"
-
-# replace master with randomly generated name
-if [ "$namespaceName" == "master" ]; then
-  namespaceName=$(getRandomName)
+env=$(yq -r '.environments[] | select(.name=="dynamic")'  "map.yaml")
+if [ -z "$env" ]
+then
+	echo "Environment $ENVIRONMENT not exist in map.yaml"
+	exit 1
 fi
+
+echo "Available kubernetes contexts"
+kubectl config get-contexts
+KUBE_CONTEXT=$(echo $env | yq .cluster | sed s/\"//g )
+namespaceName=$ENVIRONMENT
+USE_LOCK="false"
 
 [[ -z "$AWS_ACCESS_KEY_ID" || -z "$AWS_SECRET_ACCESS_KEY" ]] && err "Please set your AWS credentials"
 
-activateServiceAccount "$clusterName" "$zone" "$projectName"
 
 msg "Decrypting all secrets"
 ./sops.sh -d
@@ -119,7 +101,8 @@ msg "Helm version"
 helm version
 
 dbg=""
-if [ "$DEBUG_CHART" == "true" ]; then
+if [ "$DEBUG_CHART" == "true" ]
+then
   msg "Helm repo list"
   helm repo list
   msg "Requirements.yaml"
@@ -165,7 +148,8 @@ msg "Running helm upgrade command"
 echo $helmCmd
 eval "$helmCmd"
 
-if [ "$DRY_RUN" == "true" ]; then
+if [ "$DRY_RUN" == "true" ]
+then
 	msg "Skip adding route to route53 when DRY_RUN"
 else
 	msg "Waiting for the ingress controller to receive a public ip"
@@ -177,7 +161,8 @@ else
 	msg "Your environment should be accessible soon at: ${namespaceName}.dev.codefresh.io"
 fi
 
-if [ "$DRY_RUN" == "true" ]; then
+if [ "$DRY_RUN" == "true" ]
+then
 	msg "Skip checking Helm Release status"
 else
    msg "Helm Release status"
