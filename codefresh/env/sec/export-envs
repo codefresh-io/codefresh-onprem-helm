@@ -1,6 +1,0 @@
-export APP_DNS=sec.codefresh.io
-export ENVIRONMENT=sec
-export CLUSTER_NAME=cf-sec
-export PROJECT_NAME=savvy-badge-103912
-export NAMESPACE=default
-export ZONE=us-central1-a
