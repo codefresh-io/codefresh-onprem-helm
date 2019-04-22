@@ -19,3 +19,6 @@ environments:
   namespace: default
   dns: sec.codefresh.io
   useHelmLockFile: false
+- name: dynamic
+  cluster: cf-staging@codefresh-staging
+  useHelmLockFile: false
