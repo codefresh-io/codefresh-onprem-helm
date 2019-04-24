@@ -30,76 +30,67 @@ dependencies:
   repository: file://../ingress
   version: 0.1.8
 - name: cluster-providers
-  repository: file://local-charts/cluster-providers
-  version: 0.0.3
+  repository: http://chartmuseum.codefresh.io
+  version: 1.0.2
 - name: kube-integration
-  repository: file://local-charts/kube-integration
-  version: 0.0.4
+  repository: http://chartmuseum.codefresh.io
+  version: 1.4.6
 - name: accounts-referrals
-  repository: file://local-charts/accounts-referrals
-  version: 0.0.3
+  repository: http://chartmuseum.codefresh.io
+  version: 1.0.1
 - name: charts-manager
-  repository: file://local-charts/charts-manager
-  version: 0.0.3
+  repository: http://chartmuseum.codefresh.io
+  version: 1.0.3
 - name: mailer
-  repository: file://local-charts/mailer
-  version: 0.0.3
+  repository: http://chartmuseum.codefresh.io
+  version: 1.0.4
 - name: payments
-  repository: file://local-charts/payments
-  version: 0.1.7
+  repository: http://chartmuseum.codefresh.io
+  version: 1.0.3
 - name: cfsign
-  repository: file://local-charts/cfsign
-  version: 0.3.2
-- name: internal-status-page
-  repository: file://local-charts/internal-status-page
-  version: 0.0.3
+  repository: http://chartmuseum.codefresh.io
+  version: 1.0.5
 - name: segment-reporter
-  repository: file://local-charts/segment-reporter
-  version: 0.0.4
-- name: workflow-baseline-invoker
-  repository: file://local-charts/workflow-baseline-invoker
-  version: 0.0.5
+  repository: http://chartmuseum.codefresh.io
+  version: 1.0.2
 - name: salesforce-reporter
-  repository: file://local-charts/salesforce-reporter
-  version: 0.1.3
+  repository: http://chartmuseum.codefresh.io
+  version: 1.0.3
 - name: tasker-kubernetes
-  repository: file://local-charts/tasker-kubernetes
-  version: 0.0.2
+  repository: http://chartmuseum.codefresh.io
+  version: 1.0.3
 - name: context-manager
-  repository: file://local-charts/context-manager
-  version: 0.0.2
+  repository: http://chartmuseum.codefresh.io
+  version: 1.0.26
 - name: pipeline-manager
-  repository: file://local-charts/pipeline-manager
-  version: 0.0.2
+  repository: http://chartmuseum.codefresh.io
+  version: 2.0.1
 - name: cfapi
-  repository: file://local-charts/cfapi
-  version: 0.2.3
+  repository: http://chartmuseum.codefresh.io
+  version: 1.5.16
 - name: cfui
   repository: http://chartmuseum.codefresh.io
-  version: 2.8.218
+  version: 2.10.8
 - name: onboarding-status
   repository: http://chartmuseum.codefresh.io
-  version: 1.0.54
-- name: cfanalytic
-  repository: http://chartmuseum.codefresh.io
-  version: 1.0.49
+  version: 1.0.58
 - name: runtime-environment-manager
   repository: http://chartmuseum.codefresh.io
-  version: 1.7.19
+  version: 1.8.5
 - name: cf-broadcaster
   repository: http://chartmuseum.codefresh.io
-  version: 1.0.8
+  version: 1.0.30
 - name: helm-repo-manager
   repository: http://chartmuseum.codefresh.io
   version: 0.2.9
 - name: hermes
   repository: http://chartmuseum.codefresh.io
-  version: 0.9.25
+  version: 0.9.29
 - name: nomios
   repository: http://chartmuseum.codefresh.io
-  version: 0.4.20
+  version: 0.4.23
 - name: cronus
   repository: http://chartmuseum.codefresh.io
-  version: 0.2.14
-digest: sha256:6bf158d773a5ae17ab2a8548f862fd9f5afa13fd963435648c300c3d61a8da17
-generated: 2019-02-21T16:21:49.61458983+02:00
+  version: 0.2.16
+digest: sha256:3b734dc0c87930d7ec2ad2c3f3550b0545d83413cc31e8ef08736953587fac6a
+generated: 2019-04-20T07:16:32.905348382Z
