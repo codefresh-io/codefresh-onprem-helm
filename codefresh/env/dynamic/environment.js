@@ -29,8 +29,8 @@ function $create(config) {
                 name: 'git',
                 description: 'Checkout to master',
                 workDir: config['cf-helm-path'],
+                program: 'git',
                 exec: [
-                    'git',
                     'checkout',
                     'dynamic'
                 ]
@@ -41,8 +41,8 @@ function $create(config) {
                 name: 'git',
                 description: 'Create branch',
                 workDir: config['cf-helm-path'],
+                program: 'git',
                 exec: [
-                    'git',
                     'checkout',
                     'dynamic'
                 ]
@@ -53,8 +53,8 @@ function $create(config) {
                 name: 'git',
                 description: 'push branch to upstream',
                 workDir: config['cf-helm-path'],
+                program: 'git',
                 exec: [
-                    'git',
                     'checkout',
                     '-b',
                     'dynamic' + '-' + config.name
@@ -65,8 +65,8 @@ function $create(config) {
             new Command({
                 name: 'wait',
                 description: 'Wait for environment',
+                program: 'sh',
                 exec: [
-                    'sh',
                     '-c',
                     'codefresh logs -f $(codefresh get build --pipeline-name --branch dynamic-' + config.name + ' | awk \'NR >1\' | awk \'{ print $1}\')',
                 ]
@@ -82,7 +82,6 @@ function $connect(config, component) {
 
     var exec = [];
     _.chain(exec)
-        .push('telepresence')
         .push('--context')
         .push(config.kubernetes.context)
         .push('--swap-deployment')
@@ -105,6 +104,7 @@ function $connect(config, component) {
 
     return JSON.stringify([{
         name: 'run-telepresence',
+        program: 'telepresence',
         exec: exec,
         env: env,
         detached: true
@@ -120,8 +120,8 @@ function $start(config, component) {
             name: 'ensure-tools',
             description: 'Ensure telepresence & kubectl && jq && codefresh exist',
             env: env,
+            program: 'node',
             exec: [
-                'node',
                 '--inspect=' + GetAvailablePort(),
                 'server/index.js'
             ]
