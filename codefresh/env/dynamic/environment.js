@@ -12,7 +12,7 @@ function _createStandardNodejsComponent(name) {
 function _createNonStandardComponent(name, ports) {
     var nonStandardPorts = _.map(ports, function (p, i) {
         return {
-            name: 'port-' + i,
+            name: 'port_' + i,
             envVar: p.envVar,
             default: p.default
         }
@@ -76,7 +76,6 @@ function $create(config) {
 }
 
 function $connect(config, component) {
-    console.log(JSON.stringify(config))
     var env = [];
     env.push('MERLIN_COMPONENT=' + component.name)
 
@@ -113,7 +112,7 @@ function $connect(config, component) {
 
 function $start(config, component) {
     var env = _.map(component.spec.ports, function (p) {
-        return p.envVar + '=$' + component.name + '_' + p.name;
+        return p.envVar + '=' + process.env[component.name + '_' + p.name];
     })
     env.push('FORMAT_LOGS_TO_ELK=false')
     return JSON.stringify([{
