@@ -5,6 +5,9 @@
 firebaseUrl: "https://codefresh-staging-75bd2.firebaseio.com/staging"
 mongoSeedJobScript: files/dynamic/mongoSeedJobScript
 
+tasker-kubernetes:
+  replicaCount: 1
+
 # customize consul chart
 consul:
   DatacenterName: dynamic
