@@ -12,7 +12,7 @@ function _createStandardNodejsComponent(name) {
 function _createNonStandardComponent(name, ports) {
     var nonStandardPorts = _.map(ports, function (p, i) {
         return {
-            name: 'port-' + i,
+            name: 'port_' + i,
             envVar: p.envVar,
             default: p.default
         }
@@ -29,8 +29,8 @@ function $create(config) {
                 name: 'git',
                 description: 'Checkout to master',
                 workDir: config['cf-helm-path'],
+                program: 'git',
                 exec: [
-                    'git',
                     'checkout',
                     'dynamic'
                 ]
@@ -41,8 +41,8 @@ function $create(config) {
                 name: 'git',
                 description: 'Create branch',
                 workDir: config['cf-helm-path'],
+                program: 'git',
                 exec: [
-                    'git',
                     'checkout',
                     'dynamic'
                 ]
@@ -53,8 +53,8 @@ function $create(config) {
                 name: 'git',
                 description: 'push branch to upstream',
                 workDir: config['cf-helm-path'],
+                program: 'git',
                 exec: [
-                    'git',
                     'checkout',
                     '-b',
                     'dynamic' + '-' + config.name
@@ -65,8 +65,8 @@ function $create(config) {
             new Command({
                 name: 'wait',
                 description: 'Wait for environment',
+                program: 'sh',
                 exec: [
-                    'sh',
                     '-c',
                     'codefresh logs -f $(codefresh get build --pipeline-name --branch dynamic-' + config.name + ' | awk \'NR >1\' | awk \'{ print $1}\')',
                 ]
@@ -76,13 +76,11 @@ function $create(config) {
 }
 
 function $connect(config, component) {
-    console.log(JSON.stringify(config))
     var env = [];
     env.push('MERLIN_COMPONENT=' + component.name)
 
     var exec = [];
     _.chain(exec)
-        .push('telepresence')
         .push('--context')
         .push(config.kubernetes.context)
         .push('--swap-deployment')
@@ -105,6 +103,7 @@ function $connect(config, component) {
 
     return JSON.stringify([{
         name: 'run-telepresence',
+        program: 'telepresence',
         exec: exec,
         env: env,
         detached: true
@@ -113,15 +112,15 @@ function $connect(config, component) {
 
 function $start(config, component) {
     var env = _.map(component.spec.ports, function (p) {
-        return p.envVar + '=$' + component.name + '_' + p.name;
+        return p.envVar + '=' + process.env[component.name + '_' + p.name];
     })
     env.push('FORMAT_LOGS_TO_ELK=false')
     return JSON.stringify([{
             name: 'ensure-tools',
             description: 'Ensure telepresence & kubectl && jq && codefresh exist',
             env: env,
+            program: 'node',
             exec: [
-                'node',
                 '--inspect=' + GetAvailablePort(),
                 'server/index.js'
             ]
