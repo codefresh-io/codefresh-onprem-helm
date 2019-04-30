@@ -198,6 +198,7 @@ cronus:
     cloud.google.com/gke-nodepool: main-pool
 
 global:
+  certsJobs: true
   internalServiceTolerations:
   - effect: NoSchedule
     key: nodeType
