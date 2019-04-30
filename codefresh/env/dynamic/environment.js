@@ -38,12 +38,23 @@ function $create(config) {
         )
         .addCommand(
             new Command({
-                name: 'wait',
-                description: 'Wait for environment',
+                name: 'run-pipeline',
+                description: 'Run pipeline in Codefresh to create environment',
                 program: 'sh',
                 exec: [
                     '-c',
                     'codefresh logs -f $(codefresh get build --pipeline-name --branch dynamic-' + config.name + ' | awk \'NR >1\' | awk \'{ print $1}\')',
+                ]
+            })
+        )
+        .addCommand(
+            new Command({
+                name: 'wait',
+                description: 'Wait for environment to be ready',
+                program: 'sh',
+                exec: [
+                    '-c',
+                    'while [[ "$(curl -s -o /dev/null -w %{http_code} http://'+config.name+'.dev.codefresh.io)" != "200" ]]; do echo "No ready yet, testing again in 5..." && sleep 5; done',
                 ]
             })
         )
