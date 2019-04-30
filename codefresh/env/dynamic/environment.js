@@ -27,37 +27,12 @@ function $create(config) {
         .addCommand(
             new Command({
                 name: 'git',
-                description: 'Checkout to master',
-                workDir: config['cf-helm-path'],
-                program: 'git',
-                exec: [
-                    'checkout',
-                    'dynamic'
-                ]
-            })
-        )
-        .addCommand(
-            new Command({
-                name: 'git',
                 description: 'Create branch',
                 workDir: config['cf-helm-path'],
-                program: 'git',
+                program: 'sh',
                 exec: [
-                    'checkout',
-                    'dynamic'
-                ]
-            })
-        )
-        .addCommand(
-            new Command({
-                name: 'git',
-                description: 'push branch to upstream',
-                workDir: config['cf-helm-path'],
-                program: 'git',
-                exec: [
-                    'checkout',
-                    '-b',
-                    'dynamic' + '-' + config.name
+                    '-c',
+                    'git checkout dynamic && git pull && git checkout -b dynamic-'+config.name+' && git push --set-upstream origin $(git_current_branch)'
                 ]
             })
         )
