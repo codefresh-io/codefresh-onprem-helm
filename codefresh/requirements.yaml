@@ -14,7 +14,7 @@ dependencies:
 - name: mongodb36
   version: 0.4.12
   repository: file://pv-charts/mongodb36
-  condition: mongo.enabled,global.mongoDeploy
+  condition: false
   tags:
   - infra
 - name: postgresql
