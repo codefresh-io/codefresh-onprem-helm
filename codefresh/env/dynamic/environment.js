@@ -32,7 +32,7 @@ function $create(config) {
                 program: 'sh',
                 exec: [
                     '-c',
-                    'git checkout dynamic && git pull && git checkout -b dynamic-'+config.name+' && git push --set-upstream origin $(git_current_branch)'
+                    'git checkout dynamic && git pull && git checkout -b dynamic-'+config.name+' && git push --set-upstream origin dynamic-'+config.name
                 ]
             })
         )
