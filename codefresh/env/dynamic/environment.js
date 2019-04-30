@@ -38,6 +38,18 @@ function $create(config) {
         )
         .addCommand(
             new Command({
+                name: 'codefresh-cli',
+                description: 'Switch context in Codefresh CLI',
+                program: 'codefresh',
+                exec: [
+                    'auth',
+                    'use-context',
+                    config.codefresh.context,
+                ]
+            })
+        )
+        .addCommand(
+            new Command({
                 name: 'run-pipeline',
                 description: 'Run pipeline in Codefresh to create environment',
                 program: 'sh',
