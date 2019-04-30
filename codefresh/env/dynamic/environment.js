@@ -92,7 +92,7 @@ function $connect(config, component) {
         var port = GetAvailablePort()
         exec.push('--expose')
         exec.push(port + ':' + p.default)
-        env.push(component.name + '_' + p.name + '=' + port);
+        env.push(component.name.replace('-', '_') + '_' + p.name + '=' + port);
     })
 
     if (config.run) {
@@ -112,7 +112,7 @@ function $connect(config, component) {
 
 function $start(config, component) {
     var env = _.map(component.spec.ports, function (p) {
-        return p.envVar + '=' + process.env[component.name + '_' + p.name];
+        return p.envVar + '=' + process.env[component.name.replace('-', '_') + '_' + p.name];
     })
     env.push('FORMAT_LOGS_TO_ELK=false')
     return JSON.stringify([{
@@ -125,7 +125,6 @@ function $start(config, component) {
                 'server/index.js'
             ]
         },
-
     ]);
 }
 
@@ -144,6 +143,7 @@ function build() {
             default: 80
         }]))
         .addComponent(_createStandardNodejsComponent('pipeline-manager'))
+        .addComponent(_createStandardNodejsComponent('context-manager'))
         .addOperator(new Operator({
             name: 'create',
             description: 'Create an environment',
