@@ -90,6 +90,9 @@ dindImage: docker:17.05-dind
 global:
   # Instantiate databases with seed data. Usually used in dynamic and on-prem environments.
   seedJobs: true
+  
+  # certsJobs - create selfsigned certificated
+  certsJobs: true
 
   # Global codefresh chart name; all subcharts use this name to access secrets and configmaps
   codefresh: codefresh
