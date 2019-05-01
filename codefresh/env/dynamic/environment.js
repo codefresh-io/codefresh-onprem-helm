@@ -27,48 +27,46 @@ function $create(config) {
         .addCommand(
             new Command({
                 name: 'git',
-                description: 'Checkout to master',
-                workDir: config['cf-helm-path'],
-                program: 'git',
-                exec: [
-                    'checkout',
-                    'dynamic'
-                ]
-            })
-        )
-        .addCommand(
-            new Command({
-                name: 'git',
                 description: 'Create branch',
                 workDir: config['cf-helm-path'],
-                program: 'git',
+                program: 'sh',
                 exec: [
-                    'checkout',
-                    'dynamic'
+                    '-c',
+                    'git checkout dynamic && git pull && git checkout -b dynamic-'+config.name+' && git push --set-upstream origin dynamic-'+config.name
                 ]
             })
         )
         .addCommand(
             new Command({
-                name: 'git',
-                description: 'push branch to upstream',
-                workDir: config['cf-helm-path'],
-                program: 'git',
+                name: 'codefresh-cli',
+                description: 'Switch context in Codefresh CLI',
+                program: 'codefresh',
                 exec: [
-                    'checkout',
-                    '-b',
-                    'dynamic' + '-' + config.name
+                    'auth',
+                    'use-context',
+                    config.codefresh.context,
+                ]
+            })
+        )
+        .addCommand(
+            new Command({
+                name: 'run-pipeline',
+                description: 'Run pipeline in Codefresh to create environment',
+                program: 'sh',
+                exec: [
+                    '-c',
+                    'codefresh logs -f $(codefresh get build --pipeline-name --branch dynamic-' + config.name + ' | awk \'NR >1\' | awk \'{ print $1}\')',
                 ]
             })
         )
         .addCommand(
             new Command({
                 name: 'wait',
-                description: 'Wait for environment',
+                description: 'Wait for environment to be ready',
                 program: 'sh',
                 exec: [
                     '-c',
-                    'codefresh logs -f $(codefresh get build --pipeline-name --branch dynamic-' + config.name + ' | awk \'NR >1\' | awk \'{ print $1}\')',
+                    'while [[ "$(curl -s -o /dev/null -w %{http_code} http://'+config.name+'.dev.codefresh.io)" != "200" ]]; do echo "No ready yet, testing again in 5..." && sleep 5; done',
                 ]
             })
         )
@@ -92,7 +90,7 @@ function $connect(config, component) {
         var port = GetAvailablePort()
         exec.push('--expose')
         exec.push(port + ':' + p.default)
-        env.push(component.name + '_' + p.name + '=' + port);
+        env.push(component.name.replace('-', '_') + '_' + p.name + '=' + port);
     })
 
     if (config.run) {
@@ -112,7 +110,7 @@ function $connect(config, component) {
 
 function $start(config, component) {
     var env = _.map(component.spec.ports, function (p) {
-        return p.envVar + '=' + process.env[component.name + '_' + p.name];
+        return p.envVar + '=' + process.env[component.name.replace('-', '_') + '_' + p.name];
     })
     env.push('FORMAT_LOGS_TO_ELK=false')
     return JSON.stringify([{
@@ -125,7 +123,6 @@ function $start(config, component) {
                 'server/index.js'
             ]
         },
-
     ]);
 }
 
@@ -144,6 +141,7 @@ function build() {
             default: 80
         }]))
         .addComponent(_createStandardNodejsComponent('pipeline-manager'))
+        .addComponent(_createStandardNodejsComponent('context-manager'))
         .addOperator(new Operator({
             name: 'create',
             description: 'Create an environment',
