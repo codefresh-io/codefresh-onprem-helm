@@ -1,6 +1,0 @@
-export APP_DNS=app-staging.codefresh.io
-export ENVIRONMENT=staging
-export CLUSTER_NAME=cf-staging
-export PROJECT_NAME=savvy-badge-103912
-export NAMESPACE=default
-export ZONE=us-central1-a

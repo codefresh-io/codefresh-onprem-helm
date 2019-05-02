@@ -1,6 +1,0 @@
-export APP_DNS=app-load.codefresh.io
-export ENVIRONMENT=load
-export CLUSTER_NAME=cf-load
-export PROJECT_NAME=codefresh-load
-export NAMESPACE=default
-export ZONE=us-central1-a
