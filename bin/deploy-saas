@@ -188,4 +188,4 @@ then
 	msg "Your environment is ready at: ${ENVIRONMENT}.dev.codefresh.io"
 fi
 
-figlet "Codefresh"
+# figlet "Codefresh"
