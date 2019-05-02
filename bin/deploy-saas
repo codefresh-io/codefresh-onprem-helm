@@ -19,7 +19,6 @@ check kubectl
 check helm
 check sops
 
-runCmd "kubectl version"
 exit 0
 
 [ "$1" == "-h" ] && usage
