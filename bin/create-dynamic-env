@@ -123,7 +123,7 @@ customVals=$(processCustomVals)
 
 if [ "$DRY_RUN" != "true" ]; then
 	msg "Creating namespace $namespace"
-	kubectl get namespace $namespaceName || kubectl create namespace $namespaceName && kubectl label namespace $namespaceName dynamic=true
+	kubectl get namespace $namespaceName || (kubectl create namespace $namespaceName && kubectl label namespace $namespaceName dynamic=true)
 fi
 
 msg "Deploy the Codefresh' helm package"
