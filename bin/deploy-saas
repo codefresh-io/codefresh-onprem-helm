@@ -72,22 +72,38 @@ check kubectl
 [ "$1" == "-h" ] && usage
 
 
-env=$(yq --arg env "$ENVIRONMENT" -r '.environments[] | select(.name==$env)'  "map.yaml")
-if [ -z "$env" ]
+if [ -z "$ENVIRONMENT" ]
 then
-  echo "Environment $ENVIRONMENT not exist in map.yaml"
+    echo "Environment variable $ENVIRONMENT is not set"
 	exit 1
 fi
 
+if [ -z "CLUSTER" ]
+then
+    echo "Environment variable $CLUSTER is not set"
+    exit 1
+fi
+
+if [ -z "DNS" ]
+then
+    echo "Environment variable $DNS is not set"
+    exit 1
+fi
+
+if [ -z "NAMESPACE" ]
+then
+    echo "Environment variable $NAMESPACE is not set"
+    exit 1
+fi
+
 echo "Found environment $ENVIRONMENT"
-APP_DNS=$(echo $env | yq .dns)
+APP_DNS=$DNS
 echo "Setting APP_DNS=$APP_DNS"
 
 echo "Available kubernetes contexts"
 kubectl config get-contexts
-KUBE_CONTEXT=$(echo $env | yq .cluster | sed s/\"//g )
-NAMESPACE=$(echo $env | yq .namespace | sed s/\"//g )
-USE_LOCK=$(echo $env | yq .useHelmLockFile)
+KUBE_CONTEXT=$CLUSTER
+USE_LOCK=$USE_HELM_LOCK
 
 echo "Using context $KUBE_CONTEXT and namespace $NAMESPACE"
 kubectl config use-context $KUBE_CONTEXT
