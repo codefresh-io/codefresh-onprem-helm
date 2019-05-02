@@ -161,6 +161,10 @@ msg "Running helm upgrade command"
 echo $helmCmd
 eval "$helmCmd"
 
+
+msg "Helm Release status"
+helm status $ENVIRONMENT
+
 if [ "$DYNAMIC_ENVIRONMENT" == "true" ]
 then
 	msg "Waiting for the ingress controller to receive a public ip"
@@ -170,7 +174,11 @@ then
 	msg "The ingress public's ip is: '$publicIp', adding it to dns (route53)"
 	addToRoute53 "${APP_DNS}" "$publicIp"
 	msg "Your environment should be accessible soon at: ${ENVIRONMENT}.dev.codefresh.io"
-fi
 
-msg "Helm Release status"
-helm status $ENVIRONMENT
+	msg "Ping the environment until the DNS will be ready"
+	while [[ "$(curl -s -o /dev/null -w %{http_code} http://$ENVIRONMENT.dev.codefresh.io)" != "200" ]]
+	do
+		echo "No ready yet, testing again in 5..." && sleep 5
+	done
+	msg "Your environment is ready at: ${ENVIRONMENT}.dev.codefresh.io"
+fi
