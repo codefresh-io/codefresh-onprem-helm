@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# This script assums to have all the tools
+# that are installed in the codefresh/cf-env-creator image
+# aws,sops,helm,kubectl,figlet
+
 set -e
 
 
@@ -18,6 +22,7 @@ usage() {
 check kubectl
 check helm
 check sops
+check figlet
 
 [ "$1" == "-h" ] && usage
 
@@ -182,3 +187,5 @@ then
 	done
 	msg "Your environment is ready at: ${ENVIRONMENT}.dev.codefresh.io"
 fi
+
+figlet "Codefresh"
