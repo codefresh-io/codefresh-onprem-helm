@@ -4,7 +4,6 @@ set -e
 
 
 readonly BASEPATH="$(dirname "$0")"
-readonly KEY_FILE="service-account.json"
 source "$BASEPATH/helpers"
 
 usage() {
@@ -12,65 +11,18 @@ usage() {
 	exit 0
 }
 
-processCustomVals() {
-	local resultedArgs=""
-	local vars=$(env | awk -F '=' '{print $1}' | grep "^custom")
-
-	for var in $vars
-	do
-		local varName=$(echo $var | sed 's/custom_//' | sed 's/_/./g')
-		local varValue=$(eval "echo \$$var")
-		resultedArgs="$resultedArgs --set $varName=$varValue"
-	done
-
-	echo "$resultedArgs"
-}
-
-processCustomFlags() {
-	local flags=""
-
-	[ "$DEBUG_CHART" == "true" ] && flags="$flags --debug"
-	[ "$DRY_RUN" == "true" ] && flags="$flags --dry-run"
-	[ ! -z "$TIMEOUT" ] && flags="$flags --timeout $TIMEOUT"
-	if [ "$WAIT" == "true" ] || [ -z "$WAIT" ]; then
-		flags="$flags --wait"
-	fi
-
-	echo "$flags"
-}
-
-waitForHelm() {
-	while true; do
-#		status=$(kubectl get po -l app=helm -l name=tiller -o=custom-columns=STATUS:.status.phase --no-headers=true -nkube-system --field-selector status.phase=Running)
-        status=$(kubectl -nkube-system  get po -l app=helm -l name=tiller -o=go-template --template='{{  range $i, $v := .items }}{{ if eq $v.status.phase "Running" }}{{ $v.status.phase }}{{ end }}{{ end }}')
-
-		msg "Helm status = $status"
-		[ "$status" == "Running" ] && break
-
-		msg "Sleeping 3 seconds ..."
-		sleep 3
-
-	done
-}
-
-genRedeployArgs() {
-	local args=""
-
-	for chart in $@; do
-  	args="$args --set ${chart}.redeploy=true"
-	done
-
-	echo $args
-}
-
 # =---
 # MAIN
 # =---
 
 check kubectl
+check helm
+check sops
+
+runCmd "kubectl version"
+exit 0
 
 [ "$1" == "-h" ] && usage
-
 
 if [ -z "$ENVIRONMENT" ]
 then
@@ -100,20 +52,42 @@ echo "Found environment $ENVIRONMENT"
 APP_DNS=$DNS
 echo "Setting APP_DNS=$APP_DNS"
 
-echo "Available kubernetes contexts"
-kubectl config get-contexts
 KUBE_CONTEXT=$CLUSTER
-USE_LOCK=$USE_HELM_LOCK
+echo "Setting KUBE_CONTEXT=$KUBE_CONTEXT"
 
-echo "Using context $KUBE_CONTEXT and namespace $NAMESPACE"
+USE_LOCK=$USE_HELM_LOCK
+echo "Setting USE_LOCK=$USE_LOCK"
+
+if [ "$DRY_RUN" == "true" ]
+then
+	msg "Running in dry-run mode"
+fi
+
+if [ "$DYNAMIC_ENVIRONMENT" == "true" ]
+then
+  check aws
+	if [ -z "$ENVIRONMENT" ]
+	then
+	  msg "ENVIRONMENT not set, generating random name"
+		ENVIRONMENT=$(getRandomName)
+		msg "ENVIRONMENT name: $ENVIRONMENT"
+	fi
+fi
+
+
+msg "Available kubernetes contexts"
+kubectl config get-contexts
+
+msg "Using context $KUBE_CONTEXT and namespace $NAMESPACE"
 kubectl config use-context $KUBE_CONTEXT
 
 if [ "$USE_LOCK" == "true" ]
 then
-  echo "Helm lock file will be used to deploy"
+  msg "Helm lock file will be used to deploy"
 else
-  echo "Helm lock file will not be used to deploy"
+  msg "Helm lock file will not be used to deploy"
 fi
+exit 0
 
 msg "Decrypting all secrets"
 ./sops.sh -d
@@ -186,3 +160,16 @@ eval "$helmCmd"
 msg "Status of all the services: "
 kubectl get pods
 
+if [ "$DYNAMIC_ENVIRONMENT" == "true" ]
+then
+	msg "Waiting for the ingress controller to receive a public ip"
+	waitForIngressExternalIp "$ENVIRONMENT"
+	publicIp=$(getIngressIp "$ENVIRONMENT")
+
+	msg "The ingress public's ip is: '$publicIp', adding it to dns (route53)"
+	addToRoute53 "${APP_DNS}" "$publicIp"
+	msg "Your environment should be accessible soon at: ${ENVIRONMENT}.dev.codefresh.io"
+fi
+
+msg "Helm Release status"
+helm status $ENVIRONMENT
