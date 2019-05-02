@@ -29,19 +29,19 @@ then
 	exit 1
 fi
 
-if [ -z "CLUSTER" ]
+if [ -z "$CLUSTER" ]
 then
     echo "Environment variable $CLUSTER is not set"
     exit 1
 fi
 
-if [ -z "DNS" ]
+if [ -z "$DNS" ]
 then
     echo "Environment variable $DNS is not set"
     exit 1
 fi
 
-if [ -z "NAMESPACE" ]
+if [ -z "$NAMESPACE" ]
 then
     echo "Environment variable $NAMESPACE is not set"
     exit 1
