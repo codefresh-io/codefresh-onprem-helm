@@ -180,4 +180,5 @@ then
 	do
 		echo "No ready yet, testing again in 5..." && sleep 5
 	done
+	msg "Your environment is ready at: ${ENVIRONMENT}.dev.codefresh.io"
 fi
