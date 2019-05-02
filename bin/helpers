@@ -9,20 +9,6 @@ err() { echo -e "\e[31mERR ---> $1\e[0m" ; exit 1; }
 
 check() { command -v $1 >/dev/null 2>&1 || err "$1 utility is requiered!"; }
 
-approveContext() {
-	msg "Your kubectl is configured with the following context: "
-	kubectl config current-context
-	read -r -p "Are you sure you want to continue? [y/N] " response
-
-	if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
-	then
-			msg "No problem, continuing with the script..."
-	else
-			msg "Exiting..."
-			exit 0
-	fi
-}
-
 getIngressIp() {
 	local namespace="$1"
 	kubectl --namespace $namespace get svc ${namespace}-ingress-controller \
@@ -100,4 +86,62 @@ getRandomName() {
 	declare -a words=("astra" "abby" "book" "bad" "bold" "camp" "call" "crack" "doom" "dog" "drill" "elf" "enter" "fake" "full" "form" "fun" "girl" "good" "goblin" "grand" "groom" "goose" "king" "kind" "loop" "lame" "lamer" "little" "lost" "moon" "monk" "mark" "noon" "nord" "odd" "oven" "plain" "pirate" "pitty" "pool" "pasta" "pretty" "room" "rast" "rock" "sun" "toon" "ten" "tik" "tape" "wild" "ugly" "urgent" "who") 
 
 	echo ${words[$RANDOM % ${#words[@]}]}-${words[$RANDOM % ${#words[@]}]}
+}
+
+processCustomVals() {
+	local resultedArgs=""
+	local vars=$(env | awk -F '=' '{print $1}' | grep "^custom")
+
+	for var in $vars
+	do
+		local varName=$(echo $var | sed 's/custom_//' | sed 's/_/./g')
+		local varValue=$(eval "echo \$$var")
+		resultedArgs="$resultedArgs --set $varName=$varValue"
+	done
+
+	echo "$resultedArgs"
+}
+
+processCustomFlags() {
+	local flags=""
+
+	[ "$DEBUG_CHART" == "true" ] && flags="$flags --debug"
+	[ "$DRY_RUN" == "true" ] && flags="$flags --dry-run"
+	[ ! -z "$TIMEOUT" ] && flags="$flags --timeout $TIMEOUT"
+
+	if [ "$WAIT" == "true" ] || [ -z "$WAIT" ]; then
+		flags="$flags --wait"
+	fi
+
+	echo "$flags"
+}
+
+waitForHelm() {
+	while true; do
+		status=$(kubectl -nkube-system  get po -l app=helm -l name=tiller -o=go-template --template='{{  range $i, $v := .items }}{{ if eq $v.status.phase "Running" }}{{ $v.status.phase }}{{ end }}{{ end }}')
+
+		msg "Helm status = $status"
+		[ "$status" == "Running" ] && break
+
+		msg "Sleeping 3 seconds ..."
+		sleep 3
+
+	done
+}
+
+waitForIngressExternalIp() {
+	until getIngressIp "$1" >/dev/null 2>&1;
+	do
+		sleep 2
+	done
+}
+
+genRedeployArgs() {
+	local args=""
+
+	for chart in $@; do
+  	args="$args --set ${chart}.redeploy=true"
+	done
+
+	echo $args
 }
