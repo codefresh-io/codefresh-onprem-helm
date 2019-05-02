@@ -114,16 +114,30 @@ function $start(config, component) {
     })
     env.push('FORMAT_LOGS_TO_ELK=false')
     return JSON.stringify([{
-            name: 'ensure-tools',
-            description: 'Ensure telepresence & kubectl && jq && codefresh exist',
-            env: env,
-            program: 'node',
-            exec: [
-                '--inspect=' + GetAvailablePort(),
-                'server/index.js'
-            ]
-        },
+        name: 'ensure-tools',
+        description: 'Ensure telepresence & kubectl && jq && codefresh exist',
+        env: env,
+        program: 'node',
+        exec: [
+            '--inspect=' + GetAvailablePort(),
+            'server/index.js'
+        ]
+    },
     ]);
+}
+
+function $test(config) {
+    return new CommandSet()
+        .addCommand(new Command({
+            name: 'test',
+            description: 'Send ping to environment',
+            program: 'sh',
+            exec: [
+                '-c',
+                'if [[ "$(curl -s -o /dev/null -w %{http_code} http://'+config.name+'.dev.codefresh.io)" != "200" ]]; then echo "Not ready && exit 1"; else echo "Ready"; fi;'
+            ]
+        }))
+        .build()
 }
 
 function build() {
@@ -133,6 +147,10 @@ function build() {
             envVar: 'INTERNAL_PORT',
             default: 40000.
         }, {
+            envVar: 'PORT',
+            default: 80
+        }]))
+        .addComponent(_createNonStandardComponent('cfui', [{
             envVar: 'PORT',
             default: 80
         }]))
@@ -162,6 +180,11 @@ function build() {
             name: 'start',
             description: 'Start application locally (assuming the connection is been established)',
             scope: 'component'
+        }))
+        .addOperator(new Operator({
+            name: 'test',
+            description: 'Test environment to be up and running',
+            scope: 'environment'
         }))
         .build();
 }
