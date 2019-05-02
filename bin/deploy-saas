@@ -73,6 +73,8 @@ then
 	  msg "ENVIRONMENT not set, generating random name"
 		ENVIRONMENT=$(getRandomName)
 		msg "ENVIRONMENT name: $ENVIRONMENT"
+	else
+	  ENVIRONMENT=${ENVIRONMENT#dynamic-}
 	fi
 fi
 
@@ -158,9 +160,6 @@ END
 msg "Running helm upgrade command"
 echo $helmCmd
 eval "$helmCmd"
-
-msg "Status of all the services: "
-kubectl get pods
 
 if [ "$DYNAMIC_ENVIRONMENT" == "true" ]
 then
