@@ -59,10 +59,15 @@ if [ "$DRY_RUN" == "true" ]
 then
 	msg "Running in dry-run mode"
 fi
+# Location of vlaue files
+LOCATION=$ENVIRONMENT
 
 if [ "$DYNAMIC_ENVIRONMENT" == "true" ]
 then
-  check aws
+	# For dynamic env change the path
+	LOCATION="dynamic"
+
+	check aws
 	if [ -z "$ENVIRONMENT" ]
 	then
 	  msg "ENVIRONMENT not set, generating random name"
@@ -70,7 +75,6 @@ then
 		msg "ENVIRONMENT name: $ENVIRONMENT"
 	fi
 fi
-
 
 msg "Available kubernetes contexts"
 kubectl config get-contexts
@@ -117,14 +121,16 @@ customVals=$(processCustomVals)
 redeployArgs=$(genRedeployArgs $@)
 customFlags=$(processCustomFlags)
 
-if [[ -f codefresh/env/${ENVIRONMENT}/versions.yaml ]]; then
-  versionsVals=" --values codefresh/env/${ENVIRONMENT}/versions.yaml "
+if [[ -f codefresh/env/${LOCATION}/versions.yaml ]]; then
+  versionsVals=" --values codefresh/env/${LOCATION}/versions.yaml "
 fi
 
 
 if [[ "${MAINTENANCE_MODE}" == "true" ]]; then
    maintenanceVals=" --values codefresh/maintenanceValues.yaml "
 fi
+
+
 
 msg "Deploying helm package"
 helmCmd=$(cat <<END
@@ -140,8 +146,8 @@ helm upgrade ${ENVIRONMENT} codefresh \
 	--values codefresh/values.yaml \
 	--values codefresh/values-dec.yaml \
 	--values codefresh/regsecret-dec.yaml \
-	--values codefresh/env/${ENVIRONMENT}/values-dec.yaml \
-	--values codefresh/env/${ENVIRONMENT}/values.yaml \
+	--values codefresh/env/${LOCATION}/values-dec.yaml \
+	--values codefresh/env/${LOCATION}/values.yaml \
 	$versionsVals \
 	$customVals \
 	$redeployArgs \
