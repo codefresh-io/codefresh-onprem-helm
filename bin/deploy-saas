@@ -50,6 +50,8 @@ then
     exit 1
 fi
 
+[[ -z "$AWS_ACCESS_KEY_ID" || -z "$AWS_SECRET_ACCESS_KEY" ]] && err "Please set your AWS credentials"
+
 echo "Found environment $ENVIRONMENT"
 APP_DNS=$DNS
 echo "Setting APP_DNS=$APP_DNS"
@@ -135,6 +137,12 @@ fi
 
 if [[ "${MAINTENANCE_MODE}" == "true" ]]; then
    maintenanceVals=" --values codefresh/maintenanceValues.yaml "
+fi
+
+if [ "$DYNAMIC_ENVIRONMENT" == "true" ]
+then
+	msg "Creating namespace $NAMESPACE"
+	kubectl get namespace $NAMESPACE || (kubectl create namespace $NAMESPACE && kubectl label namespace $NAMESPACE dynamic=true)
 fi
 
 
