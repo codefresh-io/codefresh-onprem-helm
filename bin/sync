@@ -22,9 +22,9 @@ msg "Fetch production branch"
 git fetch $remote production
 
 msg "Latest requirements.yaml"
-git checkout production
+git checkout $remote production
 cat requirements.yaml
-git checkout master
+git checkout $remote master
 
 res=$(git branch | grep "dynamic-")
 res="$res"
