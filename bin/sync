@@ -1,6 +1,11 @@
 #!/bin/sh
 
 remote=${REMOTE_NAME:-"origin"}
+input=${SYNC_BRANCHES:-""}
+
+echo "Running sync script"
+echo "REMOTE_NAME=$REMOTE_NAME"
+echo "SYNC_BRANCHES=$SYNC_BRANCHES"
 
 echo "Checkout to master"
 git checkout master
@@ -15,7 +20,6 @@ echo "Latest requirements.yaml"
 git show production:codefresh/requirements.yaml > requirements.production.yaml
 cat requirements.production.yaml && rm requirements.production.yaml
 
-input=${SYNC_BRANCHES:-""}
 res=$(git branch | grep "dynamic-")
 res="$res"
 echo "-------"
