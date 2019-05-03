@@ -22,7 +22,7 @@ msg "Fetch production branch"
 git fetch $remote production
 
 msg "Latest requirements.yaml"
-git show production:codefresh/requirements.yaml > requirements.production.yaml
+git show $remote production:codefresh/requirements.yaml > requirements.production.yaml
 cat requirements.production.yaml && rm requirements.production.yaml
 
 res=$(git branch | grep "dynamic-")
