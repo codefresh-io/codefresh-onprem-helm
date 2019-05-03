@@ -1,0 +1,33 @@
+#!/bin/sh
+
+remote=${REMOTE_NAME:-"origin"}
+
+echo "Checkout to master"
+git checkout master
+
+echo "Pull recent changes from master"
+git pull $remote master
+
+echo "Fetch production branch"
+git fetch $remote production
+
+echo "Latest requirements.yaml"
+git show production:codefresh/requirements.yaml > requirements.production.yaml
+cat requirements.production.yaml && rm requirements.production.yaml
+
+input=${SYNC_BRANCHES:-""}
+res=$(git branch | grep "dynamic-")
+res="$res"
+echo "-------"
+for branch in $res
+do
+    echo "Syncing $branch"
+    echo "Finish sync of branch $branch"
+    echo "-------"
+    git checkout remote $branch
+    git checkout remote production -- codefresh/requirements.yaml
+    git add codefresh/requirements.yaml
+    git commit -m "Sync requirements.yaml from production"
+    git push $remote $branch
+done
+
