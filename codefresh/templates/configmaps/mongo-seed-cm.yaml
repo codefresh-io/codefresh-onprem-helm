@@ -51,10 +51,10 @@ data:
                 ]
             }
         ],
-        "features": [
+        "features": {
           "hideRepositoriesFeature" : true,
           "newPipelineViewEnabled" : true
-        ],
+        },
         "repoPermission" : "public",
         "environment" : NumberInt(1),
         "admins" : [
