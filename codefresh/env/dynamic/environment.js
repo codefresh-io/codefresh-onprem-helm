@@ -9,7 +9,7 @@ function _createStandardNodejsComponent(name) {
     });
 }
 
-function _createNonStandardComponent(name, ports) {
+function _createNonStandardComponent(name, ports, entrypoint) {
     var nonStandardPorts = _.map(ports, function (p, i) {
         return {
             name: 'port_' + i,
@@ -18,7 +18,8 @@ function _createNonStandardComponent(name, ports) {
         }
     });
     return new Component(name, {
-        ports: nonStandardPorts
+        ports: nonStandardPorts,
+        entrypoint: entrypoint || 'server/index.js'
     });
 }
 
@@ -120,7 +121,7 @@ function $start(config, component) {
         program: 'node',
         exec: [
             '--inspect=' + GetAvailablePort(),
-            'server/index.js'
+            component.spec.entrypoint
         ]
     },
     ]);
@@ -160,6 +161,10 @@ function build() {
         }]))
         .addComponent(_createStandardNodejsComponent('pipeline-manager'))
         .addComponent(_createStandardNodejsComponent('context-manager'))
+        .addComponent(_createNonStandardComponent('payments', [{
+            envVar: 'PORT',
+            default: 9000
+        }], 'index.js'))
         .addOperator(new Operator({
             name: 'create',
             description: 'Create an environment',
