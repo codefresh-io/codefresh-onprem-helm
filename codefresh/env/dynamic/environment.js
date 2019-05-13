@@ -109,6 +109,7 @@ function $start(config, component) {
         env: env,
         program: 'node',
         exec: [
+            '--max-http-header-size=80000',
             '--inspect=' + GetAvailablePort(),
             component.spec.entrypoint
         ]
