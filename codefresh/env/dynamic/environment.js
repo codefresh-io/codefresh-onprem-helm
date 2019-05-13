@@ -60,17 +60,6 @@ function $create(config) {
                 ]
             })
         )
-        .addCommand(
-            new Command({
-                name: 'wait',
-                description: 'Wait for environment to be ready',
-                program: 'sh',
-                exec: [
-                    '-c',
-                    'while [[ "$(curl -s -o /dev/null -w %{http_code} http://'+config.name+'.dev.codefresh.io)" != "200" ]]; do echo "No ready yet, testing again in 5..." && sleep 5; done',
-                ]
-            })
-        )
         .build();
 }
 
