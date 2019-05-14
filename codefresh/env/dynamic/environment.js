@@ -104,7 +104,7 @@ function $start(config, component) {
     })
     env.push('FORMAT_LOGS_TO_ELK=false')
     return JSON.stringify([{
-        name: 'ensure-tools',
+        name: 'start-service',
         description: 'Ensure telepresence & kubectl && jq && codefresh exist',
         env: env,
         program: 'node',
