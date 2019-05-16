@@ -66,15 +66,16 @@ function $create(config) {
 function $connect(config, component) {
     var env = [];
     env.push('MERLIN_COMPONENT=' + component.name)
-
+    console.log(JSON.stringify(config.kubernetes))
     var exec = [];
+    var namespace = config.kubernetes.namespace || config.name;
     _.chain(exec)
         .push('--context')
         .push(config.kubernetes.context)
         .push('--swap-deployment')
         .push(config.name + '-' + component.name)
         .push('--namespace')
-        .push(config.name)
+        .push(namespace)
         .value()
     _.map(component.spec.ports, function (p) {
         var port = GetAvailablePort()
