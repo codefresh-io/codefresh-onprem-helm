@@ -2,10 +2,11 @@ function _createStandardNodejsComponent(name) {
     var port = {
         name: 'port',
         envVar: 'PORT',
-        default: 9000
+        default: 9000,
     };
     return new Component(name, {
-        ports: [port]
+        ports: [port],
+        entrypoint: 'server/index.js',
     });
 }
 
