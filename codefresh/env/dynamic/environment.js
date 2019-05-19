@@ -137,7 +137,7 @@ function build() {
     var env = new Environment();
     return env
         .addComponent(_createNonStandardComponent('cfapi', [{
-            envVar: 'INTERNAL_PORT',
+            envVar: 'INTERNAL_SERVER_PORT',
             default: 40000.
         }, {
             envVar: 'PORT',
