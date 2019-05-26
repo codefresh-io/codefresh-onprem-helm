@@ -20,6 +20,7 @@ postgresql:
       memory: 128Mi
 
 mongodb:
+  serviceType: LoadBalancer
   resources:
     requests:
       memory: 64Mi
