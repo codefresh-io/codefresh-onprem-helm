@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+set -e
+
+readonly basepath="$(dirname "$0")"
+source "$basepath/helpers"
+
+remote=${REMOTE_NAME:-"origin"}
+input=${SYNC_BRANCHES:-""}
+
+msg "Running sync script"
+msg "REMOTE_NAME=$REMOTE_NAME"
+msg "SYNC_BRANCHES=$SYNC_BRANCHES"
+
+msg "Checkout to master"
+git checkout master
+
+msg "Pull recent changes from master"
+git pull $remote master
+
+msg "Fetch production branch"
+git fetch $remote production
+
+msg "Latest requirements.yaml"
+git checkout $remote production
+cat requirements.yaml
+git checkout $remote master
+
+res=$(git branch | grep "dynamic-")
+res="$res"
+msg "-------"
+for branch in $res
+do
+    msg "Syncing $branch"
+    msg "Finish sync of branch $branch"
+    msg "-------"
+    git checkout remote $branch
+    git checkout remote production -- codefresh/requirements.yaml
+    git add codefresh/requirements.yaml
+    git commit -m "Sync requirements.yaml from production"
+    git push $remote $branch
+done
+

@@ -3,6 +3,8 @@
 ##
 image: bitnami/mongodb:3.4.6-r0
 
+serviceType: ClusterIP
+
 ## Specify a imagePullPolicy
 ## 'Always' if imageTag is 'latest', else set to 'IfNotPresent'
 ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
