@@ -31,66 +31,66 @@ dependencies:
   version: 0.1.8
 - name: cluster-providers
   repository: http://chartmuseum.codefresh.io
-  version: 1.0.2
+  version: 1.0.5
 - name: kube-integration
   repository: http://chartmuseum.codefresh.io
-  version: 1.4.6
+  version: 1.5.0
 - name: accounts-referrals
   repository: http://chartmuseum.codefresh.io
-  version: 1.0.1
+  version: 1.0.2
 - name: charts-manager
   repository: http://chartmuseum.codefresh.io
-  version: 1.0.3
+  version: 1.0.8
 - name: mailer
   repository: http://chartmuseum.codefresh.io
-  version: 1.0.4
+  version: 1.0.51
 - name: payments
   repository: http://chartmuseum.codefresh.io
-  version: 1.0.3
+  version: 1.4.1
 - name: cfsign
   repository: http://chartmuseum.codefresh.io
-  version: 1.0.5
+  version: 1.0.6
 - name: segment-reporter
   repository: http://chartmuseum.codefresh.io
-  version: 1.0.2
+  version: 1.0.3
 - name: salesforce-reporter
   repository: http://chartmuseum.codefresh.io
   version: 1.0.3
 - name: tasker-kubernetes
   repository: http://chartmuseum.codefresh.io
-  version: 1.0.3
+  version: 1.0.5
 - name: context-manager
   repository: http://chartmuseum.codefresh.io
-  version: 1.0.26
+  version: 1.0.27
 - name: pipeline-manager
   repository: http://chartmuseum.codefresh.io
-  version: 2.0.1
+  version: 3.15.0
 - name: cfapi
   repository: http://chartmuseum.codefresh.io
-  version: 1.5.16
+  version: 3.5.4
 - name: cfui
   repository: http://chartmuseum.codefresh.io
-  version: 2.10.8
+  version: 3.17.4
 - name: onboarding-status
   repository: http://chartmuseum.codefresh.io
-  version: 1.0.58
+  version: 1.0.59
 - name: runtime-environment-manager
   repository: http://chartmuseum.codefresh.io
-  version: 1.8.5
+  version: 1.9.1
 - name: cf-broadcaster
   repository: http://chartmuseum.codefresh.io
-  version: 1.0.30
+  version: 1.0.34
 - name: helm-repo-manager
   repository: http://chartmuseum.codefresh.io
-  version: 0.2.9
+  version: 0.4.1
 - name: hermes
   repository: http://chartmuseum.codefresh.io
-  version: 0.9.29
+  version: 0.10.3
 - name: nomios
   repository: http://chartmuseum.codefresh.io
-  version: 0.4.23
+  version: 0.5.2
 - name: cronus
   repository: http://chartmuseum.codefresh.io
-  version: 0.2.16
-digest: sha256:3b734dc0c87930d7ec2ad2c3f3550b0545d83413cc31e8ef08736953587fac6a
-generated: 2019-04-20T07:16:32.905348382Z
+  version: 0.3.1
+digest: sha256:8601e8c538135d3d5d6fd029fe79bcd025fecd9e538fa839c9b45cc8ba22ea81
+generated: 2019-06-06T12:09:19.282318315Z
