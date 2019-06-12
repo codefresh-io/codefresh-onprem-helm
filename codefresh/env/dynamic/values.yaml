@@ -199,6 +199,11 @@ cronus:
     cloud.google.com/gke-nodepool: main-pool
 
 global:
+  istio:
+    enabled: false
+    gateway:
+      enabled: false
+
   internalServiceTolerations:
   - effect: NoSchedule
     key: nodeType
@@ -215,3 +220,12 @@ global:
   
 runtime-environment-manager:
   mongoDbCreate: true
+
+cfui:
+  # list of version and image tags to deploy not only one version but many -
+  # for istio POC
+  deployments:
+    - version: "stable"
+      imageTag: "4.8.0"
+    - version: "latest"
+      imageTag: "4.8.0"
