@@ -125,8 +125,8 @@ dependencies:
   - saas
   - infra
 - name: cfui
-  version: ^3.0.0
-  repository: http://chartmuseum.codefresh.io
+  version: 4.6.0-istio-poc
+  repository: http://chartmuseum-dev.codefresh.io
   condition: cfui.enabled
   tags:
   - saas
