@@ -203,6 +203,53 @@ global:
     enabled: true
     gateway:
       enabled: false
+    httpMatch:
+      enabled: false
+      content: |-
+          - match:
+            - headers:
+                x-support-plan:
+                  exact: SILVER
+              uri:
+                prefix: /api
+            - headers:
+                x-support-plan:
+                  exact: SILVER
+              uri:
+                prefix: /ws
+            route:
+            - destination:
+                host: ronen-cfapi
+                port:
+                  number: 80
+                subset: stable
+          - match:
+            - uri:
+                prefix: /api
+            - uri:
+                prefix: /ws
+            route:
+            - destination:
+                host: ronen-cfapi
+                port:
+                  number: 80
+                subset: latest
+          - match:
+            - headers:
+                x-support-plan:
+                  exact: SILVER
+            route:
+            - destination:
+                host: ronen-cfui
+                port:
+                  number: 80
+                subset: stable
+          - route:
+            - destination:
+                host: ronen-cfui
+                port:
+                  number: 80
+                subset: latest
 
   internalServiceTolerations:
   - effect: NoSchedule
@@ -229,3 +276,4 @@ cfui:
       imageTag: "4.8.0"
     - version: "latest"
       imageTag: "4.8.0"
+
