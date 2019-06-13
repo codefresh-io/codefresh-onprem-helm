@@ -70,7 +70,7 @@ dependencies:
   version: 3.5.4
 - name: cfui
   repository: http://chartmuseum-dev.codefresh.io
-  version: 4.6.0-istio-poc
+  version: 4.9.1-istio-poc
 - name: onboarding-status
   repository: http://chartmuseum.codefresh.io
   version: 1.0.59
@@ -92,5 +92,5 @@ dependencies:
 - name: cronus
   repository: http://chartmuseum.codefresh.io
   version: 0.3.1
-digest: sha256:a625bbb0658186998aee9d656326e485a9578c3983c73270690f78ffc1a28266
-generated: 2019-06-12T15:26:55.013885+03:00
+digest: sha256:bbd6157d58c6da6397adb6cbf4f5fca0a66e76d0f8922c083db8ca4e6d0af341
+generated: 2019-06-13T11:08:10.18692+03:00
