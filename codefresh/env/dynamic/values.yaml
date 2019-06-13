@@ -200,7 +200,7 @@ cronus:
 
 global:
   istio:
-    enabled: false
+    enabled: true
     gateway:
       enabled: false
 
