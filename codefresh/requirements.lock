@@ -66,8 +66,8 @@ dependencies:
   repository: http://chartmuseum.codefresh.io
   version: 3.23.1
 - name: cfapi
-  repository: http://chartmuseum.codefresh.io
-  version: 3.5.4
+  repository: http://chartmuseum-dev.codefresh.io
+  version: 6.25.1-istio-poc
 - name: cfui
   repository: http://chartmuseum-dev.codefresh.io
   version: 4.9.1-istio-poc
@@ -92,5 +92,5 @@ dependencies:
 - name: cronus
   repository: http://chartmuseum.codefresh.io
   version: 0.3.1
-digest: sha256:bbd6157d58c6da6397adb6cbf4f5fca0a66e76d0f8922c083db8ca4e6d0af341
-generated: 2019-06-16T07:52:23.041373969Z
+digest: sha256:9b70c5f801a8733480a36e7b8cb68eb20df80bd1594b59f3de9b3ee54d23404b
+generated: 2019-06-16T11:07:44.507618438Z
