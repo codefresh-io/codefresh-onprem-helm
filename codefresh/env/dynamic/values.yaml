@@ -202,7 +202,7 @@ global:
   istio:
     enabled: true
     gateway:
-      enabled: false
+      enabled: true
     httpMatch:
       enabled: false
       content: |-
