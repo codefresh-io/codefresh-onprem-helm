@@ -211,7 +211,7 @@ global:
     gateway:
       enabled: true
     httpMatch:
-      enabled: false
+      enabled: true
       content: |-
           - match:
             - headers:
