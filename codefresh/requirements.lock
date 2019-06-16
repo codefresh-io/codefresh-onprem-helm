@@ -43,7 +43,7 @@ dependencies:
   version: 1.0.8
 - name: mailer
   repository: http://chartmuseum.codefresh.io
-  version: 1.0.52
+  version: 1.0.53
 - name: payments
   repository: http://chartmuseum.codefresh.io
   version: 1.5.0
@@ -64,7 +64,7 @@ dependencies:
   version: 1.2.0
 - name: pipeline-manager
   repository: http://chartmuseum.codefresh.io
-  version: 3.21.0
+  version: 3.23.1
 - name: cfapi
   repository: http://chartmuseum.codefresh.io
   version: 3.5.4
@@ -93,4 +93,4 @@ dependencies:
   repository: http://chartmuseum.codefresh.io
   version: 0.3.1
 digest: sha256:bbd6157d58c6da6397adb6cbf4f5fca0a66e76d0f8922c083db8ca4e6d0af341
-generated: 2019-06-13T08:33:12.154861203Z
+generated: 2019-06-16T07:52:23.041373969Z
