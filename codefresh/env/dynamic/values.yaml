@@ -38,6 +38,13 @@ getRuntimeEnvs: files/dynamic/cluster-dev-runtimeEnvironments.json
 
 # customize cfapi
 cfapi:
+  # list of version and image tags to deploy not only one version but many -
+  # for istio POC
+  deployments:
+  - version: "stable"
+    imageTag: "3.5.4"
+  - version: "latest"
+    imageTag: "3.5.4"
   providersData: |
     {
        "azure":{
