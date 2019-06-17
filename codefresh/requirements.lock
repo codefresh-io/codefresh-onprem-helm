@@ -64,7 +64,7 @@ dependencies:
   version: 1.2.0
 - name: pipeline-manager
   repository: http://chartmuseum.codefresh.io
-  version: 3.23.1
+  version: 3.23.2
 - name: cfapi
   repository: http://chartmuseum-dev.codefresh.io
   version: 6.25.1-istio-poc
@@ -93,4 +93,4 @@ dependencies:
   repository: http://chartmuseum.codefresh.io
   version: 0.3.1
 digest: sha256:9b70c5f801a8733480a36e7b8cb68eb20df80bd1594b59f3de9b3ee54d23404b
-generated: 2019-06-16T14:30:08.311437792Z
+generated: 2019-06-17T11:02:49.010954355Z
