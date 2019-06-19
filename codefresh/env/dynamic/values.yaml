@@ -43,8 +43,10 @@ cfapi:
   deployments:
   - version: "stable"
     imageTag: "3.5.4"
+    appUrl: "ronen.dev.codefresh.io"
   - version: "latest"
     imageTag: "3.5.4"
+    appUrl: "ronen2.dev.codefresh.io"
   providersData: |
     {
        "azure":{
@@ -281,6 +283,8 @@ cfui:
   deployments:
     - version: "stable"
       imageTag: "4.8.0"
+      appUrl: "ronen.dev.codefresh.io"
     - version: "latest"
       imageTag: "4.8.0"
+      appUrl: "ronen2.dev.codefresh.io"
 
