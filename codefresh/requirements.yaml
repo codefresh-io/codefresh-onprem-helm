@@ -118,14 +118,14 @@ dependencies:
   - saas
   - infra
 - name: cfapi
-  version: 6.25.1-istio-poc
-  repository: http://chartmuseum-dev.codefresh.io
+  version: 6.25.1
+  repository: http://chartmuseum.codefresh.io
   condition: cfapi.enabled
   tags:
   - saas
   - infra
 - name: cfui
-  version: 4.9.1-istio-poc
+  version: 4.9.14-istio-poc
   repository: http://chartmuseum-dev.codefresh.io
   condition: cfui.enabled
   tags:

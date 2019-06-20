@@ -38,15 +38,6 @@ getRuntimeEnvs: files/dynamic/cluster-dev-runtimeEnvironments.json
 
 # customize cfapi
 cfapi:
-  # list of version and image tags to deploy not only one version but many -
-  # for istio POC
-  deployments:
-  - version: "stable"
-    imageTag: "3.5.4"
-    appUrl: "ronen.dev.codefresh.io"
-  - version: "latest"
-    imageTag: "3.5.4"
-    appUrl: "ronen.dev.codefresh.io"
   providersData: |
     {
        "azure":{
@@ -209,56 +200,14 @@ cronus:
 
 global:
   istio:
-    enabled: true
-    gateway:
-      enabled: true
-    httpMatch:
-      enabled: false
-      content: |-
-          - match:
-            - headers:
-                x-support-plan:
-                  exact: SILVER
-              uri:
-                prefix: /api
-            - headers:
-                x-support-plan:
-                  exact: SILVER
-              uri:
-                prefix: /ws
-            route:
-            - destination:
-                host: ronen-cfapi
-                port:
-                  number: 80
-                subset: stable
-          - match:
-            - uri:
-                prefix: /api
-            - uri:
-                prefix: /ws
-            route:
-            - destination:
-                host: ronen-cfapi
-                port:
-                  number: 80
-                subset: latest
-          - match:
-            - headers:
-                x-support-plan:
-                  exact: SILVER
-            route:
-            - destination:
-                host: ronen-cfui
-                port:
-                  number: 80
-                subset: stable
-          - route:
-            - destination:
-                host: ronen-cfui
-                port:
-                  number: 80
-                subset: latest
+    enabled: false
+  extraDeployments:
+    - ronen-dev.codefresh.io:
+        cfui:
+          imageTag: "4.9.14-istio-poc"
+    - ronen-dev2.codefresh.io:
+        cfui:
+          imageTag: "4.9.14-istio-poc"
 
   internalServiceTolerations:
   - effect: NoSchedule
@@ -277,14 +226,4 @@ global:
 runtime-environment-manager:
   mongoDbCreate: true
 
-cfui:
-  # list of version and image tags to deploy not only one version but many -
-  # for istio POC
-  deployments:
-    - version: "stable"
-      imageTag: "4.8.0"
-      appUrl: "ronen.dev.codefresh.io"
-    - version: "latest"
-      imageTag: "4.8.0"
-      appUrl: "ronen2.dev.codefresh.io"
 
