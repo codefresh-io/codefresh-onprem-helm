@@ -205,9 +205,13 @@ global:
       - ronen-dev.codefresh.io:
           cfui:
             imageTag: "4.9.14-istio-poc"
+          cfapi:
+            imageTag: "6.25.1-istio-poc"
       - ronen-dev2.codefresh.io:
           cfui:
             imageTag: "4.9.14-istio-poc"
+          cfapi:
+            imageTag: "6.25.1-istio-poc"
 
   internalServiceTolerations:
   - effect: NoSchedule
