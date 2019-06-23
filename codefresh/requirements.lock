@@ -63,13 +63,8 @@ dependencies:
   repository: http://chartmuseum.codefresh.io
   version: 1.2.1
 - name: pipeline-manager
-<<<<<<< HEAD
-  repository: http://chartmuseum.codefresh.io
-  version: 3.26.3
-=======
   repository: http://chartmuseum-dev.codefresh.io
   version: 3.26.3-istio-poc
->>>>>>> adding nomios, cfapi and pipeline manager to istio
 - name: cfapi
   repository: http://chartmuseum-dev.codefresh.io
   version: 6.25.1-istio-poc
@@ -97,5 +92,5 @@ dependencies:
 - name: cronus
   repository: http://chartmuseum.codefresh.io
   version: 0.3.1
-digest: sha256:dbb097a10c898ab0fef64b434707acb71801fc478f3a23dbf01f7f9890d3a20a
-generated: 2019-06-23T11:04:27.623045Z
+digest: sha256:3d9b7d6c83f19771c87bfa66a10cf08357d1536637e882e01981422bd298c586
+generated: 2019-06-23T15:28:24.468701977Z
