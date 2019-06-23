@@ -6,3 +6,4 @@ values-*
 bak/*
 *.orig
 *.bak
+.DS_Store

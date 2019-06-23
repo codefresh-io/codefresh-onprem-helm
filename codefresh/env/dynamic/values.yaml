@@ -201,13 +201,13 @@ cronus:
 global:
   istio:
     enabled: true
-  extraDeployments:
-    - ronen-dev.codefresh.io:
-        cfui:
-          imageTag: "4.9.14-istio-poc"
-    - ronen-dev2.codefresh.io:
-        cfui:
-          imageTag: "4.9.14-istio-poc"
+    extraDeployments:
+      - ronen-dev.codefresh.io:
+          cfui:
+            imageTag: "4.9.14-istio-poc"
+      - ronen-dev2.codefresh.io:
+          cfui:
+            imageTag: "4.9.14-istio-poc"
 
   internalServiceTolerations:
   - effect: NoSchedule
@@ -225,5 +225,4 @@ global:
   
 runtime-environment-manager:
   mongoDbCreate: true
-
 
