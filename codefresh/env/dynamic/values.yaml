@@ -216,6 +216,8 @@ global:
           cfapi:
             imageTag: "6.25.1-istio-poc"
 
+  appProtocol: https
+  
   internalServiceTolerations:
   - effect: NoSchedule
     key: nodeType
