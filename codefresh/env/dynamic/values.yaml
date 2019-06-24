@@ -1,6 +1,8 @@
 ---
 # records to /etc/hosts of the containers
 # hostsApp: default empty
+webTLS:
+  secretName: star.codefresh.io
 
 firebaseUrl: "https://codefresh-staging-75bd2.firebaseio.com/staging"
 mongoSeedJobScript: files/dynamic/mongoSeedJobScript
