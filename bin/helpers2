@@ -135,6 +135,12 @@ waitForHelm() {
 	done
 }
 
+waitForIngressExternalIp() {
+	until getIngressIp "$1" >/dev/null 2>&1;
+	do
+		sleep 2
+	done
+}
 
 genRedeployArgs() {
 	local args=""
@@ -144,30 +150,4 @@ genRedeployArgs() {
 	done
 
 	echo $args
-}
-
-waitForIngressExternalIp() {
-	until getIngressIp "$1" >/dev/null 2>&1;
-	do
-		sleep 2
-	done
-}
-
-waitForIstioIngressgatewayIp() {
-    until getIstioIngressgatewayIp >/dev/null 2>&1;
-	do
-		sleep 2
-	done
-}
-
-isIstioEnabled() {
-  istioEnabled=`yq r codefresh/env/dynamic/values.yaml global.istio.enabled`
-  if [ "$istioEnabled" == "true" ]
-  then
-    # 0 = true
-    return 0
-  else
-    # 1 = false
-    return 1
-  fi
 }

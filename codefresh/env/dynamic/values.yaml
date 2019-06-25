@@ -204,15 +204,15 @@ global:
   istio:
     enabled: true
     extraDeployments:
-      - ronen-dev.codefresh.io:
+      - ronen1.dev.codefresh.io:
           cfui:
             imageTag: "4.9.14-istio-poc"
           cfapi:
             imageTag: "6.25.1-istio-poc"
-      - ronen-dev2.codefresh.io:
+      - ronen2.dev.codefresh.io:
           cfui:
             imageTag: "4.9.14-istio-poc"
-      - ronen-dev3.codefresh.io:
+      - ronen3.dev.codefresh.io:
           cfapi:
             imageTag: "6.25.1-istio-poc"
 

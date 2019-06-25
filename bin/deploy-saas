@@ -23,6 +23,7 @@ check kubectl
 check helm
 check sops
 check figlet
+check yq
 
 [ "$1" == "-h" ] && usage
 
@@ -184,16 +185,41 @@ then
 	waitForIngressExternalIp "$ENVIRONMENT"
 	publicIp=$(getIngressIp "$ENVIRONMENT")
 
+
 	msg "The ingress public's ip is: '$publicIp', adding it to dns (route53)"
 	addToRoute53 "${APP_DNS}" "$publicIp"
 	msg "Your environment should be accessible soon at: ${ENVIRONMENT}.dev.codefresh.io"
+
 
 	msg "Ping the environment until the DNS will be ready"
 	while [[ "$(curl -s -o /dev/null -w %{http_code} http://$ENVIRONMENT.dev.codefresh.io)" != "200" ]]
 	do
 		echo "No ready yet, testing again in 5..." && sleep 5
 	done
-	msg "Your environment is ready at: ${ENVIRONMENT}.dev.codefresh.io"
+	msg "Your base environment is ready at: ${ENVIRONMENT}.dev.codefresh.io"
+
+	#need to loop over the Istio extra deployments if Istio is enabled:
+	if isIstioEnabled; then
+	    msg "Waiting for the Istio ingress controller to receive a public ip"
+	    waitForIstioIngressgatewayIp
+	    publicIstioIp=$(getIstioIngressgatewayIp)
+	    line=`yq r codefresh/env/dynamic/values.yaml global.istio.extraDeployments | grep "codefresh.io" |  sed 's/-//'| sed 's/://' |  xargs -L1`
+        for val in $line; do
+            msg "The Istio ingress public's ip is: '$publicIstioIp', adding it to dns (route53)"
+            addToRoute53 "${val}" "$publicIstioIp"
+            msg "Your environment should be accessible soon at: ${val}"
+
+
+            msg "Ping $val until the DNS will be ready"
+            while [[ "$(curl -s -o /dev/null -w %{http_code} http://${val}/login)" != "200" ]]
+            do
+                echo "No ready yet, testing again in 5..." && sleep 5
+            done
+            msg "Your Istio extra environment is ready at: ${val}"
+        done
+	else
+	    echo Istio is disabled, skipping extra deployments;
+	fi
 fi
 
 figlet -d /fonts "Codefresh"
