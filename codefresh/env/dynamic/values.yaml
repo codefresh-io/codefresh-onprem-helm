@@ -212,9 +212,6 @@ global:
       - ronen2.dev.codefresh.io:
           cfui:
             imageTag: "4.9.14-istio-poc"
-      - ronen3.dev.codefresh.io:
-          cfapi:
-            imageTag: "6.25.1-istio-poc"
 
   appProtocol: https
   
