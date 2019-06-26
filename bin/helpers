@@ -161,7 +161,7 @@ waitForIstioIngressgatewayIp() {
 }
 
 isIstioEnabled() {
-  istioEnabled=`yq r codefresh/env/dynamic/values.yaml global.istio.enabled`
+  istioEnabled=`yq .global.istio.enabled codefresh/env/dynamic/values.yaml`
   if [ "$istioEnabled" == "true" ]
   then
     # 0 = true
