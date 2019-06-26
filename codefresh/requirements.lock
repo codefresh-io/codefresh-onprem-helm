@@ -61,7 +61,7 @@ dependencies:
   version: 1.0.5
 - name: context-manager
   repository: http://chartmuseum.codefresh.io
-  version: 1.2.1
+  version: 1.2.2
 - name: pipeline-manager
   repository: http://chartmuseum-dev.codefresh.io
   version: 3.26.3-istio-poc
@@ -93,4 +93,4 @@ dependencies:
   repository: http://chartmuseum.codefresh.io
   version: 0.3.1
 digest: sha256:3d9b7d6c83f19771c87bfa66a10cf08357d1536637e882e01981422bd298c586
-generated: 2019-06-24T12:04:19.593579635Z
+generated: 2019-06-26T09:02:10.80820544Z
