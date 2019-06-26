@@ -203,7 +203,8 @@ then
 	    msg "Waiting for the Istio ingress controller to receive a public ip"
 	    waitForIstioIngressgatewayIp
 	    publicIstioIp=$(getIstioIngressgatewayIp)
-	    line=`yq .global.istio.extraDeployments codefresh/env/dynamic/values.yaml | grep "dev.codefresh.io" |  sed 's/-//'| sed 's/://' |  xargs -L1`
+	    msg "The Itio public's ip is: '$publicIstioIp'"
+	    line=`yq -y .global.istio.extraDeployments codefresh/env/dynamic/values.yaml | grep "dev.codefresh.io" |  sed 's/-//'| sed 's/://' |  xargs`
         for val in $line; do
             msg "The Istio ingress public's ip is: '$publicIstioIp', adding it to dns (route53)"
             addToRoute53 "${val}" "$publicIstioIp"
