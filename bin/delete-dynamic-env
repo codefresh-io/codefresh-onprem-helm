@@ -66,4 +66,19 @@ else
 
   msg "Removing the environment from DNS..."
   deleteFromRoute53 "${namespaceName}.dev.codefresh.io" "$publicIp"
+
+  #need to loop over the Istio extra deployments if Istio is enabled:
+  if isIstioEnabled; then
+    msg "Removing the Istio extra deployment from DNS..."
+
+    publicIstioIp=$(getIstioIngressgatewayIp)
+    msg "The Istio public's ip is: '$publicIstioIp'"
+    line=`yq -y .global.istio.extraDeployments codefresh/env/dynamic/values.yaml | grep "dev.codefresh.io" |  sed 's/-//'| sed 's/://' |  xargs`
+    for val in $line; do
+        msg "The Istio ingress public's ip is: '$publicIstioIp', adding it to dns (route53)"
+        deleteFromRoute53 "${publicIstioIp}" "$publicIstioIp"
+    done
+  else
+    echo Istio is disabled, skipping removing DNS extra deployments;
+  fi
 fi
