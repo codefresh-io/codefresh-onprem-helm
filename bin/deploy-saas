@@ -198,6 +198,9 @@ then
 	done
 	msg "Your base environment is ready at: ${ENVIRONMENT}.dev.codefresh.io"
 
+    msg "Renewing the *.dev.codefresh.io in LetsEncrypt only it expired..."
+    renewCertificateOnlyIfExpired
+
 	#need to loop over the Istio extra deployments if Istio is enabled:
 	if isIstioEnabled; then
 	    msg "Waiting for the Istio ingress controller to receive a public ip"

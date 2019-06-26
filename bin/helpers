@@ -39,6 +39,12 @@ addToRoute53() { changeRoute53 "$1" "$2" "UPSERT"; }
 
 deleteFromRoute53() { changeRoute53 "$1" "$2" "DELETE"; }
 
+# We have the certificate for *.dev.codefresh.io in LetsEncrypt. We need to renew it every 3 months.
+# The following command renew it only if it expired
+renewCertificateOnlyIfExpired() {
+    certbot certonly  -m ronen@codefresh.io --agree-tos --reuse-key --keep-until-expiring --dns-route53 -d *.dev.codefresh.io
+}
+
 # =--
 # Git Operations
 # =--
