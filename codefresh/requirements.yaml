@@ -139,7 +139,7 @@ dependencies:
   - saas
   - infra
 - name: runtime-environment-manager
-  version: ^1.8.x
+  version: 3.1.0-istio-poc
   repository: http://chartmuseum.codefresh.io
   condition: runtime-environment-manager.enabled
   tags:
