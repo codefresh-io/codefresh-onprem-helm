@@ -36,8 +36,8 @@ dependencies:
   repository: http://chartmuseum.codefresh.io
   version: 1.6.0
 - name: accounts-referrals
-  repository: http://chartmuseum.codefresh.io
-  version: 1.0.2
+  repository: http://chartmuseum-dev.codefresh.io
+  version: 1.0.2-istio-poc
 - name: charts-manager
   repository: http://chartmuseum.codefresh.io
   version: 1.0.8
@@ -72,14 +72,14 @@ dependencies:
   repository: http://chartmuseum-dev.codefresh.io
   version: 4.9.14-istio-poc
 - name: onboarding-status
-  repository: http://chartmuseum.codefresh.io
-  version: 1.0.59
+  repository: http://chartmuseum-dev.codefresh.io
+  version: 1.0.59-istio-poc
 - name: runtime-environment-manager
   repository: http://chartmuseum.codefresh.io
   version: 1.9.1
 - name: cf-broadcaster
-  repository: http://chartmuseum.codefresh.io
-  version: 1.0.34
+  repository: http://chartmuseum-dev.codefresh.io
+  version: 1.0.34-istio-poc
 - name: helm-repo-manager
   repository: http://chartmuseum.codefresh.io
   version: 0.4.1
@@ -92,5 +92,5 @@ dependencies:
 - name: cronus
   repository: http://chartmuseum.codefresh.io
   version: 0.3.1
-digest: sha256:3d9b7d6c83f19771c87bfa66a10cf08357d1536637e882e01981422bd298c586
-generated: 2019-06-26T11:22:45.768307971Z
+digest: sha256:31bae9dd8cfbda80450fdfd364d979fad831fd948d786fe26b08a4346eef5e77
+generated: 2019-06-30T14:12:18.755764904Z
