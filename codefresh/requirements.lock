@@ -75,8 +75,8 @@ dependencies:
   repository: http://chartmuseum-dev.codefresh.io
   version: 1.0.59-istio-poc
 - name: runtime-environment-manager
-  repository: http://chartmuseum.codefresh.io
-  version: 1.9.1
+  repository: http://chartmuseum-dev.codefresh.io
+  version: 3.1.0-istio-poc
 - name: cf-broadcaster
   repository: http://chartmuseum-dev.codefresh.io
   version: 1.0.34-istio-poc
@@ -92,5 +92,5 @@ dependencies:
 - name: cronus
   repository: http://chartmuseum.codefresh.io
   version: 0.3.1
-digest: sha256:31bae9dd8cfbda80450fdfd364d979fad831fd948d786fe26b08a4346eef5e77
-generated: 2019-06-30T14:12:18.755764904Z
+digest: sha256:ba4dff531179faacd2cf3d99f48512a414eaaff11d4ce0d09032313b3ad1b391
+generated: 2019-06-30T15:33:44.588354905Z
