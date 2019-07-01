@@ -90,13 +90,13 @@ dependencies:
   - saas
   - infra
 - name: segment-reporter
-  version: ^1.0.x
-  repository: http://chartmuseum.codefresh.io
+  version: 1.0.3-istio-poc
+  repository: http://chartmuseum-dev.codefresh.io
   tags:
   - saas
 - name: salesforce-reporter
-  version: ^1.0.x
-  repository: http://chartmuseum.codefresh.io
+  version: 1.0.7-istio-poc
+  repository: http://chartmuseum-dev.codefresh.io
   tags:
   - saas
 - name: tasker-kubernetes
