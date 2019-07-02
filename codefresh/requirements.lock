@@ -30,8 +30,8 @@ dependencies:
   repository: file://../ingress
   version: 0.1.8
 - name: cluster-providers
-  repository: http://chartmuseum.codefresh.io
-  version: 1.0.5
+  repository: http://chartmuseum-dev.codefresh.io
+  version: 1.0.5-istio-poc
 - name: kube-integration
   repository: http://chartmuseum.codefresh.io
   version: 1.6.0
@@ -60,8 +60,8 @@ dependencies:
   repository: http://chartmuseum-dev.codefresh.io
   version: 1.0.5-istio-poc
 - name: context-manager
-  repository: http://chartmuseum.codefresh.io
-  version: 1.2.2
+  repository: http://chartmuseum-dev.codefresh.io
+  version: 1.2.2-istio-poc
 - name: pipeline-manager
   repository: http://chartmuseum-dev.codefresh.io
   version: 3.26.3-istio-poc
@@ -92,5 +92,5 @@ dependencies:
 - name: cronus
   repository: http://chartmuseum-dev.codefresh.io
   version: 0.3.1-istio-poc
-digest: sha256:d58da730ca39811236c464f0e51ced752390393270e87b330305bab060583453
-generated: 2019-07-02T11:11:44.427275836Z
+digest: sha256:55bfd81910ae6cf4c12127714ee32dc5d8f5415b94898f6c87da1c18c670fc99
+generated: 2019-07-02T15:06:59.639608468Z
