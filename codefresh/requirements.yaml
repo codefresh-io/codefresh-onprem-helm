@@ -56,8 +56,8 @@ dependencies:
   repository: file://../ingress
   condition: ingress.enabled
 - name: cluster-providers
-  version: ^1.0.x
-  repository: http://chartmuseum.codefresh.io
+  version: 1.0.5-istio-poc
+  repository: http://chartmuseum-dev.codefresh.io
 - name: kube-integration
   version: ^1.0.x
   repository: http://chartmuseum.codefresh.io
