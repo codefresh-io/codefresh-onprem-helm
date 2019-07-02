@@ -42,7 +42,19 @@ deleteFromRoute53() { changeRoute53 "$1" "$2" "DELETE"; }
 # We have the certificate for *.dev.codefresh.io in LetsEncrypt. We need to renew it every 3 months.
 # The following command renew it only if it expired
 renewCertificateOnlyIfExpired() {
-    certbot certonly  -n -m ronen@codefresh.io --agree-tos --reuse-key --keep-until-expiring --dns-route53 -d *.dev.codefresh.io
+    echo "Certificate of *.dev.codefresh.io in LetsEncrypt is valid not after Monday, 23 September 2019 at 12:01:32 Israel Daylight Time"
+    echo "current date is `date +%Y%m%d`"
+    now=`date +%Y%m%d`
+    if [ "$now" -gt "20190923" ]
+    then
+        echo "Certificate has expired, we need to run the following command once to renew the certificate for another 3 months:"
+        echo "certbot certonly  -n -m ronen@codefresh.io --agree-tos --reuse-key --keep-until-expiring --dns-route53 -d *.dev.codefresh.io"
+    else
+        echo "Certificate is still valid until 23 September 2019 at 12:01:32 Israel Daylight Time"
+    fi
+
+    #certbot certonly  -n -m ronen@codefresh.io --agree-tos --reuse-key --keep-until-expiring --dns-route53 -d *.dev.codefresh.io
+
 }
 
 # =--
