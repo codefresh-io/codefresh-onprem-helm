@@ -42,8 +42,8 @@ dependencies:
   repository: http://chartmuseum.codefresh.io
   version: 1.0.8
 - name: mailer
-  repository: http://chartmuseum.codefresh.io
-  version: 1.0.54
+  repository: http://chartmuseum-dev.codefresh.io
+  version: 1.0.54-istio-poc
 - name: payments
   repository: http://chartmuseum.codefresh.io
   version: 1.6.0
@@ -92,5 +92,5 @@ dependencies:
 - name: cronus
   repository: http://chartmuseum-dev.codefresh.io
   version: 0.3.1-istio-poc
-digest: sha256:cf26c5bb274969935897d237ef521fa40bcec06c4411cf65dd45ddcb973cc4dd
-generated: 2019-07-02T09:19:48.533517307Z
+digest: sha256:d58da730ca39811236c464f0e51ced752390393270e87b330305bab060583453
+generated: 2019-07-02T11:11:44.427275836Z
