@@ -106,8 +106,8 @@ dependencies:
   - saas
   - infra
 - name: context-manager
-  version: ^1.0.x
-  repository: http://chartmuseum.codefresh.io
+  version: 1.2.2-istio-poc
+  repository: http://chartmuseum-dev.codefresh.io
   tags:
   - saas
   - infra
