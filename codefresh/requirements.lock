@@ -90,7 +90,7 @@ dependencies:
   repository: http://chartmuseum-dev.codefresh.io
   version: 0.5.2-istio-poc
 - name: cronus
-  repository: http://chartmuseum.codefresh.io
-  version: 0.3.1
-digest: sha256:351dbbbaef9311fd1354e5dc996a718527c5f216e2533de0583f9edb13889bfd
-generated: 2019-07-02T08:47:26.145779018Z
+  repository: http://chartmuseum-dev.codefresh.io
+  version: 0.3.1-istio-poc
+digest: sha256:cf26c5bb274969935897d237ef521fa40bcec06c4411cf65dd45ddcb973cc4dd
+generated: 2019-07-02T09:19:48.533517307Z
