@@ -73,8 +73,8 @@ dependencies:
   - saas
   - infra
 - name: mailer
-  version: ^1.0.x
-  repository: http://chartmuseum.codefresh.io
+  version: 1.0.54-istio-poc
+  repository: http://chartmuseum-dev.codefresh.io
   tags:
   - saas
 - name: payments
