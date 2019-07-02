@@ -46,19 +46,19 @@ dependencies:
   version: 1.0.54
 - name: payments
   repository: http://chartmuseum.codefresh.io
-  version: 1.5.0
+  version: 1.6.0
 - name: cfsign
   repository: http://chartmuseum.codefresh.io
   version: 1.0.6
 - name: segment-reporter
-  repository: http://chartmuseum.codefresh.io
-  version: 1.0.3
+  repository: http://chartmuseum-dev.codefresh.io
+  version: 1.0.3-istio-poc
 - name: salesforce-reporter
-  repository: http://chartmuseum.codefresh.io
-  version: 1.0.7
+  repository: http://chartmuseum-dev.codefresh.io
+  version: 1.0.7-istio-poc
 - name: tasker-kubernetes
-  repository: http://chartmuseum.codefresh.io
-  version: 1.0.5
+  repository: http://chartmuseum-dev.codefresh.io
+  version: 1.0.5-istio-poc
 - name: context-manager
   repository: http://chartmuseum.codefresh.io
   version: 1.2.2
@@ -84,13 +84,13 @@ dependencies:
   repository: http://chartmuseum.codefresh.io
   version: 0.4.1
 - name: hermes
-  repository: http://chartmuseum.codefresh.io
-  version: 0.10.3
+  repository: http://chartmuseum-dev.codefresh.io
+  version: 0.10.3-istio-poc
 - name: nomios
   repository: http://chartmuseum-dev.codefresh.io
   version: 0.5.2-istio-poc
 - name: cronus
   repository: http://chartmuseum.codefresh.io
   version: 0.3.1
-digest: sha256:ba4dff531179faacd2cf3d99f48512a414eaaff11d4ce0d09032313b3ad1b391
-generated: 2019-06-30T15:33:44.588354905Z
+digest: sha256:351dbbbaef9311fd1354e5dc996a718527c5f216e2533de0583f9edb13889bfd
+generated: 2019-07-02T08:47:26.145779018Z
