@@ -83,8 +83,8 @@ dependencies:
   tags:
   - saas
 - name: cfsign
-  version: ^1.0.x
-  repository: http://chartmuseum.codefresh.io
+  version: 1.0.6-istio-poc
+  repository: http://chartmuseum-dev.codefresh.io
   condition: cfsign.enabled
   tags:
   - saas
