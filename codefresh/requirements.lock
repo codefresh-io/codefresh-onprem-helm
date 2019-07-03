@@ -48,8 +48,8 @@ dependencies:
   repository: http://chartmuseum.codefresh.io
   version: 1.6.0
 - name: cfsign
-  repository: http://chartmuseum.codefresh.io
-  version: 1.0.6
+  repository: http://chartmuseum-dev.codefresh.io
+  version: 1.0.6-istio-poc
 - name: segment-reporter
   repository: http://chartmuseum-dev.codefresh.io
   version: 1.0.3-istio-poc
@@ -92,5 +92,5 @@ dependencies:
 - name: cronus
   repository: http://chartmuseum-dev.codefresh.io
   version: 0.3.1-istio-poc
-digest: sha256:55bfd81910ae6cf4c12127714ee32dc5d8f5415b94898f6c87da1c18c670fc99
-generated: 2019-07-03T09:25:03.682827202Z
+digest: sha256:d835b49e9e23f48c80812c03fcb52f5209fe189cb24b9e6668a63c5d42b062d9
+generated: 2019-07-03T09:36:15.649820504Z
