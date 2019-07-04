@@ -59,8 +59,8 @@ dependencies:
   version: 1.0.5-istio-poc
   repository: http://chartmuseum-dev.codefresh.io
 - name: kube-integration
-  version: ^1.0.x
-  repository: http://chartmuseum.codefresh.io
+  version: 1.6.0-istio-poc
+  repository: http://chartmuseum-dev.codefresh.io
 - name: accounts-referrals
   version: 1.0.2-istio-poc
   repository: http://chartmuseum-dev.codefresh.io
