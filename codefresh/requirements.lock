@@ -34,7 +34,7 @@ dependencies:
   version: 1.0.5-istio-poc
 - name: kube-integration
   repository: http://chartmuseum.codefresh.io
-  version: 1.6.0
+  version: 1.6.1
 - name: accounts-referrals
   repository: http://chartmuseum-dev.codefresh.io
   version: 1.0.2-istio-poc
@@ -45,8 +45,8 @@ dependencies:
   repository: http://chartmuseum-dev.codefresh.io
   version: 1.0.54-istio-poc
 - name: payments
-  repository: http://chartmuseum.codefresh.io
-  version: 1.6.0
+  repository: http://chartmuseum-dev.codefresh.io
+  version: 1.5.0-istio-poc
 - name: cfsign
   repository: http://chartmuseum-dev.codefresh.io
   version: 1.0.6-istio-poc
@@ -92,5 +92,5 @@ dependencies:
 - name: cronus
   repository: http://chartmuseum-dev.codefresh.io
   version: 0.3.1-istio-poc
-digest: sha256:d835b49e9e23f48c80812c03fcb52f5209fe189cb24b9e6668a63c5d42b062d9
-generated: 2019-07-04T08:55:52.587293355Z
+digest: sha256:a93db4797106c3aa5c82d5cbe9f276c7e5f70f440ed357ee4711944fd6fd7e33
+generated: 2019-07-04T11:58:18.578780393Z
