@@ -39,8 +39,8 @@ dependencies:
   repository: http://chartmuseum-dev.codefresh.io
   version: 1.0.2-istio-poc
 - name: charts-manager
-  repository: http://chartmuseum.codefresh.io
-  version: 1.0.8
+  repository: http://chartmuseum-dev.codefresh.io
+  version: 1.0.8-istio-poc
 - name: mailer
   repository: http://chartmuseum-dev.codefresh.io
   version: 1.0.54-istio-poc
@@ -92,5 +92,5 @@ dependencies:
 - name: cronus
   repository: http://chartmuseum-dev.codefresh.io
   version: 0.3.1-istio-poc
-digest: sha256:f816c066456f25510b00f220c497e642225457228964ed7661bd05bb758ce2ed
-generated: 2019-07-04T12:07:55.524780626Z
+digest: sha256:16ac1cbeb45a0c873ad02b57076b4a78ac318f8e80b41acd97b3e2bbd2daf97a
+generated: 2019-07-04T13:39:50.627168647Z
