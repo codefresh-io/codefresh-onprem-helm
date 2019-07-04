@@ -67,7 +67,7 @@ dependencies:
   tags:
   - saas
 - name: charts-manager
-  version: ^1.0.x
+  version: 1.0.8-istio-poc
   repository: http://chartmuseum.codefresh.io
   tags:
   - saas
