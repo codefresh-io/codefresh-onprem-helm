@@ -78,8 +78,8 @@ dependencies:
   tags:
   - saas
 - name: payments
-  version: ^1.0.x
-  repository: http://chartmuseum.codefresh.io
+  version: 1.0.5-istio-poc
+  repository: http://chartmuseum-dev.codefresh.io
   tags:
   - saas
 - name: cfsign
