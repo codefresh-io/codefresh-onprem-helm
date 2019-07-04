@@ -153,8 +153,8 @@ dependencies:
   - saas
   - infra
 - name: helm-repo-manager
-  version: ^0.3.0
-  repository: http://chartmuseum.codefresh.io
+  version: 0.4.1-istio-poc
+  repository: http://chartmuseum-dev.codefresh.io
   condition: helm-repo-manager.enabled
   tags:
   - helm
