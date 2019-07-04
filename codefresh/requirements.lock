@@ -93,4 +93,4 @@ dependencies:
   repository: http://chartmuseum-dev.codefresh.io
   version: 0.3.1-istio-poc
 digest: sha256:d835b49e9e23f48c80812c03fcb52f5209fe189cb24b9e6668a63c5d42b062d9
-generated: 2019-07-03T09:36:15.649820504Z
+generated: 2019-07-04T08:55:52.587293355Z
