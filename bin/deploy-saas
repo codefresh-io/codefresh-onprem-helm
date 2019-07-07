@@ -184,10 +184,13 @@ then
 	msg "Waiting for the ingress controller to receive a public ip"
 	waitForIngressExternalIp "$ENVIRONMENT"
 	publicIp=$(getIngressIp "$ENVIRONMENT")
+	publicIstioIp=$(getIstioIngressgatewayIp)
 
 
-	msg "The ingress public's ip is: '$publicIp', adding it to dns (route53)"
-	addToRoute53 "${APP_DNS}" "$publicIp"
+	#msg "The ingress public's ip is: '$publicIp', adding it to dns (route53)"
+	msg "The Istio public's ip is: '$publicIstioIp', adding it to dns (route53)"
+	#addToRoute53 "${APP_DNS}" "$publicIp"
+	addToRoute53 "${APP_DNS}" "$publicIstioIp"
 	msg "Your environment should be accessible soon at: ${ENVIRONMENT}.dev.codefresh.io"
 
 
@@ -205,7 +208,7 @@ then
 	if isIstioEnabled; then
 	    msg "Waiting for the Istio ingress controller to receive a public ip"
 	    waitForIstioIngressgatewayIp
-	    publicIstioIp=$(getIstioIngressgatewayIp)
+	    #publicIstioIp=$(getIstioIngressgatewayIp)
 	    msg "The Itio public's ip is: '$publicIstioIp'"
 	    line=`yq -y .global.istio.extraDeployments codefresh/env/dynamic/values.yaml | grep "dev.codefresh.io" |  sed 's/-//'| sed 's/://' |  xargs`
         for val in $line; do
