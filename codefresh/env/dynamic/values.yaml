@@ -228,6 +228,8 @@ global:
   mongodbDatabase: codefresh
   mongodbUsername: cfuser
   mongodbImage: bitnami/mongodb:4.0.3
+
+  cfk8smonitorService: k8s-monitor
   
 runtime-environment-manager:
   mongoDbCreate: true

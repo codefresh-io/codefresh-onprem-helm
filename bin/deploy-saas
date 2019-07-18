@@ -186,11 +186,15 @@ then
 	publicIp=$(getIngressIp "$ENVIRONMENT")
 	publicIstioIp=$(getIstioIngressgatewayIp)
 
+    if isIstioEnabled; then
+        msg "The Istio public's ip is: '$publicIstioIp', adding it to dns (route53)"
+	    addToRoute53 "${APP_DNS}" "$publicIstioIp"
+    else
+	    echo Istio is disabled, using ingress IP;
+	    msg "The ingress public's ip is: '$publicIp', adding it to dns (route53)"
+	    addToRoute53 "${APP_DNS}" "$publicIp"
+	fi
 
-	#msg "The ingress public's ip is: '$publicIp', adding it to dns (route53)"
-	msg "The Istio public's ip is: '$publicIstioIp', adding it to dns (route53)"
-	#addToRoute53 "${APP_DNS}" "$publicIp"
-	addToRoute53 "${APP_DNS}" "$publicIstioIp"
 	msg "Your environment should be accessible soon at: ${ENVIRONMENT}.dev.codefresh.io"
 
 
