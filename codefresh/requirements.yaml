@@ -56,119 +56,119 @@ dependencies:
   repository: file://../ingress
   condition: ingress.enabled
 - name: cluster-providers
-  version: 1.0.5-istio-poc
-  repository: http://chartmuseum-dev.codefresh.io
+  version: ^1.0.x
+  repository: http://chartmuseum.codefresh.io
 - name: kube-integration
-  version: 1.6.0-istio-poc
-  repository: http://chartmuseum-dev.codefresh.io
+  version: ^1.0.x
+  repository: http://chartmuseum.codefresh.io
 - name: accounts-referrals
-  version: 1.0.2-istio-poc
-  repository: http://chartmuseum-dev.codefresh.io
+  version: ^1.0.x
+  repository: http://chartmuseum.codefresh.io
   tags:
   - saas
 - name: charts-manager
-  version: 1.0.8-istio-poc
-  repository: http://chartmuseum-dev.codefresh.io
+  version: ^1.0.x
+  repository: http://chartmuseum.codefresh.io
   tags:
   - saas
   - infra
 - name: mailer
-  version: 1.0.54-istio-poc
-  repository: http://chartmuseum-dev.codefresh.io
+  version: ^1.0.x
+  repository: http://chartmuseum.codefresh.io
   tags:
   - saas
 - name: payments
-  version: 1.5.0-istio-poc
-  repository: http://chartmuseum-dev.codefresh.io
+  version: ^1.0.x
+  repository: http://chartmuseum.codefresh.io
   tags:
   - saas
 - name: cfsign
-  version: 1.0.6-istio-poc
-  repository: http://chartmuseum-dev.codefresh.io
+  version: ^1.0.x
+  repository: http://chartmuseum.codefresh.io
   condition: cfsign.enabled
   tags:
   - saas
   - infra
 - name: segment-reporter
-  version: 1.0.3-istio-poc
-  repository: http://chartmuseum-dev.codefresh.io
+  version: ^1.0.x
+  repository: http://chartmuseum.codefresh.io
   tags:
   - saas
 - name: salesforce-reporter
-  version: 1.0.7-istio-poc
-  repository: http://chartmuseum-dev.codefresh.io
+  version: ^1.0.x
+  repository: http://chartmuseum.codefresh.io
   tags:
   - saas
 - name: tasker-kubernetes
-  version: 1.0.5-istio-poc
-  repository: http://chartmuseum-dev.codefresh.io
+  version: ^1.0.x
+  repository: http://chartmuseum.codefresh.io
   tags:
   - saas
   - infra
 - name: context-manager
-  version: 1.2.2-istio-poc
-  repository: http://chartmuseum-dev.codefresh.io
+  version: ^1.0.x
+  repository: http://chartmuseum.codefresh.io
   tags:
   - saas
   - infra
 - name: pipeline-manager
-  version: 3.26.3-istio-poc
-  repository: http://chartmuseum-dev.codefresh.io
+  version: ^3.0.0
+  repository: http://chartmuseum.codefresh.io
   tags:
   - saas
   - infra
 - name: cfapi
-  version: 6.25.1-istio-poc
-  repository: http://chartmuseum-dev.codefresh.io
+  version: ^6.0.0
+  repository: http://chartmuseum.codefresh.io
   condition: cfapi.enabled
   tags:
   - saas
   - infra
 - name: cfui
-  version: 4.9.14-istio-poc
-  repository: http://chartmuseum-dev.codefresh.io
+  version: ^4.0.0
+  repository: http://chartmuseum.codefresh.io
   condition: cfui.enabled
   tags:
   - saas
   - infra
 - name: onboarding-status
-  version: 1.0.59-istio-poc
-  repository: http://chartmuseum-dev.codefresh.io
+  version: ^1.0.x
+  repository: http://chartmuseum.codefresh.io
   condition: onboarding-status.enabled
   tags:
   - saas
   - infra
 - name: runtime-environment-manager
-  version: 3.1.0-istio-poc
-  repository: http://chartmuseum-dev.codefresh.io
+  version: ^3.0.x
+  repository: http://chartmuseum.codefresh.io
   condition: runtime-environment-manager.enabled
   tags:
   - saas
   - infra
 - name: cf-broadcaster
-  version: 1.0.34-istio-poc
-  repository: http://chartmuseum-dev.codefresh.io
+  version: ^1.0.x
+  repository: http://chartmuseum.codefresh.io
   condition: cf-broadcaster.enabled
   tags:
   - saas
   - infra
 - name: helm-repo-manager
-  version: 0.4.1-istio-poc
-  repository: http://chartmuseum-dev.codefresh.io
+  version: ^0.3.0
+  repository: http://chartmuseum.codefresh.io
   condition: helm-repo-manager.enabled
   tags:
   - helm
   - chartmuseum
 - name: hermes
-  version: 0.10.3-istio-poc
-  repository: http://chartmuseum-dev.codefresh.io
+  version: ^0.10.0
+  repository: http://chartmuseum.codefresh.io
   condition: hermes.enabled
   tags:
   - trigger
   - trigger-manager
 - name: nomios
-  version: 0.5.2-istio-poc
-  repository: http://chartmuseum-dev.codefresh.io
+  version: ~0.5.0
+  repository: http://chartmuseum.codefresh.io
   condition: hermes.enabled
   tags:
   - trigger
@@ -176,8 +176,8 @@ dependencies:
   - registry
   - dockerhub
 - name: cronus
-  version: 0.3.1-istio-poc
-  repository: http://chartmuseum-dev.codefresh.io
+  version: ^0.3.0
+  repository: http://chartmuseum.codefresh.io
   condition: hermes.enabled
   tags:
   - trigger
