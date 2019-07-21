@@ -202,16 +202,16 @@ cronus:
 
 global:
   istio:
-    enabled: false
+    enabled: true
     extraDeployments:
       - ronen1.dev.codefresh.io:
           cfui:
-            imageTag: "4.9.14-istio-poc"
+            imageTag: "4.60.3"
           cfapi:
-            imageTag: "6.25.1-istio-poc"
+            imageTag: "6.66.0"
       - ronen2.dev.codefresh.io:
           cfui:
-            imageTag: "4.9.14-istio-poc"
+            imageTag: "4.60.3"
 
   appProtocol: https
   
