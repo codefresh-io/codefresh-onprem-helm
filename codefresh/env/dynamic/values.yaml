@@ -202,7 +202,7 @@ cronus:
 
 global:
   istio:
-    enabled: true
+    enabled: false
     extraDeployments:
       - ronen1.dev.codefresh.io:
           cfui:
@@ -230,7 +230,9 @@ global:
   mongodbImage: bitnami/mongodb:4.0.3
 
   cfk8smonitorService: k8s-monitor
-  
+  cfk8smonitorPort: 80
+  seedJobs: false
+
 runtime-environment-manager:
   mongoDbCreate: true
 
