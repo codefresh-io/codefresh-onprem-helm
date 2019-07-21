@@ -71,6 +71,9 @@ dependencies:
 - name: cfui
   repository: http://chartmuseum.codefresh.io
   version: 4.60.3
+- name: k8s-monitor
+  repository: http://chartmuseum.codefresh.io
+  version: 4.1.1
 - name: onboarding-status
   repository: http://chartmuseum.codefresh.io
   version: 1.1.0
@@ -92,5 +95,5 @@ dependencies:
 - name: cronus
   repository: http://chartmuseum.codefresh.io
   version: 0.4.0
-digest: sha256:b4083308262b413b3294233fe329c29653d35ef93ea4e437862a8ce9083b44c8
-generated: 2019-07-21T08:29:56.30060305Z
+digest: sha256:a1f0c23bbf114cef84e4de89f0022f77f0fc8254be41a69158b3f38964be123f
+generated: 2019-07-21T08:40:16.031750012Z
