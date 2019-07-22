@@ -15,6 +15,12 @@ getIngressIp() {
 		-o go-template='{{index (index .status.loadBalancer.ingress 0) "ip"}}'
 }
 
+getIstioIngressgatewayIp() {
+	local istioNamespace="istio-system"
+	kubectl --namespace $istioNamespace get svc istio-ingressgateway \
+		-o go-template='{{index (index .status.loadBalancer.ingress 0) "ip"}}'
+}
+
 # =--
 # ROUTE53 Operations
 # =--
@@ -32,6 +38,24 @@ changeRoute53() {
 addToRoute53() { changeRoute53 "$1" "$2" "UPSERT"; }
 
 deleteFromRoute53() { changeRoute53 "$1" "$2" "DELETE"; }
+
+# We have the certificate for *.dev.codefresh.io in LetsEncrypt. We need to renew it every 3 months.
+# The following command renew it only if it expired
+renewCertificateOnlyIfExpired() {
+    echo "Certificate of *.dev.codefresh.io in LetsEncrypt is valid not after Monday, 23 September 2019 at 12:01:32 Israel Daylight Time"
+    echo "current date is `date +%Y%m%d`"
+    now=`date +%Y%m%d`
+    if [ "$now" -gt "20190923" ]
+    then
+        echo "Certificate has expired, we need to run the following command once to renew the certificate for another 3 months:"
+        echo "certbot certonly  -n -m ronen@codefresh.io --agree-tos --reuse-key --keep-until-expiring --dns-route53 -d *.dev.codefresh.io"
+    else
+        echo "Certificate is still valid until 23 September 2019 at 12:01:32 Israel Daylight Time"
+    fi
+
+    #certbot certonly  -n -m ronen@codefresh.io --agree-tos --reuse-key --keep-until-expiring --dns-route53 -d *.dev.codefresh.io
+
+}
 
 # =--
 # Git Operations
@@ -129,12 +153,6 @@ waitForHelm() {
 	done
 }
 
-waitForIngressExternalIp() {
-	until getIngressIp "$1" >/dev/null 2>&1;
-	do
-		sleep 2
-	done
-}
 
 genRedeployArgs() {
 	local args=""
@@ -144,4 +162,30 @@ genRedeployArgs() {
 	done
 
 	echo $args
+}
+
+waitForIngressExternalIp() {
+	until getIngressIp "$1" >/dev/null 2>&1;
+	do
+		sleep 2
+	done
+}
+
+waitForIstioIngressgatewayIp() {
+    until getIstioIngressgatewayIp >/dev/null 2>&1;
+	do
+		sleep 2
+	done
+}
+
+isIstioEnabled() {
+  istioEnabled=`yq .global.istio.enabled codefresh/env/dynamic/values.yaml`
+  if [ "$istioEnabled" == "true" ]
+  then
+    # 0 = true
+    return 0
+  else
+    # 1 = false
+    return 1
+  fi
 }

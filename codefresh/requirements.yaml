@@ -131,6 +131,13 @@ dependencies:
   tags:
   - saas
   - infra
+- name: k8s-monitor
+  version: ^4.1.1
+  repository: http://chartmuseum.codefresh.io
+  condition: cfui.enabled
+  tags:
+    - saas
+    - infra
 - name: onboarding-status
   version: ^1.0.x
   repository: http://chartmuseum.codefresh.io
@@ -167,7 +174,7 @@ dependencies:
   - trigger
   - trigger-manager
 - name: nomios
-  version: ~0.5.0
+  version: ~0.6.0
   repository: http://chartmuseum.codefresh.io
   condition: hermes.enabled
   tags:

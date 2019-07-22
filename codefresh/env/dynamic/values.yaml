@@ -1,6 +1,8 @@
 ---
 # records to /etc/hosts of the containers
 # hostsApp: default empty
+webTLS:
+  secretName: star.codefresh.io
 
 firebaseUrl: "https://codefresh-staging-75bd2.firebaseio.com/staging"
 mongoSeedJobScript: files/dynamic/mongoSeedJobScript
@@ -199,6 +201,14 @@ cronus:
     cloud.google.com/gke-nodepool: main-pool
 
 global:
+  istio:
+    enabled: false
+    # If istio is enabled, you should add extraDeployments section, see notes for example
+    # See https://docs.google.com/document/d/15Vwu70x72DFbaoQ_DqzOKyvi4L3jMESGFmgKQTaKdBQ/edit?usp=sharing
+    # And https://docs.google.com/presentation/d/1df1Re8R5GBLQPJgCS6RoUtSlLiBKK55giu-6gaHq6k0/edit?usp=sharing
+
+  appProtocol: https
+  
   internalServiceTolerations:
   - effect: NoSchedule
     key: nodeType
@@ -212,6 +222,11 @@ global:
   mongodbDatabase: codefresh
   mongodbUsername: cfuser
   mongodbImage: bitnami/mongodb:4.0.3
-  
+
+  cfk8smonitorService: k8s-monitor
+  cfk8smonitorPort: 80
+  seedJobs: false
+
 runtime-environment-manager:
   mongoDbCreate: true
+
