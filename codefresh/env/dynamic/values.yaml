@@ -203,15 +203,9 @@ cronus:
 global:
   istio:
     enabled: false
-    extraDeployments:
-      - ronen1.dev.codefresh.io:
-          cfui:
-            imageTag: "4.60.3"
-          cfapi:
-            imageTag: "6.66.0"
-      - ronen2.dev.codefresh.io:
-          cfui:
-            imageTag: "4.60.3"
+    # If istio is enabled, you should add extraDeployments section, see notes for example
+    # See https://docs.google.com/document/d/15Vwu70x72DFbaoQ_DqzOKyvi4L3jMESGFmgKQTaKdBQ/edit?usp=sharing
+    # And https://docs.google.com/presentation/d/1df1Re8R5GBLQPJgCS6RoUtSlLiBKK55giu-6gaHq6k0/edit?usp=sharing
 
   appProtocol: https
   

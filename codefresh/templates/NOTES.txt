@@ -1,0 +1,21 @@
+Using Istio
+===============
+1. To use Istio, enable the flag global.istio.enabled.
+2. Once enabled, you will need to add extraDeployments section, see notes for example
+global:
+  istio:
+    enabled: true
+    #If istio is enabled, you should add extraDeployments section, see notes for example
+    extraDeployments:
+      - ronen1.dev.codefresh.io:
+          cfui:
+            imageTag: "4.60.3"
+          cfapi:
+            imageTag: "6.66.0"
+      - ronen2.dev.codefresh.io:
+          cfui:
+            imageTag: "4.60.3"
+
+  The above will enable Istio and create per entry another version and attach it to defined DNS.
+3. See https://docs.google.com/document/d/15Vwu70x72DFbaoQ_DqzOKyvi4L3jMESGFmgKQTaKdBQ/edit?usp=sharing
+   and https://docs.google.com/presentation/d/1df1Re8R5GBLQPJgCS6RoUtSlLiBKK55giu-6gaHq6k0/edit?usp=sharing
