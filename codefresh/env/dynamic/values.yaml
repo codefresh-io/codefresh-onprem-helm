@@ -225,7 +225,6 @@ global:
 
   cfk8smonitorService: k8s-monitor
   cfk8smonitorPort: 80
-  seedJobs: false
 
 runtime-environment-manager:
   mongoDbCreate: true
