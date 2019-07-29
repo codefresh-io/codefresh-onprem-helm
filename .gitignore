@@ -23,6 +23,7 @@ index.yaml
 **/.DS_Store
 *.orig
 .idea/
+*.iml
 
 telepresence.log
 .merlinlog
