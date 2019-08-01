@@ -89,7 +89,7 @@ dindImage: docker:17.05-dind
 #=======================
 global:
   # Instantiate databases with seed data. Usually used in dynamic and on-prem environments.
-  seedJobs: true
+  seedJobs: false
   
   # certsJobs - create selfsigned certificated
   certsJobs: false

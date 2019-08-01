@@ -230,6 +230,7 @@ global:
 
   cfk8smonitorService: k8s-monitor
   cfk8smonitorPort: 80
+  mongoSkipUserCreation: true
 
 runtime-environment-manager:
   mongoDbCreate: true
