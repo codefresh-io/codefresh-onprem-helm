@@ -67,7 +67,7 @@ dependencies:
   version: 3.37.3
 - name: cfapi
   repository: http://chartmuseum.codefresh.io
-  version: 6.88.2
+  version: 6.89.2
 - name: cfui
   repository: http://chartmuseum.codefresh.io
   version: 4.91.7
@@ -96,4 +96,4 @@ dependencies:
   repository: http://chartmuseum.codefresh.io
   version: 0.4.0
 digest: sha256:a1f0c23bbf114cef84e4de89f0022f77f0fc8254be41a69158b3f38964be123f
-generated: 2019-08-05T10:23:05.211462266Z
+generated: 2019-08-05T10:51:51.641683163Z
