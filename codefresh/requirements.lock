@@ -64,7 +64,7 @@ dependencies:
   version: 1.3.1
 - name: pipeline-manager
   repository: http://chartmuseum.codefresh.io
-  version: 3.37.3
+  version: 3.37.4
 - name: cfapi
   repository: http://chartmuseum.codefresh.io
   version: 6.89.6
@@ -96,4 +96,4 @@ dependencies:
   repository: http://chartmuseum.codefresh.io
   version: 0.4.0
 digest: sha256:a1f0c23bbf114cef84e4de89f0022f77f0fc8254be41a69158b3f38964be123f
-generated: 2019-08-11T12:21:42.336591206Z
+generated: 2019-08-11T12:35:32.224930704Z
