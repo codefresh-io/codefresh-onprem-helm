@@ -168,6 +168,7 @@ cfapi:
     }
   env:
     OAUTH_ROUTER_CALLBACK: http://codefresh-inc-3.cf-cd.com:2222/api/auth/github/callback/
+    AUDIT_AUTO_CREATE_DB: true
 
 tags:
   saas: true
