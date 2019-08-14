@@ -46,7 +46,7 @@ dependencies:
   version: 1.4.1
 - name: payments
   repository: http://chartmuseum.codefresh.io
-  version: 1.7.4
+  version: 1.8.25
 - name: cfsign
   repository: http://chartmuseum.codefresh.io
   version: 1.1.1
@@ -96,4 +96,4 @@ dependencies:
   repository: http://chartmuseum.codefresh.io
   version: 0.4.0
 digest: sha256:a1f0c23bbf114cef84e4de89f0022f77f0fc8254be41a69158b3f38964be123f
-generated: 2019-08-14T16:12:57.292929039Z
+generated: 2019-08-14T16:43:31.07991172Z
