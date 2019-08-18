@@ -70,7 +70,7 @@ dependencies:
   version: 6.98.6
 - name: cfui
   repository: http://chartmuseum.codefresh.io
-  version: 4.101.8
+  version: 4.101.9
 - name: k8s-monitor
   repository: http://chartmuseum.codefresh.io
   version: 4.1.1
@@ -96,4 +96,4 @@ dependencies:
   repository: http://chartmuseum.codefresh.io
   version: 0.4.0
 digest: sha256:a1f0c23bbf114cef84e4de89f0022f77f0fc8254be41a69158b3f38964be123f
-generated: 2019-08-18T09:22:25.958080007Z
+generated: 2019-08-18T10:38:42.250461729Z
