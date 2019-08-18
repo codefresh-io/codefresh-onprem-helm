@@ -68,6 +68,12 @@ dependencies:
 - name: cfapi
   repository: http://chartmuseum.codefresh.io
   version: 6.103.0
+- name: cfapi-endpoints
+  repository: http://chartmuseum.codefresh.io
+  version: 6.103.0
+- name: cfapi-terminators
+  repository: http://chartmuseum.codefresh.io
+  version: 6.103.0
 - name: cfui
   repository: http://chartmuseum.codefresh.io
   version: 4.101.11
@@ -95,5 +101,5 @@ dependencies:
 - name: cronus
   repository: http://chartmuseum.codefresh.io
   version: 0.4.0
-digest: sha256:a1f0c23bbf114cef84e4de89f0022f77f0fc8254be41a69158b3f38964be123f
-generated: 2019-08-18T11:58:06.264038008Z
+digest: sha256:d4c6e3c0c0c2e875a215f6f146bd6ac4c9f7fa2be3cebd22c3d759e7bbb0b8bc
+generated: 2019-08-18T12:20:28.599909892Z
