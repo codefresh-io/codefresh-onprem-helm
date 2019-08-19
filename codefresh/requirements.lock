@@ -55,7 +55,7 @@ dependencies:
   version: 1.1.0
 - name: salesforce-reporter
   repository: http://chartmuseum.codefresh.io
-  version: 1.1.6
+  version: 1.1.7
 - name: tasker-kubernetes
   repository: http://chartmuseum.codefresh.io
   version: 1.1.2
@@ -102,4 +102,4 @@ dependencies:
   repository: http://chartmuseum.codefresh.io
   version: 0.4.0
 digest: sha256:d4c6e3c0c0c2e875a215f6f146bd6ac4c9f7fa2be3cebd22c3d759e7bbb0b8bc
-generated: 2019-08-19T13:03:19.204058936Z
+generated: 2019-08-19T13:27:50.606114175Z
