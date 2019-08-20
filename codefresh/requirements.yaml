@@ -117,13 +117,6 @@ dependencies:
   tags:
   - saas
   - infra
-- name: cfapi
-  version: ^6.0.0
-  repository: http://chartmuseum.codefresh.io
-  condition: cfapi.enabled
-  tags:
-  - saas
-  - infra
 - name: cfapi-endpoints
   version: ^6.0.0
   repository: http://chartmuseum.codefresh.io
