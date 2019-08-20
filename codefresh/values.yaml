@@ -90,7 +90,7 @@ dindImage: docker:17.05-dind
 global:
   # Instantiate databases with seed data. Usually used in dynamic and on-prem environments.
   seedJobs: false
-  
+
   # certsJobs - create selfsigned certificated
   certsJobs: false
 
@@ -108,7 +108,7 @@ global:
   paymentsServicePort: 9000
 
   # cfapi service name
-  cfapiService: cfapi
+  cfapiService: cfapi-endpoints
 
   # cfapi internal service port
   cfapiInternalPort: 3000

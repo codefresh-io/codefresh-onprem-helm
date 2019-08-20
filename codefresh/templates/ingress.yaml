@@ -34,11 +34,11 @@ spec:
       paths:
       - path: /api/
         backend:
-          serviceName: {{ .Release.Name }}-cfapi
+          serviceName: {{ .Release.Name }}-cfapi-endpoints
           servicePort: {{ .Values.servicePort }}
       - path: /ws
         backend:
-          serviceName: {{ .Release.Name }}-cfapi
+          serviceName: {{ .Release.Name }}-cfapi-endpoints
           servicePort: {{ .Values.servicePort }}
       - path: /
         backend:

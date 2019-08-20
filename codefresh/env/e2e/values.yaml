@@ -44,7 +44,7 @@ registry:
 getRuntimeEnvs: files/dynamic/cluster-dev-runtimeEnvironments.json
 
 # customize cfapi
-cfapi:
+cfapi-endpoints:
   providersData: |
     {
        "azure":{
@@ -170,6 +170,12 @@ cfapi:
     OAUTH_ROUTER_CALLBACK: http://codefresh-inc-3.cf-cd.com:2222/api/auth/github/callback/
     AUDIT_AUTO_CREATE_DB: true
 
+# customize cfapi
+cfapi-terminators:
+  env:
+    OAUTH_ROUTER_CALLBACK: http://codefresh-inc-3.cf-cd.com:2222/api/auth/github/callback/
+    AUDIT_AUTO_CREATE_DB: true
+
 tags:
   saas: true
   infra: true
@@ -214,7 +220,7 @@ global:
     # And https://docs.google.com/presentation/d/1df1Re8R5GBLQPJgCS6RoUtSlLiBKK55giu-6gaHq6k0/edit?usp=sharing
 
   appProtocol: https
-  
+
   internalServiceTolerations:
   - effect: NoSchedule
     key: nodeType
