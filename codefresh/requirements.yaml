@@ -138,13 +138,6 @@ dependencies:
   tags:
   - saas
   - infra
-- name: cfapi-buildmanager
-  version: ^6.0.0
-  repository: http://chartmuseum.codefresh.io
-  condition: cfapi.enabled
-  tags:
-  - saas
-  - infra
 - name: cfui
   version: ^4.0.0
   repository: http://chartmuseum.codefresh.io
