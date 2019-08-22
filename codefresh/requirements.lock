@@ -77,6 +77,9 @@ dependencies:
 - name: cfapi-buildmanager
   repository: http://chartmuseum.codefresh.io
   version: 6.125.0
+- name: cfapi-eventsmanagersubscriptions
+  repository: http://chartmuseum.codefresh.io
+  version: 6.125.0
 - name: cfui
   repository: http://chartmuseum.codefresh.io
   version: 4.104.1
@@ -104,5 +107,5 @@ dependencies:
 - name: cronus
   repository: http://chartmuseum.codefresh.io
   version: 0.4.0
-digest: sha256:b22a27d2f69d76b1f5000431fc30a1c465b46f33c1d277df74523a934bb0dfff
-generated: 2019-08-22T09:18:09.096464299Z
+digest: sha256:67ee09c7c1429a01c140c3b4293206540542f52d03a7789ec4d1bff2e0a14590
+generated: 2019-08-22T09:58:53.275267494Z
