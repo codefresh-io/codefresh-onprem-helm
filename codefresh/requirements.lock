@@ -67,22 +67,22 @@ dependencies:
   version: 3.40.0
 - name: cfapi
   repository: http://chartmuseum.codefresh.io
-  version: 6.129.0
+  version: 6.129.1
 - name: cfapi-endpoints
   repository: http://chartmuseum.codefresh.io
-  version: 6.129.0
+  version: 6.129.1
 - name: cfapi-terminators
   repository: http://chartmuseum.codefresh.io
-  version: 6.129.0
+  version: 6.129.1
 - name: cfapi-buildmanager
   repository: http://chartmuseum.codefresh.io
-  version: 6.129.0
+  version: 6.129.1
 - name: cfapi-cacheevictmanager
   repository: http://chartmuseum.codefresh.io
-  version: 6.129.0
+  version: 6.129.1
 - name: cfapi-eventsmanagersubscriptions
   repository: http://chartmuseum.codefresh.io
-  version: 6.129.0
+  version: 6.129.1
 - name: cfui
   repository: http://chartmuseum.codefresh.io
   version: 4.106.1
@@ -111,4 +111,4 @@ dependencies:
   repository: http://chartmuseum.codefresh.io
   version: 0.4.0
 digest: sha256:3902d78a5f876c6b2b50d648bf4180d22a409d1f84fd20c6ce4ea44a52a8dc55
-generated: 2019-08-23T14:34:05.394087086Z
+generated: 2019-08-23T17:11:13.978624003Z
