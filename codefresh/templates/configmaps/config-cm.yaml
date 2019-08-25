@@ -12,10 +12,10 @@ data:
   segment-blacklist-users: {{ default "" .Values.segmentBlackList | quote }}
 
   # Firebase url
-  firebase-url: {{ .Values.firebaseUrl | quote }}
+  firebase-url: {{ default "" .Values.firebaseUrl | quote }}
 
   # CFCR
-  cfcr-domain: {{ .Values.global.cfcrDomain | quote }}
+  cfcr-domain: {{ default "" .Values.global.cfcrDomain | quote }}
 
   # GCE Project
-  google-compute-engine-project: {{ .Values.global.gceProject | quote }}
+  google-compute-engine-project: {{ default "" .Values.global.gceProject | quote }}
