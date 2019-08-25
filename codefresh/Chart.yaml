@@ -13,4 +13,4 @@ sources:
 maintainers:
 - name: Codefresh Authors
   email: dev@codefresh.io
-appVersion: 0.90.6
+appVersion: 0.90.7
