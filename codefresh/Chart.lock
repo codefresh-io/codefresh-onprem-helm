@@ -46,10 +46,10 @@ dependencies:
   version: 3.121.20
 - name: gitops-dashboard-manager
   repository: https://chartmuseum.codefresh.io/gitops-dashboard-manager
-  version: 1.8.1
+  version: 1.8.2
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.164.19
+  version: 21.164.22
 - name: cfui
   repository: https://chartmuseum.codefresh.io/cfui
   version: 14.71.6
@@ -74,5 +74,5 @@ dependencies:
 - name: cronus
   repository: https://chartmuseum.codefresh.io/cronus
   version: 0.6.6
-digest: sha256:345286e8489e4188ca84a858fa3a94e8a9579900bbd569be9cd544328a7863b3
-generated: "2022-10-10T13:28:34.808598563+03:00"
+digest: sha256:fd62a8e5c3c0c1f621b8792c51b899d4f0fa34d066314da478aacec518544df2
+generated: "2022-10-12T16:52:44.614967694+03:00"
