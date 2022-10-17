@@ -65,97 +65,97 @@ dependencies:
   tags:
   - cf-infra
 - name: cluster-providers
-  version: "~1.10.0-0"
+  version: "~1.10.0"
   repository: https://chartmuseum.codefresh.io/cluster-providers
   tags:
   - cf-infra
 - name: kube-integration
-  version: "~1.25.0-0"
+  version: "~1.25.0"
   repository: https://chartmuseum.codefresh.io/kube-integration
   tags:
   - cf-infra
 - name: charts-manager
-  version: "~1.9.0-0"
+  version: "~1.9.0"
   repository: https://chartmuseum.codefresh.io/charts-manager
   tags:
   - cf-infra
 - name: cfsign
-  version: "~1.4.0-0"
+  version: "~1.4.0"
   repository: https://chartmuseum.codefresh.io/cfsign
   condition: cfsign.enabled
   tags:
   - cf-infra
 - name: tasker-kubernetes
-  version: "~1.17.0-0"
+  version: "~1.17.0"
   repository: https://chartmuseum.codefresh.io/tasker-kubernetes
   tags:
   - cf-infra
 - name: context-manager
-  version: "~2.20.0-0"
+  version: "~2.20.0"
   repository: https://chartmuseum.codefresh.io/context-manager
   tags:
   - cf-infra
   - argo-platform
 - name: pipeline-manager
-  version: "~3.121.0-0"
+  version: "~3.121.0"
   repository: https://chartmuseum.codefresh.io/pipeline-manager
   tags:
   - cf-infra
 - name: gitops-dashboard-manager
-  version: "~1.8.0-0"
+  version: "~1.8.0"
   repository: https://chartmuseum.codefresh.io/gitops-dashboard-manager
   tags:
   - cf-infra
 - name: cfapi
-  version: "~21.164.0-0"
+  version: "~21.164.0"
   repository: https://chartmuseum.codefresh.io/cfapi
   condition: cfapi.enabled
   tags:
   - cf-infra
 - name: cfui
-  version: "~14.71.0-0"
+  version: "~14.71.0"
   repository: https://chartmuseum.codefresh.io/cfui
   condition: cfui.enabled
   tags:
   - cf-infra
 - name: k8s-monitor
-  version: "~4.8.0-0"
+  version: "~4.8.0"
   repository: https://chartmuseum.codefresh.io/k8s-monitor
   condition: k8s-monitor.enabled
   tags:
   - cf-infra
 - name: runtime-environment-manager
-  version: "~3.22.0-0"
+  version: "~3.22.0"
   repository: https://chartmuseum.codefresh.io/runtime-environment-manager
   condition: runtime-environment-manager.enabled
   tags:
   - cf-infra
 - name: cf-broadcaster
-  version: "~1.10.0-0"
+  version: "~1.10.0"
   repository: https://chartmuseum.codefresh.io/cf-broadcaster
   condition: cf-broadcaster.enabled
   tags:
   - cf-infra
 - name: helm-repo-manager
-  version: "~0.9.0-0"
+  version: "~0.9.0"
   repository: https://chartmuseum.codefresh.io/helm-repo-manager
   condition: helm-repo-manager.enabled
   tags:
   - cf-infra
 - name: hermes
-  version: "~0.17.0-0"
+  version: "~0.17.0"
   repository: https://chartmuseum.codefresh.io/hermes
   condition: hermes.enabled
   tags:
   - cf-infra
 - name: nomios
-  version: "~0.9.0-0"
+  version: "~0.9.0"
   repository: https://chartmuseum.codefresh.io/nomios
   condition: hermes.enabled
   tags:
   - cf-infra
 - name: cronus
-  version: "~0.6.0-0"
+  version: "~0.6.0"
   repository: https://chartmuseum.codefresh.io/cronus
   condition: hermes.enabled
   tags:
