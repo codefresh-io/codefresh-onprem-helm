@@ -478,5 +478,5 @@ runtimeImages:
   COMPOSE_IMAGE: quay.io/codefresh/compose:1.2.5
   KUBE_DEPLOY: quay.io/codefresh/cf-deploy-kubernetes:16.1.8
   FS_OPS_IMAGE: quay.io/codefresh/fs-ops:1.2.1
-  TEMPLATE_ENGINE: quay.io/codefresh/pikolo:0.13.4
+  TEMPLATE_ENGINE: quay.io/codefresh/pikolo:0.13.5
   PIPELINE_DEBUGGER_IMAGE: quay.io/codefresh/cf-debugger:1.2.0
