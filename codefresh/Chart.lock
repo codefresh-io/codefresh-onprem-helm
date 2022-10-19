@@ -43,7 +43,7 @@ dependencies:
   version: 2.20.35
 - name: pipeline-manager
   repository: https://chartmuseum.codefresh.io/pipeline-manager
-  version: 3.121.20
+  version: 3.121.22
 - name: gitops-dashboard-manager
   repository: https://chartmuseum.codefresh.io/gitops-dashboard-manager
   version: 1.8.2
@@ -74,5 +74,5 @@ dependencies:
 - name: cronus
   repository: https://chartmuseum.codefresh.io/cronus
   version: 0.6.6
-digest: sha256:fd62a8e5c3c0c1f621b8792c51b899d4f0fa34d066314da478aacec518544df2
-generated: "2022-10-12T16:52:44.614967694+03:00"
+digest: sha256:bf807c9f1d0cb17d13d57474bc7e7526d097ca7bf7e1a3bd619806c8c3487752
+generated: "2022-10-19T01:00:53.032189489Z"
