@@ -67,12 +67,12 @@ dependencies:
   version: 0.9.0
 - name: hermes
   repository: https://chartmuseum.codefresh.io/hermes
-  version: 0.17.25
+  version: 0.18.0
 - name: nomios
   repository: https://chartmuseum.codefresh.io/nomios
   version: 0.9.11
 - name: cronus
   repository: https://chartmuseum.codefresh.io/cronus
   version: 0.6.6
-digest: sha256:bf807c9f1d0cb17d13d57474bc7e7526d097ca7bf7e1a3bd619806c8c3487752
-generated: "2022-10-19T01:00:53.032189489Z"
+digest: sha256:b9069128e39c2fc29b6fdcc048d75008cb0f2b783037aa3bf85ab736fb552223
+generated: "2022-10-20T14:47:24.79134719+03:00"
