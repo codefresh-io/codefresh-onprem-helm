@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "fullname" . }}-version-info
+  labels:
+    app: {{ template "fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
+    release: {{ .Release.Name | quote }}
+    heritage: {{ .Release.Service  | quote }}
+data:
+  app: {{ .Chart.Version | default "unknown" }}
+  {{- range $i, $dep := .Chart.Dependencies }}
+  {{ $dep.Name }}: {{ $dep.Version }}
+  {{- end }}
