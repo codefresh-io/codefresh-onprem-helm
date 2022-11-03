@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Codefresh CD pipeline management platform for Kubernetes
 name: codefresh
-version: 1.3.7
+version: 1.3.8
 kubeVersion: '>=1.19.0-0'
 keywords:
   - codefresh
@@ -131,31 +131,31 @@ dependencies:
     tags:
       - cf-infra
   - name: cf-broadcaster
-    version: "~1.10.0"
+    version: "1.10.11"
     repository: https://chartmuseum.codefresh.io/cf-broadcaster
     condition: cf-broadcaster.enabled
     tags:
       - cf-infra
   - name: helm-repo-manager
-    version: "~0.9.0"
+    version: "0.9.0"
     repository: https://chartmuseum.codefresh.io/helm-repo-manager
     condition: helm-repo-manager.enabled
     tags:
       - cf-infra
   - name: hermes
-    version: "~0.18.0"
+    version: "0.18.0"
     repository: https://chartmuseum.codefresh.io/hermes
     condition: hermes.enabled
     tags:
       - cf-infra
   - name: nomios
-    version: "~0.9.0"
+    version: "0.9.11"
     repository: https://chartmuseum.codefresh.io/nomios
     condition: hermes.enabled
     tags:
       - cf-infra
   - name: cronus
-    version: "~0.6.0"
+    version: "0.6.6"
     repository: https://chartmuseum.codefresh.io/cronus
     condition: hermes.enabled
     tags:

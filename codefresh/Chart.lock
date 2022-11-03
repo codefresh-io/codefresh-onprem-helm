@@ -25,7 +25,7 @@ dependencies:
   version: 4.1.0
 - name: cluster-providers
   repository: https://chartmuseum.codefresh.io/cluster-providers
-  version: 1.10.22
+  version: 1.10.23
 - name: kube-integration
   repository: https://chartmuseum.codefresh.io/kube-integration
   version: 1.25.23
@@ -52,10 +52,10 @@ dependencies:
   version: 21.164.22
 - name: cfui
   repository: https://chartmuseum.codefresh.io/cfui
-  version: 14.71.7
+  version: 14.71.8
 - name: k8s-monitor
   repository: https://chartmuseum.codefresh.io/k8s-monitor
-  version: 4.8.22
+  version: 4.8.29
 - name: runtime-environment-manager
   repository: https://chartmuseum.codefresh.io/runtime-environment-manager
   version: 3.22.1
@@ -74,5 +74,5 @@ dependencies:
 - name: cronus
   repository: https://chartmuseum.codefresh.io/cronus
   version: 0.6.6
-digest: sha256:076c8bd4b1b5a20cb5a7db7886ddc1fad977f5004c202cde25ccb7395a846116
-generated: "2022-10-21T14:49:53.668153722+03:00"
+digest: sha256:af113d50ac0076dd639eb0c1ac1277a4714890e3c7b5dc9d96bddf295ab62196
+generated: "2022-11-03T16:46:10.819838768+03:00"
