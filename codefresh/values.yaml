@@ -8,10 +8,12 @@ tags:
 ### obtain GCR Service Account JSON from Codefresh and replace `placeholder`
 ### `DOCKER_CFG_VAR=$(echo -n "_json_key:$(echo ${GCR_SA_KEY_B64} | base64 -d)" | base64 | tr -d '\n') && echo $DOCKER_CFG_VAR`
 ## @skip dockerconfigjson
-dockerconfigjson:
-  auths:
-    gcr.io:
-      auth: placeholder
+## e.g.:
+## dockerconfigjson:
+##   auths:
+##     gcr.io:
+##       auth: placeholder
+dockerconfigjson: {}
 ## @section Root
 ## @param firebaseUrl Firebase URL for logs streaming
 firebaseUrl: "https://codefresh-on-prem.firebaseio.com/on-prem"
