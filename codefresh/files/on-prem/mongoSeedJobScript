@@ -21,8 +21,8 @@ parseMongoURI() {
     local parameters="$(echo $1 | grep '?' | cut -d '?' -f2)"; if [[ -n $parameters ]]; then parameters="?${parameters}"; fi
     local url="$(echo ${1/$proto/})"
     local userpass="$(echo $url | grep @ | cut -d@ -f1)"
-    local hostport="$(echo $url | sed s/$userpass// | sed "s/\/\?$parameters//" | sed -re "s/\/\?|@//g")" 
-  
+    local hostport="$(echo $url | sed s/$userpass// | sed "s/\/\?$parameters//" | sed -re "s/\/\?|@//g")"
+
     MONGODB_PASSWORD="$(echo $userpass | grep : | cut -d: -f2)"
     MONGODB_USER="$(echo $userpass | grep : | cut -d: -f1)"
     MONGODB_URI="$proto$userpass@$hostport/${MONGODB_DATABASE}$parameters"
@@ -50,16 +50,10 @@ done
 
 if [ $? == 0 ]; then
     if [[ $MONOGDB_VERSION =~ 4.* ]]; then #if mongodb server 4.x version, run mongoimport with --legacy flag
-        importResult=$(mongoimport --uri ${MONGODB_URI} --collection idps --type json --legacy --file /etc/admin/idps.json 2>&1)
-        echo $importResult
-        # if [[ $(echo $importResult | grep -i 'duplicate key error') ]]; then ## CR-13035
-        #         echo "Local IDP already exists, attempting to recreate it with a new _id"
-        #         mongoimport --uri ${MONGODB_URI} --collection idps --type json --legacy --mode delete --upsertFields=clientName --file /etc/admin/idps.json
-        #         mongoimport --uri ${MONGODB_URI} --collection idps --type json --legacy --file /etc/admin/idps.json
-        # fi  
+        mongoimport --uri ${MONGODB_URI} --collection idps --type json --legacy --file /etc/admin/idps.json
     else
         mongoimport --uri ${MONGODB_URI} --collection idps --type json --file /etc/admin/idps.json
-    fi  
+    fi
 else
     echo "Something went wrong !" && exit 1
 fi
@@ -68,8 +62,8 @@ if [ $? == 0 ]; then
     if [[ $MONOGDB_VERSION =~ 4.* ]]; then #if mongodb server 4.x version, run mongoimport with --legacy flag
         mongoimport --uri ${MONGODB_URI} --collection accounts --type json --legacy --file /etc/admin/accounts.json
     else
-        mongoimport --uri ${MONGODB_URI} --collection accounts --type json --file /etc/admin/accounts.json    
-    fi  
+        mongoimport --uri ${MONGODB_URI} --collection accounts --type json --file /etc/admin/accounts.json
+    fi
 else
     echo "Something went wrong !" && exit 1
 fi
@@ -79,7 +73,7 @@ if [ $? == 0 ]; then
         mongoimport --uri ${MONGODB_URI} --collection users --type json --legacy --file /etc/admin/users.json
     else
         mongoimport --uri ${MONGODB_URI} --collection users --type json --file /etc/admin/users.json
-    fi 
+    fi
 else
     echo "Something went wrong !" && exit 1
 fi

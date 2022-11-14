@@ -6,11 +6,6 @@ metadata:
     {{- range $key, $value := .Values.ingress.annotations }}
     {{ $key }}: {{ $value | quote }}
     {{- end }}
-    {{- if .Values.global.exposeRegistry }}
-    nginx.ingress.kubernetes.io/proxy-body-size: "0"
-    nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
-    nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
-    {{- end }}
   name: {{ template "fullname" . }}-ingress
   labels:
     app: {{ template "fullname" . }}
@@ -36,6 +31,7 @@ spec:
   - host: {{ .Values.ingress.domain | default .Values.global.appUrl }}
     http:
       paths:
+      {{- if .Values.cfapi.enabled }}
       - path: /api/
         pathType: ImplementationSpecific
         backend:
@@ -50,6 +46,71 @@ spec:
             name: {{ .Release.Name }}-cfapi
             port:
               number: {{ .Values.ingress.servicePort }}
+      {{- else if and (eq .Values.global.cfapiService "cfapi-internal") (index .Values "cfapi-endpoints" "enabled") (index .Values "cfapi-internal" "enabled") }}
+      - path: /api/progress/download
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: {{ .Release.Name }}-cfapi-downloadlogmanager
+            port:
+              number: {{ .Values.ingress.servicePort }}
+      - path: /api/public/progress/download
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: {{ .Release.Name }}-cfapi-downloadlogmanager
+            port:
+              number: {{ .Values.ingress.servicePort }}
+      - path: /api/
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: {{ .Release.Name }}-cfapi-endpoints
+            port:
+              number: {{ .Values.ingress.servicePort }}
+      - path: /api/admin/
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: {{ .Release.Name }}-cfapi-admin
+            port:
+              number: {{ .Values.ingress.servicePort }}
+      - path: /ws
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: {{ .Release.Name }}-cfapi-ws
+            port:
+              number: {{ .Values.ingress.servicePort }}
+      - path: /api/environments-v2/argo/events
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: {{ .Release.Name }}-cfapi-environments
+            port:
+              number: {{ .Values.ingress.servicePort }}
+      - path: /api/gitops/resources
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: {{ .Release.Name }}-cfapi-gitops-resource-receiver
+            port:
+              number: {{ .Values.ingress.servicePort }}
+      - path: /api/gitops/rollout
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: {{ .Release.Name }}-cfapi-gitops-resource-receiver
+            port:
+              number: {{ .Values.ingress.servicePort }}
+      - path: /api/k8s-monitor/
+        pathType: ImplementationSpecific
+        backend:
+            service:
+              name: {{ .Release.Name }}-cfapi-kubernetesresourcemonitor
+              port:
+                number: {{ .Values.ingress.servicePort }}
+      {{- end }}
       - path: /
         pathType: ImplementationSpecific
         backend:
@@ -57,13 +118,4 @@ spec:
             name: {{ .Release.Name }}-cfui
             port:
               number: {{ .Values.ingress.servicePort }}
-      {{- if .Values.global.exposeRegistry }}
-      - path: /v2/
-        pathType: ImplementationSpecific
-        backend:
-          service:
-            name: {{ .Release.Name }}-registry
-            port:
-              number: 5000
-      {{- end }}
-{{- end}}      
+{{- end}}

@@ -50,6 +50,45 @@ dependencies:
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
   version: 21.164.22
+- name: cfapi-internal
+  repository: https://chartmuseum.codefresh.io/cfapi-internal
+  version: 21.164.22
+- name: cfapi-ws
+  repository: https://chartmuseum.codefresh.io/cfapi-ws
+  version: 21.164.22
+- name: cfapi-admin
+  repository: https://chartmuseum.codefresh.io/cfapi-admin
+  version: 21.164.22
+- name: cfapi-endpoints
+  repository: https://chartmuseum.codefresh.io/cfapi-endpoints
+  version: 21.164.22
+- name: cfapi-terminators
+  repository: https://chartmuseum.codefresh.io/cfapi-terminators
+  version: 21.164.22
+- name: cfapi-sso-group-synchronizer
+  repository: https://chartmuseum.codefresh.io/cfapi-sso-group-synchronizer
+  version: 21.164.22
+- name: cfapi-buildmanager
+  repository: https://chartmuseum.codefresh.io/cfapi-buildmanager
+  version: 21.164.22
+- name: cfapi-cacheevictmanager
+  repository: https://chartmuseum.codefresh.io/cfapi-cacheevictmanager
+  version: 21.164.22
+- name: cfapi-eventsmanagersubscriptions
+  repository: https://chartmuseum.codefresh.io/cfapi-eventsmanagersubscriptions
+  version: 21.164.22
+- name: cfapi-kubernetesresourcemonitor
+  repository: https://chartmuseum.codefresh.io/cfapi-kubernetesresourcemonitor
+  version: 21.164.22
+- name: cfapi-environments
+  repository: https://chartmuseum.codefresh.io/cfapi-environments
+  version: 21.164.22
+- name: cfapi-gitops-resource-receiver
+  repository: https://chartmuseum.codefresh.io/cfapi-gitops-resource-receiver
+  version: 21.164.22
+- name: cfapi-downloadlogmanager
+  repository: https://chartmuseum.codefresh.io/cfapi-downloadlogmanager
+  version: 21.164.22
 - name: cfui
   repository: https://chartmuseum.codefresh.io/cfui
   version: 14.71.8
@@ -61,18 +100,18 @@ dependencies:
   version: 3.22.1
 - name: cf-broadcaster
   repository: https://chartmuseum.codefresh.io/cf-broadcaster
-  version: 1.10.11
+  version: 1.10.18
 - name: helm-repo-manager
   repository: https://chartmuseum.codefresh.io/helm-repo-manager
-  version: 0.9.0
+  version: 0.9.4
 - name: hermes
   repository: https://chartmuseum.codefresh.io/hermes
-  version: 0.18.0
+  version: 0.18.1
 - name: nomios
   repository: https://chartmuseum.codefresh.io/nomios
-  version: 0.9.11
+  version: 0.9.12
 - name: cronus
   repository: https://chartmuseum.codefresh.io/cronus
-  version: 0.6.6
-digest: sha256:af113d50ac0076dd639eb0c1ac1277a4714890e3c7b5dc9d96bddf295ab62196
-generated: "2022-11-03T16:46:10.819838768+03:00"
+  version: 0.6.7
+digest: sha256:9b9d92759e6decf5d4fe00fbd6039b94e198694c97750a047d01e282bb170100
+generated: "2022-11-11T11:15:13.933484146+03:00"

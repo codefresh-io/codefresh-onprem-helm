@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Codefresh CD pipeline management platform for Kubernetes
 name: codefresh
-version: 1.3.9
+version: 1.3.10
 kubeVersion: '>=1.19.0-0'
 keywords:
   - codefresh
@@ -112,6 +112,84 @@ dependencies:
     condition: cfapi.enabled
     tags:
       - cf-infra
+  - name: cfapi-internal
+    version: "~21.164.0"
+    repository: https://chartmuseum.codefresh.io/cfapi-internal
+    condition: cfapi-internal.enabled
+    tags:
+      - cf-infra
+  - name: cfapi-ws
+    version: "~21.164.0"
+    repository: https://chartmuseum.codefresh.io/cfapi-ws
+    condition: cfapi-ws.enabled
+    tags:
+      - cf-infra
+  - name: cfapi-admin
+    version: "~21.164.0"
+    repository: https://chartmuseum.codefresh.io/cfapi-admin
+    condition: cfapi-admin.enabled
+    tags:
+      - cf-infra
+  - name: cfapi-endpoints
+    version: "~21.164.0"
+    repository: https://chartmuseum.codefresh.io/cfapi-endpoints
+    condition: cfapi-endpoints.enabled
+    tags:
+      - cf-infra
+  - name: cfapi-terminators
+    version: "~21.164.0"
+    repository: https://chartmuseum.codefresh.io/cfapi-terminators
+    condition: cfapi-terminators.enabled
+    tags:
+      - cf-infra
+  - name: cfapi-sso-group-synchronizer
+    version: "~21.164.0"
+    repository: https://chartmuseum.codefresh.io/cfapi-sso-group-synchronizer
+    condition: cfapi-sso-group-synchronizer.enabled
+    tags:
+      - cf-infra
+  - name: cfapi-buildmanager
+    version: "~21.164.0"
+    repository: https://chartmuseum.codefresh.io/cfapi-buildmanager
+    condition: cfapi-buildmanager.enabled
+    tags:
+      - cf-infra
+  - name: cfapi-cacheevictmanager
+    version: "~21.164.0"
+    repository: https://chartmuseum.codefresh.io/cfapi-cacheevictmanager
+    condition: cfapi-cacheevictmanager.enabled
+    tags:
+      - cf-infra
+  - name: cfapi-eventsmanagersubscriptions
+    version: "~21.164.0"
+    repository: https://chartmuseum.codefresh.io/cfapi-eventsmanagersubscriptions
+    condition: cfapi-eventsmanagersubscriptions.enabled
+    tags:
+      - cf-infra
+  - name: cfapi-kubernetesresourcemonitor
+    version: "~21.164.0"
+    repository: https://chartmuseum.codefresh.io/cfapi-kubernetesresourcemonitor
+    condition: cfapi-kubernetesresourcemonitor.enabled
+    tags:
+      - cf-infra
+  - name: cfapi-environments
+    version: "~21.164.0"
+    repository: https://chartmuseum.codefresh.io/cfapi-environments
+    condition: cfapi-environments.enabled
+    tags:
+      - cf-infra
+  - name: cfapi-gitops-resource-receiver
+    version: "~21.164.0"
+    repository: https://chartmuseum.codefresh.io/cfapi-gitops-resource-receiver
+    condition: cfapi-gitops-resource-receiver.enabled
+    tags:
+      - cf-infra
+  - name: cfapi-downloadlogmanager
+    version: "~21.164.0"
+    repository: https://chartmuseum.codefresh.io/cfapi-downloadlogmanager
+    condition: cfapi-downloadlogmanager.enabled
+    tags:
+      - cf-infra
   - name: cfui
     version: "~14.71.0"
     repository: https://chartmuseum.codefresh.io/cfui
@@ -131,31 +209,31 @@ dependencies:
     tags:
       - cf-infra
   - name: cf-broadcaster
-    version: "1.10.11"
+    version: "~1.10.0"
     repository: https://chartmuseum.codefresh.io/cf-broadcaster
     condition: cf-broadcaster.enabled
     tags:
       - cf-infra
   - name: helm-repo-manager
-    version: "0.9.0"
+    version: "~0.9.0"
     repository: https://chartmuseum.codefresh.io/helm-repo-manager
     condition: helm-repo-manager.enabled
     tags:
       - cf-infra
   - name: hermes
-    version: "0.18.0"
+    version: "~0.18.0"
     repository: https://chartmuseum.codefresh.io/hermes
     condition: hermes.enabled
     tags:
       - cf-infra
   - name: nomios
-    version: "0.9.11"
+    version: "~0.9.0"
     repository: https://chartmuseum.codefresh.io/nomios
     condition: hermes.enabled
     tags:
       - cf-infra
   - name: cronus
-    version: "0.6.6"
+    version: "~0.6.0"
     repository: https://chartmuseum.codefresh.io/cronus
     condition: hermes.enabled
     tags:
