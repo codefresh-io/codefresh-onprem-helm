@@ -1,7 +1,7 @@
 dependencies:
 - name: consul
   repository: https://charts.bitnami.com/bitnami
-  version: 10.3.9
+  version: 10.6.1
 - name: mongodb
   repository: file://pv-charts/mongodb
   version: 0.4.13
@@ -34,7 +34,7 @@ dependencies:
   version: 1.9.13
 - name: cfsign
   repository: https://chartmuseum.codefresh.io/cfsign
-  version: 1.4.0
+  version: 1.4.1
 - name: tasker-kubernetes
   repository: https://chartmuseum.codefresh.io/tasker-kubernetes
   version: 1.17.7
@@ -49,46 +49,46 @@ dependencies:
   version: 1.8.2
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.164.22
+  version: 21.164.23
 - name: cfapi-internal
   repository: https://chartmuseum.codefresh.io/cfapi-internal
-  version: 21.164.22
+  version: 21.164.23
 - name: cfapi-ws
   repository: https://chartmuseum.codefresh.io/cfapi-ws
-  version: 21.164.22
+  version: 21.164.23
 - name: cfapi-admin
   repository: https://chartmuseum.codefresh.io/cfapi-admin
-  version: 21.164.22
+  version: 21.164.23
 - name: cfapi-endpoints
   repository: https://chartmuseum.codefresh.io/cfapi-endpoints
-  version: 21.164.22
+  version: 21.164.23
 - name: cfapi-terminators
   repository: https://chartmuseum.codefresh.io/cfapi-terminators
-  version: 21.164.22
+  version: 21.164.23
 - name: cfapi-sso-group-synchronizer
   repository: https://chartmuseum.codefresh.io/cfapi-sso-group-synchronizer
-  version: 21.164.22
+  version: 21.164.23
 - name: cfapi-buildmanager
   repository: https://chartmuseum.codefresh.io/cfapi-buildmanager
-  version: 21.164.22
+  version: 21.164.23
 - name: cfapi-cacheevictmanager
   repository: https://chartmuseum.codefresh.io/cfapi-cacheevictmanager
-  version: 21.164.22
+  version: 21.164.23
 - name: cfapi-eventsmanagersubscriptions
   repository: https://chartmuseum.codefresh.io/cfapi-eventsmanagersubscriptions
-  version: 21.164.22
+  version: 21.164.23
 - name: cfapi-kubernetesresourcemonitor
   repository: https://chartmuseum.codefresh.io/cfapi-kubernetesresourcemonitor
-  version: 21.164.22
+  version: 21.164.23
 - name: cfapi-environments
   repository: https://chartmuseum.codefresh.io/cfapi-environments
-  version: 21.164.22
+  version: 21.164.23
 - name: cfapi-gitops-resource-receiver
   repository: https://chartmuseum.codefresh.io/cfapi-gitops-resource-receiver
-  version: 21.164.22
+  version: 21.164.23
 - name: cfapi-downloadlogmanager
   repository: https://chartmuseum.codefresh.io/cfapi-downloadlogmanager
-  version: 21.164.22
+  version: 21.164.23
 - name: cfui
   repository: https://chartmuseum.codefresh.io/cfui
   version: 14.71.8
@@ -100,7 +100,7 @@ dependencies:
   version: 3.22.1
 - name: cf-broadcaster
   repository: https://chartmuseum.codefresh.io/cf-broadcaster
-  version: 1.10.18
+  version: 1.10.19
 - name: helm-repo-manager
   repository: https://chartmuseum.codefresh.io/helm-repo-manager
   version: 0.9.4
@@ -113,5 +113,5 @@ dependencies:
 - name: cronus
   repository: https://chartmuseum.codefresh.io/cronus
   version: 0.6.7
-digest: sha256:9b9d92759e6decf5d4fe00fbd6039b94e198694c97750a047d01e282bb170100
-generated: "2022-11-11T11:15:13.933484146+03:00"
+digest: sha256:34a7fc8086093f867796a04cd470e4a3f9496a67fb68c3af82d884351bc5daf3
+generated: "2022-12-22T20:58:44.1464365+03:00"

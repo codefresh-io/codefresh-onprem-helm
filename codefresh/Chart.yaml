@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Codefresh CD pipeline management platform for Kubernetes
 name: codefresh
-version: 1.3.10
+version: 1.3.11
 kubeVersion: '>=1.19.0-0'
 keywords:
   - codefresh
@@ -17,7 +17,7 @@ maintainers:
 appVersion: 1.3.0
 dependencies:
   - name: consul
-    version: 10.3.9
+    version: 10.6.1
     repository: https://charts.bitnami.com/bitnami
     condition: consul.enabled
     tags:

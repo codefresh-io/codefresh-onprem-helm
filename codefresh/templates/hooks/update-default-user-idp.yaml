@@ -1,0 +1,70 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "fullname" . }}-update-default-user-idp
+  labels:
+    app: {{ template "fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
+    release: {{ .Release.Name  | quote }}
+    heritage: {{ .Release.Service  | quote }}
+  annotations:
+    "helm.sh/hook": post-install
+    "helm.sh/hook-weight": "0"
+    "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
+data:
+  update-default-user-idp-script: |
+    #!/bin/bash
+
+    MONGO_URI={{ include "calculateMongoURI" (dict "dbName" "codefresh" "mongoURI" .Values.global.mongoURI) }}
+    LOCAL_IDP_ID=$(mongosh "${MONGO_URI}" --quiet --eval 'db.idps.findOne({clientName: "local"})._id')
+    mongosh "${MONGO_URI}" --eval "db.users.updateOne({userName: 'AdminCF'}, { \$set: { 'logins.$[0].idp': ${LOCAL_IDP_ID} } })"
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ template "fullname" . }}-update-default-user-idp
+  labels:
+    app: {{ template "fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
+    release: {{ .Release.Name  | quote }}
+    heritage: {{ .Release.Service  | quote }}
+  annotations:
+    "helm.sh/hook": post-install
+    "helm.sh/hook-weight": "1"
+    "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
+spec:
+  ttlSecondsAfterFinished: 180
+  template:
+    metadata:
+      name: {{ template "fullname" . }}-update-default-user-idp
+      labels:
+        app: {{ template "fullname" . }}
+        chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
+        release: {{ .Release.Name  | quote }}
+        heritage: {{ .Release.Service  | quote }}
+    spec:
+      {{- if .Values.global.privateRegistry }}
+      imagePullSecrets:
+        - name: "{{ .Release.Name }}-{{ .Values.global.codefresh }}-registry"
+      {{- end }}
+      restartPolicy: Never
+      containers:
+      - name: update-default-user-idp
+        {{- if .Values.global.privateRegistry }}
+        image: "{{ .Values.global.dockerRegistry }}{{ .Values.global.mongodbImage }}"
+        {{- else }}
+        image: {{ .Values.global.mongodbImage }}
+        {{- end }}
+        command:
+          - "/bin/bash"
+          - "-c"
+          - /script/update-default-user-idp-script.sh
+        volumeMounts:
+        - mountPath: /script/update-default-user-idp-script.sh
+          name: update-default-user-idp-script
+          subPath: update-default-user-idp-script
+      volumes:
+      - name: update-default-user-idp-script
+        configMap:
+          name: {{ template "fullname" . }}-update-default-user-idp
+          defaultMode: 0777
