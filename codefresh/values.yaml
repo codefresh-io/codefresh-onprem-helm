@@ -474,6 +474,12 @@ rabbitmq:
     username: user
     password: "cVz9ZdJKYm7u"
     erlangCookie: "WIWVHCDTCIUAWANLMQAW"
+## @skip runner
+runner:
+  replicaCount: 1
+  curlImage: quay.io/codefresh/curl:latest
+  dindImage: docker:20.10.13-dind
+  cleanerImage: quay.io/codefresh/cf-runtime-cleaner:latest
 ## @skip pipeline-manager
 pipeline-manager:
   replicaCount: 1

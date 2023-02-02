@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Codefresh CD pipeline management platform for Kubernetes
 name: codefresh
-version: 1.3.12
+version: 1.3.13
 kubeVersion: '>=1.19.0-0'
 keywords:
   - codefresh
@@ -56,6 +56,12 @@ dependencies:
     repository: https://chartmuseum.codefresh.io/builder
     condition: builder.enabled
     version: 1.0.2
+    tags:
+      - cf-infra
+  - name: runner
+    repository: https://chartmuseum.codefresh.io/runner
+    condition: runner.enabled
+    version: 1.0.0
     tags:
       - cf-infra
   - name: ingress-nginx
