@@ -4,7 +4,7 @@
 
 ## Prerequisites
 
-- Kubernetes 1.19+
+- Kubernetes 1.22+
 - Helm 3.2.0+
 - PV provisioner support in the underlying infrastructure
 - GCR Service Account JSON `sa.json` (provided by Codefresh)
