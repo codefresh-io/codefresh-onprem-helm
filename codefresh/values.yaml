@@ -200,7 +200,7 @@ certsJobsImage: quay.io/codefresh/generate-certs:latest
 builder:
   replicaCount: 1
   curlImage: quay.io/codefresh/curl:latest
-  dindImage: docker:20.10.13-dind
+  dindImage: docker:23.0-dind
   cleanerImage: quay.io/codefresh/cf-runtime-cleaner:latest
 ## @skip cfapi
 cfapi: &cf-api
@@ -506,7 +506,7 @@ rabbitmq:
 runner:
   replicaCount: 1
   curlImage: quay.io/codefresh/curl:latest
-  dindImage: docker:20.10.13-dind
+  dindImage: docker:23.0-dind
   cleanerImage: quay.io/codefresh/cf-runtime-cleaner:latest
 ## @skip pipeline-manager
 pipeline-manager:
