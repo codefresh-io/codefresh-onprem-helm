@@ -46,61 +46,61 @@ dependencies:
   version: 2.21.8
 - name: pipeline-manager
   repository: https://chartmuseum.codefresh.io/pipeline-manager
-  version: 3.123.20
+  version: 3.123.21
 - name: gitops-dashboard-manager
   repository: https://chartmuseum.codefresh.io/gitops-dashboard-manager
   version: 1.11.0
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.200.6
+  version: 21.200.7
 - name: cfapi-internal
   repository: https://chartmuseum.codefresh.io/cfapi-internal
-  version: 21.200.6
+  version: 21.200.7
 - name: cfapi-ws
   repository: https://chartmuseum.codefresh.io/cfapi-ws
-  version: 21.200.6
+  version: 21.200.7
 - name: cfapi-admin
   repository: https://chartmuseum.codefresh.io/cfapi-admin
-  version: 21.200.6
+  version: 21.200.7
 - name: cfapi-endpoints
   repository: https://chartmuseum.codefresh.io/cfapi-endpoints
-  version: 21.200.6
+  version: 21.200.7
 - name: cfapi-terminators
   repository: https://chartmuseum.codefresh.io/cfapi-terminators
-  version: 21.200.6
+  version: 21.200.7
 - name: cfapi-sso-group-synchronizer
   repository: https://chartmuseum.codefresh.io/cfapi-sso-group-synchronizer
-  version: 21.200.6
+  version: 21.200.7
 - name: cfapi-buildmanager
   repository: https://chartmuseum.codefresh.io/cfapi-buildmanager
-  version: 21.200.6
+  version: 21.200.7
 - name: cfapi-cacheevictmanager
   repository: https://chartmuseum.codefresh.io/cfapi-cacheevictmanager
-  version: 21.200.6
+  version: 21.200.7
 - name: cfapi-eventsmanagersubscriptions
   repository: https://chartmuseum.codefresh.io/cfapi-eventsmanagersubscriptions
-  version: 21.200.6
+  version: 21.200.7
 - name: cfapi-kubernetesresourcemonitor
   repository: https://chartmuseum.codefresh.io/cfapi-kubernetesresourcemonitor
-  version: 21.200.6
+  version: 21.200.7
 - name: cfapi-environments
   repository: https://chartmuseum.codefresh.io/cfapi-environments
-  version: 21.200.6
+  version: 21.200.7
 - name: cfapi-gitops-resource-receiver
   repository: https://chartmuseum.codefresh.io/cfapi-gitops-resource-receiver
-  version: 21.200.6
+  version: 21.200.7
 - name: cfapi-downloadlogmanager
   repository: https://chartmuseum.codefresh.io/cfapi-downloadlogmanager
-  version: 21.200.6
+  version: 21.200.7
 - name: cfapi-teams
   repository: https://chartmuseum.codefresh.io/cfapi-teams
-  version: 21.200.6
+  version: 21.200.7
 - name: cfapi-kubernetes-endpoints
   repository: https://chartmuseum.codefresh.io/cfapi-kubernetes-endpoints
-  version: 21.200.6
+  version: 21.200.7
 - name: cfapi-test-reporting
   repository: https://chartmuseum.codefresh.io/cfapi-test-reporting
-  version: 21.200.6
+  version: 21.200.7
 - name: cfui
   repository: https://chartmuseum.codefresh.io/cfui
   version: 14.86.31
@@ -125,5 +125,5 @@ dependencies:
 - name: cronus
   repository: https://chartmuseum.codefresh.io/cronus
   version: 0.6.7
-digest: sha256:84c5bea2070ad1d614b7893dcfa0215bc9484e511d3044d78ac459e1105bcfdc
-generated: "2023-03-07T19:23:17.452405587+03:00"
+digest: sha256:84a0faebba8d7836f60460893955be06d044819aef81fd773cbe30e97267e053
+generated: "2023-03-08T13:41:04.612558406+03:00"
