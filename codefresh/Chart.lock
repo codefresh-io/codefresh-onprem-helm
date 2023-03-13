@@ -106,10 +106,10 @@ dependencies:
   version: 14.86.32
 - name: k8s-monitor
   repository: https://chartmuseum.codefresh.io/k8s-monitor
-  version: 4.9.2
+  version: 4.9.4
 - name: runtime-environment-manager
   repository: https://chartmuseum.codefresh.io/runtime-environment-manager
-  version: 3.23.10
+  version: 3.23.11
 - name: cf-broadcaster
   repository: https://chartmuseum.codefresh.io/cf-broadcaster
   version: 1.10.20
@@ -125,5 +125,5 @@ dependencies:
 - name: cronus
   repository: https://chartmuseum.codefresh.io/cronus
   version: 0.6.7
-digest: sha256:1183130d3a65285ac1e58a3f1a4807a3f23a80d810e8fb652fa45dd944185638
-generated: "2023-03-11T00:16:55.513782659+03:00"
+digest: sha256:22e7fb2c9abe3b9877828a7b83695d33d5ff558066af22494011d06a89149373
+generated: "2023-03-13T18:36:42.699247114+03:00"
