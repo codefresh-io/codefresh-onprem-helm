@@ -3,11 +3,11 @@ description: Helm Chart for Codefresh On-Prem
 name: codefresh
 version: 2.0.0
 keywords:
-- codefresh
+  - codefresh
 home: https://codefresh.io/
 icon: https://avatars1.githubusercontent.com/u/11412079?v=3
 sources:
-- https://github.com/codefresh-io/cf-helm
+  - https://github.com/codefresh-io/cf-helm
 maintainers:
   - name: codefresh
     url: https://codefresh-io.github.io/
@@ -18,217 +18,217 @@ annotations:
     - kind: changed
       description: Bump cf-ui, cf-api, argo-platform, etc
 dependencies:
-- name: cf-common
-  repository: https://chartmuseum.codefresh.io/cf-common
-  version: 0.8.1
-- name: internal-gateway
-  repository: https://chartmuseum.codefresh.io/internal-gateway
-  version: "0.1.1"
-  condition: argo-platform.enabled
-- name: consul
-  version: 10.11.2
-  repository: https://charts.bitnami.com/bitnami
-  condition: consul.enabled
-- name: mongodb
-  version: 13.12.1
-  repository: https://charts.bitnami.com/bitnami
-  condition: mongodb.enabled,mongo.enabled,global.mongoDeploy
-- name: postgresql
-  version: 12.5.1
-  repository: https://charts.bitnami.com/bitnami
-  condition: postgresql.enabled
-- name: redis
-  version: 17.10.3
-  repository: https://charts.bitnami.com/bitnami
-  condition: redis.enabled
-- name: rabbitmq
-  version: 11.15.2
-  repository: https://charts.bitnami.com/bitnami
-  condition: rabbitmq.enabled
-- name: nats
-  version: 7.8.1
-  repository: https://charts.bitnami.com/bitnami
-  condition: nats.enabled
-- name: builder
-  repository: https://chartmuseum.codefresh.io/builder
-  condition: builder.enabled
-  version: 1.1.3
-- name: runner
-  repository: https://chartmuseum.codefresh.io/runner
-  condition: runner.enabled
-  version: 1.1.3
-- name: ingress-nginx
-  version: 4.6.1
-  repository: https://kubernetes.github.io/ingress-nginx
-  condition: ingress-nginx.enabled
-- name: cluster-providers
-  version: "*"
-  repository: https://chartmuseum.codefresh.io/cluster-providers
-  condition: cluster-providers.enabled
-- name: kube-integration
-  version: "*"
-  repository: https://chartmuseum.codefresh.io/kube-integration
-  condition: kube-integration.enabled
-- name: charts-manager
-  version: "*"
-  repository: https://chartmuseum.codefresh.io/charts-manager
-  condition: charts-manager.enabled
-- name: cfsign
-  version: "*"
-  repository: https://chartmuseum.codefresh.io/cfsign
-  condition: cfsign.enabled
-- name: tasker-kubernetes
-  version: "*"
-  repository: https://chartmuseum.codefresh.io/tasker-kubernetes
-  condition: tasker-kubernetes.enabled
-- name: context-manager
-  version: "*"
-  repository: https://chartmuseum.codefresh.io/context-manager
-  condition: context-manager.enabled
-- name: pipeline-manager
-  version: "*"
-  repository: https://chartmuseum.codefresh.io/pipeline-manager
-  condition: pipeline-manager.enabled
-- name: gitops-dashboard-manager
-  version: "*"
-  repository: https://chartmuseum.codefresh.io/gitops-dashboard-manager
-  condition: gitops-dashboard-manager.enabled
-- name: cfapi
-  alias: cfapi
-  version: "*"
-  repository: https://chartmuseum.codefresh.io/cfapi
-  condition: cfapi.enabled
-- name: cfapi
-  alias: cfapi-internal
-  version: "*"
-  repository: https://chartmuseum.codefresh.io/cfapi
-  condition: cfapi-internal.enabled
-- name: cfapi
-  alias: cfapi-ws
-  version: "*"
-  repository: https://chartmuseum.codefresh.io/cfapi
-  condition: cfapi-ws.enabled
-- name: cfapi
-  alias: cfapi-admin
-  version: "*"
-  repository: https://chartmuseum.codefresh.io/cfapi
-  condition: cfapi-admin.enabled
-- name: cfapi
-  alias: cfapi-endpoints
-  version: "*"
-  repository: https://chartmuseum.codefresh.io/cfapi
-  condition: cfapi-endpoints.enabled
-- name: cfapi
-  alias: cfapi-terminators
-  version: "*"
-  repository: https://chartmuseum.codefresh.io/cfapi
-  condition: cfapi-terminators.enabled
-- name: cfapi
-  alias: cfapi-sso-group-synchronizer
-  version: "*"
-  repository: https://chartmuseum.codefresh.io/cfapi
-  condition: cfapi-sso-group-synchronizer.enabled
-- name: cfapi
-  alias: cfapi-buildmanager
-  version: "*"
-  repository: https://chartmuseum.codefresh.io/cfapi
-  condition: cfapi-buildmanager.enabled
-- name: cfapi
-  alias: cfapi-cacheevictmanager
-  version: "*"
-  repository: https://chartmuseum.codefresh.io/cfapi
-  condition: cfapi-cacheevictmanager.enabled
-- name: cfapi
-  alias: cfapi-eventsmanagersubscriptions
-  version: "*"
-  repository: https://chartmuseum.codefresh.io/cfapi
-  condition: cfapi-eventsmanagersubscriptions.enabled
-- name: cfapi
-  alias: cfapi-kubernetesresourcemonitor
-  version: "*"
-  repository: https://chartmuseum.codefresh.io/cfapi
-  condition: cfapi-kubernetesresourcemonitor.enabled
-- name: cfapi
-  alias: cfapi-environments
-  version: "*"
-  repository: https://chartmuseum.codefresh.io/cfapi
-  condition: cfapi-environments.enabled
-- name: cfapi
-  alias: cfapi-gitops-resource-receiver
-  version: "*"
-  repository: https://chartmuseum.codefresh.io/cfapi
-  condition: cfapi-gitops-resource-receiver.enabled
-- name: cfapi
-  alias: cfapi-downloadlogmanager
-  version: "*"
-  repository: https://chartmuseum.codefresh.io/cfapi
-  condition: cfapi-downloadlogmanager.enabled
-- name: cfapi
-  alias: cfapi-teams
-  version: "*"
-  repository: https://chartmuseum.codefresh.io/cfapi
-  condition: cfapi-teams.enabled
-- name: cfapi
-  alias: cfapi-kubernetes-endpoints
-  version: "*"
-  repository: https://chartmuseum.codefresh.io/cfapi
-  condition: cfapi-kubernetes-endpoints.enabled
-- name: cfapi
-  alias: cfapi-test-reporting
-  version: "*"
-  repository: https://chartmuseum.codefresh.io/cfapi
-  condition: cfapi-test-reporting.enabled
-- name: cfui
-  version: "*"
-  repository: https://chartmuseum.codefresh.io/cfui
-  condition: cfui.enabled
-- name: k8s-monitor
-  version: "*"
-  repository: https://chartmuseum.codefresh.io/k8s-monitor
-  condition: k8s-monitor.enabled
-- name: runtime-environment-manager
-  version: "*"
-  repository: https://chartmuseum.codefresh.io/runtime-environment-manager
-  condition: runtime-environment-manager.enabled
-- name: cf-broadcaster
-  version: "*"
-  repository: https://chartmuseum.codefresh.io/cf-broadcaster
-  condition: cf-broadcaster.enabled
-- name: helm-repo-manager
-  version: "*"
-  repository: https://chartmuseum.codefresh.io/helm-repo-manager
-  condition: helm-repo-manager.enabled
-- name: hermes
-  version: "*"
-  repository: https://chartmuseum.codefresh.io/hermes
-  condition: hermes.enabled
-- name: nomios
-  version: "*"
-  repository: https://chartmuseum.codefresh.io/nomios
-  condition: hermes.enabled
-- name: cronus
-  version: "*"
-  repository: https://chartmuseum.codefresh.io/cronus
-  condition: hermes.enabled
-- name: cf-platform-analytics
-  alias: cf-platform-analytics-platform
-  version: "*"
-  repository: https://chartmuseum.codefresh.io/cf-platform-analytics
-  condition: argo-platform.enabled
-- name: cf-platform-analytics
-  alias: cf-platform-analytics-etlstarter
-  version: "*"
-  repository: https://chartmuseum.codefresh.io/cf-platform-analytics
-  condition: argo-platform.enabled
-- name: argo-platform
-  version: "*"
-  repository: https://chartmuseum.codefresh.io/argo-platform
-  condition: argo-platform.enabled
-- name: argo-hub-platform
-  version: "*"
-  repository: https://chartmuseum.codefresh.io/argo-hub-platform
-  condition: argo-platform.enabled
-- name: codefresh-tunnel-server
-  version: "*"
-  repository: https://chartmuseum.codefresh.io/codefresh-tunnel-server
-  condition: codefresh-tunnel-server.enabled
+  - name: cf-common
+    repository: https://chartmuseum.codefresh.io/cf-common
+    version: 0.8.1
+  - name: internal-gateway
+    repository: https://chartmuseum.codefresh.io/internal-gateway
+    version: "0.1.1"
+    condition: argo-platform.enabled
+  - name: consul
+    version: 10.11.2
+    repository: https://charts.bitnami.com/bitnami
+    condition: consul.enabled
+  - name: mongodb
+    version: 13.12.1
+    repository: https://charts.bitnami.com/bitnami
+    condition: mongodb.enabled,mongo.enabled,global.mongoDeploy
+  - name: postgresql
+    version: 12.5.1
+    repository: https://charts.bitnami.com/bitnami
+    condition: postgresql.enabled
+  - name: redis
+    version: 17.10.3
+    repository: https://charts.bitnami.com/bitnami
+    condition: redis.enabled
+  - name: rabbitmq
+    version: 11.15.2
+    repository: https://charts.bitnami.com/bitnami
+    condition: rabbitmq.enabled
+  - name: nats
+    version: 7.8.1
+    repository: https://charts.bitnami.com/bitnami
+    condition: nats.enabled
+  - name: builder
+    repository: https://chartmuseum.codefresh.io/builder
+    condition: builder.enabled
+    version: 1.1.3
+  - name: runner
+    repository: https://chartmuseum.codefresh.io/runner
+    condition: runner.enabled
+    version: 1.1.3
+  - name: ingress-nginx
+    version: 4.6.1
+    repository: https://kubernetes.github.io/ingress-nginx
+    condition: ingress-nginx.enabled
+  - name: cluster-providers
+    version: "*"
+    repository: https://chartmuseum.codefresh.io/cluster-providers
+    condition: cluster-providers.enabled
+  - name: kube-integration
+    version: "*"
+    repository: https://chartmuseum.codefresh.io/kube-integration
+    condition: kube-integration.enabled
+  - name: charts-manager
+    version: "*"
+    repository: https://chartmuseum.codefresh.io/charts-manager
+    condition: charts-manager.enabled
+  - name: cfsign
+    version: "*"
+    repository: https://chartmuseum.codefresh.io/cfsign
+    condition: cfsign.enabled
+  - name: tasker-kubernetes
+    version: "*"
+    repository: https://chartmuseum.codefresh.io/tasker-kubernetes
+    condition: tasker-kubernetes.enabled
+  - name: context-manager
+    version: "*"
+    repository: https://chartmuseum.codefresh.io/context-manager
+    condition: context-manager.enabled
+  - name: pipeline-manager
+    version: "*"
+    repository: https://chartmuseum.codefresh.io/pipeline-manager
+    condition: pipeline-manager.enabled
+  - name: gitops-dashboard-manager
+    version: "*"
+    repository: https://chartmuseum.codefresh.io/gitops-dashboard-manager
+    condition: gitops-dashboard-manager.enabled
+  - name: cfapi
+    alias: cfapi
+    version: "~21.224.0"
+    repository: https://chartmuseum.codefresh.io/cfapi
+    condition: cfapi.enabled
+  - name: cfapi
+    alias: cfapi-internal
+    version: "~21.224.0"
+    repository: https://chartmuseum.codefresh.io/cfapi
+    condition: cfapi-internal.enabled
+  - name: cfapi
+    alias: cfapi-ws
+    version: "~21.224.0"
+    repository: https://chartmuseum.codefresh.io/cfapi
+    condition: cfapi-ws.enabled
+  - name: cfapi
+    alias: cfapi-admin
+    version: "~21.224.0"
+    repository: https://chartmuseum.codefresh.io/cfapi
+    condition: cfapi-admin.enabled
+  - name: cfapi
+    alias: cfapi-endpoints
+    version: "~21.224.0"
+    repository: https://chartmuseum.codefresh.io/cfapi
+    condition: cfapi-endpoints.enabled
+  - name: cfapi
+    alias: cfapi-terminators
+    version: "~21.224.0"
+    repository: https://chartmuseum.codefresh.io/cfapi
+    condition: cfapi-terminators.enabled
+  - name: cfapi
+    alias: cfapi-sso-group-synchronizer
+    version: "~21.224.0"
+    repository: https://chartmuseum.codefresh.io/cfapi
+    condition: cfapi-sso-group-synchronizer.enabled
+  - name: cfapi
+    alias: cfapi-buildmanager
+    version: "~21.224.0"
+    repository: https://chartmuseum.codefresh.io/cfapi
+    condition: cfapi-buildmanager.enabled
+  - name: cfapi
+    alias: cfapi-cacheevictmanager
+    version: "~21.224.0"
+    repository: https://chartmuseum.codefresh.io/cfapi
+    condition: cfapi-cacheevictmanager.enabled
+  - name: cfapi
+    alias: cfapi-eventsmanagersubscriptions
+    version: "~21.224.0"
+    repository: https://chartmuseum.codefresh.io/cfapi
+    condition: cfapi-eventsmanagersubscriptions.enabled
+  - name: cfapi
+    alias: cfapi-kubernetesresourcemonitor
+    version: "~21.224.0"
+    repository: https://chartmuseum.codefresh.io/cfapi
+    condition: cfapi-kubernetesresourcemonitor.enabled
+  - name: cfapi
+    alias: cfapi-environments
+    version: "~21.224.0"
+    repository: https://chartmuseum.codefresh.io/cfapi
+    condition: cfapi-environments.enabled
+  - name: cfapi
+    alias: cfapi-gitops-resource-receiver
+    version: "~21.224.0"
+    repository: https://chartmuseum.codefresh.io/cfapi
+    condition: cfapi-gitops-resource-receiver.enabled
+  - name: cfapi
+    alias: cfapi-downloadlogmanager
+    version: "~21.224.0"
+    repository: https://chartmuseum.codefresh.io/cfapi
+    condition: cfapi-downloadlogmanager.enabled
+  - name: cfapi
+    alias: cfapi-teams
+    version: "~21.224.0"
+    repository: https://chartmuseum.codefresh.io/cfapi
+    condition: cfapi-teams.enabled
+  - name: cfapi
+    alias: cfapi-kubernetes-endpoints
+    version: "~21.224.0"
+    repository: https://chartmuseum.codefresh.io/cfapi
+    condition: cfapi-kubernetes-endpoints.enabled
+  - name: cfapi
+    alias: cfapi-test-reporting
+    version: "~21.224.0"
+    repository: https://chartmuseum.codefresh.io/cfapi
+    condition: cfapi-test-reporting.enabled
+  - name: cfui
+    version: "~14.88.0"
+    repository: https://chartmuseum.codefresh.io/cfui
+    condition: cfui.enabled
+  - name: k8s-monitor
+    version: "*"
+    repository: https://chartmuseum.codefresh.io/k8s-monitor
+    condition: k8s-monitor.enabled
+  - name: runtime-environment-manager
+    version: "*"
+    repository: https://chartmuseum.codefresh.io/runtime-environment-manager
+    condition: runtime-environment-manager.enabled
+  - name: cf-broadcaster
+    version: "*"
+    repository: https://chartmuseum.codefresh.io/cf-broadcaster
+    condition: cf-broadcaster.enabled
+  - name: helm-repo-manager
+    version: "*"
+    repository: https://chartmuseum.codefresh.io/helm-repo-manager
+    condition: helm-repo-manager.enabled
+  - name: hermes
+    version: "*"
+    repository: https://chartmuseum.codefresh.io/hermes
+    condition: hermes.enabled
+  - name: nomios
+    version: "*"
+    repository: https://chartmuseum.codefresh.io/nomios
+    condition: hermes.enabled
+  - name: cronus
+    version: "*"
+    repository: https://chartmuseum.codefresh.io/cronus
+    condition: hermes.enabled
+  - name: cf-platform-analytics
+    alias: cf-platform-analytics-platform
+    version: "*"
+    repository: https://chartmuseum.codefresh.io/cf-platform-analytics
+    condition: argo-platform.enabled
+  - name: cf-platform-analytics
+    alias: cf-platform-analytics-etlstarter
+    version: "*"
+    repository: https://chartmuseum.codefresh.io/cf-platform-analytics
+    condition: argo-platform.enabled
+  - name: argo-platform
+    version: "*"
+    repository: https://chartmuseum.codefresh.io/argo-platform
+    condition: argo-platform.enabled
+  - name: argo-hub-platform
+    version: "*"
+    repository: https://chartmuseum.codefresh.io/argo-hub-platform
+    condition: argo-platform.enabled
+  - name: codefresh-tunnel-server
+    version: "*"
+    repository: https://chartmuseum.codefresh.io/codefresh-tunnel-server
+    condition: codefresh-tunnel-server.enabled
