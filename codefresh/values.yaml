@@ -182,7 +182,7 @@ global:
   dockerRegistry: ""
 
   # -- Keep `codefresh` as default!
-  # Global codefresh chart name. All subcharts use this name to access secrets and configmaps.
+  # Used for subcharts to access external secrets and configmaps.
   codefresh: codefresh
   # -- Keep `true` as default!
   onprem: true
@@ -265,7 +265,7 @@ global:
   # Ref: https://www.mongodb.com/docs/manual/reference/connection-string/
   # Note! `defaultauthdb` is omitted here on purpose (i.e. mongodb://.../[defaultauthdb]).
   # Mongo seed job will create and add `cfuser` (username and password are taken from `.Values.global.mongoURI`) with "ReadWrite" permissions to all of the required databases
-  mongoURI: "mongodb://cfuser:mTiXcU2wafr9@cf-mongodb:27017"
+  mongoURI: "mongodb://cfuser:mTiXcU2wafr9@cf-mongodb:27017/"
   # -- Default MongoDB database name. Don't change!
   mongodbDatabase: codefresh
   # -- DEPRECATED - Use `.Values.seed.mongoSeedJob` instead.
@@ -275,7 +275,7 @@ global:
 
   # Mongo parameters for OfflineLogging. Should match the parameters above.
   # -- Default Internal MongoDB URI
-  runtimeMongoURI: mongodb://cfuser:mTiXcU2wafr9@cf-mongodb:27017
+  runtimeMongoURI: mongodb://cfuser:mTiXcU2wafr9@cf-mongodb:27017/
   # -- Default Internal MongoDB database name
   runtimeMongoDb: codefresh
 
@@ -875,6 +875,8 @@ mongodb:
     enabled: true
     rootUser: root
     rootPassword: "XT9nmM8dZD"
+  service:
+    nameOverride: cf-mongodb
   resources:
     requests:
       cpu: 200m

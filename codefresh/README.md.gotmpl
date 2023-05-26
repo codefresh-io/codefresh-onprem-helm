@@ -81,6 +81,7 @@ ingress:
   enabled: true
   # -- Set the ingressClass that is used for the ingress.
   # Default `nginx-codefresh` is created from `ingress-nginx` controller subchart
+  # If you specify a different ingress class, disable `ingress-nginx` subchart (see below)
   ingressClassName: nginx-codefresh
   tls:
     # -- Enable TLS
@@ -93,9 +94,12 @@ ingress:
     key: ""
     # -- Existing `kubernetes.io/tls` type secret with TLS certificates (keys: `tls.crt`, `tls.key`)
     existingSecret: ""
-```
 
-**Important:** use `cf` as Release Name at the moment
+# -- ingress-nginx
+ingress-nginx:
+  # -- Enable ingress-nginx controller
+  enabled: true
+```
 
 - Install the chart
 

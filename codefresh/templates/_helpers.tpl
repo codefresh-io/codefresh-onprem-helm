@@ -91,6 +91,6 @@ Usage:
     {{- $mongoURI :=  (splitList "?" .mongoURI) -}}
     {{- printf "%s%s?%s" (first $mongoURI) .dbName (last $mongoURI) }}
   {{- else -}}
-    {{- printf "%s/%s" .mongoURI .dbName -}}
+    {{- printf "%s/%s" (trimSuffix "/" .mongoURI) .dbName -}}
   {{- end -}}
 {{- end -}}

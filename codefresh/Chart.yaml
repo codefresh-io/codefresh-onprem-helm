@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.0.0
+version: 2.0.1
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -15,12 +15,16 @@ appVersion: 2.0.0
 annotations:
   artifacthub.io/alternativeName: "codefresh-onprem"
   artifacthub.io/changes: |
+    - kind: fixed
+      description: Fix mongodb service name
+    - kind: fixed
+      description: Fix configmap name for builder
     - kind: changed
-      description: Bump cf-ui, cf-api, argo-platform, etc
+      description: Bump cf-common lib chart
 dependencies:
   - name: cf-common
     repository: https://chartmuseum.codefresh.io/cf-common
-    version: 0.8.1
+    version: 0.9.2
   - name: internal-gateway
     repository: https://chartmuseum.codefresh.io/internal-gateway
     version: "0.1.1"
@@ -221,7 +225,7 @@ dependencies:
     repository: https://chartmuseum.codefresh.io/cf-platform-analytics
     condition: argo-platform.enabled
   - name: argo-platform
-    version: "*"
+    version: "1.2265.0"
     repository: https://chartmuseum.codefresh.io/argo-platform
     condition: argo-platform.enabled
   - name: argo-hub-platform

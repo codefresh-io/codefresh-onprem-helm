@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.0.0](https://img.shields.io/badge/Version-2.0.0-informational?style=flat-square) ![AppVersion: 2.0.0](https://img.shields.io/badge/AppVersion-2.0.0-informational?style=flat-square)
+![Version: 2.0.1](https://img.shields.io/badge/Version-2.0.1-informational?style=flat-square) ![AppVersion: 2.0.0](https://img.shields.io/badge/AppVersion-2.0.0-informational?style=flat-square)
 
 ## Table of Content
 
@@ -80,6 +80,7 @@ ingress:
   enabled: true
   # -- Set the ingressClass that is used for the ingress.
   # Default `nginx-codefresh` is created from `ingress-nginx` controller subchart
+  # If you specify a different ingress class, disable `ingress-nginx` subchart (see below)
   ingressClassName: nginx-codefresh
   tls:
     # -- Enable TLS
@@ -92,9 +93,12 @@ ingress:
     key: ""
     # -- Existing `kubernetes.io/tls` type secret with TLS certificates (keys: `tls.crt`, `tls.key`)
     existingSecret: ""
-```
 
-**Important:** use `cf` as Release Name at the moment
+# -- ingress-nginx
+ingress-nginx:
+  # -- Enable ingress-nginx controller
+  enabled: true
+```
 
 - Install the chart
 
@@ -1067,7 +1071,7 @@ The bare minimal workload footprint for the new services (without HPA or PDB) is
 | global.chartsManagerService | string | `"charts-manager"` | Default charts-manager service name. |
 | global.clusterProvidersPort | int | `9000` | Default cluster-providers service port. |
 | global.clusterProvidersService | string | `"cluster-providers"` | Default cluster-providers service name. |
-| global.codefresh | string | `"codefresh"` | Keep `codefresh` as default! Global codefresh chart name. All subcharts use this name to access secrets and configmaps. |
+| global.codefresh | string | `"codefresh"` | Keep `codefresh` as default! Used for subcharts to access external secrets and configmaps. |
 | global.consulHttpPort | int | `8500` | Default Consul service port. |
 | global.consulService | string | `"consul-headless"` | Default Consul service name. |
 | global.contextManagerPort | int | `9000` | Default context-manager service port. |
@@ -1085,7 +1089,7 @@ The bare minimal workload footprint for the new services (without HPA or PDB) is
 | global.imageRegistry | string | `""` | Global Docker image registry |
 | global.kubeIntegrationPort | int | `9000` | Default kube-integration service port. |
 | global.kubeIntegrationService | string | `"kube-integration"` | Default kube-integration service name. |
-| global.mongoURI | string | `"mongodb://cfuser:mTiXcU2wafr9@cf-mongodb:27017"` | Default Internal MongoDB URI (from bitnami/mongodb subchart).. Change if you use external MongoDB. See "External MongoDB" example below. Will be used by ALL services to communicate with MongoDB. Ref: https://www.mongodb.com/docs/manual/reference/connection-string/ Note! `defaultauthdb` is omitted here on purpose (i.e. mongodb://.../[defaultauthdb]). Mongo seed job will create and add `cfuser` (username and password are taken from `.Values.global.mongoURI`) with "ReadWrite" permissions to all of the required databases |
+| global.mongoURI | string | `"mongodb://cfuser:mTiXcU2wafr9@cf-mongodb:27017/"` | Default Internal MongoDB URI (from bitnami/mongodb subchart).. Change if you use external MongoDB. See "External MongoDB" example below. Will be used by ALL services to communicate with MongoDB. Ref: https://www.mongodb.com/docs/manual/reference/connection-string/ Note! `defaultauthdb` is omitted here on purpose (i.e. mongodb://.../[defaultauthdb]). Mongo seed job will create and add `cfuser` (username and password are taken from `.Values.global.mongoURI`) with "ReadWrite" permissions to all of the required databases |
 | global.mongodbDatabase | string | `"codefresh"` | Default MongoDB database name. Don't change! |
 | global.mongodbRootPassword | string | `""` | DEPRECATED - Use `.Values.seed.mongoSeedJob` instead. |
 | global.mongodbRootUser | string | `""` | DEPRECATED - Use `.Values.seed.mongoSeedJob` instead. |
@@ -1117,7 +1121,7 @@ The bare minimal workload footprint for the new services (without HPA or PDB) is
 | global.runtimeEnvironmentManagerPort | int | `80` | Default runtime-environment-manager service port. |
 | global.runtimeEnvironmentManagerService | string | `"runtime-environment-manager"` | Default runtime-environment-manager service name. |
 | global.runtimeMongoDb | string | `"codefresh"` | Default Internal MongoDB database name |
-| global.runtimeMongoURI | string | `"mongodb://cfuser:mTiXcU2wafr9@cf-mongodb:27017"` | Default Internal MongoDB URI |
+| global.runtimeMongoURI | string | `"mongodb://cfuser:mTiXcU2wafr9@cf-mongodb:27017/"` | Default Internal MongoDB URI |
 | global.runtimeRedisDb | string | `"1"` | Default Redis keyspace number. |
 | global.runtimeRedisHost | string | `""` | Set External Redis service address. Keep empty in built-in redis chart is used (i.e. `.Values.redis.enabled=true`) |
 | global.runtimeRedisPassword | string | `"hoC9szf7NtrU"` | Default Redis password. |

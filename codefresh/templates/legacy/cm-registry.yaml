@@ -1,7 +1,8 @@
+{{ $name := printf "%v-%v-%v" .Release.Name .Values.global.codefresh "registry" }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ include "codefresh.fullname" . }}-registry
+  name: {{ $name }}
   labels:
     {{ include "codefresh.labels" . | nindent 4 }}
 data:
