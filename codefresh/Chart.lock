@@ -28,31 +28,31 @@ dependencies:
   version: 4.3.0
 - name: cluster-providers
   repository: https://chartmuseum.codefresh.io/cluster-providers
-  version: 1.12.2
+  version: 1.15.1
 - name: kube-integration
   repository: https://chartmuseum.codefresh.io/kube-integration
-  version: 1.27.1
+  version: 1.29.6
 - name: charts-manager
   repository: https://chartmuseum.codefresh.io/charts-manager
-  version: 1.12.2
+  version: 1.15.8
 - name: cfsign
   repository: https://chartmuseum.codefresh.io/cfsign
   version: 1.4.2
 - name: tasker-kubernetes
   repository: https://chartmuseum.codefresh.io/tasker-kubernetes
-  version: 1.20.1
+  version: 1.23.3
 - name: context-manager
   repository: https://chartmuseum.codefresh.io/context-manager
-  version: 2.21.9
+  version: 2.24.3
 - name: pipeline-manager
   repository: https://chartmuseum.codefresh.io/pipeline-manager
-  version: 3.123.22
+  version: 3.126.5
 - name: gitops-dashboard-manager
   repository: https://chartmuseum.codefresh.io/gitops-dashboard-manager
-  version: 1.11.0
+  version: 1.13.6
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.200.9
+  version: 21.200.12
 - name: cfapi-internal
   repository: https://chartmuseum.codefresh.io/cfapi-internal
   version: 21.200.9
@@ -106,24 +106,24 @@ dependencies:
   version: 14.86.32
 - name: k8s-monitor
   repository: https://chartmuseum.codefresh.io/k8s-monitor
-  version: 4.9.4
+  version: 4.10.3
 - name: runtime-environment-manager
   repository: https://chartmuseum.codefresh.io/runtime-environment-manager
-  version: 3.23.11
+  version: 3.25.3
 - name: cf-broadcaster
   repository: https://chartmuseum.codefresh.io/cf-broadcaster
-  version: 1.10.21
+  version: 1.11.5
 - name: helm-repo-manager
   repository: https://chartmuseum.codefresh.io/helm-repo-manager
-  version: 0.9.5
+  version: 0.10.4
 - name: hermes
   repository: https://chartmuseum.codefresh.io/hermes
-  version: 0.18.1
+  version: 0.20.3
 - name: nomios
   repository: https://chartmuseum.codefresh.io/nomios
   version: 0.9.12
 - name: cronus
   repository: https://chartmuseum.codefresh.io/cronus
   version: 0.6.7
-digest: sha256:2574e17970ead4b9c6ca35767e67a66342eaff236343e7a55bbb9b55eb53d221
-generated: "2023-03-30T20:16:19.029657899+03:00"
+digest: sha256:1166cfdd1f874c93ca3e21d69f1617dd2862291e136af109a6bb95d2c455fb67
+generated: "2023-05-27T00:19:42.428644745+03:00"

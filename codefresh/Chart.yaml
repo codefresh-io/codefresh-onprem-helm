@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Codefresh CD pipeline management platform for Kubernetes
 name: codefresh
-version: 1.4.7
+version: 1.4.8
 kubeVersion: '>=1.19.0-0'
 keywords:
   - codefresh
@@ -71,43 +71,43 @@ dependencies:
     tags:
       - cf-infra
   - name: cluster-providers
-    version: "~1.12.0"
+    version: "*"
     repository: https://chartmuseum.codefresh.io/cluster-providers
     tags:
       - cf-infra
   - name: kube-integration
-    version: "~1.27.0"
+    version: "*"
     repository: https://chartmuseum.codefresh.io/kube-integration
     tags:
       - cf-infra
   - name: charts-manager
-    version: "~1.12.0"
+    version: "*"
     repository: https://chartmuseum.codefresh.io/charts-manager
     tags:
       - cf-infra
   - name: cfsign
-    version: "*"
+    version: "1.4.2"
     repository: https://chartmuseum.codefresh.io/cfsign
     condition: cfsign.enabled
     tags:
       - cf-infra
   - name: tasker-kubernetes
-    version: "~1.20.0"
+    version: "*"
     repository: https://chartmuseum.codefresh.io/tasker-kubernetes
     tags:
       - cf-infra
   - name: context-manager
-    version: "~2.21.0"
+    version: "*"
     repository: https://chartmuseum.codefresh.io/context-manager
     tags:
       - cf-infra
   - name: pipeline-manager
-    version: "~3.123.0"
+    version: "*"
     repository: https://chartmuseum.codefresh.io/pipeline-manager
     tags:
       - cf-infra
   - name: gitops-dashboard-manager
-    version: "~1.11.0"
+    version: "*"
     repository: https://chartmuseum.codefresh.io/gitops-dashboard-manager
     tags:
       - cf-infra
@@ -226,7 +226,7 @@ dependencies:
     tags:
       - cf-infra
   - name: runtime-environment-manager
-    version: "~3.23.0"
+    version: "*"
     repository: https://chartmuseum.codefresh.io/runtime-environment-manager
     condition: runtime-environment-manager.enabled
     tags:
@@ -250,13 +250,13 @@ dependencies:
     tags:
       - cf-infra
   - name: nomios
-    version: "*"
+    version: "0.9.12"
     repository: https://chartmuseum.codefresh.io/nomios
     condition: hermes.enabled
     tags:
       - cf-infra
   - name: cronus
-    version: "*"
+    version: "0.6.7"
     repository: https://chartmuseum.codefresh.io/cronus
     condition: hermes.enabled
     tags:

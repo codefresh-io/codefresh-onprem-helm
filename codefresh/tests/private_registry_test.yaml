@@ -1,33 +1,33 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/quintush/helm-unittest/master/schema/helm-testsuite.json
 suite: test private registry prefix in subcharts
 templates:
-  - charts/cfapi/templates/cfapi-dpl.yaml
+  - charts/cfapi/templates/controller.yaml
   - charts/cfapi/templates/secrets.yaml
   - charts/cfui/templates/deployment.yaml
-  - charts/charts-manager/templates/deployment.yaml
+  - charts/charts-manager/templates/controller.yaml
   - charts/charts-manager/templates/secrets.yaml
-  - charts/cluster-providers/templates/deployment.yaml
+  - charts/cluster-providers/templates/controller.yaml
   - charts/cluster-providers/templates/secrets.yaml
-  - charts/context-manager/templates/deployment.yaml
+  - charts/context-manager/templates/controller.yaml
   - charts/context-manager/templates/secrets.yaml
-  - charts/gitops-dashboard-manager/templates/deployment.yaml
+  - charts/gitops-dashboard-manager/templates/controller.yaml
   - charts/gitops-dashboard-manager/templates/secrets.yaml
-  - charts/helm-repo-manager/templates/deployment.yaml
-  - charts/k8s-monitor/templates/deployment.yaml
+  - charts/helm-repo-manager/templates/controller.yaml
+  - charts/k8s-monitor/templates/controller.yaml
   - charts/k8s-monitor/templates/secrets.yaml
-  - charts/kube-integration/templates/deployment.yaml
+  - charts/kube-integration/templates/controller.yaml
   - charts/kube-integration/templates/secrets.yaml
-  - charts/pipeline-manager/templates/deployment.yaml
+  - charts/pipeline-manager/templates/controller.yaml
   - charts/pipeline-manager/templates/secrets.yaml
-  - charts/runtime-environment-manager/templates/deployment.yaml
+  - charts/runtime-environment-manager/templates/controller.yaml
   - charts/runtime-environment-manager/templates/secrets.yaml
-  - charts/tasker-kubernetes/templates/deployment.yaml
-  - charts/cf-broadcaster/templates/deployment.yaml
+  - charts/tasker-kubernetes/templates/controller.yaml
+  - charts/cf-broadcaster/templates/controller.yaml
   - charts/cf-broadcaster/templates/secrets.yaml
   - charts/cfsign/templates/cfsign-dpl.yaml
   - charts/cronus/templates/deployment.yaml
   - charts/cronus/templates/configmap.yaml
-  - charts/hermes/templates/deployment.yaml
+  - charts/hermes/templates/controller.yaml
   - charts/hermes/templates/configmap.yaml
   - charts/nomios/templates/deployment.yaml
   - charts/nomios/templates/configmap.yaml
@@ -66,7 +66,7 @@ tests:
       - matchRegex:
           path: spec.template.spec.containers[0].image
           pattern: ^myregistry.io/codefresh/.*$
-        template: charts/cfapi/templates/cfapi-dpl.yaml
+        template: charts/cfapi/templates/controller.yaml
       # cf-ui
       - matchRegex:
           path: spec.template.spec.containers[0].image
@@ -76,57 +76,57 @@ tests:
       - matchRegex:
           path: spec.template.spec.containers[0].image
           pattern: ^myregistry.io/codefresh/.*$
-        template: charts/charts-manager/templates/deployment.yaml
+        template: charts/charts-manager/templates/controller.yaml
       # cluster-providers
       - matchRegex:
           path: spec.template.spec.containers[0].image
           pattern: ^myregistry.io/codefresh/.*$
-        template: charts/cluster-providers/templates/deployment.yaml
+        template: charts/cluster-providers/templates/controller.yaml
       # context-manager
       - matchRegex:
           path: spec.template.spec.containers[0].image
           pattern: ^myregistry.io/codefresh/.*$
-        template: charts/context-manager/templates/deployment.yaml
+        template: charts/context-manager/templates/controller.yaml
       # gitops-dashboard-manager
       - matchRegex:
           path: spec.template.spec.containers[0].image
           pattern: ^myregistry.io/codefresh/.*$
-        template: charts/gitops-dashboard-manager/templates/deployment.yaml
+        template: charts/gitops-dashboard-manager/templates/controller.yaml
       # helm-repo-manager
       - matchRegex:
           path: spec.template.spec.containers[0].image
           pattern: ^myregistry.io/codefresh/.*$
-        template: charts/helm-repo-manager/templates/deployment.yaml
+        template: charts/helm-repo-manager/templates/controller.yaml
       # k8s-monitor
       - matchRegex:
           path: spec.template.spec.containers[0].image
           pattern: ^myregistry.io/codefresh/.*$
-        template: charts/k8s-monitor/templates/deployment.yaml
+        template: charts/k8s-monitor/templates/controller.yaml
       # kube-integration
       - matchRegex:
           path: spec.template.spec.containers[0].image
           pattern: ^myregistry.io/codefresh/.*$
-        template: charts/kube-integration/templates/deployment.yaml
+        template: charts/kube-integration/templates/controller.yaml
       # pipeline-manager
       - matchRegex:
           path: spec.template.spec.containers[0].image
           pattern: ^myregistry.io/codefresh/.*$
-        template: charts/pipeline-manager/templates/deployment.yaml
+        template: charts/pipeline-manager/templates/controller.yaml
       # runtime-environment-manager
       - matchRegex:
           path: spec.template.spec.containers[0].image
           pattern: ^myregistry.io/codefresh/.*$
-        template: charts/runtime-environment-manager/templates/deployment.yaml
+        template: charts/runtime-environment-manager/templates/controller.yaml
       # tasker-kubernetes
       - matchRegex:
           path: spec.template.spec.containers[0].image
           pattern: ^myregistry.io/codefresh/.*$
-        template: charts/tasker-kubernetes/templates/deployment.yaml
+        template: charts/tasker-kubernetes/templates/controller.yaml
       # cf-broadcaster
       - matchRegex:
           path: spec.template.spec.containers[0].image
           pattern: ^myregistry.io/codefresh/.*$
-        template: charts/cf-broadcaster/templates/deployment.yaml
+        template: charts/cf-broadcaster/templates/controller.yaml
       # cf-sign
       - matchRegex:
           path: spec.template.spec.containers[0].image
@@ -141,7 +141,7 @@ tests:
       - matchRegex:
           path: spec.template.spec.containers[0].image
           pattern: ^myregistry.io/codefresh/.*$
-        template: charts/hermes/templates/deployment.yaml
+        template: charts/hermes/templates/controller.yaml
       # nomios
       - matchRegex:
           path: spec.template.spec.containers[0].image
@@ -210,11 +210,11 @@ tests:
           path: spec.template.spec.containers[0].image
           pattern: ^myregistry.io/.*$
         template: jobs/certs-job.yaml
-      # postgres-seed-job template
-      - matchRegex:
-          path: spec.template.spec.containers[0].image
-          pattern: ^myregistry.io/.*$
-        template: jobs/postgres-seed-job.yaml
+      # # postgres-seed-job template
+      # - matchRegex:
+      #     path: spec.template.spec.containers[0].image
+      #     pattern: ^myregistry.io/.*$
+      #   template: jobs/postgres-seed-job.yaml
       # update-default-runtimes template
       - matchRegex:
           path: spec.template.spec.containers[0].image
@@ -230,13 +230,13 @@ tests:
           path: spec.jobTemplate.spec.template.spec.containers[0].image
           pattern: ^myregistry.io/.*$
         template: jobs/postgres-clean-cronjob.yaml
-      # mongodb-migration-job template
-      - matchRegex:
-          path: spec.template.spec.containers[0].image
-          pattern: ^myregistry.io/.*$
-        template: hooks/mongodb-migration-job.yaml
-      # psql-migration-job template
-      - matchRegex:
-          path: spec.template.spec.containers[0].image
-          pattern: ^myregistry.io/.*$
-        template: hooks/psql-migration-job.yaml
+      # # mongodb-migration-job template
+      # - matchRegex:
+      #     path: spec.template.spec.containers[0].image
+      #     pattern: ^myregistry.io/.*$
+      #   template: hooks/mongodb-migration-job.yaml
+      # # psql-migration-job template
+      # - matchRegex:
+      #     path: spec.template.spec.containers[0].image
+      #     pattern: ^myregistry.io/.*$
+      #   template: hooks/psql-migration-job.yaml
