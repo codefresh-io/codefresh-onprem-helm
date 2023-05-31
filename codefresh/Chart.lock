@@ -46,13 +46,13 @@ dependencies:
   version: 2.24.3
 - name: pipeline-manager
   repository: https://chartmuseum.codefresh.io/pipeline-manager
-  version: 3.126.5
+  version: 3.127.0
 - name: gitops-dashboard-manager
   repository: https://chartmuseum.codefresh.io/gitops-dashboard-manager
   version: 1.13.6
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.200.12
+  version: 21.200.13
 - name: cfapi-internal
   repository: https://chartmuseum.codefresh.io/cfapi-internal
   version: 21.200.9
@@ -109,7 +109,7 @@ dependencies:
   version: 4.10.3
 - name: runtime-environment-manager
   repository: https://chartmuseum.codefresh.io/runtime-environment-manager
-  version: 3.25.3
+  version: 3.26.0
 - name: cf-broadcaster
   repository: https://chartmuseum.codefresh.io/cf-broadcaster
   version: 1.11.5
@@ -125,5 +125,5 @@ dependencies:
 - name: cronus
   repository: https://chartmuseum.codefresh.io/cronus
   version: 0.6.7
-digest: sha256:1166cfdd1f874c93ca3e21d69f1617dd2862291e136af109a6bb95d2c455fb67
-generated: "2023-05-27T00:19:42.428644745+03:00"
+digest: sha256:1f2d049af80cbf5c212a0320add020a079012414afceb4b98806348178158671
+generated: "2023-05-31T21:25:41.319656096+03:00"
