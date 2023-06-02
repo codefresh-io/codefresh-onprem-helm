@@ -38,16 +38,21 @@ RUNTIME_IMAGES=(
     PIPELINE_DEBUGGER_IMAGE
 )
 
+filename=$CHARTDIR/values.yaml
+
 for k in ${RUNTIME_IMAGES[@]}; do
     if [[ "$k" == "ENGINE_IMAGE" ]]; then
         image="$(jq -er .runtimeScheduler.image $runtimeJson)"
-        yq eval ".runtimeImages.ENGINE_IMAGE = \"$image\"" -i $CHARTDIR/values.yaml
+        patch "$filename" <<< $(diff -U0 -w -b --ignore-blank-lines $filename <(yq eval ".runtimeImages.ENGINE_IMAGE = \"$image\"" $filename)) || true
+        # yq eval ".runtimeImages.ENGINE_IMAGE = \"$image\"" -i $CHARTDIR/values.yaml
     elif [[ "$k" == "DIND_IMAGE" ]]; then
         image="$(jq -er .dockerDaemonScheduler.dindImage $runtimeJson)"
-        yq eval ".runtimeImages.DIND_IMAGE = \"$image\"" -i $CHARTDIR/values.yaml
+        patch "$filename" <<< $(diff -U0 -w -b --ignore-blank-lines $filename <(yq eval ".runtimeImages.DIND_IMAGE = \"$image\"" $filename)) || true
+        # yq eval ".runtimeImages.DIND_IMAGE = \"$image\"" -i $CHARTDIR/values.yaml
     else
         image="$(jq -er .runtimeScheduler.envVars.$k $runtimeJson)"
-        yq eval ".runtimeImages.\"$k\" = \"$image\"" -i $CHARTDIR/values.yaml
+        patch "$filename" <<< $(diff -U0 -w -b --ignore-blank-lines $filename <(yq eval ".runtimeImages.\"$k\" = \"$image\"" $filename)) || true
+        # yq eval ".runtimeImages.\"$k\" = \"$image\"" -i $CHARTDIR/values.yaml
    fi
 done
 

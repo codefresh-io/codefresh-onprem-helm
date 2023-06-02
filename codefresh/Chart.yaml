@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.0.1
+version: 2.0.2
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -16,11 +16,11 @@ annotations:
   artifacthub.io/alternativeName: "codefresh-onprem"
   artifacthub.io/changes: |
     - kind: fixed
-      description: Fix mongodb service name
-    - kind: fixed
-      description: Fix configmap name for builder
+      description: Fixed volume mounts paths and permissions for cf-tls-sign service
     - kind: changed
-      description: Bump cf-common lib chart
+      description: Updated runtime images (dind/engine/container-logger/docker-builder)
+    - kind: changed
+      description: Changed restart policy to Never in ETL cronjob
 dependencies:
   - name: cf-common
     repository: https://chartmuseum.codefresh.io/cf-common
@@ -90,7 +90,7 @@ dependencies:
     repository: https://chartmuseum.codefresh.io/context-manager
     condition: context-manager.enabled
   - name: pipeline-manager
-    version: "*"
+    version: "~3.126.0"
     repository: https://chartmuseum.codefresh.io/pipeline-manager
     condition: pipeline-manager.enabled
   - name: gitops-dashboard-manager
@@ -191,7 +191,7 @@ dependencies:
     repository: https://chartmuseum.codefresh.io/k8s-monitor
     condition: k8s-monitor.enabled
   - name: runtime-environment-manager
-    version: "*"
+    version: "~3.25.0"
     repository: https://chartmuseum.codefresh.io/runtime-environment-manager
     condition: runtime-environment-manager.enabled
   - name: cf-broadcaster

@@ -43,7 +43,7 @@ dependencies:
   version: 1.15.8
 - name: cfsign
   repository: https://chartmuseum.codefresh.io/cfsign
-  version: 1.5.1
+  version: 1.5.4
 - name: tasker-kubernetes
   repository: https://chartmuseum.codefresh.io/tasker-kubernetes
   version: 1.23.3
@@ -124,7 +124,7 @@ dependencies:
   version: 0.10.4
 - name: hermes
   repository: https://chartmuseum.codefresh.io/hermes
-  version: 0.20.2
+  version: 0.20.3
 - name: nomios
   repository: https://chartmuseum.codefresh.io/nomios
   version: 0.10.3
@@ -133,10 +133,10 @@ dependencies:
   version: 0.7.3
 - name: cf-platform-analytics
   repository: https://chartmuseum.codefresh.io/cf-platform-analytics
-  version: 0.46.6
+  version: 0.46.7
 - name: cf-platform-analytics
   repository: https://chartmuseum.codefresh.io/cf-platform-analytics
-  version: 0.46.6
+  version: 0.46.7
 - name: argo-platform
   repository: https://chartmuseum.codefresh.io/argo-platform
   version: 1.2265.0
@@ -146,5 +146,5 @@ dependencies:
 - name: codefresh-tunnel-server
   repository: https://chartmuseum.codefresh.io/codefresh-tunnel-server
   version: 0.1.12
-digest: sha256:a47b75e83207c6480e66c4c8d19c7f860a50f2270b112196fc848c0242386939
-generated: "2023-05-26T16:03:53.977709016+03:00"
+digest: sha256:028dc4f718843278efacc1258358e9bd71e87f599d034120f45a01e9049e63de
+generated: "2023-06-02T00:23:15.416504216+03:00"

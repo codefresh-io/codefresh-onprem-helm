@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.0.1](https://img.shields.io/badge/Version-2.0.1-informational?style=flat-square) ![AppVersion: 2.0.0](https://img.shields.io/badge/AppVersion-2.0.0-informational?style=flat-square)
+![Version: 2.0.2](https://img.shields.io/badge/Version-2.0.2-informational?style=flat-square) ![AppVersion: 2.0.0](https://img.shields.io/badge/AppVersion-2.0.0-informational?style=flat-square)
 
 ## Table of Content
 
@@ -34,7 +34,7 @@
 - GCR Service Account JSON `sa.json` (provided by Codefresh, contact support@codefresh.io)
 - Firebase url and secret
 - Valid TLS certificates for Ingress
-- When [external](#external-postgressql) PostgreSQL is used, `pg_cron` and `pg_partman` extensions **must be enabled** for [analytics](https://codefresh.io/docs/docs/dashboards/pipeline-analytics/#content) to work (see [AWS RDS example](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/PostgreSQL_pg_cron.html#PostgreSQL_pg_cron.enable))
+- When [external](#external-postgressql) PostgreSQL is used, `pg_cron` and `pg_partman` extensions **must be enabled** for [analytics](https://codefresh.io/docs/docs/dashboards/home-dashboard/#pipelines-dashboard) to work (see [AWS RDS example](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/PostgreSQL_pg_cron.html#PostgreSQL_pg_cron.enable))
 
 ## Get Repo Info and Pull Chart
 
@@ -944,8 +944,8 @@ seed:
 
 #### ⚠️ Migration to [Library Charts](https://helm.sh/docs/topics/library_charts/)
 
-All Codefresh subcharts templates (i.e. `cfapi`, `cfui`, `pipeline-manager`, `context-manager`, etc) has been migrated to use helm [library charts](https://helm.sh/docs/topics/library_charts/).
-That allows to unify values structure across all Codefresh owned charts. However, there are some **immutable** fields in the old charts which cannot be upgraded during a regular `helm upgrade`, thus additional manual actions are required.
+All Codefresh subchart templates (i.e. `cfapi`, `cfui`, `pipeline-manager`, `context-manager`, etc) have been migrated to use Helm [library charts](https://helm.sh/docs/topics/library_charts/).
+That allows unifying the values structure across all Codefresh-owned charts. However, there are some **immutable** fields in the old charts which cannot be upgraded during a regular `helm upgrade`, and require additional manual actions.
 
 Run the following commands before appying the upgrade.
 
@@ -973,7 +973,7 @@ nomios:
 
 #### ⚠️ New Services
 
-Codefesh 2.0.0 chart includes additional dependent microservices(charts):
+Codefesh 2.0.0 chart includes additional dependent microservices (charts):
 - `argo-platform`: Main Codefresh GitOps module.
 - `internal-gateway`: NGINX that proxies requests to the correct components (api-graphql, api-events, ui).
 - `argo-hub-platform`: Service for Argo Workflow templates.
@@ -1022,11 +1022,11 @@ The bare minimal workload footprint for the new services (without HPA or PDB) is
 | argo-platform.secrets | object | See below | Secrets anchors |
 | argo-platform.ui | object | See below | ui |
 | argo-platform.useExternalSecret | bool | `false` | Use regular k8s secret object. Keep `false`! |
-| builder | object | `{"enabled":true}` | builder |
+| builder | object | `{"affinity":{},"enabled":true,"nodeSelector":{},"podSecurityContext":{},"resources":{},"tolerations":[]}` | builder |
 | cf-broadcaster | object | See below | broadcaster |
 | cf-platform-analytics-etlstarter | object | See below | etl-starter |
 | cf-platform-analytics-etlstarter.redis.enabled | bool | `false` | Disable redis subchart |
-| cf-platform-analytics-etlstarter.system-etl-postgres | object | `{"enabled":true}` | Only postgres ETL should be running in onprem~ |
+| cf-platform-analytics-etlstarter.system-etl-postgres | object | `{"enabled":true}` | Only postgres ETL should be running in onprem |
 | cf-platform-analytics-platform | object | See below | platform-analytics |
 | cfapi | object | `{"affinity":{},"container":{"env":{"AUDIT_AUTO_CREATE_DB":true,"GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh"},"image":{"registry":"gcr.io/codefresh-enterprise"}},"controller":{"replicas":2},"enabled":true,"hpa":{"enabled":false,"maxReplicas":10,"minReplicas":2,"targetCPUUtilizationPercentage":70},"nodeSelector":{},"pdb":{"enabled":false,"minAvailable":"50%"},"podSecurityContext":{},"resources":{"limits":{},"requests":{"cpu":"200m","memory":"256Mi"}},"tolerations":[]}` | cf-api |
 | cfapi.container | object | `{"env":{"AUDIT_AUTO_CREATE_DB":true,"GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh"},"image":{"registry":"gcr.io/codefresh-enterprise"}}` | Container configuration |

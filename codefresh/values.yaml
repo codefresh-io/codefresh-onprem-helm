@@ -395,13 +395,13 @@ global:
 # @default -- See below
 runtimeImages:
   COMPOSE_IMAGE: quay.io/codefresh/compose:1.3.0
-  CONTAINER_LOGGER_IMAGE: quay.io/codefresh/cf-container-logger:1.10.1
-  DIND_IMAGE: quay.io/codefresh/dind:20.10.18-1.25.6
-  DOCKER_BUILDER_IMAGE: quay.io/codefresh/cf-docker-builder:1.3.1
+  CONTAINER_LOGGER_IMAGE: quay.io/codefresh/cf-container-logger:1.10.2
+  DIND_IMAGE: quay.io/codefresh/dind:20.10.18-1.25.7
+  DOCKER_BUILDER_IMAGE: quay.io/codefresh/cf-docker-builder:1.3.5
   DOCKER_PULLER_IMAGE: quay.io/codefresh/cf-docker-puller:8.0.9
   DOCKER_PUSHER_IMAGE: quay.io/codefresh/cf-docker-pusher:6.0.10
   DOCKER_TAG_PUSHER_IMAGE: quay.io/codefresh/cf-docker-tag-pusher:1.3.8
-  ENGINE_IMAGE: quay.io/codefresh/engine:1.164.0
+  ENGINE_IMAGE: quay.io/codefresh/engine:1.164.4
   FS_OPS_IMAGE: quay.io/codefresh/fs-ops:1.2.3
   GIT_CLONE_IMAGE: quay.io/codefresh/cf-git-cloner:10.1.18
   KUBE_DEPLOY: quay.io/codefresh/cf-deploy-kubernetes:16.1.11
@@ -414,6 +414,11 @@ runtimeImages:
 # -- builder
 builder:
   enabled: true
+  affinity: {}
+  nodeSelector: {}
+  podSecurityContext: {}
+  resources: {}
+  tolerations: []
 
 # -- cf-api
 cfapi: &cf-api
@@ -565,7 +570,7 @@ cf-platform-analytics-etlstarter:
   controller:
     # - Disable default deployment controller
     enabled: false
-  # -- Only postgres ETL should be running in onprem~
+  # -- Only postgres ETL should be running in onprem
   system-etl-postgres:
     enabled: true
   # @ignored
@@ -609,6 +614,10 @@ cf-platform-analytics-platform:
     CUBEJS_SCHEDULED_REFRESH_TIMER: 60
     CUBEJS_DEV_MODE: false
     SUPPORTED_DATA_SOURCE: 'CSDP_POSTGRES,CLASSIC_POSTGRES'
+  affinity: {}
+  nodeSelector: {}
+  podSecurityContext: {}
+  tolerations: []
 
 # -- tls-sign
 # @default -- See below
@@ -617,9 +626,32 @@ cfsign:
   container:
     image:
       registry: gcr.io/codefresh-enterprise
+    # Explicit default volume mounts overrides due to legacy `cf-` prefix (backward compatibility)
+    volumeMounts:
+      cf-ca:
+        path:
+        - mountPath: /cacerts/cf-ca.pem
+          subPath: ca.pem
+        - mountPath: /cacerts/cf-ca-key.pem
+          subPath: ca-key.pem
+        - mountPath: /cacerts/cert.pem
+          subPath: cert.pem
+        - mountPath: /cacerts/key.pem
+          subPath: key.pem
   secrets:
+    # In onprem, this secret is created by `gencerts` job,
+    # thus secret from `cfsign` chart is disabled
     cf-ca:
       enabled: false
+  # Change permissions on /certs folder (backward compatibility)
+  initContainers:
+    volume-permissions:
+      enabled: true
+  affinity: {}
+  nodeSelector: {}
+  podSecurityContext: {}
+  resources: {}
+  tolerations: []
 
 # -- cf-ui
 # @default -- See below
@@ -969,6 +1001,11 @@ rabbitmq:
 # @default -- See below
 runner:
   enabled: true
+  affinity: {}
+  nodeSelector: {}
+  podSecurityContext: {}
+  resources: {}
+  tolerations: []
 
 # -- pipeline-manager
 # @default -- See below
