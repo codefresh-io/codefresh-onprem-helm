@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.0.2
+version: 2.0.3
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -15,12 +15,14 @@ appVersion: 2.0.0
 annotations:
   artifacthub.io/alternativeName: "codefresh-onprem"
   artifacthub.io/changes: |
-    - kind: fixed
-      description: Fixed volume mounts paths and permissions for cf-tls-sign service
     - kind: changed
-      description: Updated runtime images (dind/engine/container-logger/docker-builder)
+      description: Removed service name override in mongodb subchart. Replaced with separate template for backward compatibility.
     - kind: changed
-      description: Changed restart policy to Never in ETL cronjob
+      description: Bump cf-api (updated feature-flags state, base image switched to ubuntu, disabled requests to payments service)
+    - kind: changed
+      description: Bump cf-ui (improved performance)
+    - kind: changed
+      description: Updated runtime images (docker-builder/docker-pusher/engine/git-cloner/etc)
 dependencies:
   - name: cf-common
     repository: https://chartmuseum.codefresh.io/cf-common
@@ -216,16 +218,16 @@ dependencies:
     condition: hermes.enabled
   - name: cf-platform-analytics
     alias: cf-platform-analytics-platform
-    version: "*"
+    version: "0.46.7"
     repository: https://chartmuseum.codefresh.io/cf-platform-analytics
     condition: argo-platform.enabled
   - name: cf-platform-analytics
     alias: cf-platform-analytics-etlstarter
-    version: "*"
+    version: "0.46.7"
     repository: https://chartmuseum.codefresh.io/cf-platform-analytics
     condition: argo-platform.enabled
   - name: argo-platform
-    version: "1.2265.0"
+    version: "1.2275.0"
     repository: https://chartmuseum.codefresh.io/argo-platform
     condition: argo-platform.enabled
   - name: argo-hub-platform

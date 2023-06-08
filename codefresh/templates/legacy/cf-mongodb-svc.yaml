@@ -1,0 +1,20 @@
+{{/*Create this service due to legacy `cf-` prefix in .Values.global.mongoURI (required for backward compatibility)*/}}
+{{- if and .Values.mongodb.enabled (not (eq .Release.Name "cf")) }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: cf-mongodb
+  namespace: {{ .Release.Namespace }}
+  labels: {{- include "common.labels.standard" .Subcharts.mongodb | nindent 4 }}
+    app.kubernetes.io/component: mongodb
+spec:
+  type: ClusterIP
+  sessionAffinity: None
+  ports:
+    - name: "mongodb"
+      port: 27017
+      targetPort: mongodb
+      nodePort: null
+  selector: {{- include "common.labels.matchLabels" .Subcharts.mongodb | nindent 4 }}
+    app.kubernetes.io/component: mongodb
+{{- end }}

@@ -399,15 +399,14 @@ runtimeImages:
   DIND_IMAGE: quay.io/codefresh/dind:20.10.18-1.25.7
   DOCKER_BUILDER_IMAGE: quay.io/codefresh/cf-docker-builder:1.3.5
   DOCKER_PULLER_IMAGE: quay.io/codefresh/cf-docker-puller:8.0.9
-  DOCKER_PUSHER_IMAGE: quay.io/codefresh/cf-docker-pusher:6.0.10
-  DOCKER_TAG_PUSHER_IMAGE: quay.io/codefresh/cf-docker-tag-pusher:1.3.8
-  ENGINE_IMAGE: quay.io/codefresh/engine:1.164.4
+  DOCKER_PUSHER_IMAGE: quay.io/codefresh/cf-docker-pusher:6.0.12
+  DOCKER_TAG_PUSHER_IMAGE: quay.io/codefresh/cf-docker-tag-pusher:1.3.9
+  ENGINE_IMAGE: quay.io/codefresh/engine:1.164.5
   FS_OPS_IMAGE: quay.io/codefresh/fs-ops:1.2.3
-  GIT_CLONE_IMAGE: quay.io/codefresh/cf-git-cloner:10.1.18
+  GIT_CLONE_IMAGE: quay.io/codefresh/cf-git-cloner:10.1.19
   KUBE_DEPLOY: quay.io/codefresh/cf-deploy-kubernetes:16.1.11
   PIPELINE_DEBUGGER_IMAGE: quay.io/codefresh/cf-debugger:1.3.0
-  TEMPLATE_ENGINE: quay.io/codefresh/pikolo:0.13.6
-
+  TEMPLATE_ENGINE: quay.io/codefresh/pikolo:0.13.8
 #--------------------
 # Codefresh subcharts
 #--------------------
@@ -899,6 +898,7 @@ kube-integration:
 # @default -- See below
 # Ref: https://github.com/bitnami/charts/blob/main/bitnami/mongodb/values.yaml
 mongodb:
+  enabled: true
   image:
     tag: 4.4
   architecture: standalone
@@ -907,8 +907,6 @@ mongodb:
     enabled: true
     rootUser: root
     rootPassword: "XT9nmM8dZD"
-  service:
-    nameOverride: cf-mongodb
   resources:
     requests:
       cpu: 200m
