@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.0.3
+version: 2.0.4
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -15,14 +15,14 @@ appVersion: 2.0.0
 annotations:
   artifacthub.io/alternativeName: "codefresh-onprem"
   artifacthub.io/changes: |
+    - kind: added
+      description: cf-api (ARM support)
     - kind: changed
-      description: Removed service name override in mongodb subchart. Replaced with separate template for backward compatibility.
-    - kind: changed
-      description: Bump cf-api (updated feature-flags state, base image switched to ubuntu, disabled requests to payments service)
-    - kind: changed
-      description: Bump cf-ui (improved performance)
-    - kind: changed
-      description: Updated runtime images (docker-builder/docker-pusher/engine/git-cloner/etc)
+      description: cf-api (updated `csdpAppUnexistedRefByCut` feature-flag state)
+    - kind: added
+      description: added postgres-clean-job templates
+    - kind: fixed
+      description: small templates fixes
 dependencies:
   - name: cf-common
     repository: https://chartmuseum.codefresh.io/cf-common
@@ -68,27 +68,27 @@ dependencies:
     repository: https://kubernetes.github.io/ingress-nginx
     condition: ingress-nginx.enabled
   - name: cluster-providers
-    version: "*"
+    version: "~1.15.0"
     repository: https://chartmuseum.codefresh.io/cluster-providers
     condition: cluster-providers.enabled
   - name: kube-integration
-    version: "*"
+    version: "~1.29.0"
     repository: https://chartmuseum.codefresh.io/kube-integration
     condition: kube-integration.enabled
   - name: charts-manager
-    version: "*"
+    version: "~1.15.0"
     repository: https://chartmuseum.codefresh.io/charts-manager
     condition: charts-manager.enabled
   - name: cfsign
-    version: "*"
+    version: "~1.5.0"
     repository: https://chartmuseum.codefresh.io/cfsign
     condition: cfsign.enabled
   - name: tasker-kubernetes
-    version: "*"
+    version: "~1.23.0"
     repository: https://chartmuseum.codefresh.io/tasker-kubernetes
     condition: tasker-kubernetes.enabled
   - name: context-manager
-    version: "*"
+    version: "~2.24.0"
     repository: https://chartmuseum.codefresh.io/context-manager
     condition: context-manager.enabled
   - name: pipeline-manager
@@ -96,7 +96,7 @@ dependencies:
     repository: https://chartmuseum.codefresh.io/pipeline-manager
     condition: pipeline-manager.enabled
   - name: gitops-dashboard-manager
-    version: "*"
+    version: "~1.13.0"
     repository: https://chartmuseum.codefresh.io/gitops-dashboard-manager
     condition: gitops-dashboard-manager.enabled
   - name: cfapi
@@ -189,7 +189,7 @@ dependencies:
     repository: https://chartmuseum.codefresh.io/cfui
     condition: cfui.enabled
   - name: k8s-monitor
-    version: "*"
+    version: "~4.10.0"
     repository: https://chartmuseum.codefresh.io/k8s-monitor
     condition: k8s-monitor.enabled
   - name: runtime-environment-manager
@@ -197,23 +197,23 @@ dependencies:
     repository: https://chartmuseum.codefresh.io/runtime-environment-manager
     condition: runtime-environment-manager.enabled
   - name: cf-broadcaster
-    version: "*"
+    version: "~1.11.0"
     repository: https://chartmuseum.codefresh.io/cf-broadcaster
     condition: cf-broadcaster.enabled
   - name: helm-repo-manager
-    version: "*"
+    version: "~0.10.0"
     repository: https://chartmuseum.codefresh.io/helm-repo-manager
     condition: helm-repo-manager.enabled
   - name: hermes
-    version: "*"
+    version: "~0.20.0"
     repository: https://chartmuseum.codefresh.io/hermes
     condition: hermes.enabled
   - name: nomios
-    version: "*"
+    version: "~0.10.0"
     repository: https://chartmuseum.codefresh.io/nomios
     condition: hermes.enabled
   - name: cronus
-    version: "*"
+    version: "~0.7.0"
     repository: https://chartmuseum.codefresh.io/cronus
     condition: hermes.enabled
   - name: cf-platform-analytics

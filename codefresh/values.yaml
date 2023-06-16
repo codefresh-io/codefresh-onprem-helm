@@ -90,6 +90,25 @@ hooks:
   resources: {}
   tolerations: []
 
+# -- Maintenance postgresql clean job.
+# Removes a certain number of the last records in the event store table.
+# @default -- See below
+postgresqlCleanJob:
+  enabled: true
+  image:
+    registry: quay.io
+    repository: codefresh/postgresql
+    tag: 13
+  schedule:  "0 0 * * *"
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  backoffLimit: 0
+  affinity: {}
+  nodeSelector: {}
+  podSecurityContext: {}
+  resources: {}
+  tolerations: []
+
 # -- DEPRECATED - Use `.Values.ingress.tls` instead
 # TLS secret for Ingress
 webTLS:

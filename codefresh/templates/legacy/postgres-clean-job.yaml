@@ -1,0 +1,67 @@
+{{ $libTemplateName := printf "cf-common-%s" (index .Subcharts "cf-common").Chart.Version }}
+{{- if and .Values.postgresqlCleanJob.enabled }}
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ include "codefresh.fullname" . }}-postgres-clean
+  labels:
+    {{ include "codefresh.labels" . | nindent 4 }}
+spec:
+  schedule: {{ .Values.postgresqlCleanJob.schedule }}
+  successfulJobsHistoryLimit: {{ .Values.postgresqlCleanJob.successfulJobsHistoryLimit }}
+  failedJobsHistoryLimit: {{ .Values.postgresqlCleanJob.failedJobsHistoryLimit }}
+  jobTemplate:
+    spec:
+      {{- with .Values.postgresqlCleanJob.ttlSecondsAfterFinished }}
+      ttlSecondsAfterFinished: {{ . }}
+      {{- end }}
+      {{- with .Values.postgresqlCleanJob.backoffLimit }}
+      backoffLimit: {{ . | int }}
+      {{- end }}
+      template:
+        metadata:
+          name: {{ include "codefresh.fullname" . }}-postgres-clean
+          labels:
+            {{ include "codefresh.labels" . | nindent 12 }}
+        spec:
+          {{- if .Values.global.imageRegistry }}
+          imagePullSecrets:
+            - name: "{{ .Release.Name }}-{{ .Values.global.codefresh }}-registry"
+          {{- end }}
+          securityContext:
+            {{- toYaml .Values.seed.podSecurityContext | nindent 12 }}
+          containers:
+          - name: {{ template "codefresh.fullname" . }}-postgres-clean
+            image: {{ include (printf "%s.image.name" $libTemplateName) (dict "image" .Values.postgresqlCleanJob.image "context" .) }}
+            env:
+              - name: EVENT_STORE_TABLE
+                value: "eventstore.events"
+              - name: EVENTS_TO_KEEP
+                value: "100000"
+              - name: DEL_CHUNK_SIZE
+                value: "1000"
+            envFrom:
+              - secretRef:
+                  name: {{ include "codefresh.fullname" . }}-postgres-clean
+            resources:
+              {{- toYaml .Values.postgresqlCleanJob.resources | nindent 14 }}
+            command:
+              - "/bin/bash"
+              - "-exc"
+              - |
+                {{ .Files.Get "files/postgresCleanJobScript.sh" | nindent 16 }}
+          {{- with .Values.postgresqlCleanJob.nodeSelector }}
+          nodeSelector:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.postgresqlCleanJob.affinity }}
+          affinity:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.postgresqlCleanJob.tolerations }}
+          tolerations:
+            {{- toYaml . | nindent 10 }}
+          {{- end }}
+          restartPolicy: Never
+{{- end }}

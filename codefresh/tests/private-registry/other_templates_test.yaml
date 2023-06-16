@@ -5,6 +5,7 @@ templates:
   - seed/postgres-seed-job.yaml
   - gencerts/job-gencerts.yaml
   - hooks/update-system-re.yaml
+  - legacy/postgres-clean-job.yaml
 tests:
   - it: "(Other templates) should test image private registry prefix"
     values:
@@ -30,3 +31,8 @@ tests:
           path: spec.template.spec.containers[0].image
           pattern: ^myregistry.io/.*$
         template: hooks/update-system-re.yaml
+      # postgres-clean-job template
+      - matchRegex:
+          path: spec.jobTemplate.spec.template.spec.containers[0].image
+          pattern: ^myregistry.io/.*$
+        template: legacy/postgres-clean-job.yaml

@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.0.3](https://img.shields.io/badge/Version-2.0.3-informational?style=flat-square) ![AppVersion: 2.0.0](https://img.shields.io/badge/AppVersion-2.0.0-informational?style=flat-square)
+![Version: 2.0.4](https://img.shields.io/badge/Version-2.0.4-informational?style=flat-square) ![AppVersion: 2.0.0](https://img.shields.io/badge/AppVersion-2.0.0-informational?style=flat-square)
 
 ## Table of Content
 
@@ -22,8 +22,11 @@
   - [Configuration with Private Registry](#configuration-with-private-registry)
   - [Configuration with multi-role CF-API](#configuration-with-multi-role-cf-api)
   - [High Availability](#high-availability)
+  - [Mounting private CA certs](#mounting-private-ca-certs)
+- [Additional configuration](#additional-configuration)
 - [Upgrading](#upgrading)
   - [To 2.0.0](#to-200)
+- [Rollback](#rollback)
 - [Values](#values)
 
 ## Prerequisites
@@ -170,16 +173,6 @@ cat cert.key >> ca.pem
 kubectl create secret generic my-mongodb-tls --from-file=ca.pem
 ```
 
-  Or you can create certificate using templates provided in Codefresh Helm chart.
-  Add `.Values.secrets` into `values.yaml` as follows.
-```yaml
-secrets:
-  mongodb-tls:
-    enabled: true
-    data:
-      ca.pem: <base64 encoded sting>
-```
-
 *  Add `.Values.global.volumes` and `.Values.global.volumeMounts` to mount the secret into all the services.
 ```yaml
 global:
@@ -187,8 +180,7 @@ global:
     mongodb-tls:
       enabled: true
       type: secret
-      # Existing secret with TLS certificates (key: `ca.pem`)
-      # existingName: my-mongodb-tls
+      nameOverride: my-mongodb-tls
       optional: true
 
   volumeMounts:
@@ -273,18 +265,6 @@ cat ca.crt tls.crt > tls.crt
 kubectl create secret tls my-redis-tls --cert=tls.crt --key=tls.key --dry-run=client -o yaml | kubectl apply -f -
 ```
 
-  Or you can create certificate using templates provided in Codefresh Helm chart.
-  Add `.Values.secrets` into `values.yaml` as follows.
-```yaml
-secrets:
-  redis-tls:
-    enabled: true
-    data:
-      ca.crt: <base64 encoded string>
-      tls.crt: <base64 encoded string>
-      tls.key: <base64 encoded string>
-```
-
 *  Add `.Values.global.volumes` and `.Values.global.volumeMounts` to mount the secret into all the services.
 ```yaml
 global:
@@ -293,7 +273,7 @@ global:
       enabled: true
       type: secret
       # Existing secret with TLS certificates (keys: `ca.crt` , `tls.crt`, `tls.key`)
-      # existingName: my-redis-tls
+      nameOverride: my-redis-tls
       optional: true
 
   volumeMounts:
@@ -729,6 +709,72 @@ tasker-kubernetes:
 
 ```
 
+### Mounting private CA certs
+
+```yaml
+global:
+  env:
+    NODE_EXTRA_CA_CERTS: /etc/ssl/custom/ca.crt
+
+  volumes:
+    custom-ca:
+      enabled: true
+      type: secret
+      existingName: my-custom-ca-cert # exisiting K8s secret object with the CA cert
+      optional: true
+
+  volumeMounts:
+    custom-ca:
+      path:
+      - mountPath: /etc/ssl/custom/ca.crt
+        subPath: ca.crt
+```
+
+## Additional configuration
+
+### Retention policy for builds and logs
+
+With this method, Codefresh by default deletes builds older than six months.
+
+The retention mechanism removes data from the following collections: `workflowproccesses`, `workflowrequests`, `workflowrevisions`
+
+```yaml
+cfapi:
+  env:
+    # Determines if automatic build deletion through the Cron job is enabled.
+    RETENTION_POLICY_IS_ENABLED: true
+    # The maximum number of builds to delete by a single Cron job. To avoid database issues, especially when there are large numbers of old builds, we recommend deleting them in small chunks. You can gradually increase the number after verifying that performance is not affected.
+    RETENTION_POLICY_BUILDS_TO_DELETE: 50
+    # The number of days for which to retain builds. Builds older than the defined retention period are deleted.
+    RETENTION_POLICY_DAYS: 180
+```
+
+### Configure CSP (Content Security Policy)
+
+`CONTENT_SECURITY_POLICY` is the string describing content policies. Use semi-colons to separate between policies. CONTENT_SECURITY_POLICY_REPORT_TO is a comma-separated list of JSON objects. Each object must have a name and an array of endpoints that receive the incoming CSP reports.
+
+For detailed information, see the [Content Security Policy article on MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP).
+
+```yaml
+cfui:
+  env:
+    CONTENT_SECURITY_POLICY: "<YOUR SECURITY POLICIES>"
+    CONTENT_SECURITY_POLICY_REPORT_ONLY: "default-src 'self'; font-src 'self'
+      https://fonts.gstatic.com; script-src 'self' https://unpkg.com https://js.stripe.com;
+      style-src 'self' https://fonts.googleapis.com; 'unsafe-eval' 'unsafe-inline'"
+    CONTENT_SECURITY_POLICY_REPORT_TO: "<LIST OF ENDPOINTS AS JSON OBJECTS>"
+```
+
+### x-hub-signature-256 signature for GitHub AE
+
+For detailed information, see the [Securing your webhooks](https://docs.github.com/en/developers/webhooks-and-events/webhooks/securing-your-webhooks) and [Webhooks](https://docs.github.com/en/github-ae@latest/rest/webhooks).
+
+```
+cfapi:
+  env:
+    USE_SHA256_GITHUB_SIGNATURE: "true"
+```
+
 ## Upgrading
 
 ### To 2.0.0
@@ -990,6 +1036,25 @@ seed:
 
 The bare minimal workload footprint for the new services (without HPA or PDB) is `~4vCPU` and `~8Gi RAM`
 
+## Rollback
+
+Use `helm history` to determine which release has worked, then use `helm rollback` to perform a rollback
+
+> When rollback from 2.x prune these resources due to immutabled fields changes
+
+```console
+kubectl delete sts cf-runner --namespace $NAMESPACE
+kubectl delete sts cf-builder --namespace $NAMESPACE
+kubectl delete job --namespace $NAMESPACE -l release=$RELEASE_NAME
+```
+
+```
+helm rollback $RELEASE_NAME $RELEASE_NUMBER \
+    --namespace $NAMESPACE \
+    --debug \
+    --wait
+```
+
 ## Values
 
 | Key | Type | Default | Description |
@@ -1160,6 +1225,7 @@ The bare minimal workload footprint for the new services (without HPA or PDB) is
 | nomios | object | See below | nomios |
 | pipeline-manager | object | See below | pipeline-manager |
 | postgresql | object | See below | postgresql Ref: https://github.com/bitnami/charts/blob/main/bitnami/postgresql/values.yaml |
+| postgresqlCleanJob | object | See below | Maintenance postgresql clean job. Removes a certain number of the last records in the event store table. |
 | rabbitmq | object | See below | rabbitmq Ref: https://github.com/bitnami/charts/blob/main/bitnami/rabbitmq/values.yaml |
 | redis | object | See below | redis Ref: https://github.com/bitnami/charts/blob/main/bitnami/redis/values.yaml |
 | runner | object | See below | runner |

@@ -49,7 +49,7 @@ dependencies:
   version: 1.23.3
 - name: context-manager
   repository: https://chartmuseum.codefresh.io/context-manager
-  version: 2.24.3
+  version: 2.24.5
 - name: pipeline-manager
   repository: https://chartmuseum.codefresh.io/pipeline-manager
   version: 3.126.5
@@ -58,55 +58,55 @@ dependencies:
   version: 1.13.6
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.224.8
+  version: 21.224.10
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.224.8
+  version: 21.224.10
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.224.8
+  version: 21.224.10
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.224.8
+  version: 21.224.10
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.224.8
+  version: 21.224.10
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.224.8
+  version: 21.224.10
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.224.8
+  version: 21.224.10
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.224.8
+  version: 21.224.10
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.224.8
+  version: 21.224.10
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.224.8
+  version: 21.224.10
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.224.8
+  version: 21.224.10
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.224.8
+  version: 21.224.10
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.224.8
+  version: 21.224.10
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.224.8
+  version: 21.224.10
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.224.8
+  version: 21.224.10
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.224.8
+  version: 21.224.10
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.224.8
+  version: 21.224.10
 - name: cfui
   repository: https://chartmuseum.codefresh.io/cfui
   version: 14.88.57
@@ -124,7 +124,7 @@ dependencies:
   version: 0.10.4
 - name: hermes
   repository: https://chartmuseum.codefresh.io/hermes
-  version: 0.20.3
+  version: 0.20.4
 - name: nomios
   repository: https://chartmuseum.codefresh.io/nomios
   version: 0.10.3
@@ -146,5 +146,5 @@ dependencies:
 - name: codefresh-tunnel-server
   repository: https://chartmuseum.codefresh.io/codefresh-tunnel-server
   version: 0.1.12
-digest: sha256:cef8e5e08229a386e049ace32654337635d171533755e912e3abf0fbe8797b07
-generated: "2023-06-08T11:49:05.616731348+03:00"
+digest: sha256:954a20f8da510525a8a431088f73c9b2e0509b853a25dd986adbe20a3308c41d
+generated: "2023-06-16T18:35:49.531552147+03:00"
