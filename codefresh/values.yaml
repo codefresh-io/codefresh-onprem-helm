@@ -138,13 +138,18 @@ ingress:
   # -- Default services and corresponding paths
   # @default -- See below
   services:
+    internal-gateway:
+      - /2.0/api
+      - /2.0
     cfapi:
       - /api/
       - /ws
-    cfui:
-      - /
+    argo-hub-platform:
+      - /argo/hub
     nomios:
       - /nomios/
+    cfui:
+      - /
   # -- Set annotations for ingress.
   # @default -- See below
   annotations:
@@ -1091,7 +1096,6 @@ tasker-kubernetes:
 # -- argo-hub-platform
 # @default -- See below
 argo-hub-platform:
-  fullnameOverride: argo-hub-platform
   controller:
     deployment:
       replicas: 1
@@ -1167,7 +1171,7 @@ argo-platform:
     # -- Secrets
     # @default -- See below
     secrets:
-      argo-hub-host: http://argo-hub-platform
+      argo-hub-host: http://{{ .Release.Name }}-argo-hub-platform
       cache-host: *cache-host
       cache-password: *cache-password
       v1-host: http://{{ .Release.Name }}-{{ .Values.global.cfapiEndpointsService }}
@@ -1429,35 +1433,10 @@ internal-gateway:
     replicas: 2
 
   # -- Internal-gateway Ingress
+  # Don't enable! Ingress template is in parent chart. See `.Values.ingress`
   ingress:
     main:
-      enabled: true
-      # -- Internal-gateway ingress class
-      # No need to change it here. Value will be pushed from root context `.Values.ingress.ingressClassName`
-      ingressClassName: nginx-codefresh
-      # -- Internal gateway hosts
-      # @default -- See below
-      hosts:
-        - host: '{{ .Values.global.appUrl }}'
-          paths:
-            - path: /2.0/api
-              pathType: ImplementationSpecific
-              service:
-                name: "{{ .Release.Name }}-internal-gateway"
-                port: "{{ .Values.service.main.ports.http.port }}"
-            - path: /2.0
-              pathType: ImplementationSpecific
-              service:
-                name: "{{ .Release.Name }}-internal-gateway"
-                port: "{{ .Values.service.main.ports.http.port }}"
-            - path: /argo/hub
-              pathType: ImplementationSpecific
-              service:
-                name: "argo-hub-platform"
-                port: "80"
-      # -- Enable Internal-gateway Ingress TLS
-      # Keep as empty list. Value will be pushed from root context `.Values.ingress.tls`
-      tls: []
+      enabled: false
 
   resources:
     requests:

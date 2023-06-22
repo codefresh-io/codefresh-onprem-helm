@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.0.4](https://img.shields.io/badge/Version-2.0.4-informational?style=flat-square) ![AppVersion: 2.0.0](https://img.shields.io/badge/AppVersion-2.0.0-informational?style=flat-square)
+![Version: 2.0.5](https://img.shields.io/badge/Version-2.0.5-informational?style=flat-square) ![AppVersion: 2.0.0](https://img.shields.io/badge/AppVersion-2.0.0-informational?style=flat-square)
 
 ## Table of Content
 
@@ -392,9 +392,18 @@ ingress:
     alb.ingress.kubernetes.io/target-type: ip
   services:
     # For ALB /* asterisk is required in path
+    internal-gateway:
+      - /2.0/api/*
+      - /2.0/*
     cfapi:
       - /api/*
       - /ws/*
+    argo-hub-platform:
+      - /argo/hub/*
+    nomios:
+      - /nomios/*
+    cfui:
+      - /
 ```
 
 ### Configuration with Private Registry
@@ -585,7 +594,7 @@ cfapi-test-reporting:
   !!merge <<: *cf-api
   enabled: true
 
-# Change ingress paths
+# Change ingress paths for cf-api
 ingress:
   services:
     cfapi: null # Set default cfapi path to null!
@@ -1199,7 +1208,7 @@ helm rollback $RELEASE_NAME $RELEASE_NUMBER \
 | hermes | object | See below | hermes |
 | hooks | object | See below | Pre/post-upgrade Job hooks. Updates images in `system/default` runtime. |
 | imageCredentials | object | `{}` | Credentials for Image Pull Secret object |
-| ingress | object | `{"annotations":{"nginx.ingress.kubernetes.io/configuration-snippet":"more_set_headers \"X-Request-ID: $request_id\";\nproxy_set_header X-Request-ID $request_id;\n","nginx.ingress.kubernetes.io/service-upstream":"true","nginx.ingress.kubernetes.io/ssl-redirect":"false","nginx.org/redirect-to-https":"false"},"enabled":true,"ingressClassName":"nginx-codefresh","services":{"cfapi":["/api/","/ws"],"cfui":["/"],"nomios":["/nomios/"]},"tls":{"cert":"","enabled":false,"existingSecret":"","key":"","secretName":"star.codefresh.io"}}` | Ingress |
+| ingress | object | `{"annotations":{"nginx.ingress.kubernetes.io/configuration-snippet":"more_set_headers \"X-Request-ID: $request_id\";\nproxy_set_header X-Request-ID $request_id;\n","nginx.ingress.kubernetes.io/service-upstream":"true","nginx.ingress.kubernetes.io/ssl-redirect":"false","nginx.org/redirect-to-https":"false"},"enabled":true,"ingressClassName":"nginx-codefresh","services":{"argo-hub-platform":["/argo/hub"],"cfapi":["/api/","/ws"],"cfui":["/"],"internal-gateway":["/2.0/api","/2.0"],"nomios":["/nomios/"]},"tls":{"cert":"","enabled":false,"existingSecret":"","key":"","secretName":"star.codefresh.io"}}` | Ingress |
 | ingress-nginx | object | See below | ingress-nginx Ref: https://github.com/kubernetes/ingress-nginx/blob/main/charts/ingress-nginx/values.yaml |
 | ingress.annotations | object | See below | Set annotations for ingress. |
 | ingress.enabled | bool | `true` | Enable the Ingress |
@@ -1213,10 +1222,7 @@ helm rollback $RELEASE_NAME $RELEASE_NUMBER \
 | internal-gateway | object | See below | internal-gateway |
 | internal-gateway.controller | object | `{"replicas":2}` | Controller configuration |
 | internal-gateway.controller.replicas | int | `2` | Replicas number |
-| internal-gateway.ingress | object | `{"main":{"enabled":true,"hosts":[{"host":"{{ .Values.global.appUrl }}","paths":[{"path":"/2.0/api","pathType":"ImplementationSpecific","service":{"name":"{{ .Release.Name }}-internal-gateway","port":"{{ .Values.service.main.ports.http.port }}"}},{"path":"/2.0","pathType":"ImplementationSpecific","service":{"name":"{{ .Release.Name }}-internal-gateway","port":"{{ .Values.service.main.ports.http.port }}"}},{"path":"/argo/hub","pathType":"ImplementationSpecific","service":{"name":"argo-hub-platform","port":"80"}}]}],"ingressClassName":"nginx-codefresh","tls":[]}}` | Internal-gateway Ingress |
-| internal-gateway.ingress.main.hosts | list | See below | Internal gateway hosts |
-| internal-gateway.ingress.main.ingressClassName | string | `"nginx-codefresh"` | Internal-gateway ingress class No need to change it here. Value will be pushed from root context `.Values.ingress.ingressClassName` |
-| internal-gateway.ingress.main.tls | list | `[]` | Enable Internal-gateway Ingress TLS Keep as empty list. Value will be pushed from root context `.Values.ingress.tls` |
+| internal-gateway.ingress | object | `{"main":{"enabled":false}}` | Internal-gateway Ingress Don't enable! Ingress template is in parent chart. See `.Values.ingress` |
 | internal-gateway.libraryMode | bool | `true` | Do not change this value! Breaks chart logic |
 | k8s-monitor | object | See below | k8s-monitor |
 | kube-integration | object | See below | kube-integration |

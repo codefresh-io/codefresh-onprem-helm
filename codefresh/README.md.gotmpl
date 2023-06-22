@@ -394,9 +394,18 @@ ingress:
     alb.ingress.kubernetes.io/target-type: ip
   services:
     # For ALB /* asterisk is required in path
+    internal-gateway:
+      - /2.0/api/*
+      - /2.0/*
     cfapi:
       - /api/*
       - /ws/*
+    argo-hub-platform:
+      - /argo/hub/*
+    nomios:
+      - /nomios/*
+    cfui:
+      - /
 ```
 
 ### Configuration with Private Registry
@@ -587,7 +596,7 @@ cfapi-test-reporting:
   !!merge <<: *cf-api
   enabled: true
 
-# Change ingress paths
+# Change ingress paths for cf-api
 ingress:
   services:
     cfapi: null # Set default cfapi path to null!

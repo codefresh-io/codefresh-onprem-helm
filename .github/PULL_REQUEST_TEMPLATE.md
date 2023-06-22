@@ -6,4 +6,4 @@
 
 ## CI
 
-To trigger `onprem-ci` pipeline add `/test` commend in your PR
+To trigger `onprem-ci` pipeline add `/test` comment in your PR

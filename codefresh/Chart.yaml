@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.0.4
+version: 2.0.5
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -15,14 +15,8 @@ appVersion: 2.0.0
 annotations:
   artifacthub.io/alternativeName: "codefresh-onprem"
   artifacthub.io/changes: |
-    - kind: added
-      description: cf-api (ARM support)
-    - kind: changed
-      description: cf-api (updated `csdpAppUnexistedRefByCut` feature-flag state)
-    - kind: added
-      description: added postgres-clean-job templates
     - kind: fixed
-      description: small templates fixes
+      description: Disabled ingress from internal-gateway subchart. Added internal-gateway and argo-hub-platform services into main ingress
 dependencies:
   - name: cf-common
     repository: https://chartmuseum.codefresh.io/cf-common

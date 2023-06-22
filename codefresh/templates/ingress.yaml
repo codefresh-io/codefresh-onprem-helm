@@ -27,6 +27,7 @@ spec:
     http:
       paths:
       {{- range $serviceName, $paths := .Values.ingress.services }}
+      {{- if and (index $.Subcharts $serviceName) }}
         {{- range $path := $paths }}
       - path: {{ $path }}
         pathType: ImplementationSpecific
@@ -36,5 +37,6 @@ spec:
             port:
               number: {{ (index $.Subcharts $serviceName ).Values.service.main.ports.http.port }}
         {{- end }}
+      {{- end }}
       {{- end }}
 {{- end}}
