@@ -15,15 +15,6 @@
 {{- $_ := set $internalGatewayContext.Values.codefresh "apiEventsSvc" (printf "%s.%s.svc.%s" $internalGatewayContext.Values.codefresh.apiEventsSvc .Release.Namespace .Values.global.clusterDomain ) }}
 {{- $_ := set $internalGatewayContext.Values.codefresh "argoPlatformUiSvc" (printf "%s.%s.svc.%s" $internalGatewayContext.Values.codefresh.argoPlatformUiSvc .Release.Namespace .Values.global.clusterDomain ) }}
 
-{{- if .Values.ingress.ingressClassName }}
-{{- $_ := set $internalGatewayContext.Values.ingress.main "ingressClassName" .Values.ingress.ingressClassName }}
-{{- end }}
-
-{{- if .Values.ingress.tls.enabled }}
-{{- $tlsObj := dict "secretName" (include "codefresh.ingress.tlsSecretName" .) "hosts" (list .Values.global.appUrl) }}
-{{- $_ := set $internalGatewayContext.Values.ingress.main "tls" ( list $tlsObj ) }}
-{{- end }}
-
 {{- include "internal-gateway.resources" $internalGatewayContext }}
 
 {{- end -}}

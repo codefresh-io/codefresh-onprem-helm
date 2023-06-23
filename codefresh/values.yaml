@@ -124,6 +124,8 @@ ingress:
   # -- Set the ingressClass that is used for the ingress.
   # Default `nginx-codefresh` is created from `ingress-nginx` controller subchart
   ingressClassName: nginx-codefresh
+  # -- Override Ingress resource name
+  nameOverride: ""
   tls:
     # -- Enable TLS
     enabled: false
