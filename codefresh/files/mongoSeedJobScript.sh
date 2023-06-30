@@ -75,10 +75,10 @@ waitForMongoDB
 getMongoVersion
 
 for MONGODB_DATABASE in ${MONGODB_DATABASES[@]}; do
-   mongosh ${MONGODB_ROOT_URI} --eval "db.getSiblingDB('${MONGODB_DATABASE}').createUser({user: '${MONGODB_USER}', pwd: '${MONGODB_PASSWORD}', roles: ['readWrite']})" || echo "Error creating the user. Continuing anyway assuming the user is already created..."
+   mongosh ${MONGODB_ROOT_URI} --eval "db.getSiblingDB(\"${MONGODB_DATABASE}\").createUser({user: \"${MONGODB_USER}\", pwd: \"${MONGODB_PASSWORD}\", roles: [\"readWrite\"]})" || echo "Error creating the user. Continuing anyway assuming the user is already created..."
 done
 
-mongosh ${MONGODB_ROOT_URI} --eval "db.getSiblingDB('codefresh').grantRolesToUser( '${MONGODB_USER}', [ { role: 'readWrite', db: 'pipeline-manager' } ] )" || true
+mongosh ${MONGODB_ROOT_URI} --eval "db.getSiblingDB(\"codefresh\").grantRolesToUser( \"${MONGODB_USER}\", [ { role: \"readWrite\", db: \"pipeline-manager\" } ] )" || true
 
 mongoimport --uri ${MONGODB_URI} --collection idps --type json --legacy --file ${ASSETS_PATH}idps.json
 mongoimport --uri ${MONGODB_URI} --collection accounts --type json --legacy --file ${ASSETS_PATH}accounts.json

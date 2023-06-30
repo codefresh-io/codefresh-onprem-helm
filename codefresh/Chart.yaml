@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.0.6
+version: 2.0.7
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -15,8 +15,8 @@ appVersion: 2.0.0
 annotations:
   artifacthub.io/alternativeName: "codefresh-onprem"
   artifacthub.io/changes: |
-    - kind: added
-      description: Added option to override Ingress name
+    - kind: changed
+      description: Replaced single quotes with escaped double quotes in mongo seed job script.
 dependencies:
   - name: cf-common
     repository: https://chartmuseum.codefresh.io/cf-common
