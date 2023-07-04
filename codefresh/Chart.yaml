@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.0.7
+version: 2.0.8
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -15,8 +15,8 @@ appVersion: 2.0.0
 annotations:
   artifacthub.io/alternativeName: "codefresh-onprem"
   artifacthub.io/changes: |
-    - kind: changed
-      description: Replaced single quotes with escaped double quotes in mongo seed job script.
+    - kind: fixed
+      description: fixed /metrics endpoint in argo-platform-api-graphql
 dependencies:
   - name: cf-common
     repository: https://chartmuseum.codefresh.io/cf-common
@@ -221,7 +221,7 @@ dependencies:
     repository: https://chartmuseum.codefresh.io/cf-platform-analytics
     condition: argo-platform.enabled
   - name: argo-platform
-    version: "1.2275.0"
+    version: "1.2325.2"
     repository: https://chartmuseum.codefresh.io/argo-platform
     condition: argo-platform.enabled
   - name: argo-hub-platform
