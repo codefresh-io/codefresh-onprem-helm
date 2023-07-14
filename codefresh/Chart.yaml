@@ -16,13 +16,13 @@ annotations:
   artifacthub.io/alternativeName: "codefresh-onprem"
   artifacthub.io/changes: |
     - kind: added
-      description: (argo-platform) Added Mongo MTLS (Mutual TLS) support. New MONGODB_SSL_ENABLED env var added.
+      description: (argo-platform) Added Mongo MTLS (Mutual TLS) support.
     - kind: added
       description: (argo-platform) Added Redis MTLS (Mutual TLS) support.
     - kind: changed
       description: (platform-analytics) Updated to 0.47.6
     - kind: fixed
-      description: (platform-analytics) Fixed platform-analytics db name (renamed to platform-analytics-postgres). Seed job script is updated.
+      description: (platform-analytics) Fixed platform-analytics db name.
     - kind: fixed
       description: (cfapi) Fixed group sync for Azure IDP.
       links:
