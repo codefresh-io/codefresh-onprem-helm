@@ -16,15 +16,15 @@ annotations:
   artifacthub.io/alternativeName: "codefresh-onprem"
   artifacthub.io/changes: |
     - kind: added
-      description: '[argo-platform] Added Mongo MTLS (Mutual TLS) support. New MONGODB_SSL_ENABLED env var added (See updated example in README.md)'
+      description: "[argo-platform] Added Mongo MTLS (Mutual TLS) support. New MONGODB_SSL_ENABLED env var added (See updated example in README.md)"
     - kind: added
-      description: '[argo-platform] Added Redis MTLS (Mutual TLS) support.'
+      description: "[argo-platform] Added Redis MTLS (Mutual TLS) support."
     - kind: changed
-      description: '[platform-analytics] Updated to 0.47.6'
+      description: "[platform-analytics] Updated to 0.47.6"
     - kind: fixed
-      description: '[platform-analytics] Fixed "platform-analytics" db name (renamed to "platform-analytics-postgres"). Seed job script is updated.'
+      description: "[platform-analytics] Fixed 'platform-analytics' db name (renamed to 'platform-analytics-postgres'). Seed job script is updated."
     - kind: fixed
-      description: '[cfapi] Fixed group sync for Azure IDP'
+      description: "[cfapi] Fixed group sync for Azure IDP"
       links:
         - name: JIRA Issue
           url: https://codefresh-io.atlassian.net/browse/CR-19484
