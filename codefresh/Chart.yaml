@@ -29,7 +29,7 @@ annotations:
         - name: JIRA Issue
           url: https://codefresh-io.atlassian.net/browse/CR-19484
     - kind: fixed
-      description: '[argo-platform] Fixed non-standard redis port env variable.'
+      description: "[argo-platform] Fixed non-standard redis port env variable."
 dependencies:
   - name: cf-common
     repository: https://chartmuseum.codefresh.io/cf-common
