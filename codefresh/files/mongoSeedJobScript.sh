@@ -26,7 +26,7 @@ MONGODB_DATABASES=(
     "gitops-dashboard-manager"
     "k8s-monitor"
     "pipeline-manager"
-    "platform-analytics"
+    "platform-analytics-postgres"
     "read-models"
     "runtime-environment-manager"
 )
@@ -79,6 +79,7 @@ for MONGODB_DATABASE in ${MONGODB_DATABASES[@]}; do
 done
 
 mongosh ${MONGODB_ROOT_URI} --eval "db.getSiblingDB(\"codefresh\").grantRolesToUser( \"${MONGODB_USER}\", [ { role: \"readWrite\", db: \"pipeline-manager\" } ] )" || true
+mongosh ${MONGODB_ROOT_URI} --eval "db.getSiblingDB(\"codefresh\").grantRolesToUser( \"${MONGODB_USER}\", [ { role: \"readWrite\", db: \"platform-analytics-postgres\" } ] )" || true
 
 mongoimport --uri ${MONGODB_URI} --collection idps --type json --legacy --file ${ASSETS_PATH}idps.json
 mongoimport --uri ${MONGODB_URI} --collection accounts --type json --legacy --file ${ASSETS_PATH}accounts.json

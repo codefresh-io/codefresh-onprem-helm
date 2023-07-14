@@ -13,6 +13,16 @@ ingress:
     cert: ""  # placeholder for ${WEB_TLS_CERT}
     key: "" # placeholder for ${WEB_TLS_KEY}
 
+cf-platform-analytics-platform:
+  container:
+    image:
+      pullPolicy: Always
+
+cf-platform-analytics-etlstarter:
+  container:
+    image:
+      pullPolicy: Always
+
 argo-platform:
   enabled: true
 

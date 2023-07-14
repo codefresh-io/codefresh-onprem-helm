@@ -35,6 +35,7 @@ global:
 
   env:
     # Mongo MTLS
+    MONGODB_SSL_ENABLED: true
     MTLS_CERT_PATH: /etc/ssl/mongodb/ca.pem
     RUNTIME_MTLS_CERT_PATH: /etc/ssl/mongodb/ca.pem
     RUNTIME_MONGO_TLS: "true"
@@ -73,12 +74,12 @@ mongodb:
         "gitops-dashboard-manager"
         "k8s-monitor"
         "pipeline-manager"
-        "platform-analytics"
+        "platform-analytics-postgres"
         "read-models"
         "runtime-environment-manager"
       )
 
-      mongosh "$MONGODB_ROOT_URI" --eval 'db.getSiblingDB("\$external").runCommand( { createUser: "CN=cfuser,O=Internet Widgits Pty Ltd,ST=Some-State,C=AU", roles: [ { role: "readWrite", db: "test" }, { role: "userAdminAnyDatabase", db: "admin" }, { role: "readWrite", db: "codefresh" }, { role: "readWrite", db: "pipeline-manager" }, { role: "readWrite", db: "runtime-environment-manager" }, { role: "readWrite", db: "context-manager" }, { role: "readWrite", db: "cluster-providers" }, { role: "readWrite", db: "charts-manager" }, { role: "readWrite", db: "k8s-monitor" }, { role: "readWrite", db: "read-models" }, { role: "readWrite", db: "audit" } ], writeConcern: { w: "majority" , wtimeout: 5000 } } )'
+      mongosh "$MONGODB_ROOT_URI" --eval 'db.getSiblingDB("\$external").runCommand( { createUser: "CN=cfuser,O=Internet Widgits Pty Ltd,ST=Some-State,C=AU", roles: [ { role: "readWrite", db: "test" }, { role: "userAdminAnyDatabase", db: "admin" }, { role: "readWrite", db: "codefresh" }, { role: "readWrite", db: "pipeline-manager" }, { role: "readWrite", db: "runtime-environment-manager" }, { role: "readWrite", db: "context-manager" }, { role: "readWrite", db: "cluster-providers" }, { role: "readWrite", db: "charts-manager" }, { role: "readWrite", db: "k8s-monitor" }, { role: "readWrite", db: "read-models" }, { role: "readWrite", db: "audit" }, { role: "readWrite", db: "platform-analytics-postgres" } ], writeConcern: { w: "majority" , wtimeout: 5000 } } )'
 
       for MONGODB_DATABASE in ${MONGODB_DATABASES[@]}; do
         mongosh ${MONGODB_ROOT_URI} --eval "db.getSiblingDB('${MONGODB_DATABASE}').createCollection('test')"
@@ -117,5 +118,12 @@ secrets:
     data:
       ca.pem: "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUM4akNDQWRvQ0ZDcUpqc3pFSVNVSDhUSU9hV1RmS0JxeVhFT01NQTBHQ1NxR1NJYjNEUUVCQ3dVQU1CVXgKRXpBUkJnTlZCQU1UQ20xNVRXOXVaMjh0WTJFd0hoY05Nakl4TVRBeU1UZ3hNVE0yV2hjTk1qUXdNekUyTVRneApNVE0yV2pCV01Rc3dDUVlEVlFRR0V3SkJWVEVUTUJFR0ExVUVDQXdLVTI5dFpTMVRkR0YwWlRFaE1COEdBMVVFCkNnd1lTVzUwWlhKdVpYUWdWMmxrWjJsMGN5QlFkSGtnVEhSa01ROHdEUVlEVlFRRERBWmpablZ6WlhJd2dnRWkKTUEwR0NTcUdTSWIzRFFFQkFRVUFBNElCRHdBd2dnRUtBb0lCQVFERlk5T2E4bG5JMmtPaHBXZStScENQQ1BqSgpVbUFEUjUrUnVPRHpaSG5sdUsrd3ByTXkwcFB6RTJTblJXcHlXRHZNaVV6RGFhNUl6dWIySGZSVFNuRVgyTUliCnNkZkY1UGFJTmhnd0RiTFJRUEhXcE5Da1dCRFQvN0tiUnN0dmZVc0k0TllYenFnLys0U05qQWxDdi9rY0NRVUMKekhZc2NUZitta3JpYVNzOWZIemxWYWZWRWY5cUFWSGFlakhDWnd2NkoxTjAzS08yRjM0dmRXS1JPUEZVM00xaQpVWklSYTZoN0FQbGxmZmt1S0doS0t2R3hDRzJENFlLSGJ1WG0zeXBpYjk1QTUrUFA0MUJWeWc2ZnlpRWhXazNSCllSWGoybWZWd1JLeWYyQTE4L2pqS1NQVG1Eck51andTTnZ0cWp2WWdrV01LN2JrdHAxcHV5RVVNZlQyTkFnTUIKQUFFd0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dFQkFFSGlOczZjZnl2UjNqODQzSEFKamE4Q2xKalJFdlZ1TXBIUAp4Y1RuQzdaOEF2Z3dOVDFFczd1OTFhVExicThSeDBiblRPYTJzZU9nb2VKM0lyd0pTOVFTeEtOQWpha3lnY2Q5ClBzM2tURXZFTVNBVTlRRU83cXNTNjh1aFdRMXRXM29KaktObVVnVDA5QzBEcVpZWTlrV3BQZzJENmIrUm1FWDgKUmYyUncrRGpLRXlHYkpRenJtRmNYMVlDcUV0MkpMR1RiZkM4NHpnb25YTS90d201cFlXL3JpSTVBd2lNWXB6ZApWR1p0d0lpSi9ZVWNrZWkrNlpscDczZHpiMUw0RHEzVjY5Y29VejVBZHhpVlRBRHlCcW1wM1VQbnZadTBsOCtuClM5Y3dZbkdaOTZLM3ZwQzZHTk5GY1QrbXdiZ25qK2JMaHVVTDMrck52R3BSclpKei9lQT0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQotLS0tLUJFR0lOIFJTQSBQUklWQVRFIEtFWS0tLS0tCk1JSUVvd0lCQUFLQ0FRRUF4V1BUbXZKWnlOcERvYVZudmthUWp3ajR5VkpnQTBlZmtiamc4MlI1NWJpdnNLYXoKTXRLVDh4TmtwMFZxY2xnN3pJbE13Mm11U003bTloMzBVMHB4RjlqQ0c3SFh4ZVQyaURZWU1BMnkwVUR4MXFUUQpwRmdRMC8reW0wYkxiMzFMQ09EV0Y4Nm9QL3VFall3SlFyLzVIQWtGQXN4MkxIRTMvcHBLNG1rclBYeDg1VlduCjFSSC9hZ0ZSMm5veHdtY0wraWRUZE55anRoZCtMM1Zpa1RqeFZOek5ZbEdTRVd1b2V3RDVaWDM1TGlob1NpcngKc1FodGcrR0NoMjdsNXQ4cVltL2VRT2ZqeitOUVZjb09uOG9oSVZwTjBXRVY0OXBuMWNFU3NuOWdOZlA0NHlragowNWc2emJvOEVqYjdhbzcySUpGakN1MjVMYWRhYnNoRkRIMDlqUUlEQVFBQkFvSUJBR0piOFNqSDFRZXFBNE44Ckdhc09IS0M1MXNiekhsYmtETmFmYXJDK0E2UCtHTVlNKzBTNisvQm5YSU9ocW41YUMwcExySTIvanBKSFQzMmEKeFpIdmlWVlp0TGY2TWN3eDRNdFZNVTVZdFI5aW5sL1g5d085d256eGNIM0JsRVAxQ2p2ZFZiRzlUOGU2UEg0UQpKdGsxTWh2UFBzajdPM08vNHlnaW1HZ2tBZUQ3MUM3WUQ1RzAraC9jeTllYVRUUURUMFJ4ZEQ3dkE0d2g2MHhOCmgybTQxK0NyUFArTnNqM2FRNUNET09laUgyMk9UVmdEVllEb1RoUi9rRFdtNmg3eU55bEowMjM2SVk3WU5taEoKUzNWQURieXpJT0xhUWtBSWJmNVZBZ2JvRzZMaFhvN3hGdkQ3eHFKWENlRVlWOEZRV0UweEZJMkhKMFloaDhLNApSdXB3Q3AwQ2dZRUE3Q2t6bDZwRmgrNk1md3VHcnR0ZUY4UWVxQ1BuYXhWRmNpU2prZzMxd0swWTNyRXQ0UHM2CnJ5RkI2anVxVjBtNkE2M3FrdjdGcVdvNE9sM1U2aTB6aUpQMjJmMWFPWEtqdzRwYjl0bnRhRFBvOHV0dW5tQVAKaW4xWGUyR2s3S2p2emhrcjF0a0FtUXJBQUxiZEFEbi9GQjI1UWdOdmFSTytTbjZveUg4eGZ5TUNnWUVBMWZqVQpOZFBzQ1RJalpzcDdXUllreDhmL3prQjZhU3FlbkpPMjM3ZnlYVjJEVDFGWk8rMStxK1VHUkJRQXBzOVdwRGJICkJHMS9oTThyWlpTdW1BMkRxdTlobElFSDIwR3lIYVFLaC9JTUEvY0I2eGNHdk9OZVl6ajhWZHBCVmE4anYwd20KNFVVS3dsMEVkOHQreVdnVDB6THREN0UrR3RFaVY5UDIvaXBEODQ4Q2dZQVJQd2tIZ0dYSGdZSTlIT2hmQ0tJYwpkalFPNzJCTkQ2YWNxVlJRckRoUU05UG5IMlZNVXN4OFVaOXdyWjdJOVJkaWdXYnFDVFVDSkVHcThZTkUvcndPCnMwK0pwOWpZN1NoTWRXUTE2TUJQcGNyVFFxSTNhcWgzNHFOcTNUeWdFODQvYk5Nb3czd3BzUUZJakJJam5CaW0KclcwRUJ5QXh1a0ZoUzFLa0liWEpwUUtCZ0QrWTJNSXkvZW54ekJIbVJ1bEFxcWZ5cXZhTHRaYUNnMmc0ZzFkVgpYaVVnQVVKWEJIWEtiaWI3U0hSOW1YLzdDbDUrcFlLTVpTVjlTZ0hFUW15UlA3eFRzQ1lxZjhKTWNYdGI0WUZzCmtPT3d6QklxNHViTGthZGVMYW42MkFaMnF1SlY2UXgxcisvN0k3UFRlUmkxNVlhVmtWNWpxUGpoaGhxaXRydnUKcGduREFvR0JBTDlrUTdqV3FPTnB2Q2RtZFMwK0Voam5zcU1ta21ycWxhdEZjM2F2b0Jod3EyR0kxbWRNVDFmYwpHYjZIdlNsMWdDeG0vVGszMGpiZHI2eTJmWHl4UTdXc1FxWGNQRTZHYUFuWFE0d1l0ckZuY3BxTGR4Z0IzMmZmCkZEQ3p2bjRJZjBKUHAxdXNuZUpDclVpanlsTWhpcnBWSWdGUXY0cHdWV0g1T3JSeFVDS3cKLS0tLS1FTkQgUlNBIFBSSVZBVEUgS0VZLS0tLS0K"
 
-argo-platform:
-  enabled: false
+cf-platform-analytics-platform:
+  controller:
+    image:
+      pullPolicy: Always
+
+cf-platform-analytics-etlstarter:
+  controller:
+    image:
+      pullPolicy: Always

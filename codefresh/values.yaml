@@ -589,6 +589,7 @@ cf-broadcaster:
 # @default -- See below
 cf-platform-analytics-etlstarter:
   nameOverride: etl-starter
+  mongodbDatabase: "platform-analytics-postgres"
   redis:
     # -- Disable redis subchart
     enabled: false
@@ -598,6 +599,12 @@ cf-platform-analytics-etlstarter:
   # -- Only postgres ETL should be running in onprem
   system-etl-postgres:
     enabled: true
+    controller:
+      cronjob:
+        ttlSecondsAfterFinished: 300
+    container:
+      env:
+        BLUE_GREEN_ENABLED: true
   # @ignored
   system-etl-gitops:
     enabled: false
@@ -621,6 +628,7 @@ cf-platform-analytics-etlstarter:
 # @default -- See below
 cf-platform-analytics-platform:
   nameOverride: platform-analytics
+  mongodbDatabase: "platform-analytics-postgres"
   container:
     image:
       registry: gcr.io/codefresh-enterprise
@@ -637,6 +645,7 @@ cf-platform-analytics-platform:
     NODE_ENV: production
     CUBEJS_LOG_LEVEL: trace
     CUBEJS_SCHEDULED_REFRESH_TIMER: 60
+    REDIS_TLS: false
     CUBEJS_DEV_MODE: false
     SUPPORTED_DATA_SOURCE: 'CSDP_POSTGRES,CLASSIC_POSTGRES'
   affinity: {}
@@ -687,6 +696,8 @@ cfui:
       registry: gcr.io/codefresh-enterprise
     env:
       ON_PREMISE: true
+  podAnnotations:
+    reloader.stakater.com/auto: '{{ randAlphaNum 5 | quote }}'
   resources:
     requests:
       cpu: 100m
@@ -1140,6 +1151,7 @@ argo-platform:
   secrets:
     cache-host: &cache-host '{{ default (printf "%s-%s" .Release.Name .Values.global.redisService) .Values.global.redisUrl }}'
     cache-password: &cache-password '{{ .Values.global.redisPassword }}'
+    cache-port: &cache-port '{{ .Values.global.redisPort }}'
     mongodb-readmodels-uri-sec: &mongodb-readmodels-uri-sec '{{ include "codefresh.calculateMongoUri" (dict "dbName" .Values.env.MONGODB_READMODELS_DBNAME "mongoURI" .Values.global.mongoURI) }}'
     mongodb-audit-uri-sec: &mongodb-audit-uri-sec '{{ include "codefresh.calculateMongoUri" (dict "dbName" .Values.env.MONGODB_AUDIT_DBNAME  "mongoURI" .Values.global.mongoURI) }}'
     pg-db-name: &pg-db-name analytics
@@ -1176,6 +1188,7 @@ argo-platform:
       argo-hub-host: http://{{ .Release.Name }}-argo-hub-platform
       cache-host: *cache-host
       cache-password: *cache-password
+      cache-port: *cache-port
       v1-host: http://{{ .Release.Name }}-{{ .Values.global.cfapiEndpointsService }}
       v1-internal-host: http://{{ .Release.Name }}-{{ .Values.global.cfapiService }}:{{ .Values.global.cfapiInternalPort }}
       mongodb-audit-uri-sec: *mongodb-audit-uri-sec

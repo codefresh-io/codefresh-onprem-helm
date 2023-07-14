@@ -1,6 +1,8 @@
 ## Codefresh On-Premises
 
-![Version: 2.0.8](https://img.shields.io/badge/Version-2.0.8-informational?style=flat-square) ![AppVersion: 2.0.0](https://img.shields.io/badge/AppVersion-2.0.0-informational?style=flat-square)
+![Version: 2.0.9](https://img.shields.io/badge/Version-2.0.9-informational?style=flat-square) ![AppVersion: 2.0.0](https://img.shields.io/badge/AppVersion-2.0.0-informational?style=flat-square)
+
+Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
 ## Table of Content
 
@@ -8,6 +10,7 @@
 - [Get Repo Info and Pull Chart](#get-repo-info-and-pull-chart)
 - [Install Chart](#install-chart)
 - [Helm Chart Configuration](#helm-chart-configuration)
+  - [Persistent services](#persistent-services)
   - [Configuring external services](#configuring-external-services)
     - [External MongoDB](#external-mongodb)
     - [External MongoDB with MTLS](#external-mongodb-with-mtls)
@@ -23,6 +26,8 @@
   - [Configuration with multi-role CF-API](#configuration-with-multi-role-cf-api)
   - [High Availability](#high-availability)
   - [Mounting private CA certs](#mounting-private-ca-certs)
+- [Installing on OpenShift](#installing-on-openshift)
+- [Firebase Configuration](#firebase-configuration)
 - [Additional configuration](#additional-configuration)
 - [Upgrading](#upgrading)
   - [To 2.0.0](#to-200)
@@ -31,11 +36,11 @@
 
 ## Prerequisites
 
-- Kubernetes **1.22+**
+- Kubernetes **>= 1.22.0 < 1.26.0**
 - Helm **3.8.0+**
 - PV provisioner support in the underlying infrastructure
 - GCR Service Account JSON `sa.json` (provided by Codefresh, contact support@codefresh.io)
-- Firebase url and secret
+- Firebase [Realtime Database URL](https://firebase.google.com/docs/database/web/start#create_a_database) and [legacy token](https://firebase.google.com/docs/database/rest/auth#legacy_tokens) for it. See [Firebase Configuration](#firebase-configuration)
 - Valid TLS certificates for Ingress
 - When [external](#external-postgressql) PostgreSQL is used, `pg_cron` and `pg_partman` extensions **must be enabled** for [analytics](https://codefresh.io/docs/docs/dashboards/home-dashboard/#pipelines-dashboard) to work (see [AWS RDS example](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/PostgreSQL_pg_cron.html#PostgreSQL_pg_cron.enable))
 
@@ -123,6 +128,22 @@ See [Customizing the Chart Before Installing](https://helm.sh/docs/intro/using_h
 helm show values codefresh/codefresh
 ```
 
+### Persistent services
+
+The following table displays the list of **persistent** services created as part of the on-premises installation:
+
+| Database      | Purpose | Latest supported version     |
+| :---        | :----   |  :--- |
+| MongoDB      | Stores all account data (account settings, users, projects, pipelines, builds etc.)       | 4.4.x   |
+| Postgresql   | Stores data about events for the account (pipeline updates, deletes, etc.). The audit log uses the data from this database.        | 13.x      |
+| Redis   | Used for caching, and as a key-value store for cron trigger manager.        | 6.0.x      |
+
+> Running on netfs (nfs, cifs) is not recommended.
+
+> Docker daemon (`cf-builder` stateful set) can be run on block storage only.
+
+All of them can be externalized. See the next sections.
+
 ### Configuring external services
 
 The chart contains required dependencies for the corresponding services
@@ -190,6 +211,7 @@ global:
         subPath: ca.pem
 
   env:
+    MONGODB_SSL_ENABLED: true
     MTLS_CERT_PATH: /etc/ssl/mongodb/ca.pem
     RUNTIME_MTLS_CERT_PATH: /etc/ssl/mongodb/ca.pem
     RUNTIME_MONGO_TLS: "true"
@@ -391,13 +413,67 @@ ingress:
     alb.ingress.kubernetes.io/success-codes: 200,404
     alb.ingress.kubernetes.io/target-type: ip
   services:
+    internal-gateway:
+      - /2.0/api/*
+      - /2.0/*
+      - /2.0
+    cfapi:
+      - /api/*
+      - /ws/*
+    argo-hub-platform:
+      - /argo/hub/*
+    nomios:
+      - /nomios/*
+    cfui:
+      - /
+```
+
+ALB ingress configuration for multi-role CF-API
+```yaml
+ingress-nginx:
+  # -- Disable ingress-nginx subchart installation
+  enabled: false
+
+ingress:
+  # -- ALB contoller ingress class
+  ingressClassName: alb
+  annotations:
+    alb.ingress.kubernetes.io/actions.ssl-redirect: '{"Type": "redirect", "RedirectConfig":{ "Protocol": "HTTPS", "Port": "443", "StatusCode": "HTTP_301"}}'
+    alb.ingress.kubernetes.io/backend-protocol: HTTP
+    alb.ingress.kubernetes.io/certificate-arn: <ARN>
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/success-codes: 200,404
+    alb.ingress.kubernetes.io/target-type: ip
+  services:
     # For ALB /* asterisk is required in path
     internal-gateway:
       - /2.0/api/*
       - /2.0/*
-    cfapi:
+      - /2.0
+    cfapi: null # Set default cfapi path to null!
+    cfapi-endpoints:
       - /api/*
+    cfapi-downloadlogmanager:
+      - /api/progress/download/*
+      - /api/public/progress/download/*
+    cfapi-admin:
+      - /api/admin/*
+    cfapi-ws:
       - /ws/*
+    cfapi-teams:
+      - /api/team/*
+    cfapi-kubernetes-endpoints:
+      - /api/kubernetes/*
+    cfapi-test-reporting:
+      - /api/testReporting/*
+    cfapi-kubernetesresourcemonitor:
+      - /api/k8s-monitor/*
+    cfapi-environments:
+      - /api/environments-v2/argo/events/*
+    cfapi-gitops-resource-receiver:
+      - /api/gitops/resources/*
+      - /api/gitops/rollout/*
     argo-hub-platform:
       - /argo/hub/*
     nomios:
@@ -739,6 +815,124 @@ global:
         subPath: ca.crt
 ```
 
+## Installing on OpenShift
+
+To deploy Codefresh On-Prem on OpenShift use the following values example:
+
+```yaml
+ingress:
+  ingressClassName: openshift-default
+
+global:
+  dnsService: openshift-default
+  dnsNamespace: openshift-dns
+  clusterDomain: cluster.local
+
+# Disable. Not supported currently.
+builder:
+  enabled: false
+
+cfapi:
+  podSecurityContext:
+    enabled: false
+
+cf-platform-analytics-platform:
+  redis:
+    master:
+      podSecurityContext:
+        enabled: false
+      containerSecurityContext:
+        enabled: false
+
+cfsign:
+  initContainers:
+    volume-permissions:
+      enabled: false
+
+cfui:
+  podSecurityContext:
+    enabled: false
+
+consul:
+  podSecurityContext:
+    enabled: false
+  containerSecurityContext:
+    enabled: false
+
+cronus:
+  podSecurityContext:
+    enabled: false
+
+ingress-nginx:
+  enabled: false
+
+mongodb:
+  podSecurityContext:
+    enabled: false
+  containerSecurityContext:
+    enabled: false
+
+postgresql:
+  primary:
+    podSecurityContext:
+      enabled: false
+    containerSecurityContext:
+      enabled: false
+
+redis:
+  master:
+    podSecurityContext:
+      enabled: false
+    containerSecurityContext:
+      enabled: false
+
+rabbitmq:
+  podSecurityContext:
+    enabled: false
+  containerSecurityContext:
+    enabled: false
+
+# Disable. Not supported currently.
+runner:
+  enabled: false
+
+argo-platform:
+  # Override UI image for now.
+  ui:
+    image:
+      repository: gcr.io/codefresh-inc/codefresh-io/argo-platform-ui
+      tag: 1.2342.1-CR-17713-2d45f8e
+```
+
+## Firebase Configuration
+
+As outlined in [prerequisites](#prerequisites), it's required to set up a Firebase database for builds logs streaming:
+
+- [Create a Database](https://firebase.google.com/docs/database/web/start#create_a_database).
+- Create a [Legacy token](https://firebase.google.com/docs/database/rest/auth#legacy_tokens) for authentication.
+- Set the following rules for the database:
+```json
+{
+   "rules": {
+       "build-logs": {
+           "$jobId":{
+               ".read": "!root.child('production/build-logs/'+$jobId).exists() || (auth != null && auth.admin == true) || (auth == null && data.child('visibility').exists() && data.child('visibility').val() == 'public') || ( auth != null && data.child('accountId').exists() && auth.accountId == data.child('accountId').val() )",
+               ".write": "auth != null && data.child('accountId').exists() && auth.accountId == data.child('accountId').val()"
+           }
+       },
+       "environment-logs": {
+           "$environmentId":{
+               ".read": "!root.child('production/environment-logs/'+$environmentId).exists() || ( auth != null && data.child('accountId').exists() && auth.accountId == data.child('accountId').val() )",
+               ".write": "auth != null && data.child('accountId').exists() && auth.accountId == data.child('accountId').val()"
+           }
+       }
+   }
+}
+```
+
+However, if you're in an air-gapped environment, you can omit this prerequisite and use a built-in logging system (i.e. `OfflineLogging` feature-flag).
+See [feature management](https://codefresh.io/docs/docs/installation/on-premises/on-prem-feature-management)
+
 ## Additional configuration
 
 ### Retention policy for builds and logs
@@ -758,9 +952,26 @@ cfapi:
     RETENTION_POLICY_DAYS: 180
 ```
 
+### Retention policy for builds and logs
+> Configuration for Codefresh On-Prem >= 2.x
+
+> Previous configuration example (i.e. `RETENTION_POLICY_IS_ENABLED=true` ) is also supported in Codefresh On-Prem >= 2.x
+
+**For existing environments, for the retention mechanism to work, you must first drop the `created ` index in `workflowprocesses` collection. This requires a maintenance window that depends on the number of builds.**
+
+```yaml
+cfapi:
+  env:
+    # Determines if automatic build deletion is enabled.
+    TTL_RETENTION_POLICY_IS_ENABLED: true
+    # The number of days for which to retain builds, and can be between 30 (minimum) and 365 (maximum). Builds older than the defined retention period are deleted.
+    TTL_RETENTION_POLICY_IN_DAYS: 180
+
+```
+
 ### Configure CSP (Content Security Policy)
 
-`CONTENT_SECURITY_POLICY` is the string describing content policies. Use semi-colons to separate between policies. CONTENT_SECURITY_POLICY_REPORT_TO is a comma-separated list of JSON objects. Each object must have a name and an array of endpoints that receive the incoming CSP reports.
+`CONTENT_SECURITY_POLICY` is the string describing content policies. Use semi-colons to separate between policies. `CONTENT_SECURITY_POLICY_REPORT_TO` is a comma-separated list of JSON objects. Each object must have a name and an array of endpoints that receive the incoming CSP reports.
 
 For detailed information, see the [Content Security Policy article on MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP).
 
@@ -791,6 +1002,23 @@ cfapi:
 This major chart version change (v1.4.X -> v2.0.0) contains some **incompatible breaking change needing manual actions**.
 
 **Before applying the upgrade, read through this section!**
+
+#### ⚠️ New Services
+
+Codefesh 2.0 chart includes additional dependent microservices (charts):
+- `argo-platform`: Main Codefresh GitOps module.
+- `internal-gateway`: NGINX that proxies requests to the correct components (api-graphql, api-events, ui).
+- `argo-hub-platform`: Service for Argo Workflow templates.
+- `platform-analytics` and `etl-starter`: Service for [Pipelines dasboard](https://codefresh.io/docs/docs/dashboards/home-dashboard/#pipelines-dashboard)
+
+These services require additional databases in MongoDB (`audit`/`read-models`/`platform-analytics-postgres`) and in Postgresql (`analytics` and `analytics_pre_aggregations`)
+The helm chart is configured to re-run seed jobs to create necessary databases and users during the upgrade.
+
+```yaml
+seed:
+  # -- Enable all seed jobs
+  enabled: true
+```
 
 #### ⚠️ New MongoDB Indexes
 
@@ -1026,25 +1254,6 @@ nomios:
     ...
 ```
 
-#### ⚠️ New Services
-
-Codefesh 2.0.0 chart includes additional dependent microservices (charts):
-- `argo-platform`: Main Codefresh GitOps module.
-- `internal-gateway`: NGINX that proxies requests to the correct components (api-graphql, api-events, ui).
-- `argo-hub-platform`: Service for Argo Workflow templates.
-- `platform-analytics` and `etl-starter`: Service for [Pipelines dasboard](https://codefresh.io/docs/docs/dashboards/home-dashboard/#pipelines-dashboard)
-
-These services require two additional databases in MongoDB (`audit` and `read-models`) and in Postgresql (`analytics` and `analytics_pre_aggregations`)
-The helm chart is configured to re-run seed jobs to create necessary databases and users during the upgrade.
-
-```yaml
-seed:
-  # -- Enable all seed jobs
-  enabled: true
-```
-
-The bare minimal workload footprint for the new services (without HPA or PDB) is `~4vCPU` and `~8Gi RAM`
-
 ## Rollback
 
 Use `helm history` to determine which release has worked, then use `helm rollback` to perform a rollback
@@ -1100,7 +1309,7 @@ helm rollback $RELEASE_NAME $RELEASE_NUMBER \
 | cf-broadcaster | object | See below | broadcaster |
 | cf-platform-analytics-etlstarter | object | See below | etl-starter |
 | cf-platform-analytics-etlstarter.redis.enabled | bool | `false` | Disable redis subchart |
-| cf-platform-analytics-etlstarter.system-etl-postgres | object | `{"enabled":true}` | Only postgres ETL should be running in onprem |
+| cf-platform-analytics-etlstarter.system-etl-postgres | object | `{"container":{"env":{"BLUE_GREEN_ENABLED":true}},"controller":{"cronjob":{"ttlSecondsAfterFinished":300}},"enabled":true}` | Only postgres ETL should be running in onprem |
 | cf-platform-analytics-platform | object | See below | platform-analytics |
 | cfapi | object | `{"affinity":{},"container":{"env":{"AUDIT_AUTO_CREATE_DB":true,"GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh"},"image":{"registry":"gcr.io/codefresh-enterprise"}},"controller":{"replicas":2},"enabled":true,"hpa":{"enabled":false,"maxReplicas":10,"minReplicas":2,"targetCPUUtilizationPercentage":70},"nodeSelector":{},"pdb":{"enabled":false,"minAvailable":"50%"},"podSecurityContext":{},"resources":{"limits":{},"requests":{"cpu":"200m","memory":"256Mi"}},"tolerations":[]}` | cf-api |
 | cfapi.container | object | `{"env":{"AUDIT_AUTO_CREATE_DB":true,"GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh"},"image":{"registry":"gcr.io/codefresh-enterprise"}}` | Container configuration |
