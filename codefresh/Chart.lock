@@ -133,10 +133,10 @@ dependencies:
   version: 0.7.3
 - name: cf-platform-analytics
   repository: https://chartmuseum.codefresh.io/cf-platform-analytics
-  version: 0.47.6
+  version: 0.47.9
 - name: cf-platform-analytics
   repository: https://chartmuseum.codefresh.io/cf-platform-analytics
-  version: 0.47.6
+  version: 0.47.9
 - name: argo-platform
   repository: https://chartmuseum.codefresh.io/argo-platform
   version: 1.2339.0
@@ -146,5 +146,5 @@ dependencies:
 - name: codefresh-tunnel-server
   repository: https://chartmuseum.codefresh.io/codefresh-tunnel-server
   version: 0.1.12
-digest: sha256:ba58ab803671d744f1c288651d40c63c2705f85efbebd40350e9d76ef6f05384
-generated: "2023-07-14T12:19:44.616701785+03:00"
+digest: sha256:df256afabb00cd890e6e65f9bc8c13d6695db210e689bc35da88f9c07445e367
+generated: "2023-07-21T16:21:52.93429205+03:00"

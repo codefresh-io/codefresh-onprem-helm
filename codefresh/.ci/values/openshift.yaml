@@ -1,0 +1,82 @@
+global:
+  appUrl: ""  # placeholder for ${CF_APP_HOST}
+  firebaseSecret: ""  # placeholder for ${FIREBASE_SECRET}
+  dnsService: openshift-default
+  dnsNamespace: openshift-dns
+  clusterDomain: cluster.local
+
+ingress:
+  enabled: true
+  ingressClassName: openshift-default
+
+builder:
+  enabled: false
+
+cfapi:
+  podSecurityContext:
+    enabled: false
+
+cf-platform-analytics-platform:
+  redis:
+    master:
+      podSecurityContext:
+        enabled: false
+      containerSecurityContext:
+        enabled: false
+
+cfsign:
+  initContainers:
+    volume-permissions:
+      enabled: false
+
+cfui:
+  podSecurityContext:
+    enabled: false
+
+consul:
+  podSecurityContext:
+    enabled: false
+  containerSecurityContext:
+    enabled: false
+
+cronus:
+  podSecurityContext:
+    enabled: false
+
+ingress-nginx:
+  enabled: false
+
+mongodb:
+  podSecurityContext:
+    enabled: false
+  containerSecurityContext:
+    enabled: false
+
+postgresql:
+  primary:
+    podSecurityContext:
+      enabled: false
+    containerSecurityContext:
+      enabled: false
+
+redis:
+  master:
+    podSecurityContext:
+      enabled: false
+    containerSecurityContext:
+      enabled: false
+
+rabbitmq:
+  podSecurityContext:
+    enabled: false
+  containerSecurityContext:
+    enabled: false
+
+runner:
+  enabled: false
+
+argo-platform:
+  ui:
+    image:
+      repository: gcr.io/codefresh-inc/codefresh-io/argo-platform-ui
+      tag: 1.2342.1-CR-17713-2d45f8e

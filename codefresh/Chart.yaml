@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.0.9
+version: 2.0.10
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -15,21 +15,11 @@ appVersion: 2.0.0
 annotations:
   artifacthub.io/alternativeName: "codefresh-onprem"
   artifacthub.io/changes: |
-    - kind: added
-      description: "(argo-platform) Added Mongo MTLS (Mutual TLS) support."
-    - kind: added
-      description: "(argo-platform) Added Redis MTLS (Mutual TLS) support."
     - kind: changed
-      description: "(platform-analytics) Updated to 0.47.6"
-    - kind: fixed
-      description: "(platform-analytics) Fixed platform-analytics db name."
-    - kind: fixed
-      description: "(cfapi) Fixed group sync for Azure IDP."
+      description: "(platform-analytics) Updated to 0.47.9"
       links:
         - name: JIRA Issue
-          url: "https://codefresh-io.atlassian.net/browse/CR-19484"
-    - kind: fixed
-      description: "(argo-platform) Fixed non-standard redis port env variable."
+          url: "https://codefresh-io.atlassian.net/browse/CR-19399"
 dependencies:
   - name: cf-common
     repository: https://chartmuseum.codefresh.io/cf-common
@@ -225,12 +215,12 @@ dependencies:
     condition: hermes.enabled
   - name: cf-platform-analytics
     alias: cf-platform-analytics-platform
-    version: "0.47.6"
+    version: "0.47.9"
     repository: https://chartmuseum.codefresh.io/cf-platform-analytics
     condition: argo-platform.enabled
   - name: cf-platform-analytics
     alias: cf-platform-analytics-etlstarter
-    version: "0.47.6"
+    version: "0.47.9"
     repository: https://chartmuseum.codefresh.io/cf-platform-analytics
     condition: argo-platform.enabled
   - name: argo-platform
