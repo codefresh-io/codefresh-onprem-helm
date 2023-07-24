@@ -1,13 +1,13 @@
 ## Codefresh On-Premises
 
-![Version: 2.0.10](https://img.shields.io/badge/Version-2.0.10-informational?style=flat-square) ![AppVersion: 2.0.0](https://img.shields.io/badge/AppVersion-2.0.0-informational?style=flat-square)
+![Version: 2.0.11](https://img.shields.io/badge/Version-2.0.11-informational?style=flat-square) ![AppVersion: 2.0.0](https://img.shields.io/badge/AppVersion-2.0.0-informational?style=flat-square)
 
 Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
 ## Table of Content
 
 - [Prerequisites](#prerequisites)
-- [Get Repo Info and Pull Chart](#get-repo-info-and-pull-chart)
+- [Get Repo Info](#get-repo-info)
 - [Install Chart](#install-chart)
 - [Helm Chart Configuration](#helm-chart-configuration)
   - [Persistent services](#persistent-services)
@@ -44,7 +44,7 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
 - Valid TLS certificates for Ingress
 - When [external](#external-postgressql) PostgreSQL is used, `pg_cron` and `pg_partman` extensions **must be enabled** for [analytics](https://codefresh.io/docs/docs/dashboards/home-dashboard/#pipelines-dashboard) to work (see [AWS RDS example](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/PostgreSQL_pg_cron.html#PostgreSQL_pg_cron.enable))
 
-## Get Repo Info and Pull Chart
+## Get Repo Info
 
 ```console
 helm repo add codefresh http://chartmuseum.codefresh.io/codefresh
@@ -119,6 +119,18 @@ helm upgrade --install cf codefresh/codefresh \
     --wait \
     --timeout 15m
 ```
+
+- *Install from OCI-based registry*
+
+```console
+  helm upgrade --install cf oci://quay.io/codefresh/codefresh \
+      -f cf-values.yaml \
+      --namespace codefresh \
+      --create-namespace \
+      --debug \
+      --wait \
+      --timeout 15m
+  ```
 
 ## Helm Chart Configuration
 
