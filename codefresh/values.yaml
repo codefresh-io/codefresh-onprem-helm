@@ -828,8 +828,7 @@ helm-repo-manager:
     ingress:
       enabled: false
     image:
-      registry: quay.io
-      repository: codefresh/chartmuseum
+      repository: quay.io/codefresh/chartmuseum
       tag: a02769a5
   resources:
     requests:

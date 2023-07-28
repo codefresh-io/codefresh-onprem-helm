@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.0.11](https://img.shields.io/badge/Version-2.0.11-informational?style=flat-square) ![AppVersion: 2.0.0](https://img.shields.io/badge/AppVersion-2.0.0-informational?style=flat-square)
+![Version: 2.0.12](https://img.shields.io/badge/Version-2.0.12-informational?style=flat-square) ![AppVersion: 2.0.0](https://img.shields.io/badge/AppVersion-2.0.0-informational?style=flat-square)
 
 Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
@@ -31,6 +31,7 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
 - [Additional configuration](#additional-configuration)
 - [Upgrading](#upgrading)
   - [To 2.0.0](#to-200)
+  - [To 2.0.12](#to-2012)
 - [Rollback](#rollback)
 - [Values](#values)
 
@@ -557,6 +558,10 @@ Use the example below to override repository for all templates:
 
 ```yaml
 
+global:
+  imagePullSecrets:
+    - cf-registry
+
 ingress-nginx:
   controller:
     image:
@@ -605,7 +610,7 @@ internal-gateway:
 helm-repo-manager:
   chartmuseum:
     image:
-      repository: codefresh/chartmuseum
+      repository: myregistry.domain.com/codefresh/chartmuseum
 
 cf-platform-analytics-platform:
   redis:
@@ -1266,6 +1271,30 @@ nomios:
     ...
 ```
 
+### To 2.0.12
+
+#### ⚠️ Legacy ChartMuseum subchart deprecation
+
+Due to deprecation of legacy ChartMuseum subchart in favor of upstream [chartmuseum](https://github.com/chartmuseum/charts/tree/main/src/chartmuseum), you need to remove the old deployment before the upgrade due to **immutable** `matchLabels` field change in the deployment spec.
+
+```console
+kubectl delete deploy cf-chartmuseum --namespace $NAMESPACE
+```
+
+#### Affected values:
+
+- If you have `.Values.global.imageRegistry` specified, it **won't be** applied for the new chartmuseum subchart. Add image registry explicitly for the subchart as follows
+
+```yaml
+global:
+  imageRegistry: myregistry.domain.com
+
+helm-repo-manager:
+  chartmuseum:
+    image:
+      repository: myregistry.domain.com/codefresh/chartmuseum
+```
+
 ## Rollback
 
 Use `helm history` to determine which release has worked, then use `helm rollback` to perform a rollback
@@ -1275,6 +1304,7 @@ Use `helm history` to determine which release has worked, then use `helm rollbac
 ```console
 kubectl delete sts cf-runner --namespace $NAMESPACE
 kubectl delete sts cf-builder --namespace $NAMESPACE
+kubectl delete deploy cf-chartmuseum --namespace $NAMESPACE
 kubectl delete job --namespace $NAMESPACE -l release=$RELEASE_NAME
 ```
 

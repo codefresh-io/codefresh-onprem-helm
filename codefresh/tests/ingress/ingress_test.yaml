@@ -1,0 +1,44 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/quintush/helm-unittest/master/schema/helm-testsuite.json
+suite: Ingress tests
+templates:
+  - templates/ingress.yaml
+  - templates/secrets/ingress-tls.yaml
+tests:
+  - it: should render correct ingress
+    template: templates/ingress.yaml
+    asserts:
+      - equal:
+          path: metadata.name
+          value: RELEASE-NAME-codefresh-ingress
+      - equal:
+          path: spec.ingressClassName
+          value: nginx-codefresh
+
+  - it: ingress with tls enabled and existing secret
+    template: templates/ingress.yaml
+    set:
+      global:
+        appUrl: mydomain.local
+      ingress:
+        tls:
+          enabled: true
+          existingSecret: my-existing-secret
+    asserts:
+      - contains:
+          path: spec.tls
+          content:
+            hosts:
+            - mydomain.local
+            secretName: my-existing-secret
+
+  - it: ingress with tls enabled with no certs provided
+    template: templates/secrets/ingress-tls.yaml
+    set:
+      global:
+        appUrl: mydomain.local
+      ingress:
+        tls:
+          enabled: true
+    asserts:
+      - failedTemplate:
+          errorMessage: "A valid .Values.ingress.tls.cert is required!"
