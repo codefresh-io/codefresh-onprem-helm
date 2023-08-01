@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.0.12](https://img.shields.io/badge/Version-2.0.12-informational?style=flat-square) ![AppVersion: 2.0.0](https://img.shields.io/badge/AppVersion-2.0.0-informational?style=flat-square)
+![Version: 2.0.13](https://img.shields.io/badge/Version-2.0.13-informational?style=flat-square) ![AppVersion: 2.0.0](https://img.shields.io/badge/AppVersion-2.0.0-informational?style=flat-square)
 
 Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
@@ -862,6 +862,8 @@ cf-platform-analytics-platform:
         enabled: false
 
 cfsign:
+  podSecurityContext:
+    enabled: false
   initContainers:
     volume-permissions:
       enabled: false
@@ -869,6 +871,15 @@ cfsign:
 cfui:
   podSecurityContext:
     enabled: false
+
+internal-gateway:
+  podSecurityContext:
+    enabled: false
+
+helm-repo-manager:
+  chartmuseum:
+    securityContext:
+      enabled: false
 
 consul:
   podSecurityContext:
