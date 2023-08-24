@@ -1,3 +1,6 @@
+seed-e2e:
+  enabled: true
+
 ingress:
   enabled: true
   tls:

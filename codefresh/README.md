@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.0.13](https://img.shields.io/badge/Version-2.0.13-informational?style=flat-square) ![AppVersion: 2.0.0](https://img.shields.io/badge/AppVersion-2.0.0-informational?style=flat-square)
+![Version: 2.0.14](https://img.shields.io/badge/Version-2.0.14-informational?style=flat-square) ![AppVersion: 2.0.0](https://img.shields.io/badge/AppVersion-2.0.0-informational?style=flat-square)
 
 Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
@@ -333,7 +333,7 @@ global:
 ```yaml
 global:
   # -- RabbitMQ hostname
-  rabbitmqHostname: my-rabbitmq.namespace.svc.cluster.local
+  rabbitmqHostname: my-rabbitmq.namespace.svc.cluster.local:5671
   # -- RabbitMQ user
   rabbitmqUsername: user
   # -- RabbitMQ password
@@ -1445,9 +1445,10 @@ helm rollback $RELEASE_NAME $RELEASE_NUMBER \
 | global.postgresService | string | `"postgresql"` | Default Internal Postgresql service address (from bitnami/postgresql subchart). Change if you use external PostreSQL. See "External Postgresql" example below. |
 | global.postgresUser | string | `"postgres"` | Default Postgresql username (from bitnami/postgresql subchart). Change if you use external PostreSQL. See "External Postgresql" example below. |
 | global.privateRegistry | bool | `false` | DEPRECATED - Use `.Values.global.imageRegistry` instead |
-| global.rabbitService | string | `"rabbitmq"` | Default Internal RabbitMQ service address (from bitnami/rabbitmq subchart). |
+| global.rabbitService | string | `"rabbitmq:5672"` | Default Internal RabbitMQ service address (from bitnami/rabbitmq subchart). |
 | global.rabbitmqHostname | string | `""` | Set External RabbitMQ service address. Takes precedence over `global.rabbitService`. See "External RabbitMQ" example below. |
 | global.rabbitmqPassword | string | `"cVz9ZdJKYm7u"` | Default RabbitMQ password (from bitnami/rabbitmq subchart). Change if you use external RabbitMQ. See "External RabbitMQ" example below. |
+| global.rabbitmqProtocol | string | `"amqp"` | Set rabbitmq protocol (`amqp/amqps`) |
 | global.rabbitmqUsername | string | `"user"` | Default RabbitMQ username (from bitnami/rabbitmq subchart). Change if you use external RabbitMQ. See "External RabbitMQ" example below. |
 | global.redisPassword | string | `"hoC9szf7NtrU"` | Default Redis password (from bitnami/redis subchart). Change if you use external Redis. See "External Redis" example below. |
 | global.redisPort | int | `6379` | Default Internal Redis service port (from bitnami/redis subchart). Change if you use external Redis. See "External Redis" example below. |
@@ -1501,6 +1502,7 @@ helm rollback $RELEASE_NAME $RELEASE_NUMBER \
 | runtime-environment-manager | object | See below | runtime-environment-manager |
 | runtimeImages | object | See below | runtimeImages |
 | seed | object | See below | Seed jobs |
+| seed-e2e | object | `{}` | CI |
 | seed.enabled | bool | `true` | Enable all seed jobs |
 | seed.mongoSeedJob | object | See below | Mongo Seed Job. Required at first install. Seeds the required data (default idp/user/account), creates cfuser and required databases. |
 | seed.mongoSeedJob.mongodbRootPassword | string | `"XT9nmM8dZD"` | Root password (required ONLY for seed job!). |

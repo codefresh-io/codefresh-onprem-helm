@@ -359,17 +359,19 @@ global:
 # RabbitMQ
 #---------
   # -- Default Internal RabbitMQ service address (from bitnami/rabbitmq subchart).
-  rabbitService: rabbitmq
+  rabbitService: rabbitmq:5672
   # -- Default RabbitMQ username (from bitnami/rabbitmq subchart). Change if you use external RabbitMQ. See "External RabbitMQ" example below.
   rabbitmqUsername: user
   # -- Default RabbitMQ password (from bitnami/rabbitmq subchart). Change if you use external RabbitMQ. See "External RabbitMQ" example below.
   rabbitmqPassword: cVz9ZdJKYm7u
+  # -- Set rabbitmq protocol (`amqp/amqps`)
+  rabbitmqProtocol: amqp
   # -- Set External RabbitMQ service address. Takes precedence over `global.rabbitService`. See "External RabbitMQ" example below.
   rabbitmqHostname: ""
 
   # # External RabbitMQ example
   # global:
-  #   rabbitmqHostname: my-rabbitmq.prod.svc.cluster.local
+  #   rabbitmqHostname: my-rabbitmq.prod.svc.cluster.local:5672
   #   rabbitmqUsername: user
   #   rabbitmqPassword: password
   #
@@ -1138,7 +1140,7 @@ argo-platform:
   # -- Env anchors
   # @default -- See below
   env:
-    RABBITMQ_PROTOCOL: &RABBITMQ_PROTOCOL amqp
+    RABBITMQ_PROTOCOL: &RABBITMQ_PROTOCOL $(RABBITMQ_PROTOCOL)
     MONGODB_AUDIT_URI: &MONGODB_AUDIT_URI $(MONGODB_AUDIT_URI_SEC)
     MONGODB_READMODELS_URI: &MONGODB_READMODELS_URI $(MONGODB_READMODELS_URI_SEC)
     MONGODB_AUDIT_DBNAME: audit
@@ -1158,6 +1160,7 @@ argo-platform:
     pg-password: &pg-password '{{ .Values.global.postgresPassword }}'
     pg-port: &pg-port '{{ .Values.global.postgresPort }}'
     pg-user-name: &pg-user-name '{{ .Values.global.postgresUser }}'
+    rabbitmq-protocol: &rabbitmq-protocol '{{ default "amqp" .Values.global.rabbitmqProtocol }}'
     rabbitmq-host: &rabbitmq-host '{{ default (printf "%s-%s" .Release.Name (coalesce .Values.global.rabbitService .Values.global.rabbitmqService )) .Values.global.rabbitmqHostname }}'
     rabbitmq-password: &rabbitmq-password '{{ .Values.global.rabbitmqPassword }}'
     rabbitmq-port: &rabbitmq-port 5672
@@ -1181,6 +1184,7 @@ argo-platform:
       MONGODB_AUDIT_URI: *MONGODB_AUDIT_URI
       MONGODB_READMODELS_URI: *MONGODB_READMODELS_URI
       RABBITMQ_PROTOCOL: *RABBITMQ_PROTOCOL
+      RABBITMQ_URLS: $(RABBITMQ_PROTOCOL)://$(RABBITMQ_USER):$(RABBITMQ_PASSWORD)@$(RABBITMQ_HOST)
     # -- Secrets
     # @default -- See below
     secrets:
@@ -1192,6 +1196,7 @@ argo-platform:
       v1-internal-host: http://{{ .Release.Name }}-{{ .Values.global.cfapiService }}:{{ .Values.global.cfapiInternalPort }}
       mongodb-audit-uri-sec: *mongodb-audit-uri-sec
       mongodb-readmodels-uri-sec: *mongodb-readmodels-uri-sec
+      rabbitmq-protocol: *rabbitmq-protocol
       rabbitmq-host: *rabbitmq-host
       rabbitmq-password: *rabbitmq-password
       rabbitmq-port: *rabbitmq-port
@@ -1252,6 +1257,7 @@ argo-platform:
       ENABLED_DATABASE_TYPES: POSTGRES
       MONGODB_READMODELS_URI: *MONGODB_READMODELS_URI
       RABBITMQ_PROTOCOL: *RABBITMQ_PROTOCOL
+      RABBITMQ_URLS: $(RABBITMQ_PROTOCOL)://$(RABBITMQ_USER):$(RABBITMQ_PASSWORD)@$(RABBITMQ_HOST)
     secrets:
       mongodb-readmodels-uri-sec: *mongodb-readmodels-uri-sec
       pg-db-name: *pg-db-name
@@ -1259,6 +1265,7 @@ argo-platform:
       pg-password: *pg-password
       pg-port: *pg-port
       pg-user-name: *pg-user-name
+      rabbitmq-protocol: *rabbitmq-protocol
       rabbitmq-host: *rabbitmq-host
       rabbitmq-password: *rabbitmq-password
       rabbitmq-port: *rabbitmq-port
@@ -1287,7 +1294,9 @@ argo-platform:
       repository: gcr.io/codefresh-enterprise/codefresh-io/argo-platform-api-events
     env:
       RABBITMQ_PROTOCOL: *RABBITMQ_PROTOCOL
+      RABBITMQ_URLS: $(RABBITMQ_PROTOCOL)://$(RABBITMQ_USER):$(RABBITMQ_PASSWORD)@$(RABBITMQ_HOST)
     secrets:
+      rabbitmq-protocol: *rabbitmq-protocol
       rabbitmq-host: *rabbitmq-host
       rabbitmq-password: *rabbitmq-password
       rabbitmq-port: *rabbitmq-port
@@ -1322,9 +1331,11 @@ argo-platform:
       MONGODB_AUDIT_URI: *MONGODB_AUDIT_URI
       MONGODB_READMODELS_URI: *MONGODB_READMODELS_URI
       RABBITMQ_PROTOCOL: *RABBITMQ_PROTOCOL
+      RABBITMQ_URLS: $(RABBITMQ_PROTOCOL)://$(RABBITMQ_USER):$(RABBITMQ_PASSWORD)@$(RABBITMQ_HOST)
     secrets:
       mongodb-audit-uri-sec: *mongodb-audit-uri-sec
       mongodb-readmodels-uri-sec: *mongodb-readmodels-uri-sec
+      rabbitmq-protocol: *rabbitmq-protocol
       rabbitmq-host: *rabbitmq-host
       rabbitmq-password: *rabbitmq-password
       rabbitmq-port: *rabbitmq-port
@@ -1353,9 +1364,11 @@ argo-platform:
       MONGODB_AUDIT_URI: *MONGODB_AUDIT_URI
       MONGODB_READMODELS_URI: *MONGODB_READMODELS_URI
       RABBITMQ_PROTOCOL: *RABBITMQ_PROTOCOL
+      RABBITMQ_URLS: $(RABBITMQ_PROTOCOL)://$(RABBITMQ_USER):$(RABBITMQ_PASSWORD)@$(RABBITMQ_HOST)
     secrets:
       mongodb-audit-uri-sec: *mongodb-audit-uri-sec
       mongodb-readmodels-uri-sec: *mongodb-readmodels-uri-sec
+      rabbitmq-protocol: *rabbitmq-protocol
       rabbitmq-host: *rabbitmq-host
       rabbitmq-password: *rabbitmq-password
       rabbitmq-port: *rabbitmq-port
@@ -1383,8 +1396,10 @@ argo-platform:
     env:
       MONGODB_READMODELS_URI: *MONGODB_READMODELS_URI
       RABBITMQ_PROTOCOL: *RABBITMQ_PROTOCOL
+      RABBITMQ_URLS: $(RABBITMQ_PROTOCOL)://$(RABBITMQ_USER):$(RABBITMQ_PASSWORD)@$(RABBITMQ_HOST)
     secrets:
       mongodb-readmodels-uri-sec: *mongodb-readmodels-uri-sec
+      rabbitmq-protocol: *rabbitmq-protocol
       rabbitmq-host: *rabbitmq-host
       rabbitmq-password: *rabbitmq-password
       rabbitmq-port: *rabbitmq-port
@@ -1470,3 +1485,6 @@ internal-gateway:
 # Don't enable! Not supported at the moment.
 codefresh-tunnel-server:
   enabled: false
+
+# -- CI
+seed-e2e: {}

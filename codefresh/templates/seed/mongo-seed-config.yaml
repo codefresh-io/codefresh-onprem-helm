@@ -54,6 +54,23 @@ data:
             ObjectId("59009221c102763beda7cf04")
         ],
         "localUserPasswordIDPEnabled": true,
+{{- if and (index .Values "seed-e2e" "enabled") }}
+        "features" : {
+            "analyticsClassicBuildsReports" : true,
+            "argoCdFlag" : true,
+            "commonDashboardProjectOne" : true,
+            "csdpDoraMetrics" : true,
+            "csdpIntegrations" : true,
+            "csdpJiraOauthIntegration" : true,
+            "environmentsV2Flag" : true,
+            "helm3NewUIFeature" : true,
+            "helmOptimizedQueue" : true,
+            "pipelineScopes" : true,
+            "pipelinesDashboardProjectOne" : true,
+            "showGitOpsHomeDashboardInTheProjectOneMenu" : true,
+            "csdpManagedArgo" : true
+        },
+{{- end }}
         "__v" : NumberInt(0)
     }
   users.json: |
