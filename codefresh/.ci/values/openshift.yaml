@@ -25,6 +25,8 @@ cf-platform-analytics-platform:
         enabled: false
 
 cfsign:
+  podSecurityContext:
+    enabled: false
   initContainers:
     volume-permissions:
       enabled: false
@@ -32,6 +34,15 @@ cfsign:
 cfui:
   podSecurityContext:
     enabled: false
+
+internal-gateway:
+  podSecurityContext:
+    enabled: false
+
+helm-repo-manager:
+  chartmuseum:
+    securityContext:
+      enabled: false
 
 consul:
   podSecurityContext:
