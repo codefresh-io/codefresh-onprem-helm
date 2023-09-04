@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.1.0
+version: 2.1.1
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -15,8 +15,10 @@ appVersion: 2.1.0
 annotations:
   artifacthub.io/alternativeName: "codefresh-onprem"
   artifacthub.io/changes: |
-    - kind: added
-      description: onprem 2.1.0 release
+    - kind: fixed
+      description: Fix empty MONGO_URI and MONGO_URI_RE_MANAGER in secret
+    - kind: security
+      description: Update COMPOSE_IMAGE
 dependencies:
   - name: cf-common
     repository: https://chartmuseum.codefresh.io/cf-common
@@ -221,7 +223,7 @@ dependencies:
     repository: https://chartmuseum.codefresh.io/cf-platform-analytics
     condition: argo-platform.enabled
   - name: argo-platform
-    version: "*"
+    version: "1.2416.0"
     repository: https://chartmuseum.codefresh.io/argo-platform
     condition: argo-platform.enabled
   - name: argo-hub-platform

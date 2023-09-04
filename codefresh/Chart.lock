@@ -146,5 +146,5 @@ dependencies:
 - name: codefresh-tunnel-server
   repository: https://chartmuseum.codefresh.io/codefresh-tunnel-server
   version: 0.1.14
-digest: sha256:b3dcef45880e3d2d3214171029a32f1aa210ddb2d9f05a385018076d1075a706
-generated: "2023-09-01T19:29:04.642472478+03:00"
+digest: sha256:9b3daa797eb7557a710e85738598f4cbae8f5571d4a02f1195ad65224693b254
+generated: "2023-09-04T13:15:09.698424789+03:00"
