@@ -58,58 +58,58 @@ dependencies:
   version: 1.13.6
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.224.11
+  version: 21.224.12
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.224.11
+  version: 21.224.12
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.224.11
+  version: 21.224.12
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.224.11
+  version: 21.224.12
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.224.11
+  version: 21.224.12
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.224.11
+  version: 21.224.12
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.224.11
+  version: 21.224.12
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.224.11
+  version: 21.224.12
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.224.11
+  version: 21.224.12
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.224.11
+  version: 21.224.12
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.224.11
+  version: 21.224.12
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.224.11
+  version: 21.224.12
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.224.11
+  version: 21.224.12
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.224.11
+  version: 21.224.12
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.224.11
+  version: 21.224.12
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.224.11
+  version: 21.224.12
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.224.11
+  version: 21.224.12
 - name: cfui
   repository: https://chartmuseum.codefresh.io/cfui
-  version: 14.88.57
+  version: 14.88.58
 - name: k8s-monitor
   repository: https://chartmuseum.codefresh.io/k8s-monitor
   version: 4.10.3
@@ -146,5 +146,5 @@ dependencies:
 - name: codefresh-tunnel-server
   repository: https://chartmuseum.codefresh.io/codefresh-tunnel-server
   version: 0.1.14
-digest: sha256:d069c24303a40a207877ef0c94152dcc637afe7f25755d49526c6f5afe4dc9d3
-generated: "2023-08-24T18:48:50.764911453+03:00"
+digest: sha256:55fd9ec7c3775aad23fdeace741a2f0aa0f190f1f3cddfbcda129a92e27ea64b
+generated: "2023-09-05T00:08:51.381132729+03:00"
