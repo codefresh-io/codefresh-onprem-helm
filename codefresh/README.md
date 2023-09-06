@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.1.1](https://img.shields.io/badge/Version-2.1.1-informational?style=flat-square) ![AppVersion: 2.1.0](https://img.shields.io/badge/AppVersion-2.1.0-informational?style=flat-square)
+![Version: 2.1.2](https://img.shields.io/badge/Version-2.1.2-informational?style=flat-square) ![AppVersion: 2.1.0](https://img.shields.io/badge/AppVersion-2.1.0-informational?style=flat-square)
 
 Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
@@ -32,6 +32,7 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
   - [Retention policy for builds and logs](#retention-policy-for-builds-and-logs)
   - [Projects pipelines limit](#projects-pipelines-limit)
   - [Enable session cookie](#enable-session-cookie)
+- [Configuring OIDC Provider](#configuring-oidc-provider)
 - [Upgrading](#upgrading)
   - [To 2.0.0](#to-2-0-0)
   - [To 2.0.12](#to-2-0-12)
@@ -1087,6 +1088,167 @@ cfapi:
     USE_SHA256_GITHUB_SIGNATURE: "true"
 ```
 
+## Configuring OIDC Provider
+
+OpenID Connect (OIDC) allows Codefresh Builds to access resources in your cloud provider (such as AWS, Azure, GCP), without needing to store cloud credentials as long-lived pipeline secret variables.
+
+### Enabling the OIDC Provider in Codefresh On-Prem
+
+#### Prerequisites:
+
+- DNS name for OIDC Provider
+- Valid TLS certificates for Ingress
+- K8S secret containing JWKS (JSON Web Key Sets). Can be generated at [mkjwk.org](https://mkjwk.org/)
+- K8S secret containing Cliend ID (public identifier for app) and Client Secret (application password)
+
+> **NOTE!** In production usage use [External Secrets Operator](https://external-secrets.io/latest/) or [HashiCorp Vault](https://developer.hashicorp.com/vault/docs/platform/k8s) to create secrets. The following example uses `kubectl` for brevity.
+
+```shell
+# Creating secret containing JWKS.
+# The secret KEY is `cf-oidc-provider-jwks.json`. It then referenced in `OIDC_JWKS_PRIVATE_KEYS_PATH` environment variable in `cf-oidc-provider`.
+# The secret NAME is referenced in `.volumes.jwks-file.nameOverride` (volumeMount is configured in the chart already)
+kubectl create secret generic cf-oidc-provider-jwks \
+  --from-file=cf-oidc-provider-jwks.json \
+  -n $NAMESPACE
+
+# Creating secret containing Client ID and Client Secret
+# Secret NAME is `cf-oidc-provider-client-secret`.
+# It then referenced in `OIDC_CF_PLATFORM_CLIENT_ID` and `OIDC_CF_PLATFORM_CLIENT_SECRET` environment variables in `cf-oidc-provider`
+# and in `OIDC_PROVIDER_CLIENT_ID` and `OIDC_PROVIDER_CLIENT_SECRET` in `cfapi`.
+kubectl create secret generic cf-oidc-provider-client-secret \
+  --from-literal=client-id=codefresh \
+  --from-literal=client-secret='verysecureclientsecret' \
+  -n $NAMESPACE
+```
+
+`values.yaml`
+```yaml
+global:
+  # -- Set OIDC Provider URL
+  oidcProviderService: "oidc.mydomain.com"
+
+cfapi:
+  # -- Set additional variables for cfapi
+  # Reference a secret containing Client ID and Client Secret
+  env:
+    OIDC_PROVIDER_CLIENT_ID:
+      valueFrom:
+        secretKeyRef:
+          name: cf-oidc-provider-client-secret
+          key: client-id
+    OIDC_PROVIDER_CLIENT_SECRET:
+      valueFrom:
+        secretKeyRef:
+          name: cf-oidc-provider-client-secret
+          key: client-secret
+
+cf-oidc-provider:
+  # -- Enable OIDC Provider
+  enabled: true
+
+  container:
+    env:
+      OIDC_JWKS_PRIVATE_KEYS_PATH: /secrets/jwks/cf-oidc-provider-jwks.json
+      # -- Reference a secret containing Client ID and Client Secret
+      OIDC_CF_PLATFORM_CLIENT_ID:
+        valueFrom:
+          secretKeyRef:
+            name: cf-oidc-provider-client-secret
+            key: client-id
+      OIDC_CF_PLATFORM_CLIENT_SECRET:
+        valueFrom:
+          secretKeyRef:
+            name: cf-oidc-provider-client-secret
+            key: client-secret
+
+  volumes:
+    jwks-file:
+      enabled: true
+      type: secret
+      # -- Secret name containing JWKS
+      nameOverride: "cf-oidc-provider-jwks"
+      optional: false
+
+  ingress:
+    main:
+      # -- Enable ingress for OIDC Provider
+      enabled: true
+      annotations: {}
+      # -- Set ingress class name
+      ingressClassName: ""
+      hosts:
+        # -- Set OIDC Provider URL
+      - host: "oidc.mydomain.com"
+        paths:
+        - path: /
+        # For ALB (Application Load Balancer) /* asterisk is required in path
+        # e.g.
+        # - path: /*
+      tls: []
+```
+
+Deploy HELM chart with new `values.yaml`
+
+Use https://oidc.mydomain.com/.well-known/openid-configuration to verify OIDC Provider configuration
+
+### Adding the identity provider in AWS
+
+To add Codefresh OIDC provider to IAM, see the [AWS documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc.html)
+- For the **provider URL**: Use `.Values.global.oidcProviderService` value with `https://` prefix (i.e. https://oidc.mydomain.com)
+- For the **Audienece**: Use `.Values.global.appUrl` value with `https://` prefix (i.e. https://onprem.mydomain.com)
+
+#### Configuring the role and trust policy
+
+To configure the role and trust in IAM, see [AWS documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html)
+
+Edit the trust policy to add the sub field to the validation conditions. For example, use `StringLike` to allow only builds from specific pipeline to assume a role in AWS.
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "Federated": "arn:aws:iam::<ACCOUNT_ID>:oidc-provider/oidc.mydomain.com"
+            },
+            "Action": "sts:AssumeRoleWithWebIdentity",
+            "Condition": {
+                "StringEquals": {
+                    "oidc.mydomain.com:aud": "https://onprem.mydomain.com"
+                },
+                "StringLike": {
+                    "oidc.mydomain.com:sub": "account:64884faac2751b77ca7ab324:pipeline:64f7232ab698cfcb95d93cef:*"
+                }
+            }
+        }
+    ]
+}
+```
+
+To see all the claims supported by Codefresh OIDC provider, see `claims_supported` entries at https://oidc.mydomain.com/.well-known/openid-configuration
+```json
+"claims_supported": [
+  "sub",
+  "account_id",
+  "account_name",
+  "pipeline_id",
+  "pipeline_name",
+  "workflow_id",
+  "initiator",
+  "scm_user_name",
+  "scm_repo_url",
+  "scm_ref",
+  "scm_pull_request_target_branch",
+  "sid",
+  "auth_time",
+  "iss"
+]
+```
+
+#### Using OIDC in Codefresh Builds
+
+Use [obtain-oidc-id-token](https://github.com/codefresh-io/steps/blob/822afc0a9a128384e76459c6573628020a2cf404/incubating/obtain-oidc-id-token/step.yaml#L27-L58) and [aws-sts-assume-role-with-web-identity](https://github.com/codefresh-io/steps/blob/822afc0a9a128384e76459c6573628020a2cf404/incubating/aws-sts-assume-role-with-web-identity/step.yaml#L29-L63) steps to exchange the OIDC token (JWT) for a cloud access token.
+
 ## Upgrading
 
 ### To 2.0.0
@@ -1504,12 +1666,13 @@ kubectl -n $NAMESPACE delete secret codefresh-certs-server
 | argo-platform.useExternalSecret | bool | `false` | Use regular k8s secret object. Keep `false`! |
 | builder | object | `{"affinity":{},"container":{"image":{"registry":"docker.io","repository":"docker"}},"enabled":true,"nodeSelector":{},"podSecurityContext":{},"resources":{},"tolerations":[]}` | builder |
 | cf-broadcaster | object | See below | broadcaster |
+| cf-oidc-provider | object | See below | cf-oidc-provider |
 | cf-platform-analytics-etlstarter | object | See below | etl-starter |
 | cf-platform-analytics-etlstarter.redis.enabled | bool | `false` | Disable redis subchart |
 | cf-platform-analytics-etlstarter.system-etl-postgres | object | `{"container":{"env":{"BLUE_GREEN_ENABLED":true}},"controller":{"cronjob":{"ttlSecondsAfterFinished":300}},"enabled":true}` | Only postgres ETL should be running in onprem |
 | cf-platform-analytics-platform | object | See below | platform-analytics |
-| cfapi | object | `{"affinity":{},"container":{"env":{"AUDIT_AUTO_CREATE_DB":true,"GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh"},"image":{"registry":"gcr.io/codefresh-enterprise","repository":"codefresh/cf-api"}},"controller":{"replicas":2},"enabled":true,"hpa":{"enabled":false,"maxReplicas":10,"minReplicas":2,"targetCPUUtilizationPercentage":70},"nodeSelector":{},"pdb":{"enabled":false,"minAvailable":"50%"},"podSecurityContext":{},"resources":{"limits":{},"requests":{"cpu":"200m","memory":"256Mi"}},"tolerations":[]}` | cf-api |
-| cfapi.container | object | `{"env":{"AUDIT_AUTO_CREATE_DB":true,"GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh"},"image":{"registry":"gcr.io/codefresh-enterprise","repository":"codefresh/cf-api"}}` | Container configuration |
+| cfapi | object | `{"affinity":{},"container":{"env":{"AUDIT_AUTO_CREATE_DB":true,"GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","OIDC_PROVIDER_CLIENT_ID":"","OIDC_PROVIDER_CLIENT_SECRET":"","OIDC_PROVIDER_PORT":"{{ .Values.global.oidcProviderPort }}","OIDC_PROVIDER_PROTOCOL":"{{ .Values.global.oidcProviderProtocol }}","OIDC_PROVIDER_TOKEN_ENDPOINT":"{{ .Values.global.oidcProviderTokenEndpoint }}","OIDC_PROVIDER_URI":"{{ .Values.global.oidcProviderService }}","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh"},"image":{"registry":"gcr.io/codefresh-enterprise","repository":"codefresh/cf-api"}},"controller":{"replicas":2},"enabled":true,"hpa":{"enabled":false,"maxReplicas":10,"minReplicas":2,"targetCPUUtilizationPercentage":70},"nodeSelector":{},"pdb":{"enabled":false,"minAvailable":"50%"},"podSecurityContext":{},"resources":{"limits":{},"requests":{"cpu":"200m","memory":"256Mi"}},"tolerations":[]}` | cf-api |
+| cfapi.container | object | `{"env":{"AUDIT_AUTO_CREATE_DB":true,"GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","OIDC_PROVIDER_CLIENT_ID":"","OIDC_PROVIDER_CLIENT_SECRET":"","OIDC_PROVIDER_PORT":"{{ .Values.global.oidcProviderPort }}","OIDC_PROVIDER_PROTOCOL":"{{ .Values.global.oidcProviderProtocol }}","OIDC_PROVIDER_TOKEN_ENDPOINT":"{{ .Values.global.oidcProviderTokenEndpoint }}","OIDC_PROVIDER_URI":"{{ .Values.global.oidcProviderService }}","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh"},"image":{"registry":"gcr.io/codefresh-enterprise","repository":"codefresh/cf-api"}}` | Container configuration |
 | cfapi.container.env | object | See below | Env vars |
 | cfapi.container.image | object | `{"registry":"gcr.io/codefresh-enterprise","repository":"codefresh/cf-api"}` | Image |
 | cfapi.container.image.registry | string | `"gcr.io/codefresh-enterprise"` | Registry prefix |
@@ -1585,6 +1748,10 @@ kubectl -n $NAMESPACE delete secret codefresh-certs-server
 | global.natsPort | int | `4222` | Default nats service port. |
 | global.natsService | string | `"nats"` | Default nats service name. |
 | global.newrelicLicenseKey | string | `""` | New Relic Key |
+| global.oidcProviderPort | int | `443` | Default OIDC Provider service port. |
+| global.oidcProviderProtocol | string | `"https"` | Default OIDC Provider service protocol. |
+| global.oidcProviderService | string | `""` | Default OIDC Provider service name (Provider URL). |
+| global.oidcProviderTokenEndpoint | string | `"/token"` | Default OIDC Provider service token endpoint. |
 | global.pipelineManagerPort | int | `9000` | Default pipeline-manager service port. |
 | global.pipelineManagerService | string | `"pipeline-manager"` | Default pipeline-manager service name. |
 | global.platformAnalyticsPort | int | `80` | Default platform-analytics service port. |

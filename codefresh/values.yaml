@@ -173,6 +173,18 @@ global:
   clusterDomain: cluster.local
 
 #--------
+# OIDC Provider
+#--------
+  # -- Default OIDC Provider service name (Provider URL).
+  oidcProviderService: ""
+  # -- Default OIDC Provider service port.
+  oidcProviderPort: 443
+  # -- Default OIDC Provider service protocol.
+  oidcProviderProtocol: "https"
+  # -- Default OIDC Provider service token endpoint.
+  oidcProviderTokenEndpoint: "/token"
+
+#--------
 # MongoDB
 #--------
   # -- LEGACY (but still supported) - Use `.global.mongodbProtocol` + `.global.mongodbUser/mongodbUserSecretKeyRef` + `.global.mongodbPassword/mongodbPasswordSecretKeyRef` + `.global.mongodbHost/mongodbHostSecretKeyRef` + `.global.mongodbOptions` instead
@@ -480,6 +492,13 @@ cfapi: &cf-api
       LOGGER_LEVEL: debug
       ON_PREMISE: true
       RUNTIME_MONGO_DB: codefresh
+      OIDC_PROVIDER_URI: '{{ .Values.global.oidcProviderService }}'
+      OIDC_PROVIDER_PORT: '{{ .Values.global.oidcProviderPort }}'
+      OIDC_PROVIDER_PROTOCOL: '{{ .Values.global.oidcProviderProtocol }}'
+      OIDC_PROVIDER_TOKEN_ENDPOINT: '{{ .Values.global.oidcProviderTokenEndpoint }}'
+      OIDC_PROVIDER_CLIENT_ID: ""
+      OIDC_PROVIDER_CLIENT_SECRET: ""
+
   # -- Resource requests and limits
   resources:
     requests:
@@ -1576,6 +1595,55 @@ argo-platform:
       enabled: false
     affinity: {}
     tolerations: []
+
+# -- cf-oidc-provider
+# @default -- See below
+cf-oidc-provider:
+  enabled: false
+  container:
+    env:
+      NODE_ENV: production
+      CF_PLATFORM_API_BASE_URL: '{{ printf "https://%s/api" .Values.global.appUrl }}'
+      OIDC_ISSUER: '{{ printf "https://%s" .Values.global.oidcProviderService }}'
+      OIDC_AUDIENCE: '{{ printf "https://%s" .Values.global.appUrl }}'
+      OIDC_JWKS_PRIVATE_KEYS_PATH: /secrets/jwks/cf-oidc-provider-jwks.json
+      OIDC_CF_PLATFORM_CLIENT_ID: ""
+      OIDC_CF_PLATFORM_CLIENT_SECRET: ""
+
+    resources:
+      requests:
+        cpu: 100m
+        memory: 512Mi
+
+    volumeMounts:
+      jwks-file:
+        path:
+        - mountPath: /secrets/jwks
+
+  volumes:
+    jwks-file:
+      enabled: true
+      type: secret
+      nameOverride: "cf-oidc-provider-jwks"
+      optional: false
+
+  service:
+    main:
+      ports:
+        http:
+          targetPort: 8080
+
+  ingress:
+    main:
+      enabled: true
+      labels: {}
+      annotations: {}
+      ingressClassName: ""
+      hosts:
+      - host: '{{ .Values.global.oidcProviderService }}'
+        paths:
+        - path: /
+      tls: []
 
 # -- codefresh-tunnel-server
 # @default -- See below

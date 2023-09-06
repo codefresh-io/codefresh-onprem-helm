@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.1.1
+version: 2.1.2
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -15,10 +15,17 @@ appVersion: 2.1.0
 annotations:
   artifacthub.io/alternativeName: "codefresh-onprem"
   artifacthub.io/changes: |
+    - kind: added
+      description: Add OIDC provider
     - kind: fixed
-      description: Fix empty MONGO_URI and MONGO_URI_RE_MANAGER in secret
+      description: Fix test-reporting view
+      links:
+        - name: JIRA Issue
+          url: https://codefresh-io.atlassian.net/browse/CR-20276
     - kind: security
-      description: Update COMPOSE_IMAGE
+      description: Update runtime-environment-manager
+    - kind: changed
+      description: Update pipeline-manager for new OIDC steps
 dependencies:
   - name: cf-common
     repository: https://chartmuseum.codefresh.io/cf-common
@@ -234,3 +241,7 @@ dependencies:
     version: "*"
     repository: https://chartmuseum.codefresh.io/codefresh-tunnel-server
     condition: codefresh-tunnel-server.enabled
+  - name: cf-oidc-provider
+    repository: https://chartmuseum.codefresh.io/cf-oidc-provider
+    version: "*"
+    condition: cf-oidc-provider.enabled
