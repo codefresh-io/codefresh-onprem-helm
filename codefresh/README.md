@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.1.2](https://img.shields.io/badge/Version-2.1.2-informational?style=flat-square) ![AppVersion: 2.1.0](https://img.shields.io/badge/AppVersion-2.1.0-informational?style=flat-square)
+![Version: 2.1.3](https://img.shields.io/badge/Version-2.1.3-informational?style=flat-square) ![AppVersion: 2.1.0](https://img.shields.io/badge/AppVersion-2.1.0-informational?style=flat-square)
 
 Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
@@ -32,6 +32,7 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
   - [Retention policy for builds and logs](#retention-policy-for-builds-and-logs)
   - [Projects pipelines limit](#projects-pipelines-limit)
   - [Enable session cookie](#enable-session-cookie)
+  - [X-Frame-Options response header](#x-frame-options-response-header)
 - [Configuring OIDC Provider](#configuring-oidc-provider)
 - [Upgrading](#upgrading)
   - [To 2.0.0](#to-2-0-0)
@@ -1061,6 +1062,22 @@ cfapi:
 ```
 
 > **Note!** Ingress host for [gitops-runtime](https://artifacthub.io/packages/helm/codefresh-gitops-runtime/gitops-runtime) and ingress host for control plane must share the same root domain (i.e. `onprem.mydomain.com` and `runtime.mydomain.com`)
+
+### X-Frame-Options response header
+
+```yaml
+cfapi:
+  env:
+    # Set value to the `X-Frame-Options` response header. Control the restrictions of embedding Codefresh page into the iframes.
+    # Possible values: sameorigin(default) / deny
+    FRAME_OPTIONS: sameorigin
+
+cfui:
+  env:
+    FRAME_OPTIONS: sameorigin
+```
+
+Read more about header at https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options.
 
 ### Configure CSP (Content Security Policy)
 

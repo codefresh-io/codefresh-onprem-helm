@@ -37,7 +37,7 @@ dependencies:
   version: 1.16.3
 - name: kube-integration
   repository: https://chartmuseum.codefresh.io/kube-integration
-  version: 1.30.3
+  version: 1.30.4
 - name: charts-manager
   repository: https://chartmuseum.codefresh.io/charts-manager
   version: 1.16.3
@@ -58,55 +58,55 @@ dependencies:
   version: 1.14.3
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.234.4
+  version: 21.234.5
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.234.4
+  version: 21.234.5
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.234.4
+  version: 21.234.5
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.234.4
+  version: 21.234.5
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.234.4
+  version: 21.234.5
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.234.4
+  version: 21.234.5
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.234.4
+  version: 21.234.5
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.234.4
+  version: 21.234.5
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.234.4
+  version: 21.234.5
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.234.4
+  version: 21.234.5
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.234.4
+  version: 21.234.5
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.234.4
+  version: 21.234.5
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.234.4
+  version: 21.234.5
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.234.4
+  version: 21.234.5
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.234.4
+  version: 21.234.5
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.234.4
+  version: 21.234.5
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
-  version: 21.234.4
+  version: 21.234.5
 - name: cfui
   repository: https://chartmuseum.codefresh.io/cfui
   version: 14.91.89
@@ -149,5 +149,5 @@ dependencies:
 - name: cf-oidc-provider
   repository: https://chartmuseum.codefresh.io/cf-oidc-provider
   version: 0.0.8
-digest: sha256:2742564807ab9c43cd013c4c289375fdee7194e9f076968859a5ad1c35439a2a
-generated: "2023-09-06T14:09:03.615115596+03:00"
+digest: sha256:bbb4ddbf11e98a4b97215111cfec5beffe8fe3cb7154eafb59392a3d6b3d5c00
+generated: "2023-09-08T15:59:26.37858448+03:00"

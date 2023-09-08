@@ -1239,8 +1239,8 @@ argo-platform:
     cache-password: &cache-password '{{ coalesce .Values.redisPassword .Values.global.redisPassword }}'
     cache-port: &cache-port '{{ coalesce .Values.redisPort .Values.global.redisPort }}'
 
-    mongodb-readmodels-uri: &mongodb-readmodels-uri '{{ include "argo-patform-libs.calculate-mongo-uri" (dict "dbName" "audit" "mongoURI" .Values.global.mongoURI) | default "null" }}'
-    mongodb-audit-uri: &mongodb-audit-uri '{{ include "argo-patform-libs.calculate-mongo-uri" (dict "dbName" "read-models" "mongoURI" .Values.global.mongoURI) | default "null" }}'
+    mongodb-readmodels-uri: &mongodb-readmodels-uri '{{ include "argo-patform-libs.calculate-mongo-uri" (dict "dbName" "read-models" "mongoURI" .Values.global.mongoURI) | default "null" }}'
+    mongodb-audit-uri: &mongodb-audit-uri '{{ include "argo-patform-libs.calculate-mongo-uri" (dict "dbName" "audit" "mongoURI" .Values.global.mongoURI) | default "null" }}'
 
     pg-db-name: &pg-db-name analytics
     pg-host-name: &pg-host-name '{{ coalesce .Values.postgresHostname .Values.global.postgresHostname (printf "%s-%s" .Release.Name .Values.global.postgresService) }}'
