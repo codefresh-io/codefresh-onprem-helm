@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.0.16
+version: 2.0.17
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -16,10 +16,12 @@ annotations:
   artifacthub.io/alternativeName: "codefresh-onprem"
   artifacthub.io/changes: |
     - kind: fixed
-      description: Fix test-reporting view
+      description: Fix switching between accounts in different system types.
       links:
         - name: JIRA Issue
-          url: https://codefresh-io.atlassian.net/browse/CR-20276
+          url: https://codefresh-io.atlassian.net/browse/CR-20263
+    - kind: changed
+      description: Update argo-platform
 dependencies:
   - name: cf-common
     repository: https://chartmuseum.codefresh.io/cf-common
@@ -224,7 +226,7 @@ dependencies:
     repository: https://chartmuseum.codefresh.io/cf-platform-analytics
     condition: argo-platform.enabled
   - name: argo-platform
-    version: "1.2339.0"
+    version: "1.2432.1"
     repository: https://chartmuseum.codefresh.io/argo-platform
     condition: argo-platform.enabled
   - name: argo-hub-platform

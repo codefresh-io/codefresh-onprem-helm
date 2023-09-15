@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.0.16](https://img.shields.io/badge/Version-2.0.16-informational?style=flat-square) ![AppVersion: 2.0.0](https://img.shields.io/badge/AppVersion-2.0.0-informational?style=flat-square)
+![Version: 2.0.17](https://img.shields.io/badge/Version-2.0.17-informational?style=flat-square) ![AppVersion: 2.0.0](https://img.shields.io/badge/AppVersion-2.0.0-informational?style=flat-square)
 
 Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
@@ -30,8 +30,9 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
 - [Firebase Configuration](#firebase-configuration)
 - [Additional configuration](#additional-configuration)
 - [Upgrading](#upgrading)
-  - [To 2.0.0](#to-200)
-  - [To 2.0.12](#to-2012)
+  - [To 2.0.0](#to-2-0-0)
+  - [To 2.0.12](#to-2-0-12)
+  - [To 2.0.17](#to-2-0-17)
 - [Rollback](#rollback)
 - [Values](#values)
 
@@ -1334,6 +1335,80 @@ helm-repo-manager:
       repository: myregistry.domain.com/codefresh/chartmuseum
 ```
 
+### To 2.0.17
+
+#### ⚠️ Affected values
+
+Values structure for argo-platform images has been changed.
+Added `registry` to align with the rest of the services.
+
+> values for <= v2.0.16
+```yaml
+argo-platform:
+    api-graphql:
+      image:
+        repository: gcr.io/codefresh-enterprise/codefresh-io/argo-platform-api-graphql
+    abac:
+      image:
+        repository: gcr.io/codefresh-enterprise/codefresh-io/argo-platform-abac
+    analytics-reporter:
+      image:
+        repository: gcr.io/codefresh-enterprise/codefresh-io/argo-platform-analytics-reporter
+    api-events:
+      image:
+        repository: gcr.io/codefresh-enterprise/codefresh-io/argo-platform-api-events
+    audit:
+      image:
+        repository: gcr.io/codefresh-enterprise/codefresh-io/argo-platform-audit
+    cron-executor:
+      image:
+        repository: gcr.io/codefresh-enterprise/codefresh-io/argo-platform-cron-executor
+    event-handler:
+      image:
+        repository: gcr.io/codefresh-enterprise/codefresh-io/argo-platform-event-handler
+    ui:
+      image:
+        repository: gcr.io/codefresh-enterprise/codefresh-io/argo-platform-ui
+```
+
+> values for >= v2.0.17
+
+```yaml
+argo-platform:
+    api-graphql:
+      image:
+        registry: gcr.io/codefresh-enterprise
+        repository: codefresh-io/argo-platform-api-graphql
+    abac:
+      image:
+        registry: gcr.io/codefresh-enterprise
+        repository: codefresh-io/argo-platform-abac
+    analytics-reporter:
+      image:
+        registry: gcr.io/codefresh-enterprise
+        repository: codefresh-io/argo-platform-analytics-reporter
+    api-events:
+      image:
+        registry: gcr.io/codefresh-enterprise
+        repository: codefresh-io/argo-platform-api-events
+    audit:
+      image:
+        registry: gcr.io/codefresh-enterprise
+        repository: codefresh-io/argo-platform-audit
+    cron-executor:
+      image:
+        registry: gcr.io/codefresh-enterprise
+        repository: codefresh-io/argo-platform-cron-executor
+    event-handler:
+      image:
+        registry: gcr.io/codefresh-enterprise
+        repository: codefresh-io/argo-platform-event-handler
+    ui:
+      image:
+        registry: gcr.io/codefresh-enterprise
+        repository: codefresh-io/argo-platform-ui
+```
+
 ## Rollback
 
 Use `helm history` to determine which release has worked, then use `helm rollback` to perform a rollback
@@ -1362,14 +1437,16 @@ helm rollback $RELEASE_NAME $RELEASE_NUMBER \
 | argo-platform | object | See below | argo-platform |
 | argo-platform.abac | object | See below | abac |
 | argo-platform.analytics-reporter | object | See below | analytics-reporter |
+| argo-platform.anchors | object | See below | Anchors |
 | argo-platform.api-events | object | See below | api-events |
 | argo-platform.api-graphql | object | See below | api-graphql All other services under `.Values.argo-platform` follows the same values structure. |
 | argo-platform.api-graphql.affinity | object | `{}` | Set pod's affinity |
 | argo-platform.api-graphql.env | object | See below | Env vars |
 | argo-platform.api-graphql.hpa | object | `{"enabled":false}` | HPA |
 | argo-platform.api-graphql.hpa.enabled | bool | `false` | Enable autoscaler |
-| argo-platform.api-graphql.image | object | `{"repository":"gcr.io/codefresh-enterprise/codefresh-io/argo-platform-api-graphql"}` | Image |
-| argo-platform.api-graphql.image.repository | string | `"gcr.io/codefresh-enterprise/codefresh-io/argo-platform-api-graphql"` | Image repository |
+| argo-platform.api-graphql.image | object | `{"registry":"gcr.io/codefresh-enterprise","repository":"codefresh-io/argo-platform-api-graphql"}` | Image |
+| argo-platform.api-graphql.image.registry | string | `"gcr.io/codefresh-enterprise"` | Registry |
+| argo-platform.api-graphql.image.repository | string | `"codefresh-io/argo-platform-api-graphql"` | Repository |
 | argo-platform.api-graphql.kind | string | `"Deployment"` | Controller kind. Currently, only `Deployment` is supported |
 | argo-platform.api-graphql.pdb | object | `{"enabled":false}` | PDB |
 | argo-platform.api-graphql.pdb.enabled | bool | `false` | Enable pod disruption budget |
@@ -1379,11 +1456,9 @@ helm rollback $RELEASE_NAME $RELEASE_NUMBER \
 | argo-platform.argocd-hooks | object | See below | argocd-hooks Don't enable! Not used in onprem! |
 | argo-platform.audit | object | See below | audit |
 | argo-platform.cron-executor | object | See below | cron-executor |
-| argo-platform.env | object | See below | Env anchors |
 | argo-platform.event-handler | object | See below | event-handler |
 | argo-platform.runtime-manager | object | See below | runtime-manager Don't enable! Not used in onprem! |
 | argo-platform.runtime-monitor | object | See below | runtime-monitor Don't enable! Not used in onprem! |
-| argo-platform.secrets | object | See below | Secrets anchors |
 | argo-platform.ui | object | See below | ui |
 | argo-platform.useExternalSecret | bool | `false` | Use regular k8s secret object. Keep `false`! |
 | builder | object | `{"affinity":{},"enabled":true,"nodeSelector":{},"podSecurityContext":{},"resources":{},"tolerations":[]}` | builder |

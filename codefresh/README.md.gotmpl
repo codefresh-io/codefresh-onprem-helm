@@ -30,8 +30,9 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
 - [Firebase Configuration](#firebase-configuration)
 - [Additional configuration](#additional-configuration)
 - [Upgrading](#upgrading)
-  - [To 2.0.0](#to-200)
-  - [To 2.0.12](#to-2012)
+  - [To 2.0.0](#to-2-0-0)
+  - [To 2.0.12](#to-2-0-12)
+  - [To 2.0.17](#to-2-0-17)
 - [Rollback](#rollback)
 - [Values](#values)
 
@@ -1339,8 +1340,79 @@ helm-repo-manager:
       repository: myregistry.domain.com/codefresh/chartmuseum
 ```
 
+### To 2.0.17
 
+#### ⚠️ Affected values
 
+Values structure for argo-platform images has been changed.
+Added `registry` to align with the rest of the services.
+
+> values for <= v2.0.16
+```yaml
+argo-platform:
+    api-graphql:
+      image:
+        repository: gcr.io/codefresh-enterprise/codefresh-io/argo-platform-api-graphql
+    abac:
+      image:
+        repository: gcr.io/codefresh-enterprise/codefresh-io/argo-platform-abac
+    analytics-reporter:
+      image:
+        repository: gcr.io/codefresh-enterprise/codefresh-io/argo-platform-analytics-reporter
+    api-events:
+      image:
+        repository: gcr.io/codefresh-enterprise/codefresh-io/argo-platform-api-events
+    audit:
+      image:
+        repository: gcr.io/codefresh-enterprise/codefresh-io/argo-platform-audit
+    cron-executor:
+      image:
+        repository: gcr.io/codefresh-enterprise/codefresh-io/argo-platform-cron-executor
+    event-handler:
+      image:
+        repository: gcr.io/codefresh-enterprise/codefresh-io/argo-platform-event-handler
+    ui:
+      image:
+        repository: gcr.io/codefresh-enterprise/codefresh-io/argo-platform-ui
+```
+
+> values for >= v2.0.17
+
+```yaml
+argo-platform:
+    api-graphql:
+      image:
+        registry: gcr.io/codefresh-enterprise
+        repository: codefresh-io/argo-platform-api-graphql
+    abac:
+      image:
+        registry: gcr.io/codefresh-enterprise
+        repository: codefresh-io/argo-platform-abac
+    analytics-reporter:
+      image:
+        registry: gcr.io/codefresh-enterprise
+        repository: codefresh-io/argo-platform-analytics-reporter
+    api-events:
+      image:
+        registry: gcr.io/codefresh-enterprise
+        repository: codefresh-io/argo-platform-api-events
+    audit:
+      image:
+        registry: gcr.io/codefresh-enterprise
+        repository: codefresh-io/argo-platform-audit
+    cron-executor:
+      image:
+        registry: gcr.io/codefresh-enterprise
+        repository: codefresh-io/argo-platform-cron-executor
+    event-handler:
+      image:
+        registry: gcr.io/codefresh-enterprise
+        repository: codefresh-io/argo-platform-event-handler
+    ui:
+      image:
+        registry: gcr.io/codefresh-enterprise
+        repository: codefresh-io/argo-platform-ui
+```
 
 ## Rollback
 

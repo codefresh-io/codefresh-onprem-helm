@@ -139,12 +139,12 @@ dependencies:
   version: 0.47.9
 - name: argo-platform
   repository: https://chartmuseum.codefresh.io/argo-platform
-  version: 1.2339.0
+  version: 1.2432.1
 - name: argo-hub-platform
   repository: https://chartmuseum.codefresh.io/argo-hub-platform
   version: 0.1.4
 - name: codefresh-tunnel-server
   repository: https://chartmuseum.codefresh.io/codefresh-tunnel-server
   version: 0.1.14
-digest: sha256:55fd9ec7c3775aad23fdeace741a2f0aa0f190f1f3cddfbcda129a92e27ea64b
-generated: "2023-09-05T00:08:51.381132729+03:00"
+digest: sha256:9cd811d205f90047a429b3c0ca87e464c55b180c12ed4d2020f1bcf88250d585
+generated: "2023-09-15T16:56:36.726676157+03:00"
