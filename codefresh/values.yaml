@@ -743,6 +743,10 @@ cfsign:
   initContainers:
     volume-permissions:
       enabled: true
+      image:
+        registry: quay.io
+        repository: codefresh/curl
+        tag: 8.2.1
   affinity: {}
   nodeSelector: {}
   podSecurityContext: {}

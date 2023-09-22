@@ -106,7 +106,7 @@ cfapi:
     enabled: true
   resources:
     requests:
-      cpu: 1000m
+      cpu: 300m
       memory: 1024Mi
 
 ingress:
@@ -132,7 +132,7 @@ argo-platform:
       enabled: true
     resources:
       requests:
-        cpu: 1000m
+        cpu: 300m
         memory: 1024Mi
 
   cron-executor:
@@ -144,7 +144,7 @@ argo-platform:
       enabled: true
     resources:
       requests:
-        cpu: 1000m
+        cpu: 300m
         memory: 1024Mi
 
   ui:

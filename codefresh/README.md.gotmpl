@@ -1541,7 +1541,35 @@ Due to deprecation of legacy ChartMuseum subchart in favor of upstream [chartmus
 kubectl delete deploy cf-chartmuseum --namespace $NAMESPACE
 ```
 
-#### Affected values:
+#### ⚠️ Affected values
+
+- If you have `.persistence.enabled=true` defined and NOT `.persistence.existingClaim` like:
+
+```yaml
+helm-repo-manager:
+  chartmuseum:
+    persistence:
+      enabled: true
+```
+then you **have to backup** the content of old PVC (mounted as `/storage` in the old deployment) **before the upgrade**!
+
+```shell
+POD_NAME=$(kubectl get pod -l app=chartmuseum -n $NAMESPACE --no-headers -o custom-columns=":metadata.name")
+kubectl cp -n $NAMESPACE $POD_NAME:/storage $(pwd)/storage
+```
+
+**After the upgrade**, restore the content into new deployment:
+```shell
+POD_NAME=$(kubectl get pod -l app.kubernetes.io/name=chartmuseum -n $NAMESPACE --no-headers -o custom-columns=":metadata.name")
+kubectl cp -n $NAMESPACE $(pwd)/storage $POD_NAME:/storage
+```
+
+- If you have `.persistence.existingClaim` defined, you can keep it as is:
+```yaml
+helm-repo-manager:
+  chartmuseum:
+    existingClaim: my-claim-name
+```
 
 - If you have `.Values.global.imageRegistry` specified, it **won't be** applied for the new chartmuseum subchart. Add image registry explicitly for the subchart as follows
 
