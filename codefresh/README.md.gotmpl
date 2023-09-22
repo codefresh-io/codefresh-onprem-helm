@@ -37,6 +37,7 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
 - [Upgrading](#upgrading)
   - [To 2.0.0](#to-2-0-0)
   - [To 2.0.12](#to-2-0-12)
+  - [To 2.0.17](#to-2-0-17)
   - [To 2.1.0](#to-2-1-0)
 - [Rollback](#rollback)
 - [Troubleshooting](#troubleshooting)
@@ -1120,7 +1121,7 @@ OpenID Connect (OIDC) allows Codefresh Builds to access resources in your cloud 
 - DNS name for OIDC Provider
 - Valid TLS certificates for Ingress
 - K8S secret containing JWKS (JSON Web Key Sets). Can be generated at [mkjwk.org](https://mkjwk.org/)
-- K8S secret containing Cliend ID (public identifier for app) and Client Secret (application password)
+- K8S secret containing Cliend ID (public identifier for app) and Client Secret (application password; cryptographically strong random string)
 
 > **NOTE!** In production usage use [External Secrets Operator](https://external-secrets.io/latest/) or [HashiCorp Vault](https://developer.hashicorp.com/vault/docs/platform/k8s) to create secrets. The following example uses `kubectl` for brevity.
 
@@ -1554,15 +1555,90 @@ helm-repo-manager:
       repository: myregistry.domain.com/codefresh/chartmuseum
 ```
 
+### To 2.0.17
+
+#### ⚠️ Affected values
+
+Values structure for argo-platform images has been changed.
+Added `registry` to align with the rest of the services.
+
+> values for <= v2.0.16
+```yaml
+argo-platform:
+  api-graphql:
+    image:
+      repository: gcr.io/codefresh-enterprise/codefresh-io/argo-platform-api-graphql
+  abac:
+    image:
+      repository: gcr.io/codefresh-enterprise/codefresh-io/argo-platform-abac
+  analytics-reporter:
+    image:
+      repository: gcr.io/codefresh-enterprise/codefresh-io/argo-platform-analytics-reporter
+  api-events:
+    image:
+      repository: gcr.io/codefresh-enterprise/codefresh-io/argo-platform-api-events
+  audit:
+    image:
+      repository: gcr.io/codefresh-enterprise/codefresh-io/argo-platform-audit
+  cron-executor:
+    image:
+      repository: gcr.io/codefresh-enterprise/codefresh-io/argo-platform-cron-executor
+  event-handler:
+    image:
+      repository: gcr.io/codefresh-enterprise/codefresh-io/argo-platform-event-handler
+  ui:
+    image:
+      repository: gcr.io/codefresh-enterprise/codefresh-io/argo-platform-ui
+```
+
+> values for >= v2.0.17
+
+```yaml
+argo-platform:
+  api-graphql:
+    image:
+      registry: gcr.io/codefresh-enterprise
+      repository: codefresh-io/argo-platform-api-graphql
+  abac:
+    image:
+      registry: gcr.io/codefresh-enterprise
+      repository: codefresh-io/argo-platform-abac
+  analytics-reporter:
+    image:
+      registry: gcr.io/codefresh-enterprise
+      repository: codefresh-io/argo-platform-analytics-reporter
+  api-events:
+    image:
+      registry: gcr.io/codefresh-enterprise
+      repository: codefresh-io/argo-platform-api-events
+  audit:
+    image:
+      registry: gcr.io/codefresh-enterprise
+      repository: codefresh-io/argo-platform-audit
+  cron-executor:
+    image:
+      registry: gcr.io/codefresh-enterprise
+      repository: codefresh-io/argo-platform-cron-executor
+  event-handler:
+    image:
+      registry: gcr.io/codefresh-enterprise
+      repository: codefresh-io/argo-platform-event-handler
+  ui:
+    image:
+      registry: gcr.io/codefresh-enterprise
+      repository: codefresh-io/argo-platform-ui
+```
+
 ### To 2.1.0
 
 ### [What's new in 2.1.x](https://codefresh.io/docs/docs/whats-new/on-prem-release-notes/#on-premises-version-21)
 
 #### Affected values:
 
-- [Legacy ChartMuseum subchart deprecation](#to-2012)
-- **Changed** default ingress paths. All point to `internal-gateway` now. **Remove any overrides at `.Values.ingress.services`!**
-- **Deprecated** `global.mongoURI`. **Still supported for backward compatibility!**
+- [Legacy ChartMuseum subchart deprecation](#to-2-0-12)
+- [Argo-Platform images values structure change](#to-2-0-17)
+- **Changed** default ingress paths. All paths point to `internal-gateway` now. **Remove any overrides at `.Values.ingress.services`!** (updated example for ALB)
+- **Deprecated** `global.mongoURI`. **Supported for backward compatibility!**
 - **Added** `global.mongodbProtocol` / `global.mongodbUser` / `global.mongodbPassword` / `global.mongodbHost` / `global.mongodbOptions`
 - **Added** `global.mongodbUserSecretKeyRef` / `global.mongodbPasswordSecretKeyRef` / `global.mongodbHostSecretKeyRef`
 - **Added** `seed.mongoSeedJob.mongodbRootUserSecretKeyRef` / `seed.mongoSeedJob.mongodbRootPasswordSecretKeyRef`
@@ -1571,7 +1647,24 @@ helm-repo-manager:
 - **Added** `global.postgresUserSecretKeyRef` / `global.postgresPasswordSecretKeyRef` / `global.postgresHostnameSecretKeyRef`
 - **Added** `global.rabbitmqUsernameSecretKeyRef` / `global.rabbitmqPasswordSecretKeyRef` / `global.rabbitmqHostnameSecretKeyRef`
 - **Added** `global.redisPasswordSecretKeyRef` / `global.redisUrlSecretKeyRef`
-- **Removed** `global.runtimeMongoURI` / `global.runtimeMongoDb` / `global.runtimeRedisHost` / `global.runtimeRedisPort` / `global.runtimeRedisPassword` / `global.runtimeRedisDb`
+
+- **Removed** `global.runtimeMongoURI` (defaults to `global.mongoURI` or `global.mongodbHost`/`global.mongodbHostSecretKeyRef`/etc like values)
+- **Removed** `global.runtimeMongoDb` (defaults to `global.mongodbDatabase`)
+- **Removed** `global.runtimeRedisHost` (defaults to `global.redisUrl`/`global.redisUrlSecretKeyRef` or `global.redisService`)
+- **Removed** `global.runtimeRedisPort` (defaults to `global.redisPort`)
+- **Removed** `global.runtimeRedisPassword` (defaults to `global.redisPassword`/`global.redisPasswordSecretKeyRef`)
+- **Removed** `global.runtimeRedisDb` (defaults to values below)
+
+```yaml
+cfapi:
+  env:
+    RUNTIME_REDIS_DB: 0
+
+cf-broadcaster:
+  env:
+    REDIS_DB: 0
+```
+
 
 ## Rollback
 

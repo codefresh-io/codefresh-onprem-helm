@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.1.3](https://img.shields.io/badge/Version-2.1.3-informational?style=flat-square) ![AppVersion: 2.1.0](https://img.shields.io/badge/AppVersion-2.1.0-informational?style=flat-square)
+![Version: 2.1.4](https://img.shields.io/badge/Version-2.1.4-informational?style=flat-square) ![AppVersion: 2.1.0](https://img.shields.io/badge/AppVersion-2.1.0-informational?style=flat-square)
 
 Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
@@ -37,6 +37,7 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
 - [Upgrading](#upgrading)
   - [To 2.0.0](#to-2-0-0)
   - [To 2.0.12](#to-2-0-12)
+  - [To 2.0.17](#to-2-0-17)
   - [To 2.1.0](#to-2-1-0)
 - [Rollback](#rollback)
 - [Troubleshooting](#troubleshooting)
@@ -1116,7 +1117,7 @@ OpenID Connect (OIDC) allows Codefresh Builds to access resources in your cloud 
 - DNS name for OIDC Provider
 - Valid TLS certificates for Ingress
 - K8S secret containing JWKS (JSON Web Key Sets). Can be generated at [mkjwk.org](https://mkjwk.org/)
-- K8S secret containing Cliend ID (public identifier for app) and Client Secret (application password)
+- K8S secret containing Cliend ID (public identifier for app) and Client Secret (application password; cryptographically strong random string)
 
 > **NOTE!** In production usage use [External Secrets Operator](https://external-secrets.io/latest/) or [HashiCorp Vault](https://developer.hashicorp.com/vault/docs/platform/k8s) to create secrets. The following example uses `kubectl` for brevity.
 
@@ -1549,15 +1550,90 @@ helm-repo-manager:
       repository: myregistry.domain.com/codefresh/chartmuseum
 ```
 
+### To 2.0.17
+
+#### ⚠️ Affected values
+
+Values structure for argo-platform images has been changed.
+Added `registry` to align with the rest of the services.
+
+> values for <= v2.0.16
+```yaml
+argo-platform:
+  api-graphql:
+    image:
+      repository: gcr.io/codefresh-enterprise/codefresh-io/argo-platform-api-graphql
+  abac:
+    image:
+      repository: gcr.io/codefresh-enterprise/codefresh-io/argo-platform-abac
+  analytics-reporter:
+    image:
+      repository: gcr.io/codefresh-enterprise/codefresh-io/argo-platform-analytics-reporter
+  api-events:
+    image:
+      repository: gcr.io/codefresh-enterprise/codefresh-io/argo-platform-api-events
+  audit:
+    image:
+      repository: gcr.io/codefresh-enterprise/codefresh-io/argo-platform-audit
+  cron-executor:
+    image:
+      repository: gcr.io/codefresh-enterprise/codefresh-io/argo-platform-cron-executor
+  event-handler:
+    image:
+      repository: gcr.io/codefresh-enterprise/codefresh-io/argo-platform-event-handler
+  ui:
+    image:
+      repository: gcr.io/codefresh-enterprise/codefresh-io/argo-platform-ui
+```
+
+> values for >= v2.0.17
+
+```yaml
+argo-platform:
+  api-graphql:
+    image:
+      registry: gcr.io/codefresh-enterprise
+      repository: codefresh-io/argo-platform-api-graphql
+  abac:
+    image:
+      registry: gcr.io/codefresh-enterprise
+      repository: codefresh-io/argo-platform-abac
+  analytics-reporter:
+    image:
+      registry: gcr.io/codefresh-enterprise
+      repository: codefresh-io/argo-platform-analytics-reporter
+  api-events:
+    image:
+      registry: gcr.io/codefresh-enterprise
+      repository: codefresh-io/argo-platform-api-events
+  audit:
+    image:
+      registry: gcr.io/codefresh-enterprise
+      repository: codefresh-io/argo-platform-audit
+  cron-executor:
+    image:
+      registry: gcr.io/codefresh-enterprise
+      repository: codefresh-io/argo-platform-cron-executor
+  event-handler:
+    image:
+      registry: gcr.io/codefresh-enterprise
+      repository: codefresh-io/argo-platform-event-handler
+  ui:
+    image:
+      registry: gcr.io/codefresh-enterprise
+      repository: codefresh-io/argo-platform-ui
+```
+
 ### To 2.1.0
 
 ### [What's new in 2.1.x](https://codefresh.io/docs/docs/whats-new/on-prem-release-notes/#on-premises-version-21)
 
 #### Affected values:
 
-- [Legacy ChartMuseum subchart deprecation](#to-2012)
-- **Changed** default ingress paths. All point to `internal-gateway` now. **Remove any overrides at `.Values.ingress.services`!**
-- **Deprecated** `global.mongoURI`. **Still supported for backward compatibility!**
+- [Legacy ChartMuseum subchart deprecation](#to-2-0-12)
+- [Argo-Platform images values structure change](#to-2-0-17)
+- **Changed** default ingress paths. All paths point to `internal-gateway` now. **Remove any overrides at `.Values.ingress.services`!** (updated example for ALB)
+- **Deprecated** `global.mongoURI`. **Supported for backward compatibility!**
 - **Added** `global.mongodbProtocol` / `global.mongodbUser` / `global.mongodbPassword` / `global.mongodbHost` / `global.mongodbOptions`
 - **Added** `global.mongodbUserSecretKeyRef` / `global.mongodbPasswordSecretKeyRef` / `global.mongodbHostSecretKeyRef`
 - **Added** `seed.mongoSeedJob.mongodbRootUserSecretKeyRef` / `seed.mongoSeedJob.mongodbRootPasswordSecretKeyRef`
@@ -1566,7 +1642,23 @@ helm-repo-manager:
 - **Added** `global.postgresUserSecretKeyRef` / `global.postgresPasswordSecretKeyRef` / `global.postgresHostnameSecretKeyRef`
 - **Added** `global.rabbitmqUsernameSecretKeyRef` / `global.rabbitmqPasswordSecretKeyRef` / `global.rabbitmqHostnameSecretKeyRef`
 - **Added** `global.redisPasswordSecretKeyRef` / `global.redisUrlSecretKeyRef`
-- **Removed** `global.runtimeMongoURI` / `global.runtimeMongoDb` / `global.runtimeRedisHost` / `global.runtimeRedisPort` / `global.runtimeRedisPassword` / `global.runtimeRedisDb`
+
+- **Removed** `global.runtimeMongoURI` (defaults to `global.mongoURI` or `global.mongodbHost`/`global.mongodbHostSecretKeyRef`/etc like values)
+- **Removed** `global.runtimeMongoDb` (defaults to `global.mongodbDatabase`)
+- **Removed** `global.runtimeRedisHost` (defaults to `global.redisUrl`/`global.redisUrlSecretKeyRef` or `global.redisService`)
+- **Removed** `global.runtimeRedisPort` (defaults to `global.redisPort`)
+- **Removed** `global.runtimeRedisPassword` (defaults to `global.redisPassword`/`global.redisPasswordSecretKeyRef`)
+- **Removed** `global.runtimeRedisDb` (defaults to values below)
+
+```yaml
+cfapi:
+  env:
+    RUNTIME_REDIS_DB: 0
+
+cf-broadcaster:
+  env:
+    REDIS_DB: 0
+```
 
 ## Rollback
 
@@ -1681,15 +1773,15 @@ kubectl -n $NAMESPACE delete secret codefresh-certs-server
 | argo-platform.runtime-monitor | object | See below | runtime-monitor Don't enable! Not used in onprem! |
 | argo-platform.ui | object | See below | ui |
 | argo-platform.useExternalSecret | bool | `false` | Use regular k8s secret object. Keep `false`! |
-| builder | object | `{"affinity":{},"container":{"image":{"registry":"docker.io","repository":"docker"}},"enabled":true,"nodeSelector":{},"podSecurityContext":{},"resources":{},"tolerations":[]}` | builder |
+| builder | object | `{"affinity":{},"container":{"image":{"registry":"docker.io","repository":"docker","tag":"24.0-dind"}},"enabled":true,"initContainers":{"register":{"image":{"registry":"quay.io","repository":"codefresh/curl","tag":"8.2.1"}}},"nodeSelector":{},"podSecurityContext":{},"resources":{},"tolerations":[]}` | builder |
 | cf-broadcaster | object | See below | broadcaster |
 | cf-oidc-provider | object | See below | cf-oidc-provider |
 | cf-platform-analytics-etlstarter | object | See below | etl-starter |
 | cf-platform-analytics-etlstarter.redis.enabled | bool | `false` | Disable redis subchart |
 | cf-platform-analytics-etlstarter.system-etl-postgres | object | `{"container":{"env":{"BLUE_GREEN_ENABLED":true}},"controller":{"cronjob":{"ttlSecondsAfterFinished":300}},"enabled":true}` | Only postgres ETL should be running in onprem |
 | cf-platform-analytics-platform | object | See below | platform-analytics |
-| cfapi | object | `{"affinity":{},"container":{"env":{"AUDIT_AUTO_CREATE_DB":true,"GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","OIDC_PROVIDER_CLIENT_ID":"","OIDC_PROVIDER_CLIENT_SECRET":"","OIDC_PROVIDER_PORT":"{{ .Values.global.oidcProviderPort }}","OIDC_PROVIDER_PROTOCOL":"{{ .Values.global.oidcProviderProtocol }}","OIDC_PROVIDER_TOKEN_ENDPOINT":"{{ .Values.global.oidcProviderTokenEndpoint }}","OIDC_PROVIDER_URI":"{{ .Values.global.oidcProviderService }}","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh"},"image":{"registry":"gcr.io/codefresh-enterprise","repository":"codefresh/cf-api"}},"controller":{"replicas":2},"enabled":true,"hpa":{"enabled":false,"maxReplicas":10,"minReplicas":2,"targetCPUUtilizationPercentage":70},"nodeSelector":{},"pdb":{"enabled":false,"minAvailable":"50%"},"podSecurityContext":{},"resources":{"limits":{},"requests":{"cpu":"200m","memory":"256Mi"}},"tolerations":[]}` | cf-api |
-| cfapi.container | object | `{"env":{"AUDIT_AUTO_CREATE_DB":true,"GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","OIDC_PROVIDER_CLIENT_ID":"","OIDC_PROVIDER_CLIENT_SECRET":"","OIDC_PROVIDER_PORT":"{{ .Values.global.oidcProviderPort }}","OIDC_PROVIDER_PROTOCOL":"{{ .Values.global.oidcProviderProtocol }}","OIDC_PROVIDER_TOKEN_ENDPOINT":"{{ .Values.global.oidcProviderTokenEndpoint }}","OIDC_PROVIDER_URI":"{{ .Values.global.oidcProviderService }}","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh"},"image":{"registry":"gcr.io/codefresh-enterprise","repository":"codefresh/cf-api"}}` | Container configuration |
+| cfapi | object | `{"affinity":{},"container":{"env":{"AUDIT_AUTO_CREATE_DB":true,"GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","OIDC_PROVIDER_CLIENT_ID":"","OIDC_PROVIDER_CLIENT_SECRET":"","OIDC_PROVIDER_PORT":"{{ .Values.global.oidcProviderPort }}","OIDC_PROVIDER_PROTOCOL":"{{ .Values.global.oidcProviderProtocol }}","OIDC_PROVIDER_TOKEN_ENDPOINT":"{{ .Values.global.oidcProviderTokenEndpoint }}","OIDC_PROVIDER_URI":"{{ .Values.global.oidcProviderService }}","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh","RUNTIME_REDIS_DB":0},"image":{"registry":"gcr.io/codefresh-enterprise","repository":"codefresh/cf-api"}},"controller":{"replicas":2},"enabled":true,"hpa":{"enabled":false,"maxReplicas":10,"minReplicas":2,"targetCPUUtilizationPercentage":70},"nodeSelector":{},"pdb":{"enabled":false,"minAvailable":"50%"},"podSecurityContext":{},"resources":{"limits":{},"requests":{"cpu":"200m","memory":"256Mi"}},"tolerations":[]}` | cf-api |
+| cfapi.container | object | `{"env":{"AUDIT_AUTO_CREATE_DB":true,"GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","OIDC_PROVIDER_CLIENT_ID":"","OIDC_PROVIDER_CLIENT_SECRET":"","OIDC_PROVIDER_PORT":"{{ .Values.global.oidcProviderPort }}","OIDC_PROVIDER_PROTOCOL":"{{ .Values.global.oidcProviderProtocol }}","OIDC_PROVIDER_TOKEN_ENDPOINT":"{{ .Values.global.oidcProviderTokenEndpoint }}","OIDC_PROVIDER_URI":"{{ .Values.global.oidcProviderService }}","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh","RUNTIME_REDIS_DB":0},"image":{"registry":"gcr.io/codefresh-enterprise","repository":"codefresh/cf-api"}}` | Container configuration |
 | cfapi.container.env | object | See below | Env vars |
 | cfapi.container.image | object | `{"registry":"gcr.io/codefresh-enterprise","repository":"codefresh/cf-api"}` | Image |
 | cfapi.container.image.registry | string | `"gcr.io/codefresh-enterprise"` | Registry prefix |

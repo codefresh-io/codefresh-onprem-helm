@@ -14,7 +14,7 @@ gencerts:
   image:
     registry: quay.io
     repository: codefresh/kubectl
-    tag: 1.27.1
+    tag: 1.28.2
   rbac:
     enabled: true
   ttlSecondsAfterFinished: 300
@@ -36,7 +36,7 @@ seed:
     image:
       registry: quay.io
       repository: codefresh/mongosh
-      tag: 1.8.2
+      tag: 2.0.0
     # -- Root user in plain text (required ONLY for seed job!).
     mongodbRootUser: "root"
     # -- Root user from existing secret
@@ -421,7 +421,7 @@ hooks:
   image:
     registry: quay.io
     repository: codefresh/mongosh
-    tag: 1.8.2
+    tag: 2.0.0
   affinity: {}
   nodeSelector: {}
   podSecurityContext: {}
@@ -451,18 +451,20 @@ postgresqlCleanJob:
 # @default -- See below
 runtimeImages:
   COMPOSE_IMAGE: quay.io/codefresh/compose:v2.20.3-1.4.0
-  CONTAINER_LOGGER_IMAGE: quay.io/codefresh/cf-container-logger:1.10.3
-  DIND_IMAGE: quay.io/codefresh/dind:24.0.5-1.28.0
-  DOCKER_BUILDER_IMAGE: quay.io/codefresh/cf-docker-builder:1.3.6
+  CONTAINER_LOGGER_IMAGE: quay.io/codefresh/cf-container-logger:1.10.4
+  DIND_IMAGE: quay.io/codefresh/dind:24.0.5-1.28.1
+  DOCKER_BUILDER_IMAGE: quay.io/codefresh/cf-docker-builder:1.3.7
   DOCKER_PULLER_IMAGE: quay.io/codefresh/cf-docker-puller:8.0.14
   DOCKER_PUSHER_IMAGE: quay.io/codefresh/cf-docker-pusher:6.0.13
   DOCKER_TAG_PUSHER_IMAGE: quay.io/codefresh/cf-docker-tag-pusher:1.3.11
-  ENGINE_IMAGE: quay.io/codefresh/engine:1.165.2
-  FS_OPS_IMAGE: quay.io/codefresh/fs-ops:1.2.3
-  GIT_CLONE_IMAGE: quay.io/codefresh/cf-git-cloner:10.1.21
+  ENGINE_IMAGE: quay.io/codefresh/engine:1.165.4
+  FS_OPS_IMAGE: quay.io/codefresh/fs-ops:1.2.7
+  GIT_CLONE_IMAGE: quay.io/codefresh/cf-git-cloner:10.1.23
   KUBE_DEPLOY: quay.io/codefresh/cf-deploy-kubernetes:16.1.11
-  PIPELINE_DEBUGGER_IMAGE: quay.io/codefresh/cf-debugger:1.3.0
+  PIPELINE_DEBUGGER_IMAGE: quay.io/codefresh/cf-debugger:1.3.4
   TEMPLATE_ENGINE: quay.io/codefresh/pikolo:0.13.8
+  CR_6177_FIXER: alpine:edge
+  GC_BUILDER_IMAGE: "''"
 
 #--------------------
 # Codefresh subcharts
@@ -492,6 +494,7 @@ cfapi: &cf-api
       LOGGER_LEVEL: debug
       ON_PREMISE: true
       RUNTIME_MONGO_DB: codefresh
+      RUNTIME_REDIS_DB: 0
       OIDC_PROVIDER_URI: '{{ .Values.global.oidcProviderService }}'
       OIDC_PROVIDER_PORT: '{{ .Values.global.oidcProviderPort }}'
       OIDC_PROVIDER_PROTOCOL: '{{ .Values.global.oidcProviderProtocol }}'
@@ -627,6 +630,7 @@ cf-broadcaster:
       repository: codefresh/cf-broadcaster
   env:
     RUNTIME_MONGO_DB: codefresh
+    REDIS_DB: 0
   resources:
     requests:
       cpu: 100m
@@ -757,8 +761,6 @@ cfui:
       repository: codefresh/cf-ui
     env:
       ON_PREMISE: true
-  podAnnotations:
-    reloader.stakater.com/auto: '{{ randAlphaNum 5 | quote }}'
   resources:
     requests:
       cpu: 100m
@@ -1108,10 +1110,17 @@ rabbitmq:
 # -- builder
 builder:
   enabled: true
+  initContainers:
+    register:
+      image:
+        registry: quay.io
+        repository: codefresh/curl
+        tag: 8.2.1
   container:
     image:
       registry: docker.io
       repository: docker
+      tag: 24.0-dind
   affinity: {}
   nodeSelector: {}
   podSecurityContext: {}
@@ -1122,10 +1131,17 @@ builder:
 # @default -- See below
 runner:
   enabled: true
+  initContainers:
+    register:
+      image:
+        registry: quay.io
+        repository: codefresh/curl
+        tag: 8.2.1
   container:
     image:
       registry: docker.io
       repository: docker
+      tag: 24.0-dind
   affinity: {}
   nodeSelector: {}
   podSecurityContext: {}
