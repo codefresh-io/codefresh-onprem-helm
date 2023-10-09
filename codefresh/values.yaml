@@ -746,7 +746,7 @@ cfsign:
       image:
         registry: quay.io
         repository: codefresh/curl
-        tag: 8.2.1
+        tag: 8.3.0
   affinity: {}
   nodeSelector: {}
   podSecurityContext: {}
@@ -1119,7 +1119,7 @@ builder:
       image:
         registry: quay.io
         repository: codefresh/curl
-        tag: 8.2.1
+        tag: 8.3.0
   container:
     image:
       registry: docker.io
@@ -1140,7 +1140,7 @@ runner:
       image:
         registry: quay.io
         repository: codefresh/curl
-        tag: 8.2.1
+        tag: 8.3.0
   container:
     image:
       registry: docker.io
