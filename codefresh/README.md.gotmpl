@@ -39,9 +39,16 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
   - [To 2.0.12](#to-2-0-12)
   - [To 2.0.17](#to-2-0-17)
   - [To 2.1.0](#to-2-1-0)
+  - [To 2.1.7](#to-2-1-7)
 - [Rollback](#rollback)
 - [Troubleshooting](#troubleshooting)
 - [Values](#values)
+
+⚠️⚠️⚠️
+> Since version 2.1.7 chart is pushed **only** to OCI registry at `oci://quay.io/codefresh/codefresh`
+
+> Versions prior to 2.1.7 are still available in ChartMuseum at `http://chartmuseum.codefresh.io/codefresh`
+
 
 ## Prerequisites
 
@@ -57,9 +64,9 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
 ## Get Repo Info
 
 ```console
-helm repo add codefresh http://chartmuseum.codefresh.io/codefresh
-helm repo update
+helm show all oci://quay.io/codefresh/codefresh
 ```
+See [Use OCI-based registries](https://helm.sh/docs/topics/registries/)
 
 ## Install Chart
 
@@ -147,18 +154,6 @@ ingress-nginx:
 - Install the chart
 
 ```console
-helm upgrade --install cf codefresh/codefresh \
-    -f cf-values.yaml \
-    --namespace codefresh \
-    --create-namespace \
-    --debug \
-    --wait \
-    --timeout 15m
-```
-
-- *Install from OCI-based registry*
-
-```console
   helm upgrade --install cf oci://quay.io/codefresh/codefresh \
       -f cf-values.yaml \
       --namespace codefresh \
@@ -167,7 +162,6 @@ helm upgrade --install cf codefresh/codefresh \
       --wait \
       --timeout 15m
   ```
-
 
 ## Chart Configuration
 
@@ -1692,6 +1686,14 @@ cf-broadcaster:
   env:
     REDIS_DB: 0
 ```
+
+
+### To 2.1.7
+
+⚠️⚠️⚠️
+> Since version 2.1.7 chart is pushed **only** to OCI registry at `oci://quay.io/codefresh/codefresh`
+
+> Versions prior to 2.1.7 are still available in ChartMuseum at `http://chartmuseum.codefresh.io/codefresh`
 
 
 ## Rollback

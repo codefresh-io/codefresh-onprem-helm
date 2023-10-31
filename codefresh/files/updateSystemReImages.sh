@@ -30,6 +30,8 @@ function updateRESpec {
                     \"runtimeScheduler.envVars.KUBE_DEPLOY\": \"$KUBE_DEPLOY\",
                     \"runtimeScheduler.envVars.TEMPLATE_ENGINE\": \"$TEMPLATE_ENGINE\",
                     \"runtimeScheduler.envVars.PIPELINE_DEBUGGER_IMAGE\": \"$PIPELINE_DEBUGGER_IMAGE\",
+                    \"runtimeScheduler.envVars.CR_6177_FIXER\": \"$CR_6177_FIXER\",
+                    \"runtimeScheduler.envVars.GC_BUILDER_IMAGE\": \"$GC_BUILDER_IMAGE\",
                     }
                 }
             )"
@@ -50,6 +52,8 @@ function updateRESpec {
                     \"runtimeScheduler.envVars.KUBE_DEPLOY\": \"$KUBE_DEPLOY\",
                     \"runtimeScheduler.envVars.TEMPLATE_ENGINE\": \"$TEMPLATE_ENGINE\",
                     \"runtimeScheduler.envVars.PIPELINE_DEBUGGER_IMAGE\": \"$PIPELINE_DEBUGGER_IMAGE\",
+                    \"runtimeScheduler.envVars.CR_6177_FIXER\": \"$CR_6177_FIXER\",
+                    \"runtimeScheduler.envVars.GC_BUILDER_IMAGE\": \"$GC_BUILDER_IMAGE\",
                     }
                 }
             )"

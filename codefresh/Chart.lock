@@ -1,13 +1,13 @@
 dependencies:
 - name: cf-common
-  repository: https://chartmuseum.codefresh.io/cf-common
-  version: 0.13.0
+  repository: oci://quay.io/codefresh/charts
+  version: 0.16.0
 - name: internal-gateway
-  repository: https://chartmuseum.codefresh.io/internal-gateway
-  version: 0.3.0
+  repository: oci://quay.io/codefresh/charts
+  version: 0.3.1
 - name: consul
   repository: https://charts.bitnami.com/bitnami
-  version: 10.13.2
+  version: 10.13.9
 - name: mongodb
   repository: https://charts.bitnami.com/bitnami
   version: 13.12.1
@@ -16,46 +16,46 @@ dependencies:
   version: 12.5.1
 - name: redis
   repository: https://charts.bitnami.com/bitnami
-  version: 18.0.0
+  version: 18.1.6
 - name: rabbitmq
   repository: https://charts.bitnami.com/bitnami
-  version: 12.1.4
+  version: 12.2.5
 - name: nats
   repository: https://charts.bitnami.com/bitnami
-  version: 7.9.5
+  version: 7.9.9
 - name: builder
-  repository: https://chartmuseum.codefresh.io/builder
-  version: 1.2.0
+  repository: oci://quay.io/codefresh/charts
+  version: 1.3.0
 - name: runner
-  repository: https://chartmuseum.codefresh.io/runner
-  version: 1.2.0
+  repository: oci://quay.io/codefresh/charts
+  version: 1.3.0
 - name: ingress-nginx
   repository: https://kubernetes.github.io/ingress-nginx
   version: 4.7.1
 - name: cluster-providers
-  repository: https://chartmuseum.codefresh.io/cluster-providers
-  version: 1.16.5
+  repository: oci://quay.io/codefresh/charts
+  version: 1.16.8
 - name: kube-integration
-  repository: https://chartmuseum.codefresh.io/kube-integration
-  version: 1.30.6
+  repository: oci://quay.io/codefresh/charts
+  version: 1.31.2
 - name: charts-manager
-  repository: https://chartmuseum.codefresh.io/charts-manager
-  version: 1.16.4
+  repository: oci://quay.io/codefresh/charts
+  version: 1.16.6
 - name: cfsign
-  repository: https://chartmuseum.codefresh.io/cfsign
-  version: 1.6.2
+  repository: oci://quay.io/codefresh/charts
+  version: 1.6.4
 - name: tasker-kubernetes
-  repository: https://chartmuseum.codefresh.io/tasker-kubernetes
-  version: 1.24.5
+  repository: oci://quay.io/codefresh/charts
+  version: 1.24.8
 - name: context-manager
-  repository: https://chartmuseum.codefresh.io/context-manager
-  version: 2.26.6
+  repository: oci://quay.io/codefresh/charts
+  version: 2.26.8
 - name: pipeline-manager
-  repository: https://chartmuseum.codefresh.io/pipeline-manager
-  version: 3.131.10
+  repository: oci://quay.io/codefresh/charts
+  version: 3.131.14
 - name: gitops-dashboard-manager
-  repository: https://chartmuseum.codefresh.io/gitops-dashboard-manager
-  version: 1.14.4
+  repository: oci://quay.io/codefresh/charts
+  version: 1.14.7
 - name: cfapi
   repository: https://chartmuseum.codefresh.io/cfapi
   version: 21.234.10
@@ -111,43 +111,43 @@ dependencies:
   repository: https://chartmuseum.codefresh.io/cfui
   version: 14.91.94
 - name: k8s-monitor
-  repository: https://chartmuseum.codefresh.io/k8s-monitor
-  version: 4.11.3
+  repository: oci://quay.io/codefresh/charts
+  version: 4.11.5
 - name: runtime-environment-manager
-  repository: https://chartmuseum.codefresh.io/runtime-environment-manager
-  version: 3.33.0
+  repository: oci://quay.io/codefresh/charts
+  version: 3.33.2
 - name: cf-broadcaster
-  repository: https://chartmuseum.codefresh.io/cf-broadcaster
-  version: 1.12.5
+  repository: oci://quay.io/codefresh/charts
+  version: 1.12.7
 - name: helm-repo-manager
-  repository: https://chartmuseum.codefresh.io/helm-repo-manager
-  version: 0.13.2
+  repository: oci://quay.io/codefresh/charts
+  version: 0.13.4
 - name: hermes
-  repository: https://chartmuseum.codefresh.io/hermes
-  version: 0.21.5
+  repository: oci://quay.io/codefresh/charts
+  version: 0.21.7
 - name: nomios
-  repository: https://chartmuseum.codefresh.io/nomios
-  version: 0.11.2
+  repository: oci://quay.io/codefresh/charts
+  version: 0.11.4
 - name: cronus
-  repository: https://chartmuseum.codefresh.io/cronus
-  version: 0.8.2
+  repository: oci://quay.io/codefresh/charts
+  version: 0.8.4
 - name: cf-platform-analytics
-  repository: https://chartmuseum.codefresh.io/cf-platform-analytics
-  version: 0.49.13
+  repository: oci://quay.io/codefresh/charts
+  version: 0.49.19
 - name: cf-platform-analytics
-  repository: https://chartmuseum.codefresh.io/cf-platform-analytics
-  version: 0.49.13
+  repository: oci://quay.io/codefresh/charts
+  version: 0.49.19
 - name: argo-platform
-  repository: https://chartmuseum.codefresh.io/argo-platform
-  version: 1.2437.0
+  repository: oci://quay.io/codefresh/charts
+  version: 1.2491.1
 - name: argo-hub-platform
-  repository: https://chartmuseum.codefresh.io/argo-hub-platform
-  version: 0.1.4
+  repository: oci://quay.io/codefresh/charts
+  version: 0.1.7
 - name: codefresh-tunnel-server
-  repository: https://chartmuseum.codefresh.io/codefresh-tunnel-server
-  version: 0.1.14
+  repository: oci://quay.io/codefresh/charts
+  version: 0.1.16
 - name: cf-oidc-provider
-  repository: https://chartmuseum.codefresh.io/cf-oidc-provider
-  version: 0.0.8
-digest: sha256:941834c18c353cda30fee92e1549b17cb13e50d892c7c90f931fd838f7b9d37c
-generated: "2023-10-09T23:46:59.286469084+03:00"
+  repository: oci://quay.io/codefresh/charts
+  version: 0.0.10
+digest: sha256:94d6783d267968a6cdf8110424f6c0662799382e255eeaeb361ab9a8cb29d910
+generated: "2023-10-24T20:03:55.281689338+03:00"

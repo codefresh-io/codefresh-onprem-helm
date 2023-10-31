@@ -64,6 +64,10 @@ spec:
             value: {{ include "codefresh.buildImageName" (dict "registry" .Values.global.imageRegistry "imageFullName" .Values.runtimeImages.TEMPLATE_ENGINE) }}
           - name: PIPELINE_DEBUGGER_IMAGE
             value: {{ include "codefresh.buildImageName" (dict "registry" .Values.global.imageRegistry "imageFullName" .Values.runtimeImages.PIPELINE_DEBUGGER_IMAGE) }}
+          - name: CR_6177_FIXER
+            value: {{ include "codefresh.buildImageName" (dict "registry" .Values.global.imageRegistry "imageFullName" .Values.runtimeImages.CR_6177_FIXER) }}
+          - name: GC_BUILDER_IMAGE
+            value: {{ include "codefresh.buildImageName" (dict "registry" .Values.global.imageRegistry "imageFullName" .Values.runtimeImages.GC_BUILDER_IMAGE) }}
         command:
           - "/bin/bash"
           - "-c"

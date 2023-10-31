@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.1.6](https://img.shields.io/badge/Version-2.1.6-informational?style=flat-square) ![AppVersion: 2.1.0](https://img.shields.io/badge/AppVersion-2.1.0-informational?style=flat-square)
+![Version: 2.1.7](https://img.shields.io/badge/Version-2.1.7-informational?style=flat-square) ![AppVersion: 2.1.0](https://img.shields.io/badge/AppVersion-2.1.0-informational?style=flat-square)
 
 Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
@@ -39,9 +39,15 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
   - [To 2.0.12](#to-2-0-12)
   - [To 2.0.17](#to-2-0-17)
   - [To 2.1.0](#to-2-1-0)
+  - [To 2.1.7](#to-2-1-7)
 - [Rollback](#rollback)
 - [Troubleshooting](#troubleshooting)
 - [Values](#values)
+
+⚠️⚠️⚠️
+> Since version 2.1.7 chart is pushed **only** to OCI registry at `oci://quay.io/codefresh/codefresh`
+
+> Versions prior to 2.1.7 are still available in ChartMuseum at `http://chartmuseum.codefresh.io/codefresh`
 
 ## Prerequisites
 
@@ -57,9 +63,9 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
 ## Get Repo Info
 
 ```console
-helm repo add codefresh http://chartmuseum.codefresh.io/codefresh
-helm repo update
+helm show all oci://quay.io/codefresh/codefresh
 ```
+See [Use OCI-based registries](https://helm.sh/docs/topics/registries/)
 
 ## Install Chart
 
@@ -145,18 +151,6 @@ ingress-nginx:
 ```
 
 - Install the chart
-
-```console
-helm upgrade --install cf codefresh/codefresh \
-    -f cf-values.yaml \
-    --namespace codefresh \
-    --create-namespace \
-    --debug \
-    --wait \
-    --timeout 15m
-```
-
-- *Install from OCI-based registry*
 
 ```console
   helm upgrade --install cf oci://quay.io/codefresh/codefresh \
@@ -1688,6 +1682,13 @@ cf-broadcaster:
     REDIS_DB: 0
 ```
 
+### To 2.1.7
+
+⚠️⚠️⚠️
+> Since version 2.1.7 chart is pushed **only** to OCI registry at `oci://quay.io/codefresh/codefresh`
+
+> Versions prior to 2.1.7 are still available in ChartMuseum at `http://chartmuseum.codefresh.io/codefresh`
+
 ## Rollback
 
 Use `helm history` to determine which release has worked, then use `helm rollback` to perform a rollback
@@ -1801,7 +1802,7 @@ kubectl -n $NAMESPACE delete secret codefresh-certs-server
 | argo-platform.runtime-monitor | object | See below | runtime-monitor Don't enable! Not used in onprem! |
 | argo-platform.ui | object | See below | ui |
 | argo-platform.useExternalSecret | bool | `false` | Use regular k8s secret object. Keep `false`! |
-| builder | object | `{"affinity":{},"container":{"image":{"registry":"docker.io","repository":"docker","tag":"24.0-dind"}},"enabled":true,"initContainers":{"register":{"image":{"registry":"quay.io","repository":"codefresh/curl","tag":"8.3.0"}}},"nodeSelector":{},"podSecurityContext":{},"resources":{},"tolerations":[]}` | builder |
+| builder | object | `{"affinity":{},"container":{"image":{"registry":"docker.io","repository":"docker","tag":"24.0-dind"}},"enabled":true,"initContainers":{"register":{"image":{"registry":"quay.io","repository":"codefresh/curl","tag":"8.4.0"}}},"nodeSelector":{},"podSecurityContext":{},"resources":{},"tolerations":[]}` | builder |
 | cf-broadcaster | object | See below | broadcaster |
 | cf-oidc-provider | object | See below | cf-oidc-provider |
 | cf-platform-analytics-etlstarter | object | See below | etl-starter |

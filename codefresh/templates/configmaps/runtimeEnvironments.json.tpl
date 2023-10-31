@@ -132,6 +132,8 @@
               "KUBE_DEPLOY": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.dockerRegistry "imageFullName" .Values.runtimeImages.KUBE_DEPLOY) }}",
               "TEMPLATE_ENGINE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.dockerRegistry "imageFullName" .Values.runtimeImages.TEMPLATE_ENGINE) }}",
               "PIPELINE_DEBUGGER_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.dockerRegistry "imageFullName" .Values.runtimeImages.PIPELINE_DEBUGGER_IMAGE) }}",
+              "CR_6177_FIXER": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.dockerRegistry "imageFullName" .Values.runtimeImages.CR_6177_FIXER) }}",
+              "GC_BUILDER_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.dockerRegistry "imageFullName" .Values.runtimeImages.GC_BUILDER_IMAGE) }}",
               "NO_EXT_MONITOR": "true",
               "DISABLE_WORKSPACE_CACHE": "true",
               "NODE_TLS_REJECT_UNAUTHORIZED": "0",
