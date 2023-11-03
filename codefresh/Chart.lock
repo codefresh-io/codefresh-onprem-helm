@@ -14,6 +14,9 @@ dependencies:
 - name: postgresql
   repository: https://charts.bitnami.com/bitnami
   version: 12.5.1
+- name: postgresql-ha
+  repository: oci://registry-1.docker.io/bitnamicharts
+  version: 12.0.4
 - name: redis
   repository: https://charts.bitnami.com/bitnami
   version: 18.1.6
@@ -43,7 +46,7 @@ dependencies:
   version: 1.16.6
 - name: cfsign
   repository: oci://quay.io/codefresh/charts
-  version: 1.6.4
+  version: 1.6.5
 - name: tasker-kubernetes
   repository: oci://quay.io/codefresh/charts
   version: 1.24.8
@@ -148,6 +151,6 @@ dependencies:
   version: 0.1.16
 - name: cf-oidc-provider
   repository: oci://quay.io/codefresh/charts
-  version: 0.0.10
-digest: sha256:94d6783d267968a6cdf8110424f6c0662799382e255eeaeb361ab9a8cb29d910
-generated: "2023-10-24T20:03:55.281689338+03:00"
+  version: 0.0.12
+digest: sha256:bcf751faede6fac13c90397a18ada07721486d5425e596cec1a2491f72134451
+generated: "2023-11-03T15:29:44.611874442+03:00"

@@ -769,6 +769,9 @@ cfapi-test-reporting:
 
 The chart installs the non-HA version of Codefresh by default. If you want to run Codefresh in HA mode, use the example values below.
 
+> **Note!** `cronus` is not supported in HA mode, otherwise builds with CRON triggers will be duplicated
+
+`values.yaml`
 ```yaml
 cfapi:
   hpa:
@@ -819,6 +822,14 @@ internal-gateway:
   hpa:
     enabled: true
 
+cf-broadcaster:
+  hpa:
+    enabled: true
+
+cf-platform-analytics-platform:
+  hpa:
+    enabled: true
+
 charts-manager:
   hpa:
     enabled: true
@@ -839,11 +850,19 @@ helm-repo-manager:
   hpa:
     enabled: true
 
+hermes:
+  hpa:
+    enabled: true
+
 k8s-monitor:
   hpa:
     enabled: true
 
 kube-integration:
+  hpa:
+    enabled: true
+
+nomios:
   hpa:
     enabled: true
 
@@ -860,6 +879,68 @@ tasker-kubernetes:
     enabled: true
 
 ```
+
+For infra services (MongoDB, PostgreSQL, RabbitMQ, Consul, Nats, Ingress-NGINX) from built-in Bitnami charts you can use the following example:
+
+> **Note!** Redis HA will be available in Codefresh Onprem 2.2
+
+> **Note!** Use [topologySpreadConstraints](https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/#spread-constraints-for-pods) for better resiliency
+
+`values.yaml`
+```yaml
+global:
+  postgresService: postgresql-ha-pgpool
+  mongodbHost: cf-mongodb-0,cf-mongodb-1,cf-mongodb-2  # Replace `cf` with your Helm Release name
+  mongodbOptions: replicaSet=rs0&retryWrites=true
+
+builder:
+  controller:
+    replicas: 3
+
+consul:
+  replicaCount: 3
+
+cfsign:
+  controller:
+    replicas: 3
+  persistence:
+    certs-data:
+      enabled: false
+  volumes:
+    certs-data:
+      type: emptyDir
+  initContainers:
+    volume-permissions:
+      enabled: false
+
+ingress-nginx:
+  controller:
+    autoscaling:
+      enabled: true
+
+mongodb:
+  architecture: replicaset
+  replicaCount: 3
+  externalAccess:
+    enabled: true
+    service:
+      type: ClusterIP
+
+nats:
+  replicaCount: 3
+
+postgresql:
+  enabled: false
+
+postgresql-ha:
+  enabled: true
+  volumePermissions:
+    enabled: true
+
+rabbitmq:
+  replicaCount: 3
+```
+
 
 ### Mounting private CA certs
 

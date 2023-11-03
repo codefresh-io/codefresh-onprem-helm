@@ -1,0 +1,70 @@
+seed-e2e:
+  enabled: true
+
+seed:
+  mongoSeedJob:
+    mongodbRootURI: mongodb://root:XT9nmM8dZD@cf-mongodb-0,cf-mongodb-1,cf-mongodb-2:27017/?authSource=admin&replicaSet=rs0&retryWrites=true
+
+secrets:
+  # default mongouri conn string for e2e
+  e2e-mongo-uri:
+    enabled: true
+    stringData:
+      mongo-uri: "mongodb://cfuser:mTiXcU2wafr9@cf-mongodb-0,cf-mongodb-1,cf-mongodb-2:27017/codefresh?replicaSet=rs0&retryWrites=true"
+
+ingress:
+  enabled: true
+  tls:
+    enabled: true
+    cert: ""  # placeholder for ${WEB_TLS_CERT}
+    key: "" # placeholder for ${WEB_TLS_KEY}
+
+global:
+  appUrl: ""  # placeholder for ${CF_APP_HOST}
+  firebaseSecret: ""  # placeholder for ${FIREBASE_SECRET}
+
+  postgresService: postgresql-ha-pgpool
+  mongodbHost: cf-mongodb-0,cf-mongodb-1,cf-mongodb-2
+  mongodbOptions: replicaSet=rs0&retryWrites=true
+
+postgresql-ha:
+  enabled: true
+  volumePermissions:
+    enabled: true
+
+postgresql:
+  enabled: false
+
+mongodb:
+  architecture: replicaset
+  replicaCount: 3
+  externalAccess:
+    enabled: true
+    service:
+      type: ClusterIP
+
+rabbitmq:
+  replicaCount: 3
+
+consul:
+  replicaCount: 3
+
+nats:
+  replicaCount: 3
+
+builder:
+  controller:
+    replicas: 3
+
+cfsign:
+  controller:
+    replicas: 3
+  persistence:
+    certs-data:
+      enabled: false
+  volumes:
+    certs-data:
+      type: emptyDir
+  initContainers:
+    volume-permissions:
+      enabled: false

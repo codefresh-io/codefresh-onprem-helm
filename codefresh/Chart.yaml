@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.1.7
+version: 2.1.8
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -15,12 +15,12 @@ appVersion: 2.1.0
 annotations:
   artifacthub.io/alternativeName: "codefresh-onprem"
   artifacthub.io/changes: |
+    - kind: added
+      description: Added postgresql-ha chart
+    - kind: added
+      description: Update documentation about HA
     - kind: changed
-      description: Push charts to OCI registry (see Upgrade to 2.1.7 note)
-    - kind: security
-      description: Update dependencies (runtime images/microservices)
-    - kind: security
-      description: Update OSS dependencies (rabbitmq/redis/nats)
+      description: Change .dockerDaemonScheduler.pvcs to list in default system/default/hybrid/k8s runtime spec
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -41,6 +41,10 @@ dependencies:
     version: 12.5.1
     repository: https://charts.bitnami.com/bitnami
     condition: postgresql.enabled
+  - name: postgresql-ha
+    version: 12.0.4
+    repository: oci://registry-1.docker.io/bitnamicharts
+    condition: postgresql-ha.enabled
   - name: redis
     version: 18.1.6
     repository: https://charts.bitnami.com/bitnami

@@ -215,14 +215,14 @@
                   }
               }
           },
-          "pvcs": {
-              "dind": {
-                  "name": "dind",
-                  "volumeSize": "15Gi",
-                  "reuseVolumeSelector": "codefresh-app,io.codefresh.accountName",
-                  "storageClassName": ""
+          "pvcs": [
+              {
+                "name": "dind",
+                "volumeSize": "15Gi",
+                "reuseVolumeSelector": "codefresh-app,io.codefresh.accountName",
+                "storageClassName": ""
               }
-          },
+          ],
           "tolerations": {
               "dind": {
                   "key": "codefresh/dind",

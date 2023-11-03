@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.1.7](https://img.shields.io/badge/Version-2.1.7-informational?style=flat-square) ![AppVersion: 2.1.0](https://img.shields.io/badge/AppVersion-2.1.0-informational?style=flat-square)
+![Version: 2.1.8](https://img.shields.io/badge/Version-2.1.8-informational?style=flat-square) ![AppVersion: 2.1.0](https://img.shields.io/badge/AppVersion-2.1.0-informational?style=flat-square)
 
 Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
@@ -766,6 +766,9 @@ cfapi-test-reporting:
 
 The chart installs the non-HA version of Codefresh by default. If you want to run Codefresh in HA mode, use the example values below.
 
+> **Note!** `cronus` is not supported in HA mode, otherwise builds with CRON triggers will be duplicated
+
+`values.yaml`
 ```yaml
 cfapi:
   hpa:
@@ -816,6 +819,14 @@ internal-gateway:
   hpa:
     enabled: true
 
+cf-broadcaster:
+  hpa:
+    enabled: true
+
+cf-platform-analytics-platform:
+  hpa:
+    enabled: true
+
 charts-manager:
   hpa:
     enabled: true
@@ -836,11 +847,19 @@ helm-repo-manager:
   hpa:
     enabled: true
 
+hermes:
+  hpa:
+    enabled: true
+
 k8s-monitor:
   hpa:
     enabled: true
 
 kube-integration:
+  hpa:
+    enabled: true
+
+nomios:
   hpa:
     enabled: true
 
@@ -856,6 +875,67 @@ tasker-kubernetes:
   hpa:
     enabled: true
 
+```
+
+For infra services (MongoDB, PostgreSQL, RabbitMQ, Consul, Nats, Ingress-NGINX) from built-in Bitnami charts you can use the following example:
+
+> **Note!** Redis HA will be available in Codefresh Onprem 2.2
+
+> **Note!** Use [topologySpreadConstraints](https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/#spread-constraints-for-pods) for better resiliency
+
+`values.yaml`
+```yaml
+global:
+  postgresService: postgresql-ha-pgpool
+  mongodbHost: cf-mongodb-0,cf-mongodb-1,cf-mongodb-2  # Replace `cf` with your Helm Release name
+  mongodbOptions: replicaSet=rs0&retryWrites=true
+
+builder:
+  controller:
+    replicas: 3
+
+consul:
+  replicaCount: 3
+
+cfsign:
+  controller:
+    replicas: 3
+  persistence:
+    certs-data:
+      enabled: false
+  volumes:
+    certs-data:
+      type: emptyDir
+  initContainers:
+    volume-permissions:
+      enabled: false
+
+ingress-nginx:
+  controller:
+    autoscaling:
+      enabled: true
+
+mongodb:
+  architecture: replicaset
+  replicaCount: 3
+  externalAccess:
+    enabled: true
+    service:
+      type: ClusterIP
+
+nats:
+  replicaCount: 3
+
+postgresql:
+  enabled: false
+
+postgresql-ha:
+  enabled: true
+  volumePermissions:
+    enabled: true
+
+rabbitmq:
+  replicaCount: 3
 ```
 
 ### Mounting private CA certs
@@ -1947,6 +2027,7 @@ kubectl -n $NAMESPACE delete secret codefresh-certs-server
 | nomios | object | See below | nomios |
 | pipeline-manager | object | See below | pipeline-manager |
 | postgresql | object | See below | postgresql Ref: https://github.com/bitnami/charts/blob/main/bitnami/postgresql/values.yaml |
+| postgresql-ha | object | See below | postgresql Ref: https://github.com/bitnami/charts/blob/main/bitnami/postgresql-ha/values.yaml |
 | postgresqlCleanJob | object | See below | Maintenance postgresql clean job. Removes a certain number of the last records in the event store table. |
 | rabbitmq | object | See below | rabbitmq Ref: https://github.com/bitnami/charts/blob/main/bitnami/rabbitmq/values.yaml |
 | redis | object | See below | redis Ref: https://github.com/bitnami/charts/blob/main/bitnami/redis/values.yaml |
@@ -1954,7 +2035,7 @@ kubectl -n $NAMESPACE delete secret codefresh-certs-server
 | runtime-environment-manager | object | See below | runtime-environment-manager |
 | runtimeImages | object | See below | runtimeImages |
 | seed | object | See below | Seed jobs |
-| seed-e2e | object | `{}` | CI |
+| seed-e2e | object | `{"affinity":{},"backoffLimit":10,"enabled":false,"image":{"registry":"docker.io","repository":"mongo","tag":"latest"},"nodeSelector":{},"podSecurityContext":{},"resources":{},"tolerations":[],"ttlSecondsAfterFinished":300}` | CI |
 | seed.enabled | bool | `true` | Enable all seed jobs |
 | seed.mongoSeedJob | object | See below | Mongo Seed Job. Required at first install. Seeds the required data (default idp/user/account), creates cfuser and required databases. |
 | seed.mongoSeedJob.mongodbRootPassword | string | `"XT9nmM8dZD"` | Root password in plain text (required ONLY for seed job!). |

@@ -464,7 +464,7 @@ runtimeImages:
   PIPELINE_DEBUGGER_IMAGE: quay.io/codefresh/cf-debugger:1.3.4
   TEMPLATE_ENGINE: quay.io/codefresh/pikolo:0.14.0
   CR_6177_FIXER: alpine:edge
-  GC_BUILDER_IMAGE: "''"
+  GC_BUILDER_IMAGE: alpine:edge
 
 #--------------------
 # Codefresh subcharts
@@ -1081,6 +1081,30 @@ postgresql:
         cpu: 200m
         memory: 256Mi
 
+# -- postgresql
+# @default -- See below
+# Ref: https://github.com/bitnami/charts/blob/main/bitnami/postgresql-ha/values.yaml
+postgresql-ha:
+  enabled: false
+  postgresql:
+    image:
+      registry: quay.io
+      repository: codefresh/postgresql-repmgr
+      tag: 13
+    username: postgres
+    password: "eC9arYka4ZbH"
+    database: "codefresh"
+    sharedPreloadLibraries: "pgaudit, repmgr, pg_partman_bgw, pg_cron"
+    resources:
+      requests:
+        cpu: 200m
+        memory: 256Mi
+    extendedConf: |
+      pg_partman_bgw.interval = 3600
+      pg_partman_bgw.role = 'postgres'
+      pg_partman_bgw.dbname = 'postgres'
+      cron.database_name = 'postgres'
+
 # -- redis
 # @default -- See below
 # Ref: https://github.com/bitnami/charts/blob/main/bitnami/redis/values.yaml
@@ -1693,4 +1717,16 @@ webTLS:
   key: ""
 
 # -- CI
-seed-e2e: {}
+seed-e2e:
+  enabled: false
+  image:
+    registry: docker.io
+    repository: mongo
+    tag: latest
+  ttlSecondsAfterFinished: 300
+  backoffLimit: 10
+  affinity: {}
+  nodeSelector: {}
+  podSecurityContext: {}
+  resources: {}
+  tolerations: []

@@ -1,0 +1,228 @@
+{{ $libTemplateName := printf "cf-common-%s" (index .Subcharts "cf-common").Chart.Version }}
+{{ $context := deepCopy (index .Values "seed-e2e") }}
+---
+{{- if and $context.enabled }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "codefresh.fullname" . }}-mongo-seed-e2e
+  labels:
+    {{ include "codefresh.labels" . | nindent 4 }}
+  annotations:
+    helm.sh/hook: post-install,post-upgrade
+    helm.sh/hook-weight: "5"
+    helm.sh/hook-delete-policy: before-hook-creation,hook-succeeded
+spec:
+  {{- with $context.ttlSecondsAfterFinished }}
+  ttlSecondsAfterFinished: {{ . }}
+  {{- end }}
+  {{- with $context.backoffLimit }}
+  backoffLimit: {{ . | int }}
+  {{- end }}
+  template:
+    metadata:
+      name: {{ include "codefresh.fullname" . }}-mongo-seed-e2e
+      labels:
+        {{ include "codefresh.labels" . | nindent 8 }}
+    spec:
+      {{- if .Values.global.imageRegistry }}
+      imagePullSecrets:
+        - name: "{{ .Release.Name }}-{{ .Values.global.codefresh }}-registry"
+      {{- end }}
+      securityContext:
+        {{- toYaml $context.podSecurityContext | nindent 8 }}
+      containers:
+      - name: {{ include "codefresh.fullname" . }}-mongo-seed-e2e
+        image: {{ include (printf "%s.image.name" $libTemplateName) (dict "image" $context.image "context" .) }}
+        envFrom:
+          - secretRef:
+              name: {{ include "codefresh.fullname" . }}
+        env:
+        - name: MONGO_URI
+          value: $(MONGODB_PROTOCOL)://$(MONGODB_USER):$(MONGODB_PASSWORD)@$(MONGODB_HOST)/$(MONGODB_DATABASE)?$(MONGODB_OPTIONS)
+        command:
+          - "/bin/bash"
+          - "-c"
+          - /seed/seed-script.sh
+        resources:
+          {{- toYaml $context.resources | nindent 10 }}
+        volumeMounts:
+        - mountPath: /seed/seed-script.sh
+          name: seed-e2e
+          subPath: seed-script
+        - mountPath: /seed/api-token.json
+          name: seed-e2e
+          subPath: api-token.json
+        - mountPath: /seed/e2e-account.json
+          name: seed-e2e
+          subPath: e2e-account.json
+      {{- with $context.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with $context.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with $context.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 6 }}
+      {{- end }}
+      restartPolicy: OnFailure
+      volumes:
+      - name: seed-e2e
+        configMap:
+          name: {{ include "codefresh.fullname" . }}-mongo-seed-e2e
+          defaultMode: 0744
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "codefresh.fullname" . }}-mongo-seed-e2e
+  labels:
+    {{ include "codefresh.labels" . | nindent 4 }}
+  annotations:
+    helm.sh/hook: post-install,post-upgrade
+    helm.sh/hook-weight: "-5"
+    helm.sh/hook-delete-policy: before-hook-creation,hook-succeeded
+data:
+  seed-script: |
+    #!/bin/bash
+    mongosh $MONGO_URI --eval "db.apikeynews.insertOne( $(cat /seed/api-token.json) )";
+    mongosh $MONGO_URI --eval 'db.accounts.updateOne({"name": "admin-cf"},
+      { $set: { "systemType": "GITOPS_AND_CLASSIC" } }
+    )'
+    mongoimport --uri $MONGO_URI --collection accounts --type json --legacy --file /seed/e2e-account.json
+    mongosh $MONGO_URI --eval 'db.users.updateOne({"userName": "AdminCF"}, { $push: {"account": "627e3aa3e62cd24ad1b66d21" }})'
+  api-token.json: |
+    {
+      "_id" : ObjectId("5ef052dffdfde5afe5548ec6"),
+      "generatedBy" : {
+          "type" : "user",
+          "ref" : "59009221c102763beda7cf04"
+      },
+      "subject" : {
+          "type" : "user",
+          "ref" : "59009221c102763beda7cf04"
+      },
+      "account" : "59009117c102763beda7ce71",
+      "hmac" : "46e9cf15e862ad910a6cc00c84a1a4bc58ca488d7ec22f0a9eebb41af20cd60b",
+      "salt" : "5ef052dffdfde5afe5548ec6",
+      "name" : "test",
+      "scopes" : [
+          "agent",
+          "agents",
+          "analytics",
+          "api",
+          "api-keys",
+          "audit",
+          "board",
+          "build",
+          "chart",
+          "cluster",
+          "clusters",
+          "environments-v2",
+          "execution-context",
+          "gen-ai",
+          "general",
+          "github-action",
+          "gitops",
+          "helm",
+          "kubernetes",
+          "oidc",
+          "pipeline",
+          "project",
+          "repos",
+          "runner-installation",
+          "step-type",
+          "step-types",
+          "verification",
+          "view",
+          "workflow"
+      ],
+      "tokenPrefix" : "d98364",
+      "scopeSnapshot" : ObjectId("5eeb5faf5b259356974b2020"),
+      "created" : ISODate("2020-06-22T06:42:39.844Z"),
+      "__v" : 0
+    }
+  e2e-account.json: |
+    {
+        "_id" : ObjectId("627e3aa3e62cd24ad1b66d21"),
+        "integrations" : {
+            "stash" : {
+                "active" : false
+            },
+            "github" : {
+                "active" : false
+            },
+            "gitlab" : {
+                "active" : false
+            },
+            "aks" : {
+                "exist" : false
+            },
+            "aks_sp" : {
+                "exist" : false
+            },
+            "aks_mi" : {
+                "exist" : false
+            },
+            "gcloud" : {
+                "exist" : false
+            },
+            "digitalOcean" : {
+                "exist" : false
+            },
+            "registries" : [
+
+            ]
+        },
+        "build" : {
+            "nodes" : NumberInt(0),
+            "parallel" : NumberInt(1),
+            "strategy" : "account"
+        },
+        "admins" : [
+            ObjectId("59009221c102763beda7cf04")
+        ],
+        "environment" : NumberInt(5),
+        "dedicatedInfrastructure" : false,
+        "canUsePrivateRepos" : true,
+        "localUserPasswordIDPEnabled" : true,
+        "name" : "codefresh-v2-e2e",
+        "runtimeEnvironment" : "codefresh",
+        "systemType": "GITOPS",
+        "features" : {
+            "launchDarklyManagement" : false,
+            "codefreshV2" : true,
+            "codefreshV2NonAdmins" : true,
+            "showClassicCodefreshButton" : true,
+            "analyticsClassicBuildsReports" : true,
+            "argoCdFlag" : true,
+            "commonDashboardProjectOne" : true,
+            "csdpDoraMetrics" : true,
+            "csdpIntegrations" : true,
+            "csdpJiraOauthIntegration" : true,
+            "environmentsV2Flag" : true,
+            "helm3NewUIFeature" : true,
+            "helmOptimizedQueue" : true,
+            "pipelineScopes" : true,
+            "pipelinesDashboardProjectOne" : true,
+            "showGitOpsHomeDashboardInTheProjectOneMenu" : true,
+            "csdpManagedArgo" : true
+        },
+        "notifications" : [
+            {
+                "events" : [
+                    "build-success"
+                ],
+                "type" : "pr"
+            }
+        ],
+        "updatedAt" : ISODate("2022-05-14T07:01:15.890+0000"),
+        "createdAt" : ISODate("2022-05-13T11:01:55.516+0000"),
+        "badgeToken" : "eyJhbGciOiJIUzI1NiJ9.NjI3ZTNhYTNlNjJjZDI0YWQxYjY2ZDIx.7KrRoRyb5UTv68YDhZGU4Xalwo645yj5EnQjc3l5Jog",
+        "__v" : NumberInt(0)
+    }
+
+{{- end }}
