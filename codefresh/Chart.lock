@@ -7,7 +7,7 @@ dependencies:
   version: 0.3.1
 - name: consul
   repository: https://charts.bitnami.com/bitnami
-  version: 10.13.9
+  version: 10.14.3
 - name: mongodb
   repository: https://charts.bitnami.com/bitnami
   version: 13.12.1
@@ -25,7 +25,7 @@ dependencies:
   version: 12.2.5
 - name: nats
   repository: https://charts.bitnami.com/bitnami
-  version: 7.9.9
+  version: 7.10.1
 - name: builder
   repository: oci://quay.io/codefresh/charts
   version: 1.3.0
@@ -37,7 +37,7 @@ dependencies:
   version: 4.7.1
 - name: cluster-providers
   repository: oci://quay.io/codefresh/charts
-  version: 1.16.8
+  version: 1.17.0
 - name: kube-integration
   repository: oci://quay.io/codefresh/charts
   version: 1.31.2
@@ -46,10 +46,10 @@ dependencies:
   version: 1.16.6
 - name: cfsign
   repository: oci://quay.io/codefresh/charts
-  version: 1.6.5
+  version: 1.7.0
 - name: tasker-kubernetes
   repository: oci://quay.io/codefresh/charts
-  version: 1.24.8
+  version: 1.25.0
 - name: context-manager
   repository: oci://quay.io/codefresh/charts
   version: 2.26.8
@@ -152,5 +152,5 @@ dependencies:
 - name: cf-oidc-provider
   repository: oci://quay.io/codefresh/charts
   version: 0.0.12
-digest: sha256:bcf751faede6fac13c90397a18ada07721486d5425e596cec1a2491f72134451
-generated: "2023-11-03T15:29:44.611874442+03:00"
+digest: sha256:5eca37112096d4e094da3a4332ba24781838ce55f6756021d3d8a71f68ebc950
+generated: "2023-11-09T13:11:47.95469796+03:00"

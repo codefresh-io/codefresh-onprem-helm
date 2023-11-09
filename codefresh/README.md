@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.1.8](https://img.shields.io/badge/Version-2.1.8-informational?style=flat-square) ![AppVersion: 2.1.0](https://img.shields.io/badge/AppVersion-2.1.0-informational?style=flat-square)
+![Version: 2.1.9](https://img.shields.io/badge/Version-2.1.9-informational?style=flat-square) ![AppVersion: 2.1.0](https://img.shields.io/badge/AppVersion-2.1.0-informational?style=flat-square)
 
 Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
@@ -53,7 +53,7 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
 
 - Kubernetes **>= 1.22.0**
 - Helm **3.8.0+**
-- PV provisioner support in the underlying infrastructure
+- PV provisioner support in the underlying infrastructure (with [resizing](https://kubernetes.io/blog/2018/07/12/resizing-persistent-volumes-using-kubernetes/) available)
 - Minimal 4vCPU and 8Gi Memory available in the cluster (for production usage the recommended minimal cluster capacity is at least 12vCPUs and 36Gi Memory)
 - GCR Service Account JSON `sa.json` (provided by Codefresh, contact support@codefresh.io)
 - Firebase [Realtime Database URL](https://firebase.google.com/docs/database/web/start#create_a_database) with [legacy token](https://firebase.google.com/docs/database/rest/auth#legacy_tokens). See [Firebase Configuration](#firebase-configuration)

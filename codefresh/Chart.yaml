@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.1.8
+version: 2.1.9
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -15,12 +15,14 @@ appVersion: 2.1.0
 annotations:
   artifacthub.io/alternativeName: "codefresh-onprem"
   artifacthub.io/changes: |
-    - kind: added
-      description: Added postgresql-ha chart
-    - kind: added
-      description: Update documentation about HA
+    - kind: security
+      description: Update OSS charts (consul/nats)
+    - kind: security
+      description: Update cf-tls-sign
+    - kind: fixed
+      description: Fix cf-oidc-provider container registry and repository
     - kind: changed
-      description: Change .dockerDaemonScheduler.pvcs to list in default system/default/hybrid/k8s runtime spec
+      description: Update cluster-providers/tasker-kubernetes
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -30,7 +32,7 @@ dependencies:
     version: "0.3.1"
     condition: internal-gateway.enabled
   - name: consul
-    version: 10.13.9
+    version: 10.14.3
     repository: https://charts.bitnami.com/bitnami
     condition: consul.enabled
   - name: mongodb
@@ -54,7 +56,7 @@ dependencies:
     repository: https://charts.bitnami.com/bitnami
     condition: rabbitmq.enabled
   - name: nats
-    version: 7.9.9
+    version: 7.10.1
     repository: https://charts.bitnami.com/bitnami
     condition: nats.enabled
   - name: builder

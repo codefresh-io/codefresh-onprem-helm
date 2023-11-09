@@ -6,3 +6,6 @@ ingress-nginx:
   controller:
     image:
       registry: myregistry.io
+
+cf-oidc-provider:
+  enabled: true

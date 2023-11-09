@@ -1645,6 +1645,9 @@ argo-platform:
 cf-oidc-provider:
   enabled: false
   container:
+    image:
+      registry: gcr.io/codefresh-enterprise
+      repository: codefresh/cf-oidc-provider
     env:
       NODE_ENV: production
       CF_PLATFORM_API_BASE_URL: '{{ printf "https://%s/api" .Values.global.appUrl }}'
