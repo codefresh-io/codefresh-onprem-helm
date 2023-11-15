@@ -68,3 +68,11 @@ cfsign:
   initContainers:
     volume-permissions:
       enabled: false
+
+cfapi:
+  hpa:
+    enabled: true
+  resources:
+    requests:
+      cpu: 300m
+      memory: 1024Mi

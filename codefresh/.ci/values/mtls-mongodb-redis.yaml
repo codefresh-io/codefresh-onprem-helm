@@ -1,6 +1,6 @@
 seed:
   mongoSeedJob:
-    mongodbRootURI: mongodb://root:XT9nmM8dZD@cf-mongodb:27017/?authSource=admin
+    mongodbRootURI: mongodb://root:XT9nmM8dZDZ@cf-mongodb:27017/?authSource=admin
 
 global:
   appUrl: ""  # placeholder for ${CF_APP_HOST}
@@ -55,13 +55,17 @@ ingress:
     key: "" # placeholder for ${WEB_TLS_KEY}
 
 mongodb:
+  auth:
+    enabled: true
+    rootUser: root
+    rootPassword: "XT9nmM8dZDZ"
   initdbScripts:
     my_init_script.sh: |
       #!/bin/bash
 
       set -eou xtrace
 
-      export MONGODB_ROOT_URI=mongodb://root:XT9nmM8dZD@127.0.0.1/?authSource=admin
+      export MONGODB_ROOT_URI=mongodb://root:XT9nmM8dZDZ@127.0.0.1/?authSource=admin
       MONGODB_DATABASES=(
         "archive"
         "audit"
