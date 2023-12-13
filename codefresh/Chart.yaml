@@ -16,8 +16,8 @@ annotations:
   artifacthub.io/alternativeName: "codefresh-onprem"
   artifacthub.io/changes: |
     - kind: fixed
-      description:
-      links: Fix header size in argo-platform
+      description: Fix header size in argo-platform
+      links:
         - name: JIRA Issue
           url: https://codefresh-io.atlassian.net/browse/CR-21125
 dependencies:
