@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.1.11
+version: 2.1.12
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -15,8 +15,11 @@ appVersion: 2.1.0
 annotations:
   artifacthub.io/alternativeName: "codefresh-onprem"
   artifacthub.io/changes: |
-    - kind: security
-      description: Update dependencies (nats/context-manager)
+    - kind: fixed
+      description:
+      links: Fix header size in argo-platform
+        - name: JIRA Issue
+          url: https://codefresh-io.atlassian.net/browse/CR-21125
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -66,11 +69,11 @@ dependencies:
     repository: https://kubernetes.github.io/ingress-nginx
     condition: ingress-nginx.enabled
   - name: cluster-providers
-    version: "*"
+    version: "1.17.0"
     repository: oci://quay.io/codefresh/charts
     condition: cluster-providers.enabled
   - name: kube-integration
-    version: "*"
+    version: "1.31.2"
     repository: oci://quay.io/codefresh/charts
     condition: kube-integration.enabled
   - name: charts-manager
@@ -86,11 +89,11 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: tasker-kubernetes.enabled
   - name: context-manager
-    version: "*"
+    version: "2.26.10"
     repository: oci://quay.io/codefresh/charts
     condition: context-manager.enabled
   - name: pipeline-manager
-    version: "*"
+    version: "3.131.15"
     repository: oci://quay.io/codefresh/charts
     condition: pipeline-manager.enabled
   - name: gitops-dashboard-manager
@@ -225,7 +228,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
-    version: "1.2527.0"
+    version: "1.2560.2"
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform
