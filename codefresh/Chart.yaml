@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.2.0
+version: 2.2.1
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -14,10 +14,11 @@ maintainers:
 appVersion: 2.2.0
 annotations:
   artifacthub.io/alternativeName: "codefresh-onprem"
-  artifacthub.io/prerelease: "true"
   artifacthub.io/changes: |
     - kind: changed
-      description: Onprem 2.2.0 release
+      description: Update docs about JWKS for OIDC Provider
+    - kind: changed
+      description: Lock argo-platform version
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -230,7 +231,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
-    version: "*"
+    version: "1.2577.0"
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform

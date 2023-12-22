@@ -155,5 +155,5 @@ dependencies:
 - name: cf-oidc-provider
   repository: oci://quay.io/codefresh/charts
   version: 0.0.12
-digest: sha256:00e272664f19b5a9366b8252e3469d57d02a9d8f6d012395209bbafa7cd0c2f4
-generated: "2023-12-21T15:39:10.200712245+03:00"
+digest: sha256:c41647766a703dc3ef7d25f551f14f9ef22444fb889de45471a300719e01c2d1
+generated: "2023-12-22T18:56:48.912063009+03:00"

@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.2.0](https://img.shields.io/badge/Version-2.2.0-informational?style=flat-square) ![AppVersion: 2.2.0](https://img.shields.io/badge/AppVersion-2.2.0-informational?style=flat-square)
+![Version: 2.2.1](https://img.shields.io/badge/Version-2.2.1-informational?style=flat-square) ![AppVersion: 2.2.0](https://img.shields.io/badge/AppVersion-2.2.0-informational?style=flat-square)
 
 Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
@@ -1209,7 +1209,30 @@ OpenID Connect (OIDC) allows Codefresh Builds to access resources in your cloud 
 
 > **NOTE!** In production usage use [External Secrets Operator](https://external-secrets.io/latest/) or [HashiCorp Vault](https://developer.hashicorp.com/vault/docs/platform/k8s) to create secrets. The following example uses `kubectl` for brevity.
 
-```shell
+For JWKS use **Public and Private Keypair Set** (if generated at [mkjwk.org](https://mkjwk.org/)), for example:
+
+`cf-oidc-provider-jwks.json`:
+```json
+{
+    "keys": [
+        {
+            "p": "...",
+            "kty": "RSA",
+            "q": "...",
+            "d": "...",
+            "e": "AQAB",
+            "use": "sig",
+            "qi": "...",
+            "dp": "...",
+            "alg": "RS256",
+            "dq": "...",
+            "n": "..."
+        }
+    ]
+}
+```
+
+```console
 # Creating secret containing JWKS.
 # The secret KEY is `cf-oidc-provider-jwks.json`. It then referenced in `OIDC_JWKS_PRIVATE_KEYS_PATH` environment variable in `cf-oidc-provider`.
 # The secret NAME is referenced in `.volumes.jwks-file.nameOverride` (volumeMount is configured in the chart already)
