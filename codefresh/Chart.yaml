@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.2.1
+version: 2.2.2
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -16,9 +16,10 @@ annotations:
   artifacthub.io/alternativeName: "codefresh-onprem"
   artifacthub.io/changes: |
     - kind: changed
-      description: Update docs about JWKS for OIDC Provider
-    - kind: changed
-      description: Lock argo-platform version
+      description: Update accountInfoCopyButton feature flag
+      links:
+        - name: JIRA Issue
+          url: https://codefresh-io.atlassian.net/browse/CR-19152
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
