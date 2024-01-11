@@ -1261,6 +1261,12 @@ kubectl create secret generic cf-oidc-provider-client-secret \
 global:
   # -- Set OIDC Provider URL
   oidcProviderService: "oidc.mydomain.com"
+  # -- Default OIDC Provider service client ID in plain text.
+  # Optional! If specified here, no need to specify CLIENT_ID/CLIENT_SECRET env vars in cfapi and cf-oidc-provider below.
+  oidcProviderClientId: null
+  # -- Default OIDC Provider service client secret in plain text.
+  # Optional! If specified here, no need to specify CLIENT_ID/CLIENT_SECRET env vars in cfapi and cf-oidc-provider below.
+  oidcProviderClientSecret: null
 
 cfapi:
   # -- Set additional variables for cfapi

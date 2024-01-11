@@ -183,6 +183,10 @@ global:
   oidcProviderProtocol: "https"
   # -- Default OIDC Provider service token endpoint.
   oidcProviderTokenEndpoint: "/token"
+  # -- Default OIDC Provider service client ID in plain text.
+  oidcProviderClientId: null
+  # -- Default OIDC Provider service client secret in plain text.
+  oidcProviderClientSecret: null
 
 #--------
 # MongoDB
@@ -499,8 +503,13 @@ cfapi: &cf-api
       OIDC_PROVIDER_PORT: '{{ .Values.global.oidcProviderPort }}'
       OIDC_PROVIDER_PROTOCOL: '{{ .Values.global.oidcProviderProtocol }}'
       OIDC_PROVIDER_TOKEN_ENDPOINT: '{{ .Values.global.oidcProviderTokenEndpoint }}'
-      OIDC_PROVIDER_CLIENT_ID: ""
-      OIDC_PROVIDER_CLIENT_SECRET: ""
+  secrets:
+    secret:
+      enabled: true
+      type: Opaque
+      stringData:
+        OIDC_PROVIDER_CLIENT_ID: '{{ .Values.global.oidcProviderClientId }}'
+        OIDC_PROVIDER_CLIENT_SECRET: '{{ .Values.global.oidcProviderClientSecret }}'
 
   # -- Resource requests and limits
   resources:
@@ -1675,9 +1684,6 @@ cf-oidc-provider:
       OIDC_ISSUER: '{{ printf "https://%s" .Values.global.oidcProviderService }}'
       OIDC_AUDIENCE: '{{ printf "https://%s" .Values.global.appUrl }}'
       OIDC_JWKS_PRIVATE_KEYS_PATH: /secrets/jwks/cf-oidc-provider-jwks.json
-      OIDC_CF_PLATFORM_CLIENT_ID: ""
-      OIDC_CF_PLATFORM_CLIENT_SECRET: ""
-
     resources:
       requests:
         cpu: 100m
@@ -1687,6 +1693,14 @@ cf-oidc-provider:
       jwks-file:
         path:
         - mountPath: /secrets/jwks
+
+  secrets:
+    secret:
+      enabled: true
+      type: Opaque
+      stringData:
+        OIDC_CF_PLATFORM_CLIENT_ID: '{{ .Values.global.oidcProviderClientId }}'
+        OIDC_CF_PLATFORM_CLIENT_SECRET: '{{ .Values.global.oidcProviderClientSecret }}'
 
   volumes:
     jwks-file:

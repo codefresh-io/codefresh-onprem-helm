@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.2.2](https://img.shields.io/badge/Version-2.2.2-informational?style=flat-square) ![AppVersion: 2.2.0](https://img.shields.io/badge/AppVersion-2.2.0-informational?style=flat-square)
+![Version: 2.2.3](https://img.shields.io/badge/Version-2.2.3-informational?style=flat-square) ![AppVersion: 2.2.0](https://img.shields.io/badge/AppVersion-2.2.0-informational?style=flat-square)
 
 Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
@@ -1255,6 +1255,12 @@ kubectl create secret generic cf-oidc-provider-client-secret \
 global:
   # -- Set OIDC Provider URL
   oidcProviderService: "oidc.mydomain.com"
+  # -- Default OIDC Provider service client ID in plain text.
+  # Optional! If specified here, no need to specify CLIENT_ID/CLIENT_SECRET env vars in cfapi and cf-oidc-provider below.
+  oidcProviderClientId: null
+  # -- Default OIDC Provider service client secret in plain text.
+  # Optional! If specified here, no need to specify CLIENT_ID/CLIENT_SECRET env vars in cfapi and cf-oidc-provider below.
+  oidcProviderClientSecret: null
 
 cfapi:
   # -- Set additional variables for cfapi
@@ -1954,8 +1960,8 @@ kubectl -n $NAMESPACE delete secret codefresh-certs-server
 | cf-platform-analytics-etlstarter.redis.enabled | bool | `false` | Disable redis subchart |
 | cf-platform-analytics-etlstarter.system-etl-postgres | object | `{"container":{"env":{"BLUE_GREEN_ENABLED":true}},"controller":{"cronjob":{"ttlSecondsAfterFinished":300}},"enabled":true}` | Only postgres ETL should be running in onprem |
 | cf-platform-analytics-platform | object | See below | platform-analytics |
-| cfapi | object | `{"affinity":{},"container":{"env":{"AUDIT_AUTO_CREATE_DB":true,"GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","OIDC_PROVIDER_CLIENT_ID":"","OIDC_PROVIDER_CLIENT_SECRET":"","OIDC_PROVIDER_PORT":"{{ .Values.global.oidcProviderPort }}","OIDC_PROVIDER_PROTOCOL":"{{ .Values.global.oidcProviderProtocol }}","OIDC_PROVIDER_TOKEN_ENDPOINT":"{{ .Values.global.oidcProviderTokenEndpoint }}","OIDC_PROVIDER_URI":"{{ .Values.global.oidcProviderService }}","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh","RUNTIME_REDIS_DB":0},"image":{"registry":"gcr.io/codefresh-enterprise","repository":"codefresh/cf-api"}},"controller":{"replicas":2},"enabled":true,"hpa":{"enabled":false,"maxReplicas":10,"minReplicas":2,"targetCPUUtilizationPercentage":70},"nodeSelector":{},"pdb":{"enabled":false,"minAvailable":"50%"},"podSecurityContext":{},"resources":{"limits":{},"requests":{"cpu":"200m","memory":"256Mi"}},"tolerations":[]}` | cf-api |
-| cfapi.container | object | `{"env":{"AUDIT_AUTO_CREATE_DB":true,"GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","OIDC_PROVIDER_CLIENT_ID":"","OIDC_PROVIDER_CLIENT_SECRET":"","OIDC_PROVIDER_PORT":"{{ .Values.global.oidcProviderPort }}","OIDC_PROVIDER_PROTOCOL":"{{ .Values.global.oidcProviderProtocol }}","OIDC_PROVIDER_TOKEN_ENDPOINT":"{{ .Values.global.oidcProviderTokenEndpoint }}","OIDC_PROVIDER_URI":"{{ .Values.global.oidcProviderService }}","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh","RUNTIME_REDIS_DB":0},"image":{"registry":"gcr.io/codefresh-enterprise","repository":"codefresh/cf-api"}}` | Container configuration |
+| cfapi | object | `{"affinity":{},"container":{"env":{"AUDIT_AUTO_CREATE_DB":true,"GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","OIDC_PROVIDER_PORT":"{{ .Values.global.oidcProviderPort }}","OIDC_PROVIDER_PROTOCOL":"{{ .Values.global.oidcProviderProtocol }}","OIDC_PROVIDER_TOKEN_ENDPOINT":"{{ .Values.global.oidcProviderTokenEndpoint }}","OIDC_PROVIDER_URI":"{{ .Values.global.oidcProviderService }}","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh","RUNTIME_REDIS_DB":0},"image":{"registry":"gcr.io/codefresh-enterprise","repository":"codefresh/cf-api"}},"controller":{"replicas":2},"enabled":true,"hpa":{"enabled":false,"maxReplicas":10,"minReplicas":2,"targetCPUUtilizationPercentage":70},"nodeSelector":{},"pdb":{"enabled":false,"minAvailable":"50%"},"podSecurityContext":{},"resources":{"limits":{},"requests":{"cpu":"200m","memory":"256Mi"}},"secrets":{"secret":{"enabled":true,"stringData":{"OIDC_PROVIDER_CLIENT_ID":"{{ .Values.global.oidcProviderClientId }}","OIDC_PROVIDER_CLIENT_SECRET":"{{ .Values.global.oidcProviderClientSecret }}"},"type":"Opaque"}},"tolerations":[]}` | cf-api |
+| cfapi.container | object | `{"env":{"AUDIT_AUTO_CREATE_DB":true,"GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","OIDC_PROVIDER_PORT":"{{ .Values.global.oidcProviderPort }}","OIDC_PROVIDER_PROTOCOL":"{{ .Values.global.oidcProviderProtocol }}","OIDC_PROVIDER_TOKEN_ENDPOINT":"{{ .Values.global.oidcProviderTokenEndpoint }}","OIDC_PROVIDER_URI":"{{ .Values.global.oidcProviderService }}","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh","RUNTIME_REDIS_DB":0},"image":{"registry":"gcr.io/codefresh-enterprise","repository":"codefresh/cf-api"}}` | Container configuration |
 | cfapi.container.env | object | See below | Env vars |
 | cfapi.container.image | object | `{"registry":"gcr.io/codefresh-enterprise","repository":"codefresh/cf-api"}` | Image |
 | cfapi.container.image.registry | string | `"gcr.io/codefresh-enterprise"` | Registry prefix |
@@ -2031,6 +2037,8 @@ kubectl -n $NAMESPACE delete secret codefresh-certs-server
 | global.natsPort | int | `4222` | Default nats service port. |
 | global.natsService | string | `"nats"` | Default nats service name. |
 | global.newrelicLicenseKey | string | `""` | New Relic Key |
+| global.oidcProviderClientId | string | `nil` | Default OIDC Provider service client ID in plain text. |
+| global.oidcProviderClientSecret | string | `nil` | Default OIDC Provider service client secret in plain text. |
 | global.oidcProviderPort | int | `443` | Default OIDC Provider service port. |
 | global.oidcProviderProtocol | string | `"https"` | Default OIDC Provider service protocol. |
 | global.oidcProviderService | string | `""` | Default OIDC Provider service name (Provider URL). |
