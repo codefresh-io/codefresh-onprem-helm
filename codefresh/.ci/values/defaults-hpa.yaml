@@ -56,7 +56,7 @@ seed:
       key: postgres-password
 
 global:
-  appUrl: ""  # placeholder for ${CF_APP_HOST}
+  appUrl: "" # placeholder
   firebaseUrlSecretKeyRef:
     name: cf-codefresh-ext-firebase
     key: firebase-url
@@ -111,10 +111,12 @@ cfapi:
 
 ingress:
   enabled: true
+  ingressClassName: nginx-internal
   tls:
-    enabled: true
-    cert: ""  # placeholder for ${WEB_TLS_CERT}
-    key: "" # placeholder for ${WEB_TLS_KEY}
+    enabled: false
+
+ingress-nginx:
+  enabled: false
 
 argo-platform:
   enabled: true

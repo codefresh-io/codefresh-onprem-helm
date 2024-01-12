@@ -4,7 +4,7 @@ dependencies:
   version: 0.16.0
 - name: internal-gateway
   repository: oci://quay.io/codefresh/charts
-  version: 0.3.1
+  version: 0.5.0
 - name: consul
   repository: https://charts.bitnami.com/bitnami
   version: 10.14.4
@@ -155,5 +155,5 @@ dependencies:
 - name: cf-oidc-provider
   repository: oci://quay.io/codefresh/charts
   version: 0.0.14
-digest: sha256:246247472759def4626e5dd0e69c67bfc4311c8ad7db9a486b3f2e05dde86bb9
-generated: "2024-01-11T17:43:56.573841738+03:00"
+digest: sha256:673fd170f73e449ae7db3c7a08d3464c0804ee1806307a133c50701a0d876911
+generated: "2024-01-12T19:25:05.159869433+03:00"

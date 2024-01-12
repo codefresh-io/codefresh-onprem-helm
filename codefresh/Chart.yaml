@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.2.3
+version: 2.2.4
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -16,19 +16,16 @@ annotations:
   artifacthub.io/alternativeName: "codefresh-onprem"
   artifacthub.io/changes: |
     - kind: changed
-      description: Update useLogsTimestamps feature flag
-      links:
-        - name: JIRA Issue
-          url: https://codefresh-io.atlassian.net/browse/CR-22181
-    - kind: added
-      description: Add option to specify cliend id and secert in .Values.global for OIDC provider
+      description: Update runtime images (engine, cloner, debugger, dind)
+    - kind: changed
+      description: Update internal-gateway
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
     version: 0.16.0
   - name: internal-gateway
     repository: oci://quay.io/codefresh/charts
-    version: "0.3.1"
+    version: "0.5.0"
     condition: internal-gateway.enabled
   - name: consul
     version: 10.14.4

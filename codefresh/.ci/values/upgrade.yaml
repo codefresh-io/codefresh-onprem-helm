@@ -1,6 +1,0 @@
-ingress:
-  enabled: true
-  tls:
-    enabled: true
-    cert: ""  # placeholder for ${WEB_TLS_CERT}
-    key: "" # placeholder for ${WEB_TLS_KEY}
