@@ -52,7 +52,7 @@ dependencies:
   version: 1.7.0
 - name: tasker-kubernetes
   repository: oci://quay.io/codefresh/charts
-  version: 1.25.1
+  version: 1.25.2
 - name: context-manager
   repository: oci://quay.io/codefresh/charts
   version: 2.26.12
@@ -155,5 +155,5 @@ dependencies:
 - name: cf-oidc-provider
   repository: oci://quay.io/codefresh/charts
   version: 0.0.14
-digest: sha256:673fd170f73e449ae7db3c7a08d3464c0804ee1806307a133c50701a0d876911
-generated: "2024-01-12T19:25:05.159869433+03:00"
+digest: sha256:634fbe8c9ad91f319258e0507f7d3f8bd137c8d88887f3a7c6c0f6223c14ce3e
+generated: "2024-01-23T12:47:18.166474874+03:00"

@@ -1178,7 +1178,7 @@ builder:
     image:
       registry: docker.io
       repository: docker
-      tag: 24.0-dind
+      tag: 25.0-dind
   affinity: {}
   nodeSelector: {}
   podSecurityContext: {}
@@ -1199,7 +1199,7 @@ runner:
     image:
       registry: docker.io
       repository: docker
-      tag: 24.0-dind
+      tag: 25.0-dind
   affinity: {}
   nodeSelector: {}
   podSecurityContext: {}
