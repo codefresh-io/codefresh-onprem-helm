@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.2.5
+version: 2.2.6
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -16,14 +16,26 @@ annotations:
   artifacthub.io/alternativeName: "codefresh-onprem"
   artifacthub.io/changes: |
     - kind: changed
-      description: Update tasker-kubernetes and docker (25.0-dind)
+      description: Update default proxy_buffer_size internal-gateway for all locations
+    - kind: fixed
+      description: Update proxy_buffer_size for /api/auth/authenticate location
+      links:
+        - name: JIRA Issue
+          url: https://codefresh-io.atlassian.net/browse/CR-21125
+    - kind: fixed
+      description: Fix Helm charts page (updated charts-managers)
+      links:
+        - name: JIRA Issue
+          url: https://codefresh-io.atlassian.net/browse/CR-22370
+    - kind: changed
+      description: Update platform-analytics
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
     version: 0.16.0
   - name: internal-gateway
     repository: oci://quay.io/codefresh/charts
-    version: "0.5.0"
+    version: 0.6.0
     condition: internal-gateway.enabled
   - name: consul
     version: 10.14.4

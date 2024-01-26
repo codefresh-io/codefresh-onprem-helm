@@ -614,6 +614,13 @@ internal-gateway:
     image:
       registry: docker.io
       repository: nginxinc/nginx-unprivileged
+  nginx:
+    config:
+      locations:
+        /api/auth/authenticate:
+          locationDirectives:
+              proxy_buffers: "4 180k"
+              proxy_buffer_size: "180k"
   resources:
     requests:
       cpu: 100m

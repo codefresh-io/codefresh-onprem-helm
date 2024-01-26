@@ -4,7 +4,7 @@ dependencies:
   version: 0.16.0
 - name: internal-gateway
   repository: oci://quay.io/codefresh/charts
-  version: 0.5.0
+  version: 0.6.0
 - name: consul
   repository: https://charts.bitnami.com/bitnami
   version: 10.14.4
@@ -46,7 +46,7 @@ dependencies:
   version: 1.31.3
 - name: charts-manager
   repository: oci://quay.io/codefresh/charts
-  version: 1.16.8
+  version: 1.16.9
 - name: cfsign
   repository: oci://quay.io/codefresh/charts
   version: 1.7.0
@@ -139,10 +139,10 @@ dependencies:
   version: 0.8.5
 - name: cf-platform-analytics
   repository: oci://quay.io/codefresh/charts
-  version: 0.49.22
+  version: 0.49.23
 - name: cf-platform-analytics
   repository: oci://quay.io/codefresh/charts
-  version: 0.49.22
+  version: 0.49.23
 - name: argo-platform
   repository: oci://quay.io/codefresh/charts
   version: 1.2577.0
@@ -155,5 +155,5 @@ dependencies:
 - name: cf-oidc-provider
   repository: oci://quay.io/codefresh/charts
   version: 0.0.14
-digest: sha256:634fbe8c9ad91f319258e0507f7d3f8bd137c8d88887f3a7c6c0f6223c14ce3e
-generated: "2024-01-23T12:47:18.166474874+03:00"
+digest: sha256:5c137704754971ecc088903e7c3268b56e2cfc60274a919f8b2246aae7816546
+generated: "2024-01-26T11:26:35.50583572+03:00"
