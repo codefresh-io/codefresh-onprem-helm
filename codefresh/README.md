@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.2.6](https://img.shields.io/badge/Version-2.2.6-informational?style=flat-square) ![AppVersion: 2.2.0](https://img.shields.io/badge/AppVersion-2.2.0-informational?style=flat-square)
+![Version: 2.2.7](https://img.shields.io/badge/Version-2.2.7-informational?style=flat-square) ![AppVersion: 2.2.0](https://img.shields.io/badge/AppVersion-2.2.0-informational?style=flat-square)
 
 Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
@@ -33,6 +33,7 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
   - [Projects pipelines limit](#projects-pipelines-limit)
   - [Enable session cookie](#enable-session-cookie)
   - [X-Frame-Options response header](#x-frame-options-response-header)
+  - [Disable API documentation page](#disable-api-documentation-page)
 - [Configuring OIDC Provider](#configuring-oidc-provider)
 - [Upgrading](#upgrading)
   - [To 2.0.0](#to-2-0-0)
@@ -1194,6 +1195,16 @@ cfapi:
     USE_SHA256_GITHUB_SIGNATURE: "true"
 ```
 
+### Disable API documentation page
+
+To disable API documentation page (i.e. `https://<onprem-url>/api`), set the following environment variable:
+
+```
+cfapi:
+  env:
+    API_DOCS_ENDPOINT_DISABLED: "true"
+```
+
 ## Configuring OIDC Provider
 
 OpenID Connect (OIDC) allows Codefresh Builds to access resources in your cloud provider (such as AWS, Azure, GCP), without needing to store cloud credentials as long-lived pipeline secret variables.
@@ -1981,6 +1992,7 @@ kubectl -n $NAMESPACE delete secret codefresh-certs-server
 | cfsign | object | See below | tls-sign |
 | cfui | object | See below | cf-ui |
 | charts-manager | object | See below | charts-manager |
+| ci.enabled | bool | `false` |  |
 | cluster-providers | object | See below | cluster-providers |
 | codefresh-tunnel-server | object | See below | codefresh-tunnel-server Don't enable! Not supported at the moment. |
 | consul | object | See below | consul Ref: https://github.com/bitnami/charts/blob/main/bitnami/consul/values.yaml |

@@ -33,6 +33,7 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
   - [Projects pipelines limit](#projects-pipelines-limit)
   - [Enable session cookie](#enable-session-cookie)
   - [X-Frame-Options response header](#x-frame-options-response-header)
+  - [Disable API documentation page](#disable-api-documentation-page)
 - [Configuring OIDC Provider](#configuring-oidc-provider)
 - [Upgrading](#upgrading)
   - [To 2.0.0](#to-2-0-0)
@@ -1197,6 +1198,16 @@ For detailed information, see the [Securing your webhooks](https://docs.github.c
 cfapi:
   env:
     USE_SHA256_GITHUB_SIGNATURE: "true"
+```
+
+### Disable API documentation page
+
+To disable API documentation page (i.e. `https://<onprem-url>/api`), set the following environment variable:
+
+```
+cfapi:
+  env:
+    API_DOCS_ENDPOINT_DISABLED: "true"
 ```
 
 ## Configuring OIDC Provider
