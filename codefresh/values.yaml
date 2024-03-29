@@ -463,7 +463,7 @@ runtimeImages:
   DOCKER_TAG_PUSHER_IMAGE: quay.io/codefresh/cf-docker-tag-pusher:1.3.11
   ENGINE_IMAGE: quay.io/codefresh/engine:1.169.1
   FS_OPS_IMAGE: quay.io/codefresh/fs-ops:1.2.7
-  GIT_CLONE_IMAGE: quay.io/codefresh/cf-git-cloner:10.1.25
+  GIT_CLONE_IMAGE: quay.io/codefresh/cf-git-cloner:10.1.27
   KUBE_DEPLOY: quay.io/codefresh/cf-deploy-kubernetes:16.2.6
   PIPELINE_DEBUGGER_IMAGE: quay.io/codefresh/cf-debugger:1.3.5
   TEMPLATE_ENGINE: quay.io/codefresh/pikolo:0.14.0
@@ -1676,6 +1676,12 @@ argo-platform:
       enabled: false
     affinity: {}
     tolerations: []
+
+  broadcaster:
+    enabled: false
+
+  promotion-orchestrator:
+    enabled: false
 
 # -- cf-oidc-provider
 # @default -- See below

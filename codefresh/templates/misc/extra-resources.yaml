@@ -1,0 +1,2 @@
+{{ $templateName := printf "cf-common-%s.extraResources" (index .Subcharts "cf-common").Chart.Version }}
+{{- include $templateName . -}}

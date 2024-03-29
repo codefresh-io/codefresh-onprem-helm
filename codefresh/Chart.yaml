@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.2.8
+version: 2.2.9
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -16,10 +16,10 @@ annotations:
   artifacthub.io/alternativeName: "codefresh-onprem"
   artifacthub.io/changes: |
     - kind: changed
-      description: Security updates for cf-ui
+      description: Security updates
       links:
         - name: JIRA Issue
-          url: https://codefresh-io.atlassian.net/browse/CR-19700
+          url: https://codefresh-io.atlassian.net/browse/CR-22267
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -29,7 +29,7 @@ dependencies:
     version: 0.6.0
     condition: internal-gateway.enabled
   - name: consul
-    version: 10.14.4
+    version: 11.0.0
     repository: https://charts.bitnami.com/bitnami
     condition: consul.enabled
   - name: mongodb
@@ -45,7 +45,7 @@ dependencies:
     repository: oci://registry-1.docker.io/bitnamicharts
     condition: postgresql-ha.enabled
   - name: redis
-    version: 18.4.0
+    version: 18.19.2
     repository: https://charts.bitnami.com/bitnami
     condition: redis.enabled
   - name: redis-ha
@@ -53,11 +53,11 @@ dependencies:
     version: 4.23.0
     condition: redis-ha.enabled
   - name: rabbitmq
-    version: 12.5.6
+    version: 12.15.0
     repository: https://charts.bitnami.com/bitnami
     condition: rabbitmq.enabled
   - name: nats
-    version: 7.10.5
+    version: 7.18.1
     repository: https://charts.bitnami.com/bitnami
     condition: nats.enabled
   - name: builder
@@ -73,23 +73,23 @@ dependencies:
     repository: https://kubernetes.github.io/ingress-nginx
     condition: ingress-nginx.enabled
   - name: cluster-providers
-    version: 1.17.3
+    version: 1.17.4
     repository: oci://quay.io/codefresh/charts
     condition: cluster-providers.enabled
   - name: kube-integration
-    version: 1.31.3
+    version: 1.31.4
     repository: oci://quay.io/codefresh/charts
     condition: kube-integration.enabled
   - name: charts-manager
-    version: "*"
+    version: 1.16.12
     repository: oci://quay.io/codefresh/charts
     condition: charts-manager.enabled
   - name: cfsign
-    version: 1.7.0
+    version: 1.8.0
     repository: oci://quay.io/codefresh/charts
     condition: cfsign.enabled
   - name: tasker-kubernetes
-    version: 1.26.1
+    version: 1.26.3
     repository: oci://quay.io/codefresh/charts
     condition: tasker-kubernetes.enabled
   - name: context-manager
@@ -101,7 +101,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: pipeline-manager.enabled
   - name: gitops-dashboard-manager
-    version: 1.14.10
+    version: 1.14.11
     repository: oci://quay.io/codefresh/charts
     condition: gitops-dashboard-manager.enabled
   - name: cfapi
@@ -194,7 +194,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: cfui.enabled
   - name: k8s-monitor
-    version: "*"
+    version: 4.11.6
     repository: oci://quay.io/codefresh/charts
     condition: k8s-monitor.enabled
   - name: runtime-environment-manager
@@ -202,11 +202,11 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: runtime-environment-manager.enabled
   - name: cf-broadcaster
-    version: "*"
+    version: 1.12.10
     repository: oci://quay.io/codefresh/charts
     condition: cf-broadcaster.enabled
   - name: helm-repo-manager
-    version: 0.13.4
+    version: 0.14.0
     repository: oci://quay.io/codefresh/charts
     condition: helm-repo-manager.enabled
   - name: hermes
@@ -223,20 +223,20 @@ dependencies:
     condition: hermes.enabled
   - name: cf-platform-analytics
     alias: cf-platform-analytics-platform
-    version: 0.49.26
+    version: 0.49.37
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: cf-platform-analytics
     alias: cf-platform-analytics-etlstarter
-    version: 0.49.26
+    version: 0.49.37
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
-    version: "1.2577.0"
+    version: 1.2731.0
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform
-    version: 0.1.10
+    version: 0.1.11
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: codefresh-tunnel-server
