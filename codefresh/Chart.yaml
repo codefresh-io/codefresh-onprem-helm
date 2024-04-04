@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.3.0
+version: 2.3.1
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -15,11 +15,11 @@ appVersion: 2.3.0
 annotations:
   artifacthub.io/alternativeName: "codefresh-onprem"
   artifacthub.io/changes: |
-    - kind: changed
-      description: Onprem 2.3.0 release
+    - kind: fixed
+      description: Updates for Mongo and Redis MTLS
       links:
-        - name: Changes
-          url: https://codefresh.io/docs/docs/whats-new/on-prem-release-notes/#on-premises-version-23
+        - name: JIRA Issue
+          url: https://codefresh-io.atlassian.net/browse/CR-23094
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -232,7 +232,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
-    version: "*"
+    version: "1.2737.2"
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform
