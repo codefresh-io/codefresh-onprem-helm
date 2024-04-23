@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.3.1
+version: 2.3.2
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -14,12 +14,20 @@ maintainers:
 appVersion: 2.3.0
 annotations:
   artifacthub.io/alternativeName: "codefresh-onprem"
+  artifacthub.io/containsSecurityUpdates: "true"
   artifacthub.io/changes: |
+    - kind: security
+      description: Security updates (cf-api/cf-ui/argo-platform/cluster-providers/kube-integration/tasker-kubernetes/context-manager/cf-broadcaster)
     - kind: fixed
-      description: Updates for Mongo and Redis MTLS
+      description: Pipeline-manager restarts
       links:
         - name: JIRA Issue
-          url: https://codefresh-io.atlassian.net/browse/CR-23094
+          url: https://codefresh-io.atlassian.net/browse/CR-23444
+    - kind: fixed
+      description: Kubernetes Integration Page with multiple clusters
+      links:
+        - name: JIRA Issue
+          url: https://codefresh-io.atlassian.net/browse/CR-22998
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -232,7 +240,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
-    version: "1.2737.2"
+    version: "1.2760.1"
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform
