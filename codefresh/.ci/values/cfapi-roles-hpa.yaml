@@ -4,6 +4,8 @@ global:
 
 cfapi: &cf-api
   enabled: false
+  rbac:
+    namespaced: false
 
 cfapi-internal:
   !!merge <<: *cf-api

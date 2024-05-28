@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.3.2
+version: 2.3.3
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -16,18 +16,23 @@ annotations:
   artifacthub.io/alternativeName: "codefresh-onprem"
   artifacthub.io/containsSecurityUpdates: "true"
   artifacthub.io/changes: |
+    - kind: changed
+      description: Update argo-platform for MongoDB 6 support
+      links:
+        - name: JIRA Issue
+          url: https://codefresh-io.atlassian.net/browse/CR-23173
+    - kind: fixed
+      description: Fix (argo-platform) for orphaned queues in RabbitMQ
+      links:
+        - name: JIRA Issue
+          url: https://codefresh-io.atlassian.net/browse/CR-23876
+    - kind: fixed
+      description: Fix (cf-ui) git organizations icons
+      links:
+        - name: JIRA Issue
+          url: https://codefresh-io.atlassian.net/browse/CR-23876
     - kind: security
-      description: Security updates (cf-api/cf-ui/argo-platform/cluster-providers/kube-integration/tasker-kubernetes/context-manager/cf-broadcaster)
-    - kind: fixed
-      description: Pipeline-manager restarts
-      links:
-        - name: JIRA Issue
-          url: https://codefresh-io.atlassian.net/browse/CR-23444
-    - kind: fixed
-      description: Kubernetes Integration Page with multiple clusters
-      links:
-        - name: JIRA Issue
-          url: https://codefresh-io.atlassian.net/browse/CR-22998
+      description: Misc security updates
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -37,7 +42,7 @@ dependencies:
     version: 0.6.0
     condition: internal-gateway.enabled
   - name: consul
-    version: 11.0.0
+    version: 11.1.9
     repository: https://charts.bitnami.com/bitnami
     condition: consul.enabled
   - name: mongodb
@@ -240,7 +245,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
-    version: "1.2760.1"
+    version: "1.2851.1"
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform
