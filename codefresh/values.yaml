@@ -1731,6 +1731,9 @@ argo-platform:
       MONGODB_READMODELS_URI: '{{ include "argo-patform-libs.env-vars.mongodb-readmodels-uri-env-var-value" . }}'
       RABBITMQ_URLS: $(RABBITMQ_PROTOCOL)://$(RABBITMQ_USER):$(RABBITMQ_PASSWORD)@$(RABBITMQ_HOST)
     secrets:
+      cache-host: *cache-host
+      cache-password: *cache-password
+      cache-port: *cache-port
       mongodb-protocol: *mongodb-protocol
       mongodb-options: *mongodb-options
       mongodb-host: *mongodb-host

@@ -19,42 +19,42 @@ tests:
       - matchRegex:
           path: spec.template.spec.containers[0].image
           pattern: ^myregistry.io/codefresh/.*$
-        template: charts/argo-platform/templates/abac/deployment.yaml
+        template: charts/argo-platform/templates/abac/workload.yaml
       # analytics-reporter
       - matchRegex:
           path: spec.template.spec.containers[0].image
           pattern: ^myregistry.io/codefresh/.*$
-        template: charts/argo-platform/templates/analytics-reporter/deployment.yaml
+        template: charts/argo-platform/templates/analytics-reporter/workload.yaml
       # api-events
       - matchRegex:
           path: spec.template.spec.containers[0].image
           pattern: ^myregistry.io/codefresh/.*$
-        template: charts/argo-platform/templates/api-events/deployment.yaml
+        template: charts/argo-platform/templates/api-events/workload.yaml
       # api-graphql
       - matchRegex:
           path: spec.template.spec.containers[0].image
           pattern: ^myregistry.io/codefresh/.*$
-        template: charts/argo-platform/templates/api-graphql/deployment.yaml
+        template: charts/argo-platform/templates/api-graphql/workload.yaml
       # audit
       - matchRegex:
           path: spec.template.spec.containers[0].image
           pattern: ^myregistry.io/codefresh/.*$
-        template: charts/argo-platform/templates/audit/deployment.yaml
+        template: charts/argo-platform/templates/audit/workload.yaml
       # cron-executor
       - matchRegex:
           path: spec.template.spec.containers[0].image
           pattern: ^myregistry.io/codefresh/.*$
-        template: charts/argo-platform/templates/cron-executor/deployment.yaml
+        template: charts/argo-platform/templates/cron-executor/workload.yaml
       # event-handler
       - matchRegex:
           path: spec.template.spec.containers[0].image
           pattern: ^myregistry.io/codefresh/.*$
-        template: charts/argo-platform/templates/event-handler/deployment.yaml
+        template: charts/argo-platform/templates/event-handler/workload.yaml
       # ui
       - matchRegex:
           path: spec.template.spec.containers[0].image
           pattern: ^myregistry.io/codefresh/.*$
-        template: charts/argo-platform/templates/ui/deployment.yaml
+        template: charts/argo-platform/templates/ui/workload.yaml
   - it: "(Argo-Hub) should test image private registry prefix"
     values:
       - ../values/private-registry.yaml
