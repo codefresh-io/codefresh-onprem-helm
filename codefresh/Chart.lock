@@ -127,7 +127,7 @@ dependencies:
   version: 3.35.6
 - name: cf-broadcaster
   repository: oci://quay.io/codefresh/charts
-  version: 1.12.13
+  version: 1.12.14
 - name: helm-repo-manager
   repository: oci://quay.io/codefresh/charts
   version: 0.15.0
@@ -142,10 +142,10 @@ dependencies:
   version: 0.8.5
 - name: cf-platform-analytics
   repository: oci://quay.io/codefresh/charts
-  version: 0.49.46
+  version: 0.49.47
 - name: cf-platform-analytics
   repository: oci://quay.io/codefresh/charts
-  version: 0.49.46
+  version: 0.49.47
 - name: argo-platform
   repository: oci://quay.io/codefresh/charts
   version: 1.2902.0
@@ -155,5 +155,5 @@ dependencies:
 - name: cf-oidc-provider
   repository: oci://quay.io/codefresh/charts
   version: 0.0.15
-digest: sha256:8156c980d95e31297c9ab121bf0456513e2f940779aac319a1a102588a2a943c
-generated: "2024-06-21T11:27:48.323562079+03:00"
+digest: sha256:16d2321b39b38c435286704078a47b7c27a2909860da19b4b2800370017c15cd
+generated: "2024-06-21T18:38:18.741472976+03:00"
