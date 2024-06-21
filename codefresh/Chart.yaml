@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.4.0-rc.1
+version: 2.4.0-rc.2
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -15,16 +15,10 @@ appVersion: 2.4.0
 annotations:
   artifacthub.io/prerelease: "true"
   artifacthub.io/alternativeName: "codefresh-onprem"
-  artifacthub.io/containsSecurityUpdates: "true"
+  # artifacthub.io/containsSecurityUpdates: "true"
   artifacthub.io/changes: |
     - kind: changed
-      description: Onprem 2.4.0-rc.1 pre-release
-    - kind: changed
-      description: Update MongoDB image to 6.0
-    - kind: added
-      description: Added cfapi-auth role
-    - kind: changed
-      description: Update internal-gateway to 0.7.0 for cfapi-auth
+      description: Change default SYSTEM_TYPE for accounts to PROJECT_ONE
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
