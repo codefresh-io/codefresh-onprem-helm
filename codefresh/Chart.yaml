@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.4.0-rc.2
+version: 2.4.0-rc.3
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -17,8 +17,8 @@ annotations:
   artifacthub.io/alternativeName: "codefresh-onprem"
   # artifacthub.io/containsSecurityUpdates: "true"
   artifacthub.io/changes: |
-    - kind: changed
-      description: Change default SYSTEM_TYPE for accounts to PROJECT_ONE
+    - kind: added
+      description: Update docs for 2.4.x upgrade
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts

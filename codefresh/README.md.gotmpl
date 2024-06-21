@@ -42,6 +42,7 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
   - [To 2.1.7](#to-2-1-7)
   - [To 2.2.0](#to-2-2-0)
   - [To 2.3.0](#to-2-3-0)
+  - [To 2.4.0](#to-2-4-0)
 - [Rollback](#rollback)
 - [Troubleshooting](#troubleshooting)
 - [Values](#values)
@@ -725,53 +726,56 @@ cfapi: &cf-api
   hpa:
     enabled: true
 # Enable cf-api roles
+cfapi-auth:
+  <<: *cf-api
+  enabled: true
 cfapi-internal:
-  !!merge <<: *cf-api
+  <<: *cf-api
   enabled: true
 cfapi-ws:
-  !!merge <<: *cf-api
+  <<: *cf-api
   enabled: true
 cfapi-admin:
-  !!merge <<: *cf-api
+  <<: *cf-api
   enabled: true
 cfapi-endpoints:
-  !!merge <<: *cf-api
+  <<: *cf-api
   enabled: true
 cfapi-terminators:
-  !!merge <<: *cf-api
+  <<: *cf-api
   enabled: true
 cfapi-sso-group-synchronizer:
-  !!merge <<: *cf-api
+  <<: *cf-api
   enabled: true
 cfapi-buildmanager:
-  !!merge <<: *cf-api
+  <<: *cf-api
   enabled: true
 cfapi-cacheevictmanager:
-  !!merge <<: *cf-api
+  <<: *cf-api
   enabled: true
 cfapi-eventsmanagersubscriptions:
-  !!merge <<: *cf-api
+  <<: *cf-api
   enabled: true
 cfapi-kubernetesresourcemonitor:
-  !!merge <<: *cf-api
+  <<: *cf-api
   enabled: true
 cfapi-environments:
-  !!merge <<: *cf-api
+  <<: *cf-api
   enabled: true
 cfapi-gitops-resource-receiver:
-  !!merge <<: *cf-api
+  <<: *cf-api
   enabled: true
 cfapi-downloadlogmanager:
-  !!merge <<: *cf-api
+  <<: *cf-api
   enabled: true
 cfapi-teams:
-  !!merge <<: *cf-api
+  <<: *cf-api
   enabled: true
 cfapi-kubernetes-endpoints:
-  !!merge <<: *cf-api
+  <<: *cf-api
   enabled: true
 cfapi-test-reporting:
-  !!merge <<: *cf-api
+  <<: *cf-api
   enabled: true
 ```
 
@@ -1891,6 +1895,35 @@ helm rollback $RELEASE_NAME $RELEASE_NUMBER \
     --namespace $NAMESPACE \
     --debug \
     --wait
+```
+
+### To 2.4.0
+
+### [What's new in 2.4.x](https://codefresh.io/docs/docs/whats-new/on-prem-release-notes/#on-premises-version-24)
+
+#### New cfapi-auth role
+
+New `cfapi-auth` role is introduced in 2.4.x.
+
+If you run onprem with [multi-role cfapi configuration](#configuration-with-multi-role-cf-api), make sure to **enable** `cfapi-auth` role:
+
+```yaml
+cfapi-auth:
+  <<: *cf-api
+  enabled: true
+```
+
+#### Default SYSTEM_TYPE for acccounts
+
+Since 2.4.x, `SYSTEM_TYPE` is changed to `PROJECT_ONE` by default.
+
+If you want to preserve original `CLASSIC` values, update cfapi environment variables:
+
+```yaml
+cfapi:
+  container:
+    env:
+      DEFAULT_SYSTEM_TYPE: CLASSIC
 ```
 
 ## Troubleshooting
