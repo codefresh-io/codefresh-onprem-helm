@@ -86,7 +86,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: kube-integration.enabled
   - name: charts-manager
-    version: "*"
+    version: "~1.17.0"
     repository: oci://quay.io/codefresh/charts
     condition: charts-manager.enabled
   - name: cfsign
@@ -98,7 +98,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: tasker-kubernetes.enabled
   - name: context-manager
-    version: "*"
+    version: "~2.29.0"
     repository: oci://quay.io/codefresh/charts
     condition: context-manager.enabled
   - name: pipeline-manager
@@ -208,7 +208,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: k8s-monitor.enabled
   - name: runtime-environment-manager
-    version: "*"
+    version: "~3.35.0"
     repository: oci://quay.io/codefresh/charts
     condition: runtime-environment-manager.enabled
   - name: cf-broadcaster
@@ -216,7 +216,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: cf-broadcaster.enabled
   - name: helm-repo-manager
-    version: "*"
+    version: "~0.15.0"
     repository: oci://quay.io/codefresh/charts
     condition: helm-repo-manager.enabled
   - name: hermes
