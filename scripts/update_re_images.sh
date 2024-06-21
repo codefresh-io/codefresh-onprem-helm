@@ -56,5 +56,7 @@ for k in ${RUNTIME_IMAGES[@]}; do
    fi
 done
 
+sed -i 's|us-docker.pkg.dev/codefresh-inc/public-gcr-io|quay.io|' $CHARTDIR/values.yaml
+
 msg "The list of updated runtime images:\n"
 echo -e "\e[33m$(cat $CHARTDIR/values.yaml)\e[0m"
