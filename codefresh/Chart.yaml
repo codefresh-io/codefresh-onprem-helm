@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.4.0-rc.6
+version: 2.4.0-rc.7
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -15,10 +15,12 @@ appVersion: 2.4.0
 annotations:
   artifacthub.io/prerelease: "true"
   artifacthub.io/alternativeName: "codefresh-onprem"
-  # artifacthub.io/containsSecurityUpdates: "true"
+  artifacthub.io/containsSecurityUpdates: "true"
   artifacthub.io/changes: |
     - kind: changed
-      description: Enable delightedSurvey feature flag
+      description: Update cf-ui, argo-platform
+    - kind: security
+      description: Misc security updates
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -236,7 +238,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
-    version: "1.2902.0"
+    version: "1.2911.0"
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform
