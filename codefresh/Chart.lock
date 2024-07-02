@@ -43,7 +43,7 @@ dependencies:
   version: 1.17.7
 - name: kube-integration
   repository: oci://quay.io/codefresh/charts
-  version: 1.31.7
+  version: 1.31.8
 - name: charts-manager
   repository: oci://quay.io/codefresh/charts
   version: 1.17.1
@@ -142,10 +142,10 @@ dependencies:
   version: 0.8.6
 - name: cf-platform-analytics
   repository: oci://quay.io/codefresh/charts
-  version: 0.49.47
+  version: 0.49.48
 - name: cf-platform-analytics
   repository: oci://quay.io/codefresh/charts
-  version: 0.49.47
+  version: 0.49.48
 - name: argo-platform
   repository: oci://quay.io/codefresh/charts
   version: 1.2911.0
@@ -155,5 +155,5 @@ dependencies:
 - name: cf-oidc-provider
   repository: oci://quay.io/codefresh/charts
   version: 0.0.15
-digest: sha256:afd6bb6e7aeac4de925b73c8f5ed30dd8eeefd80b77a973945c77394978fa305
-generated: "2024-06-29T20:13:11.761713031+03:00"
+digest: sha256:93d3780111076127ba2d1818ea7ad3cbe120eeaaeebc2a4a82fb49b11e765409
+generated: "2024-07-02T10:02:41.675438222+03:00"
