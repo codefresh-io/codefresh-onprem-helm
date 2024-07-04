@@ -46,7 +46,7 @@ dependencies:
   version: 1.31.8
 - name: charts-manager
   repository: oci://quay.io/codefresh/charts
-  version: 1.17.1
+  version: 1.17.2
 - name: cfsign
   repository: oci://quay.io/codefresh/charts
   version: 1.8.2
@@ -58,7 +58,7 @@ dependencies:
   version: 2.29.4
 - name: pipeline-manager
   repository: oci://quay.io/codefresh/charts
-  version: 3.134.7
+  version: 3.134.9
 - name: gitops-dashboard-manager
   repository: oci://quay.io/codefresh/charts
   version: 1.14.13
@@ -155,5 +155,5 @@ dependencies:
 - name: cf-oidc-provider
   repository: oci://quay.io/codefresh/charts
   version: 0.0.15
-digest: sha256:74af70e180bde255b3df58ed1b54f1e6db2ecf7e29b675ab222cccd5d181dcf1
-generated: "2024-07-04T14:53:30.648792884+03:00"
+digest: sha256:60516f1b04ca5d996b09835b0fd4966fee2511a6f97a4c5e9bedf9663bb56827
+generated: "2024-07-05T00:02:54.595990362+03:00"
