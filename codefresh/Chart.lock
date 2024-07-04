@@ -4,10 +4,10 @@ dependencies:
   version: 0.18.1
 - name: internal-gateway
   repository: oci://quay.io/codefresh/charts
-  version: 0.7.0
+  version: 0.9.0
 - name: consul
   repository: https://charts.bitnami.com/bitnami
-  version: 11.1.9
+  version: 11.3.5
 - name: mongodb
   repository: https://charts.bitnami.com/bitnami
   version: 14.4.1
@@ -49,13 +49,13 @@ dependencies:
   version: 1.17.1
 - name: cfsign
   repository: oci://quay.io/codefresh/charts
-  version: 1.8.1
+  version: 1.8.2
 - name: tasker-kubernetes
   repository: oci://quay.io/codefresh/charts
   version: 1.26.9
 - name: context-manager
   repository: oci://quay.io/codefresh/charts
-  version: 2.29.3
+  version: 2.29.4
 - name: pipeline-manager
   repository: oci://quay.io/codefresh/charts
   version: 3.134.7
@@ -124,7 +124,7 @@ dependencies:
   version: 4.11.6
 - name: runtime-environment-manager
   repository: oci://quay.io/codefresh/charts
-  version: 3.35.6
+  version: 3.35.7
 - name: cf-broadcaster
   repository: oci://quay.io/codefresh/charts
   version: 1.12.14
@@ -155,5 +155,5 @@ dependencies:
 - name: cf-oidc-provider
   repository: oci://quay.io/codefresh/charts
   version: 0.0.15
-digest: sha256:93d3780111076127ba2d1818ea7ad3cbe120eeaaeebc2a4a82fb49b11e765409
-generated: "2024-07-02T10:02:41.675438222+03:00"
+digest: sha256:74af70e180bde255b3df58ed1b54f1e6db2ecf7e29b675ab222cccd5d181dcf1
+generated: "2024-07-04T14:53:30.648792884+03:00"
