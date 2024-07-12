@@ -1,3 +1,7 @@
+global:
+  cfapiService: cfapi-internal
+  cfapiEndpointsService: cfapi-endpoints
+
 cfapi: &cf-api
   enabled: false
   rbac:
