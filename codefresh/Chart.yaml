@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.4.3
+version: 2.4.4
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -18,7 +18,10 @@ annotations:
   artifacthub.io/containsSecurityUpdates: "true"
   artifacthub.io/changes: |
     - kind: fixed
-      description: "Fix LaunchDarkly I/O error for air-gapped installations"
+      description: "(gitops-platform) Fix ApplicationSet sync"
+      links:
+        - name: JIRA Issue
+          url: https://codefresh-io.atlassian.net/browse/CR-23763
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -236,7 +239,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
-    version: "1.2911.0"
+    version: "1.2944.1"
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform
