@@ -28,3 +28,4 @@ index.yaml
 dry-run/**
 **/values-dev.yaml
 **/dry-run.yaml
+.debug/**

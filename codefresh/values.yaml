@@ -542,70 +542,70 @@ cfapi: &cf-api
 # cfapi roles
 # @ignored internal
 cfapi-auth:
-  !!merge <<: *cf-api
+  <<: *cf-api
   enabled: false
 cfapi-internal:
-  !!merge <<: *cf-api
+  <<: *cf-api
   enabled: false
 # @ignored ws
 cfapi-ws:
-  !!merge <<: *cf-api
+  <<: *cf-api
   enabled: false
 # @ignored admin
 cfapi-admin:
-  !!merge <<: *cf-api
+  <<: *cf-api
   enabled: false
 # @ignored endpoints
 cfapi-endpoints:
-  !!merge <<: *cf-api
+  <<: *cf-api
   enabled: false
 # @ignored terminators
 cfapi-terminators:
-  !!merge <<: *cf-api
+  <<: *cf-api
   enabled: false
 # @ignored sso-group-synchronizer
 cfapi-sso-group-synchronizer:
-  !!merge <<: *cf-api
+  <<: *cf-api
   enabled: false
 # @ignored buildmanager
 cfapi-buildmanager:
-  !!merge <<: *cf-api
+  <<: *cf-api
   enabled: false
 # @ignored cacheevictmanager
 cfapi-cacheevictmanager:
-  !!merge <<: *cf-api
+  <<: *cf-api
   enabled: false
 # @ignored eventsmanagersubscriptions
 cfapi-eventsmanagersubscriptions:
-  !!merge <<: *cf-api
+  <<: *cf-api
   enabled: false
 # @ignored kubernetesresourcemonitor
 cfapi-kubernetesresourcemonitor:
-  !!merge <<: *cf-api
+  <<: *cf-api
   enabled: false
 # @ignored environments
 cfapi-environments:
-  !!merge <<: *cf-api
+  <<: *cf-api
   enabled: false
 # @ignored gitops-resource-receiver
 cfapi-gitops-resource-receiver:
-  !!merge <<: *cf-api
+  <<: *cf-api
   enabled: false
 # @ignored downloadlogmanager
 cfapi-downloadlogmanager:
-  !!merge <<: *cf-api
+  <<: *cf-api
   enabled: false
 # @ignored teams
 cfapi-teams:
-  !!merge <<: *cf-api
+  <<: *cf-api
   enabled: false
 # @ignored kubernetes-endpoints
 cfapi-kubernetes-endpoints:
-  !!merge <<: *cf-api
+  <<: *cf-api
   enabled: false
 # @ignored test-reporting
 cfapi-test-reporting:
-  !!merge <<: *cf-api
+  <<: *cf-api
   enabled: false
 
 # -- internal-gateway
