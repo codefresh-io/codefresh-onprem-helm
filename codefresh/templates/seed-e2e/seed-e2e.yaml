@@ -90,7 +90,7 @@ data:
     #!/bin/bash
     mongosh $MONGO_URI --eval "db.apikeynews.insertOne( $(cat /seed/api-token.json) )";
     mongosh $MONGO_URI --eval 'db.accounts.updateOne({"name": "admin-cf"},
-      { $set: { "systemType": "GITOPS_AND_CLASSIC", "limits.collaborators.limit" : 1000 } }
+      { $set: { "systemType": "PROJECT_ONE", "limits.collaborators.limit" : 1000 } }
     )'
     mongoimport --uri $MONGO_URI --collection accounts --type json --legacy --file /seed/e2e-account.json
     mongosh $MONGO_URI --eval 'db.users.updateOne({"userName": "AdminCF"}, { $push: {"account": "627e3aa3e62cd24ad1b66d21" }})'
