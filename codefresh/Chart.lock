@@ -7,7 +7,7 @@ dependencies:
   version: 0.9.0
 - name: consul
   repository: https://charts.bitnami.com/bitnami
-  version: 11.3.5
+  version: 11.3.13
 - name: mongodb
   repository: https://charts.bitnami.com/bitnami
   version: 14.4.1
@@ -19,16 +19,16 @@ dependencies:
   version: 12.0.4
 - name: redis
   repository: https://charts.bitnami.com/bitnami
-  version: 18.19.2
+  version: 20.0.3
 - name: redis-ha
   repository: https://dandydeveloper.github.io/charts
   version: 4.26.1
 - name: rabbitmq
   repository: https://charts.bitnami.com/bitnami
-  version: 12.15.0
+  version: 14.6.9
 - name: nats
   repository: https://charts.bitnami.com/bitnami
-  version: 7.18.1
+  version: 8.3.2
 - name: builder
   repository: oci://quay.io/codefresh/charts
   version: 1.3.0
@@ -46,7 +46,7 @@ dependencies:
   version: 1.31.8
 - name: charts-manager
   repository: oci://quay.io/codefresh/charts
-  version: 1.18.1
+  version: 1.17.2
 - name: cfsign
   repository: oci://quay.io/codefresh/charts
   version: 1.8.2
@@ -64,58 +64,58 @@ dependencies:
   version: 1.14.14
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.25
+  version: 21.260.26
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.25
+  version: 21.260.26
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.25
+  version: 21.260.26
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.25
+  version: 21.260.26
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.25
+  version: 21.260.26
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.25
+  version: 21.260.26
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.25
+  version: 21.260.26
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.25
+  version: 21.260.26
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.25
+  version: 21.260.26
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.25
+  version: 21.260.26
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.25
+  version: 21.260.26
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.25
+  version: 21.260.26
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.25
+  version: 21.260.26
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.25
+  version: 21.260.26
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.25
+  version: 21.260.26
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.25
+  version: 21.260.26
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.25
+  version: 21.260.26
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.25
+  version: 21.260.26
 - name: cfui
   repository: oci://quay.io/codefresh/charts
   version: 14.95.62
@@ -148,12 +148,12 @@ dependencies:
   version: 0.49.57
 - name: argo-platform
   repository: oci://quay.io/codefresh/charts
-  version: 1.3014.0
+  version: 1.2944.1
 - name: argo-hub-platform
   repository: oci://quay.io/codefresh/charts
   version: 0.1.13
 - name: cf-oidc-provider
   repository: oci://quay.io/codefresh/charts
   version: 0.0.15
-digest: sha256:60a898eb3e565b4a2620b806d837d5fe423ef4d352be1c02fa963daf504b7183
-generated: "2024-08-28T17:45:21.962105521+03:00"
+digest: sha256:363963ebc67be1dce86edd99b39c64cae221fb9dbe08f423c9a9f49a722db8fe
+generated: "2024-08-29T10:16:41.646394644+03:00"

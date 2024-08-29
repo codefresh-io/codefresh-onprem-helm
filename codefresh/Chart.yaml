@@ -31,7 +31,7 @@ dependencies:
     version: 0.9.0
     condition: internal-gateway.enabled
   - name: consul
-    version: 11.3.5
+    version: 11.3.13
     repository: https://charts.bitnami.com/bitnami
     condition: consul.enabled
   - name: mongodb
@@ -47,7 +47,7 @@ dependencies:
     repository: oci://registry-1.docker.io/bitnamicharts
     condition: postgresql-ha.enabled
   - name: redis
-    version: 18.19.2
+    version: 20.0.3
     repository: https://charts.bitnami.com/bitnami
     condition: redis.enabled
   - name: redis-ha
@@ -55,11 +55,11 @@ dependencies:
     version: 4.26.1
     condition: redis-ha.enabled
   - name: rabbitmq
-    version: 12.15.0
+    version: 14.6.9
     repository: https://charts.bitnami.com/bitnami
     condition: rabbitmq.enabled
   - name: nats
-    version: 7.18.1
+    version: 8.3.2
     repository: https://charts.bitnami.com/bitnami
     condition: nats.enabled
   - name: builder
@@ -95,11 +95,11 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: tasker-kubernetes.enabled
   - name: context-manager
-    version: "~2.29.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: context-manager.enabled
   - name: pipeline-manager
-    version: "~3.134.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: pipeline-manager.enabled
   - name: gitops-dashboard-manager
@@ -108,96 +108,96 @@ dependencies:
     condition: gitops-dashboard-manager.enabled
   - name: cfapi
     alias: cfapi
-    version: "~21.253.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: cfapi.enabled
   - name: cfapi
     alias: cfapi-auth
-    version: "~21.253.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-auth.enabled
   - name: cfapi
     alias: cfapi-internal
-    version: "~21.253.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-internal.enabled
   - name: cfapi
     alias: cfapi-ws
-    version: "~21.253.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-ws.enabled
   - name: cfapi
     alias: cfapi-admin
-    version: "~21.253.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-admin.enabled
   - name: cfapi
     alias: cfapi-endpoints
-    version: "~21.253.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-endpoints.enabled
   - name: cfapi
     alias: cfapi-terminators
-    version: "~21.253.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-terminators.enabled
   - name: cfapi
     alias: cfapi-sso-group-synchronizer
-    version: "~21.253.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-sso-group-synchronizer.enabled
   - name: cfapi
     alias: cfapi-buildmanager
-    version: "~21.253.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-buildmanager.enabled
   - name: cfapi
     alias: cfapi-cacheevictmanager
-    version: "~21.253.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-cacheevictmanager.enabled
   - name: cfapi
     alias: cfapi-eventsmanagersubscriptions
-    version: "~21.253.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-eventsmanagersubscriptions.enabled
   - name: cfapi
     alias: cfapi-kubernetesresourcemonitor
-    version: "~21.253.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-kubernetesresourcemonitor.enabled
   - name: cfapi
     alias: cfapi-environments
-    version: "~21.253.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-environments.enabled
   - name: cfapi
     alias: cfapi-gitops-resource-receiver
-    version: "~21.253.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-gitops-resource-receiver.enabled
   - name: cfapi
     alias: cfapi-downloadlogmanager
-    version: "~21.253.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-downloadlogmanager.enabled
   - name: cfapi
     alias: cfapi-teams
-    version: "~21.253.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-teams.enabled
   - name: cfapi
     alias: cfapi-kubernetes-endpoints
-    version: "~21.253.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-kubernetes-endpoints.enabled
   - name: cfapi
     alias: cfapi-test-reporting
-    version: "~21.253.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-test-reporting.enabled
   - name: cfui
-    version: "~14.94.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: cfui.enabled
   - name: k8s-monitor
@@ -205,7 +205,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: k8s-monitor.enabled
   - name: runtime-environment-manager
-    version: "~3.35.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: runtime-environment-manager.enabled
   - name: cf-broadcaster
@@ -213,7 +213,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: cf-broadcaster.enabled
   - name: helm-repo-manager
-    version: "~0.15.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: helm-repo-manager.enabled
   - name: hermes
