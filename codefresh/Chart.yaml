@@ -26,6 +26,8 @@ annotations:
       description: "Add checksum/secret annotation for argo-platform pods"
     - kind: fixed
       description: "Make cf-codefresh-set-mongodb-compat-version job optional via .Values.mongodb.migration.enabled value"
+    - kind: changed
+      description: "Update runtime images"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
