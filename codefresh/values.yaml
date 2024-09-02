@@ -1047,6 +1047,7 @@ mongodb:
       cpu: 200m
       memory: 256Mi
   migration:
+    enabled: false
     featureCompatibilityVersion: "5.0"
 
 # -- nats
@@ -1411,6 +1412,9 @@ argo-platform:
     affinity: {}
     # -- Set pod's tolerations
     tolerations: []
+    # -- Set pod's annotations
+    podAnnotations:
+      checksum/secret: '{{ include (print $.Template.BasePath "/api-graphql/secret.yaml") . | sha256sum }}'
 
   # -- abac
   # @default -- See below
@@ -1445,6 +1449,8 @@ argo-platform:
       enabled: false
     affinity: {}
     tolerations: []
+    podAnnotations:
+      checksum/secret: '{{ include (print $.Template.BasePath "/abac/secret.yaml") . | sha256sum }}'
 
   # -- analytics-reporter
   # @default -- See below
@@ -1492,6 +1498,8 @@ argo-platform:
     affinity: {}
     volumes: []
     volumeMounts: []
+    podAnnotations:
+      checksum/secret: '{{ include (print $.Template.BasePath "/analytics-reporter/secret.yaml") . | sha256sum }}'
 
   # -- api-events
   # @default -- See below
@@ -1522,6 +1530,8 @@ argo-platform:
       enabled: false
     affinity: {}
     tolerations: []
+    podAnnotations:
+      checksum/secret: '{{ include (print $.Template.BasePath "/api-events/secret.yaml") . | sha256sum }}'
 
   # -- argocd-hooks
   # @default -- See below
@@ -1569,6 +1579,8 @@ argo-platform:
       enabled: false
     affinity: {}
     tolerations: []
+    podAnnotations:
+      checksum/secret: '{{ include (print $.Template.BasePath "/audit/secret.yaml") . | sha256sum }}'
 
   # -- cron-executor
   # @default -- See below
@@ -1610,6 +1622,8 @@ argo-platform:
       enabled: false
     affinity: {}
     tolerations: []
+    podAnnotations:
+      checksum/secret: '{{ include (print $.Template.BasePath "/cron-executor/secret.yaml") . | sha256sum }}'
 
   # -- event-handler
   # @default -- See below
@@ -1649,6 +1663,8 @@ argo-platform:
       enabled: false
     affinity: {}
     tolerations: []
+    podAnnotations:
+      checksum/secret: '{{ include (print $.Template.BasePath "/event-handler/secret.yaml") . | sha256sum }}'
 
   # -- runtime-manager
   # @default -- See below
@@ -1721,6 +1737,8 @@ argo-platform:
       enabled: false
     affinity: {}
     tolerations: []
+    podAnnotations:
+      checksum/secret: '{{ include (print $.Template.BasePath "/broadcaster/secret.yaml") . | sha256sum }}'
 
   # -- promotion-orchestrator
   # @default -- See below
@@ -1763,6 +1781,8 @@ argo-platform:
       enabled: false
     affinity: {}
     tolerations: []
+    podAnnotations:
+      checksum/secret: '{{ include (print $.Template.BasePath "/promotion-orchestrator/secret.yaml") . | sha256sum }}'
 
 # -- cf-oidc-provider
 # @default -- See below

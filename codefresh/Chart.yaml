@@ -22,6 +22,8 @@ annotations:
       description: "Initial onprem 2.5.0-rc.1 release"
     - kind: fixed
       description: "Fix global.mongodbPassword updates via values.yaml"
+    - kind: added
+      description: "Add checksum/secret annotation for argo-platform pods"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts

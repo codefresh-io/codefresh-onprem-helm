@@ -2000,6 +2000,7 @@ kubectl -n $NAMESPACE delete secret codefresh-certs-server
 | argo-platform.api-graphql.kind | string | `"Deployment"` | Controller kind. Currently, only `Deployment` is supported |
 | argo-platform.api-graphql.pdb | object | `{"enabled":false}` | PDB |
 | argo-platform.api-graphql.pdb.enabled | bool | `false` | Enable pod disruption budget |
+| argo-platform.api-graphql.podAnnotations | object | `{"checksum/secret":"{{ include (print $.Template.BasePath \"/api-graphql/secret.yaml\") . | sha256sum }}"}` | Set pod's annotations |
 | argo-platform.api-graphql.resources | object | See below | Resource limits and requests |
 | argo-platform.api-graphql.secrets | object | See below | Secrets |
 | argo-platform.api-graphql.tolerations | list | `[]` | Set pod's tolerations |

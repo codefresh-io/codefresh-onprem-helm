@@ -1,4 +1,5 @@
 {{ $libTemplateName := printf "cf-common-%s" (index .Subcharts "cf-common").Chart.Version }}
+{{- if .Values.mongodb.migration.enabled }}
 ---
 apiVersion: batch/v1
 kind: Job
@@ -68,3 +69,4 @@ spec:
       volumes:
       {{- include (printf "%s.volumes" $libTemplateName) (dict "Values" .Values.hooks.volumes "context" $) | indent 8 }}
       restartPolicy: Never
+{{- end }}
