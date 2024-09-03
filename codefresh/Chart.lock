@@ -117,8 +117,8 @@ dependencies:
   repository: oci://quay.io/codefresh/charts
   version: 21.260.28
 - name: cfui
-  repository: oci://quay.io/codefresh/charts
-  version: 14.95.66
+  repository: oci://quay.io/codefresh/charts/dev
+  version: 14.95.68-onprem-fix-e2e
 - name: k8s-monitor
   repository: oci://quay.io/codefresh/charts
   version: 4.11.7
@@ -155,5 +155,5 @@ dependencies:
 - name: cf-oidc-provider
   repository: oci://quay.io/codefresh/charts
   version: 0.0.15
-digest: sha256:53b24294a49745087c061bf6ee42d790e3392ca7336f265f2a0dfe7d4e60ac76
-generated: "2024-09-03T15:14:00.839937991+03:00"
+digest: sha256:9b38d1eb83827c3f0f48e45b2a0bdf100fbab651fd5aac3daacfff154cc32c6a
+generated: "2024-09-03T16:55:58.05805249+03:00"
