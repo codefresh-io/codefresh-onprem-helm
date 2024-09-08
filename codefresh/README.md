@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.5.0-rc.2](https://img.shields.io/badge/Version-2.5.0--rc.2-informational?style=flat-square) ![AppVersion: 2.5.0](https://img.shields.io/badge/AppVersion-2.5.0-informational?style=flat-square)
+![Version: 2.5.0](https://img.shields.io/badge/Version-2.5.0-informational?style=flat-square) ![AppVersion: 2.5.0](https://img.shields.io/badge/AppVersion-2.5.0-informational?style=flat-square)
 
 Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
@@ -43,6 +43,7 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
   - [To 2.2.0](#to-2-2-0)
   - [To 2.3.0](#to-2-3-0)
   - [To 2.4.0](#to-2-4-0)
+  - [To 2.5.0](#to-2-5-0)
 - [Rollback](#rollback)
 - [Troubleshooting](#troubleshooting)
 - [Values](#values)
@@ -1917,6 +1918,10 @@ cfapi:
     env:
       DEFAULT_SYSTEM_TYPE: CLASSIC
 ```
+
+### To 2.5.0
+
+### [What's new in 2.5.x](https://codefresh.io/docs/docs/whats-new/on-prem-release-notes/#on-premises-version-25)
 
 ## Troubleshooting
 
