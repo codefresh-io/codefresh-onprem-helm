@@ -46,7 +46,7 @@ dependencies:
   version: 1.31.8
 - name: charts-manager
   repository: oci://quay.io/codefresh/charts
-  version: 1.17.2
+  version: 1.18.1
 - name: cfsign
   repository: oci://quay.io/codefresh/charts
   version: 1.8.2
@@ -64,58 +64,58 @@ dependencies:
   version: 1.14.14
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.36
+  version: 21.260.37
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.36
+  version: 21.260.37
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.36
+  version: 21.260.37
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.36
+  version: 21.260.37
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.36
+  version: 21.260.37
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.36
+  version: 21.260.37
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.36
+  version: 21.260.37
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.36
+  version: 21.260.37
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.36
+  version: 21.260.37
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.36
+  version: 21.260.37
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.36
+  version: 21.260.37
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.36
+  version: 21.260.37
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.36
+  version: 21.260.37
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.36
+  version: 21.260.37
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.36
+  version: 21.260.37
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.36
+  version: 21.260.37
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.36
+  version: 21.260.37
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.36
+  version: 21.260.37
 - name: cfui
   repository: oci://quay.io/codefresh/charts
   version: 14.95.75
@@ -155,5 +155,5 @@ dependencies:
 - name: cf-oidc-provider
   repository: oci://quay.io/codefresh/charts
   version: 0.0.15
-digest: sha256:e141ffeb83a154c708a3b1fb87bb178eb2025bf1c7ea828a0d4e255f997ac15c
-generated: "2024-09-08T10:51:48.623371288+03:00"
+digest: sha256:2a17a7e71f24546411100242dc899cdf51477191fc6040ab9aff37ce32801337
+generated: "2024-09-08T13:36:22.908665155+03:00"
