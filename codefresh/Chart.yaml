@@ -13,7 +13,7 @@ maintainers:
     url: https://codefresh-io.github.io/
 appVersion: 2.5.0
 annotations:
-  artifacthub.io/prerelease: "true"
+  # artifacthub.io/prerelease: "true"
   artifacthub.io/alternativeName: "codefresh-onprem"
   # artifacthub.io/containsSecurityUpdates: "true"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
