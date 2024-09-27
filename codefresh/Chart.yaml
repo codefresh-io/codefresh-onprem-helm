@@ -22,8 +22,14 @@ annotations:
       description: "Misc security fixes"
     - kind: fixed
       description: "(cfapi) Fix gerrit webhooks"
+      links:
+        - name: JIRA Issue
+          url: https://codefresh-io.atlassian.net/browse/CR-25268
     - kind: changed
       description: "(cfui) Remove the topbar component"
+      links:
+        - name: JIRA Issue
+          url: https://codefresh-io.atlassian.net/browse/CR-25035
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
