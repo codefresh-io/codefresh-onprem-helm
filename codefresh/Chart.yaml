@@ -18,8 +18,12 @@ annotations:
   # artifacthub.io/containsSecurityUpdates: "true"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
+    - kind: security
+      description: "Misc security fixes"
+    - kind: fixed
+      description: "(cfapi) Fix gerrit webhooks"
     - kind: changed
-      description: "Test patch"
+      description: "(cfui) Remove the topbar component"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts

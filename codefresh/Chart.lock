@@ -40,19 +40,19 @@ dependencies:
   version: 4.10.0
 - name: cluster-providers
   repository: oci://quay.io/codefresh/charts
-  version: 1.17.7
+  version: 1.17.8
 - name: kube-integration
   repository: oci://quay.io/codefresh/charts
-  version: 1.31.8
+  version: 1.31.9
 - name: charts-manager
   repository: oci://quay.io/codefresh/charts
   version: 1.18.1
 - name: cfsign
   repository: oci://quay.io/codefresh/charts
-  version: 1.8.2
+  version: 1.8.4
 - name: tasker-kubernetes
   repository: oci://quay.io/codefresh/charts
-  version: 1.26.9
+  version: 1.26.10
 - name: context-manager
   repository: oci://quay.io/codefresh/charts
   version: 2.30.1
@@ -61,64 +61,64 @@ dependencies:
   version: 3.135.7
 - name: gitops-dashboard-manager
   repository: oci://quay.io/codefresh/charts
-  version: 1.14.14
+  version: 1.14.15
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.37
+  version: 21.260.38
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.37
+  version: 21.260.38
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.37
+  version: 21.260.38
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.37
+  version: 21.260.38
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.37
+  version: 21.260.38
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.37
+  version: 21.260.38
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.37
+  version: 21.260.38
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.37
+  version: 21.260.38
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.37
+  version: 21.260.38
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.37
+  version: 21.260.38
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.37
+  version: 21.260.38
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.37
+  version: 21.260.38
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.37
+  version: 21.260.38
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.37
+  version: 21.260.38
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.37
+  version: 21.260.38
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.37
+  version: 21.260.38
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.37
+  version: 21.260.38
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.260.37
+  version: 21.260.38
 - name: cfui
   repository: oci://quay.io/codefresh/charts
-  version: 14.95.75
+  version: 14.95.76
 - name: k8s-monitor
   repository: oci://quay.io/codefresh/charts
   version: 4.11.7
@@ -127,33 +127,33 @@ dependencies:
   version: 3.36.3
 - name: cf-broadcaster
   repository: oci://quay.io/codefresh/charts
-  version: 1.12.14
+  version: 1.12.16
 - name: helm-repo-manager
   repository: oci://quay.io/codefresh/charts
   version: 0.16.1
 - name: hermes
   repository: oci://quay.io/codefresh/charts
-  version: 0.21.9
+  version: 0.21.10
 - name: nomios
   repository: oci://quay.io/codefresh/charts
-  version: 0.11.6
+  version: 0.11.7
 - name: cronus
   repository: oci://quay.io/codefresh/charts
-  version: 0.8.6
+  version: 0.8.7
 - name: cf-platform-analytics
   repository: oci://quay.io/codefresh/charts
-  version: 0.49.59
+  version: 0.49.62
 - name: cf-platform-analytics
   repository: oci://quay.io/codefresh/charts
-  version: 0.49.59
+  version: 0.49.62
 - name: argo-platform
   repository: oci://quay.io/codefresh/charts
   version: 1.3035.0
 - name: argo-hub-platform
   repository: oci://quay.io/codefresh/charts
-  version: 0.1.14
+  version: 0.1.15
 - name: cf-oidc-provider
   repository: oci://quay.io/codefresh/charts
   version: 0.0.15
-digest: sha256:2a17a7e71f24546411100242dc899cdf51477191fc6040ab9aff37ce32801337
-generated: "2024-09-08T13:36:22.908665155+03:00"
+digest: sha256:7ee9e7903f3afb3f0c8dbcda015126c2b581e01789a565b594b183a0d25e3130
+generated: "2024-09-27T11:02:13.169075439+03:00"
