@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.5.0](https://img.shields.io/badge/Version-2.5.0-informational?style=flat-square) ![AppVersion: 2.5.0](https://img.shields.io/badge/AppVersion-2.5.0-informational?style=flat-square)
+![Version: 2.5.1](https://img.shields.io/badge/Version-2.5.1-informational?style=flat-square) ![AppVersion: 2.5.0](https://img.shields.io/badge/AppVersion-2.5.0-informational?style=flat-square)
 
 Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
@@ -35,15 +35,15 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
   - [X-Frame-Options response header](#x-frame-options-response-header)
 - [Configuring OIDC Provider](#configuring-oidc-provider)
 - [Upgrading](#upgrading)
-  - [To 2.0.0](#to-2-0-0)
-  - [To 2.0.12](#to-2-0-12)
-  - [To 2.0.17](#to-2-0-17)
-  - [To 2.1.0](#to-2-1-0)
-  - [To 2.1.7](#to-2-1-7)
-  - [To 2.2.0](#to-2-2-0)
-  - [To 2.3.0](#to-2-3-0)
-  - [To 2.4.0](#to-2-4-0)
-  - [To 2.5.0](#to-2-5-0)
+  - [To 2.0.0](#to-200)
+  - [To 2.0.12](#to-2012)
+  - [To 2.0.17](#to-2017)
+  - [To 2.1.0](#to-210)
+  - [To 2.1.7](#to-217)
+  - [To 2.2.0](#to-220)
+  - [To 2.3.0](#to-230)
+  - [To 2.4.0](#to-240)
+  - [To 2.5.0](#to-250)
 - [Rollback](#rollback)
 - [Troubleshooting](#troubleshooting)
 - [Values](#values)
