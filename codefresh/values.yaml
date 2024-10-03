@@ -14,7 +14,7 @@ gencerts:
   image:
     registry: quay.io
     repository: codefresh/kubectl
-    tag: 1.29.2
+    tag: 1.31.1
   rbac:
     enabled: true
   ttlSecondsAfterFinished: 300
@@ -36,7 +36,7 @@ seed:
     image:
       registry: quay.io
       repository: codefresh/mongosh
-      tag: 2.1.1
+      tag: 2.3.1
     # -- Root user in plain text (required ONLY for seed job!).
     mongodbRootUser: "root"
     # -- Root user from existing secret
@@ -425,7 +425,7 @@ hooks:
   image:
     registry: quay.io
     repository: codefresh/mongosh
-    tag: 2.1.1
+    tag: 2.3.1
   affinity: {}
   nodeSelector: {}
   podSecurityContext: {}
@@ -766,7 +766,7 @@ cfsign:
       image:
         registry: quay.io
         repository: codefresh/curl
-        tag: 8.5.0
+        tag: 8.10.1
   affinity: {}
   nodeSelector: {}
   podSecurityContext: {}
@@ -1187,12 +1187,12 @@ builder:
       image:
         registry: quay.io
         repository: codefresh/curl
-        tag: 8.4.0
+        tag: 8.10.1
   container:
     image:
       registry: docker.io
       repository: library/docker
-      tag: 27.0-dind
+      tag: 27.3-dind
   affinity: {}
   nodeSelector: {}
   podSecurityContext: {}
@@ -1208,12 +1208,12 @@ runner:
       image:
         registry: quay.io
         repository: codefresh/curl
-        tag: 8.4.0
+        tag: 8.10.1
   container:
     image:
       registry: docker.io
       repository: library/docker
-      tag: 27.0-dind
+      tag: 27.3-dind
   affinity: {}
   nodeSelector: {}
   podSecurityContext: {}
