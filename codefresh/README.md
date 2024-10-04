@@ -55,7 +55,7 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
 
 ## Prerequisites
 
-- Kubernetes **>= 1.25 && <= 1.29** (Supported versions mean that installation passed for the versions listed; however, it **may** work on older k8s versions as well)
+- Kubernetes **>= 1.28 && <= 1.31** (Supported versions mean that installation passed for the versions listed; however, it **may** work on older k8s versions as well)
 - Helm **3.8.0+**
 - PV provisioner support in the underlying infrastructure (with [resizing](https://kubernetes.io/blog/2018/07/12/resizing-persistent-volumes-using-kubernetes/) available)
 - Minimal 4vCPU and 8Gi Memory available in the cluster (for production usage the recommended minimal cluster capacity is at least 12vCPUs and 36Gi Memory)
