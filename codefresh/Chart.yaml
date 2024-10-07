@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.5.2
+version: 2.5.3
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -20,6 +20,11 @@ annotations:
   artifacthub.io/changes: |
     - kind: security
       description: "Miscellaneous security updates"
+    - kind: fixed
+      description: "Postgres cronjob errors (platform-analytics)"
+      links:
+        - name: JIRA Issue
+          url: https://codefresh-io.atlassian.net/browse/CR-23617
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts

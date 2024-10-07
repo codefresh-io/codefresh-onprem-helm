@@ -118,13 +118,13 @@ dependencies:
   version: 21.260.39
 - name: cfui
   repository: oci://quay.io/codefresh/charts
-  version: 14.95.77
+  version: 14.95.78
 - name: k8s-monitor
   repository: oci://quay.io/codefresh/charts
   version: 4.11.8
 - name: runtime-environment-manager
   repository: oci://quay.io/codefresh/charts
-  version: 3.36.3
+  version: 3.36.4
 - name: cf-broadcaster
   repository: oci://quay.io/codefresh/charts
   version: 1.12.16
@@ -155,5 +155,5 @@ dependencies:
 - name: cf-oidc-provider
   repository: oci://quay.io/codefresh/charts
   version: 0.0.15
-digest: sha256:51979bbbb995332f38f4dee77b8d32e07241dba5a016d62e5b9c870a32633742
-generated: "2024-10-03T18:08:21.167159596+03:00"
+digest: sha256:f38e5a08b1705d6856ccfcbd265fc2ea34014884e99d5c7863dcac3d5fe1649c
+generated: "2024-10-07T15:18:44.602759508+03:00"
