@@ -25,6 +25,11 @@ annotations:
       links:
         - name: JIRA Issue
           url: https://codefresh-io.atlassian.net/browse/CR-23617
+    - kind: fixed
+      description: User login through LDAP after the user sync
+      links:
+        - name: JIRA Issue
+          url: https://codefresh-io.atlassian.net/browse/CR-25498
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -242,7 +247,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
-    version: "1.3036.0-onprem-10b556f"
+    version: "1.3037.0-onprem-680e6c9"
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform
