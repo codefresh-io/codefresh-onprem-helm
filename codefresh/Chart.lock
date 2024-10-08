@@ -25,7 +25,7 @@ dependencies:
   version: 4.26.1
 - name: rabbitmq
   repository: https://charts.bitnami.com/bitnami
-  version: 15.0.1
+  version: 14.6.9
 - name: nats
   repository: https://charts.bitnami.com/bitnami
   version: 8.4.4
@@ -155,5 +155,5 @@ dependencies:
 - name: cf-oidc-provider
   repository: oci://quay.io/codefresh/charts
   version: 0.0.15
-digest: sha256:4c31ef51774b0b9a73f63cb5f93e176967f997e726719b3b9f2dc41da3cf4fbf
-generated: "2024-10-07T15:47:12.075329064+03:00"
+digest: sha256:5caa90b76bb269d520322473dd9014d852412bdcfd912af7d99255e2ae8fd9e1
+generated: "2024-10-08T17:32:50.890794849+03:00"
