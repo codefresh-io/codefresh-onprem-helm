@@ -19,7 +19,7 @@ annotations:
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
     - kind: changed
-      description: "Bump RabbitMQ to 14.x version; Added upgrade instruction"
+      description: "Enable allow-snippet-annotations by default for ingress-nginx"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -53,7 +53,7 @@ dependencies:
     version: 4.26.1
     condition: redis-ha.enabled
   - name: rabbitmq
-    version: 15.0.2
+    version: 14.6.9
     repository: https://charts.bitnami.com/bitnami
     condition: rabbitmq.enabled
   - name: nats
