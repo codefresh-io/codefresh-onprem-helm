@@ -965,6 +965,8 @@ hermes:
 ingress-nginx:
   enabled: true
   controller:
+    enableAnnotationValidations: true
+    allowSnippetAnnotations: true
     ingressClassResource:
       enabled: true
       default: false
