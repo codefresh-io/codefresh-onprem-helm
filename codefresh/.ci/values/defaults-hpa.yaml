@@ -115,6 +115,9 @@ cfapi:
       DEFAULT_SYSTEM_TYPE: CLASSIC
 
 cfsign:
+  persistence:
+    certs-data:
+      enabled: false
   volumes:
     certs-data:
       type: emptyDir
