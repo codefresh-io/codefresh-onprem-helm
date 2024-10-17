@@ -114,6 +114,21 @@ cfapi:
     env:
       DEFAULT_SYSTEM_TYPE: CLASSIC
 
+cfsign:
+  volumes:
+    certs-data:
+      type: emptyDir
+
+builder:
+  volumeClaimTemplates:
+    varlibdocker:
+      size: 32Gi
+
+runner:
+  volumeClaimTemplates:
+    varlibdocker:
+      size: 32Gi
+
 ingress:
   enabled: true
   ingressClassName: nginx-internal
