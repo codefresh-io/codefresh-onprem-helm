@@ -15,7 +15,7 @@ secrets:
     enabled: true
     stringData:
       postgres-hostname: cf-postgresql
-      postgres-password: eC9arYka4ZbH
+      postgres-password: eC9ar%Yka4Zb!$H
       postgres-user: postgres
   ext-redis:
     enabled: true

@@ -18,8 +18,8 @@ annotations:
   # artifacthub.io/containsSecurityUpdates: "true"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
-    - kind: changed
-      description: "Test CI"
+    - kind: fixed
+      description: "encode special characters in postgresql password (argo-platform)"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -237,7 +237,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
-    version: "1.3037.0-onprem-680e6c9"
+    version: "1.3037.0-onprem-fb06d0a"
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform
