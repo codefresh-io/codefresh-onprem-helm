@@ -187,3 +187,7 @@ argo-platform:
   promotion-orchestrator:
     hpa:
       enabled: true
+
+postgresql:
+  auth:
+    postgresPassword: "eC9ar%Yka4Zb!$H"
