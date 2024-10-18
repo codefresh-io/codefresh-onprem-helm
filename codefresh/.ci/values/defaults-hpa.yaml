@@ -15,7 +15,7 @@ secrets:
     enabled: true
     stringData:
       postgres-hostname: cf-postgresql
-      postgres-password: eC9ar%Yka4Zb!$H
+      postgres-password: eC9arYka4ZbH
       postgres-user: postgres
   ext-redis:
     enabled: true
@@ -114,24 +114,6 @@ cfapi:
     env:
       DEFAULT_SYSTEM_TYPE: CLASSIC
 
-cfsign:
-  persistence:
-    certs-data:
-      enabled: false
-  volumes:
-    certs-data:
-      type: emptyDir
-
-builder:
-  volumeClaimTemplates:
-    varlibdocker:
-      size: 32Gi
-
-runner:
-  volumeClaimTemplates:
-    varlibdocker:
-      size: 32Gi
-
 ingress:
   enabled: true
   ingressClassName: nginx-internal
@@ -187,7 +169,3 @@ argo-platform:
   promotion-orchestrator:
     hpa:
       enabled: true
-
-postgresql:
-  auth:
-    postgresPassword: "eC9ar%Yka4Zb!$H"
