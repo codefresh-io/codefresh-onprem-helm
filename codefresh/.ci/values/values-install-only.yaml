@@ -5,7 +5,11 @@ postgresql:
 
 global:
   postgresPassword: "()e%C9ar$Yka4Zb!H"
+  postgresHostnameSecretKeyRef: []
+  postgresPasswordSecretKeyRef: []
+  postgresUserSecretKeyRef: []
 
 seed:
   postgresSeedJob:
     postgresPassword: "()e%C9ar$Yka4Zb!H"
+
