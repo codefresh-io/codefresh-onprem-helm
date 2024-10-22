@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.5.5
+version: 2.5.6
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -19,7 +19,15 @@ annotations:
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
     - kind: fixed
-      description: "encode special characters in postgresql password (argo-platform)"
+      description: "permissions in cf-api for OpenShift"
+      links:
+      - name: JIRA Issue
+        url: https://codefresh-io.atlassian.net/browse/CR-25662
+    - kind: fixed
+      description: "pipeline-manager memory leak"
+      links:
+      - name: JIRA Issue
+        url: https://codefresh-io.atlassian.net/browse/CR-25053
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
