@@ -76,6 +76,7 @@ getMongoVersion
 
 for MONGODB_DATABASE in ${MONGODB_DATABASES[@]}; do
     mongosh ${MONGODB_ROOT_URI} --eval "db.getSiblingDB(\"${MONGODB_DATABASE}\").createUser({user: \"${MONGODB_USER}\", pwd: \"${MONGODB_PASSWORD}\", roles: [\"readWrite\"]})" 2>&1 || true
+    sleep 3
     mongosh ${MONGODB_ROOT_URI} --eval "db.getSiblingDB(\"${MONGODB_DATABASE}\").changeUserPassword(\"${MONGODB_USER}\",\"${MONGODB_PASSWORD}\")" 2>&1 || true
 done
 
