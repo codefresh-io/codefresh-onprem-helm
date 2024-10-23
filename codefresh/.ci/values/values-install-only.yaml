@@ -1,12 +1,11 @@
 # -- checking postgresql password with special characters
 postgresql:
   auth:
-    postgresPassword: "e%C9ar$Yka4Zb!H"
+    postgresPassword: "()e%C9ar$Yka4Zb!H"
 
-secrets:
-  ext-postgres:
-    enabled: true
-    stringData:
-      postgres-hostname: cf-postgresql
-      postgres-password: e%C9ar$Yka4Zb!H
-      postgres-user: postgres
+global:
+  postgresPassword: "()e%C9ar$Yka4Zb!H"
+
+seed:
+  postgresSeedJob:
+    postgresPassword: "()e%C9ar$Yka4Zb!H"
