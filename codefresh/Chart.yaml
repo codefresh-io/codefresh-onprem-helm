@@ -28,6 +28,11 @@ annotations:
       links:
       - name: JIRA Issue
         url: https://codefresh-io.atlassian.net/browse/CR-25053
+    - kind: fixed
+      description: "Secret template when postgres password contains special characters"
+      links:
+      - name: JIRA Issue
+        url: https://codefresh-io.atlassian.net/browse/CR-25131
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
