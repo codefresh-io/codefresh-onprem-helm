@@ -64,61 +64,61 @@ dependencies:
   version: 1.14.15
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.262.18
+  version: 21.262.20
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.262.18
+  version: 21.262.20
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.262.18
+  version: 21.262.20
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.262.18
+  version: 21.262.20
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.262.18
+  version: 21.262.20
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.262.18
+  version: 21.262.20
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.262.18
+  version: 21.262.20
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.262.18
+  version: 21.262.20
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.262.18
+  version: 21.262.20
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.262.18
+  version: 21.262.20
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.262.18
+  version: 21.262.20
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.262.18
+  version: 21.262.20
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.262.18
+  version: 21.262.20
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.262.18
+  version: 21.262.20
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.262.18
+  version: 21.262.20
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.262.18
+  version: 21.262.20
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.262.18
+  version: 21.262.20
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.262.18
+  version: 21.262.20
 - name: cfui
-  repository: oci://quay.io/codefresh/charts
-  version: 14.96.48
+  repository: oci://quay.io/codefresh/charts/dev
+  version: 14.96.50-e2e-onprem-fix
 - name: k8s-monitor
   repository: oci://quay.io/codefresh/charts
   version: 4.11.8
@@ -155,5 +155,5 @@ dependencies:
 - name: cf-oidc-provider
   repository: oci://quay.io/codefresh/charts
   version: 0.0.15
-digest: sha256:d36d2c45ba71407b32a50a73e0c73f3cb42948d753fda156f6aeb44ed8ec9cca
-generated: "2024-10-25T12:30:16.142823+03:00"
+digest: sha256:2274a61bf98a7a7e94cbd31374836a93ad69582dc0bb75a25b6e8da3601fa05b
+generated: "2024-10-25T14:23:37.336061+03:00"
