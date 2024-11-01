@@ -117,8 +117,8 @@ dependencies:
   repository: oci://quay.io/codefresh/charts
   version: 21.263.7
 - name: cfui
-  repository: oci://quay.io/codefresh/charts/dev
-  version: 14.96.50-e2e-onprem-fix
+  repository: oci://quay.io/codefresh/charts
+  version: 14.96.53
 - name: k8s-monitor
   repository: oci://quay.io/codefresh/charts
   version: 4.11.9
@@ -130,7 +130,7 @@ dependencies:
   version: 1.12.17
 - name: helm-repo-manager
   repository: oci://quay.io/codefresh/charts
-  version: 0.16.1
+  version: 0.17.1
 - name: hermes
   repository: oci://quay.io/codefresh/charts
   version: 0.21.11
@@ -148,12 +148,12 @@ dependencies:
   version: 0.49.68
 - name: argo-platform
   repository: oci://quay.io/codefresh/charts
-  version: 1.3133.0
+  version: 1.3134.0
 - name: argo-hub-platform
   repository: oci://quay.io/codefresh/charts
   version: 0.1.16
 - name: cf-oidc-provider
   repository: oci://quay.io/codefresh/charts
   version: 0.0.15
-digest: sha256:367ef3372b4dca7d3f2cd7cdfbe49345ebb96f5c2bd4e32bb130a1e12623a942
-generated: "2024-11-01T10:53:36.657687+03:00"
+digest: sha256:bebe1eff6f91d8d2228eb432835011ce5ebb9c051c7b8fab1007c009f41d5dac
+generated: "2024-11-01T11:59:01.205052+03:00"
