@@ -1,3 +1,22 @@
-cfapi:
-  rbac:
-    namespaced: true
+# -- test change passwords on upgrade
+global:
+  mongodbPassword: 9rfa2UcXiTm
+  postgresPassword: HbZ4akYra9Ce
+  rabbitmqPassword: u7mYKJdZ9zVc
+  redisPassword: UrtN7fzs9Coh
+
+postgresql:
+  auth:
+    enablePostgresUser: true
+    postgresPassword: HbZ4akYra9Ce
+    database: codefresh
+
+rabbitmq:
+  auth:
+    username: user
+    password: u7mYKJdZ9zVc
+
+redis:
+  auth:
+    password: UrtN7fzs9Coh
+
