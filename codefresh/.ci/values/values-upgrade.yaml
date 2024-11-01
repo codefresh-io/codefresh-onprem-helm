@@ -1,3 +1,0 @@
-cfapi:
-  rbac:
-    namespaced: true

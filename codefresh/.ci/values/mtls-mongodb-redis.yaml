@@ -137,7 +137,6 @@ extraResources:
   kind: Service
   metadata:
     name: cf-redis
-    namespace: codefresh-mtls
   spec:
     ports:
     - name: tcp-redis

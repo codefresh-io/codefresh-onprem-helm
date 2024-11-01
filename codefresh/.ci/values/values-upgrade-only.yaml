@@ -1,0 +1,4 @@
+# -- test change passwords on upgrade
+global:
+  mongodbPassword: 9rfa2UcXiTm
+
