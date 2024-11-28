@@ -15,11 +15,11 @@ appVersion: 2.5.0
 annotations:
   # artifacthub.io/prerelease: "true"
   artifacthub.io/alternativeName: "codefresh-onprem"
-  # artifacthub.io/containsSecurityUpdates: "true"
+  artifacthub.io/containsSecurityUpdates: "true"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
-    - kind: fixed
-      description: "test CI"
+    - kind: security
+      description: "Misc security updates"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
