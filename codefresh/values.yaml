@@ -14,7 +14,7 @@ gencerts:
   image:
     registry: quay.io
     repository: codefresh/kubectl
-    tag: 1.31.1
+    tag: 1.31.2
   rbac:
     enabled: true
   ttlSecondsAfterFinished: 300
@@ -781,7 +781,7 @@ cfui:
     replicas: 2
   container:
     image:
-      registry: us-docker.pkg.dev/codefresh-inc/gcr.io
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/cf-ui
     env:
       ON_PREMISE: true
