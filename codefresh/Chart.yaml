@@ -13,13 +13,13 @@ maintainers:
     url: https://codefresh-io.github.io/
 appVersion: 2.6.0
 annotations:
-  # artifacthub.io/prerelease: "true"
+  artifacthub.io/prerelease: "true"
   artifacthub.io/alternativeName: "codefresh-onprem"
   # artifacthub.io/containsSecurityUpdates: "true"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
-    - kind: fixed
-      description: "test ci"
+    - kind: changed
+      description: "Initial onprem 2.6 release"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
