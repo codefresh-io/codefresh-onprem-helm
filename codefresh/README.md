@@ -180,7 +180,7 @@ The following table displays the list of **persistent** services created as part
 
 | Database      | Purpose | Latest supported version     |
 | :---        | :----   |  :--- |
-| MongoDB      | Stores all account data (account settings, users, projects, pipelines, builds etc.)       | 4.4.x   |
+| MongoDB      | Stores all account data (account settings, users, projects, pipelines, builds etc.)       | 6.x   |
 | Postgresql   | Stores data about events for the account (pipeline updates, deletes, etc.). The audit log uses the data from this database.        | 13.x      |
 | Redis   | Used for caching, and as a key-value store for cron trigger manager.        | 7.0.x      |
 
@@ -202,7 +202,7 @@ However, you might need to use external services like [MongoDB Atlas Database](h
 
 #### External MongoDB
 
-**Important:** Recommended version of Mongo is 4.4.x
+**Important:** Recommended version of Mongo is 6.x
 
 ```yaml
 seed:
