@@ -490,6 +490,8 @@ cfapi: &cf-api
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       # -- Repository
       repository: codefresh/cf-api
+      # -- Digest
+      digest: ""
     # -- Env vars
     # @default -- See below
     env:
@@ -648,6 +650,7 @@ cf-broadcaster:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/cf-broadcaster
+      digest: ""
   env:
     RUNTIME_MONGO_DB: codefresh
     REDIS_DB: 0
@@ -695,6 +698,7 @@ cf-platform-analytics-etlstarter:
   container:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
+      digest: ""
     env:
       ENV: production
       DATASET_ID: etl
@@ -713,6 +717,7 @@ cf-platform-analytics-platform:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/cf-platform-analytics
+      digest: ""
   redis:
     enabled: true
     nameOverride: redis-platform-analytics
@@ -742,6 +747,7 @@ cfsign:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/cf-tls-sign
+      digest: ""
     # Explicit default volume mounts overrides due to legacy `cf-` prefix (backward compatibility)
     volumeMounts:
       cf-ca:
@@ -783,6 +789,7 @@ cfui:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/cf-ui
+      digest: ""
     env:
       ON_PREMISE: true
   resources:
@@ -807,6 +814,7 @@ charts-manager:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/charts-manager
+      digest: ""
   resources:
     requests:
       cpu: 100m
@@ -829,6 +837,7 @@ cluster-providers:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/cluster-providers
+      digest: ""
   resources:
     requests:
       cpu: 100m
@@ -862,6 +871,7 @@ context-manager:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/context-manager
+      digest: ""
   resources:
     requests:
       cpu: 100m
@@ -884,6 +894,7 @@ cronus:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/cronus
+      digest: ""
   affinity: {}
   nodeSelector: {}
   podSecurityContext: {}
@@ -897,6 +908,7 @@ gitops-dashboard-manager:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/gitops-dashboard-manager
+      digest: ""
   resources:
     requests:
       cpu: 100m
@@ -919,6 +931,7 @@ helm-repo-manager:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/helm-repo-manager
+      digest: ""
   chartmuseum:
     publicHelmRepo: true
     ingress:
@@ -949,6 +962,7 @@ hermes:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/hermes
+      digest: ""
   redis:
     # Deprecation of a separate redis for hermes (CR-705)
     enabled: false
@@ -995,6 +1009,7 @@ k8s-monitor:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/cf-k8s-monitor
+      digest: ""
   resources:
     requests:
       cpu: 100m
@@ -1017,6 +1032,7 @@ kube-integration:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/kube-integration
+      digest: ""
   resources:
     requests:
       cpu: 100m
@@ -1072,6 +1088,7 @@ nomios:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/nomios
+      digest: ""
   ingress:
     main:
       enabled: false
@@ -1230,6 +1247,7 @@ pipeline-manager:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/pipeline-manager
+      digest: ""
   resources:
     requests:
       cpu: 100m
@@ -1252,6 +1270,7 @@ runtime-environment-manager:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/runtime-environment-manager
+      digest: ""
     env:
       ON_PREMISE: true
   resources:
@@ -1275,6 +1294,7 @@ tasker-kubernetes:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/tasker-kubernetes
+      digest: ""
   resources:
     requests:
       cpu: 100m
@@ -1299,6 +1319,7 @@ argo-hub-platform:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh-io/argo-hub-platform
+      digest: ""
   imagePullSecrets:
     - '{{ .Release.Name }}-registry'
   resources:
@@ -1363,6 +1384,8 @@ argo-platform:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       # -- Repository
       repository: codefresh-io/argo-platform-api-graphql
+      # -- Digest
+      digest: ""
     # -- Env vars
     # @default -- See below
     env:
@@ -1426,6 +1449,7 @@ argo-platform:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh-io/argo-platform-abac
+      digest: ""
     env:
       MONGODB_PROTOCOL: *mongodb-protocol
       MONGODB_OPTIONS: *mongodb-options
@@ -1462,6 +1486,7 @@ argo-platform:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh-io/argo-platform-analytics-reporter
+      digest: ""
     env:
       ENABLED_DATABASE_TYPES: POSTGRES
       MONGODB_PROTOCOL: *mongodb-protocol
@@ -1511,6 +1536,7 @@ argo-platform:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh-io/argo-platform-api-events
+      digest: ""
     env:
       RABBITMQ_PROTOCOL: *rabbitmq-protocol
       RABBITMQ_URLS: $(RABBITMQ_PROTOCOL)://$(RABBITMQ_USER):$(RABBITMQ_PASSWORD)@$(RABBITMQ_HOST)
@@ -1549,6 +1575,7 @@ argo-platform:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh-io/argo-platform-audit
+      digest: ""
     env:
       MONGODB_PROTOCOL: *mongodb-protocol
       MONGODB_OPTIONS: *mongodb-options
@@ -1592,6 +1619,7 @@ argo-platform:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh-io/argo-platform-cron-executor
+      digest: ""
     env:
       MONGODB_PROTOCOL: *mongodb-protocol
       MONGODB_OPTIONS: *mongodb-options
@@ -1635,6 +1663,7 @@ argo-platform:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh-io/argo-platform-event-handler
+      digest: ""
     env:
       MONGODB_PROTOCOL: *mongodb-protocol
       MONGODB_OPTIONS: *mongodb-options
@@ -1688,6 +1717,7 @@ argo-platform:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh-io/argo-platform-ui
+      digest: ""
     resources:
       requests:
         cpu: 100m
@@ -1709,6 +1739,7 @@ argo-platform:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh-io/argo-platform-broadcaster
+      digest: ""
     env:
       MONGODB_PROTOCOL: *mongodb-protocol
       MONGODB_OPTIONS: *mongodb-options
@@ -1750,6 +1781,7 @@ argo-platform:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh-io/argo-platform-promotion-orchestrator
+      digest: ""
     env:
       MONGODB_PROTOCOL: *mongodb-protocol
       MONGODB_OPTIONS: *mongodb-options
@@ -1794,6 +1826,7 @@ cf-oidc-provider:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/cf-oidc-provider
+      digest: ""
     env:
       NODE_ENV: production
       CF_PLATFORM_API_BASE_URL: '{{ printf "https://%s/api" .Values.global.appUrl }}'
