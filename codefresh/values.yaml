@@ -14,7 +14,7 @@ gencerts:
   image:
     registry: quay.io
     repository: codefresh/kubectl
-    tag: 1.29.2
+    tag: 1.31.2
   rbac:
     enabled: true
   ttlSecondsAfterFinished: 300
@@ -36,7 +36,7 @@ seed:
     image:
       registry: quay.io
       repository: codefresh/mongosh
-      tag: 2.1.1
+      tag: 2.3.1
     # -- Root user in plain text (required ONLY for seed job!).
     mongodbRootUser: "root"
     # -- Root user from existing secret
@@ -425,7 +425,7 @@ hooks:
   image:
     registry: quay.io
     repository: codefresh/mongosh
-    tag: 2.1.1
+    tag: 2.3.1
   affinity: {}
   nodeSelector: {}
   podSecurityContext: {}
@@ -455,20 +455,20 @@ postgresqlCleanJob:
 # @default -- See below
 runtimeImages:
   COMPOSE_IMAGE: quay.io/codefresh/compose:v2.28.1-1.5.0
-  CONTAINER_LOGGER_IMAGE: quay.io/codefresh/cf-container-logger:1.11.6
-  DIND_IMAGE: quay.io/codefresh/dind:26.1.4-1.28.7
-  DOCKER_BUILDER_IMAGE: quay.io/codefresh/cf-docker-builder:1.3.13
-  DOCKER_PULLER_IMAGE: quay.io/codefresh/cf-docker-puller:8.0.17
-  DOCKER_PUSHER_IMAGE: quay.io/codefresh/cf-docker-pusher:6.0.16
-  DOCKER_TAG_PUSHER_IMAGE: quay.io/codefresh/cf-docker-tag-pusher:1.3.14
-  ENGINE_IMAGE: quay.io/codefresh/engine:1.174.7
+  CONTAINER_LOGGER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-container-logger:1.11.7
+  DIND_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/dind:26.1.4-1.28.8
+  DOCKER_BUILDER_IMAGE: quay.io/codefresh/cf-docker-builder:1.3.17
+  DOCKER_PULLER_IMAGE: quay.io/codefresh/cf-docker-puller:8.0.18
+  DOCKER_PUSHER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-docker-pusher:6.0.16
+  DOCKER_TAG_PUSHER_IMAGE: quay.io/codefresh/cf-docker-tag-pusher:1.3.15
+  ENGINE_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/engine:1.174.19
   FS_OPS_IMAGE: quay.io/codefresh/fs-ops:1.2.7
-  GIT_CLONE_IMAGE: quay.io/codefresh/cf-git-cloner:10.1.28
+  GIT_CLONE_IMAGE: quay.io/codefresh/cf-git-cloner:10.2.0
   KUBE_DEPLOY: quay.io/codefresh/cf-deploy-kubernetes:16.2.6
-  PIPELINE_DEBUGGER_IMAGE: quay.io/codefresh/cf-debugger:1.3.5
+  PIPELINE_DEBUGGER_IMAGE: quay.io/codefresh/cf-debugger:1.3.6
   TEMPLATE_ENGINE: quay.io/codefresh/pikolo:0.14.1
-  CR_6177_FIXER: docker.io/library/alpine:edge
-  GC_BUILDER_IMAGE: docker.io/library/alpine:edge
+  CR_6177_FIXER: docker.io/library/alpine:3.20
+  GC_BUILDER_IMAGE: docker.io/library/alpine:3.20
 
 #--------------------
 # Codefresh subcharts
@@ -766,7 +766,7 @@ cfsign:
       image:
         registry: quay.io
         repository: codefresh/curl
-        tag: 8.5.0
+        tag: 8.10.1
   affinity: {}
   nodeSelector: {}
   podSecurityContext: {}
@@ -965,6 +965,8 @@ hermes:
 ingress-nginx:
   enabled: true
   controller:
+    enableAnnotationValidations: true
+    allowSnippetAnnotations: true
     ingressClassResource:
       enabled: true
       default: false
@@ -1187,12 +1189,12 @@ builder:
       image:
         registry: quay.io
         repository: codefresh/curl
-        tag: 8.4.0
+        tag: 8.10.1
   container:
     image:
       registry: docker.io
       repository: library/docker
-      tag: 27.0-dind
+      tag: 27.3-dind
   affinity: {}
   nodeSelector: {}
   podSecurityContext: {}
@@ -1208,12 +1210,12 @@ runner:
       image:
         registry: quay.io
         repository: codefresh/curl
-        tag: 8.4.0
+        tag: 8.10.1
   container:
     image:
       registry: docker.io
       repository: library/docker
-      tag: 27.0-dind
+      tag: 27.3-dind
   affinity: {}
   nodeSelector: {}
   podSecurityContext: {}

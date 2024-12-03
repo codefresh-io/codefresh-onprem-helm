@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.5.0](https://img.shields.io/badge/Version-2.5.0-informational?style=flat-square) ![AppVersion: 2.5.0](https://img.shields.io/badge/AppVersion-2.5.0-informational?style=flat-square)
+![Version: 2.6.0](https://img.shields.io/badge/Version-2.6.0-informational?style=flat-square) ![AppVersion: 2.6.0](https://img.shields.io/badge/AppVersion-2.6.0-informational?style=flat-square)
 
 Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
@@ -35,15 +35,16 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
   - [X-Frame-Options response header](#x-frame-options-response-header)
 - [Configuring OIDC Provider](#configuring-oidc-provider)
 - [Upgrading](#upgrading)
-  - [To 2.0.0](#to-2-0-0)
-  - [To 2.0.12](#to-2-0-12)
-  - [To 2.0.17](#to-2-0-17)
-  - [To 2.1.0](#to-2-1-0)
-  - [To 2.1.7](#to-2-1-7)
-  - [To 2.2.0](#to-2-2-0)
-  - [To 2.3.0](#to-2-3-0)
-  - [To 2.4.0](#to-2-4-0)
-  - [To 2.5.0](#to-2-5-0)
+  - [To 2.0.0](#to-200)
+  - [To 2.0.12](#to-2012)
+  - [To 2.0.17](#to-2017)
+  - [To 2.1.0](#to-210)
+  - [To 2.1.7](#to-217)
+  - [To 2.2.0](#to-220)
+  - [To 2.3.0](#to-230)
+  - [To 2.4.0](#to-240)
+  - [To 2.5.0](#to-250)
+  - [To 2.6.0](#to-260)
 - [Rollback](#rollback)
 - [Troubleshooting](#troubleshooting)
 - [Values](#values)
@@ -55,7 +56,7 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
 
 ## Prerequisites
 
-- Kubernetes **>= 1.25 && <= 1.29** (Supported versions mean that installation passed for the versions listed; however, it **may** work on older k8s versions as well)
+- Kubernetes **>= 1.28 && <= 1.31** (Supported versions mean that installation passed for the versions listed; however, it **may** work on older k8s versions as well)
 - Helm **3.8.0+**
 - PV provisioner support in the underlying infrastructure (with [resizing](https://kubernetes.io/blog/2018/07/12/resizing-persistent-volumes-using-kubernetes/) available)
 - Minimal 4vCPU and 8Gi Memory available in the cluster (for production usage the recommended minimal cluster capacity is at least 12vCPUs and 36Gi Memory)
@@ -180,7 +181,7 @@ The following table displays the list of **persistent** services created as part
 
 | Database      | Purpose | Latest supported version     |
 | :---        | :----   |  :--- |
-| MongoDB      | Stores all account data (account settings, users, projects, pipelines, builds etc.)       | 6.x   |
+| MongoDB      | Stores all account data (account settings, users, projects, pipelines, builds etc.)       | 4.4.x   |
 | Postgresql   | Stores data about events for the account (pipeline updates, deletes, etc.). The audit log uses the data from this database.        | 13.x      |
 | Redis   | Used for caching, and as a key-value store for cron trigger manager.        | 7.0.x      |
 
@@ -202,7 +203,7 @@ However, you might need to use external services like [MongoDB Atlas Database](h
 
 #### External MongoDB
 
-**Important:** Recommended version of Mongo is 6.x
+**Important:** Recommended version of Mongo is 4.4.x
 
 ```yaml
 seed:
@@ -1923,6 +1924,10 @@ cfapi:
 
 ### [What's new in 2.5.x](https://codefresh.io/docs/docs/whats-new/on-prem-release-notes/#on-premises-version-25)
 
+### To 2.6.0
+
+### [What's new in 2.6.x](https://codefresh.io/docs/docs/whats-new/on-prem-release-notes/#on-premises-version-26)
+
 ## Troubleshooting
 
 ### Error: Failed to validate connection to Docker daemon; caused by Error: certificate has expired
@@ -2019,7 +2024,7 @@ kubectl -n $NAMESPACE delete secret codefresh-certs-server
 | argo-platform.runtime-monitor | object | See below | runtime-monitor Don't enable! Not used in onprem! |
 | argo-platform.ui | object | See below | ui |
 | argo-platform.useExternalSecret | bool | `false` | Use regular k8s secret object. Keep `false`! |
-| builder | object | `{"affinity":{},"container":{"image":{"registry":"docker.io","repository":"library/docker","tag":"27.0-dind"}},"enabled":true,"initContainers":{"register":{"image":{"registry":"quay.io","repository":"codefresh/curl","tag":"8.4.0"}}},"nodeSelector":{},"podSecurityContext":{},"resources":{},"tolerations":[]}` | builder |
+| builder | object | `{"affinity":{},"container":{"image":{"registry":"docker.io","repository":"library/docker","tag":"27.3-dind"}},"enabled":true,"initContainers":{"register":{"image":{"registry":"quay.io","repository":"codefresh/curl","tag":"8.10.1"}}},"nodeSelector":{},"podSecurityContext":{},"resources":{},"tolerations":[]}` | builder |
 | cf-broadcaster | object | See below | broadcaster |
 | cf-oidc-provider | object | See below | cf-oidc-provider |
 | cf-platform-analytics-etlstarter | object | See below | etl-starter |
