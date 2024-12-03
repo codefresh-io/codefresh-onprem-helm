@@ -19,7 +19,7 @@ annotations:
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
     - kind: changed
-      description: "Initial onprem 2.6 release"
+      description: "Initial onprem 2.6.1 release"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
