@@ -925,7 +925,7 @@ helm-repo-manager:
       enabled: false
     image:
       repository: quay.io/codefresh/chartmuseum
-      tag: a02769a5
+      tag: 8795e993
   resources:
     requests:
       cpu: 100m

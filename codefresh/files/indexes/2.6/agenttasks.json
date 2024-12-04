@@ -1,0 +1,29 @@
+[
+    {
+        "v" : 2.0,
+        "key" : {
+            "_id" : 1.0
+        },
+        "name" : "_id_"
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "metadata.accountId" : 1,
+            "metadata.reIdentifier" : 1,
+            "metadata.shouldExecute" : 1,
+            "metadata.startAt" : 1,
+            "metadata.status" : 1,
+            "metadata.expireAt" : 1
+        },
+        "name" : "metadata.accountId_1_metadata.reIdentifier_1_metadata.shouldExecute_1_metadata.startAt_1_metadata.status_1_metadata.expireAt_1"
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "metadata.expireAt" : 1
+        },
+        "name" : "metadata.expireAt_1",
+        "expireAfterSeconds" : 0.0
+    }
+]

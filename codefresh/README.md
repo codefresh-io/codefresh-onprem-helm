@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.6.0](https://img.shields.io/badge/Version-2.6.0-informational?style=flat-square) ![AppVersion: 2.6.0](https://img.shields.io/badge/AppVersion-2.6.0-informational?style=flat-square)
+![Version: 2.6.1](https://img.shields.io/badge/Version-2.6.1-informational?style=flat-square) ![AppVersion: 2.6.0](https://img.shields.io/badge/AppVersion-2.6.0-informational?style=flat-square)
 
 Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
@@ -1927,6 +1927,61 @@ cfapi:
 ### To 2.6.0
 
 ### [What's new in 2.6.x](https://codefresh.io/docs/docs/whats-new/on-prem-release-notes/#on-premises-version-26)
+
+#### Affected values
+
+In Codefresh On-Prem 2.6.x all Codefresh owner microservices include image digests in the default subchart values.
+
+For example, default values for `cfapi` might look like this:
+
+```yaml
+container:
+  image:
+    registry: 839151377425.dkr.ecr.us-east-1.amazonaws.com/codefresh-inc
+    repository: codefresh/cf-api
+    tag: 21.268.1
+    digest: "sha256:bae42f8efc18facc2bf93690fce4ab03ef9607cec4443fada48292d1be12f5f8"
+    pullPolicy: IfNotPresent
+```
+
+this resulting in the following image reference in the pod spec:
+
+```yaml
+spec:
+  containers:
+    - name: cfapi
+      image: 839151377425.dkr.ecr.us-east-1.amazonaws.com/codefresh-inc/codefresh/cf-api:21.268.1@sha256:bae42f8efc18facc2bf93690fce4ab03ef9607cec4443fada48292d1be12f5f8
+```
+
+Note, that when the `digest` is providerd, the `tag` is ignored! You can omit digest and use tag only like the following `values.yaml` example:
+
+```yaml
+cfapi:
+  container:
+    image:
+      tag: 21.268.1
+      # -- Set empty tag for digest
+      digest: ""
+```
+
+#### Auto-index creation in MongoDB
+
+In Codefresh On-Prem 2.6.x, the `cfapi` can create indexes in MongoDB automatically. This feature is disabled by default. To enable it, set the following environment variable:
+
+> **Note!** Enabling this feature can cause performance degradation during the index creation process.
+
+> **Note!** It is recommended to add indexes during a maintenance window. The indexes list is provided in `codefresh/files/indexes/<MAJOR.MINOR>/<collection_name>.json` files.
+
+```yaml
+cfapi:
+  container:
+    env:
+      MONGOOSE_AUTO_INDEX: "true"
+```
+
+Ref:
+- [Create an Index in Atlas DB](https://www.mongodb.com/docs/atlas/atlas-ui/indexes/#create-an-index)
+- [Create an Index with mongosh](https://www.mongodb.com/docs/manual/reference/method/db.collection.createIndex/)
 
 ## Troubleshooting
 
