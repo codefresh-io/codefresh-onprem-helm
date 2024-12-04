@@ -58,5 +58,7 @@ done
 
 sed -i 's|us-docker.pkg.dev/codefresh-inc/public-gcr-io|quay.io|' $CHARTDIR/values.yaml
 
+sed -i 's/!!merge //g' $CHARTDIR/values.yaml
+
 msg "The list of updated runtime images:\n"
 echo -e "\e[33m$(cat $CHARTDIR/values.yaml)\e[0m"

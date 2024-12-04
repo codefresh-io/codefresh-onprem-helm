@@ -1953,7 +1953,7 @@ spec:
       image: 839151377425.dkr.ecr.us-east-1.amazonaws.com/codefresh-inc/codefresh/cf-api:21.268.1@sha256:bae42f8efc18facc2bf93690fce4ab03ef9607cec4443fada48292d1be12f5f8
 ```
 
-Note, that when the `digest` is providerd, the `tag` is ignored! You can omit digest and use tag only like the following `values.yaml` example:
+> **Note!** When the `digest` is providerd, the `tag` is ignored! You can omit digest and use tag only like the following `values.yaml` example:
 
 ```yaml
 cfapi:
