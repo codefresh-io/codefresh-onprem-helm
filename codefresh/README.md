@@ -1937,7 +1937,7 @@ For example, default values for `cfapi` might look like this:
 ```yaml
 container:
   image:
-    registry: 839151377425.dkr.ecr.us-east-1.amazonaws.com/codefresh-inc
+    registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
     repository: codefresh/cf-api
     tag: 21.268.1
     digest: "sha256:bae42f8efc18facc2bf93690fce4ab03ef9607cec4443fada48292d1be12f5f8"
@@ -1950,7 +1950,7 @@ this resulting in the following image reference in the pod spec:
 spec:
   containers:
     - name: cfapi
-      image: 839151377425.dkr.ecr.us-east-1.amazonaws.com/codefresh-inc/codefresh/cf-api:21.268.1@sha256:bae42f8efc18facc2bf93690fce4ab03ef9607cec4443fada48292d1be12f5f8
+      image: us-docker.pkg.dev/codefresh-enterprise/gcr.io/codefresh/cf-api:21.268.1@sha256:bae42f8efc18facc2bf93690fce4ab03ef9607cec4443fada48292d1be12f5f8
 ```
 
 > **Note!** When the `digest` is providerd, the `tag` is ignored! You can omit digest and use tag only like the following `values.yaml` example:
