@@ -199,8 +199,8 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-test-reporting.enabled
   - name: cfui
-    version: "~14.96.0"
-    repository: oci://quay.io/codefresh/charts
+    version: 14.97.8-e2e-changes-add-pipeline #"~14.96.0"
+    repository: oci://quay.io/codefresh/charts/dev
     condition: cfui.enabled
   - name: k8s-monitor
     version: "*"
