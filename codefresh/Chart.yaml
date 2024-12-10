@@ -18,8 +18,10 @@ annotations:
   artifacthub.io/containsSecurityUpdates: "true"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
-    - kind: changed
-      description: "Test CI"
+    - kind: fixed
+      description: "Fix postgres database name in helm-repo-manager"
+    - kind: fixed
+      description: "Enable useRepoAndBranchesNextPagination feature-flag by default"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
