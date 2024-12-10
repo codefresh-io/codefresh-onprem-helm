@@ -19,9 +19,11 @@ annotations:
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
     - kind: fixed
-      description: "Fix postgres database name in helm-repo-manager"
+      description: "(helm-repo-manager) Fix postgres database name"
     - kind: fixed
-      description: "Enable useRepoAndBranchesNextPagination feature-flag by default"
+      description: "(cf-api) Enable useRepoAndBranchesNextPagination feature-flag by default"
+    - kind: fixed
+      description: "(cf-ui) Fix runtime environment ABAC rules are not applied"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
