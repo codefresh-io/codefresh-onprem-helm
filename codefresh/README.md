@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.6.1](https://img.shields.io/badge/Version-2.6.1-informational?style=flat-square) ![AppVersion: 2.6.0](https://img.shields.io/badge/AppVersion-2.6.0-informational?style=flat-square)
+![Version: 2.6.2](https://img.shields.io/badge/Version-2.6.2-informational?style=flat-square) ![AppVersion: 2.6.0](https://img.shields.io/badge/AppVersion-2.6.0-informational?style=flat-square)
 
 Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
@@ -203,7 +203,7 @@ However, you might need to use external services like [MongoDB Atlas Database](h
 
 #### External MongoDB
 
-**Important:** Recommended version of Mongo is 4.4.x
+**Important:** Recommended version of Mongo is 6.x
 
 ```yaml
 seed:

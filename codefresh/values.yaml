@@ -919,6 +919,8 @@ helm-repo-manager:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/helm-repo-manager
+    env:
+      POSTGRES_DBNAME: codefresh
   chartmuseum:
     publicHelmRepo: true
     ingress:
