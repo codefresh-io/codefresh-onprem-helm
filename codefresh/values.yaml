@@ -781,9 +781,8 @@ cfui:
     replicas: 2
   container:
     image:
-      registry: us-docker.pkg.dev/codefresh-inc/gcr.io
-      repository: codefresh/dev/cf-ui
-      tag: 14.97.8-e2e-changes-add-pipeline
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
+      repository: codefresh/cf-ui
     env:
       ON_PREMISE: true
   resources:
