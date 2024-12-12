@@ -1987,6 +1987,13 @@ cfapi:
       MONGOOSE_AUTO_INDEX: "true"
 ```
 
+```yaml
+argo-platform:
+  api-graphql:
+    env:
+      MONGO_AUTOMATIC_INDEX_CREATION: "true"
+```
+
 Ref:
 - [Create an Index in Atlas DB](https://www.mongodb.com/docs/atlas/atlas-ui/indexes/#create-an-index)
 - [Create an Index with mongosh](https://www.mongodb.com/docs/manual/reference/method/db.collection.createIndex/)

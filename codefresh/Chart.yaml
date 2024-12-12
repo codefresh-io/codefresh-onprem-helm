@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.6.2
+version: 2.6.3
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -15,28 +15,11 @@ appVersion: 2.6.0
 annotations:
   artifacthub.io/prerelease: "true"
   artifacthub.io/alternativeName: "codefresh-onprem"
-  artifacthub.io/containsSecurityUpdates: "true"
+  artifacthub.io/containsSecurityUpdates: "false"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
-    - kind: fixed
-      description: "(helm-repo-manager) Fix postgres database name"
-      links:
-        - name: JIRA Issue
-          url: https://codefresh-io.atlassian.net/browse/CR-26299
-    - kind: fixed
-      description: "(cf-api) Enable useRepoAndBranchesNextPagination feature-flag by default"
-    - kind: fixed
-      description: "(cf-ui) Fix runtime environment ABAC rules are not applied"
-      links:
-        - name: JIRA Issue
-          url: https://codefresh-io.atlassian.net/browse/CR-25550
-    - kind: fixed
-      description: "(context-manager) Fix context decryption when decrypt=false is set in requests"
-      links:
-        - name: JIRA Issue
-          url: https://codefresh-io.atlassian.net/browse/CR-26300
-    - kind: security
-      description: "Misc security updates"
+    - kind: changed
+      description: "(cf-api) Enable promotions feature-flags"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
