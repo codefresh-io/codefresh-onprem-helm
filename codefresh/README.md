@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.6.2](https://img.shields.io/badge/Version-2.6.2-informational?style=flat-square) ![AppVersion: 2.6.0](https://img.shields.io/badge/AppVersion-2.6.0-informational?style=flat-square)
+![Version: 2.6.3](https://img.shields.io/badge/Version-2.6.3-informational?style=flat-square) ![AppVersion: 2.6.0](https://img.shields.io/badge/AppVersion-2.6.0-informational?style=flat-square)
 
 Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
@@ -1977,6 +1977,13 @@ cfapi:
   container:
     env:
       MONGOOSE_AUTO_INDEX: "true"
+```
+
+```yaml
+argo-platform:
+  api-graphql:
+    env:
+      MONGO_AUTOMATIC_INDEX_CREATION: "true"
 ```
 
 Ref:
