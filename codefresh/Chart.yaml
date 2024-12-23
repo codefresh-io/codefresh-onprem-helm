@@ -29,7 +29,7 @@ dependencies:
     version: 0.9.0
     condition: internal-gateway.enabled
   - name: consul
-    version: 11.3.21
+    version: 11.3.22
     repository: https://charts.bitnami.com/bitnami
     condition: consul.enabled
   - name: mongodb
