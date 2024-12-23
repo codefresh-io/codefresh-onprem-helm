@@ -19,7 +19,7 @@ annotations:
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
     - kind: changed
-      description: "Update runtime-images (engine/cf-docker-builder)"
+      description: "Update consul chart to 11.3.22 & mongosh to 2.3.7"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
