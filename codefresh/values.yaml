@@ -467,8 +467,8 @@ runtimeImages:
   KUBE_DEPLOY: quay.io/codefresh/cf-deploy-kubernetes:16.2.6
   PIPELINE_DEBUGGER_IMAGE: quay.io/codefresh/cf-debugger:1.3.7
   TEMPLATE_ENGINE: quay.io/codefresh/pikolo:0.14.1
-  CR_6177_FIXER: docker.io/library/alpine:3.20
-  GC_BUILDER_IMAGE: docker.io/library/alpine:3.20
+  CR_6177_FIXER: docker.io/library/alpine:3.21
+  GC_BUILDER_IMAGE: docker.io/library/alpine:3.21
 
 #--------------------
 # Codefresh subcharts
@@ -766,7 +766,7 @@ cfsign:
       image:
         registry: quay.io
         repository: codefresh/curl
-        tag: 8.10.1
+        tag: 8.11.1
   affinity: {}
   nodeSelector: {}
   podSecurityContext: {}
@@ -1191,12 +1191,12 @@ builder:
       image:
         registry: quay.io
         repository: codefresh/curl
-        tag: 8.10.1
+        tag: 8.11.1
   container:
     image:
       registry: docker.io
       repository: library/docker
-      tag: 27.3-dind
+      tag: 27.4-dind
   affinity: {}
   nodeSelector: {}
   podSecurityContext: {}
@@ -1212,12 +1212,12 @@ runner:
       image:
         registry: quay.io
         repository: codefresh/curl
-        tag: 8.10.1
+        tag: 8.11.1
   container:
     image:
       registry: docker.io
       repository: library/docker
-      tag: 27.3-dind
+      tag: 27.4-dind
   affinity: {}
   nodeSelector: {}
   podSecurityContext: {}

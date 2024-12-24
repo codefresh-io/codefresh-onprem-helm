@@ -19,7 +19,7 @@ annotations:
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
     - kind: changed
-      description: "Update consul chart to 11.3.22 & mongosh to 2.3.7"
+      description: "Update consul chart to 11.3.22, mongosh to 2.3.7, curl to 8.11.1 & dind to 27.4"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
