@@ -2232,6 +2232,7 @@ kubectl -n $NAMESPACE delete secret codefresh-certs-server
 | global.runnerService | string | `"runner"` | Default runner service name. |
 | global.runtimeEnvironmentManagerPort | int | `80` | Default runtime-environment-manager service port. |
 | global.runtimeEnvironmentManagerService | string | `"runtime-environment-manager"` | Default runtime-environment-manager service name. |
+| global.security | object | `{"allowInsecureImages":true}` | Bitnami |
 | global.storageClass | string | `""` | Global StorageClass for Persistent Volume(s) |
 | global.tlsSignPort | int | `4999` | Default tls-sign service port. |
 | global.tlsSignService | string | `"cfsign"` | Default tls-sign service name. |

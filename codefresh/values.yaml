@@ -417,6 +417,10 @@ global:
   # Use `.Values.seed.postgresSeedJob` instead
   postgresSeedJob: {}
 
+  # -- Bitnami
+  security:
+    allowInsecureImages: true
+
 # -- Pre/post-upgrade Job hooks.
 # Updates images in `system/default` runtime.
 # @default -- See below
