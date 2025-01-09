@@ -7,7 +7,7 @@ dependencies:
   version: 0.9.0
 - name: consul
   repository: https://charts.bitnami.com/bitnami
-  version: 11.3.22
+  version: 11.4.1
 - name: mongodb
   repository: https://charts.bitnami.com/bitnami
   version: 14.4.1
@@ -155,5 +155,5 @@ dependencies:
 - name: cf-oidc-provider
   repository: oci://quay.io/codefresh/charts
   version: 0.0.15
-digest: sha256:942460b13f2ae203eedf583b4f3f5b247e7acc77691f6732854f789572d9ea80
-generated: "2025-01-09T13:21:33.417841+03:00"
+digest: sha256:ad35e8c10ef3541991d2a9c0515bd4f992f22933209de003dfd0dfb917965ba9
+generated: "2025-01-09T16:19:01.68063+03:00"
