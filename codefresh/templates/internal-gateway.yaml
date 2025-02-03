@@ -14,6 +14,12 @@
   {{- $cfApiEndpointsSvc = $cfApiEndpointsSvcFullName }}
 {{- end }}
 
+{{ $cfUiSvc := printf "%s-%s" .Release.Name (index .Subcharts "cfui" ).Chart.Name }}
+{{- $cfUiSvcFullName := (index .Subcharts "cfui").Values.fullnameOverride }}
+{{- if $cfUiSvcFullName }}
+  {{- $cfUiSvc = $cfUiSvcFullName }}
+{{- end }}
+
 {{- /*
 If onprem is installed with single-role cf-api mode
 */}}
@@ -32,6 +38,8 @@ If onprem is installed with single-role cf-api mode
 {{- $_ := set (index $internalGatewayContext.Values.codefresh.serviceEndpoints "cfapi-ws") "svc" (printf "%s.%s.svc.%s" $cfApiEndpointsSvc .Release.Namespace .Values.global.clusterDomain ) }}
 
 {{- end }}
+
+{{- $_ := set (index $internalGatewayContext.Values.codefresh.serviceEndpoints "cfui") "svc" (printf "%s.%s.svc.%s" $cfUiSvc .Release.Namespace .Values.global.clusterDomain ) }}
 
 {{- include "internal-gateway.resources" $internalGatewayContext }}
 
