@@ -9,7 +9,7 @@
 
 {{- $internalGatewayContext := (index .Subcharts "internal-gateway") }}
 
-{{ $cfApiEndpointsSvcFullName := (index .Subcharts "cfapi").Values.fullnameoverride }}
+{{ $cfApiEndpointsSvcFullName := (index .Subcharts "cfapi").Values.fullnameOverride }}
 {{- if $cfApiEndpointsSvcFullName }}
   {{- $cfApiEndpointsSvc = $cfApiEndpointsSvcFullName }}
 {{- end }}
