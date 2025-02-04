@@ -9,15 +9,15 @@
 
 {{- $internalGatewayContext := (index .Subcharts "internal-gateway") }}
 
-{{ $cfApiEndpointsSvcFullName := (index .Subcharts "cfapi").Values.fullnameOverride }}
-{{- if $cfApiEndpointsSvcFullName }}
-  {{- $cfApiEndpointsSvc = $cfApiEndpointsSvcFullName }}
+{{ $fullnameCfApiEndpointsSvc := (index .Subcharts "cfapi").Values.fullnameOverride }}
+{{- if $fullnameCfApiEndpointsSvc }}
+  {{- $cfApiEndpointsSvc = $fullnameCfApiEndpointsSvc }}
 {{- end }}
 
 {{ $cfUiSvc := printf "%s-%s" .Release.Name (index .Subcharts "cfui" ).Chart.Name }}
-{{- $cfUiSvcFullName := (index .Subcharts "cfui").Values.fullnameOverride }}
-{{- if $cfUiSvcFullName }}
-  {{- $cfUiSvc = $cfUiSvcFullName }}
+{{- $fullnameCfUiSvc := (index .Subcharts "cfui").Values.fullnameOverride }}
+{{- if $fullnameCfUiSvc }}
+  {{- $cfUiSvc = $fullnameCfUiSvc }}
 {{- end }}
 
 {{- /*
