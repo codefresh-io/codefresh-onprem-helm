@@ -1884,3 +1884,5 @@ seed-e2e:
 
 ci:
   enabled: false
+
+developmentChart: false
