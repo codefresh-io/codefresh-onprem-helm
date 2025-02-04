@@ -1177,6 +1177,8 @@ redis-ha:
 # Ref: https://github.com/bitnami/charts/blob/main/bitnami/rabbitmq/values.yaml
 rabbitmq:
   enabled: true
+  image:
+    tag: 4.0.5
   replicaCount: 1
   auth:
     username: user
