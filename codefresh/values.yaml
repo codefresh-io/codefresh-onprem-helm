@@ -122,9 +122,6 @@ ingress:
     nginx.ingress.kubernetes.io/service-upstream: "true"
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
     nginx.org/redirect-to-https: "false"
-    nginx.ingress.kubernetes.io/configuration-snippet: |
-      more_set_headers "X-Request-ID: $request_id";
-      proxy_set_header X-Request-ID $request_id;
 
 # -- Global parameters
 # @default -- See below
