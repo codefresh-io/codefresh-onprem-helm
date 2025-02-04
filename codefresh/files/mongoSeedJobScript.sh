@@ -29,6 +29,8 @@ MONGODB_DATABASES=(
     "platform-analytics-postgres"
     "read-models"
     "runtime-environment-manager"
+    "onboarding-status"
+    "payments"
 )
 
 disableMongoTelemetry() {

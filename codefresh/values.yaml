@@ -1886,3 +1886,18 @@ ci:
   enabled: false
 
 developmentChart: false
+
+mailer:
+  enabled: false
+
+payments:
+  enabled: false
+
+segment-reporter:
+  enabled: false
+
+salesforce-reporter:
+  enabled: false
+
+onboarding-status:
+  enabled: false
