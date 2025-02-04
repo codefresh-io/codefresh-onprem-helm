@@ -21,11 +21,6 @@ spec:
       - {{ .Values.global.appUrl }}
       secretName: {{ include "codefresh.ingress.tlsSecretName" . }}
   {{- end }}
-  defaultBackend:
-    service:
-      name: {{ printf "%s-%s" .Release.Name (index .Subcharts "cfui" ).Chart.Name }}
-      port:
-        number: {{ (index .Subcharts "cfui" ).Values.service.main.ports.http.port }}
   rules:
   - host: {{ .Values.ingress.domain | default .Values.global.appUrl }}
     http:
