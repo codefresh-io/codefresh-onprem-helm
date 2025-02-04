@@ -99,11 +99,11 @@ mongosh ${MONGODB_ROOT_URI} --eval "db.getSiblingDB(\"codefresh\").grantRolesToU
 mongosh ${MONGODB_ROOT_URI} --eval "db.getSiblingDB(\"codefresh\").grantRolesToUser( \"${MONGODB_USER}\", [ { role: \"readWrite\", db: \"platform-analytics-postgres\" } ] )" 2>&1 || true
 mongosh ${MONGODB_ROOT_URI} --eval "db.getSiblingDB(\"codefresh\").changeUserPassword(\"${MONGODB_USER}\",\"${MONGODB_PASSWORD}\")" 2>&1 || true
 
-mongoimport --uri ${MONGO_URI} --collection idps --type json --legacy --file ${ASSETS_PATH}idps.json
-mongoimport --uri ${MONGO_URI} --collection accounts --type json --legacy --file ${ASSETS_PATH}accounts.json
-mongoimport --uri ${MONGO_URI} --collection users --type json --legacy --file ${ASSETS_PATH}users.json
+# mongoimport --uri ${MONGO_URI} --collection idps --type json --legacy --file ${ASSETS_PATH}idps.json
+# mongoimport --uri ${MONGO_URI} --collection accounts --type json --legacy --file ${ASSETS_PATH}accounts.json
+# mongoimport --uri ${MONGO_URI} --collection users --type json --legacy --file ${ASSETS_PATH}users.json
 
-if [[ $DEVELOPMENT_CHART == "true" ]]; then
-    setSystemAdmin
-    setPacks
-fi
+# if [[ $DEVELOPMENT_CHART == "true" ]]; then
+#     setSystemAdmin
+#     setPacks
+# fi
