@@ -67,7 +67,7 @@ spec:
           subPath: "idps.json"
         - name: seed-data
           mountPath: "/usr/share/extras/packs.json"
-          subPath: "idps.json"
+          subPath: "packs.json"
       {{- include (printf "%s.volumeMounts" $libTemplateName) ( dict "Values" .Values.seed.volumeMounts "context" $ ) | nindent 8 }}
       {{- with .Values.seed.nodeSelector }}
       nodeSelector:
