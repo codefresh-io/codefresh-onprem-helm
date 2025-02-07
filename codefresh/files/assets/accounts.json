@@ -3,11 +3,10 @@
   "badgeToken": "eyJhbGciOiJIUzI1NiJ9.NTkwMDkxMTdjMTAyNzYzYmVkYTdjZTcx.B0HOUL6HlpTRNr_e95pVucSRMRzP2cobe5kIoMtrDSc",
   "createdAt": ISODate("2017-04-26T12:22:48.001+0000"),
   "updatedAt": ISODate("2017-04-26T12:27:13.720+0000"),
-  "name": "admin-cf",
+  "name": "codefresh-inc",
   "runtimeEnvironment": "codefresh",
   "canUsePrivateRepos": true,
   "dedicatedInfrastructure": false,
-  "cfcrRepositoryPath": "admin-cf",
   "build": {
     "nodes": NumberInt(0),
     "parallel": NumberInt(10),
