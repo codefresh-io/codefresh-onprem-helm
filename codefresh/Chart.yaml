@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.6.7
+version: 2.6.8
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -19,7 +19,7 @@ annotations:
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
     - kind: security
-      description: "Miscellaneous security updates (10.02.2025)"
+      description: "Miscellaneous security updates (27.02.2025)"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -45,7 +45,7 @@ dependencies:
     repository: oci://registry-1.docker.io/bitnamicharts
     condition: postgresql-ha.enabled
   - name: redis
-    version: 20.3.0
+    version: 20.9.0
     repository: https://charts.bitnami.com/bitnami
     condition: redis.enabled
   - name: redis-ha
