@@ -20,6 +20,16 @@ annotations:
   artifacthub.io/changes: |
     - kind: security
       description: "Miscellaneous security updates (27.02.2025)"
+    - kind: fixed
+      description: "Fixed removing a user with assigned SSO configuration that does not exist on the platform"
+      links:
+        - name: JIRA Issue
+          url: https://codefresh-io.atlassian.net/browse/CR-27590
+    - kind: fixed
+      description: "Fixed unassigning removed SSO configuration for a user"
+      links:
+        - name: JIRA Issue
+          url: https://codefresh-io.atlassian.net/browse/CR-27590
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
