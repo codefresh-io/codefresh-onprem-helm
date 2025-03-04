@@ -35,7 +35,6 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
   - [X-Frame-Options response header](#x-frame-options-response-header)
 - [Configuring OIDC Provider](#configuring-oidc-provider)
 - [Upgrading](#upgrading)
-  - [⚠️ Known issues](#⚠️-known-issues)
   - [To 2.0.0](#to-200)
   - [To 2.0.12](#to-2012)
   - [To 2.0.17](#to-2017)
@@ -1394,12 +1393,6 @@ Use [obtain-oidc-id-token](https://github.com/codefresh-io/steps/blob/822afc0a9a
 
 ## Upgrading
 
-### ⚠️ Known issues
-
-Please check the following known issues before upgrading the chart:
-
-- There is [known issue](https://github.com/hashicorp/consul/issues/20722) of **hashicorp/consul** behaviour. If consul fails with the error `refusing to rejoin cluster because the server has been offline for more than the configured server_rejoin_age_max - consider wiping your data dir` after runtime upgrade, try to wipe out the consul volume with config data.
-
 ### To 2.0.0
 
 This major chart version change (v1.4.X -> v2.0.0) contains some **incompatible breaking change needing manual actions**.
@@ -1936,6 +1929,10 @@ cfapi:
 ### [What's new in 2.6.x](https://codefresh.io/docs/docs/whats-new/on-prem-release-notes/#on-premises-version-26)
 
 ## Troubleshooting
+
+### Error: Refusing to rejoin cluster because the server has been offline for more than the configured server_rejoin_age_max - consider wiping your data dir
+
+After runtime upgrading, consul fails with the error `refusing to rejoin cluster because the server has been offline for more than the configured server_rejoin_age_max - consider wiping your data dir`. There is [known issue](https://github.com/hashicorp/consul/issues/20722) of **hashicorp/consul** behaviour. Try to wipe out or delete the consul volume with config data.
 
 ### Error: Failed to validate connection to Docker daemon; caused by Error: certificate has expired
 
