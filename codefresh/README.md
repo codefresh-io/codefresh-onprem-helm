@@ -35,6 +35,7 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
   - [X-Frame-Options response header](#x-frame-options-response-header)
 - [Configuring OIDC Provider](#configuring-oidc-provider)
 - [Upgrading](#upgrading)
+  - [⚠️ Known issues](#⚠️-known-issues)
   - [To 2.0.0](#to-200)
   - [To 2.0.12](#to-2012)
   - [To 2.0.17](#to-2017)
@@ -1392,6 +1393,12 @@ To see all the claims supported by Codefresh OIDC provider, see `claims_supporte
 Use [obtain-oidc-id-token](https://github.com/codefresh-io/steps/blob/822afc0a9a128384e76459c6573628020a2cf404/incubating/obtain-oidc-id-token/step.yaml#L27-L58) and [aws-sts-assume-role-with-web-identity](https://github.com/codefresh-io/steps/blob/822afc0a9a128384e76459c6573628020a2cf404/incubating/aws-sts-assume-role-with-web-identity/step.yaml#L29-L63) steps to exchange the OIDC token (JWT) for a cloud access token.
 
 ## Upgrading
+
+### ⚠️ Known issues
+
+Please check the following known issues before upgrading the chart:
+
+- There is [known issue](https://github.com/hashicorp/consul/issues/20722) of **hashicorp/consul** behaviour. If consul fails with the error `refusing to rejoin cluster because the server has been offline for more than the configured server_rejoin_age_max - consider wiping your data dir` after runtime upgrade, try to wipe out the consul volume with config data.
 
 ### To 2.0.0
 
