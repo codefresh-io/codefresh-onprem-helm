@@ -148,12 +148,12 @@ dependencies:
   version: 0.49.76
 - name: argo-platform
   repository: oci://quay.io/codefresh/charts
-  version: 1.3169.1-onprem-d65a019
+  version: 1.3169.1-onprem-915b48a
 - name: argo-hub-platform
   repository: oci://quay.io/codefresh/charts
   version: 0.1.18
 - name: cf-oidc-provider
   repository: oci://quay.io/codefresh/charts
   version: 0.0.15
-digest: sha256:cae4ba166e0a91d195af3df797c43294a9d2b1de2771524a4fb2d04946babd59
-generated: "2025-03-04T10:59:18.787343+03:00"
+digest: sha256:416dcda251f5cd35df121c7beb2a922e581177f0fcdbe54e486bd3130a1eb835
+generated: "2025-03-07T17:14:47.941403+03:00"
