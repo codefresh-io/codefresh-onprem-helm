@@ -1386,7 +1386,7 @@ argo-platform:
     secrets:
       argo-hub-host: http://{{ .Release.Name }}-argo-hub-platform
       cache-host: *cache-host
-      # cache-password: ""
+      cache-password: *cache-password
       cache-port: *cache-port
       v1-host: http://{{ .Release.Name }}-{{ .Values.global.cfapiEndpointsService }}
       v1-internal-host: http://{{ .Release.Name }}-{{ .Values.global.cfapiService }}:{{ .Values.global.cfapiInternalPort }}
