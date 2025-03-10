@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/helm-unittest/helm-unittest/master/schema/helm-testsuite.json
+suite: Misc tests
+templates:
+  - charts/argo-platform/templates/**/*.yaml
+tests:
+  - it: argo-platform api-graphql should have empty CACHE_PASSWORD when no .Values.global.redisPassword or .Values.global.redisPasswordSecretKeyRef is provided
+    template: charts/argo-platform/templates/api-graphql/workload.yaml
+    set:
+      global.redisPassword: ""
+    asserts:
+      - notContains:
+          path: spec.template.spec.containers[0].env
+          content:
+            name: CACHE_PASSWORD
+          any: true
+
+  - it: argo-platform promotion-orchestrator should have empty CACHE_PASSWORD when no .Values.global.redisPassword or .Values.global.redisPasswordSecretKeyRef is provided
+    template: charts/argo-platform/templates/promotion-orchestrator/workload.yaml
+    set:
+      global.redisPassword: ""
+    asserts:
+      - notContains:
+          path: spec.template.spec.containers[0].env
+          content:
+            name: CACHE_PASSWORD
+          any: true
+
