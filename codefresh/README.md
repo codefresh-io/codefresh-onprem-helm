@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.6.0](https://img.shields.io/badge/Version-2.6.0-informational?style=flat-square) ![AppVersion: 2.6.0](https://img.shields.io/badge/AppVersion-2.6.0-informational?style=flat-square)
+![Version: 2.6.9](https://img.shields.io/badge/Version-2.6.9-informational?style=flat-square) ![AppVersion: 2.6.0](https://img.shields.io/badge/AppVersion-2.6.0-informational?style=flat-square)
 
 Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
@@ -203,7 +203,7 @@ However, you might need to use external services like [MongoDB Atlas Database](h
 
 #### External MongoDB
 
-**Important:** Recommended version of Mongo is 4.4.x
+**Important:** Recommended version of Mongo is 6.x
 
 ```yaml
 seed:
@@ -1928,6 +1928,68 @@ cfapi:
 
 ### [What's new in 2.6.x](https://codefresh.io/docs/docs/whats-new/on-prem-release-notes/#on-premises-version-26)
 
+#### Affected values
+
+In Codefresh On-Prem 2.6.x all Codefresh owner microservices include image digests in the default subchart values.
+
+For example, default values for `cfapi` might look like this:
+
+```yaml
+container:
+  image:
+    registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
+    repository: codefresh/cf-api
+    tag: 21.268.1
+    digest: "sha256:bae42f8efc18facc2bf93690fce4ab03ef9607cec4443fada48292d1be12f5f8"
+    pullPolicy: IfNotPresent
+```
+
+this resulting in the following image reference in the pod spec:
+
+```yaml
+spec:
+  containers:
+    - name: cfapi
+      image: us-docker.pkg.dev/codefresh-enterprise/gcr.io/codefresh/cf-api:21.268.1@sha256:bae42f8efc18facc2bf93690fce4ab03ef9607cec4443fada48292d1be12f5f8
+```
+
+> **Note!** When the `digest` is providerd, the `tag` is ignored! You can omit digest and use tag only like the following `values.yaml` example:
+
+```yaml
+cfapi:
+  container:
+    image:
+      tag: 21.268.1
+      # -- Set empty tag for digest
+      digest: ""
+```
+
+#### Auto-index creation in MongoDB
+
+In Codefresh On-Prem 2.6.x, the `cfapi` can create indexes in MongoDB automatically. This feature is disabled by default. To enable it, set the following environment variable:
+
+> **Note!** Enabling this feature can cause performance degradation during the index creation process.
+
+> **Note!** It is recommended to add indexes during a maintenance window. The indexes list is provided in `codefresh/files/indexes/<MAJOR.MINOR>/<collection_name>.json` files.
+
+```yaml
+cfapi:
+  container:
+    env:
+      MONGOOSE_AUTO_INDEX: "true"
+```
+
+```yaml
+argo-platform:
+  api-graphql:
+    env:
+      MONGO_AUTOMATIC_INDEX_CREATION: "true"
+```
+
+Ref:
+- [Create an Index in Atlas DB](https://www.mongodb.com/docs/atlas/atlas-ui/indexes/#create-an-index)
+- [Create an Index with mongosh](https://www.mongodb.com/docs/manual/reference/method/db.collection.createIndex/)
+
 ## Troubleshooting
 
 ### Error: Failed to validate connection to Docker daemon; caused by Error: certificate has expired
@@ -2024,7 +2086,7 @@ kubectl -n $NAMESPACE delete secret codefresh-certs-server
 | argo-platform.runtime-monitor | object | See below | runtime-monitor Don't enable! Not used in onprem! |
 | argo-platform.ui | object | See below | ui |
 | argo-platform.useExternalSecret | bool | `false` | Use regular k8s secret object. Keep `false`! |
-| builder | object | `{"affinity":{},"container":{"image":{"registry":"docker.io","repository":"library/docker","tag":"27.3-dind"}},"enabled":true,"initContainers":{"register":{"image":{"registry":"quay.io","repository":"codefresh/curl","tag":"8.10.1"}}},"nodeSelector":{},"podSecurityContext":{},"resources":{},"tolerations":[]}` | builder |
+| builder | object | `{"affinity":{},"container":{"image":{"registry":"docker.io","repository":"library/docker","tag":"27.5-dind"}},"enabled":true,"initContainers":{"register":{"image":{"registry":"quay.io","repository":"codefresh/curl","tag":"8.11.1"}}},"nodeSelector":{},"podSecurityContext":{},"resources":{},"tolerations":[]}` | builder |
 | cf-broadcaster | object | See below | broadcaster |
 | cf-oidc-provider | object | See below | cf-oidc-provider |
 | cf-platform-analytics-etlstarter | object | See below | etl-starter |
@@ -2170,6 +2232,7 @@ kubectl -n $NAMESPACE delete secret codefresh-certs-server
 | global.runnerService | string | `"runner"` | Default runner service name. |
 | global.runtimeEnvironmentManagerPort | int | `80` | Default runtime-environment-manager service port. |
 | global.runtimeEnvironmentManagerService | string | `"runtime-environment-manager"` | Default runtime-environment-manager service name. |
+| global.security | object | `{"allowInsecureImages":true}` | Bitnami |
 | global.storageClass | string | `""` | Global StorageClass for Persistent Volume(s) |
 | global.tlsSignPort | int | `4999` | Default tls-sign service port. |
 | global.tlsSignService | string | `"cfsign"` | Default tls-sign service name. |

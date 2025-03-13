@@ -1,0 +1,95 @@
+[
+    {
+        "v" : 2.0,
+        "key" : {
+            "_id" : 1.0
+        },
+        "name" : "_id_"
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "accountId" : 1.0,
+            "imageName" : 1.0,
+            "repositoryName" : 1.0
+        },
+        "name" : "accountId_1_imageName_1_repositoryName_1",
+        "background" : true
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "accountId" : 1.0,
+            "repositoryName" : 1.0,
+            "gitRepository" : 1.0
+        },
+        "name" : "accountId_1_repositoryName_1_gitRepository_1",
+        "background" : true
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "accountId" : 1.0,
+            "repositoryName" : 1.0,
+            "branch" : 1.0
+        },
+        "name" : "accountId_1_repositoryName_1_branch_1",
+        "background" : true
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "runtime.name" : 1.0
+        },
+        "name" : "runtime.name_1",
+        "background" : true
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "accountId" : 1.0,
+            "repoDigest" : 1.0
+        },
+        "name" : "accountId_1_repoDigest_1",
+        "background" : true
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "accountId" : 1.0,
+            "internalImageId" : 1.0
+        },
+        "name" : "accountId_1_internalImageId_1",
+        "background" : true
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "accountId" : 1,
+            "binaryId" : 1,
+            "lastUpdate" : -1,
+            "_id" : -1
+        },
+        "name" : "accountId_1_binaryId_1_lastUpdate_-1__id_-1"
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "accountId" : 1,
+            "imageName" : 1
+        },
+        "name" : "accountId_1_imageName_1",
+        "collation" : {
+            "locale" : "en_US",
+            "caseLevel" : false,
+            "caseFirst" : "off",
+            "strength" : 1.0,
+            "numericOrdering" : false,
+            "alternate" : "non-ignorable",
+            "maxVariable" : "punct",
+            "normalization" : false,
+            "backwards" : false,
+            "version" : "57.1"
+        }
+    }
+]

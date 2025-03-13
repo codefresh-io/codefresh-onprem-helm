@@ -1,0 +1,196 @@
+[
+    {
+        "v" : 2.0,
+        "key" : {
+            "_id" : 1.0
+        },
+        "name" : "_id_"
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "applicationMetadata.name" : 1.0
+        },
+        "name" : "applicationMetadata.name_1",
+        "background" : true
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "applicationMetadata.labels" : 1.0
+        },
+        "name" : "applicationMetadata.labels_1",
+        "background" : true
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "application.prs.type" : 1.0
+        },
+        "name" : "application.prs.type_1",
+        "background" : true
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "application.prs.key" : 1.0
+        },
+        "name" : "application.prs.key_1",
+        "background" : true
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "application.prs.accountId" : 1.0
+        },
+        "name" : "application.prs.accountId_1",
+        "background" : true
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "application.issues.type" : 1.0
+        },
+        "name" : "application.issues.type_1",
+        "background" : true
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "application.issues.key" : 1.0
+        },
+        "name" : "application.issues.key_1",
+        "background" : true
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "application.issues.accountId" : 1.0
+        },
+        "name" : "application.issues.accountId_1",
+        "background" : true
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "applicationMetadata.accountId" : 1.0,
+            "applicationMetadata.runtime" : 1.0,
+            "applicationMetadata.name" : 1.0,
+            "applicationMetadata.namespace" : 1.0,
+            "application.issues.key" : 1.0
+        },
+        "name" : "applicationMetadata.accountId_1_applicationMetadata.runtime_1_applicationMetadata.name_1_applicationMetadata.namespace_1_application.issues.key_1",
+        "background" : true
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "applicationMetadata.accountId" : 1.0,
+            "applicationMetadata.runtime" : 1.0,
+            "applicationMetadata.name" : 1.0,
+            "applicationMetadata.namespace" : 1.0,
+            "application.prs.key" : 1.0
+        },
+        "name" : "applicationMetadata.accountId_1_applicationMetadata.runtime_1_applicationMetadata.name_1_applicationMetadata.namespace_1_application.prs.key_1",
+        "background" : true
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "applicationMetadata.accountId" : 1.0,
+            "applicationMetadata.runtime" : 1.0,
+            "applicationMetadata.name" : 1.0,
+            "applicationMetadata.namespace" : 1.0,
+            "application.committers.userName" : 1.0
+        },
+        "name" : "applicationMetadata.accountId_1_applicationMetadata.runtime_1_applicationMetadata.name_1_applicationMetadata.namespace_1_application.committers.userName_1",
+        "background" : true
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "applicationMetadata.accountId" : 1.0,
+            "applicationMetadata.runtime" : 1.0,
+            "applicationMetadata.name" : 1.0,
+            "applicationMetadata.namespace" : 1.0,
+            "applicationMetadata.group" : 1.0,
+            "applicationMetadata.version" : 1.0,
+            "applicationMetadata.kind" : 1.0,
+            "historyId" : -1.0
+        },
+        "name" : "applicationMetadata.accountId_1_applicationMetadata.runtime_1_applicationMetadata.name_1_applicationMetadata.namespace_1_applicationMetadata.group_1_applicationMetadata.version_1_applicationMetadata.kind_1_historyId_-1",
+        "background" : true,
+        "unique" : true
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "applicationMetadata.accountId" : 1.0,
+            "applicationMetadata.runtime" : 1.0,
+            "applicationMetadata.name" : 1.0,
+            "applicationMetadata.namespace" : 1.0,
+            "applicationMetadata.group" : 1.0,
+            "applicationMetadata.version" : 1.0,
+            "reportedToJira" : 1.0,
+            "historyId" : 1.0,
+            "application.status.syncStartedAt" : 1.0
+        },
+        "name" : "applicationMetadata.accountId_1_applicationMetadata.runtime_1_applicationMetadata.name_1_applicationMetadata.namespace_1_applicationMetadata.group_1_applicationMetadata.version_1_reportedToJira_1_historyId_1_application.status.syncStartedAt_1",
+        "background" : true
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "fromState.services.revision" : 1,
+            "fromState.services.name" : 1,
+            "applicationMetadata.accountId" : 1
+        },
+        "name" : "fromState.services.revision_1_fromState.services.name_1_applicationMetadata.accountId_1"
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "syncOperationRevision" : 1,
+            "applicationMetadata.name" : 1,
+            "applicationMetadata.accountId" : 1,
+            "historyId" : -1
+        },
+        "name" : "syncOperationRevision_1_applicationMetadata.name_1_applicationMetadata.accountId_1_historyId_-1"
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "applicationMetadata.name" : 1,
+            "applicationMetadata.accountId" : 1,
+            "historyId" : -1
+        },
+        "name" : "applicationMetadata.name_1_applicationMetadata.accountId_1_historyId_-1"
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "applicationMetadata.name" : 1,
+            "applicationMetadata.accountId" : 1,
+            "application.status.healthStatus" : 1
+        },
+        "name" : "applicationMetadata.name_1_applicationMetadata.accountId_1_application.status.healthStatus_1"
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "applicationMetadata.name" : 1,
+            "applicationMetadata.accountId" : 1,
+            "current" : 1
+        },
+        "name" : "applicationMetadata.name_1_applicationMetadata.accountId_1_current_1"
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "application.status.revision" : 1,
+            "applicationMetadata.name" : 1,
+            "applicationMetadata.accountId" : 1
+        },
+        "name" : "application.status.revision_1_applicationMetadata.name_1_applicationMetadata.accountId_1"
+    }
+]

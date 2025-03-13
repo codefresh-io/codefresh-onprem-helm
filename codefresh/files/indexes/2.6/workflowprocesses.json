@@ -1,0 +1,460 @@
+[
+    {
+        "v" : 1.0,
+        "key" : {
+            "account" : 1.0,
+            "pendingLicense" : 1.0,
+            "created" : 1.0
+        },
+        "name" : "account_1_pendingLicense_1_created_1"
+    },
+    {
+        "v" : 1.0,
+        "key" : {
+            "pipeline" : 1.0,
+            "status" : 1.0
+        },
+        "name" : "pipeline_1_status_1"
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "account" : 1.0,
+            "triggerType" : 1.0
+        },
+        "name" : "account_1_triggerType_1"
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "account" : 1.0,
+            "pipelineInfo.pipelineId" : 1.0
+        },
+        "name" : "account_1_pipelineInfo.pipelineId_1"
+    },
+    {
+        "v" : 1.0,
+        "key" : {
+            "account" : 1.0,
+            "startImmediately" : 1.0,
+            "status" : 1.0
+        },
+        "name" : "account_1_startImmediately_1_status_1"
+    },
+    {
+        "v" : 1.0,
+        "key" : {
+            "account" : 1.0,
+            "scmMetadata.repoName" : 1.0,
+            "scmMetadata.repoOwner" : 1.0,
+            "trigger" : 1.0,
+            "service" : 1.0
+        },
+        "name" : "account_1_scmMetadata.repoName_1_scmMetadata.repoOwner_1_trigger_1_service_1"
+    },
+    {
+        "v" : 1.0,
+        "key" : {
+            "isPublic" : 1.0
+        },
+        "name" : "isPublic_1"
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "codefreshEnv" : 1,
+            "status" : 1,
+            "shouldPerformFinishSystem" : 1,
+            "_id" : 1
+        },
+        "name" : "codefreshEnv_1_status_1_shouldPerformFinishSystem_1__id_1"
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "account" : 1,
+            "helmInfo.boardId" : 1
+        },
+        "name" : "account_1_helmInfo.boardId_1"
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "account" : 1.0,
+            "environs" : 1.0
+        },
+        "name" : "account_1_environs_1"
+    },
+    {
+        "v" : 1.0,
+        "key" : {
+            "account" : 1.0,
+            "status" : 1.0,
+            "trigger" : 1.0
+        },
+        "name" : "account_1_status_1_trigger_1"
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "account" : 1,
+            "pipeline" : 1,
+            "trigger" : 1,
+            "_id" : -1
+        },
+        "name" : "account_1_pipeline_1_trigger_1__id_-1"
+    },
+    {
+        "v" : 1.0,
+        "key" : {
+            "scmMetadata.branchName" : 1.0,
+            "account" : 1.0,
+            "pipeline" : 1.0,
+            "created" : -1.0,
+            "finished" : 1.0
+        },
+        "name" : "scmMetadata.branchName_1_account_1_pipeline_1_created_-1_finished_1"
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "trigger" : 1.0,
+            "account" : 1.0,
+            "status" : 1.0,
+            "_id" : -1.0
+        },
+        "name" : "trigger_1_account_1_status_1__id_-1"
+    },
+    {
+        "v" : 1.0,
+        "key" : {
+            "account" : 1.0,
+            "trigger" : 1.0,
+            "scmMetadata.repoName" : 1.0,
+            "service" : 1.0
+        },
+        "name" : "account_1_trigger_1_scmMetadata.repoName_1_service_1"
+    },
+    {
+        "v" : 1.0,
+        "key" : {
+            "service" : 1.0,
+            "status" : 1.0
+        },
+        "name" : "service_1_status_1"
+    },
+    {
+        "v" : 1.0,
+        "key" : {
+            "finished" : 1.0
+        },
+        "name" : "finished_1"
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "healthStatus.engine.status" : 1.0
+        },
+        "name" : "healthStatus.engine.status_1"
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "codefreshEnv" : 1,
+            "status" : 1,
+            "_id" : 1
+        },
+        "name" : "codefreshEnv_1_status_1__id_1"
+    },
+    {
+        "v" : 1.0,
+        "key" : {
+            "account" : 1.0,
+            "service" : 1.0,
+            "trigger" : 1.0
+        },
+        "name" : "account_1_service_1_trigger_1"
+    },
+    {
+        "v" : 1.0,
+        "key" : {
+            "scmMetadata.branchName" : 1.0,
+            "service" : 1.0,
+            "status" : 1.0,
+            "created" : -1.0
+        },
+        "name" : "scmMetadata.branchName_1_service_1_status_1_created_-1"
+    },
+    {
+        "v" : 1.0,
+        "key" : {
+            "status" : 1.0,
+            "trigger" : 1.0
+        },
+        "name" : "status_1_trigger_1"
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "pipeline" : 1.0,
+            "finished" : -1.0
+        },
+        "name" : "pipeline_1_finished_-1"
+    },
+    {
+        "v" : 1.0,
+        "key" : {
+            "progress" : 1.0
+        },
+        "name" : "progress_1"
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "account" : 1.0,
+            "environ" : 1.0
+        },
+        "name" : "account_1_environ_1"
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "status" : 1,
+            "created" : -1
+        },
+        "name" : "status_1_created_-1"
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "createdAt" : 1.0
+        },
+        "name" : "createdAt_1"
+    },
+    {
+        "v" : 1.0,
+        "key" : {
+            "request" : 1.0
+        },
+        "name" : "request_1"
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "account" : 1,
+            "_id" : 1,
+            "scmMetadata.repoName" : 1
+        },
+        "name" : "account_1__id_1_scmMetadata.repoName_1"
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "pipeline" : 1,
+            "created" : -1
+        },
+        "name" : "pipeline_1_created_-1"
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "account" : 1,
+            "status" : 1,
+            "created" : 1
+        },
+        "name" : "account_1_status_1_created_1"
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "status" : 1,
+            "runtimeEnvironmentMetadata.agent" : 1,
+            "created" : 1
+        },
+        "name" : "status_1_runtimeEnvironmentMetadata.agent_1_created_1"
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "created" : 1
+        },
+        "name" : "created_1",
+        "expireAfterSeconds" : 31536000.0
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "account" : 1,
+            "status" : 1,
+            "trigger" : 1,
+            "pipeline" : 1,
+            "keepPVCsForPendingApproval" : 1
+        },
+        "name" : "account_1_status_1_trigger_1_pipeline_1_keepPVCsForPendingApproval_1",
+        "partialFilterExpression" : {
+            "status" : {
+                "$in" : [
+                    "pending",
+                    "delayed",
+                    "elected",
+                    "running",
+                    "terminating",
+                    "pending-approval"
+                ]
+            }
+        }
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "_id" : 1.0
+        },
+        "name" : "_id_"
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "account" : 1,
+            "scmMetadata.revision" : 1,
+            "_id" : -1,
+            "pipeline" : 1
+        },
+        "name" : "account_1_scmMetadata.revision_1__id_-1_pipeline_1",
+        "partialFilterExpression" : {
+            "scmMetadata.revision" : {
+                "$exists" : true
+            }
+        }
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "account" : 1,
+            "trigger" : 1,
+            "scmMetadata.userName" : 1,
+            "_id" : -1,
+            "pipeline" : 1
+        },
+        "name" : "account_1_trigger_1_scmMetadata.userName_1__id_-1_pipeline_1",
+        "partialFilterExpression" : {
+            "scmMetadata.userName" : {
+                "$exists" : true
+            }
+        }
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "account" : 1,
+            "trigger" : 1,
+            "annotations.key" : 1,
+            "annotations.value" : 1,
+            "_id" : -1,
+            "pipeline" : 1
+        },
+        "name" : "account_1_trigger_1_annotations.key_1_annotations.value_1__id_-1_pipeline_1",
+        "sparse" : true
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "account" : 1,
+            "trigger" : 1,
+            "pipelineTrigger" : 1,
+            "_id" : -1,
+            "pipeline" : 1
+        },
+        "name" : "account_1_trigger_1_pipelineTrigger_1__id_-1_pipeline_1",
+        "partialFilterExpression" : {
+            "pipelineTrigger" : {
+                "$exists" : true
+            }
+        }
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "account" : 1,
+            "trigger" : 1,
+            "scmMetadata.branchName" : 1,
+            "_id" : -1,
+            "pipeline" : 1
+        },
+        "name" : "account_1_trigger_1_scmMetadata.branchName_1__id_-1_pipeline_1",
+        "partialFilterExpression" : {
+            "scmMetadata.branchName" : {
+                "$exists" : true
+            }
+        }
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "account" : 1,
+            "trigger" : 1,
+            "_id" : -1,
+            "pipeline" : 1
+        },
+        "name" : "account_1_trigger_1__id_-1_pipeline_1"
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "account" : 1,
+            "trigger" : 1,
+            "scmMetadata.provider" : 1,
+            "_id" : -1,
+            "pipeline" : 1
+        },
+        "name" : "account_1_trigger_1_scmMetadata.provider_1__id_-1_pipeline_1",
+        "partialFilterExpression" : {
+            "scmMetadata.provider" : {
+                "$exists" : true
+            }
+        }
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "account" : 1,
+            "trigger" : 1,
+            "scmMetadata.repoName" : 1,
+            "_id" : -1,
+            "pipeline" : 1
+        },
+        "name" : "account_1_trigger_1_scmMetadata.repoName_1__id_-1_pipeline_1",
+        "partialFilterExpression" : {
+            "scmMetadata.repoName" : {
+                "$exists" : true
+            }
+        }
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "account" : 1,
+            "trigger" : 1,
+            "scmMetadata.provider" : 1,
+            "scmMetadata.event" : 1,
+            "_id" : -1,
+            "pipeline" : 1
+        },
+        "name" : "account_1_trigger_1_scmMetadata.provider_1_scmMetadata.event_1__id_-1_pipeline_1",
+        "partialFilterExpression" : {
+            "scmMetadata.event" : {
+                "$exists" : true
+            },
+            "scmMetadata.provider" : {
+                "$exists" : true
+            }
+        }
+    },
+    {
+        "v" : 2.0,
+        "key" : {
+            "pipeline" : 1,
+            "_id" : -1
+        },
+        "name" : "pipeline_1__id_-1"
+    }
+]
