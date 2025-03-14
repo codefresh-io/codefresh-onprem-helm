@@ -45,6 +45,7 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
   - [To 2.4.0](#to-240)
   - [To 2.5.0](#to-250)
   - [To 2.6.0](#to-260)
+  - [To 2.7.0](#to-270)
 - [Rollback](#rollback)
 - [Troubleshooting](#troubleshooting)
 - [Values](#values)
@@ -1990,6 +1991,37 @@ Ref:
 - [Create an Index in Atlas DB](https://www.mongodb.com/docs/atlas/atlas-ui/indexes/#create-an-index)
 - [Create an Index with mongosh](https://www.mongodb.com/docs/manual/reference/method/db.collection.createIndex/)
 
+### To 2.7.0
+
+### [What's new in 2.7.x](https://codefresh.io/docs/docs/whats-new/on-prem-release-notes/#on-premises-version-27)
+
+#### Affected values
+
+- Added option to provide global `tolerations`/`nodeSelector`/`affinity` for all Codefresh subcharts
+> **Note!** This global setting will not be applied to Bitnami subcharts (e.g. `mongodb`, `redis`, `rabbitmq`, `postgres`. etc)
+
+```yaml
+global:
+  tolerations:
+    - key: "key"
+      operator: "Equal"
+      value: "value"
+      effect: "NoSchedule"
+
+  nodeSelector:
+    key: "value"
+
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: "key"
+                operator: "In"
+                values:
+                  - "value"
+```
+
 ## Troubleshooting
 
 ### Error: Failed to validate connection to Docker daemon; caused by Error: certificate has expired
@@ -2149,7 +2181,7 @@ kubectl -n $NAMESPACE delete secret codefresh-certs-server
 | gencerts | object | See below | Job to generate internal runtime secrets. Required at first install. |
 | gitops-dashboard-manager | object | See below | gitops-dashboard-manager |
 | global | object | See below | Global parameters |
-| global.affinity | object | `{}` | Global affinity constraints |
+| global.affinity | object | `{}` | Global affinity constraints Apply affinity to all Codefresh subcharts. Will not be applied on Bitnami subcharts. |
 | global.appProtocol | string | `"https"` | Application protocol. |
 | global.appUrl | string | `"onprem.codefresh.local"` | Application root url. Will be used in Ingress objects as hostname |
 | global.broadcasterPort | int | `80` | Default broadcaster service port. |
@@ -2197,7 +2229,7 @@ kubectl -n $NAMESPACE delete secret codefresh-certs-server
 | global.natsPort | int | `4222` | Default nats service port. |
 | global.natsService | string | `"nats"` | Default nats service name. |
 | global.newrelicLicenseKey | string | `""` | New Relic Key |
-| global.nodeSelector | object | `{}` | Global nodeSelector constraints |
+| global.nodeSelector | object | `{}` | Global nodeSelector constraints Apply nodeSelector to all Codefresh subcharts. Will not be applied on Bitnami subcharts. |
 | global.oidcProviderClientId | string | `nil` | Default OIDC Provider service client ID in plain text. |
 | global.oidcProviderClientSecret | string | `nil` | Default OIDC Provider service client secret in plain text. |
 | global.oidcProviderPort | int | `443` | Default OIDC Provider service port. |
@@ -2238,7 +2270,7 @@ kubectl -n $NAMESPACE delete secret codefresh-certs-server
 | global.storageClass | string | `""` | Global StorageClass for Persistent Volume(s) |
 | global.tlsSignPort | int | `4999` | Default tls-sign service port. |
 | global.tlsSignService | string | `"cfsign"` | Default tls-sign service name. |
-| global.tolerations | list | `[]` | Global tolerations constraints |
+| global.tolerations | list | `[]` | Global tolerations constraints Apply toleratons to all Codefresh subcharts. Will not be applied on Bitnami subcharts. |
 | helm-repo-manager | object | See below | helm-repo-manager |
 | hermes | object | See below | hermes |
 | hooks | object | See below | Pre/post-upgrade Job hooks. Updates images in `system/default` runtime. |
