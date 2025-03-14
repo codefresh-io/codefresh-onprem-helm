@@ -1202,6 +1202,32 @@ cfapi:
     USE_SHA256_GITHUB_SIGNATURE: "true"
 ```
 
+### Auto-index creation in MongoDB
+
+In Codefresh On-Prem 2.6.x, the `cfapi` can create indexes in MongoDB automatically. This feature is disabled by default. To enable it, set the following environment variable:
+
+> **Note!** Enabling this feature can cause performance degradation during the index creation process.
+
+> **Note!** It is recommended to add indexes during a maintenance window. The indexes list is provided in `codefresh/files/indexes/<MAJOR.MINOR>/<collection_name>.json` files.
+
+```yaml
+cfapi:
+  container:
+    env:
+      MONGOOSE_AUTO_INDEX: "true"
+```
+
+```yaml
+argo-platform:
+  api-graphql:
+    env:
+      MONGO_AUTOMATIC_INDEX_CREATION: "true"
+```
+
+Ref:
+- [Create an Index in Atlas DB](https://www.mongodb.com/docs/atlas/atlas-ui/indexes/#create-an-index)
+- [Create an Index with mongosh](https://www.mongodb.com/docs/manual/reference/method/db.collection.createIndex/)
+
 ## Configuring OIDC Provider
 
 OpenID Connect (OIDC) allows Codefresh Builds to access resources in your cloud provider (such as AWS, Azure, GCP), without needing to store cloud credentials as long-lived pipeline secret variables.
@@ -1967,29 +1993,7 @@ cfapi:
 
 #### Auto-index creation in MongoDB
 
-In Codefresh On-Prem 2.6.x, the `cfapi` can create indexes in MongoDB automatically. This feature is disabled by default. To enable it, set the following environment variable:
-
-> **Note!** Enabling this feature can cause performance degradation during the index creation process.
-
-> **Note!** It is recommended to add indexes during a maintenance window. The indexes list is provided in `codefresh/files/indexes/<MAJOR.MINOR>/<collection_name>.json` files.
-
-```yaml
-cfapi:
-  container:
-    env:
-      MONGOOSE_AUTO_INDEX: "true"
-```
-
-```yaml
-argo-platform:
-  api-graphql:
-    env:
-      MONGO_AUTOMATIC_INDEX_CREATION: "true"
-```
-
-Ref:
-- [Create an Index in Atlas DB](https://www.mongodb.com/docs/atlas/atlas-ui/indexes/#create-an-index)
-- [Create an Index with mongosh](https://www.mongodb.com/docs/manual/reference/method/db.collection.createIndex/)
+Auto-index creation in MongoDB[#auto-index-creation-in-mongodb]
 
 ### To 2.7.0
 
@@ -1998,7 +2002,7 @@ Ref:
 #### Affected values
 
 - Added option to provide global `tolerations`/`nodeSelector`/`affinity` for all Codefresh subcharts
-> **Note!** This global setting will not be applied to Bitnami subcharts (e.g. `mongodb`, `redis`, `rabbitmq`, `postgres`. etc)
+> **Note!** These global settings will not be applied to Bitnami subcharts (e.g. `mongodb`, `redis`, `rabbitmq`, `postgres`. etc)
 
 ```yaml
 global:
