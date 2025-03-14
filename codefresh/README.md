@@ -2093,6 +2093,10 @@ kubectl -n $NAMESPACE delete secret codefresh-certs-server
 ./configure-dind-certs.sh -n $RUNTIME_NAMESPACE https://$CODEFRESH_HOST $CODEFRESH_API_TOKEN
 ```
 
+### Consul Error: Refusing to rejoin cluster because the server has been offline for more than the configured server_rejoin_age_max
+
+After platform upgrade, Consul fails with the error `refusing to rejoin cluster because the server has been offline for more than the configured server_rejoin_age_max - consider wiping your data dir`. There is [known issue](https://github.com/hashicorp/consul/issues/20722) of **hashicorp/consul** behaviour. Try to wipe out or delete the consul PV with config data and restart Consul StatefulSet.
+
 ## Values
 
 | Key | Type | Default | Description |
