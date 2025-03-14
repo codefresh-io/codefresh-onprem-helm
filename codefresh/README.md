@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.6.9](https://img.shields.io/badge/Version-2.6.9-informational?style=flat-square) ![AppVersion: 2.6.0](https://img.shields.io/badge/AppVersion-2.6.0-informational?style=flat-square)
+![Version: 2.7.0](https://img.shields.io/badge/Version-2.7.0-informational?style=flat-square) ![AppVersion: 2.7.0](https://img.shields.io/badge/AppVersion-2.7.0-informational?style=flat-square)
 
 Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
@@ -2149,6 +2149,7 @@ kubectl -n $NAMESPACE delete secret codefresh-certs-server
 | gencerts | object | See below | Job to generate internal runtime secrets. Required at first install. |
 | gitops-dashboard-manager | object | See below | gitops-dashboard-manager |
 | global | object | See below | Global parameters |
+| global.affinity | object | `{}` | Global affinity constraints |
 | global.appProtocol | string | `"https"` | Application protocol. |
 | global.appUrl | string | `"onprem.codefresh.local"` | Application root url. Will be used in Ingress objects as hostname |
 | global.broadcasterPort | int | `80` | Default broadcaster service port. |
@@ -2196,6 +2197,7 @@ kubectl -n $NAMESPACE delete secret codefresh-certs-server
 | global.natsPort | int | `4222` | Default nats service port. |
 | global.natsService | string | `"nats"` | Default nats service name. |
 | global.newrelicLicenseKey | string | `""` | New Relic Key |
+| global.nodeSelector | object | `{}` | Global nodeSelector constraints |
 | global.oidcProviderClientId | string | `nil` | Default OIDC Provider service client ID in plain text. |
 | global.oidcProviderClientSecret | string | `nil` | Default OIDC Provider service client secret in plain text. |
 | global.oidcProviderPort | int | `443` | Default OIDC Provider service port. |
@@ -2236,6 +2238,7 @@ kubectl -n $NAMESPACE delete secret codefresh-certs-server
 | global.storageClass | string | `""` | Global StorageClass for Persistent Volume(s) |
 | global.tlsSignPort | int | `4999` | Default tls-sign service port. |
 | global.tlsSignService | string | `"cfsign"` | Default tls-sign service name. |
+| global.tolerations | list | `[]` | Global tolerations constraints |
 | helm-repo-manager | object | See below | helm-repo-manager |
 | hermes | object | See below | hermes |
 | hooks | object | See below | Pre/post-upgrade Job hooks. Updates images in `system/default` runtime. |
