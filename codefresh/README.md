@@ -1994,7 +1994,7 @@ cfapi:
 
 #### Auto-index creation in MongoDB
 
-Auto-index creation in MongoDB[#auto-index-creation-in-mongodb]
+[Auto-index creation in MongoDB](#auto-index-creation-in-mongodb)
 
 ### To 2.7.0
 
