@@ -1803,6 +1803,9 @@ argo-platform:
     podAnnotations:
       checksum/secret: '{{ include (print $.Template.BasePath "/promotion-orchestrator/secret.yaml") . | sha256sum }}'
 
+  classic-event-bridge:
+    enabled: false
+
 # -- cf-oidc-provider
 # @default -- See below
 cf-oidc-provider:
