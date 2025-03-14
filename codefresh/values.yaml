@@ -628,6 +628,7 @@ cfapi-test-reporting:
 # @default -- See below
 internal-gateway:
   enabled: true
+  libraryMode: true
   controller:
     replicas: 2
   container:
