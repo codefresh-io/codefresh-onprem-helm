@@ -34,6 +34,7 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
   - [Enable session cookie](#enable-session-cookie)
   - [X-Frame-Options response header](#x-frame-options-response-header)
   - [Auto-index creation in MongoDB](#auto-index-creation-in-mongodb)
+  - [Image digests in containers](#image-digests-in-containers)
 - [Configuring OIDC Provider](#configuring-oidc-provider)
 - [Upgrading](#upgrading)
   - [To 2.0.0](#to-200)
@@ -1234,6 +1235,43 @@ Ref:
 - [Create an Index in Atlas DB](https://www.mongodb.com/docs/atlas/atlas-ui/indexes/#create-an-index)
 - [Create an Index with mongosh](https://www.mongodb.com/docs/manual/reference/method/db.collection.createIndex/)
 
+### Image digests in containers
+
+In Codefresh On-Prem 2.6.x all Codefresh owner microservices include image digests in the default subchart values.
+
+For example, default values for `cfapi` might look like this:
+
+```yaml
+container:
+  image:
+    registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
+    repository: codefresh/cf-api
+    tag: 21.268.1
+    digest: "sha256:bae42f8efc18facc2bf93690fce4ab03ef9607cec4443fada48292d1be12f5f8"
+    pullPolicy: IfNotPresent
+```
+
+this resulting in the following image reference in the pod spec:
+
+```yaml
+spec:
+  containers:
+    - name: cfapi
+      image: us-docker.pkg.dev/codefresh-enterprise/gcr.io/codefresh/cf-api:21.268.1@sha256:bae42f8efc18facc2bf93690fce4ab03ef9607cec4443fada48292d1be12f5f8
+```
+
+> **Note!** When the `digest` is providerd, the `tag` is ignored! You can omit digest and use tag only like the following `values.yaml` example:
+
+```yaml
+cfapi:
+  container:
+    image:
+      tag: 21.268.1
+      # -- Set empty tag for digest
+      digest: "" 
+```
+
+
 ## Configuring OIDC Provider
 
 OpenID Connect (OIDC) allows Codefresh Builds to access resources in your cloud provider (such as AWS, Azure, GCP), without needing to store cloud credentials as long-lived pipeline secret variables.
@@ -1966,39 +2004,7 @@ cfapi:
 
 #### Affected values
 
-In Codefresh On-Prem 2.6.x all Codefresh owner microservices include image digests in the default subchart values.
-
-For example, default values for `cfapi` might look like this:
-
-```yaml
-container:
-  image:
-    registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
-    repository: codefresh/cf-api
-    tag: 21.268.1
-    digest: "sha256:bae42f8efc18facc2bf93690fce4ab03ef9607cec4443fada48292d1be12f5f8"
-    pullPolicy: IfNotPresent
-```
-
-this resulting in the following image reference in the pod spec:
-
-```yaml
-spec:
-  containers:
-    - name: cfapi
-      image: us-docker.pkg.dev/codefresh-enterprise/gcr.io/codefresh/cf-api:21.268.1@sha256:bae42f8efc18facc2bf93690fce4ab03ef9607cec4443fada48292d1be12f5f8
-```
-
-> **Note!** When the `digest` is providerd, the `tag` is ignored! You can omit digest and use tag only like the following `values.yaml` example:
-
-```yaml
-cfapi:
-  container:
-    image:
-      tag: 21.268.1
-      # -- Set empty tag for digest
-      digest: "" 
-```
+[Image digests in containers](#image-digests-in-containers)
 
 #### Auto-index creation in MongoDB
 
