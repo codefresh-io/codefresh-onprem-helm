@@ -1,0 +1,22 @@
+global:
+  imagePullSecrets:
+    - my-secret
+
+  tolerations:
+    - key: "key"
+      operator: "Equal"
+      value: "value"
+      effect: "NoSchedule"
+
+  nodeSelector:
+    key: "value"
+
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: "key"
+                operator: "In"
+                values:
+                  - "value"

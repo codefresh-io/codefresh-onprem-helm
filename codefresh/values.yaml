@@ -164,6 +164,15 @@ global:
   # -- Global Env vars
   env: {}
 
+  # -- Global tolerations constraints
+  tolerations: []
+
+  # -- Global affinity constraints
+  affinity: {}
+
+  # -- Global nodeSelector constraints
+  nodeSelector: {}
+
   # -- New Relic Key
   newrelicLicenseKey: ""
 

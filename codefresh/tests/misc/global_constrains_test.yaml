@@ -1,0 +1,1065 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/quintush/helm-unittest/master/schema/helm-testsuite.json
+suite: Should test global tolerations/nodeSelector/affinity/imagePullSecret
+templates:
+  - charts/**/*.yaml
+  - internal-gateway.yaml
+tests:
+  - it: argo-platform-abac should have global tolerations/nodeSelector/affinity/imagePullSecret
+    values:
+      - ../values/global.yaml
+    template: charts/argo-platform/templates/abac/workload.yaml
+    asserts:
+      - contains:
+          path: spec.template.spec.imagePullSecrets
+          content:
+            name: my-secret
+      - contains:
+          path: spec.template.spec.tolerations
+          content:
+            key: "key"
+            operator: "Equal"
+            value: "value"
+            effect: "NoSchedule"
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            key: "value"
+      - equal:
+          path: spec.template.spec.affinity
+          value:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: "key"
+                        operator: "In"
+                        values:
+                          - "value"
+          
+            
+  - it: argo-platform-analytics-reporter should have global tolerations/nodeSelector/affinity/imagePullSecret
+    values:
+      - ../values/global.yaml
+    template: charts/argo-platform/templates/analytics-reporter/workload.yaml
+    asserts:
+      - contains:
+          path: spec.template.spec.imagePullSecrets
+          content:
+            name: my-secret
+      - contains:
+          path: spec.template.spec.tolerations
+          content:
+            key: "key"
+            operator: "Equal"
+            value: "value"
+            effect: "NoSchedule"
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            key: "value"
+      - equal:
+          path: spec.template.spec.affinity
+          value:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: "key"
+                        operator: "In"
+                        values:
+                          - "value"
+
+  - it: argo-platform-api-events should have global tolerations/nodeSelector/affinity/imagePullSecret
+    values:
+      - ../values/global.yaml
+    template: charts/argo-platform/templates/api-events/workload.yaml
+    asserts:
+      - contains:
+          path: spec.template.spec.imagePullSecrets
+          content:
+            name: my-secret
+      - contains:
+          path: spec.template.spec.tolerations
+          content:
+            key: "key"
+            operator: "Equal"
+            value: "value"
+            effect: "NoSchedule"
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            key: "value"
+      - equal:
+          path: spec.template.spec.affinity
+          value:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: "key"
+                        operator: "In"
+                        values:
+                          - "value"
+
+  - it: argo-platform-api-graphql should have global tolerations/nodeSelector/affinity/imagePullSecret
+    values:
+      - ../values/global.yaml
+    template: charts/argo-platform/templates/api-graphql/workload.yaml
+    asserts:
+      - contains:
+          path: spec.template.spec.imagePullSecrets
+          content:
+            name: my-secret
+      - contains:
+          path: spec.template.spec.tolerations
+          content:
+            key: "key"
+            operator: "Equal"
+            value: "value"
+            effect: "NoSchedule"
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            key: "value"
+      - equal:
+          path: spec.template.spec.affinity
+          value:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: "key"
+                        operator: "In"
+                        values:
+                          - "value"
+
+  - it: argo-platform-audit should have global tolerations/nodeSelector/affinity/imagePullSecret
+    values:
+      - ../values/global.yaml
+    template: charts/argo-platform/templates/audit/workload.yaml
+    asserts:
+      - contains:
+          path: spec.template.spec.imagePullSecrets
+          content:
+            name: my-secret
+      - contains:
+          path: spec.template.spec.tolerations
+          content:
+            key: "key"
+            operator: "Equal"
+            value: "value"
+            effect: "NoSchedule"
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            key: "value"
+      - equal:
+          path: spec.template.spec.affinity
+          value:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: "key"
+                        operator: "In"
+                        values:
+                          - "value"
+
+  - it: argo-platform-broadcaster should have global tolerations/nodeSelector/affinity/imagePullSecret
+    values:
+      - ../values/global.yaml
+    template: charts/argo-platform/templates/broadcaster/workload.yaml
+    asserts:
+      - contains:
+          path: spec.template.spec.imagePullSecrets
+          content:
+            name: my-secret
+      - contains:
+          path: spec.template.spec.tolerations
+          content:
+            key: "key"
+            operator: "Equal"
+            value: "value"
+            effect: "NoSchedule"
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            key: "value"
+      - equal:
+          path: spec.template.spec.affinity
+          value:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: "key"
+                        operator: "In"
+                        values:
+                          - "value"
+
+  - it: argo-platform-cron-executor should have global tolerations/nodeSelector/affinity/imagePullSecret
+    values:
+      - ../values/global.yaml
+    template: charts/argo-platform/templates/cron-executor/workload.yaml
+    asserts:
+      - contains:
+          path: spec.template.spec.imagePullSecrets
+          content:
+            name: my-secret
+      - contains:
+          path: spec.template.spec.tolerations
+          content:
+            key: "key"
+            operator: "Equal"
+            value: "value"
+            effect: "NoSchedule"
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            key: "value"
+      - equal:
+          path: spec.template.spec.affinity
+          value:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: "key"
+                        operator: "In"
+                        values:
+                          - "value"
+
+  - it: argo-platform-event-handler should have global tolerations/nodeSelector/affinity/imagePullSecret
+    values:
+      - ../values/global.yaml
+    template: charts/argo-platform/templates/event-handler/workload.yaml
+    asserts:
+      - contains:
+          path: spec.template.spec.imagePullSecrets
+          content:
+            name: my-secret
+      - contains:
+          path: spec.template.spec.tolerations
+          content:
+            key: "key"
+            operator: "Equal"
+            value: "value"
+            effect: "NoSchedule"
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            key: "value"
+      - equal:
+          path: spec.template.spec.affinity
+          value:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: "key"
+                        operator: "In"
+                        values:
+                          - "value"
+
+  - it: argo-platform-promotion-orchestrator should have global tolerations/nodeSelector/affinity/imagePullSecret
+    values:
+      - ../values/global.yaml
+    template: charts/argo-platform/templates/promotion-orchestrator/workload.yaml
+    asserts:
+      - contains:
+          path: spec.template.spec.imagePullSecrets
+          content:
+            name: my-secret
+      - contains:
+          path: spec.template.spec.tolerations
+          content:
+            key: "key"
+            operator: "Equal"
+            value: "value"
+            effect: "NoSchedule"
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            key: "value"
+      - equal:
+          path: spec.template.spec.affinity
+          value:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: "key"
+                        operator: "In"
+                        values:
+                          - "value"
+
+  - it: argo-platform-ui should have global tolerations/nodeSelector/affinity/imagePullSecret
+    values:
+      - ../values/global.yaml
+    template: charts/argo-platform/templates/ui/workload.yaml
+    asserts:
+      - contains:
+          path: spec.template.spec.imagePullSecrets
+          content:
+            name: my-secret
+      - contains:
+          path: spec.template.spec.tolerations
+          content:
+            key: "key"
+            operator: "Equal"
+            value: "value"
+            effect: "NoSchedule"
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            key: "value"
+      - equal:
+          path: spec.template.spec.affinity
+          value:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: "key"
+                        operator: "In"
+                        values:
+                          - "value"
+
+  - it: argo-hub-platform should have global tolerations/nodeSelector/affinity/imagePullSecret
+    values:
+      - ../values/global.yaml
+    template: charts/argo-hub-platform/templates/controller.yaml
+    asserts:
+      - contains:
+          path: spec.template.spec.imagePullSecrets
+          content:
+            name: my-secret
+      - contains:
+          path: spec.template.spec.tolerations
+          content:
+            key: "key"
+            operator: "Equal"
+            value: "value"
+            effect: "NoSchedule"
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            key: "value"
+      - equal:
+          path: spec.template.spec.affinity
+          value:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: "key"
+                        operator: "In"
+                        values:
+                          - "value"
+
+  - it: cf-builder should have global tolerations/nodeSelector/affinity/imagePullSecret
+    values:
+      - ../values/global.yaml
+    template: charts/builder/templates/controller.yaml
+    asserts:
+      - contains:
+          path: spec.template.spec.imagePullSecrets
+          content:
+            name: my-secret
+      - contains:
+          path: spec.template.spec.tolerations
+          content:
+            key: "key"
+            operator: "Equal"
+            value: "value"
+            effect: "NoSchedule"
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            key: "value"
+      - equal:
+          path: spec.template.spec.affinity
+          value:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: "key"
+                        operator: "In"
+                        values:
+                          - "value"
+
+  - it: cf-runner should have global tolerations/nodeSelector/affinity/imagePullSecret
+    values:
+      - ../values/global.yaml
+    template: charts/runner/templates/controller.yaml
+    asserts:
+      - contains:
+          path: spec.template.spec.imagePullSecrets
+          content:
+            name: my-secret
+      - contains:
+          path: spec.template.spec.tolerations
+          content:
+            key: "key"
+            operator: "Equal"
+            value: "value"
+            effect: "NoSchedule"
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            key: "value"
+      - equal:
+          path: spec.template.spec.affinity
+          value:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: "key"
+                        operator: "In"
+                        values:
+                          - "value"
+
+  - it: cf-broadcaster should have global tolerations/nodeSelector/affinity/imagePullSecret
+    values:
+      - ../values/global.yaml
+    template: charts/cf-broadcaster/templates/controller.yaml
+    asserts:
+      - contains:
+          path: spec.template.spec.imagePullSecrets
+          content:
+            name: my-secret
+      - contains:
+          path: spec.template.spec.tolerations
+          content:
+            key: "key"
+            operator: "Equal"
+            value: "value"
+            effect: "NoSchedule"
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            key: "value"
+      - equal:
+          path: spec.template.spec.affinity
+          value:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: "key"
+                        operator: "In"
+                        values:
+                          - "value"
+
+  - it: cfapi should have global tolerations/nodeSelector/affinity/imagePullSecret
+    values:
+      - ../values/global.yaml
+    template: charts/cfapi/templates/controller.yaml
+    asserts:
+      - contains:
+          path: spec.template.spec.imagePullSecrets
+          content:
+            name: my-secret
+      - contains:
+          path: spec.template.spec.tolerations
+          content:
+            key: "key"
+            operator: "Equal"
+            value: "value"
+            effect: "NoSchedule"
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            key: "value"
+      - equal:
+          path: spec.template.spec.affinity
+          value:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: "key"
+                        operator: "In"
+                        values:
+                          - "value"
+
+  - it: cfsign should have global tolerations/nodeSelector/affinity/imagePullSecret
+    values:
+      - ../values/global.yaml
+    template: charts/cfsign/templates/controller.yaml
+    asserts:
+      - contains:
+          path: spec.template.spec.imagePullSecrets
+          content:
+            name: my-secret
+      - contains:
+          path: spec.template.spec.tolerations
+          content:
+            key: "key"
+            operator: "Equal"
+            value: "value"
+            effect: "NoSchedule"
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            key: "value"
+      - equal:
+          path: spec.template.spec.affinity
+          value:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: "key"
+                        operator: "In"
+                        values:
+                          - "value"
+
+  - it: cfui should have global tolerations/nodeSelector/affinity/imagePullSecret
+    values:
+      - ../values/global.yaml
+    template: charts/cfui/templates/controller.yaml
+    asserts:
+      - contains:
+          path: spec.template.spec.imagePullSecrets
+          content:
+            name: my-secret
+      - contains:
+          path: spec.template.spec.tolerations
+          content:
+            key: "key"
+            operator: "Equal"
+            value: "value"
+            effect: "NoSchedule"
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            key: "value"
+      - equal:
+          path: spec.template.spec.affinity
+          value:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: "key"
+                        operator: "In"
+                        values:
+                          - "value"
+
+  - it: charts-manager should have global tolerations/nodeSelector/affinity/imagePullSecret
+    values:
+      - ../values/global.yaml
+    template: charts/charts-manager/templates/controller.yaml
+    asserts:
+      - contains:
+          path: spec.template.spec.imagePullSecrets
+          content:
+            name: my-secret
+      - contains:
+          path: spec.template.spec.tolerations
+          content:
+            key: "key"
+            operator: "Equal"
+            value: "value"
+            effect: "NoSchedule"
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            key: "value"
+      - equal:
+          path: spec.template.spec.affinity
+          value:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: "key"
+                        operator: "In"
+                        values:
+                          - "value"
+
+  - it: cluster-providers should have global tolerations/nodeSelector/affinity/imagePullSecret
+    values:
+      - ../values/global.yaml
+    template: charts/cluster-providers/templates/controller.yaml
+    asserts:
+      - contains:
+          path: spec.template.spec.imagePullSecrets
+          content:
+            name: my-secret
+      - contains:
+          path: spec.template.spec.tolerations
+          content:
+            key: "key"
+            operator: "Equal"
+            value: "value"
+            effect: "NoSchedule"
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            key: "value"
+      - equal:
+          path: spec.template.spec.affinity
+          value:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: "key"
+                        operator: "In"
+                        values:
+                          - "value"
+
+  - it: context-manager should have global tolerations/nodeSelector/affinity/imagePullSecret
+    values:
+      - ../values/global.yaml
+    template: charts/context-manager/templates/controller.yaml
+    asserts:
+      - contains:
+          path: spec.template.spec.imagePullSecrets
+          content:
+            name: my-secret
+      - contains:
+          path: spec.template.spec.tolerations
+          content:
+            key: "key"
+            operator: "Equal"
+            value: "value"
+            effect: "NoSchedule"
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            key: "value"
+      - equal:
+          path: spec.template.spec.affinity
+          value:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: "key"
+                        operator: "In"
+                        values:
+                          - "value"
+
+  - it: cronus should have global tolerations/nodeSelector/affinity/imagePullSecret
+    values:
+      - ../values/global.yaml
+    template: charts/cronus/templates/controller.yaml
+    asserts:
+      - contains:
+          path: spec.template.spec.imagePullSecrets
+          content:
+            name: my-secret
+      - contains:
+          path: spec.template.spec.tolerations
+          content:
+            key: "key"
+            operator: "Equal"
+            value: "value"
+            effect: "NoSchedule"
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            key: "value"
+      - equal:
+          path: spec.template.spec.affinity
+          value:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: "key"
+                        operator: "In"
+                        values:
+                          - "value"
+
+  - it: gitops-dashboard-manager should have global tolerations/nodeSelector/affinity/imagePullSecret
+    values:
+      - ../values/global.yaml
+    template: charts/gitops-dashboard-manager/templates/controller.yaml
+    asserts:
+      - contains:
+          path: spec.template.spec.imagePullSecrets
+          content:
+            name: my-secret
+      - contains:
+          path: spec.template.spec.tolerations
+          content:
+            key: "key"
+            operator: "Equal"
+            value: "value"
+            effect: "NoSchedule"
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            key: "value"
+      - equal:
+          path: spec.template.spec.affinity
+          value:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: "key"
+                        operator: "In"
+                        values:
+                          - "value"
+
+  - it: helm-repo-manager should have global tolerations/nodeSelector/affinity/imagePullSecret
+    values:
+      - ../values/global.yaml
+    template: charts/helm-repo-manager/templates/controller.yaml
+    asserts:
+      - contains:
+          path: spec.template.spec.imagePullSecrets
+          content:
+            name: my-secret
+      - contains:
+          path: spec.template.spec.tolerations
+          content:
+            key: "key"
+            operator: "Equal"
+            value: "value"
+            effect: "NoSchedule"
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            key: "value"
+      - equal:
+          path: spec.template.spec.affinity
+          value:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: "key"
+                        operator: "In"
+                        values:
+                          - "value"
+
+  - it: hermes should have global tolerations/nodeSelector/affinity/imagePullSecret
+    values:
+      - ../values/global.yaml
+    template: charts/hermes/templates/controller.yaml
+    asserts:
+      - contains:
+          path: spec.template.spec.imagePullSecrets
+          content:
+            name: my-secret
+      - contains:
+          path: spec.template.spec.tolerations
+          content:
+            key: "key"
+            operator: "Equal"
+            value: "value"
+            effect: "NoSchedule"
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            key: "value"
+      - equal:
+          path: spec.template.spec.affinity
+          value:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: "key"
+                        operator: "In"
+                        values:
+                          - "value"
+
+  - it: internal-gateway should have global tolerations/nodeSelector/affinity/imagePullSecret
+    values:
+      - ../values/global.yaml
+    template: internal-gateway.yaml
+    documentSelector:
+      path: kind
+      value: Deployment
+    asserts:
+      - contains:
+          path: spec.template.spec.imagePullSecrets
+          content:
+            name: my-secret
+      - contains:
+          path: spec.template.spec.tolerations
+          content:
+            key: "key"
+            operator: "Equal"
+            value: "value"
+            effect: "NoSchedule"
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            key: "value"
+      - equal:
+          path: spec.template.spec.affinity
+          value:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: "key"
+                        operator: "In"
+                        values:
+                          - "value"
+
+  - it: k8s-monitor should have global tolerations/nodeSelector/affinity/imagePullSecret
+    values:
+      - ../values/global.yaml
+    template: charts/k8s-monitor/templates/controller.yaml
+    asserts:
+      - contains:
+          path: spec.template.spec.imagePullSecrets
+          content:
+            name: my-secret
+      - contains:
+          path: spec.template.spec.tolerations
+          content:
+            key: "key"
+            operator: "Equal"
+            value: "value"
+            effect: "NoSchedule"
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            key: "value"
+      - equal:
+          path: spec.template.spec.affinity
+          value:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: "key"
+                        operator: "In"
+                        values:
+                          - "value"
+
+  - it: kube-integration should have global tolerations/nodeSelector/affinity/imagePullSecret
+    values:
+      - ../values/global.yaml
+    template: charts/kube-integration/templates/controller.yaml
+    asserts:
+      - contains:
+          path: spec.template.spec.imagePullSecrets
+          content:
+            name: my-secret
+      - contains:
+          path: spec.template.spec.tolerations
+          content:
+            key: "key"
+            operator: "Equal"
+            value: "value"
+            effect: "NoSchedule"
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            key: "value"
+      - equal:
+          path: spec.template.spec.affinity
+          value:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: "key"
+                        operator: "In"
+                        values:
+                          - "value"
+                    
+  - it: nomios should have global tolerations/nodeSelector/affinity/imagePullSecret
+    values:
+      - ../values/global.yaml
+    template: charts/nomios/templates/controller.yaml
+    asserts:
+      - contains:
+          path: spec.template.spec.imagePullSecrets
+          content:
+            name: my-secret
+      - contains:
+          path: spec.template.spec.tolerations
+          content:
+            key: "key"
+            operator: "Equal"
+            value: "value"
+            effect: "NoSchedule"
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            key: "value"
+      - equal:
+          path: spec.template.spec.affinity
+          value:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: "key"
+                        operator: "In"
+                        values:
+                          - "value"
+
+  - it: pipeline-manager should have global tolerations/nodeSelector/affinity/imagePullSecret
+    values:
+      - ../values/global.yaml
+    template: charts/pipeline-manager/templates/controller.yaml
+    asserts:
+      - contains:
+          path: spec.template.spec.imagePullSecrets
+          content:
+            name: my-secret
+      - contains:
+          path: spec.template.spec.tolerations
+          content:
+            key: "key"
+            operator: "Equal"
+            value: "value"
+            effect: "NoSchedule"
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            key: "value"
+      - equal:
+          path: spec.template.spec.affinity
+          value:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: "key"
+                        operator: "In"
+                        values:
+                          - "value"
+
+  - it: platform-analytics should have global tolerations/nodeSelector/affinity/imagePullSecret
+    values:
+      - ../values/global.yaml
+    template: charts/cf-platform-analytics-platform/templates/controller.yaml
+    asserts:
+      - contains:
+          path: spec.template.spec.imagePullSecrets
+          content:
+            name: my-secret
+      - contains:
+          path: spec.template.spec.tolerations
+          content:
+            key: "key"
+            operator: "Equal"
+            value: "value"
+            effect: "NoSchedule"
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            key: "value"
+      - equal:
+          path: spec.template.spec.affinity
+          value:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: "key"
+                        operator: "In"
+                        values:
+                          - "value"
+
+  - it: platform-analytics-etl should have global tolerations/nodeSelector/affinity/imagePullSecret
+    values:
+      - ../values/global.yaml
+    template: charts/cf-platform-analytics-etlstarter/templates/etl/system-etl-postgres/controller.yaml
+    asserts:
+      - contains:
+          path: spec.jobTemplate.spec.template.spec.imagePullSecrets
+          content:
+            name: my-secret
+      - contains:
+          path: spec.jobTemplate.spec.template.spec.tolerations
+          content:
+            key: "key"
+            operator: "Equal"
+            value: "value"
+            effect: "NoSchedule"
+      - equal:
+          path: spec.jobTemplate.spec.template.spec.nodeSelector
+          value:
+            key: "value"
+      - equal:
+          path: spec.jobTemplate.spec.template.spec.affinity
+          value:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: "key"
+                        operator: "In"
+                        values:
+                          - "value"  
+
+  - it: runtime-environment-manager should have global tolerations/nodeSelector/affinity/imagePullSecret
+    values:
+      - ../values/global.yaml
+    template: charts/runtime-environment-manager/templates/controller.yaml
+    asserts:
+      - contains:
+          path: spec.template.spec.imagePullSecrets
+          content:
+            name: my-secret
+      - contains:
+          path: spec.template.spec.tolerations
+          content:
+            key: "key"
+            operator: "Equal"
+            value: "value"
+            effect: "NoSchedule"
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            key: "value"
+      - equal:
+          path: spec.template.spec.affinity
+          value:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: "key"
+                        operator: "In"
+                        values:
+                          - "value"
+
+  - it: tasker-kubernetes should have global tolerations/nodeSelector/affinity/imagePullSecret
+    values:
+      - ../values/global.yaml
+    template: charts/tasker-kubernetes/templates/controller.yaml
+    asserts:
+      - contains:
+          path: spec.template.spec.imagePullSecrets
+          content:
+            name: my-secret
+      - contains:
+          path: spec.template.spec.tolerations
+          content:
+            key: "key"
+            operator: "Equal"
+            value: "value"
+            effect: "NoSchedule"
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            key: "value"
+      - equal:
+          path: spec.template.spec.affinity
+          value:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: "key"
+                        operator: "In"
+                        values:
+                          - "value"
