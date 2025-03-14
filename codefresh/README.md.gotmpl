@@ -33,6 +33,7 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
   - [Projects pipelines limit](#projects-pipelines-limit)
   - [Enable session cookie](#enable-session-cookie)
   - [X-Frame-Options response header](#x-frame-options-response-header)
+  - [Auto-index creation in MongoDB](#auto-index-creation-in-mongodb)
 - [Configuring OIDC Provider](#configuring-oidc-provider)
 - [Upgrading](#upgrading)
   - [To 2.0.0](#to-200)
