@@ -25,7 +25,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     version: 0.18.1
   - name: internal-gateway
-    repository: oci://quay.io/codefresh/charts/dev
+    repository: oci://quay.io/codefresh/charts
     version: 0.10.2
     condition: internal-gateway.enabled
   - name: consul
