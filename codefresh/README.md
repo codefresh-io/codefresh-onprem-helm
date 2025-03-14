@@ -2225,7 +2225,7 @@ After platform upgrade, Consul fails with the error `refusing to rejoin cluster 
 | global.gitopsDashboardManagerService | string | `"gitops-dashboard-manager"` | Default gitops-dashboarad-manager service name. |
 | global.helmRepoManagerService | string | `"helm-repo-manager"` | Default helm-repo-manager service name. |
 | global.hermesService | string | `"hermes"` | Default hermes service name. |
-| global.imagePullSecrets | list | `[]` | Global Docker registry secret names as array |
+| global.imagePullSecrets | list | `["codefresh-registry"]` | Global Docker registry secret names as array |
 | global.imageRegistry | string | `""` | Global Docker image registry |
 | global.kubeIntegrationPort | int | `9000` | Default kube-integration service port. |
 | global.kubeIntegrationService | string | `"kube-integration"` | Default kube-integration service name. |

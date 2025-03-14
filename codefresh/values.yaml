@@ -156,7 +156,8 @@ global:
   imageRegistry: ""
 
   # -- Global Docker registry secret names as array
-  imagePullSecrets: []
+  imagePullSecrets:
+    - 'codefresh-registry'
 
   # -- Global StorageClass for Persistent Volume(s)
   storageClass: ""
