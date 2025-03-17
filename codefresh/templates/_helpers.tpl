@@ -66,7 +66,11 @@ Return runtime image (classic runtime) with private registry prefix
 Return Image Pull Secret
 */}}
 {{- define "codefresh.imagePullSecret" }}
+{{- if index .Values ".dockerconfigjson" -}}
+{{- printf "%s" (index .Values ".dockerconfigjson") }}
+{{- else }}
 {{- printf "{\"auths\": {\"%s\": {\"auth\": \"%s\"}}}" .Values.imageCredentials.registry (printf "%s:%s" .Values.imageCredentials.username .Values.imageCredentials.password | b64enc) | b64enc }}
+{{- end }}
 {{- end }}
 
 {{/*
