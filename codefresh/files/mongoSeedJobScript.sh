@@ -76,8 +76,8 @@ setPacks() {
     PACKS=$(cat ${ASSETS_PATH}packs.json)
     mongosh $MONGO_URI --eval "db.accounts.update({}, {\$set: {'build.packs': ${PACKS} }}, {multi: true})"
 
-    MONGO_URI=${MONGO_URI/\/codefresh/\/payments}
-    mongosh $MONGO_URI --eval "db.accounts.update({}, {\$set: {'plan.packs': ${PACKS} }}, {multi: true})"
+    PAYMENTS_MONGO_URI=${MONGO_URI/\/codefresh/\/payments}
+    mongosh $PAYMENTS_MONGO_URI --eval "db.accounts.update({}, {\$set: {'plan.packs': ${PACKS} }}, {multi: true})"
 }
 
 parseMongoURI $MONGO_URI
@@ -99,12 +99,12 @@ mongosh ${MONGODB_ROOT_URI} --eval "db.getSiblingDB(\"codefresh\").grantRolesToU
 mongosh ${MONGODB_ROOT_URI} --eval "db.getSiblingDB(\"codefresh\").grantRolesToUser( \"${MONGODB_USER}\", [ { role: \"readWrite\", db: \"platform-analytics-postgres\" } ] )" 2>&1 || true
 mongosh ${MONGODB_ROOT_URI} --eval "db.getSiblingDB(\"codefresh\").changeUserPassword(\"${MONGODB_USER}\",\"${MONGODB_PASSWORD}\")" 2>&1 || true
 
-mongoimport --uri ${MONGO_URI} --collection idps --type json --legacy --file ${ASSETS_PATH}idps.json
-mongoimport --uri ${MONGO_URI} --collection accounts --type json --legacy --file ${ASSETS_PATH}accounts.json
-mongoimport --uri ${MONGO_URI} --collection users --type json --legacy --file ${ASSETS_PATH}users.json
-
 if [[ $DEVELOPMENT_CHART == "true" ]]; then
     mongoimport --uri ${MONGO_URI} --collection accounts --type json --legacy --file ${ASSETS_PATH}accounts-dev.json
     setSystemAdmin
     setPacks
 fi
+
+mongoimport --uri ${MONGO_URI} --collection idps --type json --legacy --file ${ASSETS_PATH}idps.json
+mongoimport --uri ${MONGO_URI} --collection accounts --type json --legacy --file ${ASSETS_PATH}accounts.json
+mongoimport --uri ${MONGO_URI} --collection users --type json --legacy --file ${ASSETS_PATH}users.json
