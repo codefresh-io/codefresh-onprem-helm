@@ -104,7 +104,7 @@ mongoimport --uri ${MONGO_URI} --collection accounts --type json --legacy --file
 mongoimport --uri ${MONGO_URI} --collection users --type json --legacy --file ${ASSETS_PATH}users.json
 
 if [[ $DEVELOPMENT_CHART == "true" ]]; then
+    mongoimport --uri ${MONGO_URI} --collection accounts --type json --legacy --file ${ASSETS_PATH}accounts-dev.json
     setSystemAdmin
     setPacks
-    mongoimport --uri ${MONGO_URI} --collection accounts --type json --legacy --file ${ASSETS_PATH}accounts-dev.json
 fi
