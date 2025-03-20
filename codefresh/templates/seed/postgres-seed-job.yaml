@@ -1,6 +1,15 @@
 {{ $libTemplateName := printf "cf-common-%s" (index .Subcharts "cf-common").Chart.Version }}
 {{- if and .Values.seed.enabled (or .Values.global.seedJobs .Values.seed.postgresSeedJob.enabled) }}
 ---
+{{- $tolerations := .Values.seed.tolerations | default list }}
+{{- $globalTolerations := .Values.global.tolerations | default list }}
+{{- $allToleration := concat $globalTolerations $tolerations }}
+{{- $affinity := .Values.seed.affinity | default dict }}
+{{- $globalAffinity := .Values.global.affinity | default dict }}
+{{- $allAffinity := mergeOverwrite $globalAffinity $affinity }}
+{{- $nodeSelector := .Values.seed.nodeSelector | default dict }}
+{{- $globalNodeSelector := .Values.global.nodeSelector | default dict }}
+{{- $allNodeSelector := mergeOverwrite $globalNodeSelector $nodeSelector }}
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -20,10 +29,7 @@ spec:
       labels:
         {{ include "codefresh.labels" . | nindent 8 }}
     spec:
-      {{- if .Values.global.imageRegistry }}
-      imagePullSecrets:
-        - name: "{{ .Release.Name }}-{{ .Values.global.codefresh }}-registry"
-      {{- end }}
+      {{- include (printf "%s.image.pullSecrets" $libTemplateName ) . | nindent 6 }}
       securityContext:
         {{- toYaml .Values.seed.podSecurityContext | nindent 8 }}
       containers:
@@ -50,15 +56,15 @@ spec:
           - "-exc"
           - |
             {{ .Files.Get "files/postgresSeedJobScript.sh" | nindent 12  }}
-      {{- with .Values.seed.nodeSelector }}
+      {{- with $allNodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      {{- with .Values.seed.affinity }}
+      {{- with $allAffinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      {{- with .Values.seed.tolerations }}
+      {{- with $allToleration }}
       tolerations:
         {{- toYaml . | nindent 6 }}
       {{- end }}

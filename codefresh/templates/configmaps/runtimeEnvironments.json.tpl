@@ -257,6 +257,16 @@
       },
       "isPublic": true,
       "nonComplete": false
-  }
+  },
+  {
+      "metadata": {
+          "name": "system/linux_paying_plan",
+          "agent": false
+      },
+      "description": "MAIN Linux runtime for paying customers",
+      "extends": [
+          "system/default"
+      ]
+  }  
 ]
 {{- end -}}

@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.7.0
+version: 2.7.1
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -18,8 +18,16 @@ annotations:
   # artifacthub.io/containsSecurityUpdates: "true"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
+    - kind: added
+      description: "Added subcharts for development environment"
     - kind: changed
-      description: "Initial 2.7 release"
+      description: "Disable abacAndRules feature-flag"
+    - kind: fixed
+      description: "Add checkmark on LDAP SSO configuration to allow deleting users"
+    - kind: fixed
+      description: "Fix global constrains tolerations/nodeSelector/affinity/imagePullSecret for hooks and seed jobs"
+    - kind: changed
+      description: "Bump MongoDB featureCompatibilityVersion to 6.0"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -237,7 +245,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
-    version: "~1.3344.0"
+    version: "1.3344.0-onprem-b84a89b"
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform
@@ -248,3 +256,23 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     version: "*"
     condition: cf-oidc-provider.enabled
+  - name: mailer
+    version: "*"
+    repository: oci://quay.io/codefresh/charts
+    condition: mailer.enabled
+  - name: payments
+    version: "*"
+    repository: oci://quay.io/codefresh/charts
+    condition: payments.enabled
+  - name: segment-reporter
+    version: "*"
+    repository: oci://quay.io/codefresh/charts
+    condition: segment-reporter.enabled
+  - name: salesforce-reporter
+    version: "*"
+    repository: oci://quay.io/codefresh/charts
+    condition: salesforce-reporter.enabled
+  - name: onboarding-status
+    version: "*"
+    repository: oci://quay.io/codefresh/charts
+    condition: onboarding-status.enabled

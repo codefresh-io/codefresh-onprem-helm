@@ -1,33 +1,45 @@
 {{- if index .Values "internal-gateway" "enabled" -}}
 
-{{ $cfApiEndpointsSvc := (index .Subcharts "cfapi" ).Chart.Name }}
+{{ $cfApiEndpointsSvc := printf "%s-%s" .Release.Name (index .Subcharts "cfapi" ).Chart.Name }}
 {{ $cfApiEndpointsPort := (index .Subcharts "cfapi" ).Values.service.main.ports.http.port }}
 {{- if index .Values "cfapi-endpoints" "enabled" -}}
-  {{ $cfApiEndpointsSvc = (index .Subcharts "cfapi-endpoints" ).Chart.Name }}
+  {{ $cfApiEndpointsSvc = printf "%s-%s" .Release.Name (index .Subcharts "cfapi-endpoints" ).Chart.Name }}
   {{ $cfApiEndpointsPort = (index .Subcharts "cfapi-endpoints" ).Values.service.main.ports.http.port }}
 {{- end -}}
 
 {{- $internalGatewayContext := (index .Subcharts "internal-gateway") }}
 
+{{ $fullnameCfApiEndpointsSvc := (index .Subcharts "cfapi").Values.fullnameOverride }}
+{{- if $fullnameCfApiEndpointsSvc }}
+  {{- $cfApiEndpointsSvc = $fullnameCfApiEndpointsSvc }}
+{{- end }}
+
+{{ $cfUiSvc := printf "%s-%s" .Release.Name (index .Subcharts "cfui" ).Chart.Name }}
+{{- $fullnameCfUiSvc := (index .Subcharts "cfui").Values.fullnameOverride }}
+{{- if $fullnameCfUiSvc }}
+  {{- $cfUiSvc = $fullnameCfUiSvc }}
+{{- end }}
 
 {{- /*
 If onprem is installed with single-role cf-api mode
 */}}
 {{- if and (eq (toString .Values.global.cfapiService) "cfapi") (eq (toString .Values.global.cfapiEndpointsService) "cfapi" ) }}
 
-{{- $_ := set (index $internalGatewayContext.Values.codefresh.serviceEndpoints "cfapi-auth") "svc" (printf "%s-%s.%s.svc.%s" .Release.Name $cfApiEndpointsSvc .Release.Namespace .Values.global.clusterDomain ) }}
-{{- $_ := set (index $internalGatewayContext.Values.codefresh.serviceEndpoints "cfapi-endpoints") "svc" (printf "%s-%s.%s.svc.%s" .Release.Name $cfApiEndpointsSvc .Release.Namespace .Values.global.clusterDomain ) }}
-{{- $_ := set (index $internalGatewayContext.Values.codefresh.serviceEndpoints "cfapi-environments") "svc" (printf "%s-%s.%s.svc.%s" .Release.Name $cfApiEndpointsSvc .Release.Namespace .Values.global.clusterDomain ) }}
-{{- $_ := set (index $internalGatewayContext.Values.codefresh.serviceEndpoints "cfapi-downloadlogmanager") "svc" (printf "%s-%s.%s.svc.%s" .Release.Name $cfApiEndpointsSvc .Release.Namespace .Values.global.clusterDomain ) }}
-{{- $_ := set (index $internalGatewayContext.Values.codefresh.serviceEndpoints "cfapi-gitops-resource-receiver") "svc" (printf "%s-%s.%s.svc.%s" .Release.Name $cfApiEndpointsSvc .Release.Namespace .Values.global.clusterDomain ) }}
-{{- $_ := set (index $internalGatewayContext.Values.codefresh.serviceEndpoints "cfapi-test-reporting") "svc" (printf "%s-%s.%s.svc.%s" .Release.Name $cfApiEndpointsSvc .Release.Namespace .Values.global.clusterDomain ) }}
-{{- $_ := set (index $internalGatewayContext.Values.codefresh.serviceEndpoints "cfapi-kubernetesresourcemonitor") "svc" (printf "%s-%s.%s.svc.%s" .Release.Name $cfApiEndpointsSvc .Release.Namespace .Values.global.clusterDomain ) }}
-{{- $_ := set (index $internalGatewayContext.Values.codefresh.serviceEndpoints "cfapi-kubernetes-endpoints") "svc" (printf "%s-%s.%s.svc.%s" .Release.Name $cfApiEndpointsSvc .Release.Namespace .Values.global.clusterDomain ) }}
-{{- $_ := set (index $internalGatewayContext.Values.codefresh.serviceEndpoints "cfapi-admin") "svc" (printf "%s-%s.%s.svc.%s" .Release.Name $cfApiEndpointsSvc .Release.Namespace .Values.global.clusterDomain ) }}
-{{- $_ := set (index $internalGatewayContext.Values.codefresh.serviceEndpoints "cfapi-teams") "svc" (printf "%s-%s.%s.svc.%s" .Release.Name $cfApiEndpointsSvc .Release.Namespace .Values.global.clusterDomain ) }}
-{{- $_ := set (index $internalGatewayContext.Values.codefresh.serviceEndpoints "cfapi-ws") "svc" (printf "%s-%s.%s.svc.%s" .Release.Name $cfApiEndpointsSvc .Release.Namespace .Values.global.clusterDomain ) }}
+{{- $_ := set (index $internalGatewayContext.Values.codefresh.serviceEndpoints "cfapi-auth") "svc" (printf "%s.%s.svc.%s" $cfApiEndpointsSvc .Release.Namespace .Values.global.clusterDomain ) }}
+{{- $_ := set (index $internalGatewayContext.Values.codefresh.serviceEndpoints "cfapi-endpoints") "svc" (printf "%s.%s.svc.%s" $cfApiEndpointsSvc .Release.Namespace .Values.global.clusterDomain ) }}
+{{- $_ := set (index $internalGatewayContext.Values.codefresh.serviceEndpoints "cfapi-environments") "svc" (printf "%s.%s.svc.%s" $cfApiEndpointsSvc .Release.Namespace .Values.global.clusterDomain ) }}
+{{- $_ := set (index $internalGatewayContext.Values.codefresh.serviceEndpoints "cfapi-downloadlogmanager") "svc" (printf "%s.%s.svc.%s" $cfApiEndpointsSvc .Release.Namespace .Values.global.clusterDomain ) }}
+{{- $_ := set (index $internalGatewayContext.Values.codefresh.serviceEndpoints "cfapi-gitops-resource-receiver") "svc" (printf "%s.%s.svc.%s" $cfApiEndpointsSvc .Release.Namespace .Values.global.clusterDomain ) }}
+{{- $_ := set (index $internalGatewayContext.Values.codefresh.serviceEndpoints "cfapi-test-reporting") "svc" (printf "%s.%s.svc.%s" $cfApiEndpointsSvc .Release.Namespace .Values.global.clusterDomain ) }}
+{{- $_ := set (index $internalGatewayContext.Values.codefresh.serviceEndpoints "cfapi-kubernetesresourcemonitor") "svc" (printf "%s.%s.svc.%s" $cfApiEndpointsSvc .Release.Namespace .Values.global.clusterDomain ) }}
+{{- $_ := set (index $internalGatewayContext.Values.codefresh.serviceEndpoints "cfapi-kubernetes-endpoints") "svc" (printf "%s.%s.svc.%s" $cfApiEndpointsSvc .Release.Namespace .Values.global.clusterDomain ) }}
+{{- $_ := set (index $internalGatewayContext.Values.codefresh.serviceEndpoints "cfapi-admin") "svc" (printf "%s.%s.svc.%s" $cfApiEndpointsSvc .Release.Namespace .Values.global.clusterDomain ) }}
+{{- $_ := set (index $internalGatewayContext.Values.codefresh.serviceEndpoints "cfapi-teams") "svc" (printf "%s.%s.svc.%s" $cfApiEndpointsSvc .Release.Namespace .Values.global.clusterDomain ) }}
+{{- $_ := set (index $internalGatewayContext.Values.codefresh.serviceEndpoints "cfapi-ws") "svc" (printf "%s.%s.svc.%s" $cfApiEndpointsSvc .Release.Namespace .Values.global.clusterDomain ) }}
 
 {{- end }}
+
+{{- $_ := set (index $internalGatewayContext.Values.codefresh.serviceEndpoints "cfui") "svc" (printf "%s.%s.svc.%s" $cfUiSvc .Release.Namespace .Values.global.clusterDomain ) }}
 
 {{- include "internal-gateway.resources" $internalGatewayContext }}
 

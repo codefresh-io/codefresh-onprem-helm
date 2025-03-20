@@ -3,6 +3,10 @@ suite: Should test global tolerations/nodeSelector/affinity/imagePullSecret
 templates:
   - charts/**/*.yaml
   - internal-gateway.yaml
+  - seed/mongo-seed-job.yaml
+  - seed/postgres-seed-job.yaml
+  - gencerts/job-gencerts.yaml
+  - hooks/update-system-re.yaml
 tests:
   - it: argo-platform-abac should have global tolerations/nodeSelector/affinity/imagePullSecret
     values:
@@ -1036,6 +1040,134 @@ tests:
     values:
       - ../values/global.yaml
     template: charts/tasker-kubernetes/templates/controller.yaml
+    asserts:
+      - contains:
+          path: spec.template.spec.imagePullSecrets
+          content:
+            name: my-secret
+      - contains:
+          path: spec.template.spec.tolerations
+          content:
+            key: "key"
+            operator: "Equal"
+            value: "value"
+            effect: "NoSchedule"
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            key: "value"
+      - equal:
+          path: spec.template.spec.affinity
+          value:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: "key"
+                        operator: "In"
+                        values:
+                          - "value"
+
+  - it: mongo-seed-job should have global tolerations/nodeSelector/affinity/imagePullSecret
+    values:
+      - ../values/global.yaml
+    template: seed/mongo-seed-job.yaml
+    asserts:
+      - contains:
+          path: spec.template.spec.imagePullSecrets
+          content:
+            name: my-secret
+      - contains:
+          path: spec.template.spec.tolerations
+          content:
+            key: "key"
+            operator: "Equal"
+            value: "value"
+            effect: "NoSchedule"
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            key: "value"
+      - equal:
+          path: spec.template.spec.affinity
+          value:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: "key"
+                        operator: "In"
+                        values:
+                          - "value"
+
+  - it: postgres-seed-job should have global tolerations/nodeSelector/affinity/imagePullSecret
+    values:
+      - ../values/global.yaml
+    template: seed/postgres-seed-job.yaml
+    asserts:
+      - contains:
+          path: spec.template.spec.imagePullSecrets
+          content:
+            name: my-secret
+      - contains:
+          path: spec.template.spec.tolerations
+          content:
+            key: "key"
+            operator: "Equal"
+            value: "value"
+            effect: "NoSchedule"
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            key: "value"
+      - equal:
+          path: spec.template.spec.affinity
+          value:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: "key"
+                        operator: "In"
+                        values:
+                          - "value"
+
+  - it: job-gencerts should have global tolerations/nodeSelector/affinity/imagePullSecret
+    values:
+      - ../values/global.yaml
+    template: gencerts/job-gencerts.yaml
+    asserts:
+      - contains:
+          path: spec.template.spec.imagePullSecrets
+          content:
+            name: my-secret
+      - contains:
+          path: spec.template.spec.tolerations
+          content:
+            key: "key"
+            operator: "Equal"
+            value: "value"
+            effect: "NoSchedule"
+      - equal:
+          path: spec.template.spec.nodeSelector
+          value:
+            key: "value"
+      - equal:
+          path: spec.template.spec.affinity
+          value:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: "key"
+                        operator: "In"
+                        values:
+                          - "value"
+
+  - it: update-system-re job should have global tolerations/nodeSelector/affinity/imagePullSecret
+    values:
+      - ../values/global.yaml
+    template: hooks/update-system-re.yaml
     asserts:
       - contains:
           path: spec.template.spec.imagePullSecrets

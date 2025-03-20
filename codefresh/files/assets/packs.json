@@ -1,0 +1,103 @@
+[
+    {
+      "workflows": {
+        "concurrency": {
+          "amount": 2,
+          "absorb": 2,
+          "allowUnlimited": false
+        }
+      },
+      "runtime": {
+        "defaultDindResources": {
+          "requests": {
+            "cpu": "900m",
+            "memory": "1024Mi"
+          }
+        },
+        "name": "system/linux_paying_plan",
+        "os": "linux",
+        "architecture": "amd64",
+        "cpu": "1000m",
+        "memory": "1024Mi",
+        "storage": "8G",
+        "dindStorage": "8G"
+      },
+      "id": "5cd1746617313f468d669013",
+      "metadata": {
+        "description": "1 GB RAM 1 CPU",
+        "name": "small"
+      }
+    },
+    {
+      "workflows": {
+        "concurrency": {
+          "amount": 2,
+          "absorb": 2,
+          "allowUnlimited": false
+        }
+      },
+      "runtime": {
+        "defaultDindResources": {
+          "requests": {
+            "cpu": "1200m",
+            "memory": "1500Mi"
+          }
+        },
+        "name": "system/linux_paying_plan",
+        "os": "linux",
+        "architecture": "amd64",
+        "cpu": "2000m",
+        "memory": "4096Mi",
+        "storage": "16G",
+        "dindStorage": "16G"
+      },
+      "id": "5cd1746717313f468d669014",
+      "metadata": {
+        "description": "4 GB RAM 2 CPU",
+        "name": "medium"
+      }
+    },
+    {
+      "workflows": {
+        "concurrency": {
+          "amount": 2,
+          "absorb": 2,
+          "allowUnlimited": false
+        }
+      },
+      "runtime": {
+        "defaultDindResources": {
+          "requests": {
+            "cpu": "1500m",
+            "memory": "3000Mi"
+          }
+        },
+        "name": "system/linux_paying_plan",
+        "os": "linux",
+        "architecture": "amd64",
+        "cpu": "4000m",
+        "memory": "8192Mi",
+        "storage": "32G",
+        "dindStorage": "32G"
+      },
+      "id": "5cd1746817313f468d669015",
+      "metadata": {
+        "description": "8 GB RAM 4 CPU",
+        "name": "large"
+      }
+    },
+    {
+      "workflows": {
+        "concurrency": {
+          "amount": -1,
+          "absorb": 0,
+          "allowUnlimited": true
+        }
+      },
+      "id": "5cd1746817313f468d669016",
+      "metadata": {
+        "description": "Hybrid runtime-environment",
+        "name": "runner"
+      }
+    }
+]

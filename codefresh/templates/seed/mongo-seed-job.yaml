@@ -2,6 +2,15 @@
 {{ $context := deepCopy .Values.seed }}
 ---
 {{- if and .Values.seed.enabled (or .Values.global.seedJobs .Values.seed.mongoSeedJob.enabled) }}
+{{- $tolerations := .Values.seed.tolerations | default list }}
+{{- $globalTolerations := .Values.global.tolerations | default list }}
+{{- $allToleration := concat $globalTolerations $tolerations }}
+{{- $affinity := .Values.seed.affinity | default dict }}
+{{- $globalAffinity := .Values.global.affinity | default dict }}
+{{- $allAffinity := mergeOverwrite $globalAffinity $affinity }}
+{{- $nodeSelector := .Values.seed.nodeSelector | default dict }}
+{{- $globalNodeSelector := .Values.global.nodeSelector | default dict }}
+{{- $allNodeSelector := mergeOverwrite $globalNodeSelector $nodeSelector }}
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -21,10 +30,7 @@ spec:
       labels:
         {{ include "codefresh.labels" . | nindent 8 }}
     spec:
-      {{- if .Values.global.imageRegistry }}
-      imagePullSecrets:
-        - name: "{{ .Release.Name }}-{{ .Values.global.codefresh }}-registry"
-      {{- end }}
+      {{- include (printf "%s.image.pullSecrets" $libTemplateName ) . | nindent 6 }}
       securityContext:
         {{- toYaml .Values.seed.podSecurityContext | nindent 8 }}
       containers:
@@ -46,6 +52,8 @@ spec:
           {{- include "codefresh.mongodb-root-user-env-var-value" . | indent 12 }}
           - name: MONGODB_ROOT_PASSWORD
           {{- include "codefresh.mongodb-root-password-env-var-value" . | indent 12 }}
+          - name: DEVELOPMENT_CHART
+            value: {{ .Values.developmentChart | quote }}
         command:
           - "/bin/bash"
           - "-exc"
@@ -63,16 +71,22 @@ spec:
         - name: seed-data
           mountPath: "/usr/share/extras/idps.json"
           subPath: "idps.json"
+        - name: seed-data
+          mountPath: "/usr/share/extras/packs.json"
+          subPath: "packs.json"
+        - name: seed-data
+          mountPath: "/usr/share/extras/accounts-dev.json"
+          subPath: "accounts-dev.json"
       {{- include (printf "%s.volumeMounts" $libTemplateName) ( dict "Values" .Values.seed.volumeMounts "context" $ ) | nindent 8 }}
-      {{- with .Values.seed.nodeSelector }}
+      {{- with $allNodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      {{- with .Values.seed.affinity }}
+      {{- with $allAffinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      {{- with .Values.seed.tolerations }}
+      {{- with $allToleration }}
       tolerations:
         {{- toYaml . | nindent 6 }}
       {{- end }}
