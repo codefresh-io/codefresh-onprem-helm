@@ -2034,6 +2034,10 @@ global:
 
 ## Troubleshooting
 
+### Error: Refusing to rejoin cluster because the server has been offline for more than the configured server_rejoin_age_max - consider wiping your data dir
+
+After runtime upgrading, consul fails with the error `refusing to rejoin cluster because the server has been offline for more than the configured server_rejoin_age_max - consider wiping your data dir`. There is [known issue](https://github.com/hashicorp/consul/issues/20722) of **hashicorp/consul** behaviour. Try to wipe out or delete the consul volume with config data.
+
 ### Error: Failed to validate connection to Docker daemon; caused by Error: certificate has expired
 
 Builds are stuck in pending with `Error: Failed to validate connection to Docker daemon; caused by Error: certificate has expired`
