@@ -64,58 +64,58 @@ dependencies:
   version: 1.14.20
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.274.9
+  version: 21.274.10
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.274.9
+  version: 21.274.10
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.274.9
+  version: 21.274.10
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.274.9
+  version: 21.274.10
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.274.9
+  version: 21.274.10
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.274.9
+  version: 21.274.10
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.274.9
+  version: 21.274.10
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.274.9
+  version: 21.274.10
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.274.9
+  version: 21.274.10
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.274.9
+  version: 21.274.10
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.274.9
+  version: 21.274.10
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.274.9
+  version: 21.274.10
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.274.9
+  version: 21.274.10
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.274.9
+  version: 21.274.10
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.274.9
+  version: 21.274.10
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.274.9
+  version: 21.274.10
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.274.9
+  version: 21.274.10
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.274.9
+  version: 21.274.10
 - name: cfui
   repository: oci://quay.io/codefresh/charts
   version: 14.97.50
@@ -170,5 +170,5 @@ dependencies:
 - name: onboarding-status
   repository: oci://quay.io/codefresh/charts
   version: 1.8.8
-digest: sha256:962259d5c6053b53fbe937554009b189e7eb5fb424fd772d7b0fcce8db495326
-generated: "2025-03-20T13:09:11.850242+03:00"
+digest: sha256:b8ea966f7f7cec4c6d6e73e24f5ad0227950009e2d7136e8766c080f9c579b78
+generated: "2025-03-20T14:19:34.976455+03:00"
