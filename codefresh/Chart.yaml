@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.7.1
+version: 2.7.2
 keywords:
   - codefresh
 home: https://codefresh.io/
