@@ -18,16 +18,8 @@ annotations:
   # artifacthub.io/containsSecurityUpdates: "true"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
-    - kind: added
-      description: "Added subcharts for development environment"
-    - kind: changed
-      description: "Disable abacAndRules feature-flag"
     - kind: fixed
-      description: "Add checkmark on LDAP SSO configuration to allow deleting users"
-    - kind: fixed
-      description: "Fix global constrains tolerations/nodeSelector/affinity/imagePullSecret for hooks and seed jobs"
-    - kind: changed
-      description: "Bump MongoDB featureCompatibilityVersion to 6.0"
+      description: "Fix RABBITMQ_USER env var in argo-platform"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -245,8 +237,8 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
-    version: "1.3344.0-onprem-b84a89b"
-    repository: oci://quay.io/codefresh/charts
+    version: "1.3344.0-fix-rabbitmq-user-env-var-9df1300"
+    repository: oci://quay.io/codefresh/charts/dev
     condition: argo-platform.enabled
   - name: argo-hub-platform
     version: "*"
