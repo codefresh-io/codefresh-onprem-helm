@@ -100,7 +100,6 @@ mongosh ${MONGODB_ROOT_URI} --eval "db.getSiblingDB(\"codefresh\").grantRolesToU
 mongosh ${MONGODB_ROOT_URI} --eval "db.getSiblingDB(\"codefresh\").changeUserPassword(\"${MONGODB_USER}\",\"${MONGODB_PASSWORD}\")" 2>&1 || true
 
 if [[ $DEVELOPMENT_CHART == "true" ]]; then
-    mongoimport --uri ${MONGO_URI} --collection accounts --type json --legacy --file ${ASSETS_PATH}accounts-dev.json
     setSystemAdmin
     setPacks
 fi
