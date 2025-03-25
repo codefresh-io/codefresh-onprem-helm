@@ -1000,7 +1000,7 @@ k8s-monitor:
   container:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
-      repository: codefresh/cf-k8s-monitor
+      repository: codefresh/k8s-monitor
   resources:
     requests:
       cpu: 100m
