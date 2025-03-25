@@ -1382,9 +1382,9 @@ argo-platform:
     # -- Image
     image:
       # -- Registry
-      registry: us-docker.pkg.dev/codefresh-inc/gcr.io
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       # -- Repository
-      repository: codefresh-io/dev/argo-platform-api-graphql
+      repository: codefresh-io/argo-platform-api-graphql
     # -- Env vars
     # @default -- See below
     env:
@@ -1446,8 +1446,8 @@ argo-platform:
     enabled: true
     kind: Deployment
     image:
-      registry: us-docker.pkg.dev/codefresh-inc/gcr.io
-      repository: codefresh-io/dev/argo-platform-abac
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
+      repository: codefresh-io/argo-platform-abac
     env:
       MONGODB_PROTOCOL: *mongodb-protocol
       MONGODB_OPTIONS: *mongodb-options
@@ -1482,8 +1482,8 @@ argo-platform:
     enabled: true
     kind: Deployment
     image:
-      registry: us-docker.pkg.dev/codefresh-inc/gcr.io
-      repository: codefresh-io/dev/argo-platform-analytics-reporter
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
+      repository: codefresh-io/argo-platform-analytics-reporter
     env:
       ENABLED_DATABASE_TYPES: POSTGRES
       MONGODB_PROTOCOL: *mongodb-protocol
@@ -1531,8 +1531,8 @@ argo-platform:
     enabled: true
     kind: Deployment
     image:
-      registry: us-docker.pkg.dev/codefresh-inc/gcr.io
-      repository: codefresh-io/dev/argo-platform-api-events
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
+      repository: codefresh-io/argo-platform-api-events
     env:
       RABBITMQ_PROTOCOL: *rabbitmq-protocol
       RABBITMQ_URLS: $(RABBITMQ_PROTOCOL)://$(RABBITMQ_USER):$(RABBITMQ_PASSWORD)@$(RABBITMQ_HOST)
@@ -1569,8 +1569,8 @@ argo-platform:
     enabled: true
     kind: Deployment
     image:
-      registry: us-docker.pkg.dev/codefresh-inc/gcr.io
-      repository: codefresh-io/dev/argo-platform-audit
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
+      repository: codefresh-io/argo-platform-audit
     env:
       MONGODB_PROTOCOL: *mongodb-protocol
       MONGODB_OPTIONS: *mongodb-options
@@ -1612,8 +1612,8 @@ argo-platform:
     enabled: true
     kind: Deployment
     image:
-      registry: us-docker.pkg.dev/codefresh-inc/gcr.io
-      repository: codefresh-io/dev/argo-platform-cron-executor
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
+      repository: codefresh-io/argo-platform-cron-executor
     env:
       MONGODB_PROTOCOL: *mongodb-protocol
       MONGODB_OPTIONS: *mongodb-options
@@ -1655,8 +1655,8 @@ argo-platform:
     enabled: true
     kind: Deployment
     image:
-      registry: us-docker.pkg.dev/codefresh-inc/gcr.io
-      repository: codefresh-io/dev/argo-platform-event-handler
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
+      repository: codefresh-io/argo-platform-event-handler
     env:
       MONGODB_PROTOCOL: *mongodb-protocol
       MONGODB_OPTIONS: *mongodb-options
@@ -1708,8 +1708,8 @@ argo-platform:
     enabled: true
     kind: Deployment
     image:
-      registry: us-docker.pkg.dev/codefresh-inc/gcr.io
-      repository: codefresh-io/dev/argo-platform-ui
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
+      repository: codefresh-io/argo-platform-ui
     resources:
       requests:
         cpu: 100m
@@ -1729,8 +1729,8 @@ argo-platform:
     enabled: true
     kind: Deployment
     image:
-      registry: us-docker.pkg.dev/codefresh-inc/gcr.io
-      repository: codefresh-io/dev/argo-platform-broadcaster
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
+      repository: codefresh-io/argo-platform-broadcaster
     env:
       MONGODB_PROTOCOL: *mongodb-protocol
       MONGODB_OPTIONS: *mongodb-options
@@ -1770,8 +1770,8 @@ argo-platform:
     enabled: true
     kind: Deployment
     image:
-      registry: us-docker.pkg.dev/codefresh-inc/gcr.io
-      repository: codefresh-io/dev/argo-platform-promotion-orchestrator
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
+      repository: codefresh-io/argo-platform-promotion-orchestrator
     env:
       MONGODB_PROTOCOL: *mongodb-protocol
       MONGODB_OPTIONS: *mongodb-options
