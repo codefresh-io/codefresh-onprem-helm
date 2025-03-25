@@ -237,8 +237,8 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
-    version: "1.3344.0-fix-rabbitmq-user-env-var-9df1300"
-    repository: oci://quay.io/codefresh/charts/dev
+    version: "1.3344.0-onprem-5c8af92"
+    repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform
     version: "*"
