@@ -25,6 +25,8 @@ annotations:
           url: https://codefresh-io.atlassian.net/browse/CR-27956
     - kind: security
       description: "Misc security updates"
+    - kind: changed
+      description: "Rename cf-k8s-monitor image to k8s-monitor"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
