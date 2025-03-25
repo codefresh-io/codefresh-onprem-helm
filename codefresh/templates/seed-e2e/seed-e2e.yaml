@@ -25,10 +25,7 @@ spec:
       labels:
         {{ include "codefresh.labels" . | nindent 8 }}
     spec:
-      {{- if .Values.global.imageRegistry }}
-      imagePullSecrets:
-        - name: "{{ .Release.Name }}-{{ .Values.global.codefresh }}-registry"
-      {{- end }}
+      {{- include (printf "%s.image.pullSecrets" $libTemplateName ) . | nindent 6 }}
       securityContext:
         {{- toYaml $context.podSecurityContext | nindent 8 }}
       containers:
