@@ -109,93 +109,93 @@ dependencies:
     condition: gitops-dashboard-manager.enabled
   - name: cfapi
     alias: cfapi
-    version: "~21.274.0"
-    repository: oci://quay.io/codefresh/charts
+    version: "21.276.4-fix-redis-feature-env-vars"
+    repository: oci://quay.io/codefresh/charts/dev
     condition: cfapi.enabled
   - name: cfapi
     alias: cfapi-auth
-    version: "~21.274.0"
-    repository: oci://quay.io/codefresh/charts
+    version: "21.276.4-fix-redis-feature-env-vars"
+    repository: oci://quay.io/codefresh/charts/dev
     condition: cfapi-auth.enabled
   - name: cfapi
     alias: cfapi-internal
-    version: "~21.274.0"
-    repository: oci://quay.io/codefresh/charts
+    version: "21.276.4-fix-redis-feature-env-vars"
+    repository: oci://quay.io/codefresh/charts/dev
     condition: cfapi-internal.enabled
   - name: cfapi
     alias: cfapi-ws
-    version: "~21.274.0"
-    repository: oci://quay.io/codefresh/charts
+    version: "21.276.4-fix-redis-feature-env-vars"
+    repository: oci://quay.io/codefresh/charts/dev
     condition: cfapi-ws.enabled
   - name: cfapi
     alias: cfapi-admin
-    version: "~21.274.0"
-    repository: oci://quay.io/codefresh/charts
+    version: "21.276.4-fix-redis-feature-env-vars"
+    repository: oci://quay.io/codefresh/charts/dev
     condition: cfapi-admin.enabled
   - name: cfapi
     alias: cfapi-endpoints
-    version: "~21.274.0"
-    repository: oci://quay.io/codefresh/charts
+    version: "21.276.4-fix-redis-feature-env-vars"
+    repository: oci://quay.io/codefresh/charts/dev
     condition: cfapi-endpoints.enabled
   - name: cfapi
     alias: cfapi-terminators
-    version: "~21.274.0"
-    repository: oci://quay.io/codefresh/charts
+    version: "21.276.4-fix-redis-feature-env-vars"
+    repository: oci://quay.io/codefresh/charts/dev
     condition: cfapi-terminators.enabled
   - name: cfapi
     alias: cfapi-sso-group-synchronizer
-    version: "~21.274.0"
-    repository: oci://quay.io/codefresh/charts
+    version: "21.276.4-fix-redis-feature-env-vars"
+    repository: oci://quay.io/codefresh/charts/dev
     condition: cfapi-sso-group-synchronizer.enabled
   - name: cfapi
     alias: cfapi-buildmanager
-    version: "~21.274.0"
-    repository: oci://quay.io/codefresh/charts
+    version: "21.276.4-fix-redis-feature-env-vars"
+    repository: oci://quay.io/codefresh/charts/dev
     condition: cfapi-buildmanager.enabled
   - name: cfapi
     alias: cfapi-cacheevictmanager
-    version: "~21.274.0"
-    repository: oci://quay.io/codefresh/charts
+    version: "21.276.4-fix-redis-feature-env-vars"
+    repository: oci://quay.io/codefresh/charts/dev
     condition: cfapi-cacheevictmanager.enabled
   - name: cfapi
     alias: cfapi-eventsmanagersubscriptions
-    version: "~21.274.0"
-    repository: oci://quay.io/codefresh/charts
+    version: "21.276.4-fix-redis-feature-env-vars"
+    repository: oci://quay.io/codefresh/charts/dev
     condition: cfapi-eventsmanagersubscriptions.enabled
   - name: cfapi
     alias: cfapi-kubernetesresourcemonitor
-    version: "~21.274.0"
-    repository: oci://quay.io/codefresh/charts
+    version: "21.276.4-fix-redis-feature-env-vars"
+    repository: oci://quay.io/codefresh/charts/dev
     condition: cfapi-kubernetesresourcemonitor.enabled
   - name: cfapi
     alias: cfapi-environments
-    version: "~21.274.0"
-    repository: oci://quay.io/codefresh/charts
+    version: "21.276.4-fix-redis-feature-env-vars"
+    repository: oci://quay.io/codefresh/charts/dev
     condition: cfapi-environments.enabled
   - name: cfapi
     alias: cfapi-gitops-resource-receiver
-    version: "~21.274.0"
-    repository: oci://quay.io/codefresh/charts
+    version: "21.276.4-fix-redis-feature-env-vars"
+    repository: oci://quay.io/codefresh/charts/dev
     condition: cfapi-gitops-resource-receiver.enabled
   - name: cfapi
     alias: cfapi-downloadlogmanager
-    version: "~21.274.0"
-    repository: oci://quay.io/codefresh/charts
+    version: "21.276.4-fix-redis-feature-env-vars"
+    repository: oci://quay.io/codefresh/charts/dev
     condition: cfapi-downloadlogmanager.enabled
   - name: cfapi
     alias: cfapi-teams
-    version: "~21.274.0"
-    repository: oci://quay.io/codefresh/charts
+    version: "21.276.4-fix-redis-feature-env-vars"
+    repository: oci://quay.io/codefresh/charts/dev
     condition: cfapi-teams.enabled
   - name: cfapi
     alias: cfapi-kubernetes-endpoints
-    version: "~21.274.0"
-    repository: oci://quay.io/codefresh/charts
+    version: "21.276.4-fix-redis-feature-env-vars"
+    repository: oci://quay.io/codefresh/charts/dev
     condition: cfapi-kubernetes-endpoints.enabled
   - name: cfapi
     alias: cfapi-test-reporting
-    version: "~21.274.0"
-    repository: oci://quay.io/codefresh/charts
+    version: "21.276.4-fix-redis-feature-env-vars"
+    repository: oci://quay.io/codefresh/charts/dev
     condition: cfapi-test-reporting.enabled
   - name: cfui
     version: "~14.97.0"

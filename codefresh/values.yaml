@@ -504,9 +504,9 @@ cfapi: &cf-api
     # -- Image
     image:
       # -- Registry prefix
-      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
+      registry: us-docker.pkg.dev/codefresh-inc/gcr.io
       # -- Repository
-      repository: codefresh/cf-api
+      repository: codefresh/dev/cf-api
     # -- Env vars
     # @default -- See below
     env:
