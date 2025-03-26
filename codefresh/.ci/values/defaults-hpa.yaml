@@ -3,6 +3,9 @@ seed-e2e:
 
 global:
   appUrl: "" # placeholder
+  imagePullSecrets:
+    - codefresh-registry
+    - dockerhub-creds
 
 cfapi:
   rbac:
