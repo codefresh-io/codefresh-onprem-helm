@@ -37,7 +37,7 @@ dependencies:
   version: 1.4.0
 - name: ingress-nginx
   repository: https://kubernetes.github.io/ingress-nginx
-  version: 4.11.2
+  version: 4.12.1
 - name: cluster-providers
   repository: oci://quay.io/codefresh/charts
   version: 1.17.15
@@ -170,5 +170,5 @@ dependencies:
 - name: onboarding-status
   repository: oci://quay.io/codefresh/charts
   version: 1.8.8
-digest: sha256:1a674a100aee5e84b21984cd9586ffe3ca48dc6951fed91023cf93bf58c67111
-generated: "2025-03-26T11:42:09.123651+03:00"
+digest: sha256:bdf0f27e7c70cc8fcd0c09ab72616db6f0429f171941f75e5edb554d542979a6
+generated: "2025-03-26T12:45:57.737771+03:00"
