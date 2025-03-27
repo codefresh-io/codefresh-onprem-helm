@@ -18,7 +18,7 @@ annotations:
   # artifacthub.io/containsSecurityUpdates: "true"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
-    - kind: test
+    - kind: changed
       description: "Test CI"
 dependencies:
   - name: cf-common
