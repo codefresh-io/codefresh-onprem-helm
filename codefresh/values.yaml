@@ -709,8 +709,8 @@ cf-platform-analytics-etlstarter:
 
   container:
     image:
-      registry: us-docker.pkg.dev/codefresh-inc/gcr.io
-      repository: codefresh/dev/cf-platform-analytics
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
+      repository: codefresh/cf-platform-analytics
     env:
       ENV: production
       DATASET_ID: etl
@@ -727,8 +727,8 @@ cf-platform-analytics-platform:
   mongodbDatabase: "platform-analytics-postgres"
   container:
     image:
-      registry: us-docker.pkg.dev/codefresh-inc/gcr.io
-      repository: codefresh/dev/cf-platform-analytics
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
+      repository: codefresh/cf-platform-analytics
   redis:
     enabled: true
     nameOverride: redis-platform-analytics

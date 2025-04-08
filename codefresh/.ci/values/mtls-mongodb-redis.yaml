@@ -151,11 +151,3 @@ extraResources:
 
 seed-e2e:
   enabled: false
-
-cf-platform-analytics-platform:
-  redis:
-    enabled: false
-  container:
-    env:
-      CUBEJS_REDIS_PROTOCOL: rediss
-      CUBEJS_REDIS_TLS: true
