@@ -36,7 +36,7 @@ seed:
     image:
       registry: quay.io
       repository: codefresh/mongosh
-      tag: 2.3.7
+      tag: 2.4.2
     # -- Root user in plain text (required ONLY for seed job!).
     mongodbRootUser: "root"
     # -- Root user from existing secret
@@ -475,7 +475,7 @@ runtimeImages:
   DOCKER_PULLER_IMAGE: quay.io/codefresh/cf-docker-puller:8.0.18
   DOCKER_PUSHER_IMAGE: quay.io/codefresh/cf-docker-pusher:6.0.16
   DOCKER_TAG_PUSHER_IMAGE: quay.io/codefresh/cf-docker-tag-pusher:1.3.15
-  ENGINE_IMAGE: quay.io/codefresh/engine:1.177.5
+  ENGINE_IMAGE: quay.io/codefresh/engine:1.177.6
   FS_OPS_IMAGE: quay.io/codefresh/fs-ops:1.2.8
   GIT_CLONE_IMAGE: quay.io/codefresh/cf-git-cloner:10.2.0
   KUBE_DEPLOY: quay.io/codefresh/cf-deploy-kubernetes:16.2.6
