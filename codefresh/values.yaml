@@ -122,6 +122,8 @@ ingress:
     nginx.ingress.kubernetes.io/service-upstream: "true"
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
     nginx.org/redirect-to-https: "false"
+  # -- Set labels for ingress
+  labels: {}
 
 # -- Global parameters
 # @default -- See below
