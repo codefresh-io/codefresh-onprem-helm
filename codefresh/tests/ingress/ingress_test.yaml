@@ -42,3 +42,16 @@ tests:
     asserts:
       - failedTemplate:
           errorMessage: "A valid .Values.ingress.tls.cert is required!"
+
+  - it: ingress with extra labels
+    template: templates/ingress.yaml
+    set:
+      global:
+        appUrl: mydomain.local
+      ingress:
+        labels:
+          foo: bar
+    asserts:
+      - equal:
+          path: metadata.labels.foo
+          value: bar

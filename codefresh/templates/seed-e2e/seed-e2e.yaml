@@ -25,10 +25,7 @@ spec:
       labels:
         {{ include "codefresh.labels" . | nindent 8 }}
     spec:
-      {{- if .Values.global.imageRegistry }}
-      imagePullSecrets:
-        - name: "{{ .Release.Name }}-{{ .Values.global.codefresh }}-registry"
-      {{- end }}
+      {{- include (printf "%s.image.pullSecrets" $libTemplateName ) . | nindent 6 }}
       securityContext:
         {{- toYaml $context.podSecurityContext | nindent 8 }}
       containers:
@@ -38,6 +35,18 @@ spec:
           - secretRef:
               name: {{ include "codefresh.fullname" . }}
         env:
+        - name: MONGODB_HOST
+        {{- include "codefresh.mongodb-host-env-var-value" . | indent 10 }}
+        - name: MONGODB_USER
+        {{- include "codefresh.mongodb-user-env-var-value" . | indent 10 }}
+        - name: MONGODB_PASSWORD
+        {{- include "codefresh.mongodb-password-env-var-value" . | indent 10 }}
+        - name: MONGO_URI
+        {{- include "codefresh.mongo-seed-uri-env-var-value" . | indent 10 }}
+        - name: MONGODB_ROOT_USER
+        {{- include "codefresh.mongodb-root-user-env-var-value" . | indent 10 }}
+        - name: MONGODB_ROOT_PASSWORD
+        {{- include "codefresh.mongodb-root-password-env-var-value" . | indent 10 }}
         - name: MONGO_URI
           value: $(MONGODB_PROTOCOL)://$(MONGODB_USER):$(MONGODB_PASSWORD)@$(MONGODB_HOST)/$(MONGODB_DATABASE)?$(MONGODB_OPTIONS)
         command:

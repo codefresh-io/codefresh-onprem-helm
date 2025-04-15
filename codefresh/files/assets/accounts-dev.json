@@ -1,0 +1,262 @@
+{
+    "_id" : ObjectId("59009117c102763beda7ce71"),
+    "name" : "codefresh-inc",
+    "suspension" : {
+        "isSuspended" : false
+    },
+    "activation" : {
+        "isActivated" : true,
+        "performedBy" : "System"
+    },
+    "cloudBuilds" : {
+        "isActivated" : true,
+        "isRequested" : false,
+        "performedBy" : "System"
+    },
+    "allowedDomains" : [
+  
+    ],
+    "enabledAllowedDomains" : true,
+    "admins" : [
+        ObjectId("59009221c102763beda7cf04")
+    ], 
+    "environment" : NumberInt(1),
+    "runtimeEnvironment" : "codefresh",
+    "integrations" : {
+        "stash" : {
+            "active" : false
+        },
+        "github" : {
+            "active" : false
+        },
+        "gitlab" : {
+            "active" : false
+        },
+        "aks" : {
+            "exist" : false
+        },
+        "aks_sp" : {
+            "exist" : false
+        },
+        "aks_mi" : {
+            "exist" : false
+        },
+        "gcloud" : {
+            "exist" : false
+        },
+        "digitalOcean" : {
+            "exist" : false
+        },
+        "registries" : [
+  
+        ]
+    },
+    "badgeToken" : "eyJhbGciOiJIUzI1NiJ9.NTkwMDkxMTdjMTAyNzYzYmVkYTdjZTcx.B0HOUL6HlpTRNr_e95pVucSRMRzP2cobe5kIoMtrDSc",
+    "createdAt" : ISODate("2017-04-26T12:22:48.001+0000"),
+    "updatedAt" : ISODate("2017-04-26T12:27:13.720+0000"),
+    "build" : {
+        "strategy" : "account",
+        "nodes" : NumberInt(0),
+        "packs" : [
+            {
+                "id" : "5cd1746617313f468d669013",
+                "metadata" : {
+                    "name" : "small",
+                    "description" : "1 GB RAM 1 CPU"
+                },
+                "workflows" : {
+                    "concurrency" : {
+                        "amount" : NumberInt(1),
+                        "absorb" : NumberInt(0),
+                        "allowUnlimited" : false
+                    }
+                },
+                "runtime" : {
+                    "name" : "system/linux_paying_plan",
+                    "defaultDindResources" : {
+                        "requests" : {
+                            "cpu" : "900m",
+                            "memory" : "1024Mi"
+                        }
+                    },
+                    "cpu" : "1000m",
+                    "memory" : "1024Mi",
+                    "storage" : "8G",
+                    "dindStorage" : "8G",
+                    "os" : "linux",
+                    "architecture" : "amd64"
+                }
+            },
+            {
+                "id" : "5cd1746717313f468d669014",
+                "metadata" : {
+                    "name" : "medium",
+                    "description" : "4 GB RAM 2 CPU"
+                },
+                "workflows" : {
+                    "concurrency" : {
+                        "amount" : NumberInt(1),
+                        "absorb" : NumberInt(0),
+                        "allowUnlimited" : false
+                    }
+                },
+                "runtime" : {
+                    "name" : "system/linux_paying_plan",
+                    "defaultDindResources" : {
+                        "requests" : {
+                            "cpu" : "1200m",
+                            "memory" : "1500Mi"
+                        }
+                    },
+                    "cpu" : "2000m",
+                    "memory" : "4096Mi",
+                    "storage" : "16G",
+                    "dindStorage" : "16G",
+                    "os" : "linux",
+                    "architecture" : "amd64"
+                }
+            },
+            {
+                "id" : "5cd1746817313f468d669015",
+                "metadata" : {
+                    "name" : "large",
+                    "description" : "8 GB RAM 4 CPU"
+                },
+                "workflows" : {
+                    "concurrency" : {
+                        "amount" : NumberInt(1),
+                        "absorb" : NumberInt(0),
+                        "allowUnlimited" : false
+                    }
+                },
+                "runtime" : {
+                    "name" : "system/linux_paying_plan",
+                    "defaultDindResources" : {
+                        "requests" : {
+                            "cpu" : "1500m",
+                            "memory" : "3000Mi"
+                        }
+                    },
+                    "cpu" : "4000m",
+                    "memory" : "8192Mi",
+                    "storage" : "32G",
+                    "dindStorage" : "32G",
+                    "os" : "linux",
+                    "architecture" : "amd64"
+                }
+            },
+            {
+                "id" : "5cd1746817313f468d669016",
+                "metadata" : {
+                    "name" : "runner",
+                    "description" : "Hybrid runtime-environment"
+                },
+                "workflows" : {
+                    "concurrency" : {
+                        "amount" : NumberInt(-1),
+                        "absorb" : NumberInt(1),
+                        "allowUnlimited" : true
+                    }
+                }
+            }
+        ],
+        "defaultPack" : ObjectId("5cd1746617313f468d669013")
+    },
+    "dedicatedInfrastructure" : false,
+    "canUsePrivateRepos" : true,
+    "features" : {
+        "launchDarklyManagement" : true
+    },
+    "supportPlan" : "PLATINUM",
+    "increasedAttention" : false,
+    "cfcrRepositoryPath" : "codefresh-inc",
+    "paymentPlan" : {
+        "id" : "PRO_1",
+        "trial" : {
+            "trialing" : true,
+            "trialStart" : ISODate("2025-02-07T15:33:32.532+0000"),
+            "trialEnd" : ISODate("2025-02-22T15:33:32.532+0000"),
+            "trialWillEndNotified" : false,
+            "trialEndedNotified" : false,
+            "type" : "NEW_ACCOUNT",
+            "previousSegment" : "BASIC"
+        },
+        "isWiredTransfer" : false,
+        "provider" : "codefresh"
+    },
+    "gradualExposure" : "SEGMENT",
+    "codefreshEnv" : "latest",
+    "imageViewConfig" : {
+        "version" : "V1"
+    },
+    "buildStepConfig" : {
+        "version" : "V1",
+        "disablePush" : false
+    },
+    "CFCRState" : {
+        "dates" : {
+            "one" : {
+                "startDate" : "2020-03-10",
+                "endDate" : "2020-07-02"
+            },
+            "two" : {
+                "startDate" : "2020-07-02",
+                "endDate" : "2020-07-16"
+            }
+        },
+        "enabled" : false,
+        "system" : "ACTIVE",
+        "displayGlobalNotice" : true,
+        "accountChoice" : "ACTIVE"
+    },
+    "noPersonalAccountForInvitedUser" : true,
+    "pipelineConfig" : {
+        "general" : {
+            "templates" : false,
+            "clone" : true,
+            "autoCreateProjectsForTeams" : false,
+            "lowMemoryWarningThreshold" : "70"
+        },
+        "yaml" : {
+            "inline" : true,
+            "git" : true,
+            "url" : true
+        },
+        "execution" : {
+            "keepPVCsForPendingApproval" : false,
+            "pendingApprovalConcurrencyApplied" : false,
+            "injectClustersFromPipelineSettings" : false,
+            "permitRestartFromFailedSteps" : true
+        },
+        "pendingApproval" : {
+            "pendingApprovalConfirmation" : "none"
+        }
+    },
+    "csdp" : {
+        "validated" : false
+    },
+    "pauseWorkflowExecution" : false,
+    "systemType" : "PROJECT_ONE",
+    "systemTypePrev" : "",
+    "notifications" : [
+        {
+            "type" : "pr",
+            "events" : [
+                "build-success"
+            ]
+        }
+    ],
+    "repoPermission" : "public",
+    "limits" : {
+        "collaborators" : {
+            "limit" : NumberInt(10),
+            "used" : NumberInt(1)
+        },
+        "dataRetention" : {
+            "weeks" : NumberInt(24)
+        }
+    },
+    "localUserPasswordIDPEnabled" : true,
+    "segment" : "ENTERPRISE",
+    "__v" : NumberInt(0) 
+}

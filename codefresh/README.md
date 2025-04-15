@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.7.0](https://img.shields.io/badge/Version-2.7.0-informational?style=flat-square) ![AppVersion: 2.7.0](https://img.shields.io/badge/AppVersion-2.7.0-informational?style=flat-square)
+![Version: 2.7.8](https://img.shields.io/badge/Version-2.7.8-informational?style=flat-square) ![AppVersion: 2.7.0](https://img.shields.io/badge/AppVersion-2.7.0-informational?style=flat-square)
 
 Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
@@ -2191,6 +2191,7 @@ After platform upgrade, Consul fails with the error `refusing to rejoin cluster 
 | consul | object | See below | consul Ref: https://github.com/bitnami/charts/blob/main/bitnami/consul/values.yaml |
 | context-manager | object | See below | context-manager |
 | cronus | object | See below | cronus |
+| developmentChart | bool | `false` |  |
 | dockerconfigjson | object | `{}` | DEPRECATED - Use `.imageCredentials` instead dockerconfig (for `kcfi` tool backward compatibility) for Image Pull Secret. Obtain GCR Service Account JSON (sa.json) at support@codefresh.io ```shell GCR_SA_KEY_B64=$(cat sa.json | base64) DOCKER_CFG_VAR=$(echo -n "_json_key:$(echo ${GCR_SA_KEY_B64} | base64 -d)" | base64 | tr -d '\n') ``` E.g.: dockerconfigjson:   auths:     gcr.io:       auth: <DOCKER_CFG_VAR> |
 | gencerts | object | See below | Job to generate internal runtime secrets. Required at first install. |
 | gitops-dashboard-manager | object | See below | gitops-dashboard-manager |
@@ -2289,11 +2290,12 @@ After platform upgrade, Consul fails with the error `refusing to rejoin cluster 
 | hermes | object | See below | hermes |
 | hooks | object | See below | Pre/post-upgrade Job hooks. Updates images in `system/default` runtime. |
 | imageCredentials | object | `{}` | Credentials for Image Pull Secret object |
-| ingress | object | `{"annotations":{"nginx.ingress.kubernetes.io/configuration-snippet":"more_set_headers \"X-Request-ID: $request_id\";\nproxy_set_header X-Request-ID $request_id;\n","nginx.ingress.kubernetes.io/service-upstream":"true","nginx.ingress.kubernetes.io/ssl-redirect":"false","nginx.org/redirect-to-https":"false"},"enabled":true,"ingressClassName":"nginx-codefresh","nameOverride":"","services":{"internal-gateway":["/"]},"tls":{"cert":"","enabled":false,"existingSecret":"","key":"","secretName":"star.codefresh.io"}}` | Ingress |
+| ingress | object | `{"annotations":{"nginx.ingress.kubernetes.io/service-upstream":"true","nginx.ingress.kubernetes.io/ssl-redirect":"false","nginx.org/redirect-to-https":"false"},"enabled":true,"ingressClassName":"nginx-codefresh","labels":{},"nameOverride":"","services":{"internal-gateway":["/"]},"tls":{"cert":"","enabled":false,"existingSecret":"","key":"","secretName":"star.codefresh.io"}}` | Ingress |
 | ingress-nginx | object | See below | ingress-nginx Ref: https://github.com/kubernetes/ingress-nginx/blob/main/charts/ingress-nginx/values.yaml |
 | ingress.annotations | object | See below | Set annotations for ingress. |
 | ingress.enabled | bool | `true` | Enable the Ingress |
 | ingress.ingressClassName | string | `"nginx-codefresh"` | Set the ingressClass that is used for the ingress. Default `nginx-codefresh` is created from `ingress-nginx` controller subchart |
+| ingress.labels | object | `{}` | Set labels for ingress |
 | ingress.nameOverride | string | `""` | Override Ingress resource name |
 | ingress.services | object | See below | Default services and corresponding paths |
 | ingress.tls.cert | string | `""` | Certificate (base64 encoded) |
@@ -2304,9 +2306,12 @@ After platform upgrade, Consul fails with the error `refusing to rejoin cluster 
 | internal-gateway | object | See below | internal-gateway |
 | k8s-monitor | object | See below | k8s-monitor |
 | kube-integration | object | See below | kube-integration |
+| mailer.enabled | bool | `false` |  |
 | mongodb | object | See below | mongodb Ref: https://github.com/bitnami/charts/blob/main/bitnami/mongodb/values.yaml |
 | nats | object | See below | nats Ref: https://github.com/bitnami/charts/blob/main/bitnami/nats/values.yaml |
 | nomios | object | See below | nomios |
+| onboarding-status.enabled | bool | `false` |  |
+| payments.enabled | bool | `false` |  |
 | pipeline-manager | object | See below | pipeline-manager |
 | postgresql | object | See below | postgresql Ref: https://github.com/bitnami/charts/blob/main/bitnami/postgresql/values.yaml |
 | postgresql-ha | object | See below | postgresql Ref: https://github.com/bitnami/charts/blob/main/bitnami/postgresql-ha/values.yaml |
@@ -2317,6 +2322,7 @@ After platform upgrade, Consul fails with the error `refusing to rejoin cluster 
 | runner | object | See below | runner |
 | runtime-environment-manager | object | See below | runtime-environment-manager |
 | runtimeImages | object | See below | runtimeImages |
+| salesforce-reporter.enabled | bool | `false` |  |
 | seed | object | See below | Seed jobs |
 | seed-e2e | object | `{"affinity":{},"backoffLimit":10,"enabled":false,"image":{"registry":"docker.io","repository":"mongo","tag":"latest"},"nodeSelector":{},"podSecurityContext":{},"resources":{},"tolerations":[],"ttlSecondsAfterFinished":300}` | CI |
 | seed.enabled | bool | `true` | Enable all seed jobs |
@@ -2330,5 +2336,6 @@ After platform upgrade, Consul fails with the error `refusing to rejoin cluster 
 | seed.postgresSeedJob.postgresPasswordSecretKeyRef | optional | `{}` | Password for "postgres" admin user from existing secret |
 | seed.postgresSeedJob.postgresUser | optional | `""` | "postgres" admin user in plain text (required ONLY for seed job!) Must be a privileged user allowed to create databases and grant roles. If omitted, username and password from `.Values.global.postgresUser/postgresPassword` will be used. |
 | seed.postgresSeedJob.postgresUserSecretKeyRef | optional | `{}` | "postgres" admin user from exising secret |
+| segment-reporter.enabled | bool | `false` |  |
 | tasker-kubernetes | object | `{"affinity":{},"container":{"image":{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/tasker-kubernetes"}},"enabled":true,"hpa":{"enabled":false},"nodeSelector":{},"pdb":{"enabled":false},"podSecurityContext":{},"resources":{"limits":{},"requests":{"cpu":"100m","memory":"128Mi"}},"tolerations":[]}` | tasker-kubernetes |
 | webTLS | object | `{"cert":"","enabled":false,"key":"","secretName":"star.codefresh.io"}` | DEPRECATED - Use `.Values.ingress.tls` instead TLS secret for Ingress |

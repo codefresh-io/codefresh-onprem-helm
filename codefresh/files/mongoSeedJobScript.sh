@@ -29,6 +29,8 @@ MONGODB_DATABASES=(
     "platform-analytics-postgres"
     "read-models"
     "runtime-environment-manager"
+    "onboarding-status"
+    "payments"
 )
 
 disableMongoTelemetry() {
@@ -66,6 +68,18 @@ getMongoVersion() {
     MONOGDB_VERSION=$(mongosh ${MONGODB_ROOT_URI} --eval "db.version()" 2>&1 | tail -n1)
 }
 
+setSystemAdmin() {
+    mongosh $MONGO_URI --eval "db.users.update({}, {\$set: {roles: ['User', 'Admin', 'Account Admin']}}, {multi: true})"
+}
+
+setPacks() {
+    PACKS=$(cat ${ASSETS_PATH}packs.json)
+    mongosh $MONGO_URI --eval "db.accounts.update({}, {\$set: {'build.packs': ${PACKS} }}, {multi: true})"
+
+    PAYMENTS_MONGO_URI=${MONGO_URI/\/codefresh/\/payments}
+    mongosh $PAYMENTS_MONGO_URI --eval "db.accounts.update({}, {\$set: {'plan.packs': ${PACKS} }}, {multi: true})"
+}
+
 parseMongoURI $MONGO_URI
 
 disableMongoTelemetry
@@ -84,6 +98,11 @@ done
 mongosh ${MONGODB_ROOT_URI} --eval "db.getSiblingDB(\"codefresh\").grantRolesToUser( \"${MONGODB_USER}\", [ { role: \"readWrite\", db: \"pipeline-manager\" } ] )" 2>&1 || true
 mongosh ${MONGODB_ROOT_URI} --eval "db.getSiblingDB(\"codefresh\").grantRolesToUser( \"${MONGODB_USER}\", [ { role: \"readWrite\", db: \"platform-analytics-postgres\" } ] )" 2>&1 || true
 mongosh ${MONGODB_ROOT_URI} --eval "db.getSiblingDB(\"codefresh\").changeUserPassword(\"${MONGODB_USER}\",\"${MONGODB_PASSWORD}\")" 2>&1 || true
+
+if [[ $DEVELOPMENT_CHART == "true" ]]; then
+    setSystemAdmin
+    setPacks
+fi
 
 mongoimport --uri ${MONGO_URI} --collection idps --type json --legacy --file ${ASSETS_PATH}idps.json
 mongoimport --uri ${MONGO_URI} --collection accounts --type json --legacy --file ${ASSETS_PATH}accounts.json

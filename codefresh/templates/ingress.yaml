@@ -9,6 +9,9 @@ metadata:
   name: {{ $ingressName }}
   labels:
     {{ include "codefresh.labels" . | nindent 4 }}
+  {{- with .Values.ingress.labels }}
+    {{ toYaml . | nindent 4 }}
+  {{- end }}
   {{- with .Values.ingress.annotations }}
   annotations:
     {{ toYaml . | nindent 4 }}
@@ -21,11 +24,6 @@ spec:
       - {{ .Values.global.appUrl }}
       secretName: {{ include "codefresh.ingress.tlsSecretName" . }}
   {{- end }}
-  defaultBackend:
-    service:
-      name: {{ printf "%s-%s" .Release.Name (index .Subcharts "cfui" ).Chart.Name }}
-      port:
-        number: {{ (index .Subcharts "cfui" ).Values.service.main.ports.http.port }}
   rules:
   - host: {{ .Values.ingress.domain | default .Values.global.appUrl }}
     http:
@@ -37,7 +35,12 @@ spec:
         pathType: ImplementationSpecific
         backend:
           service:
+            {{- $fullServiceName := (index $.Subcharts $serviceName).Values.fullnameOverride }}
+            {{- if $fullServiceName }}
+            name: {{ $fullServiceName }}
+            {{- else }}
             name: {{ printf "%s-%s" $.Release.Name (index $.Subcharts $serviceName ).Chart.Name }}
+            {{- end }}
             port:
               number: {{ (index $.Subcharts $serviceName ).Values.service.main.ports.http.port }}
         {{- end }}
