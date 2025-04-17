@@ -142,10 +142,10 @@ dependencies:
   version: 0.8.10
 - name: cf-platform-analytics
   repository: oci://quay.io/codefresh/charts
-  version: 0.49.83
+  version: 0.49.85
 - name: cf-platform-analytics
   repository: oci://quay.io/codefresh/charts
-  version: 0.49.83
+  version: 0.49.85
 - name: argo-platform
   repository: oci://quay.io/codefresh/charts
   version: 1.3344.0-onprem-5c8af92
@@ -170,5 +170,5 @@ dependencies:
 - name: onboarding-status
   repository: oci://quay.io/codefresh/charts
   version: 1.8.8
-digest: sha256:ed1d24ed0c9cd7c89b08b15b7daff4c5fdbdee45827ec50c11f656f2c97453df
-generated: "2025-04-10T16:57:20.2068+03:00"
+digest: sha256:2ebb0041093b91a6e3aa653e7a1730f208a7f7cc67b5e295fee67d07e3b592c5
+generated: "2025-04-16T07:13:53.947555+03:00"
