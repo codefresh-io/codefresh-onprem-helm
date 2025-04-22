@@ -1042,7 +1042,7 @@ kube-integration:
 mongodb:
   enabled: true
   image:
-    tag: "6.0"
+    tag: "5.0"
   architecture: standalone
   useStatefulSet: true
   auth:
