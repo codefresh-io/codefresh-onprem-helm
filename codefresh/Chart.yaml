@@ -19,9 +19,7 @@ annotations:
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
     - kind: fixed
-      description: "fixed minimum space required toggle for system runtime environments"
-    - kind: added
-      description: "added australia-southeast2 region to GAR integration"
+      description: "mongodb 5.0"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
