@@ -22,6 +22,8 @@ annotations:
       description: "Remove duplicated cf-codefresh-registry imagePullSecret secret from workloads"
     - kind: security
       description: "Misc security updates"
+    - kind: fixed
+      description: "Fix mongoimport in mongo-seed job"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
