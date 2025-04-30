@@ -36,7 +36,7 @@ seed:
     image:
       registry: quay.io
       repository: codefresh/mongosh
-      tag: 2.4.2
+      tag: 2.5.0
     # -- Root user in plain text (required ONLY for seed job!).
     mongodbRootUser: "root"
     # -- Root user from existing secret
@@ -441,7 +441,7 @@ hooks:
   image:
     registry: quay.io
     repository: codefresh/mongosh
-    tag: 2.4.2
+    tag: 2.5.0
   affinity: {}
   nodeSelector: {}
   podSecurityContext: {}
@@ -494,6 +494,8 @@ runtimeImages:
 cfapi: &cf-api
   # -- Enable cf-api
   enabled: true
+  # -- Image pull secrets
+  imagePullSecrets: []
   # -- Controller configuration
   controller:
     # -- Replicas number
@@ -520,6 +522,7 @@ cfapi: &cf-api
       OIDC_PROVIDER_PROTOCOL: '{{ .Values.global.oidcProviderProtocol }}'
       OIDC_PROVIDER_TOKEN_ENDPOINT: '{{ .Values.global.oidcProviderTokenEndpoint }}'
       DEFAULT_SYSTEM_TYPE: PROJECT_ONE
+  # -- Secrets configuration
   secrets:
     secret:
       enabled: true
@@ -527,7 +530,6 @@ cfapi: &cf-api
       stringData:
         OIDC_PROVIDER_CLIENT_ID: '{{ .Values.global.oidcProviderClientId }}'
         OIDC_PROVIDER_CLIENT_SECRET: '{{ .Values.global.oidcProviderClientSecret }}'
-
   # -- Resource requests and limits
   resources:
     requests:
@@ -550,9 +552,13 @@ cfapi: &cf-api
     enabled: false
     # -- Minimum number of replicas in percentage
     minAvailable: "50%"
+  # -- Affinity configuration
   affinity: {}
+  # -- Node selector configuration
   nodeSelector: {}
+  # -- Pod security context configuration
   podSecurityContext: {}
+  # -- Tolerations configuration
   tolerations: []
 
 # cfapi roles
@@ -659,6 +665,7 @@ internal-gateway:
 # @default -- See below
 cf-broadcaster:
   enabled: true
+  imagePullSecrets: []
   controller:
     replicas: 3
   container:
@@ -690,6 +697,7 @@ cf-platform-analytics-etlstarter:
   redis:
     # -- Disable redis subchart
     enabled: false
+  imagePullSecrets: []
   controller:
     # - Disable default deployment controller
     enabled: false
@@ -726,6 +734,7 @@ cf-platform-analytics-etlstarter:
 cf-platform-analytics-platform:
   nameOverride: platform-analytics
   mongodbDatabase: "platform-analytics-postgres"
+  imagePullSecrets: []
   container:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
@@ -755,6 +764,7 @@ cf-platform-analytics-platform:
 # @default -- See below
 cfsign:
   enabled: true
+  imagePullSecrets: []
   container:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
@@ -794,6 +804,7 @@ cfsign:
 # @default -- See below
 cfui:
   enabled: true
+  imagePullSecrets: []
   controller:
     replicas: 2
   container:
@@ -820,6 +831,7 @@ cfui:
 # @default -- See below
 charts-manager:
   enabled: true
+  imagePullSecrets: []
   container:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
@@ -842,6 +854,7 @@ charts-manager:
 # @default -- See below
 cluster-providers:
   enabled: true
+  imagePullSecrets: []
   container:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
@@ -875,6 +888,7 @@ consul:
 # @default -- See below
 context-manager:
   enabled: true
+  imagePullSecrets: []
   container:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
@@ -897,6 +911,7 @@ context-manager:
 # @default -- See below
 cronus:
   enabled: true
+  imagePullSecrets: []
   container:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
@@ -910,6 +925,7 @@ cronus:
 # @default -- See below
 gitops-dashboard-manager:
   enabled: true
+  imagePullSecrets: []
   container:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
@@ -932,6 +948,7 @@ gitops-dashboard-manager:
 # @default -- See below
 helm-repo-manager:
   enabled: true
+  imagePullSecrets: []
   container:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
@@ -962,6 +979,7 @@ helm-repo-manager:
 # -- hermes
 # @default -- See below
 hermes:
+  imagePullSecrets: []
   controller:
     replicas: 1
   container:
@@ -1012,6 +1030,7 @@ ingress-nginx:
 # @default -- See below
 k8s-monitor:
   enabled: true
+  imagePullSecrets: []
   container:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
@@ -1034,6 +1053,7 @@ k8s-monitor:
 # @default -- See below
 kube-integration:
   enabled: true
+  imagePullSecrets: []
   container:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
@@ -1089,6 +1109,7 @@ nats:
 # @default -- See below
 nomios:
   enabled: true
+  imagePullSecrets: []
   container:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
@@ -1207,6 +1228,7 @@ rabbitmq:
 # -- builder
 builder:
   enabled: true
+  imagePullSecrets: []
   initContainers:
     register:
       image:
@@ -1228,6 +1250,7 @@ builder:
 # @default -- See below
 runner:
   enabled: true
+  imagePullSecrets: []
   initContainers:
     register:
       image:
@@ -1249,6 +1272,7 @@ runner:
 # @default -- See below
 pipeline-manager:
   enabled: true
+  imagePullSecrets: []
   container:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
@@ -1271,6 +1295,7 @@ pipeline-manager:
 # @default -- See below
 runtime-environment-manager:
   enabled: true
+  imagePullSecrets: []
   container:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
@@ -1294,6 +1319,7 @@ runtime-environment-manager:
 # -- tasker-kubernetes
 tasker-kubernetes:
   enabled: true
+  imagePullSecrets: []
   container:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
@@ -1322,8 +1348,7 @@ argo-hub-platform:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh-io/argo-hub-platform
-  imagePullSecrets:
-    - '{{ .Release.Name }}-registry'
+  imagePullSecrets: []
   resources:
     requests:
       cpu: 100m
