@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.6.12
+version: 2.6.13
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -19,9 +19,7 @@ annotations:
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
     - kind: fixed
-      description: "fixed minimum space required toggle for system runtime environments"
-    - kind: added
-      description: "added australia-southeast2 region to GAR integration"
+      description: "argo-hub-platform image repository"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
