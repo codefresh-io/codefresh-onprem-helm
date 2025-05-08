@@ -19,7 +19,7 @@ annotations:
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
     - kind: fixed
-      description: "description: "argo-hub-platform image repository""
+      description: "argo-hub-platform image repository"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
