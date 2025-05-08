@@ -61,7 +61,7 @@ dependencies:
   version: 3.138.4
 - name: gitops-dashboard-manager
   repository: oci://quay.io/codefresh/charts
-  version: 1.14.21
+  version: 1.14.22
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
   version: 21.274.13
@@ -151,7 +151,7 @@ dependencies:
   version: 1.3344.0-onprem-5c8af92
 - name: argo-hub-platform
   repository: oci://quay.io/codefresh/charts
-  version: 0.1.22
+  version: 0.1.23
 - name: cf-oidc-provider
   repository: oci://quay.io/codefresh/charts
   version: 0.0.16
@@ -170,5 +170,5 @@ dependencies:
 - name: onboarding-status
   repository: oci://quay.io/codefresh/charts
   version: 1.8.8
-digest: sha256:6a3903f52d8a056d7d95f295ca3303f62ceb32532be77795a4703147a4cbb9b5
-generated: "2025-04-30T11:54:17.265065+03:00"
+digest: sha256:95c63dadcae268e4dda42cd7b59f80671a522e88eec616dc9faa71a1748b9766
+generated: "2025-05-08T10:19:03.299891+03:00"

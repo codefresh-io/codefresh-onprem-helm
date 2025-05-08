@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.7.10
+version: 2.7.11
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -19,11 +19,7 @@ annotations:
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
     - kind: fixed
-      description: "Remove duplicated cf-codefresh-registry imagePullSecret secret from workloads"
-    - kind: security
-      description: "Misc security updates"
-    - kind: fixed
-      description: "Fix mongoimport in mongo-seed job"
+      description: "argo-hub-platform image repository"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
