@@ -118,7 +118,7 @@ dependencies:
   version: 21.274.13
 - name: cfui
   repository: oci://quay.io/codefresh/charts
-  version: 14.97.50
+  version: 14.97.51
 - name: k8s-monitor
   repository: oci://quay.io/codefresh/charts
   version: 4.11.14
@@ -170,5 +170,5 @@ dependencies:
 - name: onboarding-status
   repository: oci://quay.io/codefresh/charts
   version: 1.8.8
-digest: sha256:95c63dadcae268e4dda42cd7b59f80671a522e88eec616dc9faa71a1748b9766
-generated: "2025-05-08T10:19:03.299891+03:00"
+digest: sha256:adb95ed0ea3892514f16f811a12dae0fe6684aee72b34606d67b1b189bb977fb
+generated: "2025-05-09T15:14:12.299975+03:00"
