@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.7.12
+version: 2.7.13
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -18,8 +18,8 @@ annotations:
   artifacthub.io/containsSecurityUpdates: "false"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
-    - kind: fixed
-      description: 'cf-ui: fix "Back to Application" button in Admin panel for GitOps system type'
+    - kind: security
+      description: 'Contains security updates'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -29,7 +29,7 @@ dependencies:
     version: 0.10.2
     condition: internal-gateway.enabled
   - name: consul
-    version: 11.4.10
+    version: 11.4.17
     repository: https://charts.bitnami.com/bitnami
     condition: consul.enabled
   - name: mongodb
@@ -45,7 +45,7 @@ dependencies:
     repository: oci://registry-1.docker.io/bitnamicharts
     condition: postgresql-ha.enabled
   - name: redis
-    version: 20.11.3
+    version: 20.13.4
     repository: https://charts.bitnami.com/bitnami
     condition: redis.enabled
   - name: redis-ha
@@ -237,7 +237,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
-    version: "1.3344.0-onprem-5c8af92"
+    version: "1.3344.1-onprem-87e654a"
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform
