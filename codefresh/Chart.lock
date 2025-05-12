@@ -148,7 +148,7 @@ dependencies:
   version: 0.49.86
 - name: argo-platform
   repository: oci://quay.io/codefresh/charts
-  version: 1.3483.0
+  version: 1.3484.0
 - name: argo-hub-platform
   repository: oci://quay.io/codefresh/charts
   version: 0.1.23
@@ -170,5 +170,5 @@ dependencies:
 - name: onboarding-status
   repository: oci://quay.io/codefresh/charts
   version: 1.8.8
-digest: sha256:a0e508f5f98480aca2335131c7465df991d2d1b4c09a6ab74bdd5bbc911e4751
-generated: "2025-05-11T15:44:19.501893+03:00"
+digest: sha256:91557789375ab1ec32f1e49d912395210db0556816d30b9fa0be207c9704e333
+generated: "2025-05-12T10:03:34.249848+03:00"
