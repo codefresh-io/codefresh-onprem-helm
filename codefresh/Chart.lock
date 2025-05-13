@@ -118,7 +118,7 @@ dependencies:
   version: 21.274.14
 - name: cfui
   repository: oci://quay.io/codefresh/charts
-  version: 14.97.51
+  version: 14.97.50
 - name: k8s-monitor
   repository: oci://quay.io/codefresh/charts
   version: 4.11.14
