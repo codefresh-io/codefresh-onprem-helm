@@ -15,7 +15,7 @@ dependencies:
   repository: https://charts.bitnami.com/bitnami
   version: 12.5.1
 - name: postgresql-ha
-  repository: oci://registry-1.docker.io/bitnamicharts
+  repository: oci://quay.io/codefresh/charts
   version: 12.0.4
 - name: redis
   repository: https://charts.bitnami.com/bitnami
@@ -170,5 +170,5 @@ dependencies:
 - name: onboarding-status
   repository: oci://quay.io/codefresh/charts
   version: 1.8.8
-digest: sha256:66cbf79aa7c0fdc97f450ff15cbe93814ab45cfd49ba19cfd070d3bf01e3265f
-generated: "2025-05-14T18:55:21.591661+03:00"
+digest: sha256:af1566dcf00186987f5611033297cdcc4afbcf25f340672801038e2348550f7a
+generated: "2025-05-14T19:26:19.494994+03:00"
