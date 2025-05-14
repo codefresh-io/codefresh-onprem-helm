@@ -19,7 +19,9 @@ annotations:
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
     - kind: security
-      description: 'Contains security updates'
+      description: "Misc security fixes"
+    - kind: fixed
+      description: "cf-ui: fix Back to Application button in Admin panel for GitOps system type"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
