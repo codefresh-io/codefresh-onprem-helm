@@ -1,4 +1,13 @@
 {{ $libTemplateName := printf "cf-common-%s" (index .Subcharts "cf-common").Chart.Version }}
+{{- $tolerations := .Values.postgresqlCleanJob.tolerations | default list }}
+{{- $globalTolerations := .Values.global.tolerations | default list }}
+{{- $allToleration := concat $globalTolerations $tolerations }}
+{{- $affinity := .Values.postgresqlCleanJob.affinity | default dict }}
+{{- $globalAffinity := .Values.global.affinity | default dict }}
+{{- $allAffinity := mergeOverwrite $globalAffinity $affinity }}
+{{- $nodeSelector := .Values.postgresqlCleanJob.nodeSelector | default dict }}
+{{- $globalNodeSelector := .Values.global.nodeSelector | default dict }}
+{{- $allNodeSelector := mergeOverwrite $globalNodeSelector $nodeSelector }}
 {{- if and .Values.postgresqlCleanJob.enabled }}
 ---
 apiVersion: batch/v1
@@ -57,15 +66,15 @@ spec:
               - "-exc"
               - |
                 {{ .Files.Get "files/postgresCleanJobScript.sh" | nindent 16 }}
-          {{- with .Values.postgresqlCleanJob.nodeSelector }}
+          {{- with $allNodeSelector }}
           nodeSelector:
             {{- toYaml . | nindent 12 }}
           {{- end }}
-          {{- with .Values.postgresqlCleanJob.affinity }}
+          {{- with $allAffinity }}
           affinity:
             {{- toYaml . | nindent 12 }}
           {{- end }}
-          {{- with .Values.postgresqlCleanJob.tolerations }}
+          {{- with .$allToleration }}
           tolerations:
             {{- toYaml . | nindent 10 }}
           {{- end }}
