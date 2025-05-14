@@ -1077,8 +1077,6 @@ kube-integration:
 # Ref: https://github.com/bitnami/charts/blob/main/bitnami/mongodb/values.yaml
 mongodb:
   enabled: true
-  image:
-    tag: "6.0"
   architecture: standalone
   useStatefulSet: true
   auth:
