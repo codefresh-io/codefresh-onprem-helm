@@ -33,7 +33,7 @@ dependencies:
     repository: https://charts.bitnami.com/bitnami
     condition: consul.enabled
   - name: mongodb
-    version: 14.4.1
+    version: 15.6.26
     repository: https://charts.bitnami.com/bitnami
     condition: mongodb.enabled,mongo.enabled,global.mongoDeploy
   - name: postgresql
