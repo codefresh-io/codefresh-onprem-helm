@@ -1,0 +1,45 @@
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: {{ include "codefresh.fullname" . }}-delete-consul-svc
+  namespace: {{ .Release.Namespace }}
+  annotations:
+    helm.sh/hook: pre-upgrade
+    helm.sh/hook-weight: "-10"
+    helm.sh/hook-delete-policy: hook-succeeded,before-hook-creation,hook-failed
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: {{ include "codefresh.fullname" . }}-delete-consul-svc
+  namespace: {{ .Release.Namespace }}
+  annotations:
+    helm.sh/hook: pre-upgrade
+    helm.sh/hook-weight: "-10"
+    helm.sh/hook-delete-policy: hook-succeeded,before-hook-creation,hook-failed
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - services
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{ include "codefresh.fullname" . }}-delete-consul-svc
+  namespace: {{ .Release.Namespace }}
+  annotations:
+    helm.sh/hook: pre-upgrade
+    helm.sh/hook-weight: "-10"
+    helm.sh/hook-delete-policy: hook-succeeded,before-hook-creation,hook-failed
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: {{ include "codefresh.fullname" . }}-delete-consul-svc
+subjects:
+  - kind: ServiceAccount
+    name: {{ include "codefresh.fullname" . }}-delete-consul-svc
+    namespace: {{ .Release.Namespace }}
