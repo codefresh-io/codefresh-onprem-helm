@@ -74,7 +74,7 @@ spec:
           affinity:
             {{- toYaml . | nindent 12 }}
           {{- end }}
-          {{- with .$allToleration }}
+          {{- with $allToleration }}
           tolerations:
             {{- toYaml . | nindent 10 }}
           {{- end }}
