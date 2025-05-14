@@ -1,0 +1,62 @@
+{{ $libTemplateName := printf "cf-common-%s" (index .Subcharts "cf-common").Chart.Version }}
+{{- $tolerations := .Values.gencerts.tolerations | default list }}
+{{- $globalTolerations := .Values.global.tolerations | default list }}
+{{- $allToleration := concat $globalTolerations $tolerations }}
+{{- $affinity := .Values.gencerts.affinity | default dict }}
+{{- $globalAffinity := .Values.global.affinity | default dict }}
+{{- $allAffinity := mergeOverwrite $globalAffinity $affinity }}
+{{- $nodeSelector := .Values.gencerts.nodeSelector | default dict }}
+{{- $globalNodeSelector := .Values.global.nodeSelector | default dict }}
+{{- $allNodeSelector := mergeOverwrite $globalNodeSelector $nodeSelector }}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ template "codefresh.fullname" . }}-delete-consul-svc
+  labels:
+    {{ include "codefresh.labels" . | nindent 4 }}
+  annotations:
+    helm.sh/hook: pre-upgrade
+    helm.sh/hook-weight: "5"
+    helm.sh/hook-delete-policy: hook-succeeded,before-hook-creation,hook-failed
+spec:
+  ttlSecondsAfterFinished: 300
+  backoffLimit: 0
+  template:
+    metadata:
+      name: {{ template "codefresh.fullname" . }}-delete-consul-svc
+      labels:
+        {{ include "codefresh.labels" . | nindent 8 }}
+    spec:
+      serviceAccountName: {{ template "codefresh.fullname" . }}-delete-consul-svc
+      {{- include (printf "%s.image.pullSecrets" $libTemplateName ) . | nindent 6 }}
+      containers:
+      - name: {{ template "codefresh.fullname" . }}-delete-consul-svc
+        image: {{ include (printf "%s.image.name" $libTemplateName) (dict "image" .Values.gencerts.image "context" .) }}
+        command:
+        - /bin/sh
+        - -c
+        - |
+          set -e
+          CONSUL_SVC_HEADLESS=$(kubectl get svc -n {{ .Release.Namespace }} \
+             -l app.kubernetes.io/instance={{ include "codefresh.fullname" . }}\
+             -l app.kubernetes.io/name=consul \
+             -o name | grep headless )
+          if [ -n "$CONSUL_SVC_HEADLESS" ]; then
+            kubectl delete -n {{ .Release.Namespace }} $CONSUL_SVC_HEADLESS --ignore-not-found
+          fi
+        resources:
+          {{- toYaml .Values.gencerts.resources | nindent 10 }}
+      {{- with $allNodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with $allAffinity }}
+      affinity:
+        {{- toYaml . | nindent 8}}
+      {{- end }}
+      {{- with $allToleration }}
+      tolerations:
+        {{- toYaml . | nindent 6 }}
+      {{- end }}
+      restartPolicy: OnFailure
