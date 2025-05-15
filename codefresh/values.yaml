@@ -1128,7 +1128,7 @@ postgresql:
   image:
     registry: quay.io
     repository: codefresh/postgresql
-    tag: 13
+    tag: 17
   auth:
     enablePostgresUser: true
     postgresPassword: "eC9arYka4ZbH"
@@ -1155,7 +1155,7 @@ postgresql-ha:
     image:
       registry: quay.io
       repository: codefresh/postgresql-repmgr
-      tag: 13
+      tag: 17
     username: postgres
     password: "eC9arYka4ZbH"
     database: "codefresh"
