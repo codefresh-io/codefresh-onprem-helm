@@ -9,6 +9,7 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
 - [Prerequisites](#prerequisites)
 - [Get Repo Info](#get-repo-info)
 - [Install Chart](#install-chart)
+- [Post-installation steps](#post-installation-steps)
 - [Chart Configuration](#chart-configuration)
   - [Persistent services](#persistent-services)
   - [Configuring external services](#configuring-external-services)
@@ -117,6 +118,15 @@ global:
   #   key: firebase-secret
 ```
 
+- Specify `.Values.global.env.MONGO_AUTOMATIC_INDEX_CREATION` and `.Values.global.env.MONGO_AUTOMATIC_INDEX_CREATION`
+
+```yaml
+global:
+  env:
+    MONGO_AUTOMATIC_INDEX_CREATION: "true"
+    MONGOOSE_AUTO_INDEX: "true"
+```
+
 - Specify `.Values.ingress.tls.cert` and `.Values.ingress.tls.key` OR `.Values.ingress.tls.existingSecret`
 
 ```yaml
@@ -169,6 +179,17 @@ ingress-nginx:
       --wait \
       --timeout 15m
   ```
+
+## Post-installation steps
+
+- Disable auto-creation of MongoDB indexes:
+
+```yaml
+global:
+  env:
+    MONGO_AUTOMATIC_INDEX_CREATION: "false"
+    MONGOOSE_AUTO_INDEX: "false"
+```
 
 ## Chart Configuration
 
