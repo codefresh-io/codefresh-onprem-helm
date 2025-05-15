@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.7.12](https://img.shields.io/badge/Version-2.7.12-informational?style=flat-square) ![AppVersion: 2.7.0](https://img.shields.io/badge/AppVersion-2.7.0-informational?style=flat-square)
+![Version: 2.7.13](https://img.shields.io/badge/Version-2.7.13-informational?style=flat-square) ![AppVersion: 2.7.0](https://img.shields.io/badge/AppVersion-2.7.0-informational?style=flat-square)
 
 Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
@@ -67,7 +67,6 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
 - Firebase [Realtime Database URL](https://firebase.google.com/docs/database/web/start#create_a_database) with [legacy token](https://firebase.google.com/docs/database/rest/auth#legacy_tokens). See [Firebase Configuration](#firebase-configuration)
 - Valid TLS certificates for Ingress
 - When [external](#external-postgressql) PostgreSQL is used, `pg_cron` and `pg_partman` extensions **must be enabled** for [analytics](https://codefresh.io/docs/docs/dashboards/home-dashboard/#pipelines-dashboard) to work (see [AWS RDS example](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/PostgreSQL_pg_cron.html#PostgreSQL_pg_cron.enable)). The `pg_cron` extension should be the 1.4 version or higher for Azure Postgres DB.
-
 
 ## Get Repo Info
 
