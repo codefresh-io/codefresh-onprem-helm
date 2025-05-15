@@ -1268,7 +1268,7 @@ cfapi:
     image:
       tag: 21.268.1
       # -- Set empty tag for digest
-      digest: "" 
+      digest: ""
 ```
 
 
@@ -2040,6 +2040,57 @@ global:
                 values:
                   - "value"
 ```
+
+### To 2.8.0
+
+### [What's new in 2.8.x](https://codefresh.io/docs/docs/whats-new/on-prem-release-notes/#on-premises-version-28)
+
+### ⚠️ ⚠️ ⚠️ Breaking changes. Read before upgrading!
+
+### MongoDB update
+
+Default MongoDB image is changed from 6.x to 7.x.
+
+If you run external MongoDB (i.e. [Atlas](https://cloud.mongodb.com)), it is **required** to upgrade it to 7.x after upgrading Codefresh On-Prem to 2.8.x.
+
+### PostgreSQL update
+
+Default PostgreSQL image is changed from 13.x to 17.x
+
+If you run external PostgreSQL, follow the [official instructions](https://www.postgresql.org/docs/17/upgrading.html) to upgrade to 17.x.
+
+⚠️ ⚠️ ⚠️ If you run built-in PostgreSQL `bitnami/postgresql` subchart, direct upgrade is not supported. You need to backup your data, delete the old PostgreSQL StatefulSet with PVCs and restore the data into a new PostgreSQL StatefulSet.
+
+```console
+PGUSER=postgres
+PGHOST=cf-postgresql
+PGPORT=5432
+PGPASSWORD=postgres
+BACKUP_DIR=/tmp/pg_backup
+BACKUP_SQL=backup.sql
+TIMESTAMP=$(date +%Y%m%d%H%M%S)
+NAMESPACE=codefresh
+
+# Backup PostgreSQL data
+pg_dumpall --verbose > "$BACKUP_DIR/$BACKUP_SQL.$TIMESTAMP" 2>> "$LOG_FILE"
+
+# Delete old PostgreSQL StatefulSet
+STS_NAME=$(kubectl get sts -n $NAMESPACE -l app.kubernetes.io/instance=$RELEASE_NAME -l app.kubernetes.io/name=postgresql -o jsonpath='{.items[0].metadata.name}')
+PVC_NAME=$(kubectl get pvc -n $NAMESPACE -l app.kubernetes.io/instance=$RELEASE_NAME -l app.kubernetes.io/name=postgresql -o jsonpath='{.items[0].metadata.name}')
+
+kubectl delete sts $STS_NAME -n $NAMESPACE
+kubectl delete pvc $PVC_NAME -n $NAMESPACE
+
+# Perform Codefresh On-Prem upgrade to 2.8.x
+
+# Restore PostgreSQL data
+psql -U -f "$BACKUP_DIR/$BACKUP_SQL.$TIMESTAMP" >> "$LOG_FILE" 2>&1
+```
+
+### RabbitMQ update
+
+Default RabbitMQ image is changed from 3.x to 4.x
+
 
 ## Troubleshooting
 
