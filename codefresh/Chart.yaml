@@ -53,7 +53,7 @@ dependencies:
     version: 4.26.1
     condition: redis-ha.enabled
   - name: rabbitmq
-    version: 16.0.2
+    version: 15.5.3
     repository: https://charts.bitnami.com/bitnami
     condition: rabbitmq.enabled
   - name: nats
