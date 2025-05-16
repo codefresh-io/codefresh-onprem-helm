@@ -80,6 +80,8 @@ See [Use OCI-based registries](https://helm.sh/docs/topics/registries/)
 
 **Important:** only helm 3.8.0+ is supported
 
+**Important:** Read about [Indexes in MongoDB](#indexes-in-mongodb) before installation
+
 Edit default `values.yaml` or create empty `cf-values.yaml`
 
 - Pass `sa.json` (as a single line) to `.Values.imageCredentials.password`
@@ -789,7 +791,7 @@ cfapi-test-reporting:
   enabled: true
 ```
 
-### Indexes in MongoDB
+### ⚠️ ⚠️ ⚠️ Indexes in MongoDB
 
 Indexes in MongoDB are essential for efficient query performance, especially as your data grows. Without proper indexes, MongoDB must perform full collection scans to find matching documents, which can significantly slow down operations and increase resource usage. For production environments, ensuring that all frequently queried fields are indexed is vital to maintain optimal performance and scalability.
 
