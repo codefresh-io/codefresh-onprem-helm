@@ -2094,6 +2094,8 @@ Default RabbitMQ image is changed from 3.x to 4.x
 
 - Added option to provide `.Values.global.tolerations`/`.Values.global.nodeSelector`/`.Values.global.affinity` for all Codefresh subcharts
 
+- Changed default location for public images from `quay.io/codefresh` to `us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh`
+
 ## Troubleshooting
 
 ### Error: Failed to validate connection to Docker daemon; caused by Error: certificate has expired
