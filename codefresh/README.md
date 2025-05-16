@@ -191,9 +191,10 @@ The following table displays the list of **persistent** services created as part
 
 | Database      | Purpose | Latest supported version     |
 | :---        | :----   |  :--- |
-| MongoDB      | Stores all account data (account settings, users, projects, pipelines, builds etc.)       | 4.4.x   |
-| Postgresql   | Stores data about events for the account (pipeline updates, deletes, etc.). The audit log uses the data from this database.        | 13.x      |
+| MongoDB      | Stores all account data (account settings, users, projects, pipelines, builds etc.)       | 7.x   |
+| Postgresql   | Stores data about events for the account (pipeline updates, deletes, etc.). The audit log uses the data from this database.        | 17.x      |
 | Redis   | Used for caching, and as a key-value store for cron trigger manager.        | 7.0.x      |
+| RabbitMQ  | Used for message queueing.        | 4.x      |
 
 > Running on netfs (nfs, cifs) is not recommended.
 
@@ -212,8 +213,6 @@ The chart contains required dependencies for the corresponding services
 However, you might need to use external services like [MongoDB Atlas Database](https://www.mongodb.com/atlas/database) or [Amazon RDS for PostgreSQL](https://aws.amazon.com/rds/postgresql/). In order to use them, adjust the values accordingly:
 
 #### External MongoDB
-
-**Important:** Recommended version of Mongo is 6.x
 
 ```yaml
 seed:
@@ -325,8 +324,6 @@ global:
 
 #### External PostgresSQL
 
-**Important:** Recommended version of Postgres is 13.x
-
 ```yaml
 seed:
   postgresSeedJob:
@@ -389,8 +386,6 @@ postgresql:
 ```
 
 #### External Redis
-
-**Important:** Recommended version of Redis is 7.x
 
 ```yaml
 global:
@@ -465,8 +460,6 @@ global:
 ```
 
 #### External RabbitMQ
-
-**Important:** Recommended version of RabbitMQ is 3.x
 
 ```yaml
 global:
