@@ -795,6 +795,10 @@ Indexes in MongoDB are essential for efficient query performance, especially as 
 
 Auto-index creation in MongoDB is disabled by default in Codefresh On-Prem to prevent unexpected performance issues in production environments during upgrades. When enabled, MongoDB will automatically create indexes for fields used in queries, which can lead to high CPU and disk usage, increased I/O, and potential service disruptions—especially on large datasets. By requiring manual index management, administrators can plan index creation during maintenance windows, ensuring system stability and predictable performance before upgrading Codefresh On-Prem.
 
+It is critical to ensure that your MongoDB indexes are always aligned with the latest recommended state for your Codefresh On-Prem version. Outdated or missing indexes can lead to degraded performance, slow queries, and increased resource consumption. Always review release notes and update or create indexes as specified during upgrades or when new collections/fields are introduced. Regularly auditing and maintaining your indexes helps ensure optimal system reliability and scalability.
+
+The indexes list are located in `./indexes/<db_name>/<collection_name>.json` files in the root of the repository. The files contain the indexes that should be created for each collection in the database.
+
 #### Enabling auto-index creation
 
 For first-time installations, you **should** enable auto-index creation by setting the following values:
@@ -810,9 +814,7 @@ global:
 
 > **Note!** If you have a large amount of MongoDB data, it is recommended to create indexes manually. Enabling auto-index creation can cause performance degradation during the index creation process with large datasets.
 
-Depending on your MongoDB service (e.g., Atlas, self-hosted), you can create indexes using the MongoDB shell or the Atlas UI. The indexes are defined in the `codefresh/files/indexes/<db_name>/<collection_name>.json` files.
-
-The indexes list is provided in `codefresh/files/indexes/<db_name>/<collection_name>.json` files.
+Depending on your MongoDB service (e.g., Atlas, self-hosted), you can create indexes using the MongoDB shell or the Atlas UI.
 
 Ref:
 - [Create an Index in Atlas DB](https://www.mongodb.com/docs/atlas/atlas-ui/indexes/#create-an-index)
