@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.7.12
+version: 2.7.13
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -18,10 +18,10 @@ annotations:
   artifacthub.io/containsSecurityUpdates: "true"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
-    - kind: security
-      description: "Misc security fixes"
     - kind: fixed
-      description: "cf-ui: fix Back to Application button in Admin panel for GitOps system type"
+      description: "cf-platform-analytics: fix failure of cf-system-etl-postgres on azure postgres"
+    - kind: added
+      description: "cf-api: activate user after sync for Azure SSO provider"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -239,7 +239,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
-    version: "1.3344.0-onprem-5c8af92"
+    version: "1.3344.2-onprem-3feba0e"
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform
