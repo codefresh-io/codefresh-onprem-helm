@@ -48,6 +48,7 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
   - [To 2.5.0](#to-2-5-0)
   - [To 2.6.0](#to-2-6-0)
   - [To 2.7.0](#to-2-7-0)
+  - [To 2.8.0](#to-2-8-0)
 - [Rollback](#rollback)
 - [Troubleshooting](#troubleshooting)
 - [Values](#values)
