@@ -792,17 +792,35 @@ Auto-index creation in MongoDB is disabled by default in Codefresh On-Prem to pr
 
 It is critical to ensure that your MongoDB indexes are always aligned with the latest recommended state for your Codefresh On-Prem version. Outdated or missing indexes can lead to degraded performance, slow queries, and increased resource consumption. Always review release notes and update or create indexes as specified during upgrades or when new collections/fields are introduced. Regularly auditing and maintaining your indexes helps ensure optimal system reliability and scalability.
 
-The indexes list are located in `./indexes/<db_name>/<collection_name>.json` files in the root of the repository. The files contain the indexes that should be created for each collection in the database.
+The indexes list is located at the [codefresh-io/codefresh-onprem-helm](https://github.com/codefresh-io/codefresh-onprem-helm/tree/onprem-2.8.0/indexes)
+
+The directory structure is:
+
+```console
+codefresh-onprem-helm
+├── indexes
+│   ├── <DB_NAME> # MongoDB database name
+│   │   ├── <COLLECTION_NAME>.json # MongoDB indexes for the specified collection
+```
 
 #### Enabling auto-index creation
 
-For first-time installations, you **should** enable auto-index creation by setting the following values:
+For first-time installations, you **must** enable auto-index creation by setting the following values:
 
 ```yaml
 global:
   env:
     MONGOOSE_AUTO_INDEX: "true"
     MONGO_AUTOMATIC_INDEX_CREATION: "true"
+```
+
+You **should** disable it for the next upgrades by setting these variables to `false`:
+
+```yaml
+global:
+  env:
+    MONGOOSE_AUTO_INDEX: "false"
+    MONGO_AUTOMATIC_INDEX_CREATION: "false"
 ```
 
 #### Creating Indexes manually
