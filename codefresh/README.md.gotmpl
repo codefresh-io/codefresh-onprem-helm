@@ -24,6 +24,7 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
   - [Configuration with ALB (Application Load Balancer)](#configuration-with-alb-application-load-balancer)
   - [Configuration with Private Registry](#configuration-with-private-registry)
   - [Configuration with multi-role CF-API](#configuration-with-multi-role-cf-api)
+  - [Indexes in MongoDB](#indexes-in-mongodb)
   - [High Availability](#high-availability)
   - [Mounting private CA certs](#mounting-private-ca-certs)
 - [Installing on OpenShift](#installing-on-openshift)
@@ -33,7 +34,6 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
   - [Projects pipelines limit](#projects-pipelines-limit)
   - [Enable session cookie](#enable-session-cookie)
   - [X-Frame-Options response header](#x-frame-options-response-header)
-  - [Auto-index creation in MongoDB](#auto-index-creation-in-mongodb)
   - [Image digests in containers](#image-digests-in-containers)
 - [Configuring OIDC Provider](#configuring-oidc-provider)
 - [Upgrading](#upgrading)
@@ -116,6 +116,11 @@ global:
   # firebaseSecretSecretKeyRef:
   #   name: my-secret
   #   key: firebase-secret
+
+  env:
+    MONGOOSE_AUTO_INDEX: "true"
+    MONGO_AUTOMATIC_INDEX_CREATION: "true"
+
 ```
 
 - Specify `.Values.ingress.tls.cert` and `.Values.ingress.tls.key` OR `.Values.ingress.tls.existingSecret`
@@ -784,6 +789,34 @@ cfapi-test-reporting:
   enabled: true
 ```
 
+### Indexes in MongoDB
+
+Indexes in MongoDB are essential for efficient query performance, especially as your data grows. Without proper indexes, MongoDB must perform full collection scans to find matching documents, which can significantly slow down operations and increase resource usage. For production environments, ensuring that all frequently queried fields are indexed is vital to maintain optimal performance and scalability.
+
+Auto-index creation in MongoDB is disabled by default in Codefresh On-Prem to prevent unexpected performance issues in production environments. When enabled, MongoDB will automatically create indexes for fields used in queries, which can lead to high CPU and disk usage, increased I/O, and potential service disruptions—especially on large datasets. By requiring manual index management, administrators can plan index creation during maintenance windows, ensuring system stability and predictable performance.
+
+For first-time installations, you **should** enable auto-index creation by setting the following values:
+
+```yaml
+global:
+  env:
+    MONGOOSE_AUTO_INDEX: "true"
+    MONGO_AUTOMATIC_INDEX_CREATION: "true"
+```
+
+> **Note!** If you have a large amount of MongoDB data, it is recommended to create indexes manually. Enabling this feature can cause performance degradation during the index creation process with large datasets.
+
+#### Creating Indexes manually
+
+Depending on your MongoDB service (e.g., Atlas, self-hosted), you can create indexes using the MongoDB shell or the Atlas UI. The indexes are defined in the `codefresh/files/indexes/<db_name>/<collection_name>.json` files.
+
+The indexes list is provided in `codefresh/files/indexes/<db_name>/<collection_name>.json` files.
+
+Ref:
+- [Create an Index in Atlas DB](https://www.mongodb.com/docs/atlas/atlas-ui/indexes/#create-an-index)
+- [Create an Index with mongosh](https://www.mongodb.com/docs/manual/reference/method/db.collection.createIndex/)
+
+
 ### High Availability
 
 The chart installs the non-HA version of Codefresh by default. If you want to run Codefresh in HA mode, use the example values below.
@@ -1208,32 +1241,6 @@ cfapi:
   env:
     USE_SHA256_GITHUB_SIGNATURE: "true"
 ```
-
-### Auto-index creation in MongoDB
-
-In Codefresh On-Prem 2.6.x, the `cfapi` can create indexes in MongoDB automatically. This feature is disabled by default. To enable it, set the following environment variable:
-
-> **Note!** Enabling this feature can cause performance degradation during the index creation process.
-
-> **Note!** It is recommended to add indexes during a maintenance window. The indexes list is provided in `codefresh/files/indexes/<MAJOR.MINOR>/<collection_name>.json` files.
-
-```yaml
-cfapi:
-  container:
-    env:
-      MONGOOSE_AUTO_INDEX: "true"
-```
-
-```yaml
-argo-platform:
-  api-graphql:
-    env:
-      MONGO_AUTOMATIC_INDEX_CREATION: "true"
-```
-
-Ref:
-- [Create an Index in Atlas DB](https://www.mongodb.com/docs/atlas/atlas-ui/indexes/#create-an-index)
-- [Create an Index with mongosh](https://www.mongodb.com/docs/manual/reference/method/db.collection.createIndex/)
 
 ### Image digests in containers
 
