@@ -12,7 +12,7 @@ imageCredentials: {}
 gencerts:
   enabled: true
   image:
-    registry: quay.io
+    registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
     repository: codefresh/kubectl
     tag: 1.33.0
   rbac:
@@ -34,7 +34,7 @@ seed:
   mongoSeedJob:
     enabled: true
     image:
-      registry: quay.io
+      registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
       repository: codefresh/mongosh
       tag: 2.5.0
     # -- Root user in plain text (required ONLY for seed job!).
@@ -60,7 +60,7 @@ seed:
   postgresSeedJob:
     enabled: true
     image:
-      registry: quay.io
+      registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
       repository: codefresh/postgresql
       tag: 17
     # -- (optional) "postgres" admin user in plain text (required ONLY for seed job!)
@@ -439,7 +439,7 @@ global:
 hooks:
   enabled: true
   image:
-    registry: quay.io
+    registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
     repository: codefresh/mongosh
     tag: 2.5.0
   affinity: {}
@@ -454,7 +454,7 @@ hooks:
 postgresqlCleanJob:
   enabled: true
   image:
-    registry: quay.io
+    registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
     repository: codefresh/postgresql
     tag: 17
   schedule:  "0 0 * * *"
@@ -791,7 +791,7 @@ cfsign:
     volume-permissions:
       enabled: true
       image:
-        registry: quay.io
+        registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
         repository: codefresh/curl
         tag: 8.11.1
   affinity: {}
@@ -960,7 +960,7 @@ helm-repo-manager:
     ingress:
       enabled: false
     image:
-      repository: quay.io/codefresh/chartmuseum
+      repository: us-docker.pkg.dev/codefresh-enterprise/gcr.io/codefresh/chartmuseum
       tag: 8795e993
   resources:
     requests:
@@ -1126,7 +1126,7 @@ nomios:
 postgresql:
   enabled: true
   image:
-    registry: quay.io
+    registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
     repository: codefresh/postgresql
     tag: 17
   auth:
@@ -1153,7 +1153,7 @@ postgresql-ha:
   enabled: false
   postgresql:
     image:
-      registry: quay.io
+      registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
       repository: codefresh/postgresql-repmgr
       tag: 17
     username: postgres
@@ -1230,7 +1230,7 @@ builder:
   initContainers:
     register:
       image:
-        registry: quay.io
+        registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
         repository: codefresh/curl
         tag: 8.11.1
   container:
@@ -1252,7 +1252,7 @@ runner:
   initContainers:
     register:
       image:
-        registry: quay.io
+        registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
         repository: codefresh/curl
         tag: 8.11.1
   container:

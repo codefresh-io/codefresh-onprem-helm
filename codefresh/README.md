@@ -2182,7 +2182,7 @@ After platform upgrade, Consul fails with the error `refusing to rejoin cluster 
 | argo-platform.runtime-monitor | object | See below | runtime-monitor Don't enable! Not used in onprem! |
 | argo-platform.ui | object | See below | ui |
 | argo-platform.useExternalSecret | bool | `false` | Use regular k8s secret object. Keep `false`! |
-| builder | object | `{"affinity":{},"container":{"image":{"registry":"docker.io","repository":"library/docker","tag":"28.0-dind"}},"enabled":true,"imagePullSecrets":[],"initContainers":{"register":{"image":{"registry":"quay.io","repository":"codefresh/curl","tag":"8.11.1"}}},"nodeSelector":{},"podSecurityContext":{},"resources":{},"tolerations":[]}` | builder |
+| builder | object | `{"affinity":{},"container":{"image":{"registry":"docker.io","repository":"library/docker","tag":"28.0-dind"}},"enabled":true,"imagePullSecrets":[],"initContainers":{"register":{"image":{"registry":"us-docker.pkg.dev/codefresh-inc/public-gcr-io","repository":"codefresh/curl","tag":"8.11.1"}}},"nodeSelector":{},"podSecurityContext":{},"resources":{},"tolerations":[]}` | builder |
 | cf-broadcaster | object | See below | broadcaster |
 | cf-oidc-provider | object | See below | cf-oidc-provider |
 | cf-platform-analytics-etlstarter | object | See below | etl-starter |
