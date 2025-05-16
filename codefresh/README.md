@@ -2090,6 +2090,10 @@ psql -U -f "$BACKUP_DIR/$BACKUP_SQL.$TIMESTAMP" >> "$LOG_FILE" 2>&1
 
 Default RabbitMQ image is changed from 3.x to 4.x
 
+####  Affected values
+
+- Added option to provide `.Values.global.tolerations`/`.Values.global.nodeSelector`/`.Values.global.affinity` for all Codefresh subcharts
+
 ## Troubleshooting
 
 ### Error: Failed to validate connection to Docker daemon; caused by Error: certificate has expired
