@@ -960,7 +960,7 @@ helm-repo-manager:
     ingress:
       enabled: false
     image:
-      repository: us-docker.pkg.dev/codefresh-enterprise/gcr.io/codefresh/chartmuseum
+      repository: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/chartmuseum
       tag: 8795e993
   resources:
     requests:
