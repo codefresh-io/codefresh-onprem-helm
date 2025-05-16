@@ -56,7 +56,7 @@ for k in ${RUNTIME_IMAGES[@]}; do
    fi
 done
 
-sed -i 's|us-docker.pkg.dev/codefresh-inc/public-gcr-io|quay.io|' $CHARTDIR/values.yaml
+# sed -i 's|us-docker.pkg.dev/codefresh-inc/public-gcr-io|quay.io|' $CHARTDIR/values.yaml
 
 sed -i 's/!!merge //g' $CHARTDIR/values.yaml
 
