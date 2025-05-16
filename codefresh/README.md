@@ -790,7 +790,9 @@ cfapi-test-reporting:
 
 Indexes in MongoDB are essential for efficient query performance, especially as your data grows. Without proper indexes, MongoDB must perform full collection scans to find matching documents, which can significantly slow down operations and increase resource usage. For production environments, ensuring that all frequently queried fields are indexed is vital to maintain optimal performance and scalability.
 
-Auto-index creation in MongoDB is disabled by default in Codefresh On-Prem to prevent unexpected performance issues in production environments. When enabled, MongoDB will automatically create indexes for fields used in queries, which can lead to high CPU and disk usage, increased I/O, and potential service disruptions—especially on large datasets. By requiring manual index management, administrators can plan index creation during maintenance windows, ensuring system stability and predictable performance.
+Auto-index creation in MongoDB is disabled by default in Codefresh On-Prem to prevent unexpected performance issues in production environments during upgrades. When enabled, MongoDB will automatically create indexes for fields used in queries, which can lead to high CPU and disk usage, increased I/O, and potential service disruptions—especially on large datasets. By requiring manual index management, administrators can plan index creation during maintenance windows, ensuring system stability and predictable performance before upgrading Codefresh On-Prem.
+
+#### Enabling auto-index creation
 
 For first-time installations, you **should** enable auto-index creation by setting the following values:
 
@@ -801,9 +803,9 @@ global:
     MONGO_AUTOMATIC_INDEX_CREATION: "true"
 ```
 
-> **Note!** If you have a large amount of MongoDB data, it is recommended to create indexes manually. Enabling this feature can cause performance degradation during the index creation process with large datasets.
-
 #### Creating Indexes manually
+
+> **Note!** If you have a large amount of MongoDB data, it is recommended to create indexes manually. Enabling auto-index creation can cause performance degradation during the index creation process with large datasets.
 
 Depending on your MongoDB service (e.g., Atlas, self-hosted), you can create indexes using the MongoDB shell or the Atlas UI. The indexes are defined in the `codefresh/files/indexes/<db_name>/<collection_name>.json` files.
 
