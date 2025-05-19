@@ -1958,6 +1958,3 @@ segment-reporter:
 
 salesforce-reporter:
   enabled: false
-
-onboarding-status:
-  enabled: false

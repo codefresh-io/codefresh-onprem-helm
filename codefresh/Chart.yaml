@@ -18,7 +18,7 @@ annotations:
   artifacthub.io/containsSecurityUpdates: "true"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
-    - kind: Changed
+    - kind: changed
       description: "Initial 2.8.0 release"
 dependencies:
   - name: cf-common
@@ -264,7 +264,3 @@ dependencies:
     version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: salesforce-reporter.enabled
-  - name: onboarding-status
-    version: "*"
-    repository: oci://quay.io/codefresh/charts
-    condition: onboarding-status.enabled

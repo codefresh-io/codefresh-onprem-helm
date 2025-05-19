@@ -2410,7 +2410,6 @@ After platform upgrade, Consul fails with the error `refusing to rejoin cluster 
 | mongodb | object | See below | mongodb Ref: https://github.com/bitnami/charts/blob/main/bitnami/mongodb/values.yaml |
 | nats | object | See below | nats Ref: https://github.com/bitnami/charts/blob/main/bitnami/nats/values.yaml |
 | nomios | object | See below | nomios |
-| onboarding-status.enabled | bool | `false` |  |
 | payments.enabled | bool | `false` |  |
 | pipeline-manager | object | See below | pipeline-manager |
 | postgresql | object | See below | postgresql Ref: https://github.com/bitnami/charts/blob/main/bitnami/postgresql/values.yaml |
