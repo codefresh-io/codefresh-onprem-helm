@@ -4,7 +4,7 @@ templates:
   - seed/mongo-seed-job.yaml
   - seed/postgres-seed-job.yaml
   - gencerts/job-gencerts.yaml
-  - hooks/post-upgdare/update-system-re.yaml
+  - hooks/post-upgrade/update-system-re.yaml
   - hooks/pre-upgrade/set-mongodb-compat-version.yaml
   - hooks/pre-upgrade/delete-consul-svc-job.yaml
   - legacy/postgres-clean-job.yaml
@@ -32,7 +32,7 @@ tests:
       - matchRegex:
           path: spec.template.spec.containers[0].image
           pattern: ^myregistry.io/.*$
-        template: hooks/post-upgdare/update-system-re.yaml
+        template: hooks/post-upgrade/update-system-re.yaml
       # postgres-clean-job template
       - matchRegex:
           path: spec.jobTemplate.spec.template.spec.containers[0].image
@@ -42,9 +42,9 @@ tests:
       - matchRegex:
           path: spec.template.spec.containers[0].image
           pattern: ^myregistry.io/.*$
-        template: hooks/pre-upgdare/set-mongodb-compat-version.yaml
+        template: hooks/pre-upgrade/set-mongodb-compat-version.yaml
       # delete-consul- template
       - matchRegex:
           path: spec.template.spec.containers[0].image
           pattern: ^myregistry.io/.*$
-        template: hooks/pre-upgdare/delete-consul-svc-job.yaml
+        template: hooks/pre-upgrade/delete-consul-svc-job.yaml

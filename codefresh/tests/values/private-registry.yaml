@@ -9,3 +9,8 @@ ingress-nginx:
 
 cf-oidc-provider:
   enabled: true
+
+mongodb:
+  migration:
+    enabled: true
+    featureCompatibilityVersion: "6.0"
