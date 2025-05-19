@@ -1,13 +1,13 @@
 {{- if and .Values.hooks.mongodb.enabled }}
 {{- $libTemplateName := printf "cf-common-%s" (index .Subcharts "cf-common").Chart.Version }}
 ---
-{{- $tolerations := .Values.hooks.tolerations | default list }}
+{{- $tolerations := .Values.hooks.mongodb.tolerations | default list }}
 {{- $globalTolerations := .Values.global.tolerations | default list }}
 {{- $allToleration := concat $globalTolerations $tolerations }}
-{{- $affinity := .Values.hooks.affinity | default dict }}
+{{- $affinity := .Values.hooks.mongodb.affinity | default dict }}
 {{- $globalAffinity := .Values.global.affinity | default dict }}
 {{- $allAffinity := mergeOverwrite $globalAffinity $affinity }}
-{{- $nodeSelector := .Values.hooks.nodeSelector | default dict }}
+{{- $nodeSelector := .Values.hooks.mongodb.nodeSelector | default dict }}
 {{- $globalNodeSelector := .Values.global.nodeSelector | default dict }}
 {{- $allNodeSelector := mergeOverwrite $globalNodeSelector $nodeSelector }}
 apiVersion: batch/v1
@@ -29,10 +29,10 @@ spec:
     spec:
       {{- include (printf "%s.image.pullSecrets" $libTemplateName ) . | nindent 6 }}
       securityContext:
-        {{- toYaml .Values.hooks.podSecurityContext | nindent 8 }}
+        {{- toYaml .Values.hooks.mongodb.podSecurityContext | nindent 8 }}
       containers:
       - name: {{ include "codefresh.fullname" . }}-update-system-re
-        image: {{ include (printf "%s.image.name" $libTemplateName) (dict "image" .Values.hooks.image "context" .) }}
+        image: {{ include (printf "%s.image.name" $libTemplateName) (dict "image" .Values.hooks.mongodb.image "context" .) }}
         envFrom:
           - secretRef:
               name: {{ include "codefresh.fullname" . }}
@@ -81,9 +81,9 @@ spec:
           - |
             {{ .Files.Get "files/updateSystemReImages.sh" | nindent 12  }}
         resources:
-          {{- toYaml .Values.hooks.resources | nindent 10 }}
+          {{- toYaml .Values.hooks.mongodb.resources | nindent 10 }}
         volumeMounts:
-        {{- include (printf "%s.volumeMounts" $libTemplateName) (dict "Values" .Values.hooks.volumeMounts "context" $) | indent 10 }}
+        {{- include (printf "%s.volumeMounts" $libTemplateName) (dict "Values" .Values.hooks.mongodb.volumeMounts "context" $) | indent 10 }}
       {{- with $allNodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -97,6 +97,6 @@ spec:
         {{- toYaml . | nindent 6 }}
       {{- end }}
       volumes:
-      {{- include (printf "%s.volumes" $libTemplateName) (dict "Values" .Values.hooks.volumes "context" $) | indent 8 }}
+      {{- include (printf "%s.volumes" $libTemplateName) (dict "Values" .Values.hooks.mongodb.volumes "context" $) | indent 8 }}
       restartPolicy: Never
 {{- end }}

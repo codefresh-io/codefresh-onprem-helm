@@ -1,12 +1,12 @@
 {{- if and .Values.hooks.consul.enabled }}
 {{- $libTemplateName := printf "cf-common-%s" (index .Subcharts "cf-common").Chart.Version }}
-{{- $tolerations := .Values.gencerts.tolerations | default list }}
+{{- $tolerations := .Values.hooks.consul.tolerations | default list }}
 {{- $globalTolerations := .Values.global.tolerations | default list }}
 {{- $allToleration := concat $globalTolerations $tolerations }}
-{{- $affinity := .Values.gencerts.affinity | default dict }}
+{{- $affinity := .Values.hooks.consul.affinity | default dict }}
 {{- $globalAffinity := .Values.global.affinity | default dict }}
 {{- $allAffinity := mergeOverwrite $globalAffinity $affinity }}
-{{- $nodeSelector := .Values.gencerts.nodeSelector | default dict }}
+{{- $nodeSelector := .Values.hooks.consul.nodeSelector | default dict }}
 {{- $globalNodeSelector := .Values.global.nodeSelector | default dict }}
 {{- $allNodeSelector := mergeOverwrite $globalNodeSelector $nodeSelector }}
 ---
@@ -33,7 +33,7 @@ spec:
       {{- include (printf "%s.image.pullSecrets" $libTemplateName ) . | nindent 6 }}
       containers:
       - name: {{ template "codefresh.fullname" . }}-delete-consul-svc
-        image: {{ include (printf "%s.image.name" $libTemplateName) (dict "image" .Values.gencerts.image "context" .) }}
+        image: {{ include (printf "%s.image.name" $libTemplateName) (dict "image" .Values.hooks.consul.image "context" .) }}
         command:
         - /bin/sh
         - -c
@@ -47,7 +47,7 @@ spec:
             kubectl delete -n {{ .Release.Namespace }} $CONSUL_SVC_HEADLESS --ignore-not-found
           fi
         resources:
-          {{- toYaml .Values.gencerts.resources | nindent 10 }}
+          {{- toYaml .Values.hooks.consul.resources | nindent 10 }}
       {{- with $allNodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
