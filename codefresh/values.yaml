@@ -1102,7 +1102,7 @@ mongodb:
       cpu: 200m
       memory: 256Mi
   migration:
-    enabled: true
+    enabled: false
     featureCompatibilityVersion: "6.0"
 
 # -- nats
