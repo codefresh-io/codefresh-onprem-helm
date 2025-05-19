@@ -182,7 +182,7 @@ ingress-nginx:
 
 ## Post-installation steps
 
-- Disable auto-creation of MongoDB indexes (or remove these values from `.Values`):
+- Before moving to production, MongoDB indexes auto-creation must be disabled by either setting the appropriate values to `false` or removing those properties from `.Values` file:
 
 ```yaml
 global:
