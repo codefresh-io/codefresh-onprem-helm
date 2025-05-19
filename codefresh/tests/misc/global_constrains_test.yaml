@@ -7,6 +7,7 @@ templates:
   - seed/postgres-seed-job.yaml
   - gencerts/job-gencerts.yaml
   - hooks/post-upgrade/update-system-re.yaml
+  - hooks/pre-upgrade/delete-consul-svc-job.yaml
 tests:
   - it: argo-platform-abac should have global tolerations/nodeSelector/affinity/imagePullSecret
     values:
