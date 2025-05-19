@@ -1,3 +1,4 @@
+{{- if and .Values.hooks.consul.enabled }}
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -43,3 +44,4 @@ subjects:
   - kind: ServiceAccount
     name: {{ include "codefresh.fullname" . }}-delete-consul-svc
     namespace: {{ .Release.Namespace }}
+{{- end }}

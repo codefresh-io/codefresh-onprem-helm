@@ -434,19 +434,33 @@ global:
     allowInsecureImages: true
 
 # -- Pre/post-upgrade Job hooks.
-# Updates images in `system/default` runtime.
 # @default -- See below
 hooks:
-  enabled: true
-  image:
-    registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
-    repository: codefresh/mongosh
-    tag: 2.5.0
-  affinity: {}
-  nodeSelector: {}
-  podSecurityContext: {}
-  resources: {}
-  tolerations: []
+  # -- Updates images in `system/default` runtime.
+  mongodb:
+    enabled: true
+    image:
+      registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
+      repository: codefresh/mongosh
+      tag: 2.5.0
+    affinity: {}
+    nodeSelector: {}
+    podSecurityContext: {}
+    resources: {}
+    tolerations: []
+  # -- Recreates `consul-headless` service due to duplicated ports in Service during the upgrade.
+  consul:
+    enabled: true
+    image:
+      registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
+      repository: codefresh/kubectl
+      tag: 1.33.0
+    affinity: {}
+    nodeSelector: {}
+    podSecurityContext: {}
+    resources: {}
+    tolerations: []
+
 
 # -- Maintenance postgresql clean job.
 # Removes a certain number of the last records in the event store table.

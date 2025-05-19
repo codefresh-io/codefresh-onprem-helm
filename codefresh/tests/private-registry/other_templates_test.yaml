@@ -4,7 +4,9 @@ templates:
   - seed/mongo-seed-job.yaml
   - seed/postgres-seed-job.yaml
   - gencerts/job-gencerts.yaml
-  - hooks/update-system-re.yaml
+  - hooks/post-upgdare/update-system-re.yaml
+  - hooks/pre-upgrade/set-mongodb-compat-version.yaml
+  - hooks/pre-upgrade/delete-consul-svc-job.yaml
   - legacy/postgres-clean-job.yaml
 tests:
   - it: "(Other templates) should test image private registry prefix"
@@ -30,9 +32,19 @@ tests:
       - matchRegex:
           path: spec.template.spec.containers[0].image
           pattern: ^myregistry.io/.*$
-        template: hooks/update-system-re.yaml
+        template: hooks/post-upgdare/update-system-re.yaml
       # postgres-clean-job template
       - matchRegex:
           path: spec.jobTemplate.spec.template.spec.containers[0].image
           pattern: ^myregistry.io/.*$
         template: legacy/postgres-clean-job.yaml
+      # set-mongodb-compact template
+      - matchRegex:
+          path: spec.template.spec.containers[0].image
+          pattern: ^myregistry.io/.*$
+        template: hooks/pre-upgdare/set-mongodb-compat-version.yaml
+      # delete-consul- template
+      - matchRegex:
+          path: spec.template.spec.containers[0].image
+          pattern: ^myregistry.io/.*$
+        template: hooks/pre-upgdare/delete-consul-svc-job.yaml
