@@ -1196,7 +1196,7 @@ cfapi:
 ### Projects pipelines limit
 
 ```yaml
-cfapi:
+pipeline-manager:
   env:
     # Determines project's pipelines limit (default: 500)
     PROJECT_PIPELINES_LIMIT: 500
