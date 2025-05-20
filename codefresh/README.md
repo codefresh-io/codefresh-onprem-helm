@@ -834,6 +834,27 @@ Ref:
 - [Create an Index in Atlas DB](https://www.mongodb.com/docs/atlas/atlas-ui/indexes/#create-an-index)
 - [Create an Index with mongosh](https://www.mongodb.com/docs/manual/reference/method/db.collection.createIndex/)
 
+##### Upgrading when the indexes are maintained manually
+
+If you maintain indexes manually and you upgrade your On-Prem installation you must create all indexes which were introduced from your current version up to the version you upgrade to manually.
+
+Those indexes are listed below.
+
+###### `2.6.0`
+
+To create **before** the upgrade:
+
+- [read-models.images-binaries:accountId_1_imageName_1](https://github.com/codefresh-io/codefresh-onprem-helm/blob/onprem-2.8.0/indexes/read-models/images-binaries.json#L75-L94)
+
+###### `2.7.0`
+
+To create **before or right after** the upgrade:
+
+> **Note!** Only if you create indexes **before** the upgrade, please, create `codefresh.feature-store-versioned` collection manually in advance.
+
+- [codefresh.feature-store-versioned:createdAt_1](https://github.com/codefresh-io/codefresh-onprem-helm/blob/onprem-2.8.0/indexes/codefresh/feature-store-versioned.json#L2-L9)
+- [codefresh.feature-store-versioned:LDRedisStoreVersion_1__id_-1](https://github.com/codefresh-io/codefresh-onprem-helm/blob/onprem-2.8.0/indexes/codefresh/feature-store-versioned.json#L10-L17)
+
 ### High Availability
 
 The chart installs the non-HA version of Codefresh by default. If you want to run Codefresh in HA mode, use the example values below.
