@@ -167,5 +167,5 @@ dependencies:
 - name: salesforce-reporter
   repository: oci://quay.io/codefresh/charts
   version: 1.30.11
-digest: sha256:814b879b8e7b0b276c66b821c69c2c22febbbec4a30fed89117d50530ae0ea5e
-generated: "2025-05-19T23:11:03.858637+03:00"
+digest: sha256:f245d0ef88646a32b9104a20832bb8c8d59b1c044b74cb9c0389cdf32024bc13
+generated: "2025-05-20T19:02:10.570462+03:00"
