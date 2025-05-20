@@ -15,11 +15,11 @@ appVersion: 2.7.0
 annotations:
   artifacthub.io/prerelease: "true"
   artifacthub.io/alternativeName: "codefresh-onprem"
-  artifacthub.io/containsSecurityUpdates: "true"
+  # artifacthub.io/containsSecurityUpdates: "true"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
-    - kind: changed
-      description: "Initial 2.8.0 release"
+    - kind: fixed
+      description: "Fixed dependencies version"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
