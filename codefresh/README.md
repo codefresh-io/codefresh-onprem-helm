@@ -834,7 +834,7 @@ Ref:
 - [Create an Index in Atlas DB](https://www.mongodb.com/docs/atlas/atlas-ui/indexes/#create-an-index)
 - [Create an Index with mongosh](https://www.mongodb.com/docs/manual/reference/method/db.collection.createIndex/)
 
-##### Upgrading when the indexes are maintained manually
+##### ⚠️ Upgrading when the indexes are maintained manually
 
 If you maintain indexes manually and you upgrade your On-Prem installation you must create all indexes which were introduced from your current version up to the version you upgrade to manually.
 
@@ -2034,7 +2034,7 @@ cfapi:
 
 [Auto-index creation in MongoDB](#auto-index-creation-in-mongodb)
 
-#### New indexes in MongoDB
+#### ⚠️New indexes in MongoDB
 
 If you maintain indexes manually (i.e. [Auto-index creation](#auto-index-creation-in-mongodb) is off) you must create the following index **before** the upgrade:
 
@@ -2049,11 +2049,11 @@ If you maintain indexes manually (i.e. [Auto-index creation](#auto-index-creatio
 - Added option to provide global `tolerations`/`nodeSelector`/`affinity` for all Codefresh subcharts
 > **Note!** These global settings will not be applied to Bitnami subcharts (e.g. `mongodb`, `redis`, `rabbitmq`, `postgres`. etc)
 
-#### New indexes in MongoDB
+#### ⚠️New indexes in MongoDB
 
 If you maintain indexes manually (i.e. [Auto-index creation](#auto-index-creation-in-mongodb) is off) you must create the following indexes **before or right after** the upgrade:
 
-> **Note!** In case if you create indexes **before** the upgrade, please, create `codefresh.feature-store-versioned` collection manually in advance.
+> ⚠ **Note!** In case if you create indexes **before** the upgrade, please, create `codefresh.feature-store-versioned` collection manually in advance.
 
 - [Database: `codefresh`, collection: `feature-store-versioned`, index: `createdAt_1`](https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.8/indexes/codefresh/feature-store-versioned.json#L2-L9)
 - [Database: `codefresh`, collection: `feature-store-versioned`, index: `LDRedisStoreVersion_1__id_-1`](https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.8/indexes/codefresh/feature-store-versioned.json#L10-L17)
