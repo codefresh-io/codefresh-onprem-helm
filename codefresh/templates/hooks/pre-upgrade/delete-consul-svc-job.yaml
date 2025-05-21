@@ -38,7 +38,7 @@ spec:
         - /bin/sh
         - -c
         - |
-          set -e
+          set -x
           CONSUL_SVC_HEADLESS=$(kubectl get svc -n {{ .Release.Namespace }} \
              -l app.kubernetes.io/instance={{ include "codefresh.fullname" . }}\
              -l app.kubernetes.io/name=consul \
