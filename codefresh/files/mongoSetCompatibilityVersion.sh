@@ -16,6 +16,11 @@ waitForMongoDB() {
     done
 }
 
+getMongoDBVersion() {
+    local version=$(mongosh ${MONGODB_ROOT_URI} --eval "db.version()" 2>&1)
+    echo $version
+}
+
 parseMongoURI() {
     local proto="$(echo $1 | grep :// | sed -e's,^\(.*://\).*,\1,g')"
     local parameters="$(echo $1 | grep '?' | cut -d '?' -f2)"; if [[ -n $parameters ]]; then parameters="?${parameters}"; fi
@@ -33,4 +38,10 @@ parseMongoURI $MONGO_URI
 
 waitForMongoDB
 
-mongosh ${MONGODB_ROOT_URI} --eval "db.adminCommand( { setFeatureCompatibilityVersion: \"$MONGODB_COMPAT_VERSION\", confirm: true } )"
+MONGO_VERSION=$(getMongoDBVersion)
+
+if [[ $MONGO_VERSION == 7* ]]; then
+    mongosh ${MONGODB_ROOT_URI} --eval "db.adminCommand( { setFeatureCompatibilityVersion: \"$MONGODB_COMPAT_VERSION\", confirm: true } )"
+else
+    mongosh ${MONGODB_ROOT_URI} --eval "db.adminCommand( { setFeatureCompatibilityVersion: \"$MONGODB_COMPAT_VERSION\" } )"
+fi
