@@ -33,4 +33,4 @@ parseMongoURI $MONGO_URI
 
 waitForMongoDB
 
-mongosh ${MONGODB_ROOT_URI} --eval "db.adminCommand( { setFeatureCompatibilityVersion: \"$MONGODB_COMPAT_VERSION\" } )"
+mongosh ${MONGODB_ROOT_URI} --eval "db.adminCommand( { setFeatureCompatibilityVersion: \"$MONGODB_COMPAT_VERSION\", confirm: true } )"
