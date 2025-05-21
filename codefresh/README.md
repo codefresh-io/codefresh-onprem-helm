@@ -2032,11 +2032,11 @@ cfapi:
 
 #### Auto-index creation in MongoDB
 
-[Auto-index creation in MongoDB](#auto-index-creation-in-mongodb)
+[Auto-index creation in MongoDB](#enabling-auto-index-creation)
 
-#### ⚠️New indexes in MongoDB
+#### ⚠️ New indexes in MongoDB
 
-If you maintain indexes manually (i.e. [Auto-index creation](#auto-index-creation-in-mongodb) is off) you must create the following index **before** the upgrade:
+If you maintain indexes manually (i.e. [Auto-index creation](#enabling-auto-index-creation) is off) you must create the following index **before** the upgrade:
 
 - [Database: `read-models`, collection: `images-binaries`, index: `accountId_1_imageName_1`](https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.8/indexes/read-models/images-binaries.json#L75-L94)
 
@@ -2071,9 +2071,9 @@ global:
                   - "value"
 ```
 
-#### ⚠️New indexes in MongoDB
+#### ⚠️ New indexes in MongoDB
 
-If you maintain indexes manually (i.e. [Auto-index creation](#auto-index-creation-in-mongodb) is off) you must create the following indexes **before or right after** the upgrade:
+If you maintain indexes manually (i.e. [Auto-index creation](#enabling-auto-index-creation) is off) you must create the following indexes **before or right after** the upgrade:
 
 > ⚠ **Note!** In case if you create indexes **before** the upgrade, please, create `codefresh.feature-store-versioned` collection manually in advance.
 
