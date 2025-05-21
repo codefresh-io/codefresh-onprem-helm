@@ -75,3 +75,7 @@ argo-platform:
   promotion-orchestrator:
     hpa:
       enabled: true
+
+mongodb:
+  migration:
+    enabled: true
