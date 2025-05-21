@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.7.13
+version: 2.7.14
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -19,9 +19,7 @@ annotations:
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
     - kind: fixed
-      description: "cf-platform-analytics: fix failure of cf-system-etl-postgres on azure postgres"
-    - kind: added
-      description: "cf-api: activate user after sync for Azure SSO provider"
+      description: "Fix delete-consul-svc hook job not to fail when consul service is not found"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
