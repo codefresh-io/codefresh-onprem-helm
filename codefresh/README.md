@@ -1491,7 +1491,7 @@ Use [obtain-oidc-id-token](https://github.com/codefresh-io/steps/blob/822afc0a9a
 
 ## Upgrading
 
-### To 2.0.0
+### To 2-0-0
 
 This major chart version change (v1.4.X -> v2.0.0) contains some **incompatible breaking change needing manual actions**.
 
@@ -1800,7 +1800,7 @@ helm-repo-manager:
       repository: myregistry.domain.com/codefresh/chartmuseum
 ```
 
-### To 2.0.17
+### To 2-0-17
 
 #### ⚠️ Affected values
 
@@ -1874,7 +1874,7 @@ argo-platform:
       repository: codefresh-io/argo-platform-ui
 ```
 
-### To 2.1.0
+### To 2-1-0
 
 ### [What's new in 2.1.x](https://codefresh.io/docs/docs/whats-new/on-prem-release-notes/#on-premises-version-21)
 
@@ -1910,14 +1910,14 @@ cf-broadcaster:
     REDIS_DB: 0
 ```
 
-### To 2.1.7
+### To 2-1-7
 
 ⚠️⚠️⚠️
 > Since version 2.1.7 chart is pushed **only** to OCI registry at `oci://quay.io/codefresh/codefresh`
 
 > Versions prior to 2.1.7 are still available in ChartMuseum at `http://chartmuseum.codefresh.io/codefresh`
 
-### To 2.2.0
+### To 2-2-0
 
 ### [What's new in 2.2.x](https://codefresh.io/docs/docs/whats-new/on-prem-release-notes/#on-premises-version-22)
 
@@ -1945,7 +1945,7 @@ redis-ha:
   enabled: true
 ```
 
-### To 2.3.0
+### To 2-3-0
 
 ### [What's new in 2.3.x](https://codefresh.io/docs/docs/whats-new/on-prem-release-notes/#on-premises-version-23)
 
@@ -1989,7 +1989,7 @@ helm rollback $RELEASE_NAME $RELEASE_NUMBER \
     --wait
 ```
 
-### To 2.4.0
+### To 2-4-0
 
 ### [What's new in 2.4.x](https://codefresh.io/docs/docs/whats-new/on-prem-release-notes/#on-premises-version-24)
 
@@ -2018,11 +2018,11 @@ cfapi:
       DEFAULT_SYSTEM_TYPE: CLASSIC
 ```
 
-### To 2.5.0
+### To 2-5-0
 
 ### [What's new in 2.5.x](https://codefresh.io/docs/docs/whats-new/on-prem-release-notes/#on-premises-version-25)
 
-### To 2.6.0
+### To 2-6-0
 
 ### [What's new in 2.6.x](https://codefresh.io/docs/docs/whats-new/on-prem-release-notes/#on-premises-version-26)
 
@@ -2040,7 +2040,7 @@ If you maintain indexes manually (i.e. [Auto-index creation](#auto-index-creatio
 
 - [Database: `read-models`, collection: `images-binaries`, index: `accountId_1_imageName_1`](https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.8/indexes/read-models/images-binaries.json#L75-L94)
 
-### To 2.7.0
+### To 2-7-0
 
 ### [What's new in 2.7.x](https://codefresh.io/docs/docs/whats-new/on-prem-release-notes/#on-premises-version-27)
 
@@ -2080,7 +2080,7 @@ global:
                   - "value"
 ```
 
-### To 2.8.0
+### To 2-8-0
 
 ### [What's new in 2.8.x](https://codefresh.io/docs/docs/whats-new/on-prem-release-notes/#on-premises-version-28)
 
