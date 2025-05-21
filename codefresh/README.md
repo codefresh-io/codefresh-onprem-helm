@@ -2049,15 +2049,6 @@ If you maintain indexes manually (i.e. [Auto-index creation](#auto-index-creatio
 - Added option to provide global `tolerations`/`nodeSelector`/`affinity` for all Codefresh subcharts
 > **Note!** These global settings will not be applied to Bitnami subcharts (e.g. `mongodb`, `redis`, `rabbitmq`, `postgres`. etc)
 
-#### ⚠️New indexes in MongoDB
-
-If you maintain indexes manually (i.e. [Auto-index creation](#auto-index-creation-in-mongodb) is off) you must create the following indexes **before or right after** the upgrade:
-
-> ⚠ **Note!** In case if you create indexes **before** the upgrade, please, create `codefresh.feature-store-versioned` collection manually in advance.
-
-- [Database: `codefresh`, collection: `feature-store-versioned`, index: `createdAt_1`](https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.8/indexes/codefresh/feature-store-versioned.json#L2-L9)
-- [Database: `codefresh`, collection: `feature-store-versioned`, index: `LDRedisStoreVersion_1__id_-1`](https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.8/indexes/codefresh/feature-store-versioned.json#L10-L17)
-
 ```yaml
 global:
   tolerations:
@@ -2079,6 +2070,15 @@ global:
                 values:
                   - "value"
 ```
+
+#### ⚠️New indexes in MongoDB
+
+If you maintain indexes manually (i.e. [Auto-index creation](#auto-index-creation-in-mongodb) is off) you must create the following indexes **before or right after** the upgrade:
+
+> ⚠ **Note!** In case if you create indexes **before** the upgrade, please, create `codefresh.feature-store-versioned` collection manually in advance.
+
+- [Database: `codefresh`, collection: `feature-store-versioned`, index: `createdAt_1`](https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.8/indexes/codefresh/feature-store-versioned.json#L2-L9)
+- [Database: `codefresh`, collection: `feature-store-versioned`, index: `LDRedisStoreVersion_1__id_-1`](https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.8/indexes/codefresh/feature-store-versioned.json#L10-L17)
 
 ### To 2-8-0
 
