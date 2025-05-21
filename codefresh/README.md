@@ -838,22 +838,7 @@ Ref:
 
 If you maintain indexes manually and you upgrade your On-Prem installation you must create all indexes which were introduced from your current version up to the version you upgrade to manually.
 
-Those indexes are listed below.
-
-###### `2.6.0`
-
-To create **before** the upgrade:
-
-- [read-models.images-binaries:accountId_1_imageName_1](https://github.com/codefresh-io/codefresh-onprem-helm/blob/onprem-2.8.0/indexes/read-models/images-binaries.json#L75-L94)
-
-###### `2.7.0`
-
-To create **before or right after** the upgrade:
-
-> **Note!** Only if you create indexes **before** the upgrade, please, create `codefresh.feature-store-versioned` collection manually in advance.
-
-- [codefresh.feature-store-versioned:createdAt_1](https://github.com/codefresh-io/codefresh-onprem-helm/blob/onprem-2.8.0/indexes/codefresh/feature-store-versioned.json#L2-L9)
-- [codefresh.feature-store-versioned:LDRedisStoreVersion_1__id_-1](https://github.com/codefresh-io/codefresh-onprem-helm/blob/onprem-2.8.0/indexes/codefresh/feature-store-versioned.json#L10-L17)
+You can follow [Upgrading section](#upgrading) to see what changes were made for indexes in every specific release.
 
 ### High Availability
 
@@ -2049,6 +2034,12 @@ cfapi:
 
 [Auto-index creation in MongoDB](#auto-index-creation-in-mongodb)
 
+#### New indexes in MongoDB
+
+If you maintain indexes manually (i.e. [Auto-index creation](#auto-index-creation-in-mongodb) is off) you must create the following index **before** the upgrade:
+
+- [Database: `read-models`, collection: `images-binaries`, index: `accountId_1_imageName_1`](https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.8/indexes/read-models/images-binaries.json#L75-L94)
+
 ### To 2.7.0
 
 ### [What's new in 2.7.x](https://codefresh.io/docs/docs/whats-new/on-prem-release-notes/#on-premises-version-27)
@@ -2057,6 +2048,15 @@ cfapi:
 
 - Added option to provide global `tolerations`/`nodeSelector`/`affinity` for all Codefresh subcharts
 > **Note!** These global settings will not be applied to Bitnami subcharts (e.g. `mongodb`, `redis`, `rabbitmq`, `postgres`. etc)
+
+#### New indexes in MongoDB
+
+If you maintain indexes manually (i.e. [Auto-index creation](#auto-index-creation-in-mongodb) is off) you must create the following indexes **before or right after** the upgrade:
+
+> **Note!** In case if you create indexes **before** the upgrade, please, create `codefresh.feature-store-versioned` collection manually in advance.
+
+- [Database: `codefresh`, collection: `feature-store-versioned`, index: `createdAt_1`](https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.8/indexes/codefresh/feature-store-versioned.json#L2-L9)
+- [Database: `codefresh`, collection: `feature-store-versioned`, index: `LDRedisStoreVersion_1__id_-1`](https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.8/indexes/codefresh/feature-store-versioned.json#L10-L17)
 
 ```yaml
 global:
