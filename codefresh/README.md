@@ -1748,7 +1748,7 @@ nomios:
     ...
 ```
 
-### To 2.0.12
+### To 2-0-12
 
 #### ⚠️ Legacy ChartMuseum subchart deprecation
 
