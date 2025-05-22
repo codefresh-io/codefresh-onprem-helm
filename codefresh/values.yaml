@@ -974,8 +974,8 @@ helm-repo-manager:
     ingress:
       enabled: false
     image:
-      repository: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/chartmuseum
-      tag: 8795e993
+      repository: ghcr.io/helm/chartmuseum
+      tag: v0.16.3
   resources:
     requests:
       cpu: 100m
