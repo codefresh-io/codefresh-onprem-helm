@@ -2080,6 +2080,23 @@ mongodb:
     featureCompatibilityVersion: "6.0"
 ```
 
+However, after the successful upgrade to 7.x, you need to set `featureCompatibilityVersion` to `7.0` in your values file.
+
+```yaml
+mongodb:
+  migration:
+    enabled: true
+    featureCompatibilityVersion: "7.0"
+```
+
+Or disable it completely (that is default value in Helm chart) if FCV (FeatureCompatibilityVersion) is managed by MongoDB itself (i.e. Atlas).
+
+```yaml
+mongodb:
+  migration:
+    enabled: false
+```
+
 ### PostgreSQL update
 
 Default PostgreSQL image is changed from 13.x to 17.x
