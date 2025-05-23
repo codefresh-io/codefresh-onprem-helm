@@ -20,6 +20,8 @@ annotations:
   artifacthub.io/changes: |
     - kind: fixed
       description: "Fixed dependencies version"
+    - kind: added
+      description: "Added ability to assign admin/platform permissions for user for specified group during sync"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -237,7 +239,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
-    version: "~1.3506.0"
+    version: "~1.3524.0"
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform
