@@ -2122,7 +2122,7 @@ mongodb:
 
 #### ⚠️ New indexes in MongoDB
 
-If you maintain indexes manually (i.e. [Auto-index creation](#enabling-auto-index-creation) is off) you must create the following indexes **before or right after** the upgrade:
+If you maintain indexes manually (i.e. [Auto-index creation](#enabling-auto-index-creation) is off) you must create the following indexes **before** the upgrade:
 
 - [Database: `codefresh`, collection: `users`, index: `account_1__id_1`](https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.8/indexes/codefresh/users.json#L2-L9)
 - [Database: `codefresh`, collection: `users`, index: `role_1_account_1__id_1`](https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.8/indexes/codefresh/users.json#L10-L17)
