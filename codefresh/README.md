@@ -2071,7 +2071,7 @@ Default MongoDB image is changed from 6.x to 7.x.
 
 If you run external MongoDB (i.e. [Atlas](https://cloud.mongodb.com)), it is **required** to upgrade it to 7.x after upgrading Codefresh On-Prem to 2.8.x.
 
-For backward compatibility (in case you need to rollback to 6.x), you can set [`featureCompatibilityVersion`](https://www.mongodb.com/docs/v6.0/reference/command/setFeatureCompatibilityVersion/) to `6.0` in your values file.
+For backward compatibility (in case you need to rollback to 6.x), you should set [`featureCompatibilityVersion`](https://www.mongodb.com/docs/v6.0/reference/command/setFeatureCompatibilityVersion/) to `6.0` in your values file **before the upgrade**.
 
 ```yaml
 mongodb:
@@ -2080,7 +2080,7 @@ mongodb:
     featureCompatibilityVersion: "6.0"
 ```
 
-However, after the successful upgrade to 7.x, you need to set `featureCompatibilityVersion` to `7.0` in your values file.
+**After the upgrade**  you need to set `featureCompatibilityVersion` to `7.0` in your values file.
 
 ```yaml
 mongodb:
