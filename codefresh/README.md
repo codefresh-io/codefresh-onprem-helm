@@ -2071,7 +2071,7 @@ Default MongoDB image is changed from 6.x to 7.x.
 
 If you run external MongoDB (i.e. [Atlas](https://cloud.mongodb.com)), it is **required** to upgrade it to 7.x after upgrading Codefresh On-Prem to 2.8.x.
 
-For backward compatibility (in case you need to rollback to 6.x), you should set [`featureCompatibilityVersion`](https://www.mongodb.com/docs/v6.0/reference/command/setFeatureCompatibilityVersion/) to `6.0` in your values file **before the upgrade**.
+- **Before the upgrade**, for backward compatibility (in case you need to rollback to 6.x), you should set [`featureCompatibilityVersion`](https://www.mongodb.com/docs/v6.0/reference/command/setFeatureCompatibilityVersion/) to `6.0` in your values file.
 
 ```yaml
 mongodb:
@@ -2080,7 +2080,9 @@ mongodb:
     featureCompatibilityVersion: "6.0"
 ```
 
-**After the upgrade**  you need to set `featureCompatibilityVersion` to `7.0` in your values file.
+- Perform Codefresh On-Prem upgrade to 2.8.x. Make sure all systems are up and running.
+
+- **After the upgrade**, if all system are stable, you need to set `featureCompatibilityVersion` to `7.0` in your values file and re-deploy the chart.
 
 ```yaml
 mongodb:
@@ -2089,7 +2091,7 @@ mongodb:
     featureCompatibilityVersion: "7.0"
 ```
 
-Or disable it completely (that is default value in Helm chart) if FCV (FeatureCompatibilityVersion) is managed by MongoDB itself (i.e. Atlas).
+⚠️ ⚠️ ⚠️ If FCV (FeatureCompatibilityVersion) is managed by MongoDB itself (i.e. Atlas), you can disable it completely (that is default value in Helm chart)
 
 ```yaml
 mongodb:
