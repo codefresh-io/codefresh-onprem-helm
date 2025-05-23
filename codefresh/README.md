@@ -2086,32 +2086,145 @@ Default PostgreSQL image is changed from 13.x to 17.x
 
 If you run external PostgreSQL, follow the [official instructions](https://www.postgresql.org/docs/17/upgrading.html) to upgrade to 17.x.
 
-⚠️ ⚠️ ⚠️ If you run built-in PostgreSQL `bitnami/postgresql` subchart, direct upgrade is not supported. You need to backup your data, delete the old PostgreSQL StatefulSet with PVCs and restore the data into a new PostgreSQL StatefulSet.
+⚠️ ⚠️ ⚠️ If you run built-in PostgreSQL `bitnami/postgresql` subchart, direct upgrade is not supported due to **incompatible breaking changes** in the database files. You will see the following error in the logs:
+```
+postgresql 17:36:28.41 INFO  ==> ** Starting PostgreSQL **
+2025-05-21 17:36:28.432 GMT [1] FATAL:  database files are incompatible with server
+2025-05-21 17:36:28.432 GMT [1] DETAIL:  The data directory was initialized by PostgreSQL version 13, which is not compatible with this version 17.2.
+```
+You need to backup your data, delete the old PostgreSQL StatefulSet with PVCs and restore the data into a new PostgreSQL StatefulSet.
+
+- **Before the upgrade**, backup your data on a separate PVC
+
+- Create PVC with the same or bigger size as your current PostgreSQL PVC:
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgresql-dump
+spec:
+  storageClassName: <STORAGE_CLASS>
+  resources:
+    requests:
+      storage: <PVC_SIZE>
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+```
+
+- Create a job to dump the data from the old PostgreSQL StatefulSet into the new PVC:
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: postgresql-dump
+spec:
+  ttlSecondsAfterFinished: 300
+  template:
+    spec:
+      containers:
+      - name: postgresql-dump
+        image: quay.io/codefresh/postgresql:17
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "1Gi"
+            cpu: "1"
+        env:
+          - name: PGUSER
+            value: "<POSTGRES_USER>"
+          - name: PGPASSWORD
+            value: "<POSTGRES_PASSWORD>"
+          - name: PGHOST
+            value: "<POSTGRES_HOST>"
+          - name: PGPORT
+            value: "<POSTGRES_PORT>"
+        command:
+          - "/bin/bash"
+          - "-c"
+          - |
+            pg_dumpall --verbose > /opt/postgresql-dump/dump.sql
+        volumeMounts:
+          - name: postgresql-dump
+            mountPath: /opt/postgresql-dump
+      securityContext:
+        runAsUser: 0
+        fsGroup: 0
+      volumes:
+        - name: postgresql-dump
+          persistentVolumeClaim:
+            claimName: postgresql-dump
+      restartPolicy: Never
+```
+
+- Delete old PostgreSQL StatefulSet and PVC
 
 ```console
-PGUSER=postgres
-PGHOST=cf-postgresql
-PGPORT=5432
-PGPASSWORD=postgres
-BACKUP_DIR=/tmp/pg_backup
-BACKUP_SQL=backup.sql
-TIMESTAMP=$(date +%Y%m%d%H%M%S)
-NAMESPACE=codefresh
-
-# Backup PostgreSQL data
-pg_dumpall --verbose > "$BACKUP_DIR/$BACKUP_SQL.$TIMESTAMP" 2>> "$LOG_FILE"
-
-# Delete old PostgreSQL StatefulSet
 STS_NAME=$(kubectl get sts -n $NAMESPACE -l app.kubernetes.io/instance=$RELEASE_NAME -l app.kubernetes.io/name=postgresql -o jsonpath='{.items[0].metadata.name}')
 PVC_NAME=$(kubectl get pvc -n $NAMESPACE -l app.kubernetes.io/instance=$RELEASE_NAME -l app.kubernetes.io/name=postgresql -o jsonpath='{.items[0].metadata.name}')
 
 kubectl delete sts $STS_NAME -n $NAMESPACE
 kubectl delete pvc $PVC_NAME -n $NAMESPACE
+```
 
-# Perform Codefresh On-Prem upgrade to 2.8.x
+- Peform the upgrade to 2.8.x with PostgreSQL seed job enabled to re-create users and databases
 
-# Restore PostgreSQL data
-psql -U -f "$BACKUP_DIR/$BACKUP_SQL.$TIMESTAMP" >> "$LOG_FILE" 2>&1
+```yaml
+seed:
+  postgresSeedJob:
+    enabled: true
+```
+
+- Create a job to restore the data from the new PVC into the new PostgreSQL StatefulSet:
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: postgresql-restore
+spec:
+  ttlSecondsAfterFinished: 300
+  template:
+    spec:
+      containers:
+      - name: postgresql-restore
+        image: quay.io/codefresh/postgresql:17
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "1Gi"
+            cpu: "1"
+        env:
+          - name: PGUSER
+            value: "<POSTGRES_USER>"
+          - name: PGPASSWORD
+            value: "<POSTGRES_PASSWORD>"
+          - name: PGHOST
+            value: "<POSTGRES_HOST>"
+          - name: PGPORT
+            value: "<POSTGRES_PORT>"
+        command:
+          - "/bin/bash"
+          - "-c"
+          - |
+            psql -f /opt/postgresql-dump/dump.sql
+        volumeMounts:
+          - name: postgresql-dump
+            mountPath: /opt/postgresql-dump
+      securityContext:
+        runAsUser: 0
+        fsGroup: 0
+      volumes:
+        - name: postgresql-dump
+          persistentVolumeClaim:
+            claimName: postgresql-dump
+      restartPolicy: Never
 ```
 
 ### RabbitMQ update
