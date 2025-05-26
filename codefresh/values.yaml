@@ -45,6 +45,8 @@ seed:
     # mongodbRootUserSecretKeyRef:
     #   name: my-secret
     #   key: mongodb-root-user
+    # -- Extra options for connection string (e.g. `authSource=admin`).
+    mongodbRootOptions: ""
 
     # -- Root password in plain text (required ONLY for seed job!).
     mongodbRootPassword: "XT9nmM8dZD"
