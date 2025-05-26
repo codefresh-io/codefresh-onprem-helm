@@ -65,7 +65,7 @@ mongodb:
 
   #     set -eou xtrace
 
-  #     export MONGODB_ROOT_URI=mongodb://root:XT9nmM8dZD@127.0.0.1/?authSource=admin
+  #     export MONGODB_ROOT_URI=mongodb://root:XT9nmM8dZDZ@127.0.0.1/?authSource=admin
   #     MONGODB_DATABASES=(
   #       "archive"
   #       "audit"
