@@ -58,13 +58,15 @@ parseMongoURI() {
     local userpass="$(echo $url | grep @ | cut -d@ -f1)"
     if [[ -z $userpass ]]; then
         local hostport="$(echo $url | sed "s/\/\?$parameters//" | sed -re "s/\/\?|@//g" | sed 's/\/$//')"
+        MONGO_URI="$proto$hostport/${MONGODB_DATABASE}$parameters"
     else
-        local hostport="$(echo $url | sed s/$userpass// | sed "s/\/\?$parameters//" | sed -re "s/\/\?|@//g" | sed 's/\/$//' | sed 's/^@//')"
+        local hostport="$(echo $url | sed s/$userpass// | sed "s/\/\?$parameters//" | sed -re "s/\/\?|@//g" | sed 's/\/$//')"
+        MONGODB_PASSWORD="$(echo $userpass | grep : | cut -d: -f2)"
+        MONGODB_USER="$(echo $userpass | grep : | cut -d: -f1)"
+        MONGO_URI="$proto$userpass@$hostport/${MONGODB_DATABASE}$parameters"
     fi
 
-    MONGODB_PASSWORD="$(echo $userpass | grep : | cut -d: -f2)"
-    MONGODB_USER="$(echo $userpass | grep : | cut -d: -f1)"
-    MONGO_URI="$proto$userpass@$hostport/${MONGODB_DATABASE}$parameters"
+
     if [[ -z $MONGODB_ROOT_OPTIONS ]]; then
         MONGODB_ROOT_URI="$proto${MONGODB_ROOT_USER}:${MONGODB_ROOT_PASSWORD}@$hostport/admin$parameters"
     else
