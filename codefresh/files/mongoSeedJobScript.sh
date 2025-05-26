@@ -59,7 +59,7 @@ parseMongoURI() {
     if [[ -z $userpass ]]; then
         local hostport="$(echo $url | sed "s/\/\?$parameters//" | sed -re "s/\/\?|@//g" | sed 's/\/$//')"
     else
-        local hostport="$(echo $url | sed s/$userpass// | sed "s/\/\?$parameters//" | sed -re "s/\/\?|@//g" | sed 's/\/$//')"
+        local hostport="$(echo $url | sed s/$userpass// | sed "s/\/\?$parameters//" | sed -re "s/\/\?|@//g" | sed 's/\/$//' | sed 's/^@//')"
     fi
 
     MONGODB_PASSWORD="$(echo $userpass | grep : | cut -d: -f2)"
