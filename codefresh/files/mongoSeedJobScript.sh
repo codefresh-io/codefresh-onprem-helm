@@ -56,6 +56,9 @@ parseMongoURI() {
     local parameters="$(echo $1 | grep '?' | cut -d '?' -f2)"; if [[ -n $parameters ]]; then parameters="?${parameters}"; fi
     local url="$(echo ${1/$proto/})"
     local userpass="$(echo $url | grep @ | cut -d@ -f1)"
+    if [[ -z $userpass ]]; then
+        userpass="${MONGODB_ROOT_USER}:${MONGODB_ROOT_PASSWORD}"
+    fi
     local hostport="$(echo $url | sed s/$userpass// | sed "s/\/\?$parameters//" | sed -re "s/\/\?|@//g" | sed 's/\/$//')"
 
     MONGODB_PASSWORD="$(echo $userpass | grep : | cut -d: -f2)"
