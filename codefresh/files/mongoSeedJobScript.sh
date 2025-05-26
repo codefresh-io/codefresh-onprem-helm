@@ -17,6 +17,7 @@ if [[ -n $DEBUG ]]; then
 fi
 
 ASSETS_PATH=${ASSETS_PATH:-/usr/share/extras/}
+MTLS_CERT_PATH=${MTLS_CERT_PATH:-/etc/ssl/mongodb/ca.pem}
 
 MONGODB_DATABASES=(
     "archive"
@@ -95,9 +96,9 @@ setPacks() {
 
 parseMongoURI $MONGO_URI
 
-if [[ -s /etc/ssl/mongodb/ca.pem ]]; then
-    MONGO_URI_EXTRA_PARAMS="--tls --tlsCertificateKeyFile /etc/ssl/mongodb/ca.pem --tlsAllowInvalidHostnames --tlsAllowInvalidCertificates"
-    MONGOIMPORT_EXTRA_PARAMS="--ssl --sslPEMKeyFile /etc/ssl/mongodb/ca.pem --sslAllowInvalidHostnames --sslAllowInvalidCertificates"
+if [[ -s ${MTLS_CERT_PATH} ]]; then
+    MONGO_URI_EXTRA_PARAMS="--tls --tlsCertificateKeyFile ${MTLS_CERT_PATH} --tlsAllowInvalidHostnames --tlsAllowInvalidCertificates"
+    MONGOIMPORT_EXTRA_PARAMS="--ssl --sslPEMKeyFile ${MTLS_CERT_PATH} --sslAllowInvalidHostnames --sslAllowInvalidCertificates"
 else
     MONGO_URI_EXTRA_PARAMS=""
     MONGOIMPORT_EXTRA_PARAMS=""

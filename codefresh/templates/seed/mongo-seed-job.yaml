@@ -60,6 +60,11 @@ spec:
           - name: {{- $env }}
             value: {{- $val | quote }}
           {{ end }}
+          {{- range $env, $val := .Values.global.env }}
+          - name: {{- $env }}
+            value: {{- $val | quote }}
+          {{ end }}
+
         command:
           - "/bin/bash"
           - "-exc"
