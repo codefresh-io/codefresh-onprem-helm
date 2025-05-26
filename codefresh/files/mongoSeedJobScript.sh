@@ -93,8 +93,10 @@ parseMongoURI $MONGO_URI
 
 if [[ -s /etc/ssl/mongodb/ca.pem ]]; then
     MONGO_URI_EXTRA_PARAMS="--tls --tlsCertificateKeyFile /etc/ssl/mongodb/ca.pem --tlsAllowInvalidHostnames --tlsAllowInvalidCertificates"
+    MONGOIMPORT_EXTRA_PARAMS="--ssl --sslCAFile --sslAllowInvalidHostnames --sslAllowInvalidCertificates"
 else
     MONGO_URI_EXTRA_PARAMS=""
+    MONGOIMPORT_EXTRA_PARAMS=""
 fi
 
 disableMongoTelemetry
@@ -119,6 +121,6 @@ if [[ $DEVELOPMENT_CHART == "true" ]]; then
     setPacks
 fi
 
-mongoimport --uri ${MONGO_URI} ${MONGO_URI_EXTRA_PARAMS} --collection idps --type json --legacy --file ${ASSETS_PATH}idps.json
-mongoimport --uri ${MONGO_URI} ${MONGO_URI_EXTRA_PARAMS} --collection accounts --type json --legacy --file ${ASSETS_PATH}accounts.json
-mongoimport --uri ${MONGO_URI} ${MONGO_URI_EXTRA_PARAMS} --collection users --type json --legacy --file ${ASSETS_PATH}users.json
+mongoimport --uri ${MONGO_URI} ${MONGOIMPORT_EXTRA_PARAMS} --collection idps --type json --legacy --file ${ASSETS_PATH}idps.json
+mongoimport --uri ${MONGO_URI} ${MONGOIMPORT_EXTRA_PARAMS} --collection accounts --type json --legacy --file ${ASSETS_PATH}accounts.json
+mongoimport --uri ${MONGO_URI} ${MONGOIMPORT_EXTRA_PARAMS} --collection users --type json --legacy --file ${ASSETS_PATH}users.json

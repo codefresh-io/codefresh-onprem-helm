@@ -60,37 +60,37 @@ mongodb:
     enabled: true
     rootUser: root
     rootPassword: "XT9nmM8dZDZ"
-  # initdbScripts:
-  #   my_init_script.sh: |
-  #     #!/bin/bash
+  initdbScripts:
+    my_init_script.sh: |
+      #!/bin/bash
 
-  #     set -eou xtrace
+      set -eou xtrace
 
-  #     export MONGODB_ROOT_URI=mongodb://root:XT9nmM8dZDZ@127.0.0.1/?authSource=admin
-  #     MONGODB_DATABASES=(
-  #       "archive"
-  #       "audit"
-  #       "charts-manager"
-  #       "cluster-providers"
-  #       "codefresh"
-  #       "context-manager"
-  #       "gitops-dashboard-manager"
-  #       "k8s-monitor"
-  #       "pipeline-manager"
-  #       "platform-analytics-postgres"
-  #       "read-models"
-  #       "runtime-environment-manager"
-  #     )
+      export MONGODB_ROOT_URI=mongodb://root:XT9nmM8dZDZ@127.0.0.1/?authSource=admin
+      MONGODB_DATABASES=(
+        "archive"
+        "audit"
+        "charts-manager"
+        "cluster-providers"
+        "codefresh"
+        "context-manager"
+        "gitops-dashboard-manager"
+        "k8s-monitor"
+        "pipeline-manager"
+        "platform-analytics-postgres"
+        "read-models"
+        "runtime-environment-manager"
+      )
 
-  #     mongosh "$MONGODB_ROOT_URI" --eval 'db.getSiblingDB("\$external").runCommand( { createUser: "CN=cfuser,O=Internet Widgits Pty Ltd,ST=Some-State,C=AU", roles: [ { role: "readWrite", db: "test" }, { role: "userAdminAnyDatabase", db: "admin" }, { role: "readWrite", db: "codefresh" }, { role: "readWrite", db: "pipeline-manager" }, { role: "readWrite", db: "runtime-environment-manager" }, { role: "readWrite", db: "context-manager" }, { role: "readWrite", db: "cluster-providers" }, { role: "readWrite", db: "charts-manager" }, { role: "readWrite", db: "k8s-monitor" }, { role: "readWrite", db: "read-models" }, { role: "readWrite", db: "audit" }, { role: "readWrite", db: "platform-analytics-postgres" } ], writeConcern: { w: "majority" , wtimeout: 5000 } } )'
+      mongosh "$MONGODB_ROOT_URI" --eval 'db.getSiblingDB("\$external").runCommand( { createUser: "CN=cfuser,O=Internet Widgits Pty Ltd,ST=Some-State,C=AU", roles: [ { role: "readWrite", db: "test" }, { role: "userAdminAnyDatabase", db: "admin" }, { role: "readWrite", db: "codefresh" }, { role: "readWrite", db: "pipeline-manager" }, { role: "readWrite", db: "runtime-environment-manager" }, { role: "readWrite", db: "context-manager" }, { role: "readWrite", db: "cluster-providers" }, { role: "readWrite", db: "charts-manager" }, { role: "readWrite", db: "k8s-monitor" }, { role: "readWrite", db: "read-models" }, { role: "readWrite", db: "audit" }, { role: "readWrite", db: "platform-analytics-postgres" } ], writeConcern: { w: "majority" , wtimeout: 5000 } } )'
 
-  #     for MONGODB_DATABASE in ${MONGODB_DATABASES[@]}; do
-  #       mongosh ${MONGODB_ROOT_URI} --eval "db.getSiblingDB('${MONGODB_DATABASE}').createCollection('test')"
-  #     done
+      for MONGODB_DATABASE in ${MONGODB_DATABASES[@]}; do
+        mongosh ${MONGODB_ROOT_URI} --eval "db.getSiblingDB('${MONGODB_DATABASE}').createCollection('test')"
+      done
 
-  #     mongoimport --uri ${MONGODB_ROOT_URI} --db codefresh --collection idps --type json --legacy --file /usr/share/extras/idps.json
-  #     mongoimport --uri ${MONGODB_ROOT_URI} --db codefresh --collection accounts --type json --legacy --file /usr/share/extras/accounts.json
-  #     mongoimport --uri ${MONGODB_ROOT_URI} --db codefresh --collection users --type json --legacy --file /usr/share/extras/users.json
+# mongoimport --uri ${MONGODB_ROOT_URI} --db codefresh --collection idps --type json --legacy --file /usr/share/extras/idps.json
+# mongoimport --uri ${MONGODB_ROOT_URI} --db codefresh --collection accounts --type json --legacy --file /usr/share/extras/accounts.json
+# mongoimport --uri ${MONGODB_ROOT_URI} --db codefresh --collection users --type json --legacy --file /usr/share/extras/users.json
 
   extraVolumeMounts:
     - name: extras
