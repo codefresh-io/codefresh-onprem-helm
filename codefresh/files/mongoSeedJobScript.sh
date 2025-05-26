@@ -93,7 +93,7 @@ parseMongoURI $MONGO_URI
 
 if [[ -s /etc/ssl/mongodb/ca.pem ]]; then
     MONGO_URI_EXTRA_PARAMS="--tls --tlsCertificateKeyFile /etc/ssl/mongodb/ca.pem --tlsAllowInvalidHostnames --tlsAllowInvalidCertificates"
-    MONGOIMPORT_EXTRA_PARAMS="--ssl --sslCAFile --sslAllowInvalidHostnames --sslAllowInvalidCertificates"
+    MONGOIMPORT_EXTRA_PARAMS="--ssl --sslCAFile /etc/ssl/mongodb/ca.pem --sslAllowInvalidHostnames --sslAllowInvalidCertificates"
 else
     MONGO_URI_EXTRA_PARAMS=""
     MONGOIMPORT_EXTRA_PARAMS=""
