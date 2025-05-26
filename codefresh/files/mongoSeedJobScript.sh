@@ -12,7 +12,7 @@ export MONGODB_ROOT_PASSWORD=...
 
 COMMENT
 
-# set -eou pipefail
+set -x
 
 ASSETS_PATH=${ASSETS_PATH:-/usr/share/extras/}
 
@@ -34,7 +34,7 @@ MONGODB_DATABASES=(
 )
 
 disableMongoTelemetry() {
-    mongosh --nodb --eval "disableTelemetry()"
+    mongosh --nodb --eval "disableTelemetry()" || true
 }
 
 waitForMongoDB() {
@@ -82,6 +82,12 @@ setPacks() {
 
 parseMongoURI $MONGO_URI
 
+if [[ -s /etc/ssl/mongodb/ca.pem ]]; then
+    MONGO_URI_EXTRA_PARAMS="--tls --tlsCertificateKeyFile /etc/ssl/mongodb/ca.pem --tlsAllowInvalidHostnames --tlsAllowInvalidCertificates"
+else
+    MONGO_URI_EXTRA_PARAMS=""
+fi
+
 disableMongoTelemetry
 
 waitForMongoDB
@@ -90,20 +96,20 @@ getMongoVersion
 
 for MONGODB_DATABASE in ${MONGODB_DATABASES[@]}; do
     waitForMongoDB
-    mongosh ${MONGODB_ROOT_URI} --eval "db.getSiblingDB(\"${MONGODB_DATABASE}\").createUser({user: \"${MONGODB_USER}\", pwd: \"${MONGODB_PASSWORD}\", roles: [\"readWrite\"]})" 2>&1 || true
+    mongosh ${MONGODB_ROOT_URI} ${MONGO_URI_EXTRA_PARAMS} --eval "db.getSiblingDB(\"${MONGODB_DATABASE}\").createUser({user: \"${MONGODB_USER}\", pwd: \"${MONGODB_PASSWORD}\", roles: [\"readWrite\"]})" 2>&1 || true
     waitForMongoDB
-    mongosh ${MONGODB_ROOT_URI} --eval "db.getSiblingDB(\"${MONGODB_DATABASE}\").changeUserPassword(\"${MONGODB_USER}\",\"${MONGODB_PASSWORD}\")" 2>&1 || true
+    mongosh ${MONGODB_ROOT_URI} ${MONGO_URI_EXTRA_PARAMS} --eval "db.getSiblingDB(\"${MONGODB_DATABASE}\").changeUserPassword(\"${MONGODB_USER}\",\"${MONGODB_PASSWORD}\")" 2>&1 || true
 done
 
-mongosh ${MONGODB_ROOT_URI} --eval "db.getSiblingDB(\"codefresh\").grantRolesToUser( \"${MONGODB_USER}\", [ { role: \"readWrite\", db: \"pipeline-manager\" } ] )" 2>&1 || true
-mongosh ${MONGODB_ROOT_URI} --eval "db.getSiblingDB(\"codefresh\").grantRolesToUser( \"${MONGODB_USER}\", [ { role: \"readWrite\", db: \"platform-analytics-postgres\" } ] )" 2>&1 || true
-mongosh ${MONGODB_ROOT_URI} --eval "db.getSiblingDB(\"codefresh\").changeUserPassword(\"${MONGODB_USER}\",\"${MONGODB_PASSWORD}\")" 2>&1 || true
+mongosh ${MONGODB_ROOT_URI} ${MONGO_URI_EXTRA_PARAMS} --eval "db.getSiblingDB(\"codefresh\").grantRolesToUser( \"${MONGODB_USER}\", [ { role: \"readWrite\", db: \"pipeline-manager\" } ] )" 2>&1 || true
+mongosh ${MONGODB_ROOT_URI} ${MONGO_URI_EXTRA_PARAMS} --eval "db.getSiblingDB(\"codefresh\").grantRolesToUser( \"${MONGODB_USER}\", [ { role: \"readWrite\", db: \"platform-analytics-postgres\" } ] )" 2>&1 || true
+mongosh ${MONGODB_ROOT_URI} ${MONGO_URI_EXTRA_PARAMS} --eval "db.getSiblingDB(\"codefresh\").changeUserPassword(\"${MONGODB_USER}\",\"${MONGODB_PASSWORD}\")" 2>&1 || true
 
 if [[ $DEVELOPMENT_CHART == "true" ]]; then
     setSystemAdmin
     setPacks
 fi
 
-mongoimport --uri ${MONGO_URI} --collection idps --type json --legacy --file ${ASSETS_PATH}idps.json
-mongoimport --uri ${MONGO_URI} --collection accounts --type json --legacy --file ${ASSETS_PATH}accounts.json
-mongoimport --uri ${MONGO_URI} --collection users --type json --legacy --file ${ASSETS_PATH}users.json
+mongoimport --uri ${MONGO_URI} ${MONGO_URI_EXTRA_PARAMS} --collection idps --type json --legacy --file ${ASSETS_PATH}idps.json
+mongoimport --uri ${MONGO_URI} ${MONGO_URI_EXTRA_PARAMS} --collection accounts --type json --legacy --file ${ASSETS_PATH}accounts.json
+mongoimport --uri ${MONGO_URI} ${MONGO_URI_EXTRA_PARAMS} --collection users --type json --legacy --file ${ASSETS_PATH}users.json
