@@ -1,7 +1,8 @@
 seed:
   mongoSeedJob:
-    mongodbRootURI: mongodb://root:XT9nmM8dZD@cf-mongodb:27017/?authSource=admin
+    mongodbRootURI: mongodb://root:XT9nmM8dZDZ@cf-mongodb:27017/?authSource=admin
     mongodbRootOptions: authSource=admin
+    mongodbRootPassword: XT9nmM8dZDZ
 
 global:
   appUrl: ""  # placeholder for ${CF_APP_HOST}
