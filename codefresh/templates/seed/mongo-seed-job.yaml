@@ -57,12 +57,12 @@ spec:
           - name: DEVELOPMENT_CHART
             value: {{ .Values.developmentChart | quote }}
           {{- range $env, $val := .Values.seed.mongoSeedJob.env }}
-          - name: {{- $env }}
-            value: {{- $val | quote }}
+          - name: {{ $env }}
+            value: {{ $val | quote }}
           {{ end }}
           {{- range $env, $val := .Values.global.env }}
-          - name: {{- $env }}
-            value: {{- $val | quote }}
+          - name: {{ $env }}
+            value: {{ $val | quote }}
           {{ end }}
 
         command:
