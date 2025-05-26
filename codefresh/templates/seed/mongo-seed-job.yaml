@@ -56,6 +56,10 @@ spec:
             value: {{ .Values.seed.mongoSeedJob.mongodbRootOptions | quote }}
           - name: DEVELOPMENT_CHART
             value: {{ .Values.developmentChart | quote }}
+          {{- range $env, $val := .Values.seed.mongoSeedJob.env }}
+          - name: {{- $env }}
+            value: {{- $val | quote }}
+          {{ end }}
         command:
           - "/bin/bash"
           - "-exc"
