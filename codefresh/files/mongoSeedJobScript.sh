@@ -39,7 +39,7 @@ disableMongoTelemetry() {
 
 waitForMongoDB() {
     while true; do
-        status=$(mongosh ${MONGODB_ROOT_URI} --eval "db.adminCommand('ping')" 2>&1)
+        status=$(mongosh ${MONGODB_ROOT_URI} ${MONGO_URI_EXTRA_PARAMS} --eval "db.adminCommand('ping')" 2>&1)
 
         echo -e "MongoDB status:\n$status"
         if $(echo $status | grep 'ok: 1' -q); then
@@ -57,9 +57,10 @@ parseMongoURI() {
     local url="$(echo ${1/$proto/})"
     local userpass="$(echo $url | grep @ | cut -d@ -f1)"
     if [[ -z $userpass ]]; then
-        userpass="${MONGODB_ROOT_USER}:${MONGODB_ROOT_PASSWORD}"
+        hostport="$(echo $url | sed "s/\/\?$parameters//" | sed -re "s/\/\?|@//g" | sed 's/\/$//')"
+    else
+        local hostport="$(echo $url | sed s/$userpass// | sed "s/\/\?$parameters//" | sed -re "s/\/\?|@//g" | sed 's/\/$//')"
     fi
-    local hostport="$(echo $url | sed s/$userpass// | sed "s/\/\?$parameters//" | sed -re "s/\/\?|@//g" | sed 's/\/$//')"
 
     MONGODB_PASSWORD="$(echo $userpass | grep : | cut -d: -f2)"
     MONGODB_USER="$(echo $userpass | grep : | cut -d: -f1)"
