@@ -1273,7 +1273,7 @@ runner:
     image:
       registry: docker.io
       repository: library/docker
-      tag: 28.0-dind
+      tag: 28.1-dind
   affinity: {}
   nodeSelector: {}
   podSecurityContext: {}
