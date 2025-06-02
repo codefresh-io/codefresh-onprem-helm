@@ -1776,6 +1776,8 @@ argo-platform:
       MONGODB_READMODELS_URI: '{{ include "argo-patform-libs.env-vars.mongodb-readmodels-uri-env-var-value" . }}'
       RABBITMQ_URLS: $(RABBITMQ_PROTOCOL)://$(RABBITMQ_USER):$(RABBITMQ_PASSWORD)@$(RABBITMQ_HOST)
     secrets:
+      v1-host: http://{{ .Release.Name }}-{{ .Values.global.cfapiEndpointsService }}
+      v1-internal-host: http://{{ .Release.Name }}-{{ .Values.global.cfapiService }}:{{ .Values.global.cfapiInternalPort }}
       mongodb-protocol: *mongodb-protocol
       mongodb-options: *mongodb-options
       mongodb-host: *mongodb-host
