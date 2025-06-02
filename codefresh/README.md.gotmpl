@@ -120,6 +120,9 @@ global:
   #   name: my-secret
   #   key: firebase-secret
 
+  # -- Enable auto-index creation in MongoDB
+  # This is required for first-time installations!
+  # For upgrades, you should set it to `false`!
   env:
     MONGOOSE_AUTO_INDEX: "true"
     MONGO_AUTOMATIC_INDEX_CREATION: "true"

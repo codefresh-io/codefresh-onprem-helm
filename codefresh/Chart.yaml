@@ -21,7 +21,7 @@ annotations:
     - kind: fixed
       description: "Fixed dependencies version"
     - kind: added
-      description: "Added ability to assign admin/platform permissions for user for specified group during sync"
+      description: "(cf-api): Added ability to assign admin/platform permissions for user for specified group during sync"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
