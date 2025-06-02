@@ -795,7 +795,7 @@ Auto-index creation in MongoDB is disabled by default in Codefresh On-Prem to pr
 
 It is critical to ensure that your MongoDB indexes are always aligned with the latest recommended state for your Codefresh On-Prem version. Outdated or missing indexes can lead to degraded performance, slow queries, and increased resource consumption. Always review release notes and update or create indexes as specified during upgrades or when new collections/fields are introduced. Regularly auditing and maintaining your indexes helps ensure optimal system reliability and scalability.
 
-The indexes list is located at the [codefresh-io/codefresh-onprem-helm](https://github.com/codefresh-io/codefresh-onprem-helm/tree/onprem-2.8.0/indexes) repository.
+The indexes list is located at the [codefresh-io/codefresh-onprem-helm](https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.8/indexes) repository.
 The indexes are stored in JSON files with keys and options specified.
 
 The directory structure is:
