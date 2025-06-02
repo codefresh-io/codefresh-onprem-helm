@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.8.0](https://img.shields.io/badge/Version-2.8.0-informational?style=flat-square) ![AppVersion: 2.7.0](https://img.shields.io/badge/AppVersion-2.7.0-informational?style=flat-square)
+![Version: 2.8.0-rc.2](https://img.shields.io/badge/Version-2.8.0--rc.2-informational?style=flat-square) ![AppVersion: 2.7.0](https://img.shields.io/badge/AppVersion-2.7.0-informational?style=flat-square)
 
 Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
@@ -67,7 +67,7 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
 - GCR Service Account JSON `sa.json` (provided by Codefresh, contact support@codefresh.io)
 - Firebase [Realtime Database URL](https://firebase.google.com/docs/database/web/start#create_a_database) with [legacy token](https://firebase.google.com/docs/database/rest/auth#legacy_tokens). See [Firebase Configuration](#firebase-configuration)
 - Valid TLS certificates for Ingress
-- When [external](#external-postgressql) PostgreSQL is used, `pg_cron` and `pg_partman` extensions **must be enabled** for [analytics](https://codefresh.io/docs/docs/dashboards/home-dashboard/#pipelines-dashboard) to work (see [AWS RDS example](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/PostgreSQL_pg_cron.html#PostgreSQL_pg_cron.enable))
+- When [external](#external-postgressql) PostgreSQL is used, `pg_cron` and `pg_partman` extensions **must be enabled** for [analytics](https://codefresh.io/docs/docs/dashboards/home-dashboard/#pipelines-dashboard) to work (see [AWS RDS example](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/PostgreSQL_pg_cron.html#PostgreSQL_pg_cron.enable)). The `pg_cron` extension should be the 1.4 version or higher for Azure Postgres DB.
 
 ## Get Repo Info
 
@@ -119,6 +119,9 @@ global:
   #   name: my-secret
   #   key: firebase-secret
 
+  # -- Enable auto-index creation in MongoDB
+  # This is required for first-time installations!
+  # For upgrades, you should set it to `false`!
   env:
     MONGOOSE_AUTO_INDEX: "true"
     MONGO_AUTOMATIC_INDEX_CREATION: "true"
@@ -1202,7 +1205,7 @@ cfapi:
 ### Projects pipelines limit
 
 ```yaml
-cfapi:
+pipeline-manager:
   env:
     # Determines project's pipelines limit (default: 500)
     PROJECT_PIPELINES_LIMIT: 500
@@ -2032,7 +2035,7 @@ cfapi:
 
 #### Auto-index creation in MongoDB
 
-[Auto-index creation in MongoDB](#enabling-auto-index-creation)
+[Auto-index creation in MongoDB](#auto-index-creation-in-mongodb)
 
 #### ⚠️ New indexes in MongoDB
 
@@ -2092,7 +2095,7 @@ Default MongoDB image is changed from 6.x to 7.x.
 
 If you run external MongoDB (i.e. [Atlas](https://cloud.mongodb.com)), it is **required** to upgrade it to 7.x after upgrading Codefresh On-Prem to 2.8.x.
 
-For backward compatibility (in case you need to rollback to 6.x), you can set [`featureCompatibilityVersion`](https://www.mongodb.com/docs/v6.0/reference/command/setFeatureCompatibilityVersion/) to `6.0` in your values file.
+- **Before the upgrade**, for backward compatibility (in case you need to rollback to 6.x), you should set [`featureCompatibilityVersion`](https://www.mongodb.com/docs/v6.0/reference/command/setFeatureCompatibilityVersion/) to `6.0` in your values file.
 
 ```yaml
 mongodb:
@@ -2101,38 +2104,177 @@ mongodb:
     featureCompatibilityVersion: "6.0"
 ```
 
+- Perform Codefresh On-Prem upgrade to 2.8.x. Make sure all systems are up and running.
+
+- **After the upgrade**, if all system are stable, you need to set `featureCompatibilityVersion` to `7.0` in your values file and re-deploy the chart.
+
+```yaml
+mongodb:
+  migration:
+    enabled: true
+    featureCompatibilityVersion: "7.0"
+```
+
+⚠️ ⚠️ ⚠️ If FCV (FeatureCompatibilityVersion) is managed by MongoDB itself (i.e. Atlas), you can disable it completely (that is default value in Helm chart)
+
+```yaml
+mongodb:
+  migration:
+    enabled: false
+```
+
+#### ⚠️ New indexes in MongoDB
+
+If you maintain indexes manually (i.e. [Auto-index creation](#enabling-auto-index-creation) is off) you must create the following indexes **before** the upgrade:
+
+- [Database: `codefresh`, collection: `users`, index: `account_1__id_1`](https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.8/indexes/codefresh/users.json#L2-L9)
+- [Database: `codefresh`, collection: `users`, index: `role_1_account_1__id_1`](https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.8/indexes/codefresh/users.json#L10-L17)
+
 ### PostgreSQL update
 
 Default PostgreSQL image is changed from 13.x to 17.x
 
 If you run external PostgreSQL, follow the [official instructions](https://www.postgresql.org/docs/17/upgrading.html) to upgrade to 17.x.
 
-⚠️ ⚠️ ⚠️ If you run built-in PostgreSQL `bitnami/postgresql` subchart, direct upgrade is not supported. You need to backup your data, delete the old PostgreSQL StatefulSet with PVCs and restore the data into a new PostgreSQL StatefulSet.
+⚠️ ⚠️ ⚠️ If you run built-in PostgreSQL `bitnami/postgresql` subchart, direct upgrade is not supported due to **incompatible breaking changes** in the database files. You will see the following error in the logs:
+```
+postgresql 17:36:28.41 INFO  ==> ** Starting PostgreSQL **
+2025-05-21 17:36:28.432 GMT [1] FATAL:  database files are incompatible with server
+2025-05-21 17:36:28.432 GMT [1] DETAIL:  The data directory was initialized by PostgreSQL version 13, which is not compatible with this version 17.2.
+```
+You need to backup your data, delete the old PostgreSQL StatefulSet with PVCs and restore the data into a new PostgreSQL StatefulSet.
+
+- **Before the upgrade**, backup your data on a separate PVC
+
+- Create PVC with the same or bigger size as your current PostgreSQL PVC:
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgresql-dump
+spec:
+  storageClassName: <STORAGE_CLASS>
+  resources:
+    requests:
+      storage: <PVC_SIZE>
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+```
+
+- Create a job to dump the data from the old PostgreSQL StatefulSet into the new PVC:
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: postgresql-dump
+spec:
+  ttlSecondsAfterFinished: 300
+  template:
+    spec:
+      containers:
+      - name: postgresql-dump
+        image: quay.io/codefresh/postgresql:17
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "1Gi"
+            cpu: "1"
+        env:
+          - name: PGUSER
+            value: "<POSTGRES_USER>"
+          - name: PGPASSWORD
+            value: "<POSTGRES_PASSWORD>"
+          - name: PGHOST
+            value: "<POSTGRES_HOST>"
+          - name: PGPORT
+            value: "<POSTGRES_PORT>"
+        command:
+          - "/bin/bash"
+          - "-c"
+          - |
+            pg_dumpall --verbose > /opt/postgresql-dump/dump.sql
+        volumeMounts:
+          - name: postgresql-dump
+            mountPath: /opt/postgresql-dump
+      securityContext:
+        runAsUser: 0
+        fsGroup: 0
+      volumes:
+        - name: postgresql-dump
+          persistentVolumeClaim:
+            claimName: postgresql-dump
+      restartPolicy: Never
+```
+
+- Delete old PostgreSQL StatefulSet and PVC
 
 ```console
-PGUSER=postgres
-PGHOST=cf-postgresql
-PGPORT=5432
-PGPASSWORD=postgres
-BACKUP_DIR=/tmp/pg_backup
-BACKUP_SQL=backup.sql
-TIMESTAMP=$(date +%Y%m%d%H%M%S)
-NAMESPACE=codefresh
-
-# Backup PostgreSQL data
-pg_dumpall --verbose > "$BACKUP_DIR/$BACKUP_SQL.$TIMESTAMP" 2>> "$LOG_FILE"
-
-# Delete old PostgreSQL StatefulSet
 STS_NAME=$(kubectl get sts -n $NAMESPACE -l app.kubernetes.io/instance=$RELEASE_NAME -l app.kubernetes.io/name=postgresql -o jsonpath='{.items[0].metadata.name}')
 PVC_NAME=$(kubectl get pvc -n $NAMESPACE -l app.kubernetes.io/instance=$RELEASE_NAME -l app.kubernetes.io/name=postgresql -o jsonpath='{.items[0].metadata.name}')
 
 kubectl delete sts $STS_NAME -n $NAMESPACE
 kubectl delete pvc $PVC_NAME -n $NAMESPACE
+```
 
-# Perform Codefresh On-Prem upgrade to 2.8.x
+- Peform the upgrade to 2.8.x with PostgreSQL seed job enabled to re-create users and databases
 
-# Restore PostgreSQL data
-psql -U -f "$BACKUP_DIR/$BACKUP_SQL.$TIMESTAMP" >> "$LOG_FILE" 2>&1
+```yaml
+seed:
+  postgresSeedJob:
+    enabled: true
+```
+
+- Create a job to restore the data from the new PVC into the new PostgreSQL StatefulSet:
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: postgresql-restore
+spec:
+  ttlSecondsAfterFinished: 300
+  template:
+    spec:
+      containers:
+      - name: postgresql-restore
+        image: quay.io/codefresh/postgresql:17
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "1Gi"
+            cpu: "1"
+        env:
+          - name: PGUSER
+            value: "<POSTGRES_USER>"
+          - name: PGPASSWORD
+            value: "<POSTGRES_PASSWORD>"
+          - name: PGHOST
+            value: "<POSTGRES_HOST>"
+          - name: PGPORT
+            value: "<POSTGRES_PORT>"
+        command:
+          - "/bin/bash"
+          - "-c"
+          - |
+            psql -f /opt/postgresql-dump/dump.sql
+        volumeMounts:
+          - name: postgresql-dump
+            mountPath: /opt/postgresql-dump
+      securityContext:
+        runAsUser: 0
+        fsGroup: 0
+      volumes:
+        - name: postgresql-dump
+          persistentVolumeClaim:
+            claimName: postgresql-dump
+      restartPolicy: Never
 ```
 
 ### RabbitMQ update
@@ -2247,7 +2389,7 @@ After platform upgrade, Consul fails with the error `refusing to rejoin cluster 
 | argo-platform.runtime-monitor | object | See below | runtime-monitor Don't enable! Not used in onprem! |
 | argo-platform.ui | object | See below | ui |
 | argo-platform.useExternalSecret | bool | `false` | Use regular k8s secret object. Keep `false`! |
-| builder | object | `{"affinity":{},"container":{"image":{"registry":"docker.io","repository":"library/docker","tag":"28.0-dind"}},"enabled":true,"imagePullSecrets":[],"initContainers":{"register":{"image":{"registry":"us-docker.pkg.dev/codefresh-inc/public-gcr-io","repository":"codefresh/curl","tag":"8.11.1"}}},"nodeSelector":{},"podSecurityContext":{},"resources":{},"tolerations":[]}` | builder |
+| builder | object | `{"affinity":{},"container":{"image":{"registry":"docker.io","repository":"library/docker","tag":"28.2-dind"}},"enabled":true,"imagePullSecrets":[],"initContainers":{"register":{"image":{"registry":"us-docker.pkg.dev/codefresh-inc/public-gcr-io","repository":"codefresh/curl","tag":"8.11.1"}}},"nodeSelector":{},"podSecurityContext":{},"resources":{},"tolerations":[]}` | builder |
 | cf-broadcaster | object | See below | broadcaster |
 | cf-oidc-provider | object | See below | cf-oidc-provider |
 | cf-platform-analytics-etlstarter | object | See below | etl-starter |

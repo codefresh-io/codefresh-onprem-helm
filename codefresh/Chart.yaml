@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.8.0-rc.1
+version: 2.8.0-rc.2
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -15,11 +15,15 @@ appVersion: 2.7.0
 annotations:
   artifacthub.io/prerelease: "true"
   artifacthub.io/alternativeName: "codefresh-onprem"
-  artifacthub.io/containsSecurityUpdates: "true"
+  # artifacthub.io/containsSecurityUpdates: "true"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
-    - kind: changed
-      description: "Initial 2.8.0 release"
+    - kind: fixed
+      description: "Fix dependencies version"
+    - kind: added
+      description: "(cf-api): Add ability to assign admin/platform permissions for user for specified group during sync"
+    - kind: fixed
+      description: "(platform-analytics/postgresql): Fix pg_partman configuration"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -97,7 +101,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: context-manager.enabled
   - name: pipeline-manager
-    version: "~1.139.0"
+    version: "~3.139.0"
     repository: oci://quay.io/codefresh/charts
     condition: pipeline-manager.enabled
   - name: gitops-dashboard-manager
@@ -211,7 +215,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: cf-broadcaster.enabled
   - name: helm-repo-manager
-    version: "~0.21.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: helm-repo-manager.enabled
   - name: hermes
@@ -237,7 +241,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
-    version: "~1.3507.0"
+    version: "1.3524.0-onprem-ae70d8a"
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform
