@@ -733,7 +733,10 @@ cf-platform-analytics-etlstarter:
 
   container:
     image:
-      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
+      registry: us-docker.pkg.dev/codefresh-inc/gcr.io
+      repository: codefresh/dev/cf-platform-analytics
+      tag: 0.50.2-cr-29211-update-pgpartman-fix
+      digest: ""
     env:
       ENV: production
       DATASET_ID: etl
