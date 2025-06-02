@@ -19,9 +19,11 @@ annotations:
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
     - kind: fixed
-      description: "Fixed dependencies version"
+      description: "Fix dependencies version"
     - kind: added
-      description: "(cf-api): Added ability to assign admin/platform permissions for user for specified group during sync"
+      description: "(cf-api): Add ability to assign admin/platform permissions for user for specified group during sync"
+    - kind: fixed
+      description: "(platform-analytics/postgresql): Fix pg_partman configuration"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts

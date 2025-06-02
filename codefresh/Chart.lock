@@ -49,7 +49,7 @@ dependencies:
   version: 1.23.1
 - name: cfsign
   repository: oci://quay.io/codefresh/charts
-  version: 1.8.8
+  version: 1.8.9
 - name: tasker-kubernetes
   repository: oci://quay.io/codefresh/charts
   version: 1.26.18
@@ -142,10 +142,10 @@ dependencies:
   version: 0.8.10
 - name: cf-platform-analytics
   repository: oci://quay.io/codefresh/charts
-  version: 0.50.1
+  version: 0.50.2
 - name: cf-platform-analytics
   repository: oci://quay.io/codefresh/charts
-  version: 0.50.1
+  version: 0.50.2
 - name: argo-platform
   repository: oci://quay.io/codefresh/charts
   version: 1.3524.0-onprem-ae70d8a
@@ -167,5 +167,5 @@ dependencies:
 - name: salesforce-reporter
   repository: oci://quay.io/codefresh/charts
   version: 1.30.11
-digest: sha256:ff4ff199bbe8e7279802bc6866ec736ff9f534731ef427045e040da993e6ebbd
-generated: "2025-06-02T11:51:51.051943+03:00"
+digest: sha256:657e1a67d919daf178a83ddd81736519ea6bdc9a1c0bfb2364dad583586c1c1b
+generated: "2025-06-02T16:12:53.480633+03:00"
