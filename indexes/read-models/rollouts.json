@@ -4,7 +4,6 @@
             "__passiveReferencedBy.name": 1
         },
         "options": {
-            "background": true,
             "collation": {
                 "locale": "en_US",
                 "caseLevel": false,
@@ -47,7 +46,6 @@
             "__passiveReferences.name": 1
         },
         "options": {
-            "background": true,
             "collation": {
                 "locale": "en_US",
                 "caseLevel": false,
@@ -90,7 +88,6 @@
             "__inferredReferencedBy.name": 1
         },
         "options": {
-            "background": true,
             "collation": {
                 "locale": "en_US",
                 "caseLevel": false,
@@ -133,7 +130,6 @@
             "__inferredReferences.name": 1
         },
         "options": {
-            "background": true,
             "collation": {
                 "locale": "en_US",
                 "caseLevel": false,
@@ -176,7 +172,6 @@
             "updatedAt": 1
         },
         "options": {
-            "background": true,
             "collation": {
                 "locale": "en_US",
                 "caseLevel": false,
@@ -196,7 +191,6 @@
             "projects": 1
         },
         "options": {
-            "background": true,
             "collation": {
                 "locale": "en_US",
                 "caseLevel": false,
@@ -216,7 +210,6 @@
             "metadata.name": 1
         },
         "options": {
-            "background": true,
             "collation": {
                 "locale": "en_US",
                 "caseLevel": false,
@@ -236,7 +229,6 @@
             "metadata.labels": 1
         },
         "options": {
-            "background": true,
             "collation": {
                 "locale": "en_US",
                 "caseLevel": false,
@@ -256,7 +248,6 @@
             "source.syncStartedAt": 1
         },
         "options": {
-            "background": true,
             "collation": {
                 "locale": "en_US",
                 "caseLevel": false,
@@ -276,7 +267,6 @@
             "source.gitSource": 1
         },
         "options": {
-            "background": true,
             "collation": {
                 "locale": "en_US",
                 "caseLevel": false,
@@ -326,7 +316,6 @@
             "source.gitSourceUID": 1
         },
         "options": {
-            "background": true,
             "collation": {
                 "locale": "en_US",
                 "caseLevel": false,
@@ -346,7 +335,6 @@
             "source.gitSourceNamespace": 1
         },
         "options": {
-            "background": true,
             "collation": {
                 "locale": "en_US",
                 "caseLevel": false,
