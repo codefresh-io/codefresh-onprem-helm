@@ -1520,10 +1520,10 @@ After executing the `createIndex()` command, you should see a result indicating 
 
 **Index removal**
 
-- To remove an index, use the `dropIndex()` method with either the `<index_name>` or a `<keys_object>`:
+- To remove an index, use the `dropIndex()` method with `<index_name>`:
 
 ```js
-db.getSiblingDB('<db_name>').getCollection('<collection_name>').dropIndex('<index_name>' | <keys_object>)
+db.getSiblingDB('<db_name>').getCollection('<collection_name>').dropIndex('<index_name>')
 ```
 
 #### Atlas Database
