@@ -391,6 +391,19 @@ postgresql:
   enabled: false
 ```
 
+Provide the following env vars to enable SSL connection to Postgres:
+
+```yaml
+global:
+  env:
+    PGSSLMODE: "require"
+
+helm-repo-manager:
+  env:
+    POSTGRES_DISABLE_SSL: "false"
+```
+
+
 #### External Redis
 
 ```yaml

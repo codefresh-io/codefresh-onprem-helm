@@ -1,6 +1,11 @@
 #!/bin/bash
 
-set -xeuo pipefail
+set -euo pipefail
+
+if [[ $DEBUG == "true" ]]; then
+    set -xeuo pipefail
+    echo "Running in debug mode"
+fi
 
 POSTGRES_DATABASES=(
     "codefresh"
