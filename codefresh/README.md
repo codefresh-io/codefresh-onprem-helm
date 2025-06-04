@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.8.0-rc.2](https://img.shields.io/badge/Version-2.8.0--rc.2-informational?style=flat-square) ![AppVersion: 2.7.0](https://img.shields.io/badge/AppVersion-2.7.0-informational?style=flat-square)
+![Version: 2.8.0-rc.3](https://img.shields.io/badge/Version-2.8.0--rc.3-informational?style=flat-square) ![AppVersion: 2.7.0](https://img.shields.io/badge/AppVersion-2.7.0-informational?style=flat-square)
 
 Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
@@ -387,6 +387,18 @@ global:
 postgresql:
   # -- Disable postgresql subchart installation
   enabled: false
+```
+
+Provide the following env vars to enable SSL connection to Postgres:
+
+```yaml
+global:
+  env:
+    PGSSLMODE: "require"
+
+helm-repo-manager:
+  env:
+    POSTGRES_DISABLE_SSL: "false"
 ```
 
 #### External Redis
@@ -2589,6 +2601,8 @@ After platform upgrade, Consul fails with the error `refusing to rejoin cluster 
 | seed-e2e | object | `{"affinity":{},"backoffLimit":10,"enabled":false,"image":{"registry":"docker.io","repository":"mongo","tag":"latest"},"nodeSelector":{},"podSecurityContext":{},"resources":{},"tolerations":[],"ttlSecondsAfterFinished":300}` | CI |
 | seed.enabled | bool | `true` | Enable all seed jobs |
 | seed.mongoSeedJob | object | See below | Mongo Seed Job. Required at first install. Seeds the required data (default idp/user/account), creates cfuser and required databases. |
+| seed.mongoSeedJob.env | object | `{}` | Extra env variables for seed job. |
+| seed.mongoSeedJob.mongodbRootOptions | string | `""` | Extra options for connection string (e.g. `authSource=admin`). |
 | seed.mongoSeedJob.mongodbRootPassword | string | `"XT9nmM8dZD"` | Root password in plain text (required ONLY for seed job!). |
 | seed.mongoSeedJob.mongodbRootPasswordSecretKeyRef | object | `{}` | Root password from existing secret |
 | seed.mongoSeedJob.mongodbRootUser | string | `"root"` | Root user in plain text (required ONLY for seed job!). |

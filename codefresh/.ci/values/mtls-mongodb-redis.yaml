@@ -1,6 +1,8 @@
 seed:
   mongoSeedJob:
     mongodbRootURI: mongodb://root:XT9nmM8dZDZ@cf-mongodb:27017/?authSource=admin
+    mongodbRootOptions: authSource=admin
+    mongodbRootPassword: XT9nmM8dZDZ
 
 global:
   appUrl: ""  # placeholder for ${CF_APP_HOST}
@@ -86,9 +88,9 @@ mongodb:
         mongosh ${MONGODB_ROOT_URI} --eval "db.getSiblingDB('${MONGODB_DATABASE}').createCollection('test')"
       done
 
-      mongoimport --uri ${MONGODB_ROOT_URI} --db codefresh --collection idps --type json --legacy --file /usr/share/extras/idps.json
-      mongoimport --uri ${MONGODB_ROOT_URI} --db codefresh --collection accounts --type json --legacy --file /usr/share/extras/accounts.json
-      mongoimport --uri ${MONGODB_ROOT_URI} --db codefresh --collection users --type json --legacy --file /usr/share/extras/users.json
+# mongoimport --uri ${MONGODB_ROOT_URI} --db codefresh --collection idps --type json --legacy --file /usr/share/extras/idps.json
+# mongoimport --uri ${MONGODB_ROOT_URI} --db codefresh --collection accounts --type json --legacy --file /usr/share/extras/accounts.json
+# mongoimport --uri ${MONGODB_ROOT_URI} --db codefresh --collection users --type json --legacy --file /usr/share/extras/users.json
 
   extraVolumeMounts:
     - name: extras

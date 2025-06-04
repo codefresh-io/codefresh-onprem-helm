@@ -55,6 +55,11 @@ seed:
     #   name: my-secret
     #   key: mongodb-root-password
 
+    # -- Extra options for connection string (e.g. `authSource=admin`).
+    mongodbRootOptions: ""
+    # -- Extra env variables for seed job.
+    env: {}
+
   # -- Postgres Seed Job. Required at first install. Creates required user and databases.
   # @default -- See below
   postgresSeedJob:
