@@ -45,7 +45,6 @@
             "triggerCommit.sha": 1
         },
         "options": {
-            "background": true,
             "collation": {
                 "locale": "en_US",
                 "caseLevel": false,
@@ -69,7 +68,6 @@
             "triggerCommit.sha": 1
         },
         "options": {
-            "background": true,
             "collation": {
                 "locale": "en_US",
                 "caseLevel": false,
@@ -90,7 +88,6 @@
             "productName": 1
         },
         "options": {
-            "background": true,
             "collation": {
                 "locale": "en_US",
                 "caseLevel": false,
