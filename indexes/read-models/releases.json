@@ -2,65 +2,41 @@
     {
         "keys": {
             "applicationMetadata.name": 1
-        },
-        "options": {
-            "background": true
         }
     },
     {
         "keys": {
             "applicationMetadata.labels": 1
-        },
-        "options": {
-            "background": true
         }
     },
     {
         "keys": {
             "application.prs.type": 1
-        },
-        "options": {
-            "background": true
         }
     },
     {
         "keys": {
             "application.prs.key": 1
-        },
-        "options": {
-            "background": true
         }
     },
     {
         "keys": {
             "application.prs.accountId": 1
-        },
-        "options": {
-            "background": true
         }
     },
     {
         "keys": {
             "application.issues.type": 1
-        },
-        "options": {
-            "background": true
         }
     },
     {
         "keys": {
             "application.issues.key": 1
-        },
-        "options": {
-            "background": true
         }
     },
     {
         "keys": {
             "application.issues.accountId": 1
-        },
-        "options": {
-            "background": true
         }
     },
     {
@@ -70,9 +46,6 @@
             "applicationMetadata.name": 1,
             "applicationMetadata.namespace": 1,
             "application.issues.key": 1
-        },
-        "options": {
-            "background": true
         }
     },
     {
@@ -82,9 +55,6 @@
             "applicationMetadata.name": 1,
             "applicationMetadata.namespace": 1,
             "application.prs.key": 1
-        },
-        "options": {
-            "background": true
         }
     },
     {
@@ -94,9 +64,6 @@
             "applicationMetadata.name": 1,
             "applicationMetadata.namespace": 1,
             "application.committers.userName": 1
-        },
-        "options": {
-            "background": true
         }
     },
     {
@@ -111,7 +78,6 @@
             "historyId": -1
         },
         "options": {
-            "background": true,
             "unique": true
         }
     },
@@ -126,9 +92,6 @@
             "reportedToJira": 1,
             "historyId": 1,
             "application.status.syncStartedAt": 1
-        },
-        "options": {
-            "background": true
         }
     },
     {
