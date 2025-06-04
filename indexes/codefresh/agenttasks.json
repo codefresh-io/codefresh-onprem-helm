@@ -1,0 +1,20 @@
+[
+    {
+        "keys": {
+            "metadata.accountId": 1,
+            "metadata.reIdentifier": 1,
+            "metadata.shouldExecute": 1,
+            "metadata.startAt": 1,
+            "metadata.status": 1,
+            "metadata.expireAt": 1
+        }
+    },
+    {
+        "keys": {
+            "metadata.expireAt": 1
+        },
+        "options": {
+            "expireAfterSeconds": 0
+        }
+    }
+]

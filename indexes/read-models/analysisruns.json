@@ -1,0 +1,313 @@
+[
+    {
+        "keys": {
+            "__passiveReferencedBy.name": 1
+        },
+        "options": {
+            "collation": {
+                "locale": "en_US",
+                "caseLevel": false,
+                "caseFirst": "off",
+                "strength": 1,
+                "numericOrdering": false,
+                "alternate": "non-ignorable",
+                "maxVariable": "punct",
+                "normalization": false,
+                "backwards": false,
+                "version": "57.1"
+            }
+        }
+    },
+    {
+        "keys": {
+            "__passiveReferencedBy.name": 1,
+            "__passiveReferencedBy.kind": 1,
+            "__passiveReferencedBy.namespace": 1,
+            "__passiveReferencedBy.group": 1,
+            "__passiveReferencedBy.version": 1
+        },
+        "options": {
+            "collation": {
+                "locale": "en_US",
+                "caseLevel": false,
+                "caseFirst": "off",
+                "strength": 1,
+                "numericOrdering": false,
+                "alternate": "non-ignorable",
+                "maxVariable": "punct",
+                "normalization": false,
+                "backwards": false,
+                "version": "57.1"
+            }
+        }
+    },
+    {
+        "keys": {
+            "__passiveReferences.name": 1
+        },
+        "options": {
+            "collation": {
+                "locale": "en_US",
+                "caseLevel": false,
+                "caseFirst": "off",
+                "strength": 1,
+                "numericOrdering": false,
+                "alternate": "non-ignorable",
+                "maxVariable": "punct",
+                "normalization": false,
+                "backwards": false,
+                "version": "57.1"
+            }
+        }
+    },
+    {
+        "keys": {
+            "__passiveReferences.name": 1,
+            "__passiveReferences.kind": 1,
+            "__passiveReferences.namespace": 1,
+            "__passiveReferences.group": 1,
+            "__passiveReferences.version": 1
+        },
+        "options": {
+            "collation": {
+                "locale": "en_US",
+                "caseLevel": false,
+                "caseFirst": "off",
+                "strength": 1,
+                "numericOrdering": false,
+                "alternate": "non-ignorable",
+                "maxVariable": "punct",
+                "normalization": false,
+                "backwards": false,
+                "version": "57.1"
+            }
+        }
+    },
+    {
+        "keys": {
+            "__inferredReferencedBy.name": 1
+        },
+        "options": {
+            "collation": {
+                "locale": "en_US",
+                "caseLevel": false,
+                "caseFirst": "off",
+                "strength": 1,
+                "numericOrdering": false,
+                "alternate": "non-ignorable",
+                "maxVariable": "punct",
+                "normalization": false,
+                "backwards": false,
+                "version": "57.1"
+            }
+        }
+    },
+    {
+        "keys": {
+            "__inferredReferencedBy.name": 1,
+            "__inferredReferencedBy.kind": 1,
+            "__inferredReferencedBy.namespace": 1,
+            "__inferredReferencedBy.group": 1,
+            "__inferredReferencedBy.version": 1
+        },
+        "options": {
+            "collation": {
+                "locale": "en_US",
+                "caseLevel": false,
+                "caseFirst": "off",
+                "strength": 1,
+                "numericOrdering": false,
+                "alternate": "non-ignorable",
+                "maxVariable": "punct",
+                "normalization": false,
+                "backwards": false,
+                "version": "57.1"
+            }
+        }
+    },
+    {
+        "keys": {
+            "__inferredReferences.name": 1
+        },
+        "options": {
+            "collation": {
+                "locale": "en_US",
+                "caseLevel": false,
+                "caseFirst": "off",
+                "strength": 1,
+                "numericOrdering": false,
+                "alternate": "non-ignorable",
+                "maxVariable": "punct",
+                "normalization": false,
+                "backwards": false,
+                "version": "57.1"
+            }
+        }
+    },
+    {
+        "keys": {
+            "__inferredReferences.name": 1,
+            "__inferredReferences.kind": 1,
+            "__inferredReferences.namespace": 1,
+            "__inferredReferences.group": 1,
+            "__inferredReferences.version": 1
+        },
+        "options": {
+            "collation": {
+                "locale": "en_US",
+                "caseLevel": false,
+                "caseFirst": "off",
+                "strength": 1,
+                "numericOrdering": false,
+                "alternate": "non-ignorable",
+                "maxVariable": "punct",
+                "normalization": false,
+                "backwards": false,
+                "version": "57.1"
+            }
+        }
+    },
+    {
+        "keys": {
+            "updatedAt": 1
+        },
+        "options": {
+            "collation": {
+                "locale": "en_US",
+                "caseLevel": false,
+                "caseFirst": "off",
+                "strength": 1,
+                "numericOrdering": false,
+                "alternate": "non-ignorable",
+                "maxVariable": "punct",
+                "normalization": false,
+                "backwards": false,
+                "version": "57.1"
+            }
+        }
+    },
+    {
+        "keys": {
+            "projects": 1
+        },
+        "options": {
+            "collation": {
+                "locale": "en_US",
+                "caseLevel": false,
+                "caseFirst": "off",
+                "strength": 1,
+                "numericOrdering": false,
+                "alternate": "non-ignorable",
+                "maxVariable": "punct",
+                "normalization": false,
+                "backwards": false,
+                "version": "57.1"
+            }
+        }
+    },
+    {
+        "keys": {
+            "metadata.name": 1
+        },
+        "options": {
+            "collation": {
+                "locale": "en_US",
+                "caseLevel": false,
+                "caseFirst": "off",
+                "strength": 1,
+                "numericOrdering": false,
+                "alternate": "non-ignorable",
+                "maxVariable": "punct",
+                "normalization": false,
+                "backwards": false,
+                "version": "57.1"
+            }
+        }
+    },
+    {
+        "keys": {
+            "metadata.labels": 1
+        },
+        "options": {
+            "collation": {
+                "locale": "en_US",
+                "caseLevel": false,
+                "caseFirst": "off",
+                "strength": 1,
+                "numericOrdering": false,
+                "alternate": "non-ignorable",
+                "maxVariable": "punct",
+                "normalization": false,
+                "backwards": false,
+                "version": "57.1"
+            }
+        }
+    },
+    {
+        "keys": {
+            "metadata.accountId": 1,
+            "metadata.runtime": 1,
+            "metadata.cluster": 1,
+            "metadata.namespace": 1,
+            "metadata.group": 1,
+            "metadata.version": 1,
+            "metadata.kind": 1,
+            "metadata.name": 1,
+            "metadata.uid": 1,
+            "metadata.revision": 1
+        },
+        "options": {
+            "unique": true,
+            "collation": {
+                "locale": "en_US",
+                "caseLevel": false,
+                "caseFirst": "off",
+                "strength": 1,
+                "numericOrdering": false,
+                "alternate": "non-ignorable",
+                "maxVariable": "punct",
+                "normalization": false,
+                "backwards": false,
+                "version": "57.1"
+            }
+        }
+    },
+    {
+        "keys": {
+            "metadata.accountId": 1,
+            "revision": 1,
+            "metadata.labels.rollout-type": 1,
+            "metadata.runtime": 1,
+            "metadata.labels.step-index": 1
+        }
+    },
+    {
+        "keys": {
+            "metadata.accountId": 1,
+            "revision": 1,
+            "metadata.labels.rollout-type": 1,
+            "metadata.runtime": 1,
+            "metadata.creationTimestamp": -1
+        }
+    },
+    {
+        "keys": {
+            "ownerReferences.uid": 1,
+            "revision": 1
+        },
+        "options": {
+            "collation": {
+                "locale": "en_US",
+                "caseLevel": false,
+                "caseFirst": "off",
+                "strength": 1,
+                "numericOrdering": false,
+                "alternate": "non-ignorable",
+                "maxVariable": "punct",
+                "normalization": false,
+                "backwards": false,
+                "version": "57.1"
+            }
+        }
+    }
+]
