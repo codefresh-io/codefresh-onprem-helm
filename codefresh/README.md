@@ -1504,17 +1504,17 @@ db.getSiblingDB('<db_name>').getCollection('<collection_name>').getIndexes()
 - To create an index, use the `createIndex()` method:
 
 ```js
-db.getSiblingDB('<db_name>').getCollection('<collection_name>').createIndex(<key_object>, <options_object>)
+db.getSiblingDB('<db_name>').getCollection('<collection_name>').createIndex(<keys_object>, <options_object>)
 ```
 
 After executing the `createIndex()` command, you should see a result indicating that the index was created successfully.
 
 **Index removal**
 
-- To remove an index, use the `dropIndex()` method with either the `<index_name>` or a `<key_object>`:
+- To remove an index, use the `dropIndex()` method with either the `<index_name>` or a `<keys_object>`:
 
 ```js
-db.getSiblingDB('<db_name>').getCollection('<collection_name>').dropIndex('<index_name>' | <key_object>)
+db.getSiblingDB('<db_name>').getCollection('<collection_name>').dropIndex('<index_name>' | <keys_object>)
 ```
 
 #### Atlas Database
