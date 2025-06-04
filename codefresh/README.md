@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.8.0-rc.3](https://img.shields.io/badge/Version-2.8.0--rc.3-informational?style=flat-square) ![AppVersion: 2.7.0](https://img.shields.io/badge/AppVersion-2.7.0-informational?style=flat-square)
+![Version: 2.8.0](https://img.shields.io/badge/Version-2.8.0-informational?style=flat-square) ![AppVersion: 2.8.0](https://img.shields.io/badge/AppVersion-2.8.0-informational?style=flat-square)
 
 Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
@@ -205,7 +205,7 @@ The following table displays the list of **persistent** services created as part
 | Database      | Purpose | Required version     |
 | :---        | :----   |  :--- |
 | MongoDB      | Stores all account data (account settings, users, projects, pipelines, builds etc.)       | 7.x   |
-| Postgresql   | Stores data about events for the account (pipeline updates, deletes, etc.). The audit log uses the data from this database.        | 17.x      |
+| Postgresql   | Stores data about events for the account (pipeline updates, deletes, etc.). The audit log uses the data from this database.        | 16.x or 17.x      |
 | Redis   | Used for caching, and as a key-value store for cron trigger manager.        | 7.0.x      |
 | RabbitMQ  | Used for message queueing.        | 4.0.x      |
 
@@ -2165,6 +2165,8 @@ mongodb:
 Default PostgreSQL image is changed from 13.x to 17.x
 
 If you run external PostgreSQL, follow the [official instructions](https://www.postgresql.org/docs/17/upgrading.html) to upgrade to 17.x.
+
+⚠️ ⚠️ ⚠️  16.x version is also supported (17.x version of PostgreSQL is still in preview on multiple cloud providers)
 
 ⚠️ ⚠️ ⚠️ If you run built-in PostgreSQL `bitnami/postgresql` subchart, direct upgrade is not supported due to **incompatible breaking changes** in the database files. You will see the following error in the logs:
 ```
