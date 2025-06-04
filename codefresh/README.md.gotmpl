@@ -1524,17 +1524,17 @@ After executing the `createIndex()` command, you should see a result indicating 
 
 **Index removal**
 
-- To remove an index, use the `dropIndex()` method with either the `<index_name>` or a `<keys_object>`:
+- To remove an index, use the `dropIndex()` method with `<index_name>`:
 
 ```js
-db.getSiblingDB('<db_name>').getCollection('<collection_name>').dropIndex('<index_name>' | <keys_object>)
+db.getSiblingDB('<db_name>').getCollection('<collection_name>').dropIndex('<index_name>')
 ```
 
 #### Atlas Database
 
 If you're hosting MongoDB on [Atlas](https://www.mongodb.com/atlas/database), use the following [Manage Indexes](https://www.mongodb.com/docs/atlas/atlas-ui/indexes/) guide to View, Create or Remove indexes.
 
-> ⚠️ **Important!** In Atlas in production environment the indexes must be created in *a rolling fashion* mode, i.e., with `Build index via rolling process` checkbox enabled.
+> ⚠️ **Important!** In Atlas, for production environments, it is recommended to use rolling index builds by enabling the "Build index via rolling process" checkbox. ([*MongoDB official documentation*](https://www.mongodb.com/docs/v6.0/tutorial/build-indexes-on-replica-sets/))
 
 ## Upgrading
 
