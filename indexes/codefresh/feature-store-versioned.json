@@ -1,0 +1,16 @@
+[
+    {
+        "keys": {
+            "createdAt": 1
+        },
+        "options": {
+            "expireAfterSeconds": 43200
+        }
+    },
+    {
+        "keys": {
+            "_id": -1,
+            "LDRedisStoreVersion": 1
+        }
+    }
+]
