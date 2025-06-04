@@ -1,5 +1,7 @@
 #!/bin/bash
 
+DEBUG="${DEBUG:-false}"
+
 set -euo pipefail
 
 if [[ $DEBUG == "true" ]]; then
