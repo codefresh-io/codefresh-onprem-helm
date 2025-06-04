@@ -24,7 +24,6 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
   - [Configuration with ALB (Application Load Balancer)](#configuration-with-alb-application-load-balancer)
   - [Configuration with Private Registry](#configuration-with-private-registry)
   - [Configuration with multi-role CF-API](#configuration-with-multi-role-cf-api)
-  - [Indexes in MongoDB](#indexes-in-mongodb)
   - [High Availability](#high-availability)
   - [Mounting private CA certs](#mounting-private-ca-certs)
 - [Installing on OpenShift](#installing-on-openshift)
@@ -36,6 +35,7 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
   - [X-Frame-Options response header](#x-frame-options-response-header)
   - [Image digests in containers](#image-digests-in-containers)
 - [Configuring OIDC Provider](#configuring-oidc-provider)
+- [Maintaining MongoDB indexes](#maintaining-mongodb-indexes)
 - [Upgrading](#upgrading)
   - [To 2.0.0](#to-2-0-0)
   - [To 2.0.12](#to-2-0-12)
@@ -80,8 +80,6 @@ See [Use OCI-based registries](https://helm.sh/docs/topics/registries/)
 
 **Important:** only helm 3.8.0+ is supported
 
-**Important:** Read about [Indexes in MongoDB](#indexes-in-mongodb) before installation
-
 Edit default `values.yaml` or create empty `cf-values.yaml`
 
 - Pass `sa.json` (as a single line) to `.Values.imageCredentials.password`
@@ -94,7 +92,7 @@ imageCredentials:
   password: '{ "type": "service_account", "project_id": "codefresh-enterprise", "private_key_id": ... }'
 ```
 
-- Specify `.Values.global.appUrl`, `.Values.global.firebaseUrl` and `.Values.global.firebaseSecret`
+- Specify `.Values.global.appUrl`, `.Values.global.firebaseUrl`, `.Values.global.firebaseSecret`, `.Values.global.env.MONGOOSE_AUTO_INDEX`, `.Values.global.env.MONGO_AUTOMATIC_INDEX_CREATION`
 
 ```yaml
 global:
@@ -119,9 +117,9 @@ global:
   #   name: my-secret
   #   key: firebase-secret
 
-  # -- Enable auto-index creation in MongoDB
+  # -- Enable index creation in MongoDB
   # This is required for first-time installations!
-  # For upgrades, you should set it to `false`!
+  # Before usage in Production, you must set it to `false` or remove it!
   env:
     MONGOOSE_AUTO_INDEX: "true"
     MONGO_AUTOMATIC_INDEX_CREATION: "true"
@@ -180,6 +178,17 @@ ingress-nginx:
       --wait \
       --timeout 15m
   ```
+
+### ⚠️ **MANDATORY** Post-Installation Action Items
+
+Once your Codefresh On-Prem instance is installed, configured, and confirmed to be ready for production use, the following variables must be set to `false` or removed:
+
+```yaml
+global:
+  env:
+    MONGOOSE_AUTO_INDEX: "false"
+    MONGO_AUTOMATIC_INDEX_CREATION: "false"
+```
 
 ## Chart Configuration
 
@@ -796,64 +805,6 @@ cfapi-test-reporting:
   <<: *cf-api
   enabled: true
 ```
-
-⚠️ ⚠️ ⚠️
-### Indexes in MongoDB
-⚠️ ⚠️ ⚠️
-
-Indexes in MongoDB are essential for efficient query performance, especially as your data grows. Without proper indexes, MongoDB must perform full collection scans to find matching documents, which can significantly slow down operations and increase resource usage. For production environments, ensuring that all frequently queried fields are indexed is vital to maintain optimal performance and scalability.
-
-Auto-index creation in MongoDB is disabled by default in Codefresh On-Prem to prevent unexpected performance issues in production environments during upgrades. When enabled, MongoDB will automatically create indexes for fields used in queries, which can lead to high CPU and disk usage, increased I/O, and potential service disruptions—especially on large datasets. By requiring manual index management, administrators can plan index creation during maintenance windows, ensuring system stability and predictable performance before upgrading Codefresh On-Prem.
-
-It is critical to ensure that your MongoDB indexes are always aligned with the latest recommended state for your Codefresh On-Prem version. Outdated or missing indexes can lead to degraded performance, slow queries, and increased resource consumption. Always review release notes and update or create indexes as specified during upgrades or when new collections/fields are introduced. Regularly auditing and maintaining your indexes helps ensure optimal system reliability and scalability.
-
-The indexes list is located at the [codefresh-io/codefresh-onprem-helm](https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.8/indexes) repository.
-The indexes are stored in JSON files with keys and options specified.
-
-The directory structure is:
-
-```console
-codefresh-onprem-helm
-├── indexes
-│   ├── <DB_NAME> # MongoDB database name
-│   │   ├── <COLLECTION_NAME>.json # MongoDB indexes for the specified collection
-```
-
-#### Enabling auto-index creation
-
-For first-time installations, you **must** enable auto-index creation by setting the following values:
-
-```yaml
-global:
-  env:
-    MONGOOSE_AUTO_INDEX: "true"
-    MONGO_AUTOMATIC_INDEX_CREATION: "true"
-```
-
-You **should** disable it for the next upgrades by setting these variables to `false`:
-
-```yaml
-global:
-  env:
-    MONGOOSE_AUTO_INDEX: "false"
-    MONGO_AUTOMATIC_INDEX_CREATION: "false"
-```
-
-#### Creating Indexes manually
-
-> **Note!** If you have a large amount of MongoDB data, it is recommended to create indexes manually. Enabling auto-index creation can cause performance degradation during the index creation process with large datasets.
-
-Depending on your MongoDB service (e.g., Atlas, self-hosted), you can create indexes using the MongoDB shell or the Atlas UI.
-
-Ref:
-- [Create an Index in Atlas DB](https://www.mongodb.com/docs/atlas/atlas-ui/indexes/#create-an-index)
-- [Create an Index with mongosh](https://www.mongodb.com/docs/manual/reference/method/db.collection.createIndex/)
-
-##### ⚠️ Upgrading when the indexes are maintained manually
-
-If you maintain indexes manually and you upgrade your On-Prem installation you must create all indexes which were introduced from your current version up to the version you upgrade to manually.
-
-You can follow [Upgrading section](#upgrading) to see what changes were made for indexes in every specific release.
 
 ### High Availability
 
@@ -1504,6 +1455,87 @@ To see all the claims supported by Codefresh OIDC provider, see `claims_supporte
 
 Use [obtain-oidc-id-token](https://github.com/codefresh-io/steps/blob/822afc0a9a128384e76459c6573628020a2cf404/incubating/obtain-oidc-id-token/step.yaml#L27-L58) and [aws-sts-assume-role-with-web-identity](https://github.com/codefresh-io/steps/blob/822afc0a9a128384e76459c6573628020a2cf404/incubating/aws-sts-assume-role-with-web-identity/step.yaml#L29-L63) steps to exchange the OIDC token (JWT) for a cloud access token.
 
+## Maintaining MongoDB Indexes
+
+Sometimes, in new releases of Codefresh On-Prem, index requirements change. When this happens, it's mentioned in the [Upgrading section](#upgrading) for the specific release.
+
+> ℹ️ If you're upgrading from version `X` to version `Y`, and index requirements were updated in any of the intermediate versions, you only need to align your indexes with the index requirements of version `Y`. To do that, follow [Index alignment](#index-alignment) instructions.
+
+### Index alignment
+
+The required index definitions for each release can be found at the following resources:
+
+- `2.6` <https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.6/indexes>
+- `2.7` <https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.7/indexes>
+- `2.8` <https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.8/indexes>
+
+The indexes are stored in JSON files with keys and options specified.
+
+The directory structure is:
+
+```console
+indexes
+├── <DB_NAME> # MongoDB database name
+│   ├── <COLLECTION_NAME>.json # MongoDB indexes for the specified collection
+```
+
+**Overview of the index alignment process:**
+
+1. Identify the differences between the indexes in your MongoDB instance and the required index definitions.
+2. Create any missing indexes one by one. (It's important not to create them in bulk.)
+3. Perform the upgrade of Codefresh On-Prem installation.
+4. Then remove any unnecessary indexes.
+
+> ⚠️ **Note! Any changes to indexes should be performed during a defined maintenance window or during periods of lowest traffic to MongoDB.**
+>
+> Building indexes during time periods where the target collection is under heavy write load can result in reduced write performance and longer index builds. ([*Source: MongoDB official documentation*](https://www.mongodb.com/docs/manual/core/index-creation/#index-build-impact-on-database-performance))
+>
+> Even minor changes to indexes (e.g., index removal) can cause brief but noticeable performance degradation ([*Source: MongoDB official documentation*](https://www.mongodb.com/docs/manual/core/query-plans/#plan-cache-flushes))
+
+#### Self-hosted MongoDB
+
+For self-hosted MongoDB, follow the instructions below:
+
+- Connect to the MongoDB server using the [mongosh](https://www.mongodb.com/docs/mongodb-shell/install/) shell. Open your terminal or command prompt and run the following command, replacing `<connection_string>` with the appropriate MongoDB connection string for your server:
+
+```shell
+mongosh "<connection_string>"
+```
+
+- Retrieve the list of indexes for a specific collection:
+
+```js
+db.getSiblingDB('<db_name>').getCollection('<collection_name>').getIndexes()
+```
+
+- Compare your indexes with the required indexes for the target release, and adjust them by creating any missing indexes or removing any unnecessary ones
+
+**Index creation**
+
+> ⚠ **Note! Always create indexes sequentially, one by one. Don't create them in bulk.**
+
+- To create an index, use the `createIndex()` method:
+
+```js
+db.getSiblingDB('<db_name>').getCollection('<collection_name>').createIndex(<keys_object>, <options_object>)
+```
+
+After executing the `createIndex()` command, you should see a result indicating that the index was created successfully.
+
+**Index removal**
+
+- To remove an index, use the `dropIndex()` method with `<index_name>`:
+
+```js
+db.getSiblingDB('<db_name>').getCollection('<collection_name>').dropIndex('<index_name>')
+```
+
+#### Atlas Database
+
+If you're hosting MongoDB on [Atlas](https://www.mongodb.com/atlas/database), use the following [Manage Indexes](https://www.mongodb.com/docs/atlas/atlas-ui/indexes/) guide to View, Create or Remove indexes.
+
+> ⚠️ **Important!** In Atlas, for production environments, it is recommended to use rolling index builds by enabling the "Build index via rolling process" checkbox. ([*MongoDB official documentation*](https://www.mongodb.com/docs/v6.0/tutorial/build-indexes-on-replica-sets/))
+
 ## Upgrading
 
 ### To 2-0-0
@@ -2039,23 +2071,21 @@ cfapi:
 
 ### To 2-6-0
 
+> ⚠️ **WARNING! MongoDB indexes changed!**
+>
+> Please, follow [Maintaining MongoDB indexes](#maintaining-mongodb-indexes) guide to meet index requirements **BEFORE** the upgrade process.
+
 ### [What's new in 2.6.x](https://codefresh.io/docs/docs/whats-new/on-prem-release-notes/#on-premises-version-26)
 
 #### Affected values
 
 [Image digests in containers](#image-digests-in-containers)
 
-#### Auto-index creation in MongoDB
-
-[Auto-index creation in MongoDB](#auto-index-creation-in-mongodb)
-
-#### ⚠️ New indexes in MongoDB
-
-If you maintain indexes manually (i.e. [Auto-index creation](#enabling-auto-index-creation) is off) you must create the following index **before** the upgrade:
-
-- [Database: `read-models`, collection: `images-binaries`, index: `accountId_1_imageName_1`](https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.8/indexes/read-models/images-binaries.json#L75-L94)
-
 ### To 2-7-0
+
+> ⚠️ **WARNING! MongoDB indexes changed!**
+>
+> Please, follow [Maintaining MongoDB indexes](#maintaining-mongodb-indexes) guide to meet index requirements **BEFORE** the upgrade process.
 
 ### [What's new in 2.7.x](https://codefresh.io/docs/docs/whats-new/on-prem-release-notes/#on-premises-version-27)
 
@@ -2086,16 +2116,11 @@ global:
                   - "value"
 ```
 
-#### ⚠️ New indexes in MongoDB
-
-If you maintain indexes manually (i.e. [Auto-index creation](#enabling-auto-index-creation) is off) you must create the following indexes **before or right after** the upgrade:
-
-> ⚠ **Note!** In case if you create indexes **before** the upgrade, please, create `codefresh.feature-store-versioned` collection manually in advance.
-
-- [Database: `codefresh`, collection: `feature-store-versioned`, index: `createdAt_1`](https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.8/indexes/codefresh/feature-store-versioned.json#L2-L9)
-- [Database: `codefresh`, collection: `feature-store-versioned`, index: `LDRedisStoreVersion_1__id_-1`](https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.8/indexes/codefresh/feature-store-versioned.json#L10-L17)
-
 ### To 2-8-0
+
+> ⚠️ **WARNING! MongoDB indexes changed!**
+>
+> Please, follow [Maintaining MongoDB indexes](#maintaining-mongodb-indexes) guide to meet index requirements **BEFORE** the upgrade process.
 
 ### [What's new in 2.8.x](https://codefresh.io/docs/docs/whats-new/on-prem-release-notes/#on-premises-version-28)
 
@@ -2134,13 +2159,6 @@ mongodb:
   migration:
     enabled: false
 ```
-
-#### ⚠️ New indexes in MongoDB
-
-If you maintain indexes manually (i.e. [Auto-index creation](#enabling-auto-index-creation) is off) you must create the following indexes **before** the upgrade:
-
-- [Database: `codefresh`, collection: `users`, index: `account_1__id_1`](https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.8/indexes/codefresh/users.json#L2-L9)
-- [Database: `codefresh`, collection: `users`, index: `role_1_account_1__id_1`](https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.8/indexes/codefresh/users.json#L10-L17)
 
 ### PostgreSQL update
 

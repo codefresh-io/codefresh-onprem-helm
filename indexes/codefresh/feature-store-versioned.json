@@ -1,25 +1,16 @@
 [
     {
-        "expireAfterSeconds": 43200.0,
-        "key": {
-            "createdAt": 1.0
+        "keys": {
+            "createdAt": 1
         },
-        "name": "createdAt_1",
-        "v": 2.0
+        "options": {
+            "expireAfterSeconds": 43200
+        }
     },
     {
-        "key": {
-            "_id": -1.0,
-            "LDRedisStoreVersion": 1.0
-        },
-        "name": "LDRedisStoreVersion_1__id_-1",
-        "v": 2.0
-    },
-    {
-        "key": {
-            "_id": 1.0
-        },
-        "name": "_id_",
-        "v": 2.0
+        "keys": {
+            "_id": -1,
+            "LDRedisStoreVersion": 1
+        }
     }
 ]

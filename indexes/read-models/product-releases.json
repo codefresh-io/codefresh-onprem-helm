@@ -1,115 +1,105 @@
 [
     {
-        "v": 2,
-        "key": {
-            "_id": 1
-        },
-        "name": "_id_"
-    },
-    {
-        "v": 2,
-        "key": {
+        "keys": {
             "status": 1
         },
-        "name": "status_1",
-        "collation": {
-            "locale": "en_US",
-            "caseLevel": false,
-            "caseFirst": "off",
-            "strength": 1,
-            "numericOrdering": false,
-            "alternate": "non-ignorable",
-            "maxVariable": "punct",
-            "normalization": false,
-            "backwards": false,
-            "version": "57.1"
+        "options": {
+            "collation": {
+                "locale": "en_US",
+                "caseLevel": false,
+                "caseFirst": "off",
+                "strength": 1,
+                "numericOrdering": false,
+                "alternate": "non-ignorable",
+                "maxVariable": "punct",
+                "normalization": false,
+                "backwards": false,
+                "version": "57.1"
+            }
         }
     },
     {
-        "v": 2,
-        "key": {
+        "keys": {
             "accountId": 1,
             "updatedAt": -1
         },
-        "name": "accountId_1_updatedAt_-1",
-        "collation": {
-            "locale": "en",
-            "caseLevel": false,
-            "caseFirst": "off",
-            "strength": 2,
-            "numericOrdering": false,
-            "alternate": "non-ignorable",
-            "maxVariable": "punct",
-            "normalization": false,
-            "backwards": false,
-            "version": "57.1"
+        "options": {
+            "collation": {
+                "locale": "en",
+                "caseLevel": false,
+                "caseFirst": "off",
+                "strength": 2,
+                "numericOrdering": false,
+                "alternate": "non-ignorable",
+                "maxVariable": "punct",
+                "normalization": false,
+                "backwards": false,
+                "version": "57.1"
+            }
         }
     },
     {
-        "v": 2,
-        "key": {
+        "keys": {
             "accountId": 1,
             "productName": 1,
             "triggerCommit.sha": 1
         },
-        "name": "accountId_1_productName_1_triggerCommit.sha_1",
-        "background": true,
-        "collation": {
-            "locale": "en_US",
-            "caseLevel": false,
-            "caseFirst": "off",
-            "strength": 1,
-            "numericOrdering": false,
-            "alternate": "non-ignorable",
-            "maxVariable": "punct",
-            "normalization": false,
-            "backwards": false,
-            "version": "57.1"
+        "options": {
+            "collation": {
+                "locale": "en_US",
+                "caseLevel": false,
+                "caseFirst": "off",
+                "strength": 1,
+                "numericOrdering": false,
+                "alternate": "non-ignorable",
+                "maxVariable": "punct",
+                "normalization": false,
+                "backwards": false,
+                "version": "57.1"
+            }
         }
     },
     {
-        "v": 2,
-        "key": {
+        "keys": {
             "accountId": 1,
             "productName": 1,
             "status": 1,
             "triggerEnvironment": 1,
             "triggerCommit.sha": 1
         },
-        "name": "accountId_1_productName_1_status_1_triggerEnvironment_1_triggerCommit.sha_1",
-        "background": true,
-        "collation": {
-            "locale": "en_US",
-            "caseLevel": false,
-            "caseFirst": "off",
-            "strength": 1,
-            "numericOrdering": false,
-            "alternate": "non-ignorable",
-            "maxVariable": "punct",
-            "normalization": false,
-            "backwards": false,
-            "version": "57.1"
+        "options": {
+            "collation": {
+                "locale": "en_US",
+                "caseLevel": false,
+                "caseFirst": "off",
+                "strength": 1,
+                "numericOrdering": false,
+                "alternate": "non-ignorable",
+                "maxVariable": "punct",
+                "normalization": false,
+                "backwards": false,
+                "version": "57.1"
+            }
         }
     },
     {
-        "v": 2,
-        "key": {
+        "keys": {
             "accountId": 1,
             "productName": 1
         },
-        "name": "accountId_1_productName_1",
-        "background": true,
-        "collation": {
-            "locale": "en_US",
-            "caseLevel": false,
-            "caseFirst": "off",
-            "strength": 1,
-            "numericOrdering": false,
-            "alternate": "non-ignorable",
-            "maxVariable": "punct",
-            "normalization": false,
-            "backwards": false,
-            "version": "57.1"
+        "options": {
+            "collation": {
+                "locale": "en_US",
+                "caseLevel": false,
+                "caseFirst": "off",
+                "strength": 1,
+                "numericOrdering": false,
+                "alternate": "non-ignorable",
+                "maxVariable": "punct",
+                "normalization": false,
+                "backwards": false,
+                "version": "57.1"
+            }
         }
     }
 ]
