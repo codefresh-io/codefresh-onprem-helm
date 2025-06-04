@@ -1477,7 +1477,7 @@ indexes
 >
 > Building indexes during time periods where the target collection is under heavy write load can result in reduced write performance and longer index builds. ([*Source: MongoDB official documentation*](https://www.mongodb.com/docs/v6.0/core/index-creation/#index-build-impact-on-database-performance))
 >
-> Even minor changes to indexes (e.g., index removal) can cause brief but noticeable performance degradationю ([*Source: MongoDB official documentation*](https://www.mongodb.com/docs/v6.0/core/query-plans/#plan-cache-flushes))
+> Even minor changes to indexes (e.g., index removal) can cause brief but noticeable performance degradation ([*Source: MongoDB official documentation*](https://www.mongodb.com/docs/v6.0/core/query-plans/#plan-cache-flushes))
 
 #### Self-hosted MongoDB
 
