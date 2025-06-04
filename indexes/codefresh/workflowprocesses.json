@@ -1,0 +1,385 @@
+[
+    {
+        "keys": {
+            "account": 1,
+            "pendingLicense": 1,
+            "created": 1
+        }
+    },
+    {
+        "keys": {
+            "pipeline": 1,
+            "status": 1
+        }
+    },
+    {
+        "keys": {
+            "account": 1,
+            "triggerType": 1
+        }
+    },
+    {
+        "keys": {
+            "account": 1,
+            "pipelineInfo.pipelineId": 1
+        }
+    },
+    {
+        "keys": {
+            "account": 1,
+            "startImmediately": 1,
+            "status": 1
+        }
+    },
+    {
+        "keys": {
+            "account": 1,
+            "scmMetadata.repoName": 1,
+            "scmMetadata.repoOwner": 1,
+            "trigger": 1,
+            "service": 1
+        }
+    },
+    {
+        "keys": {
+            "isPublic": 1
+        }
+    },
+    {
+        "keys": {
+            "codefreshEnv": 1,
+            "status": 1,
+            "shouldPerformFinishSystem": 1,
+            "_id": 1
+        }
+    },
+    {
+        "keys": {
+            "account": 1,
+            "helmInfo.boardId": 1
+        }
+    },
+    {
+        "keys": {
+            "account": 1,
+            "environs": 1
+        }
+    },
+    {
+        "keys": {
+            "account": 1,
+            "status": 1,
+            "trigger": 1
+        }
+    },
+    {
+        "keys": {
+            "account": 1,
+            "pipeline": 1,
+            "trigger": 1,
+            "_id": -1
+        }
+    },
+    {
+        "keys": {
+            "scmMetadata.branchName": 1,
+            "account": 1,
+            "pipeline": 1,
+            "created": -1,
+            "finished": 1
+        }
+    },
+    {
+        "keys": {
+            "trigger": 1,
+            "account": 1,
+            "status": 1,
+            "_id": -1
+        }
+    },
+    {
+        "keys": {
+            "account": 1,
+            "trigger": 1,
+            "scmMetadata.repoName": 1,
+            "service": 1
+        }
+    },
+    {
+        "keys": {
+            "service": 1,
+            "status": 1
+        }
+    },
+    {
+        "keys": {
+            "finished": 1
+        }
+    },
+    {
+        "keys": {
+            "healthStatus.engine.status": 1
+        }
+    },
+    {
+        "keys": {
+            "codefreshEnv": 1,
+            "status": 1,
+            "_id": 1
+        }
+    },
+    {
+        "keys": {
+            "account": 1,
+            "service": 1,
+            "trigger": 1
+        }
+    },
+    {
+        "keys": {
+            "scmMetadata.branchName": 1,
+            "service": 1,
+            "status": 1,
+            "created": -1
+        }
+    },
+    {
+        "keys": {
+            "status": 1,
+            "trigger": 1
+        }
+    },
+    {
+        "keys": {
+            "pipeline": 1,
+            "finished": -1
+        }
+    },
+    {
+        "keys": {
+            "progress": 1
+        }
+    },
+    {
+        "keys": {
+            "account": 1,
+            "environ": 1
+        }
+    },
+    {
+        "keys": {
+            "status": 1,
+            "created": -1
+        }
+    },
+    {
+        "keys": {
+            "createdAt": 1
+        }
+    },
+    {
+        "keys": {
+            "request": 1
+        }
+    },
+    {
+        "keys": {
+            "account": 1,
+            "_id": 1,
+            "scmMetadata.repoName": 1
+        }
+    },
+    {
+        "keys": {
+            "pipeline": 1,
+            "created": -1
+        }
+    },
+    {
+        "keys": {
+            "account": 1,
+            "status": 1,
+            "created": 1
+        }
+    },
+    {
+        "keys": {
+            "status": 1,
+            "runtimeEnvironmentMetadata.agent": 1,
+            "created": 1
+        }
+    },
+    {
+        "keys": {
+            "created": 1
+        },
+        "options": {
+            "expireAfterSeconds": 31536000
+        }
+    },
+    {
+        "keys": {
+            "account": 1,
+            "status": 1,
+            "trigger": 1,
+            "pipeline": 1,
+            "keepPVCsForPendingApproval": 1
+        },
+        "options": {
+            "partialFilterExpression": {
+                "status": {
+                    "$in": [
+                        "pending",
+                        "delayed",
+                        "elected",
+                        "running",
+                        "terminating",
+                        "pending-approval"
+                    ]
+                }
+            }
+        }
+    },
+    {
+        "keys": {
+            "account": 1,
+            "scmMetadata.revision": 1,
+            "_id": -1,
+            "pipeline": 1
+        },
+        "options": {
+            "partialFilterExpression": {
+                "scmMetadata.revision": {
+                    "$exists": true
+                }
+            }
+        }
+    },
+    {
+        "keys": {
+            "account": 1,
+            "trigger": 1,
+            "scmMetadata.userName": 1,
+            "_id": -1,
+            "pipeline": 1
+        },
+        "options": {
+            "partialFilterExpression": {
+                "scmMetadata.userName": {
+                    "$exists": true
+                }
+            }
+        }
+    },
+    {
+        "keys": {
+            "account": 1,
+            "trigger": 1,
+            "annotations.key": 1,
+            "annotations.value": 1,
+            "_id": -1,
+            "pipeline": 1
+        },
+        "options": {
+            "sparse": true
+        }
+    },
+    {
+        "keys": {
+            "account": 1,
+            "trigger": 1,
+            "pipelineTrigger": 1,
+            "_id": -1,
+            "pipeline": 1
+        },
+        "options": {
+            "partialFilterExpression": {
+                "pipelineTrigger": {
+                    "$exists": true
+                }
+            }
+        }
+    },
+    {
+        "keys": {
+            "account": 1,
+            "trigger": 1,
+            "scmMetadata.branchName": 1,
+            "_id": -1,
+            "pipeline": 1
+        },
+        "options": {
+            "partialFilterExpression": {
+                "scmMetadata.branchName": {
+                    "$exists": true
+                }
+            }
+        }
+    },
+    {
+        "keys": {
+            "account": 1,
+            "trigger": 1,
+            "_id": -1,
+            "pipeline": 1
+        }
+    },
+    {
+        "keys": {
+            "account": 1,
+            "trigger": 1,
+            "scmMetadata.provider": 1,
+            "_id": -1,
+            "pipeline": 1
+        },
+        "options": {
+            "partialFilterExpression": {
+                "scmMetadata.provider": {
+                    "$exists": true
+                }
+            }
+        }
+    },
+    {
+        "keys": {
+            "account": 1,
+            "trigger": 1,
+            "scmMetadata.repoName": 1,
+            "_id": -1,
+            "pipeline": 1
+        },
+        "options": {
+            "partialFilterExpression": {
+                "scmMetadata.repoName": {
+                    "$exists": true
+                }
+            }
+        }
+    },
+    {
+        "keys": {
+            "account": 1,
+            "trigger": 1,
+            "scmMetadata.provider": 1,
+            "scmMetadata.event": 1,
+            "_id": -1,
+            "pipeline": 1
+        },
+        "options": {
+            "partialFilterExpression": {
+                "scmMetadata.event": {
+                    "$exists": true
+                },
+                "scmMetadata.provider": {
+                    "$exists": true
+                }
+            }
+        }
+    },
+    {
+        "keys": {
+            "pipeline": 1,
+            "_id": -1
+        }
+    }
+]

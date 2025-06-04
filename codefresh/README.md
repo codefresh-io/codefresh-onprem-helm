@@ -33,9 +33,9 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
   - [Projects pipelines limit](#projects-pipelines-limit)
   - [Enable session cookie](#enable-session-cookie)
   - [X-Frame-Options response header](#x-frame-options-response-header)
-  - [Auto-index creation in MongoDB](#auto-index-creation-in-mongodb)
   - [Image digests in containers](#image-digests-in-containers)
 - [Configuring OIDC Provider](#configuring-oidc-provider)
+- [Maintaining MongoDB Indexes](#maintaining-mongodb-indexes)
 - [Upgrading](#upgrading)
   - [To 2.0.0](#to-200)
   - [To 2.0.12](#to-2012)
@@ -91,7 +91,7 @@ imageCredentials:
   password: '{ "type": "service_account", "project_id": "codefresh-enterprise", "private_key_id": ... }'
 ```
 
-- Specify `.Values.global.appUrl`, `.Values.global.firebaseUrl` and `.Values.global.firebaseSecret`
+- Specify `.Values.global.appUrl`, `.Values.global.firebaseUrl`, `.Values.global.firebaseSecret`, `.Values.global.env.MONGOOSE_AUTO_INDEX`, `.Values.global.env.MONGO_AUTOMATIC_INDEX_CREATION`
 
 ```yaml
 global:
@@ -115,6 +115,14 @@ global:
   # firebaseSecretSecretKeyRef:
   #   name: my-secret
   #   key: firebase-secret
+
+  # -- Enable index creation in MongoDB
+  # This is required for first-time installations!
+  # Before usage in Production, you must set it to `false` or remove it!
+  env:
+    MONGOOSE_AUTO_INDEX: "true"
+    MONGO_AUTOMATIC_INDEX_CREATION: "true"
+
 ```
 
 - Specify `.Values.ingress.tls.cert` and `.Values.ingress.tls.key` OR `.Values.ingress.tls.existingSecret`
@@ -169,6 +177,16 @@ ingress-nginx:
       --wait \
       --timeout 15m
   ```
+
+### ⚠️ **MANDATORY** Post-Installation Action Items
+
+Once your Codefresh On-Prem instance is installed, configured, and confirmed to be ready for production use, the following variables must be set to `false` or removed:
+
+```yaml
+global:
+  env:
+    MONGOOSE_AUTO_INDEX: "false"
+    MONGO_AUTOMATIC_INDEX_CREATION: "false"
 
 ## Chart Configuration
 
@@ -1204,32 +1222,6 @@ cfapi:
     USE_SHA256_GITHUB_SIGNATURE: "true"
 ```
 
-### Auto-index creation in MongoDB
-
-In Codefresh On-Prem 2.6.x, the `cfapi` can create indexes in MongoDB automatically. This feature is disabled by default. To enable it, set the following environment variable:
-
-> **Note!** Enabling this feature can cause performance degradation during the index creation process.
-
-> **Note!** It is recommended to add indexes during a maintenance window. The indexes list is provided in `codefresh/files/indexes/<MAJOR.MINOR>/<collection_name>.json` files.
-
-```yaml
-cfapi:
-  container:
-    env:
-      MONGOOSE_AUTO_INDEX: "true"
-```
-
-```yaml
-argo-platform:
-  api-graphql:
-    env:
-      MONGO_AUTOMATIC_INDEX_CREATION: "true"
-```
-
-Ref:
-- [Create an Index in Atlas DB](https://www.mongodb.com/docs/atlas/atlas-ui/indexes/#create-an-index)
-- [Create an Index with mongosh](https://www.mongodb.com/docs/manual/reference/method/db.collection.createIndex/)
-
 ### Image digests in containers
 
 In Codefresh On-Prem 2.6.x all Codefresh owner microservices include image digests in the default subchart values.
@@ -1455,6 +1447,86 @@ To see all the claims supported by Codefresh OIDC provider, see `claims_supporte
 #### Using OIDC in Codefresh Builds
 
 Use [obtain-oidc-id-token](https://github.com/codefresh-io/steps/blob/822afc0a9a128384e76459c6573628020a2cf404/incubating/obtain-oidc-id-token/step.yaml#L27-L58) and [aws-sts-assume-role-with-web-identity](https://github.com/codefresh-io/steps/blob/822afc0a9a128384e76459c6573628020a2cf404/incubating/aws-sts-assume-role-with-web-identity/step.yaml#L29-L63) steps to exchange the OIDC token (JWT) for a cloud access token.
+
+## Maintaining MongoDB Indexes
+
+Sometimes, in new releases of Codefresh On-Prem, index requirements change. When this happens, it's mentioned in the [Upgrading section](#upgrading) for the specific release.
+
+> ℹ️ If you're upgrading from version `X` to version `Y`, and index requirements were updated in any of the intermediate versions, you only need to align your indexes with the index requirements of version `Y`. To do that, follow [Index alignment](#index-alignment) instructions.
+
+### Index alignment
+
+The required index definitions for each release can be found at the following resources:
+
+- `2.6` <https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.6/indexes>
+- `2.7` <https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.7/indexes>
+
+The indexes are stored in JSON files with keys and options specified.
+
+The directory structure is:
+
+```console
+indexes
+├── <DB_NAME> # MongoDB database name
+│   ├── <COLLECTION_NAME>.json # MongoDB indexes for the specified collection
+```
+
+**Overview of the index alignment process:**
+
+1. Identify the differences between the indexes in your MongoDB instance and the required index definitions.
+2. Create any missing indexes one by one. (It's important not to create them in bulk.)
+3. Perform the upgrade of Codefresh On-Prem installation.
+4. Then remove any unnecessary indexes.
+
+> ⚠️ **Note! Any changes to indexes should be performed during a defined maintenance window or during periods of lowest traffic to MongoDB.**
+>
+> Building indexes during time periods where the target collection is under heavy write load can result in reduced write performance and longer index builds. ([*Source: MongoDB official documentation*](https://www.mongodb.com/docs/manual/core/index-creation/#index-build-impact-on-database-performance))
+>
+> Even minor changes to indexes (e.g., index removal) can cause brief but noticeable performance degradation ([*Source: MongoDB official documentation*](https://www.mongodb.com/docs/manual/core/query-plans/#plan-cache-flushes))
+
+#### Self-hosted MongoDB
+
+For self-hosted MongoDB, follow the instructions below:
+
+- Connect to the MongoDB server using the [mongosh](https://www.mongodb.com/docs/mongodb-shell/install/) shell. Open your terminal or command prompt and run the following command, replacing `<connection_string>` with the appropriate MongoDB connection string for your server:
+
+```shell
+mongosh "<connection_string>"
+```
+
+- Retrieve the list of indexes for a specific collection:
+
+```js
+db.getSiblingDB('<db_name>').getCollection('<collection_name>').getIndexes()
+```
+
+- Compare your indexes with the required indexes for the target release, and adjust them by creating any missing indexes or removing any unnecessary ones
+
+**Index creation**
+
+> ⚠ **Note! Always create indexes sequentially, one by one. Don't create them in bulk.**
+
+- To create an index, use the `createIndex()` method:
+
+```js
+db.getSiblingDB('<db_name>').getCollection('<collection_name>').createIndex(<keys_object>, <options_object>)
+```
+
+After executing the `createIndex()` command, you should see a result indicating that the index was created successfully.
+
+**Index removal**
+
+- To remove an index, use the `dropIndex()` method with `<index_name>`:
+
+```js
+db.getSiblingDB('<db_name>').getCollection('<collection_name>').dropIndex('<index_name>')
+```
+
+#### Atlas Database
+
+If you're hosting MongoDB on [Atlas](https://www.mongodb.com/atlas/database), use the following [Manage Indexes](https://www.mongodb.com/docs/atlas/atlas-ui/indexes/) guide to View, Create or Remove indexes.
+
+> ⚠️ **Important!** In Atlas, for production environments, it is recommended to use rolling index builds by enabling the "Build index via rolling process" checkbox. ([*MongoDB official documentation*](https://www.mongodb.com/docs/v6.0/tutorial/build-indexes-on-replica-sets/))
 
 ## Upgrading
 
@@ -1991,17 +2063,21 @@ cfapi:
 
 ### To 2.6.0
 
+> ⚠️ **WARNING! MongoDB indexes changed!**
+>
+> Please, follow [Maintaining MongoDB indexes](#maintaining-mongodb-indexes) guide to meet index requirements **BEFORE** the upgrade process.
+
 ### [What's new in 2.6.x](https://codefresh.io/docs/docs/whats-new/on-prem-release-notes/#on-premises-version-26)
 
 #### Affected values
 
 [Image digests in containers](#image-digests-in-containers)
 
-#### Auto-index creation in MongoDB
-
-[Auto-index creation in MongoDB](#auto-index-creation-in-mongodb)
-
 ### To 2.7.0
+
+> ⚠️ **WARNING! MongoDB indexes changed!**
+>
+> Please, follow [Maintaining MongoDB indexes](#maintaining-mongodb-indexes) guide to meet index requirements **BEFORE** the upgrade process.
 
 ### [What's new in 2.7.x](https://codefresh.io/docs/docs/whats-new/on-prem-release-notes/#on-premises-version-27)
 
