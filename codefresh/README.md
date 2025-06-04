@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.8.0-rc.2](https://img.shields.io/badge/Version-2.8.0--rc.2-informational?style=flat-square) ![AppVersion: 2.7.0](https://img.shields.io/badge/AppVersion-2.7.0-informational?style=flat-square)
+![Version: 2.8.0-rc.3](https://img.shields.io/badge/Version-2.8.0--rc.3-informational?style=flat-square) ![AppVersion: 2.7.0](https://img.shields.io/badge/AppVersion-2.7.0-informational?style=flat-square)
 
 Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
@@ -387,6 +387,18 @@ global:
 postgresql:
   # -- Disable postgresql subchart installation
   enabled: false
+```
+
+Provide the following env vars to enable SSL connection to Postgres:
+
+```yaml
+global:
+  env:
+    PGSSLMODE: "require"
+
+helm-repo-manager:
+  env:
+    POSTGRES_DISABLE_SSL: "false"
 ```
 
 #### External Redis
