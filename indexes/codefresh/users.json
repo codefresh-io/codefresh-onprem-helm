@@ -1,19 +1,15 @@
 [
-  {
-    "v": 2.0,
-    "key": {
-      "account": 1.0,
-      "_id": 1.0
+    {
+        "keys": {
+            "account": 1,
+            "_id": 1
+        }
     },
-    "name": "account_1__id_1"
-  },
-  {
-    "v": 2.0,
-    "key": {
-      "role": 1.0,
-      "account": 1.0,
-      "_id": 1.0
-    },
-    "name": "role_1_account_1__id_1"
-  }
+    {
+        "keys": {
+            "role": 1,
+            "account": 1,
+            "_id": 1
+        }
+    }
 ]
