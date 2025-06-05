@@ -227,7 +227,7 @@ However, you might need to use external services like [MongoDB Atlas Database](h
 
 #### External MongoDB
 
-⚠️ **Important!** If you use MongoDB Atlas, you must create the following databases in advance before installing Codefresh:
+> ⚠️ **Important!** If you use MongoDB Atlas, you must create the following databases in advance before installing Codefresh:
 
 ```console
 archive
@@ -246,13 +246,13 @@ onboarding-status
 payments
 ```
 
-[Create Database in Atlas](https://www.mongodb.com/docs/atlas/atlas-ui/databases/#create-a-database)
+> [Create Database in Atlas](https://www.mongodb.com/docs/atlas/atlas-ui/databases/#create-a-database)
 
-You alse need to create a database user with `Write` permissions to the databases above.
+> You alse need to create a database user with `Write` permissions to the databases above.
 
-Then, provide the user credentials in the chart values at `.Values.global.mongodbUser/mongodbRootUserSecretKeyRef` and `.Values.global.mongodbPassword/mongodbRootPasswordSecretKeyRef`.
+> Then, provide the user credentials in the chart values at `.Values.global.mongodbUser/mongodbRootUserSecretKeyRef` and `.Values.global.mongodbPassword/mongodbRootPasswordSecretKeyRef`.
 
-[Create Database Users in Atlas](https://www.mongodb.com/docs/atlas/security-add-mongodb-users/#configure-database-users)
+> [Create Database Users in Atlas](https://www.mongodb.com/docs/atlas/security-add-mongodb-users/#configure-database-users)
 
 `values.yaml` for external MongoDB:
 
