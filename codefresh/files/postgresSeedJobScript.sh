@@ -17,7 +17,6 @@ POSTGRES_DATABASES=(
     "analytics_pre_aggregations"
 )
 POSTGRES_PORT="${POSTGRES_PORT:-5432}"
-PGDATABASE=postgres # Use the default postgres database
 
 # To create a separate non-privileged user the for Codefresh,
 # which has access only to the relevant databases, it is needed to specify
@@ -47,6 +46,7 @@ function runSeed() {
     export PGPASSWORD=${POSTGRES_SEED_PASSWORD}
     export PGHOST=${POSTGRES_HOSTNAME}
     export PGPORT=${POSTGRES_PORT}
+    export PGDATABASE=postgres # Use the default postgres database
 
     if [[ "${POSTGRES_SEED_USER}" != "${POSTGRES_USER}" ]]; then
         createUser
