@@ -247,11 +247,8 @@ payments
 ```
 
 > [Create Database in Atlas](https://www.mongodb.com/docs/atlas/atlas-ui/databases/#create-a-database)
-
 > You alse need to create a database user with `Write` permissions to the databases above.
-
 > Then, provide the user credentials in the chart values at `.Values.global.mongodbUser/mongodbRootUserSecretKeyRef` and `.Values.global.mongodbPassword/mongodbRootPasswordSecretKeyRef`.
-
 > [Create Database Users in Atlas](https://www.mongodb.com/docs/atlas/security-add-mongodb-users/#configure-database-users)
 
 `values.yaml` for external MongoDB:
