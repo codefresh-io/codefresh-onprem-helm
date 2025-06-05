@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.8.0
+version: 2.8.1
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -19,7 +19,9 @@ annotations:
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
     - kind: added
-      description: "Documentation about index management in MongoDB"
+      description: "Documentation about external MongoDB Atlas"
+    - kind: fixed
+      description: "Fix postgresql seed job"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts

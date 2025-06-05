@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.8.0](https://img.shields.io/badge/Version-2.8.0-informational?style=flat-square) ![AppVersion: 2.8.0](https://img.shields.io/badge/AppVersion-2.8.0-informational?style=flat-square)
+![Version: 2.8.1](https://img.shields.io/badge/Version-2.8.1-informational?style=flat-square) ![AppVersion: 2.8.0](https://img.shields.io/badge/AppVersion-2.8.0-informational?style=flat-square)
 
 Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
@@ -226,6 +226,37 @@ The chart contains required dependencies for the corresponding services
 However, you might need to use external services like [MongoDB Atlas Database](https://www.mongodb.com/atlas/database) or [Amazon RDS for PostgreSQL](https://aws.amazon.com/rds/postgresql/). In order to use them, adjust the values accordingly:
 
 #### External MongoDB
+
+> ⚠️ **Important!** If you use MongoDB Atlas, you must create the following databases in advance before installing Codefresh:
+
+```console
+archive
+audit
+charts-manager
+cluster-providers
+codefresh
+context-manager
+gitops-dashboard-manager
+k8s-monitor
+pipeline-manager
+platform-analytics-postgres
+read-models
+runtime-environment-manager
+onboarding-status
+payments
+```
+
+> You alse need to create a database user with `Write` permissions to ALL databases. <br>
+> Then, provide the user credentials in the chart values at <br>
+`.Values.global.mongodbUser/mongodbRootUserSecretKeyRef` <br>
+`.Values.global.mongodbPassword/mongodbRootPasswordSecretKeyRef` <br>
+`.Values.seed.mongoSeedJob.mongodbRootUser/mongodbRootUserSecretKeyRef` <br>
+`.Values.seed.mongoSeedJob.mongodbRootPassword/mongodbRootPasswordSecretKeyRef` <br>
+> Ref: <br>
+> [Create Database in Atlas](https://www.mongodb.com/docs/atlas/atlas-ui/databases/#create-a-database) <br>
+> [Create Users in Atlas](https://www.mongodb.com/docs/atlas/security-add-mongodb-users/#configure-database-users)
+
+`values.yaml` for external MongoDB:
 
 ```yaml
 seed:

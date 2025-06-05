@@ -2,6 +2,7 @@
 
 DEBUG="${DEBUG:-false}"
 
+
 set -euo pipefail
 
 if [[ $DEBUG == "true" ]]; then
@@ -45,6 +46,7 @@ function runSeed() {
     export PGPASSWORD=${POSTGRES_SEED_PASSWORD}
     export PGHOST=${POSTGRES_HOSTNAME}
     export PGPORT=${POSTGRES_PORT}
+    export PGDATABASE=postgres # Use the default postgres database
 
     if [[ "${POSTGRES_SEED_USER}" != "${POSTGRES_USER}" ]]; then
         createUser
