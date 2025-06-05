@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.8.0](https://img.shields.io/badge/Version-2.8.0-informational?style=flat-square) ![AppVersion: 2.8.0](https://img.shields.io/badge/AppVersion-2.8.0-informational?style=flat-square)
+![Version: 2.8.1](https://img.shields.io/badge/Version-2.8.1-informational?style=flat-square) ![AppVersion: 2.8.0](https://img.shields.io/badge/AppVersion-2.8.0-informational?style=flat-square)
 
 Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
@@ -246,7 +246,7 @@ onboarding-status
 payments
 ```
 
-> You alse need to create a database user with `Write` permissions to the databases above. <br>
+> You alse need to create a database user with `Write` permissions to ALL databases. <br>
 > Then, provide the user credentials in the chart values at <br>
 `.Values.global.mongodbUser/mongodbRootUserSecretKeyRef` <br>
 `.Values.global.mongodbPassword/mongodbRootPasswordSecretKeyRef` <br>
