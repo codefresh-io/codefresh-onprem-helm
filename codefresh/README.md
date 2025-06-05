@@ -246,10 +246,10 @@ onboarding-status
 payments
 ```
 
-> [Create Database in Atlas](https://www.mongodb.com/docs/atlas/atlas-ui/databases/#create-a-database)
-> You alse need to create a database user with `Write` permissions to the databases above.
-> Then, provide the user credentials in the chart values at `.Values.global.mongodbUser/mongodbRootUserSecretKeyRef` and `.Values.global.mongodbPassword/mongodbRootPasswordSecretKeyRef`.
-> [Create Database Users in Atlas](https://www.mongodb.com/docs/atlas/security-add-mongodb-users/#configure-database-users)
+> You alse need to create a database user with `Write` permissions to the databases above. <br>
+> Then, provide the user credentials in the chart values at `.Values.global.mongodbUser/mongodbRootUserSecretKeyRef`, `.Values.global.mongodbPassword/mongodbRootPasswordSecretKeyRef`, `.Values.global.mongodbRootUser/mongodbRootUserSecretKeyRef`, `.Values.global.mongodbRootPassword/mongodbRootPasswordSecretKeyRef`. <br>
+> [Create Database in Atlas](https://www.mongodb.com/docs/atlas/atlas-ui/databases/#create-a-database) <br>
+> [Create Users in Atlas](https://www.mongodb.com/docs/atlas/security-add-mongodb-users/#configure-database-users)
 
 `values.yaml` for external MongoDB:
 
