@@ -2,6 +2,7 @@
 
 DEBUG="${DEBUG:-false}"
 
+
 set -euo pipefail
 
 if [[ $DEBUG == "true" ]]; then
@@ -16,6 +17,7 @@ POSTGRES_DATABASES=(
     "analytics_pre_aggregations"
 )
 POSTGRES_PORT="${POSTGRES_PORT:-5432}"
+PGDATABASE=postgres # Use the default postgres database
 
 # To create a separate non-privileged user the for Codefresh,
 # which has access only to the relevant databases, it is needed to specify
