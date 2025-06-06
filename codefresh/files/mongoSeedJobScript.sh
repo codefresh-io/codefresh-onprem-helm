@@ -115,6 +115,9 @@ for MONGODB_DATABASE in ${MONGODB_DATABASES[@]}; do
     mongosh ${MONGODB_ROOT_URI} ${MONGO_URI_EXTRA_PARAMS} --eval "db.getSiblingDB(\"${MONGODB_DATABASE}\").createUser({user: \"${MONGODB_USER}\", pwd: \"${MONGODB_PASSWORD}\", roles: [\"readWrite\"]})" 2>&1 || true
     waitForMongoDB
     mongosh ${MONGODB_ROOT_URI} ${MONGO_URI_EXTRA_PARAMS} --eval "db.getSiblingDB(\"${MONGODB_DATABASE}\").changeUserPassword(\"${MONGODB_USER}\",\"${MONGODB_PASSWORD}\")" 2>&1 || true
+
+    # MongoDB Atlas
+    mongosh ${MONGODB_ROOT_URI} ${MONGO_URI_EXTRA_PARAMS} --eval "db = db.getSiblingDB(\"${MONGODB_DATABASE}\"); db.${MONGODB_DATABASE}.insertOne({ name: "Example", value: 123 }))" 2>&1 || true
 done
 
 mongosh ${MONGODB_ROOT_URI} ${MONGO_URI_EXTRA_PARAMS} --eval "db.getSiblingDB(\"codefresh\").grantRolesToUser( \"${MONGODB_USER}\", [ { role: \"readWrite\", db: \"pipeline-manager\" } ] )" 2>&1 || true
