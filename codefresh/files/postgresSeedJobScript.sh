@@ -37,7 +37,19 @@ function createUser() {
 }
 
 function grantPrivileges() {
-    psql -c "GRANT ALL ON DATABASE ${1} TO ${POSTGRES_USER}"
+    local db=$1
+    echo "Granting privileges on $db to ${POSTGRES_USER}"
+    # Database-level privileges
+    psql -c "GRANT ALL ON DATABASE ${db} TO ${POSTGRES_USER}"
+    # Schema and object-level privileges
+    psql -d "${db}" -c "GRANT ALL ON SCHEMA public TO ${POSTGRES_USER}"
+    psql -d "${db}" -c "GRANT ALL ON ALL TABLES IN SCHEMA public TO ${POSTGRES_USER}"
+    psql -d "${db}" -c "GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO ${POSTGRES_USER}"
+    psql -d "${db}" -c "GRANT ALL ON ALL FUNCTIONS IN SCHEMA public TO ${POSTGRES_USER}"
+    # Default privileges for future objects
+    psql -d "${db}" -c "ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO ${POSTGRES_USER}"
+    psql -d "${db}" -c "ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON SEQUENCES TO ${POSTGRES_USER}"
+    psql -d "${db}" -c "ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON FUNCTIONS TO ${POSTGRES_USER}"
 }
 
 function runSeed() {
