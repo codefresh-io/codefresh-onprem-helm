@@ -28,7 +28,8 @@ POSTGRES_SEED_USER="${POSTGRES_SEED_USER:-$POSTGRES_USER}"
 POSTGRES_SEED_PASSWORD="${POSTGRES_SEED_PASSWORD:-$POSTGRES_PASSWORD}"
 
 function createDB() {
-    psql -tc "SELECT 1 FROM pg_database WHERE datname = '${1}'" | grep -q 1 || psql -c "CREATE DATABASE ${1}"
+    local db=$1
+    psql -c "CREATE DATABASE ${1}"
 }
 
 function createUser() {
