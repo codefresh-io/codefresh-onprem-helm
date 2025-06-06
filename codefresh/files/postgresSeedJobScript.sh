@@ -29,7 +29,7 @@ POSTGRES_SEED_PASSWORD="${POSTGRES_SEED_PASSWORD:-$POSTGRES_PASSWORD}"
 
 function createDB() {
     local db=$1
-    psql -c "CREATE DATABASE ${1}"
+    psql -c "CREATE DATABASE ${1} IF NOT EXISTS"
 }
 
 function createUser() {

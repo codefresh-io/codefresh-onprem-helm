@@ -19,7 +19,7 @@ annotations:
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
     - kind: fixed
-      description: "Fix grantPrivileges function in seed job"
+      description: "Fix grantPrivileges function in postgres seed job"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
