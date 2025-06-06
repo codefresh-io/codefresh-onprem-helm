@@ -117,7 +117,7 @@ for MONGODB_DATABASE in ${MONGODB_DATABASES[@]}; do
     mongosh ${MONGODB_ROOT_URI} ${MONGO_URI_EXTRA_PARAMS} --eval "db.getSiblingDB(\"${MONGODB_DATABASE}\").changeUserPassword(\"${MONGODB_USER}\",\"${MONGODB_PASSWORD}\")" 2>&1 || true
 
     # MongoDB Atlas
-    mongosh ${MONGODB_ROOT_URI} ${MONGO_URI_EXTRA_PARAMS} --eval "db = db.getSiblingDB(\"${MONGODB_DATABASE}\"); db.${MONGODB_DATABASE}.insertOne({ name: "init", value: true })" 2>&1 || true
+    mongosh ${MONGODB_ROOT_URI} ${MONGO_URI_EXTRA_PARAMS} --eval "use ${MONGODB_DATABASE}; db[\"${MONGODB_DATABASE}\"].insertOne({ name: "init", value: true })" 2>&1 || true
 done
 
 mongosh ${MONGODB_ROOT_URI} ${MONGO_URI_EXTRA_PARAMS} --eval "db.getSiblingDB(\"codefresh\").grantRolesToUser( \"${MONGODB_USER}\", [ { role: \"readWrite\", db: \"pipeline-manager\" } ] )" 2>&1 || true
