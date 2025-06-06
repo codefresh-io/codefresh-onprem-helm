@@ -28,7 +28,9 @@ POSTGRES_SEED_USER="${POSTGRES_SEED_USER:-$POSTGRES_USER}"
 POSTGRES_SEED_PASSWORD="${POSTGRES_SEED_PASSWORD:-$POSTGRES_PASSWORD}"
 
 function createDB() {
-    psql -tc "SELECT 1 FROM pg_database WHERE datname = '${1}'" | grep -q 1 || psql -c "CREATE DATABASE ${1}"
+    local db=$1
+    echo "Creating ${db} database"
+    psql -c "CREATE DATABASE ${db}" 2>&1 || true
 }
 
 function createUser() {
@@ -37,7 +39,9 @@ function createUser() {
 }
 
 function grantPrivileges() {
-    psql -c "GRANT ALL ON DATABASE ${1} TO ${POSTGRES_USER}"
+    local db=$1
+    echo "Granting privileges on $db to ${POSTGRES_USER}"
+    psql -c "GRANT ALL ON DATABASE ${db} TO ${POSTGRES_USER}"
 }
 
 function runSeed() {
