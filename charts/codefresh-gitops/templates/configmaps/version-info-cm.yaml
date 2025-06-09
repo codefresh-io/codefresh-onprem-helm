@@ -1,0 +1,12 @@
+{{ $name := printf "%v-%v-%v" .Release.Name .Values.global.codefresh "version-info" }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ $name }}
+  labels:
+    {{ include "codefresh-gitops.labels" . | nindent 4 }}
+data:
+  app: {{ .Chart.Version | default "unknown" }}
+  {{- range $i, $dep := .Chart.Dependencies }}
+  {{ $dep.Name }}: {{ $dep.Version | quote }}
+  {{- end }}

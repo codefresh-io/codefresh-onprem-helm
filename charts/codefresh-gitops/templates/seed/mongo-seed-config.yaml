@@ -1,0 +1,16 @@
+{{- if and .Values.seed.enabled (or .Values.global.seedJobs .Values.seed.mongoSeedJob.enabled) }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "codefresh-gitops.fullname" . }}-mongo-seed
+  labels:
+    {{ include "codefresh-gitops.labels" . | nindent 4 }}
+data:
+  idps.json: |
+{{ .Files.Get "files/assets/idps.json" | indent 4 }}
+  accounts.json: |
+{{ .Files.Get "files/assets/accounts.json" | indent 4 }}
+  users.json: |
+{{ .Files.Get "files/assets/users.json" | indent 4 }}
+{{- end }}

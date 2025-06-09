@@ -1,0 +1,72 @@
+{{ $libTemplateName := printf "cf-common-%s" (index .Subcharts "cf-common").Chart.Version }}
+{{- if and .Values.seed.enabled (or .Values.global.seedJobs .Values.seed.postgresSeedJob.enabled) }}
+---
+{{- $tolerations := .Values.seed.tolerations | default list }}
+{{- $globalTolerations := .Values.global.tolerations | default list }}
+{{- $allToleration := concat $globalTolerations $tolerations }}
+{{- $affinity := .Values.seed.affinity | default dict }}
+{{- $globalAffinity := .Values.global.affinity | default dict }}
+{{- $allAffinity := mergeOverwrite $globalAffinity $affinity }}
+{{- $nodeSelector := .Values.seed.nodeSelector | default dict }}
+{{- $globalNodeSelector := .Values.global.nodeSelector | default dict }}
+{{- $allNodeSelector := mergeOverwrite $globalNodeSelector $nodeSelector }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "codefresh-gitops.fullname" . }}-postgres-seed
+  labels:
+    {{ include "codefresh-gitops.labels" . | nindent 4 }}
+spec:
+  {{- with .Values.seed.ttlSecondsAfterFinished }}
+  ttlSecondsAfterFinished: {{ . }}
+  {{- end }}
+  {{- with .Values.seed.backoffLimit }}
+  backoffLimit: {{ . | int }}
+  {{- end }}
+  template:
+    metadata:
+      name: {{ include "codefresh-gitops.fullname" . }}-postgres-seed
+      labels:
+        {{ include "codefresh-gitops.labels" . | nindent 8 }}
+    spec:
+      {{- include (printf "%s.image.pullSecrets" $libTemplateName ) . | nindent 6 }}
+      securityContext:
+        {{- toYaml .Values.seed.podSecurityContext | nindent 8 }}
+      containers:
+      - name: {{ template "codefresh-gitops.fullname" . }}-postgres-seed
+        image: {{ include (printf "%s.image.name" $libTemplateName) (dict "image" .Values.seed.postgresSeedJob.image "context" .) }}
+        envFrom:
+          - secretRef:
+              name: {{ include "codefresh-gitops.fullname" . }}
+        env:
+          - name: POSTGRES_USER
+          {{- include "codefresh.postgres-user-env-var-value" . | indent 12 }}
+          - name: POSTGRES_PASSWORD
+          {{- include "codefresh.postgres-password-env-var-value" . | indent 12 }}
+          - name: POSTGRES_HOSTNAME
+          {{- include "codefresh.postgres-host-env-var-value" . | indent 12 }}
+          - name: POSTGRES_SEED_USER
+          {{- include "codefresh.postgres-seed-user-env-var-value" . | indent 12 }}
+          - name: POSTGRES_SEED_PASSWORD
+          {{- include "codefresh.postgres-seed-password-env-var-value" . | indent 12 }}
+        resources:
+          {{- toYaml .Values.seed.resources | nindent 10 }}
+        command:
+          - "/bin/bash"
+          - "-exc"
+          - |
+            {{ .Files.Get "files/postgresSeedJobScript.sh" | nindent 12  }}
+      {{- with $allNodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with $allAffinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with $allToleration }}
+      tolerations:
+        {{- toYaml . | nindent 6 }}
+      {{- end }}
+      restartPolicy: OnFailure
+{{- end }}

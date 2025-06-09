@@ -1,0 +1,72 @@
+apiVersion: v2
+description: Helm Chart for Codefresh GitOps On-Prem
+name: codefresh-gitops
+version: 0.1.0
+keywords:
+  - codefresh
+home: https://codefresh.io/
+icon: https://avatars1.githubusercontent.com/u/11412079?v=3
+sources:
+  - https://github.com/codefresh-io/codefresh-onprem-helm
+maintainers:
+  - name: codefresh
+    url: https://codefresh-io.github.io/
+appVersion: 0.1.0
+annotations:
+  artifacthub.io/prerelease: "true"
+  artifacthub.io/alternativeName: "codefresh-gitops-onprem"
+  # supported kinds are added, changed, deprecated, removed, fixed and security.
+  artifacthub.io/changes: |
+    - kind: changed
+      description: "Initial 0.1.0 release for Codefresh GitOps On-Prem"
+dependencies:
+  - name: cf-common
+    repository: oci://quay.io/codefresh/charts
+    version: 0.27.0
+  - name: internal-gateway
+    repository: oci://quay.io/codefresh/charts
+    version: 0.10.4
+    condition: internal-gateway.enabled
+  - name: mongodb
+    version: 15.6.26
+    repository: https://charts.bitnami.com/bitnami
+    condition: mongodb.enabled,mongo.enabled,global.mongoDeploy
+  - name: postgresql
+    version: 16.7.4
+    repository: https://charts.bitnami.com/bitnami
+    condition: postgresql.enabled
+  - name: redis
+    version: 20.13.4
+    repository: https://charts.bitnami.com/bitnami
+    condition: redis.enabled
+  - name: rabbitmq
+    version: 15.5.3
+    repository: https://charts.bitnami.com/bitnami
+    condition: rabbitmq.enabled
+  - name: cfapi
+    alias: cfapi
+    version: "*"
+    repository: oci://quay.io/codefresh/charts
+    condition: cfapi.enabled
+  - name: cfui
+    version: "*"
+    repository: oci://quay.io/codefresh/charts
+    condition: cfui.enabled
+  - name: cf-platform-analytics
+    alias: cf-platform-analytics-platform
+    version: "*"
+    repository: oci://quay.io/codefresh/charts
+    condition: argo-platform.enabled
+  - name: cf-platform-analytics
+    alias: cf-platform-analytics-etlstarter
+    version: "*"
+    repository: oci://quay.io/codefresh/charts
+    condition: argo-platform.enabled
+  - name: argo-platform
+    version: "*"
+    repository: oci://quay.io/codefresh/charts
+    condition: argo-platform.enabled
+  - name: argo-hub-platform
+    version: "*"
+    repository: oci://quay.io/codefresh/charts
+    condition: argo-platform.enabled

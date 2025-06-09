@@ -1,0 +1,37 @@
+{
+  "_id": ObjectId("59009117c102763beda7ce71"),
+  "badgeToken": "eyJhbGciOiJIUzI1NiJ9.NTkwMDkxMTdjMTAyNzYzYmVkYTdjZTcx.B0HOUL6HlpTRNr_e95pVucSRMRzP2cobe5kIoMtrDSc",
+  "createdAt": ISODate("2017-04-26T12:22:48.001+0000"),
+  "updatedAt": ISODate("2017-04-26T12:27:13.720+0000"),
+  "name": "admin-cf",
+  "runtimeEnvironment": "codefresh",
+  "canUsePrivateRepos": true,
+  "dedicatedInfrastructure": false,
+  "cfcrRepositoryPath": "admin-cf",
+  "build": {
+    "nodes": NumberInt(0),
+    "parallel": NumberInt(10),
+    "strategy": "account"
+  },
+  "integrations": {
+    "stash": {
+      "active": false
+    },
+    "registries": []
+  },
+  "notifications": [
+    {
+      "type": "pr",
+      "events": [
+        "build-success"
+      ]
+    }
+  ],
+  "repoPermission": "public",
+  "environment": NumberInt(1),
+  "admins": [
+      ObjectId("59009221c102763beda7cf04")
+  ],
+  "localUserPasswordIDPEnabled": true,
+  "__v": NumberInt(0)
+}

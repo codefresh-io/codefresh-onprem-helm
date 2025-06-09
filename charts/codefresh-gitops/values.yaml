@@ -1,0 +1,1107 @@
+# -- Credentials for Image Pull Secret object
+imageCredentials: {}
+# Pass sa.json (as a single line). Obtain GCR Service Account JSON (sa.json) at support@codefresh.io
+# E.g.:
+# imageCredentials:
+#   registry: us-docker.pkg.dev
+#   username: _json_key
+#   password: '{ "type": "service_account", "project_id": "codefresh-enterprise", "private_key_id": ... }'
+
+# -- Seed jobs
+# @default -- See below
+seed:
+  # -- Enable all seed jobs
+  enabled: true
+  # -- Mongo Seed Job. Required at first install. Seeds the required data (default idp/user/account), creates cfuser and required databases.
+  # @default -- See below
+  mongoSeedJob:
+    enabled: true
+    image:
+      registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
+      repository: codefresh/mongosh
+      tag: 2.5.0
+    # -- Root user in plain text (required ONLY for seed job!).
+    mongodbRootUser: "root"
+    # -- Root user from existing secret
+    mongodbRootUserSecretKeyRef: {}
+    # E.g.
+    # mongodbRootUserSecretKeyRef:
+    #   name: my-secret
+    #   key: mongodb-root-user
+
+    # -- Root password in plain text (required ONLY for seed job!).
+    mongodbRootPassword: "XT9nmM8dZD"
+    # -- Root password from existing secret
+    mongodbRootPasswordSecretKeyRef: {}
+    # E.g.
+    # mongodbRootPasswordSecretKeyRef:
+    #   name: my-secret
+    #   key: mongodb-root-password
+
+  # -- Postgres Seed Job. Required at first install. Creates required user and databases.
+  # @default -- See below
+  postgresSeedJob:
+    enabled: true
+    image:
+      registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
+      repository: codefresh/postgresql
+      tag: 17
+    # -- (optional) "postgres" admin user in plain text (required ONLY for seed job!)
+    # Must be a privileged user allowed to create databases and grant roles.
+    # If omitted, username and password from `.Values.global.postgresUser/postgresPassword` will be used.
+    postgresUser: ""
+    # -- (optional) "postgres" admin user from exising secret
+    postgresUserSecretKeyRef: {}
+    # E.g.
+    # postgresUserSecretKeyRef:
+    #   name: my-secret
+    #   key: postgres-user
+
+    # -- (optional) Password for "postgres" admin user (required ONLY for seed job!)
+    postgresPassword: ""
+    # -- (optional) Password for "postgres" admin user from existing secret
+    postgresPasswordSecretKeyRef: {}
+    # E.g.
+    # postgresPasswordSecretKeyRef:
+    #   name: my-secret
+    #   key: postgres-password
+
+  ttlSecondsAfterFinished: 300
+  backoffLimit: 10
+  affinity: {}
+  nodeSelector: {}
+  podSecurityContext: {}
+  resources: {}
+  tolerations: []
+
+# -- Ingress
+ingress:
+  # -- Enable the Ingress
+  enabled: true
+  # -- Set the ingressClass that is used for the ingress.
+  # Default `nginx-codefresh` is created from `ingress-nginx` controller subchart
+  ingressClassName: ""
+  # -- Override Ingress resource name
+  nameOverride: ""
+  tls:
+    # -- Enable TLS
+    enabled: false
+    # -- Default secret name to be created with provided `cert` and `key` below
+    secretName: "star.codefresh.io"
+    # -- Certificate (base64 encoded)
+    cert: ""
+    # -- Private key (base64 encoded)
+    key: ""
+    # -- Existing `kubernetes.io/tls` type secret with TLS certificates (keys: `tls.crt`, `tls.key`)
+    existingSecret: ""
+  # -- Default services and corresponding paths
+  # @default -- See below
+  services:
+    internal-gateway:
+      - /
+  # -- Set annotations for ingress.
+  # @default -- See below
+  annotations:
+    nginx.ingress.kubernetes.io/service-upstream: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.org/redirect-to-https: "false"
+  # -- Set labels for ingress
+  labels: {}
+
+# -- Global parameters
+# @default -- See below
+global:
+  # -- Application root url. Will be used in Ingress objects as hostname
+  appUrl: onprem.codefresh.local
+  # -- Application protocol.
+  appProtocol: https
+
+  # -- Global Docker image registry
+  imageRegistry: ""
+
+  # -- Global Docker registry secret names as array
+  imagePullSecrets:
+    - 'codefresh-registry'
+
+  # -- Global StorageClass for Persistent Volume(s)
+  storageClass: ""
+
+  # -- Global Env vars
+  env: {}
+
+  # -- Global tolerations constraints
+  # Apply toleratons to all Codefresh subcharts. Will not be applied on Bitnami subcharts.
+  tolerations: []
+
+  # -- Global affinity constraints
+  # Apply affinity to all Codefresh subcharts. Will not be applied on Bitnami subcharts.
+  affinity: {}
+
+  # -- Global nodeSelector constraints
+  # Apply nodeSelector to all Codefresh subcharts. Will not be applied on Bitnami subcharts.
+  nodeSelector: {}
+
+  # -- New Relic Key
+  newrelicLicenseKey: ""
+
+  # -- Definitions for internal-gateway nginx resolver
+  dnsService: kube-dns
+  dnsNamespace: kube-system
+  clusterDomain: cluster.local
+
+#--------
+# MongoDB
+#--------
+  # -- Set mongodb protocol (`mongodb` / `mongodb+srv`)
+  mongodbProtocol: mongodb
+  # -- Set mongodb user in plain text
+  mongodbUser: "user"
+  # -- Set mongodb user from existing secret
+  mongodbUserSecretKeyRef: {}
+  # E.g.
+  # mongodbUserSecretKeyRef:
+  #   name: my-secret
+  #   key: mongodb-user
+
+  # -- Set mongodb password in plain text
+  mongodbPassword: "password"
+  # -- Set mongodb password from existing secret
+  mongodbPasswordSecretKeyRef: {}
+  # E.g.
+  # mongodbPasswordSecretKeyRef:
+  #   name: my-secret
+  #   key: mongodb-password
+
+  # -- Set mongodb host in plain text
+  mongodbHost: "mongodb"
+  # -- Set mongodb host from existing secret
+  mongodbHostSecretKeyRef: {}
+  # E.g.
+  # mongodbHostSecretKeyRef:
+  #   name: my-secret
+  #   key: mongodb-host
+
+  # -- Set mongodb connection string options
+  # Ref: https://www.mongodb.com/docs/manual/reference/connection-string/#connection-string-options
+  mongodbOptions: "retryWrites=true"
+  # -- Default MongoDB database name. Don't change!
+  mongodbDatabase: codefresh
+
+#-----------
+# Postgresql
+#-----------
+  # -- Set postgres user in plain text
+  postgresUser: postgres
+  # -- Set postgres user from existing secret
+  postgresUserSecretKeyRef: {}
+  # E.g.
+  # postgresUserSecretKeyRef:
+  #   name: my-secret
+  #   key: postgres-user
+
+  # -- Set postgres password in plain text
+  postgresPassword: eC9arYka4ZbH
+  # -- Set postgres password from existing secret
+  postgresPasswordSecretKeyRef: {}
+  # E.g.
+  # postgresPasswordSecretKeyRef:
+  #   name: my-secret
+  #   key: postgres-password
+
+  # -- Set postgres service address in plain text. Takes precedence over `global.postgresService`!
+  postgresHostname: ""
+  # -- Set postgres service from existing secret
+  postgresHostnameSecretKeyRef: {}
+  # E.g.
+  # postgresHostnameSecretKeyRef:
+  #   name: my-secret
+  #   key: postgres-hostname
+
+  # -- Set postgres port number
+  postgresPort: 5432
+  # -- Set postgres database name
+  postgresDatabase: codefresh
+  # -- Default internal postgresql service address from bitnami/postgresql subchart
+  postgresService: postgresql
+
+#---------
+# RabbitMQ
+#---------
+  # -- Set rabbitmq protocol (`amqp/amqps`)
+  rabbitmqProtocol: amqp
+  # -- Set rabbitmq username in plain text
+  rabbitmqUsername: user
+  # -- Set rabbitmq username from existing secret
+  rabbitmqUsernameSecretKeyRef: {}
+  # E.g.
+  # rabbitmqUsernameSecretKeyRef:
+  #   name: my-secret
+  #   key: rabbitmq-username
+
+  # -- Set rabbitmq password in plain text
+  rabbitmqPassword: cVz9ZdJKYm7u
+  # -- Set rabbitmq password from existing secret
+  rabbitmqPasswordSecretKeyRef: {}
+  # E.g.
+  # rabbitmqPasswordSecretKeyRef:
+  #   name: my-secret
+  #   key: rabbitmq-password
+
+  # -- Set rabbitmq service address in plain text. Takes precedence over `global.rabbitService`!
+  rabbitmqHostname: ""
+  # -- Set rabbitmq service address from existing secret.
+  rabbitmqHostnameSecretKeyRef: {}
+  # E.g.
+  # rabbitmqHostnameSecretKeyRef:
+  #   name: my-secret
+  #   key: rabbitmq-hostname
+
+  # -- Default internal rabbitmq service address from bitnami/rabbitmq subchart.
+  rabbitService: rabbitmq:5672
+
+#------
+# Redis
+#------
+  # -- Set redis password in plain text
+  redisPassword: hoC9szf7NtrU
+  # -- Set redis service port
+  redisPort: 6379
+  # -- Set redis password from existing secret
+  redisPasswordSecretKeyRef: {}
+  # E.g.
+  # redisPasswordSecretKeyRef:
+  #   name: my-secret
+  #   key: redis-password
+
+  # -- Set redis hostname in plain text. Takes precedence over `global.redisService`!
+  redisUrl: ""
+  # -- Set redis hostname from existing secret.
+  redisUrlSecretKeyRef: {}
+  # E.g.
+  # redisUrlSecretKeyRef:
+  #   name: my-secret
+  #   key: redis-url
+
+  # -- Default internal redis service address from bitnami/redis subchart
+  redisService: redis-master
+
+#----------------------------------
+# Codefresh services. Don't change!
+#----------------------------------
+  # -- Default API service name.
+  cfapiService: cfapi
+  # -- Default API service port.
+  cfapiInternalPort: 3000
+  # -- Default API endpoints service name
+  cfapiEndpointsService: cfapi
+  # -- Default platform-analytics service name.
+  platformAnalyticsService: platform-analytics
+  # -- Default platform-analytics service port.
+  platformAnalyticsPort: 80
+
+  # -- Bitnami
+  security:
+    allowInsecureImages: true
+
+# -- Pre/post-upgrade Job hooks.
+# @default -- See below
+hooks:
+  # -- Sets feature compatibility version
+  mongodb:
+    enabled: true
+    image:
+      registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
+      repository: codefresh/mongosh
+      tag: 2.5.0
+    affinity: {}
+    nodeSelector: {}
+    podSecurityContext: {}
+    resources: {}
+    tolerations: []
+
+#--------------------
+# Codefresh subcharts
+#--------------------
+
+# -- cf-api
+cfapi: &cf-api
+  # -- Enable cf-api
+  enabled: true
+  # -- Image pull secrets
+  imagePullSecrets: []
+  # -- Controller configuration
+  controller:
+    # -- Replicas number
+    replicas: 2
+  # -- Container configuration
+  container:
+    # -- Image
+    image:
+      # -- Registry prefix
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
+      # -- Repository
+      repository: codefresh/cf-api
+    # -- Env vars
+    # @default -- See below
+    env:
+      AUDIT_AUTO_CREATE_DB: true
+      LOGGER_LEVEL: debug
+      ON_PREMISE: true
+      DEFAULT_SYSTEM_TYPE: GITOPS
+  # -- Resource requests and limits
+  resources:
+    requests:
+      cpu: 200m
+      memory: "256Mi"
+    limits: {}
+  # -- Autoscaler configuration
+  hpa:
+    # -- Enable HPA
+    enabled: false
+    # -- Minimum number of replicas
+    minReplicas: 2
+    # -- Maximum number of replicas
+    maxReplicas: 10
+    # -- Average CPU utilization percentage
+    targetCPUUtilizationPercentage: 70
+  # -- Pod disruption budget configuration
+  pdb:
+    # -- Enable PDB
+    enabled: false
+    # -- Minimum number of replicas in percentage
+    minAvailable: "50%"
+  # -- Affinity configuration
+  affinity: {}
+  # -- Node selector configuration
+  nodeSelector: {}
+  # -- Pod security context configuration
+  podSecurityContext: {}
+  # -- Tolerations configuration
+  tolerations: []
+
+# -- internal-gateway
+# @default -- See below
+internal-gateway:
+  enabled: true
+  libraryMode: true
+  controller:
+    replicas: 2
+  container:
+    image:
+      registry: docker.io
+      repository: nginxinc/nginx-unprivileged
+  nginx:
+    config:
+      locations:
+        /api/auth/authenticate:
+          locationDirectives:
+              proxy_buffers: "4 180k"
+              proxy_buffer_size: "180k"
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+  hpa:
+    enabled: false
+  pdb:
+    enabled: false
+  affinity: {}
+  nodeSelector: {}
+  podSecurityContext: {}
+  tolerations: []
+
+# -- etl-starter
+# @default -- See below
+cf-platform-analytics-etlstarter:
+  nameOverride: etl-starter
+  mongodbDatabase: "platform-analytics-postgres"
+  redis:
+    # -- Disable redis subchart
+    enabled: false
+  imagePullSecrets: []
+  controller:
+    # - Disable default deployment controller
+    enabled: false
+  # -- Only postgres ETL should be running in onprem
+  system-etl-postgres:
+    enabled: true
+    controller:
+      cronjob:
+        ttlSecondsAfterFinished: 300
+    container:
+      env:
+        BLUE_GREEN_ENABLED: true
+  # @ignored
+  system-etl-gitops:
+    enabled: false
+  # @ignored
+  system-etl-metabase:
+    enabled: false
+
+  container:
+    image:
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
+    env:
+      ENV: production
+      DATASET_ID: etl
+      MONGO_DB_DEFAULT_NAME: codefresh
+  affinity: {}
+  nodeSelector: {}
+  podSecurityContext: {}
+  tolerations: []
+
+# -- platform-analytics
+# @default -- See below
+cf-platform-analytics-platform:
+  nameOverride: platform-analytics
+  mongodbDatabase: "platform-analytics-postgres"
+  imagePullSecrets: []
+  container:
+    image:
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
+      repository: codefresh/cf-platform-analytics
+  redis:
+    enabled: true
+    nameOverride: redis-platform-analytics
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+  env:
+    ENV: production
+    DATASET_ID: etl
+    NODE_ENV: production
+    CUBEJS_LOG_LEVEL: trace
+    CUBEJS_SCHEDULED_REFRESH_TIMER: 60
+    REDIS_TLS: false
+    CUBEJS_DEV_MODE: false
+    SUPPORTED_DATA_SOURCE: 'CSDP_POSTGRES,CLASSIC_POSTGRES'
+  affinity: {}
+  nodeSelector: {}
+  podSecurityContext: {}
+  tolerations: []
+
+# -- cf-ui
+# @default -- See below
+cfui:
+  enabled: true
+  imagePullSecrets: []
+  controller:
+    replicas: 2
+  container:
+    image:
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
+      repository: codefresh/cf-ui
+    env:
+      ON_PREMISE: true
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits: {}
+  hpa:
+    enabled: false
+  pdb:
+    enabled: false
+  affinity: {}
+  nodeSelector: {}
+  podSecurityContext: {}
+  tolerations: []
+
+# -- mongodb
+# @default -- See below
+# Ref: https://github.com/bitnami/charts/blob/main/bitnami/mongodb/values.yaml
+mongodb:
+  enabled: true
+  fullnameOverride: mongodb
+  architecture: standalone
+  useStatefulSet: true
+  auth:
+    rootUser: root
+    rootPassword: password
+    usernames:
+      - user
+      - user
+      - user
+      - user
+      - user
+      - user
+      - user
+    passwords:
+      - password
+      - password
+      - password
+      - password
+      - password
+      - password
+      - password
+    databases:
+    - codefresh
+    - read-models
+    - audit
+    - platform-analytics-postgres
+  resources:
+    requests:
+      cpu: 200m
+      memory: 256Mi
+  migration:
+    enabled: false
+    featureCompatibilityVersion: "6.0"
+
+# -- postgresql
+# @default -- See below
+# Ref: https://github.com/bitnami/charts/blob/main/bitnami/postgresql/values.yaml
+postgresql:
+  enabled: true
+  fullnameOverride: postgresql
+  image:
+    registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
+    repository: codefresh/postgresql
+    tag: 17
+  auth:
+    enablePostgresUser: true
+    postgresPassword: "postgres"
+    database: "codefresh"
+  architecture: standalone
+  postgresqlSharedPreloadLibraries: pg_partman_bgw,pg_cron
+  primary:
+    extendedConfiguration: |
+      pg_partman_bgw.interval = 3600
+      pg_partman_bgw.role = 'postgres'
+      pg_partman_bgw.dbname = 'postgres'
+      cron.database_name = 'postgres'
+    resources:
+      requests:
+        cpu: 200m
+        memory: 256Mi
+
+# -- redis
+# @default -- See below
+# Ref: https://github.com/bitnami/charts/blob/main/bitnami/redis/values.yaml
+redis:
+  enabled: true
+  fullnameOverride: redis
+  architecture: standalone
+  auth:
+    password: "redis"
+  master:
+    count: 1
+    resources:
+      requests:
+        cpu: 200m
+        memory: 256Mi
+
+# -- rabbitmq
+# @default -- See below
+# Ref: https://github.com/bitnami/charts/blob/main/bitnami/rabbitmq/values.yaml
+rabbitmq:
+  enabled: true
+  image:
+    tag: "4.0"
+  replicaCount: 1
+  auth:
+    username: user
+    password: "rabbitmq"
+  resources:
+    requests:
+      cpu: 200m
+      memory: 256Mi
+
+# -- argo-hub-platform
+# @default -- See below
+argo-hub-platform:
+  controller:
+    deployment:
+      replicas: 1
+  container:
+    image:
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
+      repository: codefresh-io/argo-hub-platform
+  imagePullSecrets: []
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits: {}
+  hpa:
+    enabled: false
+  pdb:
+    enabled: false
+  affinity: {}
+  nodeSelector: {}
+  podSecurityContext: {}
+  tolerations: []
+
+# -- argo-platform
+# @default -- See below
+argo-platform:
+  enabled: true
+
+  # -- Use regular k8s secret object. Keep `false`!
+  useExternalSecret: false
+  # -- Anchors
+  # @default -- See below
+  anchors:
+    cache-host: &cache-host '{{ coalesce .Values.redisUrl .Values.global.redisUrl (printf "%s-%s" .Release.Name .Values.global.redisService) }}'
+    cache-password: &cache-password '{{ coalesce .Values.redisPassword .Values.global.redisPassword }}'
+    cache-port: &cache-port '{{ coalesce .Values.redisPort .Values.global.redisPort }}'
+
+    mongodb-readmodels-uri: &mongodb-readmodels-uri '{{ include "argo-patform-libs.calculate-mongo-uri" (dict "dbName" "read-models" "mongoURI" .Values.global.mongoURI) | default "null" }}'
+    mongodb-audit-uri: &mongodb-audit-uri '{{ include "argo-patform-libs.calculate-mongo-uri" (dict "dbName" "audit" "mongoURI" .Values.global.mongoURI) | default "null" }}'
+
+    pg-db-name: &pg-db-name analytics
+    pg-host-name: &pg-host-name '{{ coalesce .Values.postgresHostname .Values.global.postgresHostname (printf "%s-%s" .Release.Name .Values.global.postgresService) }}'
+    pg-password: &pg-password '{{ coalesce .Values.postgresPassword .Values.global.postgresPassword }}'
+    pg-port: &pg-port '{{ coalesce .Values.postgresPort .Values.global.postgresPort }}'
+    pg-user-name: &pg-user-name '{{ coalesce .Values.postgresUser .Values.global.postgresUser }}'
+
+    mongodb-host: &mongodb-host '{{ coalesce .Values.mongodbHost .Values.global.mongodbHost }}'
+    mongodb-password: &mongodb-password '{{ coalesce .Values.mongodbPassword .Values.global.mongodbPassword }}'
+    mongodb-user: &mongodb-user '{{ coalesce .Values.mongodbUser .Values.global.mongodbUser }}'
+    mongodb-protocol: &mongodb-protocol '{{ coalesce .Values.mongodbProtocol .Values.global.mongodbProtocol "mongodb" }}'
+    mongodb-options: &mongodb-options '{{ coalesce .Values.mongodbOptions .Values.global.mongodbOptions }}'
+
+    rabbitmq-protocol: &rabbitmq-protocol '{{ coalesce .Values.rabbitmqProtocol .Values.global.rabbitmqProtocol "amqp" }}'
+    rabbitmq-host: &rabbitmq-host '{{ coalesce .Values.rabbitmqHostname .Values.global.rabbitmqHostname (printf "%s-%s" .Release.Name (coalesce .Values.global.rabbitService .Values.global.rabbitmqService) ) }}'
+    rabbitmq-password: &rabbitmq-password  '{{ coalesce .Values.rabbitmqPassword .Values.global.rabbitmqPassword }}'
+    rabbitmq-port: &rabbitmq-port '{{ coalesce .Values.rabbitmqPort .Values.global.rabbitmqPort "5672" }}'
+    rabbitmq-user: &rabbitmq-user '{{ coalesce .Values.rabbitmqUsername .Values.global.rabbitmqUsername }}'
+
+  # -- api-graphql
+  # @default -- See below
+  # All other services under `.Values.argo-platform` follows the same values structure.
+  api-graphql:
+    enabled: true
+    # -- Controller kind. Currently, only `Deployment` is supported
+    kind: Deployment
+    # -- Image
+    image:
+      # -- Registry
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
+      # -- Repository
+      repository: codefresh-io/argo-platform-api-graphql
+    # -- Env vars
+    # @default -- See below
+    env:
+      GRAPHQL_PLAYGROUND: true
+      MONGODB_PROTOCOL: *mongodb-protocol
+      MONGODB_OPTIONS: *mongodb-options
+      RABBITMQ_PROTOCOL: *rabbitmq-protocol
+      MONGODB_READMODELS_URI: '{{ include "argo-patform-libs.env-vars.mongodb-readmodels-uri-env-var-value" . }}'
+      MONGODB_AUDIT_URI: '{{ include "argo-patform-libs.env-vars.mongodb-audit-uri-env-var-value" . }}'
+      RABBITMQ_URLS: $(RABBITMQ_PROTOCOL)://$(RABBITMQ_USER):$(RABBITMQ_PASSWORD)@$(RABBITMQ_HOST)
+    # -- Secrets
+    # @default -- See below
+    secrets:
+      argo-hub-host: http://{{ .Release.Name }}-argo-hub-platform
+      cache-host: *cache-host
+      cache-password: *cache-password
+      cache-port: *cache-port
+      v1-host: http://{{ .Release.Name }}-{{ .Values.global.cfapiEndpointsService }}
+      v1-internal-host: http://{{ .Release.Name }}-{{ .Values.global.cfapiService }}:{{ .Values.global.cfapiInternalPort }}
+      mongodb-protocol: *mongodb-protocol
+      mongodb-options: *mongodb-options
+      mongodb-host: *mongodb-host
+      mongodb-password: *mongodb-password
+      mongodb-user: *mongodb-user
+      mongodb-audit-uri: *mongodb-audit-uri
+      mongodb-readmodels-uri: *mongodb-readmodels-uri
+      rabbitmq-protocol: *rabbitmq-protocol
+      rabbitmq-host: *rabbitmq-host
+      rabbitmq-password: *rabbitmq-password
+      rabbitmq-port: *rabbitmq-port
+      rabbitmq-user: *rabbitmq-user
+    # -- Resource limits and requests
+    # @default -- See below
+    resources:
+      requests:
+        cpu: 200m
+        memory: 256Mi
+      limits:
+        memory: 1Gi
+    # -- HPA
+    hpa:
+      # -- Enable autoscaler
+      enabled: false
+    # -- PDB
+    pdb:
+      # -- Enable pod disruption budget
+      enabled: false
+    # -- Set pod's affinity
+    affinity: {}
+    # -- Set pod's tolerations
+    tolerations: []
+    # -- Set pod's annotations
+    podAnnotations:
+      checksum/secret: '{{ include (print $.Template.BasePath "/api-graphql/secret.yaml") . | sha256sum }}'
+
+  # -- abac
+  # @default -- See below
+  abac:
+    enabled: true
+    kind: Deployment
+    image:
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
+      repository: codefresh-io/argo-platform-abac
+    env:
+      MONGODB_PROTOCOL: *mongodb-protocol
+      MONGODB_OPTIONS: *mongodb-options
+      MONGODB_READMODELS_URI: '{{ include "argo-patform-libs.env-vars.mongodb-readmodels-uri-env-var-value" . }}'
+      MONGODB_AUDIT_URI: '{{ include "argo-patform-libs.env-vars.mongodb-audit-uri-env-var-value" . }}'
+    secrets:
+      mongodb-protocol: *mongodb-protocol
+      mongodb-options: *mongodb-options
+      mongodb-host: *mongodb-host
+      mongodb-password: *mongodb-password
+      mongodb-user: *mongodb-user
+      mongodb-audit-uri: *mongodb-audit-uri
+      mongodb-readmodels-uri: *mongodb-readmodels-uri
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        memory: 1Gi
+    hpa:
+      enabled: false
+    pdb:
+      enabled: false
+    affinity: {}
+    tolerations: []
+    podAnnotations:
+      checksum/secret: '{{ include (print $.Template.BasePath "/abac/secret.yaml") . | sha256sum }}'
+
+  # -- analytics-reporter
+  # @default -- See below
+  analytics-reporter:
+    enabled: true
+    kind: Deployment
+    image:
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
+      repository: codefresh-io/argo-platform-analytics-reporter
+    env:
+      ENABLED_DATABASE_TYPES: POSTGRES
+      MONGODB_PROTOCOL: *mongodb-protocol
+      MONGODB_OPTIONS: *mongodb-options
+      RABBITMQ_PROTOCOL: *rabbitmq-protocol
+      MONGODB_READMODELS_URI: '{{ include "argo-patform-libs.env-vars.mongodb-readmodels-uri-env-var-value" . }}'
+      RABBITMQ_URLS: $(RABBITMQ_PROTOCOL)://$(RABBITMQ_USER):$(RABBITMQ_PASSWORD)@$(RABBITMQ_HOST)
+    secrets:
+      mongodb-protocol: *mongodb-protocol
+      mongodb-options: *mongodb-options
+      mongodb-host: *mongodb-host
+      mongodb-password: *mongodb-password
+      mongodb-user: *mongodb-user
+      mongodb-readmodels-uri: *mongodb-readmodels-uri
+      pg-db-name: *pg-db-name
+      pg-host-name: *pg-host-name
+      pg-password: *pg-password
+      pg-port: *pg-port
+      pg-user-name: *pg-user-name
+      rabbitmq-protocol: *rabbitmq-protocol
+      rabbitmq-host: *rabbitmq-host
+      rabbitmq-password: *rabbitmq-password
+      rabbitmq-port: *rabbitmq-port
+      rabbitmq-user: *rabbitmq-user
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        memory: 1Gi
+    hpa:
+      enabled: false
+    pdb:
+      enabled: false
+    tolerations: []
+    affinity: {}
+    volumes: []
+    volumeMounts: []
+    podAnnotations:
+      checksum/secret: '{{ include (print $.Template.BasePath "/analytics-reporter/secret.yaml") . | sha256sum }}'
+
+  # -- api-events
+  # @default -- See below
+  api-events:
+    enabled: true
+    kind: Deployment
+    image:
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
+      repository: codefresh-io/argo-platform-api-events
+    env:
+      RABBITMQ_PROTOCOL: *rabbitmq-protocol
+      RABBITMQ_URLS: $(RABBITMQ_PROTOCOL)://$(RABBITMQ_USER):$(RABBITMQ_PASSWORD)@$(RABBITMQ_HOST)
+    secrets:
+      rabbitmq-protocol: *rabbitmq-protocol
+      rabbitmq-host: *rabbitmq-host
+      rabbitmq-password: *rabbitmq-password
+      rabbitmq-port: *rabbitmq-port
+      rabbitmq-user: *rabbitmq-user
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        memory: 1Gi
+    hpa:
+      enabled: false
+    pdb:
+      enabled: false
+    affinity: {}
+    tolerations: []
+    podAnnotations:
+      checksum/secret: '{{ include (print $.Template.BasePath "/api-events/secret.yaml") . | sha256sum }}'
+
+  # -- argocd-hooks
+  # @default -- See below
+  # Don't enable! Not used in onprem!
+  argocd-hooks:
+    enabled: false
+
+  # -- audit
+  # @default -- See below
+  audit:
+    enabled: true
+    kind: Deployment
+    image:
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
+      repository: codefresh-io/argo-platform-audit
+    env:
+      MONGODB_PROTOCOL: *mongodb-protocol
+      MONGODB_OPTIONS: *mongodb-options
+      RABBITMQ_PROTOCOL: *rabbitmq-protocol
+      MONGODB_AUDIT_URI: '{{ include "argo-patform-libs.env-vars.mongodb-audit-uri-env-var-value" . }}'
+      MONGODB_READMODELS_URI: '{{ include "argo-patform-libs.env-vars.mongodb-readmodels-uri-env-var-value" . }}'
+      RABBITMQ_URLS: $(RABBITMQ_PROTOCOL)://$(RABBITMQ_USER):$(RABBITMQ_PASSWORD)@$(RABBITMQ_HOST)
+    secrets:
+      mongodb-protocol: *mongodb-protocol
+      mongodb-options: *mongodb-options
+      mongodb-host: *mongodb-host
+      mongodb-password: *mongodb-password
+      mongodb-user: *mongodb-user
+      mongodb-audit-uri: *mongodb-audit-uri
+      mongodb-readmodels-uri: *mongodb-readmodels-uri
+      rabbitmq-protocol: *rabbitmq-protocol
+      rabbitmq-host: *rabbitmq-host
+      rabbitmq-password: *rabbitmq-password
+      rabbitmq-port: *rabbitmq-port
+      rabbitmq-user: *rabbitmq-user
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        memory: 1Gi
+    hpa:
+      enabled: false
+    pdb:
+      enabled: false
+    affinity: {}
+    tolerations: []
+    podAnnotations:
+      checksum/secret: '{{ include (print $.Template.BasePath "/audit/secret.yaml") . | sha256sum }}'
+
+  # -- cron-executor
+  # @default -- See below
+  cron-executor:
+    enabled: true
+    kind: Deployment
+    image:
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
+      repository: codefresh-io/argo-platform-cron-executor
+    env:
+      MONGODB_PROTOCOL: *mongodb-protocol
+      MONGODB_OPTIONS: *mongodb-options
+      RABBITMQ_PROTOCOL: *rabbitmq-protocol
+      MONGODB_READMODELS_URI: '{{ include "argo-patform-libs.env-vars.mongodb-readmodels-uri-env-var-value" . }}'
+      MONGODB_AUDIT_URI: '{{ include "argo-patform-libs.env-vars.mongodb-audit-uri-env-var-value" . }}'
+      RABBITMQ_URLS: $(RABBITMQ_PROTOCOL)://$(RABBITMQ_USER):$(RABBITMQ_PASSWORD)@$(RABBITMQ_HOST)
+    secrets:
+      mongodb-protocol: *mongodb-protocol
+      mongodb-options: *mongodb-options
+      mongodb-host: *mongodb-host
+      mongodb-password: *mongodb-password
+      mongodb-user: *mongodb-user
+      mongodb-audit-uri: *mongodb-audit-uri
+      mongodb-readmodels-uri: *mongodb-readmodels-uri
+      rabbitmq-protocol: *rabbitmq-protocol
+      rabbitmq-host: *rabbitmq-host
+      rabbitmq-password: *rabbitmq-password
+      rabbitmq-port: *rabbitmq-port
+      rabbitmq-user: *rabbitmq-user
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        memory: 1Gi
+    hpa:
+      enabled: false
+    pdb:
+      enabled: false
+    affinity: {}
+    tolerations: []
+    podAnnotations:
+      checksum/secret: '{{ include (print $.Template.BasePath "/cron-executor/secret.yaml") . | sha256sum }}'
+
+  # -- event-handler
+  # @default -- See below
+  event-handler:
+    enabled: true
+    kind: Deployment
+    image:
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
+      repository: codefresh-io/argo-platform-event-handler
+    env:
+      MONGODB_PROTOCOL: *mongodb-protocol
+      MONGODB_OPTIONS: *mongodb-options
+      RABBITMQ_PROTOCOL: *rabbitmq-protocol
+      MONGODB_READMODELS_URI: '{{ include "argo-patform-libs.env-vars.mongodb-readmodels-uri-env-var-value" . }}'
+      RABBITMQ_URLS: $(RABBITMQ_PROTOCOL)://$(RABBITMQ_USER):$(RABBITMQ_PASSWORD)@$(RABBITMQ_HOST)
+    secrets:
+      mongodb-protocol: *mongodb-protocol
+      mongodb-options: *mongodb-options
+      mongodb-host: *mongodb-host
+      mongodb-password: *mongodb-password
+      mongodb-user: *mongodb-user
+      mongodb-readmodels-uri: *mongodb-readmodels-uri
+      rabbitmq-protocol: *rabbitmq-protocol
+      rabbitmq-host: *rabbitmq-host
+      rabbitmq-password: *rabbitmq-password
+      rabbitmq-port: *rabbitmq-port
+      rabbitmq-user: *rabbitmq-user
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        memory: 1Gi
+    hpa:
+      enabled: false
+    pdb:
+      enabled: false
+    affinity: {}
+    tolerations: []
+    podAnnotations:
+      checksum/secret: '{{ include (print $.Template.BasePath "/event-handler/secret.yaml") . | sha256sum }}'
+
+  # -- runtime-manager
+  # @default -- See below
+  # Don't enable! Not used in onprem!
+  runtime-manager:
+    enabled: false
+
+  # -- runtime-monitor
+  # @default -- See below
+  # Don't enable! Not used in onprem!
+  runtime-monitor:
+    enabled: false
+
+  # -- ui
+  # @default -- See below
+  ui:
+    enabled: true
+    kind: Deployment
+    image:
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
+      repository: codefresh-io/argo-platform-ui
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        memory: 512Mi
+    hpa:
+      enabled: false
+    pdb:
+      enabled: false
+    affinity: {}
+    tolerations: []
+
+  # -- broadcaster
+  # @default -- See below
+  broadcaster:
+    enabled: true
+    kind: Deployment
+    image:
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
+      repository: codefresh-io/argo-platform-broadcaster
+    env:
+      MONGODB_PROTOCOL: *mongodb-protocol
+      MONGODB_OPTIONS: *mongodb-options
+      RABBITMQ_PROTOCOL: *rabbitmq-protocol
+      MONGODB_READMODELS_URI: '{{ include "argo-patform-libs.env-vars.mongodb-readmodels-uri-env-var-value" . }}'
+      RABBITMQ_URLS: $(RABBITMQ_PROTOCOL)://$(RABBITMQ_USER):$(RABBITMQ_PASSWORD)@$(RABBITMQ_HOST)
+    secrets:
+      mongodb-protocol: *mongodb-protocol
+      mongodb-options: *mongodb-options
+      mongodb-host: *mongodb-host
+      mongodb-password: *mongodb-password
+      mongodb-user: *mongodb-user
+      mongodb-readmodels-uri: *mongodb-readmodels-uri
+      rabbitmq-protocol: *rabbitmq-protocol
+      rabbitmq-host: *rabbitmq-host
+      rabbitmq-password: *rabbitmq-password
+      rabbitmq-port: *rabbitmq-port
+      rabbitmq-user: *rabbitmq-user
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        memory: 1Gi
+    hpa:
+      enabled: false
+    pdb:
+      enabled: false
+    affinity: {}
+    tolerations: []
+    podAnnotations:
+      checksum/secret: '{{ include (print $.Template.BasePath "/broadcaster/secret.yaml") . | sha256sum }}'
+
+  # -- promotion-orchestrator
+  # @default -- See below
+  promotion-orchestrator:
+    enabled: true
+    kind: Deployment
+    image:
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
+      repository: codefresh-io/argo-platform-promotion-orchestrator
+    env:
+      MONGODB_PROTOCOL: *mongodb-protocol
+      MONGODB_OPTIONS: *mongodb-options
+      RABBITMQ_PROTOCOL: *rabbitmq-protocol
+      MONGODB_READMODELS_URI: '{{ include "argo-patform-libs.env-vars.mongodb-readmodels-uri-env-var-value" . }}'
+      RABBITMQ_URLS: $(RABBITMQ_PROTOCOL)://$(RABBITMQ_USER):$(RABBITMQ_PASSWORD)@$(RABBITMQ_HOST)
+    secrets:
+      cache-host: *cache-host
+      cache-password: *cache-password
+      cache-port: *cache-port
+      mongodb-protocol: *mongodb-protocol
+      mongodb-options: *mongodb-options
+      mongodb-host: *mongodb-host
+      mongodb-password: *mongodb-password
+      mongodb-user: *mongodb-user
+      mongodb-readmodels-uri: *mongodb-readmodels-uri
+      rabbitmq-protocol: *rabbitmq-protocol
+      rabbitmq-host: *rabbitmq-host
+      rabbitmq-password: *rabbitmq-password
+      rabbitmq-port: *rabbitmq-port
+      rabbitmq-user: *rabbitmq-user
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        memory: 1Gi
+    hpa:
+      enabled: false
+    pdb:
+      enabled: false
+    affinity: {}
+    tolerations: []
+    podAnnotations:
+      checksum/secret: '{{ include (print $.Template.BasePath "/promotion-orchestrator/secret.yaml") . | sha256sum }}'
+
+  classic-event-bridge:
+    enabled: false
