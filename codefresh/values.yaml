@@ -738,7 +738,7 @@ cf-platform-analytics-etlstarter:
 
   container:
     image:
-      registry: us-docker.pkg.dev/codefresh-inc/gcr.io
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/cf-platform-analytics
     env:
       ENV: production

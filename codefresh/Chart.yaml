@@ -20,6 +20,8 @@ annotations:
   artifacthub.io/changes: |
     - kind: security
       description: "Contains security fixes"
+    - kind: fixed
+      description: "Fixed system-etl-postgres images registry"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
