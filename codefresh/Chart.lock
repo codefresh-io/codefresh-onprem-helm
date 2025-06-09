@@ -7,7 +7,7 @@ dependencies:
   version: 0.10.2
 - name: consul
   repository: https://charts.bitnami.com/bitnami
-  version: 11.4.17
+  version: 11.4.19
 - name: mongodb
   repository: https://charts.bitnami.com/bitnami
   version: 15.6.26
@@ -46,7 +46,7 @@ dependencies:
   version: 1.31.19
 - name: charts-manager
   repository: oci://quay.io/codefresh/charts
-  version: 1.23.1
+  version: 1.23.2
 - name: cfsign
   repository: oci://quay.io/codefresh/charts
   version: 1.8.9
@@ -55,10 +55,10 @@ dependencies:
   version: 1.26.18
 - name: context-manager
   repository: oci://quay.io/codefresh/charts
-  version: 2.34.2
+  version: 2.34.3
 - name: pipeline-manager
   repository: oci://quay.io/codefresh/charts
-  version: 3.139.2
+  version: 3.139.3
 - name: gitops-dashboard-manager
   repository: oci://quay.io/codefresh/charts
   version: 1.14.22
@@ -124,7 +124,7 @@ dependencies:
   version: 4.11.14
 - name: runtime-environment-manager
   repository: oci://quay.io/codefresh/charts
-  version: 3.41.1
+  version: 3.41.2
 - name: cf-broadcaster
   repository: oci://quay.io/codefresh/charts
   version: 1.13.0
@@ -148,7 +148,7 @@ dependencies:
   version: 0.50.2
 - name: argo-platform
   repository: oci://quay.io/codefresh/charts
-  version: 1.3524.0-onprem-ae70d8a
+  version: 1.3525.0-onprem-d01c752
 - name: argo-hub-platform
   repository: oci://quay.io/codefresh/charts
   version: 0.1.24
@@ -167,5 +167,5 @@ dependencies:
 - name: salesforce-reporter
   repository: oci://quay.io/codefresh/charts
   version: 1.30.11
-digest: sha256:5cfbe090f3f9e0ebf2f99d898635689d1eae3812fb3fbced10651809cb176d13
-generated: "2025-06-04T16:15:07.062564+03:00"
+digest: sha256:212b034bedd2236e19e49d3711031ccb6a30a15eb25d4a014d3e46be61cad5b4
+generated: "2025-06-09T13:28:16.109075+03:00"

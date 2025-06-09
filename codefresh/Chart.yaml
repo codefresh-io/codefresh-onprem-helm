@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.8.3
+version: 2.8.4
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -18,8 +18,10 @@ annotations:
   # artifacthub.io/containsSecurityUpdates: "true"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
+    - kind: security
+      description: "Contains security fixes"
     - kind: fixed
-      description: "Fix mongo seed job to support Atlas"
+      description: "Fixed system-etl-postgres images registry"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -29,7 +31,7 @@ dependencies:
     version: 0.10.2
     condition: internal-gateway.enabled
   - name: consul
-    version: 11.4.17
+    version: 11.4.19
     repository: https://charts.bitnami.com/bitnami
     condition: consul.enabled
   - name: mongodb
@@ -237,7 +239,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
-    version: "1.3524.0-onprem-ae70d8a"
+    version: "1.3525.0-onprem-d01c752"
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform
