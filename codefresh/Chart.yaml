@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.8.4
+version: 2.8.5
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -19,9 +19,7 @@ annotations:
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
     - kind: security
-      description: "Contains security fixes"
-    - kind: fixed
-      description: "Fixed system-etl-postgres images registry"
+      description: "Contains security fixes in cf-api"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
