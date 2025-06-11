@@ -22,14 +22,13 @@ metadata:
     helm.sh/hook-delete-policy: hook-succeeded,before-hook-creation,hook-failed
 spec:
   ttlSecondsAfterFinished: 300
-  backoffLimit: 0
+  backoffLimit: 6
   template:
     metadata:
       name: {{ template "codefresh.fullname" . }}-rabbitmq-enable-stable-flags
       labels:
         {{ include "codefresh.labels" . | nindent 8 }}
     spec:
-      serviceAccountName: {{ template "codefresh.fullname" . }}-rabbitmq-enable-stable-flags
       {{- include (printf "%s.image.pullSecrets" $libTemplateName ) . | nindent 6 }}
       containers:
       - name: {{ template "codefresh.fullname" . }}-rabbitmq-enable-stable-flags
