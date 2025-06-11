@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.8.5](https://img.shields.io/badge/Version-2.8.5-informational?style=flat-square) ![AppVersion: 2.8.0](https://img.shields.io/badge/AppVersion-2.8.0-informational?style=flat-square)
+![Version: 2.8.6](https://img.shields.io/badge/Version-2.8.6-informational?style=flat-square) ![AppVersion: 2.8.0](https://img.shields.io/badge/AppVersion-2.8.0-informational?style=flat-square)
 
 Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
@@ -2595,6 +2595,7 @@ After platform upgrade, Consul fails with the error `refusing to rejoin cluster 
 | hooks | object | See below | Pre/post-upgrade Job hooks. |
 | hooks.consul | object | `{"affinity":{},"enabled":true,"image":{"registry":"us-docker.pkg.dev/codefresh-inc/public-gcr-io","repository":"codefresh/kubectl","tag":"1.33.0"},"nodeSelector":{},"podSecurityContext":{},"resources":{},"tolerations":[]}` | Recreates `consul-headless` service due to duplicated ports in Service during the upgrade. |
 | hooks.mongodb | object | `{"affinity":{},"enabled":true,"image":{"registry":"us-docker.pkg.dev/codefresh-inc/public-gcr-io","repository":"codefresh/mongosh","tag":"2.5.0"},"nodeSelector":{},"podSecurityContext":{},"resources":{},"tolerations":[]}` | Updates images in `system/default` runtime. |
+| hooks.rabbitmq | object | `{"affinity":{},"enabled":true,"image":{"registry":"quay.io","repository":"codefresh/codefresh-shell","tag":"0.0.25-featadd-rabbitmqadmin"},"nodeSelector":{},"podSecurityContext":{},"resources":{},"tolerations":[]}` | Enable stable feature flags in RabbitMQ. |
 | imageCredentials | object | `{}` | Credentials for Image Pull Secret object |
 | ingress | object | `{"annotations":{"nginx.ingress.kubernetes.io/service-upstream":"true","nginx.ingress.kubernetes.io/ssl-redirect":"false","nginx.org/redirect-to-https":"false"},"enabled":true,"ingressClassName":"nginx-codefresh","labels":{},"nameOverride":"","services":{"internal-gateway":["/"]},"tls":{"cert":"","enabled":false,"existingSecret":"","key":"","secretName":"star.codefresh.io"}}` | Ingress |
 | ingress-nginx | object | See below | ingress-nginx Ref: https://github.com/kubernetes/ingress-nginx/blob/main/charts/ingress-nginx/values.yaml |

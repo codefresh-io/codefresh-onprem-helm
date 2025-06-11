@@ -465,7 +465,18 @@ hooks:
     podSecurityContext: {}
     resources: {}
     tolerations: []
-
+  # -- Enable stable feature flags in RabbitMQ.
+  rabbitmq:
+    enabled: true
+    image:
+      registry: quay.io
+      repository: codefresh/codefresh-shell
+      tag: 0.0.25-featadd-rabbitmqadmin
+    affinity: {}
+    nodeSelector: {}
+    podSecurityContext: {}
+    resources: {}
+    tolerations: []
 
 # -- Maintenance postgresql clean job.
 # Removes a certain number of the last records in the event store table.
