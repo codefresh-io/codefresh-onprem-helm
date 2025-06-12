@@ -2322,7 +2322,11 @@ spec:
 
 ### RabbitMQ update
 
-Default RabbitMQ image is changed from 3.x to 4.x
+Default RabbitMQ image is changed from 3.x to 4.0
+
+If you run external RabbitMQ, follow the [official instructions](https://www.rabbitmq.com/docs/upgrade) to upgrade to 4.0
+
+For built-in RabbitMQ `bitnami/rabbitmq` subchart, pre-upgrade hook was added to enable all stable feature flags.
 
 ####  Affected values
 
