@@ -19,7 +19,7 @@ metadata:
   annotations:
     helm.sh/hook: pre-upgrade
     helm.sh/hook-weight: "5"
-    helm.sh/hook-delete-policy: hook-succeeded,before-hook-creation,hook-failed
+    helm.sh/hook-delete-policy: hook-succeeded,before-hook-creation
 spec:
   ttlSecondsAfterFinished: 300
   backoffLimit: 6
@@ -39,6 +39,11 @@ spec:
             secretKeyRef:
               name: {{ template "codefresh.fullname" . }}-rabbitmq-enable-stable-flags
               key: RABBITMQADMIN_TARGET_HOST
+        - name: RABBITMQADMIN_TARGET_PORT
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "codefresh.fullname" . }}-rabbitmq-enable-stable-flags
+              key: RABBITMQADMIN_TARGET_PORT
         - name: RABBITMQADMIN_USERNAME
           valueFrom:
             secretKeyRef:
@@ -53,8 +58,10 @@ spec:
         - /bin/bash
         - -c
         - |
+          set -x
           rabbitmqadmin \
             --host=$RABBITMQADMIN_TARGET_HOST \
+            --port=$RABBITMQADMIN_TARGET_PORT \
             --username=$RABBITMQADMIN_USERNAME \
             --password=$RABBITMQADMIN_PASSWORD \
             feature_flags enable_all

@@ -469,9 +469,9 @@ hooks:
   rabbitmq:
     enabled: true
     image:
-      registry: quay.io
-      repository: codefresh/codefresh-shell
-      tag: 0.0.25-featadd-rabbitmqadmin
+      registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
+      repository: codefresh/rabbitmqadmin
+      tag: 2.1.0
     affinity: {}
     nodeSelector: {}
     podSecurityContext: {}
