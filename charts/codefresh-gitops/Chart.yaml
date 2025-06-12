@@ -48,6 +48,11 @@ dependencies:
     version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: cfapi.enabled
+  # temporary, need to remove
+  - name: runtime-environment-manager
+    version: "*"
+    repository: oci://quay.io/codefresh/charts
+    condition: runtime-environment-manager.enabled
   - name: cfui
     version: "*"
     repository: oci://quay.io/codefresh/charts

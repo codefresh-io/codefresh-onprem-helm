@@ -327,6 +327,8 @@ hooks:
 cfapi: &cf-api
   # -- Enable cf-api
   enabled: true
+  # -- Override name
+  fullnameOverride: cfapi
   # -- Image pull secrets
   imagePullSecrets: []
   # -- Controller configuration
@@ -383,6 +385,7 @@ cfapi: &cf-api
 # @default -- See below
 internal-gateway:
   enabled: true
+  fullnameOverride: internal-gateway
   libraryMode: true
   controller:
     replicas: 2
@@ -413,7 +416,7 @@ internal-gateway:
 # -- etl-starter
 # @default -- See below
 cf-platform-analytics-etlstarter:
-  nameOverride: etl-starter
+  fllnameOverride: etl-starter
   mongodbDatabase: "platform-analytics-postgres"
   redis:
     # -- Disable redis subchart
@@ -453,7 +456,7 @@ cf-platform-analytics-etlstarter:
 # -- platform-analytics
 # @default -- See below
 cf-platform-analytics-platform:
-  nameOverride: platform-analytics
+  fullnameOverride: platform-analytics
   mongodbDatabase: "platform-analytics-postgres"
   imagePullSecrets: []
   container:
@@ -485,6 +488,7 @@ cf-platform-analytics-platform:
 # @default -- See below
 cfui:
   enabled: true
+  fullnameOverride: cfui
   imagePullSecrets: []
   controller:
     replicas: 2
@@ -492,6 +496,32 @@ cfui:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/cf-ui
+    env:
+      ON_PREMISE: true
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits: {}
+  hpa:
+    enabled: false
+  pdb:
+    enabled: false
+  affinity: {}
+  nodeSelector: {}
+  podSecurityContext: {}
+  tolerations: []
+
+# -- runtime-environment-manager
+# @default -- See below
+runtime-environment-manager:
+  enabled: true
+  fullnameOverride: runtime-environment-manager
+  imagePullSecrets: []
+  container:
+    image:
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
+      repository: codefresh/runtime-environment-manager
     env:
       ON_PREMISE: true
   resources:
