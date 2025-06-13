@@ -1165,3 +1165,7 @@ argo-platform:
 e2e:
   # -- Enable E2E tests
   enabled: false
+  image:
+    registry: us-docker.pkg.dev/codefresh-inc/gcr.io
+    repository: codefresh-io/argo-platform-e2e
+    tag: '{{ index .Values "argo-platform" "version" }}'

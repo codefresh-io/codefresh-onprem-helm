@@ -23,7 +23,7 @@ spec:
       dnsPolicy: ClusterFirst
       containers:
       - name: e2e-seed
-        image: us-docker.pkg.dev/codefresh-inc/gcr.io/codefresh-io/dev/argo-platform-e2e:{{ index .Values "argo-platform" "version" }}
+        image: {{ include (printf "%s.image.name" $libTemplateName) (dict "image" .Values.e2e.image "context" .) }}
         imagePullPolicy: Always
         command:
         - /bin/bash
