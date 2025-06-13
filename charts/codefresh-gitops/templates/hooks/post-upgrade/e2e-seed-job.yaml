@@ -1,0 +1,42 @@
+
+{{- if .Values.e2e.enabled }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: e2e-seed
+  labels:
+    {{- include "codefresh-gitops.labels" . | nindent 4 }}
+  annotations:
+    helm.sh/hook: post-upgrade,post-install
+    helm.sh/hook-delete-policy: before-hook-creation,hook-succeeded
+    helm.sh/hook-weight: "0"
+spec:
+  template:
+    metadata:
+      labels:
+        {{- include "codefresh-gitops.labels" . | nindent 8 }}
+    spec:
+      serviceAccountName: default
+      automountServiceAccountToken: true
+      dnsPolicy: ClusterFirst
+      containers:
+      - name: e2e-seed
+        image: us-docker.pkg.dev/codefresh-inc/gcr.io/codefresh-io/dev/argo-platform-e2e:{{ index .Values "argo-platform" "version" }}
+        imagePullPolicy: Always
+        command:
+        - /bin/bash
+        - -c
+        - |
+          yarn build --outDir .
+          yarn run e2e:init
+        env:
+        - name: ANALYTICS_POSTGRES_URI
+          value: "postgres://postgres:postgres@postgresql:5432/analytics"
+        - name: V1_MONGO_URI
+          value: "mongodb://user:password@mongodb:27017/codefresh"
+        - name: V1_PAYMENTS_MONGO_URI
+          value: "mongodb://user:password@mongodb:27017/payments"
+        - name: V2_MONGO_URI
+          value: "mongodb://user:password@mongodb:27017/read-models"
+      restartPolicy: Never
+{{- end }}

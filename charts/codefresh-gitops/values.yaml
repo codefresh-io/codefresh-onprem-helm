@@ -1159,3 +1159,9 @@ argo-platform:
 
   classic-event-bridge:
     enabled: false
+
+# -- E2E tests
+# @default -- See below
+e2e:
+  # -- Enable E2E tests
+  enabled: false
