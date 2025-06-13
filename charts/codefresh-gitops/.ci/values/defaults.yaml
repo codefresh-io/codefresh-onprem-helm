@@ -1,12 +1,6 @@
-imageCredentials:
-  registry: us-docker.pkg.dev
-  username: _json_key
-  password: "" # placeholder for ${GCR_SA_KEY}
-
 global:
   appUrl: "" # placeholder
   imagePullSecrets:
-    - codefresh-registry
     - dockerhub-creds
 
 ingress:
