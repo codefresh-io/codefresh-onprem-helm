@@ -30,7 +30,7 @@ seed:
     #   key: mongodb-root-user
 
     # -- Root password in plain text (required ONLY for seed job!).
-    mongodbRootPassword: "XT9nmM8dZD"
+    mongodbRootPassword: "password"
     # -- Root password from existing secret
     mongodbRootPasswordSecretKeyRef: {}
     # E.g.
@@ -152,6 +152,9 @@ global:
 #--------
 # MongoDB
 #--------
+  # -- Legacy MongoDB connection string. Keep empty!
+  mongoURI: ""
+
   # -- Set mongodb protocol (`mongodb` / `mongodb+srv`)
   mongodbProtocol: mongodb
   # -- Set mongodb user in plain text
@@ -200,7 +203,7 @@ global:
   #   key: postgres-user
 
   # -- Set postgres password in plain text
-  postgresPassword: eC9arYka4ZbH
+  postgresPassword: postgres
   # -- Set postgres password from existing secret
   postgresPasswordSecretKeyRef: {}
   # E.g.
@@ -209,7 +212,7 @@ global:
   #   key: postgres-password
 
   # -- Set postgres service address in plain text. Takes precedence over `global.postgresService`!
-  postgresHostname: ""
+  postgresHostname: "postgresql"
   # -- Set postgres service from existing secret
   postgresHostnameSecretKeyRef: {}
   # E.g.
@@ -239,7 +242,7 @@ global:
   #   key: rabbitmq-username
 
   # -- Set rabbitmq password in plain text
-  rabbitmqPassword: cVz9ZdJKYm7u
+  rabbitmqPassword: rabbitmq
   # -- Set rabbitmq password from existing secret
   rabbitmqPasswordSecretKeyRef: {}
   # E.g.
@@ -248,7 +251,7 @@ global:
   #   key: rabbitmq-password
 
   # -- Set rabbitmq service address in plain text. Takes precedence over `global.rabbitService`!
-  rabbitmqHostname: ""
+  rabbitmqHostname: "rabbitmq:5672"
   # -- Set rabbitmq service address from existing secret.
   rabbitmqHostnameSecretKeyRef: {}
   # E.g.
@@ -263,7 +266,7 @@ global:
 # Redis
 #------
   # -- Set redis password in plain text
-  redisPassword: hoC9szf7NtrU
+  redisPassword: redis
   # -- Set redis service port
   redisPort: 6379
   # -- Set redis password from existing secret
@@ -274,7 +277,7 @@ global:
   #   key: redis-password
 
   # -- Set redis hostname in plain text. Takes precedence over `global.redisService`!
-  redisUrl: ""
+  redisUrl: "redis-master"
   # -- Set redis hostname from existing secret.
   redisUrlSecretKeyRef: {}
   # E.g.
@@ -340,9 +343,13 @@ cfapi: &cf-api
     # -- Image
     image:
       # -- Registry prefix
-      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
+      registry: us-docker.pkg.dev/codefresh-inc/gcr.io
       # -- Repository
-      repository: codefresh/cf-api
+      repository: codefresh/dev/cf-api
+      # -- Tag
+      tag: 21.283.0-test-gitops-system-type
+      # -- Digest
+      digest: ""
     # -- Env vars
     # @default -- See below
     env:
@@ -350,6 +357,10 @@ cfapi: &cf-api
       LOGGER_LEVEL: debug
       ON_PREMISE: true
       DEFAULT_SYSTEM_TYPE: GITOPS
+      API_URI: cfapi
+      PIPELINE_MANAGER_URI: pipeline-manager # temorary, need to remove
+      PLATFORM_ANALYTICS_URI: platform-analytics
+      RUNTIME_ENVIRONMENT_MANAGER_URI: runtime-environment-manager # temporary, need to remove
   # -- Resource requests and limits
   resources:
     requests:
@@ -416,7 +427,7 @@ internal-gateway:
 # -- etl-starter
 # @default -- See below
 cf-platform-analytics-etlstarter:
-  fllnameOverride: etl-starter
+  fullnameOverride: etl-starter
   mongodbDatabase: "platform-analytics-postgres"
   redis:
     # -- Disable redis subchart
@@ -428,6 +439,7 @@ cf-platform-analytics-etlstarter:
   # -- Only postgres ETL should be running in onprem
   system-etl-postgres:
     enabled: true
+    fullnameOverride: system-etl-postgres
     controller:
       cronjob:
         ttlSecondsAfterFinished: 300
@@ -464,8 +476,7 @@ cf-platform-analytics-platform:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/cf-platform-analytics
   redis:
-    enabled: true
-    nameOverride: redis-platform-analytics
+    enabled: false
   resources:
     requests:
       cpu: 100m
@@ -537,6 +548,9 @@ runtime-environment-manager:
   nodeSelector: {}
   podSecurityContext: {}
   tolerations: []
+  volumes:
+    runtime-environments:
+      nameOverride: runtime-environments
 
 # -- mongodb
 # @default -- See below
@@ -556,7 +570,6 @@ mongodb:
       - user
       - user
       - user
-      - user
     passwords:
       - password
       - password
@@ -564,9 +577,10 @@ mongodb:
       - password
       - password
       - password
-      - password
     databases:
+    - archive
     - codefresh
+    - runtime-environment-manager # temporary, need to remove
     - read-models
     - audit
     - platform-analytics-postgres
@@ -626,6 +640,7 @@ redis:
 # Ref: https://github.com/bitnami/charts/blob/main/bitnami/rabbitmq/values.yaml
 rabbitmq:
   enabled: true
+  fullnameOverride: rabbitmq
   image:
     tag: "4.0"
   replicaCount: 1
@@ -640,6 +655,7 @@ rabbitmq:
 # -- argo-hub-platform
 # @default -- See below
 argo-hub-platform:
+  fullnameOverride: argo-hub-platform
   controller:
     deployment:
       replicas: 1
@@ -723,12 +739,12 @@ argo-platform:
     # -- Secrets
     # @default -- See below
     secrets:
-      argo-hub-host: http://{{ .Release.Name }}-argo-hub-platform
+      argo-hub-host: http://argo-hub-platform
       cache-host: *cache-host
       cache-password: *cache-password
       cache-port: *cache-port
-      v1-host: http://{{ .Release.Name }}-{{ .Values.global.cfapiEndpointsService }}
-      v1-internal-host: http://{{ .Release.Name }}-{{ .Values.global.cfapiService }}:{{ .Values.global.cfapiInternalPort }}
+      v1-host: http://{{ .Values.global.cfapiEndpointsService }}
+      v1-internal-host: http://{{ .Values.global.cfapiService }}:{{ .Values.global.cfapiInternalPort }}
       mongodb-protocol: *mongodb-protocol
       mongodb-options: *mongodb-options
       mongodb-host: *mongodb-host
@@ -1063,6 +1079,8 @@ argo-platform:
       MONGODB_READMODELS_URI: '{{ include "argo-patform-libs.env-vars.mongodb-readmodels-uri-env-var-value" . }}'
       RABBITMQ_URLS: $(RABBITMQ_PROTOCOL)://$(RABBITMQ_USER):$(RABBITMQ_PASSWORD)@$(RABBITMQ_HOST)
     secrets:
+      v1-host: http://{{ .Values.global.cfapiEndpointsService }}
+      v1-internal-host: http://{{ .Values.global.cfapiService }}:{{ .Values.global.cfapiInternalPort }}
       mongodb-protocol: *mongodb-protocol
       mongodb-options: *mongodb-options
       mongodb-host: *mongodb-host

@@ -1,0 +1,42 @@
+dependencies:
+- name: cf-common
+  repository: oci://quay.io/codefresh/charts
+  version: 0.27.0
+- name: internal-gateway
+  repository: oci://quay.io/codefresh/charts
+  version: 0.10.4
+- name: mongodb
+  repository: https://charts.bitnami.com/bitnami
+  version: 15.6.26
+- name: postgresql
+  repository: https://charts.bitnami.com/bitnami
+  version: 16.7.4
+- name: redis
+  repository: https://charts.bitnami.com/bitnami
+  version: 20.13.4
+- name: rabbitmq
+  repository: https://charts.bitnami.com/bitnami
+  version: 15.5.3
+- name: cfapi
+  repository: oci://quay.io/codefresh/charts
+  version: 21.282.3
+- name: runtime-environment-manager
+  repository: oci://quay.io/codefresh/charts
+  version: 3.42.2
+- name: cfui
+  repository: oci://quay.io/codefresh/charts
+  version: 14.99.7
+- name: cf-platform-analytics
+  repository: oci://quay.io/codefresh/charts
+  version: 0.50.2
+- name: cf-platform-analytics
+  repository: oci://quay.io/codefresh/charts
+  version: 0.50.2
+- name: argo-platform
+  repository: oci://quay.io/codefresh/charts
+  version: 1.3570.0
+- name: argo-hub-platform
+  repository: oci://quay.io/codefresh/charts
+  version: 0.1.24
+digest: sha256:37cbd8cc05247116c6592e97f1ac2a694bd18356c56450a01bc834cc5cc0ad55
+generated: "2025-06-12T16:36:27.827516+03:00"

@@ -189,11 +189,11 @@ valueFrom:
 POSTGRES_SEED_USER env var value
 */}}
 {{- define "codefresh-gitops.postgres-seed-user-env-var-value" }}
-  {{- if or .Values.seed.postgresSeedJob.postgresUserSecretKeyRef .Values.global.postgresSeedJob.postgresUserSecretKeyRef .Values.global.postgresUserSecretKeyRef  }}
+  {{- if and .Values.seed.postgresSeedJob.postgresUserSecretKeyRef  }}
 valueFrom:
   secretKeyRef:
-    {{- coalesce .Values.seed.postgresSeedJob.postgresUserSecretKeyRef .Values.global.postgresSeedJob.postgresUserSecretKeyRef .Values.global.postgresUserSecretKeyRef | toYaml | nindent 4 }}
-  {{- else if or .Values.seed.postgresSeedJob.postgresUser .Values.global.postgresSeedJob.postgresUser .Values.global.postgresUser }}
+    {{- .Values.seed.postgresSeedJob.postgresUserSecretKeyRef | toYaml | nindent 4 }}
+  {{- else if or .Values.seed.postgresSeedJob.postgresUser .Values.global.postgresUser }}
 valueFrom:
   secretKeyRef:
     name: {{ include "codefresh-gitops.fullname" . }}
@@ -206,11 +206,11 @@ valueFrom:
 POSTGRES_SEED_PASSWORD env var value
 */}}
 {{- define "codefresh-gitops.postgres-seed-password-env-var-value" }}
-  {{- if or .Values.seed.postgresSeedJob.postgresPasswordSecretKeyRef .Values.global.postgresSeedJob.postgresPasswordSecretKeyRef .Values.global.postgresPasswordSecretKeyRef  }}
+  {{- if and .Values.seed.postgresSeedJob.postgresPasswordSecretKeyRef }}
 valueFrom:
   secretKeyRef:
-    {{- coalesce .Values.seed.postgresSeedJob.postgresPasswordSecretKeyRef .Values.global.postgresSeedJob.postgresPasswordSecretKeyRef .Values.global.postgresPasswordSecretKeyRef | toYaml | nindent 4 }}
-  {{- else if or .Values.seed.postgresSeedJob.postgresPassword .Values.global.postgresSeedJob.postgresPassword .Values.global.postgresPassword }}
+    {{- coalesce .Values.seed.postgresSeedJob.postgresPasswordSecretKeyRef | toYaml | nindent 4 }}
+  {{- else if or .Values.seed.postgresSeedJob.postgresPassword .Values.global.postgresPassword }}
 valueFrom:
   secretKeyRef:
     name: {{ include "codefresh-gitops.fullname" . }}

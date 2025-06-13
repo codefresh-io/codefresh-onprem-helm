@@ -1,5 +1,6 @@
 {
   "_id": ObjectId("59009117c102763beda7ce71"),
+  "systemType": "GITOPS",
   "badgeToken": "eyJhbGciOiJIUzI1NiJ9.NTkwMDkxMTdjMTAyNzYzYmVkYTdjZTcx.B0HOUL6HlpTRNr_e95pVucSRMRzP2cobe5kIoMtrDSc",
   "createdAt": ISODate("2017-04-26T12:22:48.001+0000"),
   "updatedAt": ISODate("2017-04-26T12:27:13.720+0000"),

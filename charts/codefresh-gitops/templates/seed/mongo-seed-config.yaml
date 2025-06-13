@@ -8,9 +8,9 @@ metadata:
     {{ include "codefresh-gitops.labels" . | nindent 4 }}
 data:
   idps.json: |
-{{ .Files.Get "files/assets/idps.json" | indent 4 }}
+{{ .Files.Get "files/seed/idps.json" | indent 4 }}
   accounts.json: |
-{{ .Files.Get "files/assets/accounts.json" | indent 4 }}
+{{ .Files.Get "files/seed/accounts.json" | indent 4 }}
   users.json: |
-{{ .Files.Get "files/assets/users.json" | indent 4 }}
+{{ .Files.Get "files/seed/users.json" | indent 4 }}
 {{- end }}

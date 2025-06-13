@@ -1,4 +1,4 @@
-{{- $ingressName := printf "%s-ingress" (include "codefresh.fullname" .) }}
+{{- $ingressName := printf "%s-ingress" (include "codefresh-gitops.fullname" .) }}
 {{- if and (hasKey .Values.ingress "nameOverride") .Values.ingress.nameOverride }}
   {{- $ingressName = .Values.ingress.nameOverride }}
 {{- end }}
@@ -8,7 +8,7 @@ kind: Ingress
 metadata:
   name: {{ $ingressName }}
   labels:
-    {{ include "codefresh.labels" . | nindent 4 }}
+    {{ include "codefresh-gitops.labels" . | nindent 4 }}
   {{- with .Values.ingress.labels }}
     {{ toYaml . | nindent 4 }}
   {{- end }}

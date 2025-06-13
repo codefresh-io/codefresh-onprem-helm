@@ -40,22 +40,22 @@ spec:
               name: {{ include "codefresh-gitops.fullname" . }}
         env:
           - name: POSTGRES_USER
-          {{- include "codefresh.postgres-user-env-var-value" . | indent 12 }}
+          {{- include "codefresh-gitops.postgres-user-env-var-value" . | indent 12 }}
           - name: POSTGRES_PASSWORD
-          {{- include "codefresh.postgres-password-env-var-value" . | indent 12 }}
+          {{- include "codefresh-gitops.postgres-password-env-var-value" . | indent 12 }}
           - name: POSTGRES_HOSTNAME
-          {{- include "codefresh.postgres-host-env-var-value" . | indent 12 }}
+          {{- include "codefresh-gitops.postgres-host-env-var-value" . | indent 12 }}
           - name: POSTGRES_SEED_USER
-          {{- include "codefresh.postgres-seed-user-env-var-value" . | indent 12 }}
+          {{- include "codefresh-gitops.postgres-seed-user-env-var-value" . | indent 12 }}
           - name: POSTGRES_SEED_PASSWORD
-          {{- include "codefresh.postgres-seed-password-env-var-value" . | indent 12 }}
+          {{- include "codefresh-gitops.postgres-seed-password-env-var-value" . | indent 12 }}
         resources:
           {{- toYaml .Values.seed.resources | nindent 10 }}
         command:
           - "/bin/bash"
           - "-exc"
           - |
-            {{ .Files.Get "files/postgresSeedJobScript.sh" | nindent 12  }}
+            {{ .Files.Get "files/seed/postgresSeedJobScript.sh" | nindent 12  }}
       {{- with $allNodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

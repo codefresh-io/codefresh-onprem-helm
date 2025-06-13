@@ -72,3 +72,30 @@ Return the secret containing TLS certificates for Ingress
     {{- printf "%s-%s" (include "codefresh-gitops.fullname" .) .Values.ingress.tls.secretName -}}
 {{- end -}}
 {{- end -}}
+
+{{/*
+Return Image Pull Secret
+*/}}
+{{- define "codefresh-gitops.imagePullSecret" }}
+{{- if index .Values ".dockerconfigjson" -}}
+{{- printf "%s" (index .Values ".dockerconfigjson") }}
+{{- else }}
+{{- printf "{\"auths\": {\"%s\": {\"auth\": \"%s\"}}}" .Values.imageCredentials.registry (printf "%s:%s" .Values.imageCredentials.username .Values.imageCredentials.password | b64enc) | b64enc }}
+{{- end }}
+{{- end }}
+
+{{/*
+Calculate Mongo Uri (for On-Prem)
+Usage:
+{{ include "codefresh.calculateMongoUri" (dict "dbName" .Values.path.to.the.value "mongoURI" .Values.path.to.the.value) }}
+*/}}
+{{- define "codefresh-gitops.calculateMongoUri" -}}
+  {{- if contains "?" .mongoURI -}}
+    {{- $mongoURI :=  (splitList "?" .mongoURI) -}}
+    {{- printf "%s%s?%s" (first $mongoURI) .dbName (last $mongoURI) }}
+  {{- else if .mongoURI -}}
+    {{- printf "%s/%s" (trimSuffix "/" .mongoURI) .dbName -}}
+  {{- else -}}
+    {{- printf "" -}}
+  {{- end -}}
+{{- end -}}

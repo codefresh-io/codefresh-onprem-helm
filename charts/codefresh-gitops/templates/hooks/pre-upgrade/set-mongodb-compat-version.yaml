@@ -13,9 +13,9 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ include "codefresh.fullname" . }}-set-mongodb-compat-version
+  name: {{ include "codefresh-gitops.fullname" . }}-set-mongodb-compat-version
   labels:
-    {{ include "codefresh.labels" . | nindent 4 }}
+    {{ include "codefresh-gitops.labels" . | nindent 4 }}
   annotations:
     "helm.sh/hook": pre-upgrade
     "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
@@ -23,39 +23,39 @@ spec:
   ttlSecondsAfterFinished: 180
   template:
     metadata:
-      name: {{ include "codefresh.fullname" . }}-set-mongodb-compat-version
+      name: {{ include "codefresh-gitops.fullname" . }}-set-mongodb-compat-version
       labels:
-        {{ include "codefresh.labels" . | nindent 8 }}
+        {{ include "codefresh-gitops.labels" . | nindent 8 }}
     spec:
       {{- include (printf "%s.image.pullSecrets" $libTemplateName ) . | nindent 6 }}
       securityContext:
         {{- toYaml .Values.hooks.mongodb.podSecurityContext | nindent 8 }}
       containers:
-      - name: {{ include "codefresh.fullname" . }}-set-mongodb-compat-version
+      - name: {{ include "codefresh-gitops.fullname" . }}-set-mongodb-compat-version
         image: {{ include (printf "%s.image.name" $libTemplateName) (dict "image" .Values.hooks.mongodb.image "context" .) }}
         envFrom:
           - secretRef:
-              name: {{ include "codefresh.fullname" . }}
+              name: {{ include "codefresh-gitops.fullname" . }}
         env:
           - name: MONGODB_HOST
-          {{- include "codefresh.mongodb-host-env-var-value" . | indent 12 }}
+          {{- include "codefresh-gitops.mongodb-host-env-var-value" . | indent 12 }}
           - name: MONGODB_USER
-          {{- include "codefresh.mongodb-user-env-var-value" . | indent 12 }}
+          {{- include "codefresh-gitops.mongodb-user-env-var-value" . | indent 12 }}
           - name: MONGODB_PASSWORD
-          {{- include "codefresh.mongodb-password-env-var-value" . | indent 12 }}
+          {{- include "codefresh-gitops.mongodb-password-env-var-value" . | indent 12 }}
           - name: MONGO_URI
-          {{- include "codefresh.mongo-seed-uri-env-var-value" . | indent 12 }}
+          {{- include "codefresh-gitops.mongo-seed-uri-env-var-value" . | indent 12 }}
           - name: MONGODB_ROOT_USER
-          {{- include "codefresh.mongodb-root-user-env-var-value" . | indent 12 }}
+          {{- include "codefresh-gitops.mongodb-root-user-env-var-value" . | indent 12 }}
           - name: MONGODB_ROOT_PASSWORD
-          {{- include "codefresh.mongodb-root-password-env-var-value" . | indent 12 }}
+          {{- include "codefresh-gitops.mongodb-root-password-env-var-value" . | indent 12 }}
           - name: MONGODB_COMPAT_VERSION
             value: "{{ .Values.mongodb.migration.featureCompatibilityVersion }}"
         command:
           - "/bin/bash"
           - "-c"
           - |
-            {{ .Files.Get "files/mongoSetCompatibilityVersion.sh" | nindent 12  }}
+            {{ .Files.Get "files/hooks/mongoSetCompatibilityVersion.sh" | nindent 12  }}
         resources:
           {{- toYaml .Values.hooks.mongodb.resources | nindent 10 }}
         volumeMounts:

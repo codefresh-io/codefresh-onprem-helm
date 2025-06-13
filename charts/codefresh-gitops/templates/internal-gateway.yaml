@@ -2,10 +2,6 @@
 
 {{ $cfApiEndpointsSvc := printf "%s-%s" .Release.Name (index .Subcharts "cfapi" ).Chart.Name }}
 {{ $cfApiEndpointsPort := (index .Subcharts "cfapi" ).Values.service.main.ports.http.port }}
-{{- if index .Values "cfapi-endpoints" "enabled" -}}
-  {{ $cfApiEndpointsSvc = printf "%s-%s" .Release.Name (index .Subcharts "cfapi-endpoints" ).Chart.Name }}
-  {{ $cfApiEndpointsPort = (index .Subcharts "cfapi-endpoints" ).Values.service.main.ports.http.port }}
-{{- end -}}
 
 {{- $internalGatewayContext := (index .Subcharts "internal-gateway") }}
 

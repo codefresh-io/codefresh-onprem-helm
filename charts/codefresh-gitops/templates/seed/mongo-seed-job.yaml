@@ -41,22 +41,22 @@ spec:
               name: {{ include "codefresh-gitops.fullname" . }}
         env:
           - name: MONGODB_HOST
-          {{- include "codefresh.mongodb-host-env-var-value" . | indent 12 }}
+          {{- include "codefresh-gitops.mongodb-host-env-var-value" . | indent 12 }}
           - name: MONGODB_USER
-          {{- include "codefresh.mongodb-user-env-var-value" . | indent 12 }}
+          {{- include "codefresh-gitops.mongodb-user-env-var-value" . | indent 12 }}
           - name: MONGODB_PASSWORD
-          {{- include "codefresh.mongodb-password-env-var-value" . | indent 12 }}
+          {{- include "codefresh-gitops.mongodb-password-env-var-value" . | indent 12 }}
           - name: MONGO_URI
-          {{- include "codefresh.mongo-seed-uri-env-var-value" . | indent 12 }}
+          {{- include "codefresh-gitops.mongo-seed-uri-env-var-value" . | indent 12 }}
           - name: MONGODB_ROOT_USER
-          {{- include "codefresh.mongodb-root-user-env-var-value" . | indent 12 }}
+          {{- include "codefresh-gitops.mongodb-root-user-env-var-value" . | indent 12 }}
           - name: MONGODB_ROOT_PASSWORD
-          {{- include "codefresh.mongodb-root-password-env-var-value" . | indent 12 }}
+          {{- include "codefresh-gitops.mongodb-root-password-env-var-value" . | indent 12 }}
         command:
           - "/bin/bash"
           - "-exc"
           - |
-            {{ .Files.Get "files/mongoSeedJobScript.sh" | nindent 12 }}
+            {{ .Files.Get "files/seed/mongoSeedJobScript.sh" | nindent 12 }}
         resources:
           {{- toYaml .Values.seed.resources | nindent 10 }}
         volumeMounts:

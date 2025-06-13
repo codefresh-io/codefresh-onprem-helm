@@ -1,4 +1,4 @@
-{{ $name := printf "%v-%v-%v" .Release.Name .Values.global.codefresh "version-info" }}
+{{ $name := printf "%v-%v" (include "codefresh-gitops.fullname" .) "version-info" }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
