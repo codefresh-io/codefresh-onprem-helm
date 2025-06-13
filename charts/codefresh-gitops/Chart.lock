@@ -34,9 +34,9 @@ dependencies:
   version: 0.50.2
 - name: argo-platform
   repository: oci://quay.io/codefresh/charts
-  version: 1.3571.0
+  version: 1.3572.0
 - name: argo-hub-platform
   repository: oci://quay.io/codefresh/charts
   version: 0.1.24
-digest: sha256:500deaa56ebb1da2aff4b1806088bd9f0997da809839ce00c357d7bd4fdf2d96
-generated: "2025-06-13T13:10:52.723538+03:00"
+digest: sha256:b56f7da08872d82f1537ef08977d02d58bb1576ce5fbd0ca0d2e196e45c80115
+generated: "2025-06-13T19:04:26.344602+03:00"
