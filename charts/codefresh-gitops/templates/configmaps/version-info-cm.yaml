@@ -1,8 +1,7 @@
-{{ $name := printf "%v-%v" (include "codefresh-gitops.fullname" .) "version-info" }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ $name }}
+  name: codefresh-gitops-version-info
   labels:
     {{ include "codefresh-gitops.labels" . | nindent 4 }}
 data:

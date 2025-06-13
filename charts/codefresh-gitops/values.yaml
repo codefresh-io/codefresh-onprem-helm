@@ -509,6 +509,12 @@ cfui:
       repository: codefresh/cf-ui
     env:
       ON_PREMISE: true
+      ONPREM_VERSION:
+        valueFrom:
+          configMapKeyRef:
+            name: codefresh-gitops-version-info
+            key: app
+            optional: true
   resources:
     requests:
       cpu: 100m
