@@ -1,0 +1,69 @@
+global:
+  appUrl: "" # placeholder
+  imagePullSecrets:
+    - codefresh-registry
+    - dockerhub-creds
+
+ingress:
+  enabled: true
+  ingressClassName: nginx-internal
+  tls:
+    enabled: false
+
+cfapi:
+  rbac:
+    namespaced: false
+  hpa:
+    enabled: true
+  container:
+    env:
+      DEFAULT_SYSTEM_TYPE: GITOPS
+
+cfui:
+  hpa:
+    enabled: true
+
+internal-gateway:
+  hpa:
+    enabled: true
+
+cf-platform-analytics-platform:
+  hpa:
+    enabled: true
+
+argo-platform:
+  analytics-reporter:
+    hpa:
+      enabled: true
+
+  api-events:
+    hpa:
+      enabled: true
+
+  api-graphql:
+    hpa:
+      enabled: true
+
+  cron-executor:
+    hpa:
+      enabled: true
+
+  event-handler:
+    hpa:
+      enabled: true
+
+  ui:
+    hpa:
+      enabled: true
+
+  audit:
+    hpa:
+      enabled: true
+
+  abac:
+    hpa:
+      enabled: true
+
+  promotion-orchestrator:
+    hpa:
+      enabled: true
