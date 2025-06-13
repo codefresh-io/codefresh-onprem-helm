@@ -23,7 +23,7 @@ spec:
       dnsPolicy: ClusterFirst
       containers:
       - name: e2e-seed
-        image: {{ include (printf "%s.image.name" $libTemplateName) (dict "image" .Values.e2e.image "context" .) }}
+        image: {{ printf "%s/%s:%s" .Values.e2e.image.registry .Values.e2e.image.repository (index .Values "argo-platform" "version") | quote }}
         imagePullPolicy: Always
         command:
         - /bin/bash
