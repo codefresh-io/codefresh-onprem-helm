@@ -576,7 +576,9 @@ mongodb:
       - user
       - user
       - user
+      - user
     passwords:
+      - password
       - password
       - password
       - password
@@ -590,6 +592,7 @@ mongodb:
     - read-models
     - audit
     - platform-analytics-postgres
+    - payments # temporary, need to remove
   resources:
     requests:
       cpu: 200m
