@@ -1,5 +1,6 @@
 
 {{- if .Values.e2e.enabled }}
+{{- $libTemplateName := printf "cf-common-%s" (index .Subcharts "cf-common").Chart.Version }}
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -16,6 +17,7 @@ spec:
       labels:
         {{- include "codefresh-gitops.labels" . | nindent 8 }}
     spec:
+      {{- include (printf "%s.image.pullSecrets" $libTemplateName ) . | nindent 6 }}
       serviceAccountName: default
       automountServiceAccountToken: true
       dnsPolicy: ClusterFirst
