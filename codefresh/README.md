@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.8.6](https://img.shields.io/badge/Version-2.8.6-informational?style=flat-square) ![AppVersion: 2.8.0](https://img.shields.io/badge/AppVersion-2.8.0-informational?style=flat-square)
+![Version: 2.8.7](https://img.shields.io/badge/Version-2.8.7-informational?style=flat-square) ![AppVersion: 2.8.0](https://img.shields.io/badge/AppVersion-2.8.0-informational?style=flat-square)
 
 Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
@@ -409,17 +409,25 @@ postgresql:
   enabled: false
 ```
 
-Provide the following env vars to enable SSL connection to Postgres:
+##### Using SSL with a PostgreSQL
+
+Provide the following env vars to enforce SSL connection to PostgresSQL:
 
 ```yaml
 global:
   env:
+    # More info in the official docs: https://www.postgresql.org/docs/current/libpq-envars.html
     PGSSLMODE: "require"
 
 helm-repo-manager:
   env:
     POSTGRES_DISABLE_SSL: "false"
 ```
+
+> ⚠️ **Important!**
+> We do not support custom CA configuration for PostgreSQL, including self-signed certificates. This may cause incompatibility with some providers' default configurations.<br />
+> In particular, Amazon RDS for PostgreSQL version 15 and later requires SSL encryption by default ([ref](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/PostgreSQL.Concepts.General.SSL.html#PostgreSQL.Concepts.General.SSL.Requiring)).<br />
+> We recommend disabling SSL on the provider side in such cases or using the following workaround to mount custom CA certificates: [Mounting private CA certs](#mounting-private-ca-certs)
 
 #### External Redis
 
