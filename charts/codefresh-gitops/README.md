@@ -100,8 +100,6 @@ Helm Chart for Codefresh GitOps On-Prem
 | cfapi.resources | object | `{"limits":{},"requests":{"cpu":"200m","memory":"256Mi"}}` | Resource requests and limits |
 | cfapi.tolerations | list | `[]` | Tolerations configuration |
 | cfui | object | See below | cf-ui |
-| e2e | object | See below | E2E tests |
-| e2e.enabled | bool | `false` | Enable E2E tests |
 | global | object | See below | Global parameters |
 | global.affinity | object | `{}` | Global affinity constraints Apply affinity to all Codefresh subcharts. Will not be applied on Bitnami subcharts. |
 | global.appProtocol | string | `"https"` | Application protocol. |
