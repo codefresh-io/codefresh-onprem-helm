@@ -1162,12 +1162,3 @@ argo-platform:
 
   classic-event-bridge:
     enabled: false
-
-# -- E2E tests
-# @default -- See below
-e2e:
-  # -- Enable E2E tests
-  enabled: false
-  image:
-    registry: us-docker.pkg.dev/codefresh-inc/gcr.io
-    repository: codefresh-io/argo-platform-e2e
