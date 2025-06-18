@@ -18,8 +18,8 @@ annotations:
   # artifacthub.io/containsSecurityUpdates: "true"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
-    - kind: added
-      description: "Add pre-upgrade hook to enable stable feature flags in rabbitmq"
+    - kind: changed
+      description: "Improve PostgreSQL configuration documentation"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
