@@ -40,7 +40,7 @@ dependencies:
   version: 4.12.1
 - name: cluster-providers
   repository: oci://quay.io/codefresh/charts
-  version: 1.17.15
+  version: 1.17.16
 - name: kube-integration
   repository: oci://quay.io/codefresh/charts
   version: 1.31.19
@@ -167,5 +167,5 @@ dependencies:
 - name: salesforce-reporter
   repository: oci://quay.io/codefresh/charts
   version: 1.30.11
-digest: sha256:95f0001ae40b171eef3adecbb31dbf3a89e8bb6e62cb9ce00e94106a18d0aa65
-generated: "2025-06-10T08:35:23.769105+03:00"
+digest: sha256:15c2385008ca0ad7f16ebef784e901c00fc78002d485832eb9bfa3242cc3726f
+generated: "2025-06-19T09:06:31.743012+03:00"

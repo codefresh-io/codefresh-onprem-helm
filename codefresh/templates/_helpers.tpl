@@ -55,7 +55,16 @@ Return runtime image (classic runtime) with private registry prefix
 */}}
 {{- define "codefresh.buildImageName" -}}
   {{- if .registry -}}
-    {{- $imageName :=  (trimPrefix "quay.io/" .imageFullName) -}}
+    {{- $imageName := .imageFullName -}}
+    {{- if hasPrefix "us-docker.pkg.dev/codefresh-inc/public-gcr-io/" $imageName }}
+      {{- $imageName = trimPrefix "us-docker.pkg.dev/codefresh-inc/public-gcr-io/" $imageName }}
+    {{- end }}
+    {{- if hasPrefix "quay.io/" $imageName }}
+      {{- $imageName = trimPrefix "quay.io/" $imageName }}
+    {{- end }}
+    {{- if hasPrefix "docker.io/" $imageName }}
+      {{- $imageName = trimPrefix "docker.io/" $imageName | replace "library" "codefresh" }}
+    {{- end }}
     {{- printf "%s/%s" .registry $imageName -}}
   {{- else -}}
     {{- printf "%s" .imageFullName -}}
