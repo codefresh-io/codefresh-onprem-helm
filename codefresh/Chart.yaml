@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.2.9
+version: 2.2.10
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -15,11 +15,8 @@ appVersion: 2.2.0
 annotations:
   artifacthub.io/alternativeName: "codefresh-onprem"
   artifacthub.io/changes: |
-    - kind: changed
-      description: Security updates
-      links:
-        - name: JIRA Issue
-          url: https://codefresh-io.atlassian.net/browse/CR-22267
+    - kind: fixed
+      description: "(cf-api) Add option to disable auto-index creation in MongoDB"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -210,15 +207,15 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: helm-repo-manager.enabled
   - name: hermes
-    version: "*"
+    version: 0.21.8
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
   - name: nomios
-    version: "*"
+    version: 0.11.5
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
   - name: cronus
-    version: "*"
+    version: 0.8.5
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
   - name: cf-platform-analytics
@@ -240,10 +237,10 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: codefresh-tunnel-server
-    version: "*"
+    version: 0.1.16
     repository: oci://quay.io/codefresh/charts
     condition: codefresh-tunnel-server.enabled
   - name: cf-oidc-provider
     repository: oci://quay.io/codefresh/charts
-    version: "*"
+    version: 0.0.15
     condition: cf-oidc-provider.enabled
