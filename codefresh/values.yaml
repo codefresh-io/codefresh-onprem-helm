@@ -487,7 +487,7 @@ cfapi: &cf-api
     # -- Image
     image:
       # -- Registry prefix
-      registry: gcr.io/codefresh-enterprise
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       # -- Repository
       repository: codefresh/cf-api
     # -- Env vars
@@ -642,7 +642,7 @@ cf-broadcaster:
     replicas: 3
   container:
     image:
-      registry: gcr.io/codefresh-enterprise
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/cf-broadcaster
   env:
     RUNTIME_MONGO_DB: codefresh
@@ -690,7 +690,7 @@ cf-platform-analytics-etlstarter:
 
   container:
     image:
-      registry: gcr.io/codefresh-enterprise
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
     env:
       ENV: production
       DATASET_ID: etl
@@ -707,7 +707,7 @@ cf-platform-analytics-platform:
   mongodbDatabase: "platform-analytics-postgres"
   container:
     image:
-      registry: gcr.io/codefresh-enterprise
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/cf-platform-analytics
   redis:
     enabled: true
@@ -736,7 +736,7 @@ cfsign:
   enabled: true
   container:
     image:
-      registry: gcr.io/codefresh-enterprise
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/cf-tls-sign
     # Explicit default volume mounts overrides due to legacy `cf-` prefix (backward compatibility)
     volumeMounts:
@@ -777,7 +777,7 @@ cfui:
     replicas: 2
   container:
     image:
-      registry: gcr.io/codefresh-enterprise
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/cf-ui
     env:
       ON_PREMISE: true
@@ -801,7 +801,7 @@ charts-manager:
   enabled: true
   container:
     image:
-      registry: gcr.io/codefresh-enterprise
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/charts-manager
   resources:
     requests:
@@ -823,7 +823,7 @@ cluster-providers:
   enabled: true
   container:
     image:
-      registry: gcr.io/codefresh-enterprise
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/cluster-providers
   resources:
     requests:
@@ -856,7 +856,7 @@ context-manager:
   enabled: true
   container:
     image:
-      registry: gcr.io/codefresh-enterprise
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/context-manager
   resources:
     requests:
@@ -878,7 +878,7 @@ cronus:
   enabled: true
   container:
     image:
-      registry: gcr.io/codefresh-enterprise
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/cronus
   affinity: {}
   nodeSelector: {}
@@ -891,7 +891,7 @@ gitops-dashboard-manager:
   enabled: true
   container:
     image:
-      registry: gcr.io/codefresh-enterprise
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/gitops-dashboard-manager
   resources:
     requests:
@@ -913,7 +913,7 @@ helm-repo-manager:
   enabled: true
   container:
     image:
-      registry: gcr.io/codefresh-enterprise
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/helm-repo-manager
   chartmuseum:
     publicHelmRepo: true
@@ -943,7 +943,7 @@ hermes:
     replicas: 1
   container:
     image:
-      registry: gcr.io/codefresh-enterprise
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/hermes
   redis:
     # Deprecation of a separate redis for hermes (CR-705)
@@ -987,7 +987,7 @@ k8s-monitor:
   enabled: true
   container:
     image:
-      registry: gcr.io/codefresh-enterprise
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/cf-k8s-monitor
   resources:
     requests:
@@ -1009,7 +1009,7 @@ kube-integration:
   enabled: true
   container:
     image:
-      registry: gcr.io/codefresh-enterprise
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/kube-integration
   resources:
     requests:
@@ -1061,7 +1061,7 @@ nomios:
   enabled: true
   container:
     image:
-      registry: gcr.io/codefresh-enterprise
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/nomios
   ingress:
     main:
@@ -1219,7 +1219,7 @@ pipeline-manager:
   enabled: true
   container:
     image:
-      registry: gcr.io/codefresh-enterprise
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/pipeline-manager
   resources:
     requests:
@@ -1241,7 +1241,7 @@ runtime-environment-manager:
   enabled: true
   container:
     image:
-      registry: gcr.io/codefresh-enterprise
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/runtime-environment-manager
     env:
       ON_PREMISE: true
@@ -1264,7 +1264,7 @@ tasker-kubernetes:
   enabled: true
   container:
     image:
-      registry: gcr.io/codefresh-enterprise
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/tasker-kubernetes
   resources:
     requests:
@@ -1288,7 +1288,7 @@ argo-hub-platform:
       replicas: 1
   container:
     image:
-      registry: gcr.io/codefresh-enterprise
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh-io/argo-hub-platform
   imagePullSecrets:
     - '{{ .Release.Name }}-registry'
@@ -1351,7 +1351,7 @@ argo-platform:
     # -- Image
     image:
       # -- Registry
-      registry: gcr.io/codefresh-enterprise
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       # -- Repository
       repository: codefresh-io/argo-platform-api-graphql
     # -- Env vars
@@ -1412,7 +1412,7 @@ argo-platform:
     enabled: true
     kind: Deployment
     image:
-      registry: gcr.io/codefresh-enterprise
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh-io/argo-platform-abac
     env:
       MONGODB_PROTOCOL: *mongodb-protocol
@@ -1446,7 +1446,7 @@ argo-platform:
     enabled: true
     kind: Deployment
     image:
-      registry: gcr.io/codefresh-enterprise
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh-io/argo-platform-analytics-reporter
     env:
       ENABLED_DATABASE_TYPES: POSTGRES
@@ -1493,7 +1493,7 @@ argo-platform:
     enabled: true
     kind: Deployment
     image:
-      registry: gcr.io/codefresh-enterprise
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh-io/argo-platform-api-events
     env:
       RABBITMQ_PROTOCOL: *rabbitmq-protocol
@@ -1529,7 +1529,7 @@ argo-platform:
     enabled: true
     kind: Deployment
     image:
-      registry: gcr.io/codefresh-enterprise
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh-io/argo-platform-audit
     env:
       MONGODB_PROTOCOL: *mongodb-protocol
@@ -1570,7 +1570,7 @@ argo-platform:
     enabled: true
     kind: Deployment
     image:
-      registry: gcr.io/codefresh-enterprise
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh-io/argo-platform-cron-executor
     env:
       MONGODB_PROTOCOL: *mongodb-protocol
@@ -1611,7 +1611,7 @@ argo-platform:
     enabled: true
     kind: Deployment
     image:
-      registry: gcr.io/codefresh-enterprise
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh-io/argo-platform-event-handler
     env:
       MONGODB_PROTOCOL: *mongodb-protocol
@@ -1662,7 +1662,7 @@ argo-platform:
     enabled: true
     kind: Deployment
     image:
-      registry: gcr.io/codefresh-enterprise
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh-io/argo-platform-ui
     resources:
       requests:
@@ -1689,7 +1689,7 @@ cf-oidc-provider:
   enabled: false
   container:
     image:
-      registry: gcr.io/codefresh-enterprise
+      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       repository: codefresh/cf-oidc-provider
     env:
       NODE_ENV: production
