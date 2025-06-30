@@ -465,7 +465,9 @@ redis:
 
 > If ElastiCache is used, set `REDIS_TLS` to `true` in `.Values.global.env`
 
-```
+> ⚠️ ElastiCache with **Cluster mode** is not supported!
+
+```yaml
 global:
   env:
     REDIS_TLS: true
