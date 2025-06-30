@@ -463,7 +463,7 @@ redis:
 
 > ⚠️ ElastiCache with **Cluster mode** is not supported!
 
-```
+```yaml
 global:
   env:
     REDIS_TLS: true
