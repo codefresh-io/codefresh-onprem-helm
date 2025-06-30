@@ -461,7 +461,7 @@ redis:
 
 > If ElastiCache is used, set `REDIS_TLS` to `true` in `.Values.global.env`
 
-> ElastiCache with **Cluster mode** is not supported!
+> ⚠️ ElastiCache with **Cluster mode** is not supported!
 
 ```
 global:
