@@ -52,7 +52,7 @@ dependencies:
   version: 1.8.9
 - name: tasker-kubernetes
   repository: oci://quay.io/codefresh/charts
-  version: 1.26.18
+  version: 1.26.19
 - name: context-manager
   repository: oci://quay.io/codefresh/charts
   version: 2.34.3
@@ -61,7 +61,7 @@ dependencies:
   version: 3.139.3
 - name: gitops-dashboard-manager
   repository: oci://quay.io/codefresh/charts
-  version: 1.14.22
+  version: 1.14.23
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
   version: 21.279.5
@@ -121,25 +121,25 @@ dependencies:
   version: 14.98.27
 - name: k8s-monitor
   repository: oci://quay.io/codefresh/charts
-  version: 4.11.14
+  version: 4.11.15
 - name: runtime-environment-manager
   repository: oci://quay.io/codefresh/charts
   version: 3.41.2
 - name: cf-broadcaster
   repository: oci://quay.io/codefresh/charts
-  version: 1.13.0
+  version: 1.13.1
 - name: helm-repo-manager
   repository: oci://quay.io/codefresh/charts
   version: 0.20.2
 - name: hermes
   repository: oci://quay.io/codefresh/charts
-  version: 0.21.18
+  version: 0.21.19
 - name: nomios
   repository: oci://quay.io/codefresh/charts
   version: 0.11.10
 - name: cronus
   repository: oci://quay.io/codefresh/charts
-  version: 0.8.10
+  version: 0.8.11
 - name: cf-platform-analytics
   repository: oci://quay.io/codefresh/charts
   version: 0.50.2
@@ -148,10 +148,10 @@ dependencies:
   version: 0.50.2
 - name: argo-platform
   repository: oci://quay.io/codefresh/charts
-  version: 1.3525.0-onprem-d01c752
+  version: 1.3525.0-onprem-8f99809
 - name: argo-hub-platform
   repository: oci://quay.io/codefresh/charts
-  version: 0.1.24
+  version: 0.1.26
 - name: cf-oidc-provider
   repository: oci://quay.io/codefresh/charts
   version: 0.0.16
@@ -167,5 +167,5 @@ dependencies:
 - name: salesforce-reporter
   repository: oci://quay.io/codefresh/charts
   version: 1.30.11
-digest: sha256:15c2385008ca0ad7f16ebef784e901c00fc78002d485832eb9bfa3242cc3726f
-generated: "2025-06-19T09:06:31.743012+03:00"
+digest: sha256:b95487cfdfbafff3c65bf1bf6a6a52ee4b4505b75f90e0561c499b4e0da5db89
+generated: "2025-07-04T19:13:30.959254+03:00"
