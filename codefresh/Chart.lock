@@ -7,13 +7,13 @@ dependencies:
   version: 0.10.2
 - name: consul
   repository: https://charts.bitnami.com/bitnami
-  version: 11.4.19
+  version: 11.4.23
 - name: mongodb
   repository: https://charts.bitnami.com/bitnami
   version: 15.6.26
 - name: postgresql
   repository: https://charts.bitnami.com/bitnami
-  version: 16.7.4
+  version: 16.7.15
 - name: postgresql-ha
   repository: oci://quay.io/codefresh/charts
   version: 12.0.4
@@ -28,7 +28,7 @@ dependencies:
   version: 15.5.3
 - name: nats
   repository: https://charts.bitnami.com/bitnami
-  version: 9.0.17
+  version: 9.0.22
 - name: builder
   repository: oci://quay.io/codefresh/charts
   version: 1.4.0
@@ -154,7 +154,7 @@ dependencies:
   version: 0.1.26
 - name: cf-oidc-provider
   repository: oci://quay.io/codefresh/charts
-  version: 0.0.16
+  version: 0.1.0
 - name: mailer
   repository: oci://quay.io/codefresh/charts
   version: 1.20.8
@@ -167,5 +167,5 @@ dependencies:
 - name: salesforce-reporter
   repository: oci://quay.io/codefresh/charts
   version: 1.30.11
-digest: sha256:b95487cfdfbafff3c65bf1bf6a6a52ee4b4505b75f90e0561c499b4e0da5db89
-generated: "2025-07-04T19:13:30.959254+03:00"
+digest: sha256:bcbdf49057254959dc4446e798dc302831329c9d2c5d574fcd42088310677172
+generated: "2025-07-07T13:52:26.054991+03:00"
