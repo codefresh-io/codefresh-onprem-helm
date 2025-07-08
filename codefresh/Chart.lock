@@ -64,58 +64,58 @@ dependencies:
   version: 1.14.23
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.5
+  version: 21.279.6
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.5
+  version: 21.279.6
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.5
+  version: 21.279.6
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.5
+  version: 21.279.6
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.5
+  version: 21.279.6
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.5
+  version: 21.279.6
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.5
+  version: 21.279.6
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.5
+  version: 21.279.6
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.5
+  version: 21.279.6
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.5
+  version: 21.279.6
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.5
+  version: 21.279.6
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.5
+  version: 21.279.6
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.5
+  version: 21.279.6
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.5
+  version: 21.279.6
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.5
+  version: 21.279.6
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.5
+  version: 21.279.6
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.5
+  version: 21.279.6
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.5
+  version: 21.279.6
 - name: cfui
   repository: oci://quay.io/codefresh/charts
   version: 14.98.27
@@ -167,5 +167,5 @@ dependencies:
 - name: salesforce-reporter
   repository: oci://quay.io/codefresh/charts
   version: 1.30.11
-digest: sha256:654d1559c6fc0437e96e967bf6dc011b7de87000a664d72617493bab990fc9f6
-generated: "2025-07-07T17:46:20.728332+03:00"
+digest: sha256:fc55db75fa5cc8930046c0cbb3848abb0bb499e9c4e035bc106e6ea53c1b4a3c
+generated: "2025-07-08T14:55:52.15866+03:00"
