@@ -22,6 +22,9 @@ annotations:
       description: "Contains security fixes"
     - kind: added
       description: "cf-api - added logs to verifyUpdate"
+      links:
+        - name: Jira Issue
+          url: https://codefresh-io.atlassian.net/browse/CR-27521
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
