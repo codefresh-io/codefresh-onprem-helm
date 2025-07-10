@@ -20,6 +20,8 @@ annotations:
   artifacthub.io/changes: |
     - kind: security
       description: "Contains security fixes"
+    - kind: fixed
+      description: "ABAC labels and git source storing fix"
     - kind: added
       description: "cf-api - added logs to verifyUpdate"
       links:
@@ -242,7 +244,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
-    version: "1.3525.1-onprem-0cf32ef"
+    version: "1.3525.1-onprem-d2885a5"
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform
