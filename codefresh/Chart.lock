@@ -148,7 +148,7 @@ dependencies:
   version: 0.49.89
 - name: argo-platform
   repository: oci://quay.io/codefresh/charts
-  version: 1.3344.2-onprem-3feba0e
+  version: 1.3344.2-onprem-bf14e9d
 - name: argo-hub-platform
   repository: oci://quay.io/codefresh/charts
   version: 0.1.24

@@ -20,6 +20,8 @@ annotations:
   artifacthub.io/changes: |
     - kind: added
       description: "Logs for SSO user syncing"
+    - kind: fixed
+      description: "ABAC labels fix in argo-platform (#6506)"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -237,7 +239,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
-    version: "1.3344.2-onprem-3feba0e"
+    version: "1.3344.2-onprem-bf14e9d"
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform
