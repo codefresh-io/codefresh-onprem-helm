@@ -21,7 +21,7 @@ annotations:
     - kind: added
       description: "Logs for SSO user syncing"
     - kind: fixed
-      description: "ABAC labels fix in argo-platform (#6506)"
+      description: "ABAC labels fix in argo-platform (#6507)"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
