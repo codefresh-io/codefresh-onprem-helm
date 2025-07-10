@@ -21,7 +21,7 @@ annotations:
     - kind: added
       description: "Logs for SSO user syncing"
     - kind: fixed
-      description: "ABAC labels fix in argo-platform (#6507)"
+      description: "Fixed an issue with labels being ignored for Product promotion rules (#6507)"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
