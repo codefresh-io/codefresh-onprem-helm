@@ -22,8 +22,6 @@ annotations:
       description: "Contains security fixes"
     - kind: fixed
       description: "Fixed an issue with labels being ignored for Product promotion rules (#6506)"
-    - kind: fixed
-      description: "Git source storing for v2 events fix in argo-platform (#6506)"
     - kind: added
       description: "cf-api - added logs to verifyUpdate"
       links:
