@@ -43,7 +43,7 @@ dependencies:
   version: 1.17.16
 - name: kube-integration
   repository: oci://quay.io/codefresh/charts
-  version: 1.31.19
+  version: 1.31.20
 - name: charts-manager
   repository: oci://quay.io/codefresh/charts
   version: 1.23.2
@@ -136,16 +136,16 @@ dependencies:
   version: 0.21.19
 - name: nomios
   repository: oci://quay.io/codefresh/charts
-  version: 0.11.10
+  version: 0.11.11
 - name: cronus
   repository: oci://quay.io/codefresh/charts
   version: 0.8.11
 - name: cf-platform-analytics
   repository: oci://quay.io/codefresh/charts
-  version: 0.50.2
+  version: 0.50.3
 - name: cf-platform-analytics
   repository: oci://quay.io/codefresh/charts
-  version: 0.50.2
+  version: 0.50.3
 - name: argo-platform
   repository: oci://quay.io/codefresh/charts
   version: 1.3525.1-onprem-d2885a5
@@ -167,5 +167,5 @@ dependencies:
 - name: salesforce-reporter
   repository: oci://quay.io/codefresh/charts
   version: 1.30.11
-digest: sha256:9f284e26aae3a4f6bb1476f304e4975283f23cb56c9545f602fb1921d46fe96c
-generated: "2025-07-10T12:42:44.366546+03:00"
+digest: sha256:beb20ee9c132982296929e1453d0e2d673b40326ac7bc66cc4a27cab024c71a7
+generated: "2025-07-11T19:17:55.03346+03:00"
