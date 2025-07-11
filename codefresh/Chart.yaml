@@ -18,8 +18,15 @@ annotations:
   # artifacthub.io/containsSecurityUpdates: "true"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
+    - kind: security
+      description: "Contains security fixes"
+    - kind: fixed
+      description: "Fixed an issue with labels being ignored for Product promotion rules (#6506)"
     - kind: added
-      description: "Logs for SSO user syncing"
+      description: "cf-api - added logs to verifyUpdate"
+      links:
+        - name: Jira Issue
+          url: https://codefresh-io.atlassian.net/browse/CR-27521
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -29,7 +36,7 @@ dependencies:
     version: 0.10.2
     condition: internal-gateway.enabled
   - name: consul
-    version: 11.4.19
+    version: 11.4.23
     repository: https://charts.bitnami.com/bitnami
     condition: consul.enabled
   - name: mongodb
@@ -37,7 +44,7 @@ dependencies:
     repository: https://charts.bitnami.com/bitnami
     condition: mongodb.enabled,mongo.enabled,global.mongoDeploy
   - name: postgresql
-    version: 16.7.4
+    version: 16.7.15
     repository: https://charts.bitnami.com/bitnami
     condition: postgresql.enabled
   - name: postgresql-ha
@@ -57,7 +64,7 @@ dependencies:
     repository: https://charts.bitnami.com/bitnami
     condition: rabbitmq.enabled
   - name: nats
-    version: 9.0.17
+    version: 9.0.22
     repository: https://charts.bitnami.com/bitnami
     condition: nats.enabled
   - name: builder
@@ -237,7 +244,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
-    version: "1.3525.0-onprem-8f99809"
+    version: "1.3525.1-onprem-d2885a5"
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform
