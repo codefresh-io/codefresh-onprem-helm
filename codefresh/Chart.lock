@@ -130,7 +130,7 @@ dependencies:
   version: 1.13.1
 - name: helm-repo-manager
   repository: oci://quay.io/codefresh/charts
-  version: 0.20.2
+  version: 0.23.0
 - name: hermes
   repository: oci://quay.io/codefresh/charts
   version: 0.21.19
@@ -167,5 +167,5 @@ dependencies:
 - name: salesforce-reporter
   repository: oci://quay.io/codefresh/charts
   version: 1.30.11
-digest: sha256:beb20ee9c132982296929e1453d0e2d673b40326ac7bc66cc4a27cab024c71a7
-generated: "2025-07-11T19:17:55.03346+03:00"
+digest: sha256:2c88bab826c444a8c3f605eb47c0e7d20c333a2c7ef189afdb4320d4f05689cd
+generated: "2025-07-15T11:45:47.780728+03:00"

@@ -18,15 +18,8 @@ annotations:
   # artifacthub.io/containsSecurityUpdates: "true"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
-    - kind: security
-      description: "Contains security fixes"
-    - kind: fixed
-      description: "Fixed an issue with labels being ignored for Product promotion rules (#6506)"
-    - kind: added
-      description: "cf-api - added logs to verifyUpdate"
-      links:
-        - name: Jira Issue
-          url: https://codefresh-io.atlassian.net/browse/CR-27521
+     - kind: added
+      description: "Additional logs for SSO user syncing"  
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
