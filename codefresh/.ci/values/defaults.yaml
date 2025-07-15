@@ -1,3 +1,4 @@
+
 seed-e2e:
   enabled: true
 
@@ -22,7 +23,7 @@ cfapi:
 
 ingress:
   enabled: true
-  ingressClassName: nginx-internal
+  ingressClassName: nginx
   tls:
     enabled: false
 
@@ -75,3 +76,7 @@ argo-platform:
   promotion-orchestrator:
     hpa:
       enabled: true
+
+mongodb:
+  migration:
+    enabled: true

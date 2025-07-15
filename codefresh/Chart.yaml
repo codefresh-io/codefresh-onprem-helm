@@ -22,6 +22,8 @@ annotations:
       description: "Logs for SSO user syncing"
     - kind: fixed
       description: "Fixed an issue with labels being ignored for Product promotion rules (#6507)"
+    - kind: fixed
+      description: "Fix image repository for argo-platform"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
