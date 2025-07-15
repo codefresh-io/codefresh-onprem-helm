@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.7.16](https://img.shields.io/badge/Version-2.7.16-informational?style=flat-square) ![AppVersion: 2.7.0](https://img.shields.io/badge/AppVersion-2.7.0-informational?style=flat-square)
+![Version: 2.7.17](https://img.shields.io/badge/Version-2.7.17-informational?style=flat-square) ![AppVersion: 2.7.0](https://img.shields.io/badge/AppVersion-2.7.0-informational?style=flat-square)
 
 Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
@@ -2188,9 +2188,9 @@ After platform upgrade, Consul fails with the error `refusing to rejoin cluster 
 | argo-platform.api-graphql.env | object | See below | Env vars |
 | argo-platform.api-graphql.hpa | object | `{"enabled":false}` | HPA |
 | argo-platform.api-graphql.hpa.enabled | bool | `false` | Enable autoscaler |
-| argo-platform.api-graphql.image | object | `{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh-io/argo-platform-api-graphql"}` | Image |
+| argo-platform.api-graphql.image | object | `{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/argo-platform-api-graphql"}` | Image |
 | argo-platform.api-graphql.image.registry | string | `"us-docker.pkg.dev/codefresh-enterprise/gcr.io"` | Registry |
-| argo-platform.api-graphql.image.repository | string | `"codefresh-io/argo-platform-api-graphql"` | Repository |
+| argo-platform.api-graphql.image.repository | string | `"codefresh/argo-platform-api-graphql"` | Repository |
 | argo-platform.api-graphql.kind | string | `"Deployment"` | Controller kind. Currently, only `Deployment` is supported |
 | argo-platform.api-graphql.pdb | object | `{"enabled":false}` | PDB |
 | argo-platform.api-graphql.pdb.enabled | bool | `false` | Enable pod disruption budget |
