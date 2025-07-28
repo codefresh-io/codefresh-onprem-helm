@@ -2669,4 +2669,4 @@ After platform upgrade, Consul fails with the error `refusing to rejoin cluster 
 
 ### Action Required: Remove the `applications-tree` Collection
 
-The `applications-tree` collection in the `codefresh` MongoDB database is no longer used and should be deleted. To maintain optimal database performance and prevent the accumulation of obsolete data, drop this collection from the `codefresh` database.
+After completing the upgrade, delete the `applications-tree` collection from the `codefresh` MongoDB database. This collection is no longer used and should be removed to maintain optimal database performance and prevent the accumulation of obsolete data.
