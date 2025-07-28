@@ -20,7 +20,7 @@ msg() { echo -e "\e[32mINFO ---> $1\e[0m"; }
 err() { echo -e "\e[31mERR ---> $1\e[0m" ; return 1; }
 
 runtimeJson=$(mktemp)
-codefresh get sys-re system/root --extend -o json > $runtimeJson
+codefresh get sys-re system/linux_paying_plan --extend -o json > $runtimeJson
 
 RUNTIME_IMAGES=(
     ENGINE_IMAGE

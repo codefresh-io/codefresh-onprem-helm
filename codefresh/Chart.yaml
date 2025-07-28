@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.8.9
+version: 2.8.10
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -20,20 +20,13 @@ annotations:
   artifacthub.io/changes: |
     - kind: security
       description: "Contains security fixes"
-    - kind: fixed
-      description: "Fixed an issue with labels being ignored for Product promotion rules (#6506)"
-    - kind: added
-      description: "cf-api - added logs to verifyUpdate"
-      links:
-        - name: Jira Issue
-          url: https://codefresh-io.atlassian.net/browse/CR-27521
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
     version: 0.18.1
   - name: internal-gateway
     repository: oci://quay.io/codefresh/charts
-    version: 0.10.2
+    version: 0.10.6
     condition: internal-gateway.enabled
   - name: consul
     version: 11.4.23
@@ -218,7 +211,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: cf-broadcaster.enabled
   - name: helm-repo-manager
-    version: "*"
+    version: "0.20.2"
     repository: oci://quay.io/codefresh/charts
     condition: helm-repo-manager.enabled
   - name: hermes
@@ -244,7 +237,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
-    version: "1.3525.1-onprem-d2885a5"
+    version: "1.3525.2-onprem-45cda44"
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform
