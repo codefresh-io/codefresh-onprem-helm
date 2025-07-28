@@ -2665,3 +2665,8 @@ After platform upgrade, Consul fails with the error `refusing to rejoin cluster 
 | segment-reporter.enabled | bool | `false` |  |
 | tasker-kubernetes | object | `{"affinity":{},"container":{"image":{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/tasker-kubernetes"}},"enabled":true,"hpa":{"enabled":false},"imagePullSecrets":[],"nodeSelector":{},"pdb":{"enabled":false},"podSecurityContext":{},"resources":{"limits":{},"requests":{"cpu":"100m","memory":"128Mi"}},"tolerations":[]}` | tasker-kubernetes |
 | webTLS | object | `{"cert":"","enabled":false,"key":"","secretName":"star.codefresh.io"}` | DEPRECATED - Use `.Values.ingress.tls` instead TLS secret for Ingress |
+
+
+### Action Required: Remove the `applications-tree` Collection
+
+The `applications-tree` collection in the `codefresh` MongoDB database is no longer used and should be deleted. To maintain optimal database performance and prevent the accumulation of obsolete data, drop this collection from the `codefresh` database.
