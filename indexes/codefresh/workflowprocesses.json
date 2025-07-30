@@ -212,9 +212,6 @@
     {
         "keys": {
             "created": 1
-        },
-        "options": {
-            "expireAfterSeconds": 31536000
         }
     },
     {
