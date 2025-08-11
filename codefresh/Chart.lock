@@ -124,7 +124,7 @@ dependencies:
   version: 4.11.16
 - name: runtime-environment-manager
   repository: oci://quay.io/codefresh/charts
-  version: 3.41.3
+  version: 3.41.4
 - name: cf-broadcaster
   repository: oci://quay.io/codefresh/charts
   version: 1.13.2
@@ -167,5 +167,5 @@ dependencies:
 - name: salesforce-reporter
   repository: oci://quay.io/codefresh/charts
   version: 1.30.11
-digest: sha256:e2e4e1952f711bce5964851802a9bdbc84c3337e673ef58e149ec9e2a46112e6
-generated: "2025-07-28T12:05:24.039668+03:00"
+digest: sha256:a6821af345fcbf2cfe2e3c5b177432a9f38a00d46cbdb4b42200a04c1114ef61
+generated: "2025-08-11T14:58:21.1776+03:00"
