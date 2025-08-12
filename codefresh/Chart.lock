@@ -52,7 +52,7 @@ dependencies:
   version: 1.8.10
 - name: tasker-kubernetes
   repository: oci://quay.io/codefresh/charts
-  version: 1.26.20
+  version: 1.27.0
 - name: context-manager
   repository: oci://quay.io/codefresh/charts
   version: 2.34.4
@@ -127,7 +127,7 @@ dependencies:
   version: 3.41.4
 - name: cf-broadcaster
   repository: oci://quay.io/codefresh/charts
-  version: 1.13.2
+  version: 1.14.0
 - name: helm-repo-manager
   repository: oci://quay.io/codefresh/charts
   version: 0.20.2
@@ -142,10 +142,10 @@ dependencies:
   version: 0.8.12
 - name: cf-platform-analytics
   repository: oci://quay.io/codefresh/charts
-  version: 0.50.4
+  version: 0.51.0
 - name: cf-platform-analytics
   repository: oci://quay.io/codefresh/charts
-  version: 0.50.4
+  version: 0.51.0
 - name: argo-platform
   repository: oci://quay.io/codefresh/charts
   version: 1.3525.2-onprem-45cda44
@@ -167,5 +167,5 @@ dependencies:
 - name: salesforce-reporter
   repository: oci://quay.io/codefresh/charts
   version: 1.30.11
-digest: sha256:4314c5c3a04468ac7f76a542444ab2a30b35312bfedd6b0eab3aa445c47f0162
-generated: "2025-08-11T15:52:40.225726+03:00"
+digest: sha256:6954d5a5b25d2ec511f1348e2297280ce72d96eb3666de8b4304360acc631d74
+generated: "2025-08-12T18:15:23.023096+03:00"
