@@ -40,7 +40,7 @@ dependencies:
   version: 4.12.1
 - name: cluster-providers
   repository: oci://quay.io/codefresh/charts
-  version: 1.17.17
+  version: 1.18.0
 - name: kube-integration
   repository: oci://quay.io/codefresh/charts
   version: 1.32.0
@@ -61,7 +61,7 @@ dependencies:
   version: 3.139.4
 - name: gitops-dashboard-manager
   repository: oci://quay.io/codefresh/charts
-  version: 1.14.24
+  version: 1.15.0
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
   version: 21.279.7
@@ -163,9 +163,9 @@ dependencies:
   version: 2.23.19
 - name: segment-reporter
   repository: oci://quay.io/codefresh/charts
-  version: 1.17.8
+  version: 1.18.0
 - name: salesforce-reporter
   repository: oci://quay.io/codefresh/charts
   version: 1.30.11
-digest: sha256:6954d5a5b25d2ec511f1348e2297280ce72d96eb3666de8b4304360acc631d74
-generated: "2025-08-12T18:15:23.023096+03:00"
+digest: sha256:a583f9c12eaab50611647105e24fdd974dc1c4b9c16d81c5914509a63588f333
+generated: "2025-08-13T13:50:26.887188+03:00"
