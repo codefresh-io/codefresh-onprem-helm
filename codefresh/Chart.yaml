@@ -18,7 +18,7 @@ annotations:
   # artifacthub.io/containsSecurityUpdates: "true"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
-    - kind: fixed
+    - kind: security
       description: "Fix RabbitMQ version requirements."
 dependencies:
   - name: cf-common
