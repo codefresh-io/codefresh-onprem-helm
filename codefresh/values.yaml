@@ -1243,7 +1243,7 @@ redis-ha:
 rabbitmq:
   enabled: true
   image:
-    tag: "4.0"
+    tag: "4.1.3"
   replicaCount: 1
   auth:
     username: user
