@@ -148,7 +148,7 @@ dependencies:
   version: 0.51.0
 - name: argo-platform
   repository: oci://quay.io/codefresh/charts/dev
-  version: 1.3525.3-upd-rabbit-argo-pl-onprem-d431039
+  version: 1.3525.4-upd-rabbit-argo-pl-onprem-dc72b84
 - name: argo-hub-platform
   repository: oci://quay.io/codefresh/charts
   version: 0.1.27
@@ -167,5 +167,5 @@ dependencies:
 - name: salesforce-reporter
   repository: oci://quay.io/codefresh/charts
   version: 1.30.11
-digest: sha256:1a6cc5bf06a2123dbca792a15bda9be30cd9130d86430b766c9df05d73ff3296
-generated: "2025-08-19T18:30:11.39031+03:00"
+digest: sha256:66cc72cd7a3c0e94208d3ab759da35387614380faea879f4aab86ecb0e93e3cd
+generated: "2025-08-19T18:38:43.97966+03:00"
