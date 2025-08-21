@@ -25,7 +25,7 @@ dependencies:
   version: 4.26.1
 - name: rabbitmq
   repository: https://charts.bitnami.com/bitnami
-  version: 15.5.3
+  version: 16.0.13
 - name: nats
   repository: https://charts.bitnami.com/bitnami
   version: 9.0.22
@@ -167,5 +167,5 @@ dependencies:
 - name: salesforce-reporter
   repository: oci://quay.io/codefresh/charts
   version: 1.30.11
-digest: sha256:09536eaec5f9b3e4cc4e034d2ef21508c957f399d7fc50330a23763a6428448a
-generated: "2025-08-21T12:31:06.191895+03:00"
+digest: sha256:9c12c78fb328a95c2a5a914e9c3faaab092eaa5bf34d65e5fe5580374f4374f9
+generated: "2025-08-21T13:26:27.321807+03:00"
