@@ -1445,7 +1445,7 @@ argo-platform:
     # -- Image
     image:
       # -- Registry
-      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
+      registry: us-docker.pkg.dev/codefresh-inc/gcr.io
       # -- Repository
       repository: codefresh-io/dev/argo-platform-api-graphql
     # -- Env vars
