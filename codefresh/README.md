@@ -2430,9 +2430,9 @@ After platform upgrade, Consul fails with the error `refusing to rejoin cluster 
 | argo-platform.api-graphql.env | object | See below | Env vars |
 | argo-platform.api-graphql.hpa | object | `{"enabled":false}` | HPA |
 | argo-platform.api-graphql.hpa.enabled | bool | `false` | Enable autoscaler |
-| argo-platform.api-graphql.image | object | `{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/argo-platform-api-graphql"}` | Image |
+| argo-platform.api-graphql.image | object | `{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh-io/dev/argo-platform-api-graphql"}` | Image |
 | argo-platform.api-graphql.image.registry | string | `"us-docker.pkg.dev/codefresh-enterprise/gcr.io"` | Registry |
-| argo-platform.api-graphql.image.repository | string | `"codefresh/argo-platform-api-graphql"` | Repository |
+| argo-platform.api-graphql.image.repository | string | `"codefresh-io/dev/argo-platform-api-graphql"` | Repository |
 | argo-platform.api-graphql.kind | string | `"Deployment"` | Controller kind. Currently, only `Deployment` is supported |
 | argo-platform.api-graphql.pdb | object | `{"enabled":false}` | PDB |
 | argo-platform.api-graphql.pdb.enabled | bool | `false` | Enable pod disruption budget |
