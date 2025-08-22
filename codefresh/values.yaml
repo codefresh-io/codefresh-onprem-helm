@@ -1447,7 +1447,7 @@ argo-platform:
       # -- Registry
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       # -- Repository
-      repository: codefresh-io/argo-platform-api-graphql
+      repository: codefresh/argo-platform-api-graphql
     # -- Env vars
     # @default -- See below
     env:
@@ -1510,7 +1510,7 @@ argo-platform:
     kind: Deployment
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
-      repository: codefresh-io/argo-platform-abac
+      repository: codefresh/argo-platform-abac
     env:
       MONGODB_PROTOCOL: *mongodb-protocol
       MONGODB_OPTIONS: *mongodb-options
@@ -1546,7 +1546,7 @@ argo-platform:
     kind: Deployment
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
-      repository: codefresh-io/argo-platform-analytics-reporter
+      repository: codefresh/argo-platform-analytics-reporter
     env:
       ENABLED_DATABASE_TYPES: POSTGRES
       MONGODB_PROTOCOL: *mongodb-protocol
@@ -1595,7 +1595,7 @@ argo-platform:
     kind: Deployment
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
-      repository: codefresh-io/argo-platform-api-events
+      repository: codefresh/argo-platform-api-events
     env:
       RABBITMQ_PROTOCOL: *rabbitmq-protocol
       RABBITMQ_URLS: $(RABBITMQ_PROTOCOL)://$(RABBITMQ_USER):$(RABBITMQ_PASSWORD)@$(RABBITMQ_HOST)
@@ -1633,7 +1633,7 @@ argo-platform:
     kind: Deployment
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
-      repository: codefresh-io/argo-platform-audit
+      repository: codefresh/argo-platform-audit
     env:
       MONGODB_PROTOCOL: *mongodb-protocol
       MONGODB_OPTIONS: *mongodb-options
@@ -1676,7 +1676,7 @@ argo-platform:
     kind: Deployment
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
-      repository: codefresh-io/argo-platform-cron-executor
+      repository: codefresh/argo-platform-cron-executor
     env:
       MONGODB_PROTOCOL: *mongodb-protocol
       MONGODB_OPTIONS: *mongodb-options
@@ -1719,7 +1719,7 @@ argo-platform:
     kind: Deployment
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
-      repository: codefresh-io/argo-platform-event-handler
+      repository: codefresh/argo-platform-event-handler
     env:
       MONGODB_PROTOCOL: *mongodb-protocol
       MONGODB_OPTIONS: *mongodb-options
@@ -1772,7 +1772,7 @@ argo-platform:
     kind: Deployment
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
-      repository: codefresh-io/argo-platform-ui
+      repository: codefresh/argo-platform-ui
     resources:
       requests:
         cpu: 100m
@@ -1793,7 +1793,7 @@ argo-platform:
     kind: Deployment
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
-      repository: codefresh-io/argo-platform-broadcaster
+      repository: codefresh/argo-platform-broadcaster
     env:
       MONGODB_PROTOCOL: *mongodb-protocol
       MONGODB_OPTIONS: *mongodb-options
@@ -1836,7 +1836,7 @@ argo-platform:
     kind: Deployment
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
-      repository: codefresh-io/argo-platform-promotion-orchestrator
+      repository: codefresh/argo-platform-promotion-orchestrator
     env:
       MONGODB_PROTOCOL: *mongodb-protocol
       MONGODB_OPTIONS: *mongodb-options
