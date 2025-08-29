@@ -79,3 +79,17 @@ argo-platform:
 mongodb:
   migration:
     enabled: true
+  image:
+    repository: bitnamilegacy/mongodb
+
+consul:
+  image:
+    repository: bitnamilegacy/consul
+
+nats:
+  image:
+    repository: bitnamilegacy/nats
+
+rabbitmq:
+  image:
+    repository: bitnamilegacy/rabbitmq
