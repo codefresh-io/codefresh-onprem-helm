@@ -81,6 +81,8 @@ mongodb:
     enabled: true
   image:
     repository: bitnamilegacy/mongodb
+  nodeSelector:
+    kubernetes.io/arch: amd64
 
 consul:
   image:
