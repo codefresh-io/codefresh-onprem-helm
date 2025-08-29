@@ -95,3 +95,8 @@ nats:
 rabbitmq:
   image:
     repository: bitnamilegacy/rabbitmq
+
+hooks:
+  mongodb:
+    nodeSelector:
+      kubernetes.io/arch: amd64
