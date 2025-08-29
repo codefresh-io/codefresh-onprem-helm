@@ -80,3 +80,24 @@ argo-platform:
 mongodb:
   migration:
     enabled: true
+  image:
+    repository: bitnamilegacy/mongodb
+  nodeSelector:
+    kubernetes.io/arch: amd64
+
+consul:
+  image:
+    repository: bitnamilegacy/consul
+
+nats:
+  image:
+    repository: bitnamilegacy/nats
+
+rabbitmq:
+  image:
+    repository: bitnamilegacy/rabbitmq
+
+hooks:
+  mongodb:
+    nodeSelector:
+      kubernetes.io/arch: amd64

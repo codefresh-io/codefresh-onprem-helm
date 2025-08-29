@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.7.17
+version: 2.7.18
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -18,12 +18,11 @@ annotations:
   artifacthub.io/containsSecurityUpdates: "true"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
-    - kind: added
-      description: "Logs for SSO user syncing"
-    - kind: fixed
-      description: "Fixed an issue with labels being ignored for Product promotion rules (#6507)"
-    - kind: fixed
-      description: "Fix image repository for argo-platform"
+    - kind: changed
+      description: "Change bitnami subcharts to use bitnamilegacy repository"
+      links:
+        - name: GitHub Issue
+          url: https://github.com/bitnami/charts/issues/35164
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -77,11 +76,11 @@ dependencies:
     repository: https://kubernetes.github.io/ingress-nginx
     condition: ingress-nginx.enabled
   - name: cluster-providers
-    version: "*"
+    version: "~1.17.16"
     repository: oci://quay.io/codefresh/charts
     condition: cluster-providers.enabled
   - name: kube-integration
-    version: "*"
+    version: "~1.31.20"
     repository: oci://quay.io/codefresh/charts
     condition: kube-integration.enabled
   - name: charts-manager
@@ -89,11 +88,11 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: charts-manager.enabled
   - name: cfsign
-    version: "*"
+    version: "~1.8.0"
     repository: oci://quay.io/codefresh/charts
     condition: cfsign.enabled
   - name: tasker-kubernetes
-    version: "*"
+    version: "~1.26.0"
     repository: oci://quay.io/codefresh/charts
     condition: tasker-kubernetes.enabled
   - name: context-manager
@@ -105,7 +104,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: pipeline-manager.enabled
   - name: gitops-dashboard-manager
-    version: "*"
+    version: "~1.14.0"
     repository: oci://quay.io/codefresh/charts
     condition: gitops-dashboard-manager.enabled
   - name: cfapi
@@ -203,7 +202,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: cfui.enabled
   - name: k8s-monitor
-    version: "*"
+    version: "~4.11.0"
     repository: oci://quay.io/codefresh/charts
     condition: k8s-monitor.enabled
   - name: runtime-environment-manager
@@ -211,7 +210,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: runtime-environment-manager.enabled
   - name: cf-broadcaster
-    version: "*"
+    version: "~1.13.0"
     repository: oci://quay.io/codefresh/charts
     condition: cf-broadcaster.enabled
   - name: helm-repo-manager
@@ -219,15 +218,15 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: helm-repo-manager.enabled
   - name: hermes
-    version: "*"
+    version: "~0.21.0"
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
   - name: nomios
-    version: "*"
+    version: "~0.11.0"
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
   - name: cronus
-    version: "*"
+    version: "~0.8.11"
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
   - name: cf-platform-analytics
@@ -245,30 +244,26 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform
-    version: "*"
+    version: "~0.1.26"
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: cf-oidc-provider
     repository: oci://quay.io/codefresh/charts
-    version: "*"
+    version: "~0.1.0"
     condition: cf-oidc-provider.enabled
   - name: mailer
-    version: "*"
+    version: "~1.20.0"
     repository: oci://quay.io/codefresh/charts
     condition: mailer.enabled
   - name: payments
-    version: "*"
+    version: "~2.23.0"
     repository: oci://quay.io/codefresh/charts
     condition: payments.enabled
   - name: segment-reporter
-    version: "*"
+    version: "~1.17.0"
     repository: oci://quay.io/codefresh/charts
     condition: segment-reporter.enabled
   - name: salesforce-reporter
-    version: "*"
+    version: "~1.30.0"
     repository: oci://quay.io/codefresh/charts
     condition: salesforce-reporter.enabled
-  - name: onboarding-status
-    version: "*"
-    repository: oci://quay.io/codefresh/charts
-    condition: onboarding-status.enabled
