@@ -20,6 +20,11 @@ annotations:
   artifacthub.io/changes: |
     - kind: changed
       description: "Update internal-gateway"
+    - kind: changed
+      description: "Change bitnami subcharts to use bitnamilegacy repository"
+      links:
+        - name: GitHub Issue
+          url: https://github.com/bitnami/charts/issues/35164
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts

@@ -4,7 +4,7 @@ dependencies:
   version: 0.18.1
 - name: internal-gateway
   repository: oci://quay.io/codefresh/charts
-  version: 0.10.6
+  version: 0.11.0
 - name: consul
   repository: https://charts.bitnami.com/bitnami
   version: 11.4.32
@@ -160,12 +160,12 @@ dependencies:
   version: 1.21.0
 - name: payments
   repository: oci://quay.io/codefresh/charts
-  version: 2.24.0
+  version: 2.24.1
 - name: segment-reporter
   repository: oci://quay.io/codefresh/charts
   version: 1.18.0
 - name: salesforce-reporter
   repository: oci://quay.io/codefresh/charts
   version: 1.30.11
-digest: sha256:6a1af6f7dc7b6b6ea843b922929016b581a031a63838eaf107a687cc78d89b71
-generated: "2025-08-22T10:31:59.553695+03:00"
+digest: sha256:4e7b52e0ee6d81e910d3e7352b14cb5a7d01c51a7bcd7a8e455c53cc2564d982
+generated: "2025-08-29T15:06:33.935106+03:00"

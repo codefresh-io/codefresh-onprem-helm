@@ -913,6 +913,8 @@ cluster-providers:
 # Ref: https://github.com/bitnami/charts/blob/main/bitnami/consul/values.yaml
 consul:
   enabled: true
+  image:
+    repository: bitnamilegacy/consul
   datacenterName: codefresh-onprem
   replicaCount: 1
   extraEnvVars:
@@ -1113,6 +1115,8 @@ kube-integration:
 mongodb:
   enabled: true
   architecture: standalone
+  image:
+    repository: bitnamilegacy/mongodb
   useStatefulSet: true
   auth:
     enabled: true
@@ -1131,6 +1135,8 @@ mongodb:
 # Ref: https://github.com/bitnami/charts/blob/main/bitnami/nats/values.yaml
 nats:
   enabled: true
+  image:
+    repository: bitnamilegacy/nats
   replicaCount: 1
   auth:
     enabled: false
@@ -1251,6 +1257,7 @@ redis-ha:
 rabbitmq:
   enabled: true
   image:
+    repository: bitnamilegacy/rabbitmq
     tag: "4.1.3"
   replicaCount: 1
   auth:
