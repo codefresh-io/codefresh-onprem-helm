@@ -747,6 +747,8 @@ cf-platform-analytics-platform:
   redis:
     enabled: true
     nameOverride: redis-platform-analytics
+    image:
+      repository: bitnamilegacy/redis
   resources:
     requests:
       cpu: 100m
@@ -883,6 +885,8 @@ cluster-providers:
 # Ref: https://github.com/bitnami/charts/blob/main/bitnami/consul/values.yaml
 consul:
   enabled: true
+  image:
+    repository: bitnamilegacy/consul
   datacenterName: codefresh-onprem
   replicaCount: 1
   extraEnvVars:
@@ -1083,6 +1087,7 @@ kube-integration:
 mongodb:
   enabled: true
   image:
+    repository: bitnamilegacy/mongodb
     tag: "6.0"
   architecture: standalone
   useStatefulSet: true
@@ -1103,6 +1108,8 @@ mongodb:
 # Ref: https://github.com/bitnami/charts/blob/main/bitnami/nats/values.yaml
 nats:
   enabled: true
+  image:
+    repository: bitnamilegacy/nats
   replicaCount: 1
   auth:
     enabled: false
@@ -1182,6 +1189,8 @@ postgresql-ha:
 # Ref: https://github.com/bitnami/charts/blob/main/bitnami/redis/values.yaml
 redis:
   enabled: true
+  image:
+    repository: bitnamilegacy/redis
   architecture: standalone
   auth:
     password: "hoC9szf7NtrU"
@@ -1219,6 +1228,7 @@ redis-ha:
 rabbitmq:
   enabled: true
   image:
+    repository: bitnamilegacy/rabbitmq
     tag: 3.13.7-debian-12-r5
   replicaCount: 1
   auth:
