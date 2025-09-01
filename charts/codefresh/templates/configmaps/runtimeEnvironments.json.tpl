@@ -29,7 +29,7 @@
         "inCluster": true,
         "namespace": "{{ .Release.Namespace }}"
       },
-      "image": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.dockerRegistry "imageFullName" .Values.runtimeImages.ENGINE_IMAGE) }}",
+      "image": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.imageRegistry "imageFullName" .Values.runtimeImages.ENGINE_IMAGE) }}",
       "command": [
         "npm",
         "run",
@@ -45,19 +45,19 @@
         "RUNTIME_ADDITIONAL_INTERNAL_REGISTRIES_JSON": "/etc/admin/additional-internal-registries.json",
         "LOGGER_LEVEL": "debug",
         "NODE_ENV": "kubernetes",
-        "DOCKER_PUSHER_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.dockerRegistry "imageFullName" .Values.runtimeImages.DOCKER_PUSHER_IMAGE) }}",
-        "DOCKER_PULLER_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.dockerRegistry "imageFullName" .Values.runtimeImages.DOCKER_PULLER_IMAGE) }}",
-        "DOCKER_BUILDER_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.dockerRegistry "imageFullName" .Values.runtimeImages.DOCKER_BUILDER_IMAGE) }}",
-        "CONTAINER_LOGGER_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.dockerRegistry "imageFullName" .Values.runtimeImages.CONTAINER_LOGGER_IMAGE) }}",
-        "GIT_CLONE_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.dockerRegistry "imageFullName" .Values.runtimeImages.GIT_CLONE_IMAGE) }}",
-        "DOCKER_TAG_PUSHER_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.dockerRegistry "imageFullName" .Values.runtimeImages.DOCKER_TAG_PUSHER_IMAGE) }}",
-        "FS_OPS_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.dockerRegistry "imageFullName" .Values.runtimeImages.FS_OPS_IMAGE) }}",
-        "COMPOSE_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.dockerRegistry "imageFullName" .Values.runtimeImages.COMPOSE_IMAGE) }}",
-        "KUBE_DEPLOY": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.dockerRegistry "imageFullName" .Values.runtimeImages.KUBE_DEPLOY) }}",
-        "TEMPLATE_ENGINE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.dockerRegistry "imageFullName" .Values.runtimeImages.TEMPLATE_ENGINE) }}",
-        "PIPELINE_DEBUGGER_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.dockerRegistry "imageFullName" .Values.runtimeImages.PIPELINE_DEBUGGER_IMAGE) }}",
-        "CR_6177_FIXER": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.dockerRegistry "imageFullName" .Values.runtimeImages.CR_6177_FIXER) }}",
-        "GC_BUILDER_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.dockerRegistry "imageFullName" .Values.runtimeImages.GC_BUILDER_IMAGE) }}",
+        "DOCKER_PUSHER_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.imageRegistry "imageFullName" .Values.runtimeImages.DOCKER_PUSHER_IMAGE) }}",
+        "DOCKER_PULLER_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.imageRegistry "imageFullName" .Values.runtimeImages.DOCKER_PULLER_IMAGE) }}",
+        "DOCKER_BUILDER_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.imageRegistry "imageFullName" .Values.runtimeImages.DOCKER_BUILDER_IMAGE) }}",
+        "CONTAINER_LOGGER_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.imageRegistry "imageFullName" .Values.runtimeImages.CONTAINER_LOGGER_IMAGE) }}",
+        "GIT_CLONE_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.imageRegistry "imageFullName" .Values.runtimeImages.GIT_CLONE_IMAGE) }}",
+        "DOCKER_TAG_PUSHER_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.imageRegistry "imageFullName" .Values.runtimeImages.DOCKER_TAG_PUSHER_IMAGE) }}",
+        "FS_OPS_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.imageRegistry "imageFullName" .Values.runtimeImages.FS_OPS_IMAGE) }}",
+        "COMPOSE_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.imageRegistry "imageFullName" .Values.runtimeImages.COMPOSE_IMAGE) }}",
+        "KUBE_DEPLOY": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.imageRegistry "imageFullName" .Values.runtimeImages.KUBE_DEPLOY) }}",
+        "TEMPLATE_ENGINE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.imageRegistry "imageFullName" .Values.runtimeImages.TEMPLATE_ENGINE) }}",
+        "PIPELINE_DEBUGGER_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.imageRegistry "imageFullName" .Values.runtimeImages.PIPELINE_DEBUGGER_IMAGE) }}",
+        "CR_6177_FIXER": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.imageRegistry "imageFullName" .Values.runtimeImages.CR_6177_FIXER) }}",
+        "GC_BUILDER_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.imageRegistry "imageFullName" .Values.runtimeImages.GC_BUILDER_IMAGE) }}",
         "NODE_TLS_REJECT_UNAUTHORIZED": "0"
       },
       "volumeMounts": {
@@ -109,7 +109,7 @@
       },
       "description": "System hybrid runtime environment for kubernetes",
       "runtimeScheduler": {
-          "image": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.dockerRegistry "imageFullName" .Values.runtimeImages.ENGINE_IMAGE) }}",
+          "image": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.imageRegistry "imageFullName" .Values.runtimeImages.ENGINE_IMAGE) }}",
           "command": [
               "npm",
               "run",
@@ -121,19 +121,19 @@
               "LOGGER_LEVEL": "debug",
               "NODE_ENV": "kubernetes",
               "METRICS_CODEFRESH_ENABLED": "true",
-              "DOCKER_PUSHER_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.dockerRegistry "imageFullName" .Values.runtimeImages.DOCKER_PUSHER_IMAGE) }}",
-              "DOCKER_PULLER_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.dockerRegistry "imageFullName" .Values.runtimeImages.DOCKER_PULLER_IMAGE) }}",
-              "DOCKER_BUILDER_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.dockerRegistry "imageFullName" .Values.runtimeImages.DOCKER_BUILDER_IMAGE) }}",
-              "CONTAINER_LOGGER_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.dockerRegistry "imageFullName" .Values.runtimeImages.CONTAINER_LOGGER_IMAGE) }}",
-              "GIT_CLONE_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.dockerRegistry "imageFullName" .Values.runtimeImages.GIT_CLONE_IMAGE) }}",
-              "DOCKER_TAG_PUSHER_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.dockerRegistry "imageFullName" .Values.runtimeImages.DOCKER_TAG_PUSHER_IMAGE) }}",
-              "FS_OPS_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.dockerRegistry "imageFullName" .Values.runtimeImages.FS_OPS_IMAGE) }}",
-              "COMPOSE_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.dockerRegistry "imageFullName" .Values.runtimeImages.COMPOSE_IMAGE) }}",
-              "KUBE_DEPLOY": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.dockerRegistry "imageFullName" .Values.runtimeImages.KUBE_DEPLOY) }}",
-              "TEMPLATE_ENGINE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.dockerRegistry "imageFullName" .Values.runtimeImages.TEMPLATE_ENGINE) }}",
-              "PIPELINE_DEBUGGER_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.dockerRegistry "imageFullName" .Values.runtimeImages.PIPELINE_DEBUGGER_IMAGE) }}",
-              "CR_6177_FIXER": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.dockerRegistry "imageFullName" .Values.runtimeImages.CR_6177_FIXER) }}",
-              "GC_BUILDER_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.dockerRegistry "imageFullName" .Values.runtimeImages.GC_BUILDER_IMAGE) }}",
+              "DOCKER_PUSHER_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.imageRegistry "imageFullName" .Values.runtimeImages.DOCKER_PUSHER_IMAGE) }}",
+              "DOCKER_PULLER_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.imageRegistry "imageFullName" .Values.runtimeImages.DOCKER_PULLER_IMAGE) }}",
+              "DOCKER_BUILDER_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.imageRegistry "imageFullName" .Values.runtimeImages.DOCKER_BUILDER_IMAGE) }}",
+              "CONTAINER_LOGGER_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.imageRegistry "imageFullName" .Values.runtimeImages.CONTAINER_LOGGER_IMAGE) }}",
+              "GIT_CLONE_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.imageRegistry "imageFullName" .Values.runtimeImages.GIT_CLONE_IMAGE) }}",
+              "DOCKER_TAG_PUSHER_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.imageRegistry "imageFullName" .Values.runtimeImages.DOCKER_TAG_PUSHER_IMAGE) }}",
+              "FS_OPS_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.imageRegistry "imageFullName" .Values.runtimeImages.FS_OPS_IMAGE) }}",
+              "COMPOSE_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.imageRegistry "imageFullName" .Values.runtimeImages.COMPOSE_IMAGE) }}",
+              "KUBE_DEPLOY": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.imageRegistry "imageFullName" .Values.runtimeImages.KUBE_DEPLOY) }}",
+              "TEMPLATE_ENGINE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.imageRegistry "imageFullName" .Values.runtimeImages.TEMPLATE_ENGINE) }}",
+              "PIPELINE_DEBUGGER_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.imageRegistry "imageFullName" .Values.runtimeImages.PIPELINE_DEBUGGER_IMAGE) }}",
+              "CR_6177_FIXER": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.imageRegistry "imageFullName" .Values.runtimeImages.CR_6177_FIXER) }}",
+              "GC_BUILDER_IMAGE": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.imageRegistry "imageFullName" .Values.runtimeImages.GC_BUILDER_IMAGE) }}",
               "NO_EXT_MONITOR": "true",
               "DISABLE_WORKSPACE_CACHE": "true",
               "NODE_TLS_REJECT_UNAUTHORIZED": "0",
@@ -170,7 +170,7 @@
           "cluster": {
               "namespace": "{{ .Release.Namespace }}"
           },
-          "dindImage": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.dockerRegistry "imageFullName" .Values.runtimeImages.DIND_IMAGE) }}",
+          "dindImage": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.imageRegistry "imageFullName" .Values.runtimeImages.DIND_IMAGE) }}",
           "defaultDindResources": {
               "requests": {
                   "cpu": "390m",
@@ -267,6 +267,6 @@
       "extends": [
           "system/default"
       ]
-  }  
+  }
 ]
 {{- end -}}
