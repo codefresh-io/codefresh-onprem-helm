@@ -360,8 +360,6 @@ global:
   cfapiEndpointsService: cfapi
   # -- Default builder service name.
   builderService: builder
-  # -- Default runner service name.
-  runnerService: runner
   # -- Default tls-sign service name.
   tlsSignService: cfsign
   # -- Default tls-sign service port.
@@ -1279,33 +1277,6 @@ builder:
         registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
         repository: codefresh/curl
         tag: 8.14.1
-  container:
-    image:
-      registry: docker.io
-      repository: library/docker
-      tag: 28.3-dind
-  affinity: {}
-  nodeSelector: {}
-  podSecurityContext: {}
-  resources: {}
-  tolerations: []
-
-# -- runner
-# @default -- See below
-runner:
-  enabled: true
-  imagePullSecrets: []
-  initContainers:
-    register:
-      image:
-        registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
-        repository: codefresh/curl
-        tag: 8.14.1
-  container:
-    image:
-      registry: docker.io
-      repository: library/docker
-      tag: 28.3-dind
   affinity: {}
   nodeSelector: {}
   podSecurityContext: {}

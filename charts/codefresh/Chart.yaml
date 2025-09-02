@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.8.13
+version: 3.0.0
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -11,7 +11,7 @@ sources:
 maintainers:
   - name: codefresh
     url: https://codefresh-io.github.io/
-appVersion: 2.8.0
+appVersion: 3.0.0
 annotations:
   artifacthub.io/prerelease: "false"
   artifacthub.io/alternativeName: "codefresh-onprem"
@@ -19,12 +19,7 @@ annotations:
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
     - kind: changed
-      description: "Update internal-gateway"
-    - kind: changed
-      description: "Change bitnami subcharts to use bitnamilegacy repository"
-      links:
-        - name: GitHub Issue
-          url: https://github.com/bitnami/charts/issues/35164
+      description: "Initial onprem 3.0 release"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -66,13 +61,9 @@ dependencies:
     repository: https://charts.bitnami.com/bitnami
     condition: nats.enabled
   - name: builder
-    repository: oci://quay.io/codefresh/charts
+    repository: oci://quay.io/codefresh/charts/dev
     condition: builder.enabled
-    version: 1.4.0
-  - name: runner
-    repository: oci://quay.io/codefresh/charts
-    condition: runner.enabled
-    version: 1.4.0
+    version: 2.0.0
   - name: ingress-nginx
     version: 4.12.5
     repository: https://kubernetes.github.io/ingress-nginx
@@ -86,7 +77,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: kube-integration.enabled
   - name: charts-manager
-    version: "~1.23.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: charts-manager.enabled
   - name: cfsign
@@ -98,11 +89,11 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: tasker-kubernetes.enabled
   - name: context-manager
-    version: "~2.34.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: context-manager.enabled
   - name: pipeline-manager
-    version: "~3.139.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: pipeline-manager.enabled
   - name: gitops-dashboard-manager
@@ -111,96 +102,96 @@ dependencies:
     condition: gitops-dashboard-manager.enabled
   - name: cfapi
     alias: cfapi
-    version: "~21.279.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: cfapi.enabled
   - name: cfapi
     alias: cfapi-auth
-    version: "~21.279.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-auth.enabled
   - name: cfapi
     alias: cfapi-internal
-    version: "~21.279.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-internal.enabled
   - name: cfapi
     alias: cfapi-ws
-    version: "~21.279.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-ws.enabled
   - name: cfapi
     alias: cfapi-admin
-    version: "~21.279.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-admin.enabled
   - name: cfapi
     alias: cfapi-endpoints
-    version: "~21.279.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-endpoints.enabled
   - name: cfapi
     alias: cfapi-terminators
-    version: "~21.279.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-terminators.enabled
   - name: cfapi
     alias: cfapi-sso-group-synchronizer
-    version: "~21.279.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-sso-group-synchronizer.enabled
   - name: cfapi
     alias: cfapi-buildmanager
-    version: "~21.279.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-buildmanager.enabled
   - name: cfapi
     alias: cfapi-cacheevictmanager
-    version: "~21.279.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-cacheevictmanager.enabled
   - name: cfapi
     alias: cfapi-eventsmanagersubscriptions
-    version: "~21.279.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-eventsmanagersubscriptions.enabled
   - name: cfapi
     alias: cfapi-kubernetesresourcemonitor
-    version: "~21.279.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-kubernetesresourcemonitor.enabled
   - name: cfapi
     alias: cfapi-environments
-    version: "~21.279.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-environments.enabled
   - name: cfapi
     alias: cfapi-gitops-resource-receiver
-    version: "~21.279.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-gitops-resource-receiver.enabled
   - name: cfapi
     alias: cfapi-downloadlogmanager
-    version: "~21.279.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-downloadlogmanager.enabled
   - name: cfapi
     alias: cfapi-teams
-    version: "~21.279.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-teams.enabled
   - name: cfapi
     alias: cfapi-kubernetes-endpoints
-    version: "~21.279.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-kubernetes-endpoints.enabled
   - name: cfapi
     alias: cfapi-test-reporting
-    version: "~21.279.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-test-reporting.enabled
   - name: cfui
-    version: "~14.98.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: cfui.enabled
   - name: k8s-monitor
@@ -208,7 +199,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: k8s-monitor.enabled
   - name: runtime-environment-manager
-    version: "~3.41.0"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: runtime-environment-manager.enabled
   - name: cf-broadcaster
@@ -242,7 +233,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
-    version: "1.3525.3-onprem-24aeab4"
+    version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform

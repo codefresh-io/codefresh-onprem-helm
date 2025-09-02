@@ -30,11 +30,8 @@ dependencies:
   repository: https://charts.bitnami.com/bitnami
   version: 9.0.22
 - name: builder
-  repository: oci://quay.io/codefresh/charts
-  version: 1.4.0
-- name: runner
-  repository: oci://quay.io/codefresh/charts
-  version: 1.4.0
+  repository: oci://quay.io/codefresh/charts/dev
+  version: 2.0.0
 - name: ingress-nginx
   repository: https://kubernetes.github.io/ingress-nginx
   version: 4.12.5
@@ -46,7 +43,7 @@ dependencies:
   version: 1.32.0
 - name: charts-manager
   repository: oci://quay.io/codefresh/charts
-  version: 1.23.4
+  version: 1.25.0
 - name: cfsign
   repository: oci://quay.io/codefresh/charts
   version: 1.8.10
@@ -55,76 +52,76 @@ dependencies:
   version: 1.27.0
 - name: context-manager
   repository: oci://quay.io/codefresh/charts
-  version: 2.34.5
+  version: 2.36.0
 - name: pipeline-manager
   repository: oci://quay.io/codefresh/charts
-  version: 3.139.5
+  version: 3.141.0
 - name: gitops-dashboard-manager
   repository: oci://quay.io/codefresh/charts
   version: 1.15.0
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.8
+  version: 21.291.7
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.8
+  version: 21.291.7
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.8
+  version: 21.291.7
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.8
+  version: 21.291.7
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.8
+  version: 21.291.7
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.8
+  version: 21.291.7
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.8
+  version: 21.291.7
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.8
+  version: 21.291.7
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.8
+  version: 21.291.7
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.8
+  version: 21.291.7
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.8
+  version: 21.291.7
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.8
+  version: 21.291.7
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.8
+  version: 21.291.7
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.8
+  version: 21.291.7
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.8
+  version: 21.291.7
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.8
+  version: 21.291.7
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.8
+  version: 21.291.7
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.8
+  version: 21.291.7
 - name: cfui
   repository: oci://quay.io/codefresh/charts
-  version: 14.98.29
+  version: 14.99.34
 - name: k8s-monitor
   repository: oci://quay.io/codefresh/charts
   version: 4.11.16
 - name: runtime-environment-manager
   repository: oci://quay.io/codefresh/charts
-  version: 3.41.5
+  version: 3.43.0
 - name: cf-broadcaster
   repository: oci://quay.io/codefresh/charts
   version: 1.14.0
@@ -133,7 +130,7 @@ dependencies:
   version: 0.20.2
 - name: hermes
   repository: oci://quay.io/codefresh/charts
-  version: 0.21.20
+  version: 0.21.21
 - name: nomios
   repository: oci://quay.io/codefresh/charts
   version: 0.11.11
@@ -148,7 +145,7 @@ dependencies:
   version: 0.51.0
 - name: argo-platform
   repository: oci://quay.io/codefresh/charts
-  version: 1.3525.3-onprem-24aeab4
+  version: 1.3728.0
 - name: argo-hub-platform
   repository: oci://quay.io/codefresh/charts
   version: 0.1.27
@@ -167,5 +164,5 @@ dependencies:
 - name: salesforce-reporter
   repository: oci://quay.io/codefresh/charts
   version: 1.30.11
-digest: sha256:4e7b52e0ee6d81e910d3e7352b14cb5a7d01c51a7bcd7a8e455c53cc2564d982
-generated: "2025-08-29T15:06:33.935106+03:00"
+digest: sha256:0c279c1100957c6e34ee053e05ce59e5c10ca83b1d4995320682254700d3c978
+generated: "2025-09-02T17:05:39.300533+03:00"
