@@ -19,7 +19,11 @@ annotations:
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
     - kind: changed
-      description: "Initial onprem 3.0 release"
+      description: "Initial onprem 3.0 release. Update microservices"
+    - kind: changed
+      description: "Change cf-builder image to use codefresh/dind image instead of library/docker"
+    - kind: deprecated
+      description: "Remove cf-runner subchart (was used for deprecated launch-composition step)"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts

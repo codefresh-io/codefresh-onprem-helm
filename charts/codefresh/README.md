@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.8.13](https://img.shields.io/badge/Version-2.8.13-informational?style=flat-square) ![AppVersion: 2.8.0](https://img.shields.io/badge/AppVersion-2.8.0-informational?style=flat-square)
+![Version: 3.0.0](https://img.shields.io/badge/Version-3.0.0-informational?style=flat-square) ![AppVersion: 3.0.0](https://img.shields.io/badge/AppVersion-3.0.0-informational?style=flat-square)
 
 Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
@@ -2450,7 +2450,7 @@ After platform upgrade, Consul fails with the error `refusing to rejoin cluster 
 | argo-platform.runtime-monitor | object | See below | runtime-monitor Don't enable! Not used in onprem! |
 | argo-platform.ui | object | See below | ui |
 | argo-platform.useExternalSecret | bool | `false` | Use regular k8s secret object. Keep `false`! |
-| builder | object | `{"affinity":{},"container":{"image":{"registry":"docker.io","repository":"library/docker","tag":"28.3-dind"}},"enabled":true,"imagePullSecrets":[],"initContainers":{"register":{"image":{"registry":"us-docker.pkg.dev/codefresh-inc/public-gcr-io","repository":"codefresh/curl","tag":"8.14.1"}}},"nodeSelector":{},"podSecurityContext":{},"resources":{},"tolerations":[]}` | builder |
+| builder | object | `{"affinity":{},"enabled":true,"imagePullSecrets":[],"initContainers":{"register":{"image":{"registry":"us-docker.pkg.dev/codefresh-inc/public-gcr-io","repository":"codefresh/curl","tag":"8.14.1"}}},"nodeSelector":{},"podSecurityContext":{},"resources":{},"tolerations":[]}` | builder |
 | cf-broadcaster | object | See below | broadcaster |
 | cf-oidc-provider | object | See below | cf-oidc-provider |
 | cf-platform-analytics-etlstarter | object | See below | etl-starter |
@@ -2600,7 +2600,6 @@ After platform upgrade, Consul fails with the error `refusing to rejoin cluster 
 | global.redisService | string | `"redis-master"` | Default internal redis service address from bitnami/redis subchart |
 | global.redisUrl | string | `""` | Set redis hostname in plain text. Takes precedence over `global.redisService`! |
 | global.redisUrlSecretKeyRef | object | `{}` | Set redis hostname from existing secret. |
-| global.runnerService | string | `"runner"` | Default runner service name. |
 | global.runtimeEnvironmentManagerPort | int | `80` | Default runtime-environment-manager service port. |
 | global.runtimeEnvironmentManagerService | string | `"runtime-environment-manager"` | Default runtime-environment-manager service name. |
 | global.security | object | `{"allowInsecureImages":true}` | Bitnami |
@@ -2643,7 +2642,6 @@ After platform upgrade, Consul fails with the error `refusing to rejoin cluster 
 | rabbitmq | object | See below | rabbitmq Ref: https://github.com/bitnami/charts/blob/main/bitnami/rabbitmq/values.yaml |
 | redis | object | See below | redis Ref: https://github.com/bitnami/charts/blob/main/bitnami/redis/values.yaml |
 | redis-ha | object | `{"auth":true,"enabled":false,"haproxy":{"enabled":true,"resources":{"requests":{"cpu":"100m","memory":"128Mi"}}},"persistentVolume":{"enabled":true,"size":"10Gi"},"redis":{"resources":{"requests":{"cpu":"100m","memory":"128Mi"}}},"redisPassword":"hoC9szf7NtrU"}` | redis-ha # Ref: https://github.com/DandyDeveloper/charts/blob/master/charts/redis-ha/values.yaml |
-| runner | object | See below | runner |
 | runtime-environment-manager | object | See below | runtime-environment-manager |
 | runtimeImages | object | See below | runtimeImages |
 | salesforce-reporter.enabled | bool | `false` |  |
