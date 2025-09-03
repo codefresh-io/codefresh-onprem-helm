@@ -30,7 +30,7 @@ dependencies:
   repository: https://charts.bitnami.com/bitnami
   version: 9.0.22
 - name: builder
-  repository: oci://quay.io/codefresh/charts/dev
+  repository: oci://quay.io/codefresh/charts
   version: 2.0.0
 - name: ingress-nginx
   repository: https://kubernetes.github.io/ingress-nginx
@@ -164,5 +164,5 @@ dependencies:
 - name: salesforce-reporter
   repository: oci://quay.io/codefresh/charts
   version: 1.30.11
-digest: sha256:1cfe44b9fabdfa3157a7c3ee21b427088df11c8b5aee87e8bbcf0f43643ca4a0
-generated: "2025-09-03T10:46:38.458055+03:00"
+digest: sha256:866a3afb20203f99718457d1c5fab7d578367570f501fbb3b73cad2af0e19d38
+generated: "2025-09-03T11:38:43.238346+03:00"

@@ -49,6 +49,7 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
   - [To 2.6.0](#to-2-6-0)
   - [To 2.7.0](#to-2-7-0)
   - [To 2.8.0](#to-2-8-0)
+  - [To 3.0.0](#to-3-0-0)
 - [Rollback](#rollback)
 - [Troubleshooting](#troubleshooting)
 - [Values](#values)
@@ -2349,6 +2350,12 @@ For built-in RabbitMQ `bitnami/rabbitmq` subchart, pre-upgrade hook was added to
 - Changed default location for public images from `quay.io/codefresh` to `us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh`
 
 - `.Values.hooks` was splitted into `.Values.hooks.mongodb` and `.Values.hooks.consul`
+
+### To 3-0-0
+
+####  Affected values
+
+- `.Values.runner` is removed
 
 ## Troubleshooting
 
