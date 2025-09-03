@@ -78,7 +78,7 @@ argo-platform:
 
 mongodb:
   migration:
-    enabled: true
+    enabled: false
   image:
     repository: bitnamilegacy/mongodb
   nodeSelector:

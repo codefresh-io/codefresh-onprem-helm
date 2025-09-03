@@ -1126,7 +1126,7 @@ mongodb:
       memory: 256Mi
   migration:
     enabled: false
-    featureCompatibilityVersion: "6.0"
+    featureCompatibilityVersion: "7.0"
 
 # -- nats
 # @default -- See below
