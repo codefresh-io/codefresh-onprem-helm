@@ -60,6 +60,8 @@ mongodb:
     enabled: true
     rootUser: root
     rootPassword: "XT9nmM8dZDZ"
+  image:
+    repository: bitnamilegacy/mongodb
   initdbScripts:
     my_init_script.sh: |
       #!/bin/bash
