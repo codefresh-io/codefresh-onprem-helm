@@ -61,58 +61,58 @@ dependencies:
   version: 1.15.0
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.291.8
+  version: 21.291.10
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.291.8
+  version: 21.291.10
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.291.8
+  version: 21.291.10
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.291.8
+  version: 21.291.10
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.291.8
+  version: 21.291.10
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.291.8
+  version: 21.291.10
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.291.8
+  version: 21.291.10
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.291.8
+  version: 21.291.10
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.291.8
+  version: 21.291.10
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.291.8
+  version: 21.291.10
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.291.8
+  version: 21.291.10
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.291.8
+  version: 21.291.10
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.291.8
+  version: 21.291.10
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.291.8
+  version: 21.291.10
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.291.8
+  version: 21.291.10
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.291.8
+  version: 21.291.10
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.291.8
+  version: 21.291.10
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.291.8
+  version: 21.291.10
 - name: cfui
   repository: oci://quay.io/codefresh/charts
   version: 14.99.34
@@ -127,7 +127,7 @@ dependencies:
   version: 1.14.0
 - name: helm-repo-manager
   repository: oci://quay.io/codefresh/charts
-  version: 0.20.2
+  version: 0.23.0
 - name: hermes
   repository: oci://quay.io/codefresh/charts
   version: 0.21.21
@@ -164,5 +164,5 @@ dependencies:
 - name: salesforce-reporter
   repository: oci://quay.io/codefresh/charts
   version: 1.30.11
-digest: sha256:866a3afb20203f99718457d1c5fab7d578367570f501fbb3b73cad2af0e19d38
-generated: "2025-09-03T11:38:43.238346+03:00"
+digest: sha256:d1695e2604961bf299ea44243a6fbf535d7109a87bfdc5fcdaf6f7d015b8206e
+generated: "2025-09-03T19:27:21.888711+03:00"
