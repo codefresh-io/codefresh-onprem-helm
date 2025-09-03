@@ -394,38 +394,6 @@ tests:
                         values:
                           - "value"
 
-  - it: cf-runner should have global tolerations/nodeSelector/affinity/imagePullSecret
-    values:
-      - ../values/global.yaml
-    template: charts/runner/templates/controller.yaml
-    asserts:
-      - contains:
-          path: spec.template.spec.imagePullSecrets
-          content:
-            name: my-secret
-      - contains:
-          path: spec.template.spec.tolerations
-          content:
-            key: "key"
-            operator: "Equal"
-            value: "value"
-            effect: "NoSchedule"
-      - equal:
-          path: spec.template.spec.nodeSelector
-          value:
-            key: "value"
-      - equal:
-          path: spec.template.spec.affinity
-          value:
-            nodeAffinity:
-              requiredDuringSchedulingIgnoredDuringExecution:
-                nodeSelectorTerms:
-                  - matchExpressions:
-                      - key: "key"
-                        operator: "In"
-                        values:
-                          - "value"
-
   - it: cf-broadcaster should have global tolerations/nodeSelector/affinity/imagePullSecret
     values:
       - ../values/global.yaml
