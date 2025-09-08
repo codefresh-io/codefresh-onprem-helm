@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 3.0.0-rc.1
+version: 0.0.0
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -11,7 +11,7 @@ sources:
 maintainers:
   - name: codefresh
     url: https://codefresh-io.github.io/
-appVersion: 3.0.0
+appVersion: 0.0.0
 annotations:
   artifacthub.io/prerelease: "true"
   artifacthub.io/alternativeName: "codefresh-onprem"
