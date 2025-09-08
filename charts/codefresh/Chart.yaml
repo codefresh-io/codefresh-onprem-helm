@@ -18,8 +18,7 @@ annotations:
   artifacthub.io/containsSecurityUpdates: "false"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |-
-    - kind: changed
-      description: 'chore(cfapi): migrate to @node-saml/passport-saml to fix '
+    []
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
