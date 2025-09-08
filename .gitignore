@@ -1,7 +1,7 @@
 # dependency charts
 **/charts/*.tgz
 *.tgz
-
+*.lock
 
 # decrypted files
 **/*-dec.yaml
