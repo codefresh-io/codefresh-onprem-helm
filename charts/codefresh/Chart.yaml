@@ -90,7 +90,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: charts-manager.enabled
   - name: cfsign
-    version: 1.8.0
+    version: 1.8.10
     repository: oci://quay.io/codefresh/charts
     condition: cfsign.enabled
   - name: tasker-kubernetes
