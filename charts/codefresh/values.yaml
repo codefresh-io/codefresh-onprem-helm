@@ -91,7 +91,8 @@ seed:
   ttlSecondsAfterFinished: 300
   backoffLimit: 10
   affinity: {}
-  nodeSelector: {}
+  nodeSelector:
+    kubernetes.io/arch: amd64
   podSecurityContext: {}
   resources: {}
   tolerations: []
@@ -1948,18 +1949,4 @@ seed-e2e:
   tolerations: []
 
 ci:
-  enabled: false
-
-developmentChart: false
-
-mailer:
-  enabled: false
-
-payments:
-  enabled: false
-
-segment-reporter:
-  enabled: false
-
-salesforce-reporter:
   enabled: false

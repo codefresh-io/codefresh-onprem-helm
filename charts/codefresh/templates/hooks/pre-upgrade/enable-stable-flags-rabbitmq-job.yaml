@@ -1,12 +1,12 @@
 {{- if and .Values.hooks.rabbitmq.enabled .Values.rabbitmq.enabled }}
 {{- $libTemplateName := printf "cf-common-%s" (index .Subcharts "cf-common").Chart.Version }}
-{{- $tolerations := .Values.hooks.consul.tolerations | default list }}
+{{- $tolerations := .Values.hooks.rabbitmq.tolerations | default list }}
 {{- $globalTolerations := .Values.global.tolerations | default list }}
 {{- $allToleration := concat $globalTolerations $tolerations }}
-{{- $affinity := .Values.hooks.consul.affinity | default dict }}
+{{- $affinity := .Values.hooks.rabbitmq.affinity | default dict }}
 {{- $globalAffinity := .Values.global.affinity | default dict }}
 {{- $allAffinity := mergeOverwrite $globalAffinity $affinity }}
-{{- $nodeSelector := .Values.hooks.consul.nodeSelector | default dict }}
+{{- $nodeSelector := .Values.hooks.rabbitmq.nodeSelector | default dict }}
 {{- $globalNodeSelector := .Values.global.nodeSelector | default dict }}
 {{- $allNodeSelector := mergeOverwrite $globalNodeSelector $nodeSelector }}
 ---

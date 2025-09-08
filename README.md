@@ -2520,7 +2520,6 @@ After platform upgrade, Consul fails with the error `refusing to rejoin cluster 
 | consul | object | See below | consul Ref: https://github.com/bitnami/charts/blob/main/bitnami/consul/values.yaml |
 | context-manager | object | See below | context-manager |
 | cronus | object | See below | cronus |
-| developmentChart | bool | `false` |  |
 | dockerconfigjson | object | `{}` | DEPRECATED - Use `.imageCredentials` instead dockerconfig (for `kcfi` tool backward compatibility) for Image Pull Secret. Obtain GCR Service Account JSON (sa.json) at support@codefresh.io ```shell GCR_SA_KEY_B64=$(cat sa.json | base64) DOCKER_CFG_VAR=$(echo -n "_json_key:$(echo ${GCR_SA_KEY_B64} | base64 -d)" | base64 | tr -d '\n') ``` E.g.: dockerconfigjson:   auths:     gcr.io:       auth: <DOCKER_CFG_VAR> |
 | gencerts | object | See below | Job to generate internal runtime secrets. Required at first install. |
 | gitops-dashboard-manager | object | See below | gitops-dashboard-manager |
@@ -2637,11 +2636,9 @@ After platform upgrade, Consul fails with the error `refusing to rejoin cluster 
 | internal-gateway | object | See below | internal-gateway |
 | k8s-monitor | object | See below | k8s-monitor |
 | kube-integration | object | See below | kube-integration |
-| mailer.enabled | bool | `false` |  |
 | mongodb | object | See below | mongodb Ref: https://github.com/bitnami/charts/blob/main/bitnami/mongodb/values.yaml |
 | nats | object | See below | nats Ref: https://github.com/bitnami/charts/blob/main/bitnami/nats/values.yaml |
 | nomios | object | See below | nomios |
-| payments.enabled | bool | `false` |  |
 | pipeline-manager | object | See below | pipeline-manager |
 | postgresql | object | See below | postgresql Ref: https://github.com/bitnami/charts/blob/main/bitnami/postgresql/values.yaml |
 | postgresql-ha | object | See below | postgresql Ref: https://github.com/bitnami/charts/blob/main/bitnami/postgresql-ha/values.yaml |
@@ -2651,7 +2648,6 @@ After platform upgrade, Consul fails with the error `refusing to rejoin cluster 
 | redis-ha | object | `{"auth":true,"enabled":false,"haproxy":{"enabled":true,"resources":{"requests":{"cpu":"100m","memory":"128Mi"}}},"persistentVolume":{"enabled":true,"size":"10Gi"},"redis":{"resources":{"requests":{"cpu":"100m","memory":"128Mi"}}},"redisPassword":"hoC9szf7NtrU"}` | redis-ha # Ref: https://github.com/DandyDeveloper/charts/blob/master/charts/redis-ha/values.yaml |
 | runtime-environment-manager | object | See below | runtime-environment-manager |
 | runtimeImages | object | See below | runtimeImages |
-| salesforce-reporter.enabled | bool | `false` |  |
 | seed | object | See below | Seed jobs |
 | seed-e2e | object | `{"affinity":{},"backoffLimit":10,"enabled":false,"image":{"registry":"docker.io","repository":"mongo","tag":"latest"},"nodeSelector":{},"podSecurityContext":{},"resources":{},"tolerations":[],"ttlSecondsAfterFinished":300}` | CI |
 | seed.enabled | bool | `true` | Enable all seed jobs |
@@ -2667,6 +2663,5 @@ After platform upgrade, Consul fails with the error `refusing to rejoin cluster 
 | seed.postgresSeedJob.postgresPasswordSecretKeyRef | optional | `{}` | Password for "postgres" admin user from existing secret |
 | seed.postgresSeedJob.postgresUser | optional | `""` | "postgres" admin user in plain text (required ONLY for seed job!) Must be a privileged user allowed to create databases and grant roles. If omitted, username and password from `.Values.global.postgresUser/postgresPassword` will be used. |
 | seed.postgresSeedJob.postgresUserSecretKeyRef | optional | `{}` | "postgres" admin user from exising secret |
-| segment-reporter.enabled | bool | `false` |  |
 | tasker-kubernetes | object | `{"affinity":{},"container":{"image":{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/tasker-kubernetes"}},"enabled":true,"hpa":{"enabled":false},"imagePullSecrets":[],"nodeSelector":{},"pdb":{"enabled":false},"podSecurityContext":{},"resources":{"limits":{},"requests":{"cpu":"100m","memory":"128Mi"}},"tolerations":[]}` | tasker-kubernetes |
 | webTLS | object | `{"cert":"","enabled":false,"key":"","secretName":"star.codefresh.io"}` | DEPRECATED - Use `.Values.ingress.tls` instead TLS secret for Ingress |
