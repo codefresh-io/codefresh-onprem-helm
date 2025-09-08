@@ -91,7 +91,8 @@ seed:
   ttlSecondsAfterFinished: 300
   backoffLimit: 10
   affinity: {}
-  nodeSelector: {}
+  nodeSelector:
+    kubernetes.io/arch: amd64
   podSecurityContext: {}
   resources: {}
   tolerations: []
