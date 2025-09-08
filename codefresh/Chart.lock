@@ -64,58 +64,58 @@ dependencies:
   version: 1.15.0
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.8
+  version: 21.279.9-onprem-71444dd
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.8
+  version: 21.279.9-onprem-71444dd
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.8
+  version: 21.279.9-onprem-71444dd
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.8
+  version: 21.279.9-onprem-71444dd
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.8
+  version: 21.279.9-onprem-71444dd
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.8
+  version: 21.279.9-onprem-71444dd
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.8
+  version: 21.279.9-onprem-71444dd
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.8
+  version: 21.279.9-onprem-71444dd
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.8
+  version: 21.279.9-onprem-71444dd
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.8
+  version: 21.279.9-onprem-71444dd
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.8
+  version: 21.279.9-onprem-71444dd
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.8
+  version: 21.279.9-onprem-71444dd
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.8
+  version: 21.279.9-onprem-71444dd
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.8
+  version: 21.279.9-onprem-71444dd
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.8
+  version: 21.279.9-onprem-71444dd
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.8
+  version: 21.279.9-onprem-71444dd
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.8
+  version: 21.279.9-onprem-71444dd
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.279.8
+  version: 21.279.9-onprem-71444dd
 - name: cfui
   repository: oci://quay.io/codefresh/charts
   version: 14.98.29
@@ -167,5 +167,5 @@ dependencies:
 - name: salesforce-reporter
   repository: oci://quay.io/codefresh/charts
   version: 1.30.11
-digest: sha256:7beb55fa3f04dd36787dab03da2db1e4b3d31cc0d3195c2ff2b25c05dd72e88a
-generated: "2025-09-08T14:43:48.111332+03:00"
+digest: sha256:19519e066a8a7be90cf8dc6654bfee69e1d04b9ff380f13b64129cbcd47ae426
+generated: "2025-09-08T16:43:30.934512+03:00"
