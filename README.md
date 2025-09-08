@@ -2569,8 +2569,6 @@ After platform upgrade, Consul fails with the error `refusing to rejoin cluster 
 | global.mongodbRootUser | string | `""` | DEPRECATED Use `.Values.seed.mongoSeedJob` instead. |
 | global.mongodbUser | string | `"cfuser"` | Set mongodb user in plain text |
 | global.mongodbUserSecretKeyRef | object | `{}` | Set mongodb user from existing secret |
-| global.natsPort | int | `4222` | Default nats service port. |
-| global.natsService | string | `"nats"` | Default nats service name. |
 | global.newrelicLicenseKey | string | `""` | New Relic Key |
 | global.nodeSelector | object | `{}` | Global nodeSelector constraints Apply nodeSelector to all Codefresh subcharts. Will not be applied on Bitnami subcharts. |
 | global.oidcProviderClientId | string | `nil` | Default OIDC Provider service client ID in plain text. |
@@ -2637,7 +2635,6 @@ After platform upgrade, Consul fails with the error `refusing to rejoin cluster 
 | k8s-monitor | object | See below | k8s-monitor |
 | kube-integration | object | See below | kube-integration |
 | mongodb | object | See below | mongodb Ref: https://github.com/bitnami/charts/blob/main/bitnami/mongodb/values.yaml |
-| nats | object | See below | nats Ref: https://github.com/bitnami/charts/blob/main/bitnami/nats/values.yaml |
 | nomios | object | See below | nomios |
 | pipeline-manager | object | See below | pipeline-manager |
 | postgresql | object | See below | postgresql Ref: https://github.com/bitnami/charts/blob/main/bitnami/postgresql/values.yaml |
