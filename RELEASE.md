@@ -4,41 +4,25 @@
 
 For a **MAJOR** or **MINOR** release:
 
-- Checkout from `main` branch
+- Ensure that `codefresh(deps): bump subcharts` PR has been merged to `main`. This PR updates the Codefresh subchart versions in `Chart.yaml` to the latest released versions.
+- Create a new `release-x.y` branch from `main`, where `x.y` is the new major or minor version number.
 ```shell
-git checkout -b onprem-X.Y main
+git checkout -b release-x.y main
 ```
-- Merge latest `release-X.Y` into the new branch
+> Just creating a release branch without any commits will NOT create release branches for dependent components (cf-api, cf-ui, argo-platform, etc)! Newly created `release-x.y` branch must be updated!
+- Open a PR against `release-x.y` branch
 ```shell
-git merge --no-ff release-X.Y
+git checkout -b update-release-x.y release-x.y
 ```
-- Resolve any merge conflicts.
-- In `Chart.yaml`:
-    - Update `.version` and `.appVersion`
-    - For Codefresh dependencies (i.e. with `repository: oci://quay.io/codefresh/charts`) update version to use latest (i.e. `version: *`)
-    - Update `artifacthub.io/changes` annotation
-- Update `values.yaml`, `templates/**`, etc with required changes
-- Run `helm dep update` to update dependencies
-- Run `./charts/codefresh/.ci/runtime-images.sh`
-- Run `./scripts/helm-docs.sh`
-- Commit changes and open the PR against the `main` branch
-- Comment `/test` to trigger CI pipeline
-- Merge the PR after successful CI build
-- After merging the PR the corresponding `release-X.Y` branch will be created. For the next patches, `release-X.Y` branch must be used as BASE branch!
+- **optional** Update subchart versions in `Chart.yaml` (if not already done in `codefresh(deps): bump subcharts` PR)
+- **optional** Update `values.yaml`, `templates/**` files if required
+- Run `./scripts/helm-docs.sh` to update `README.md` files
+- Commit and push changes, trigger CI with `/test` comment, make sure all checks pass, then merge the PR
+- When the PR is merged, the release draft will be created automatically and `codefresh/x.y.z: prepare chart content for release` PR will be opened with the updated chart `.version` and `artifacthub.io/changes` annotation.
+- Review `codefresh/x.y.z: prepare chart content for release` PR. Update `artifacthub.io/changes` annotation if needed.
+- Merge the PR to create a new release. Release will be published automatically.
 
 For a **PATCH** release:
 
-- Checkout from the corresponding `release-<MAJOR>.<MINOR>` branch
-```shell
-git checkout -b onprem-X.Y.Z release-X.Y
-```
-- Update `.version` in Chart.yaml
-- Update `artifacthub.io/changes` annotation in Chart.yaml
-- *optional* Update `dependencies` in Chart.yaml
-- *optional* Update `values.yaml`, `templates/**`, etc with required changes
-- Run `helm dep update` to update dependencies
-- *optional* Run `./charts/codefresh/.ci/runtime-images.sh`
-- Run `./scripts/helm-docs.sh`
-- Commit changes and open the PR against the corresponding `release-<MAJOR>.<MINOR>` branch
-- Comment `/test` to trigger CI pipeline
-- Merge the PR after successful CI build
+
+## Versioning in CI and Promote pipelines
