@@ -18,7 +18,16 @@ annotations:
   artifacthub.io/containsSecurityUpdates: "false"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |-
-    []
+    - kind: changed
+      description: 'chore(cfapi): migrate to @node-saml/passport-saml to fix critical security vulnerability (#101)'
+    - kind: changed
+      description: update onprem-release-2.8 branch
+    - kind: changed
+      description: update onprem-release-2.8 branch
+    - kind: changed
+      description: update onprem-release-2.8 branch
+    - kind: changed
+      description: update onprem-release-2.8 branch
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
