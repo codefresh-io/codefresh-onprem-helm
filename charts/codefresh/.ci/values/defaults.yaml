@@ -103,6 +103,9 @@ hooks:
   rabbitmq:
     nodeSelector:
       kubernetes.io/arch: amd64
+  consul:
+    nodeSelector:
+      kubernetes.io/arch: amd64
 
 seed:
   nodeSelector:
