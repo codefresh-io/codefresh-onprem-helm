@@ -133,7 +133,7 @@ dependencies:
   version: 0.20.2
 - name: hermes
   repository: oci://quay.io/codefresh/charts
-  version: 0.21.20
+  version: 0.21.21
 - name: nomios
   repository: oci://quay.io/codefresh/charts
   version: 0.11.11
@@ -167,5 +167,5 @@ dependencies:
 - name: salesforce-reporter
   repository: oci://quay.io/codefresh/charts
   version: 1.30.11
-digest: sha256:4e7b52e0ee6d81e910d3e7352b14cb5a7d01c51a7bcd7a8e455c53cc2564d982
-generated: "2025-08-29T15:06:33.935106+03:00"
+digest: sha256:7beb55fa3f04dd36787dab03da2db1e4b3d31cc0d3195c2ff2b25c05dd72e88a
+generated: "2025-09-08T14:43:48.111332+03:00"
