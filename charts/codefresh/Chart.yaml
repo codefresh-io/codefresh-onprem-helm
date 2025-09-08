@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.8.13
+version: 2.8.14
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -15,16 +15,11 @@ appVersion: 2.8.0
 annotations:
   artifacthub.io/prerelease: "false"
   artifacthub.io/alternativeName: "codefresh-onprem"
-  artifacthub.io/containsSecurityUpdates: "false"
+  artifacthub.io/containsSecurityUpdates: "true"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
-  artifacthub.io/changes: |
+  artifacthub.io/changes: |-
     - kind: changed
-      description: "Update internal-gateway"
-    - kind: changed
-      description: "Change bitnami subcharts to use bitnamilegacy repository"
-      links:
-        - name: GitHub Issue
-          url: https://github.com/bitnami/charts/issues/35164
+      description: 'chore(cfapi): migrate to @node-saml/passport-saml to fix critical security vulnerability (#101)'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
