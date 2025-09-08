@@ -100,3 +100,10 @@ hooks:
   mongodb:
     nodeSelector:
       kubernetes.io/arch: amd64
+  rabbitmq:
+    nodeSelector:
+      kubernetes.io/arch: amd64
+
+seed:
+  nodeSelector:
+    kubernetes.io/arch: amd64
