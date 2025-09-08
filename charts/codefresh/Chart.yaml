@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.8.0
+version: 0.0.0
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -11,7 +11,7 @@ sources:
 maintainers:
   - name: codefresh
     url: https://codefresh-io.github.io/
-appVersion: 2.7.0
+appVersion: 0.0.0
 annotations:
   artifacthub.io/prerelease: "true"
   artifacthub.io/alternativeName: "codefresh-onprem"
@@ -19,17 +19,21 @@ annotations:
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
     - kind: changed
-      description: "Initial 2.8.0 release"
+      description: "Initial onprem 3.0 release. Update microservices"
+    - kind: changed
+      description: "Change cf-builder image to use codefresh/dind image instead of library/docker"
+    - kind: deprecated
+      description: "Remove cf-runner subchart (was used for deprecated launch-composition step)"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
     version: 0.18.1
   - name: internal-gateway
     repository: oci://quay.io/codefresh/charts
-    version: 0.10.2
+    version: 0.11.0
     condition: internal-gateway.enabled
   - name: consul
-    version: 11.4.17
+    version: 11.4.32
     repository: https://charts.bitnami.com/bitnami
     condition: consul.enabled
   - name: mongodb
@@ -37,7 +41,7 @@ dependencies:
     repository: https://charts.bitnami.com/bitnami
     condition: mongodb.enabled,mongo.enabled,global.mongoDeploy
   - name: postgresql
-    version: 16.7.4
+    version: 16.7.15
     repository: https://charts.bitnami.com/bitnami
     condition: postgresql.enabled
   - name: postgresql-ha
@@ -57,19 +61,15 @@ dependencies:
     repository: https://charts.bitnami.com/bitnami
     condition: rabbitmq.enabled
   - name: nats
-    version: 9.0.17
+    version: 9.0.22
     repository: https://charts.bitnami.com/bitnami
     condition: nats.enabled
   - name: builder
     repository: oci://quay.io/codefresh/charts
     condition: builder.enabled
-    version: 1.4.0
-  - name: runner
-    repository: oci://quay.io/codefresh/charts
-    condition: runner.enabled
-    version: 1.4.0
+    version: 2.0.0
   - name: ingress-nginx
-    version: 4.12.1
+    version: 4.12.5
     repository: https://kubernetes.github.io/ingress-nginx
     condition: ingress-nginx.enabled
   - name: cluster-providers

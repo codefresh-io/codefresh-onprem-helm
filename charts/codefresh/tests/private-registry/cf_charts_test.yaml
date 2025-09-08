@@ -19,7 +19,6 @@ templates:
   - charts/hermes/templates/*.yaml
   - charts/nomios/templates/*.yaml
   - charts/builder/templates/*.yaml
-  - charts/runner/templates/*.yaml
   - charts/cf-oidc-provider/templates/*.yaml
 tests:
   - it: "(Codefresh subcharts) should test image private registry prefix"
@@ -116,11 +115,6 @@ tests:
           path: spec.template.spec.containers[0].image
           pattern: ^myregistry.io/.*$
         template: charts/builder/templates/controller.yaml
-      # cf-runner
-      - matchRegex:
-          path: spec.template.spec.containers[0].image
-          pattern: ^myregistry.io/.*$
-        template: charts/runner/templates/controller.yaml
       # cf-oidc-provider
       - matchRegex:
           path: spec.template.spec.containers[0].image

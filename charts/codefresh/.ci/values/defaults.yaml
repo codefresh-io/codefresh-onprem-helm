@@ -22,7 +22,7 @@ cfapi:
 
 ingress:
   enabled: true
-  ingressClassName: nginx-internal
+  ingressClassName: nginx
   tls:
     enabled: false
 
@@ -75,3 +75,28 @@ argo-platform:
   promotion-orchestrator:
     hpa:
       enabled: true
+
+mongodb:
+  migration:
+    enabled: false
+  image:
+    repository: bitnamilegacy/mongodb
+  nodeSelector:
+    kubernetes.io/arch: amd64
+
+consul:
+  image:
+    repository: bitnamilegacy/consul
+
+nats:
+  image:
+    repository: bitnamilegacy/nats
+
+rabbitmq:
+  image:
+    repository: bitnamilegacy/rabbitmq
+
+hooks:
+  mongodb:
+    nodeSelector:
+      kubernetes.io/arch: amd64

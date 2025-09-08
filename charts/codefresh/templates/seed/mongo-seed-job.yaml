@@ -52,8 +52,19 @@ spec:
           {{- include "codefresh.mongodb-root-user-env-var-value" . | indent 12 }}
           - name: MONGODB_ROOT_PASSWORD
           {{- include "codefresh.mongodb-root-password-env-var-value" . | indent 12 }}
+          - name: MONGODB_ROOT_OPTIONS
+            value: {{ .Values.seed.mongoSeedJob.mongodbRootOptions | quote }}
           - name: DEVELOPMENT_CHART
             value: {{ .Values.developmentChart | quote }}
+          {{- range $env, $val := .Values.seed.mongoSeedJob.env }}
+          - name: {{ $env }}
+            value: {{ $val | quote }}
+          {{ end }}
+          {{- range $env, $val := .Values.global.env }}
+          - name: {{ $env }}
+            value: {{ $val | quote }}
+          {{ end }}
+
         command:
           - "/bin/bash"
           - "-exc"

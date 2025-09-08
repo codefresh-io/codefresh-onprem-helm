@@ -49,6 +49,10 @@ spec:
           {{- include "codefresh.postgres-seed-user-env-var-value" . | indent 12 }}
           - name: POSTGRES_SEED_PASSWORD
           {{- include "codefresh.postgres-seed-password-env-var-value" . | indent 12 }}
+          {{- range $env, $val := .Values.global.env }}
+          - name: {{ $env }}
+            value: {{ $val | quote }}
+          {{ end }}
         resources:
           {{- toYaml .Values.seed.resources | nindent 10 }}
         command:

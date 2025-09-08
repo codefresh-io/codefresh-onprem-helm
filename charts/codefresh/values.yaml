@@ -14,7 +14,7 @@ gencerts:
   image:
     registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
     repository: codefresh/kubectl
-    tag: 1.33.0
+    tag: 1.33.3
   rbac:
     enabled: true
   ttlSecondsAfterFinished: 300
@@ -55,6 +55,11 @@ seed:
     #   name: my-secret
     #   key: mongodb-root-password
 
+    # -- Extra options for connection string (e.g. `authSource=admin`).
+    mongodbRootOptions: ""
+    # -- Extra env variables for seed job.
+    env: {}
+
   # -- Postgres Seed Job. Required at first install. Creates required user and databases.
   # @default -- See below
   postgresSeedJob:
@@ -62,7 +67,7 @@ seed:
     image:
       registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
       repository: codefresh/postgresql
-      tag: 17
+      tag: 17.5.0-debian-12-r20
     # -- (optional) "postgres" admin user in plain text (required ONLY for seed job!)
     # Must be a privileged user allowed to create databases and grant roles.
     # If omitted, username and password from `.Values.global.postgresUser/postgresPassword` will be used.
@@ -355,8 +360,6 @@ global:
   cfapiEndpointsService: cfapi
   # -- Default builder service name.
   builderService: builder
-  # -- Default runner service name.
-  runnerService: runner
   # -- Default tls-sign service name.
   tlsSignService: cfsign
   # -- Default tls-sign service port.
@@ -454,13 +457,24 @@ hooks:
     image:
       registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
       repository: codefresh/kubectl
-      tag: 1.33.0
+      tag: 1.33.3
     affinity: {}
     nodeSelector: {}
     podSecurityContext: {}
     resources: {}
     tolerations: []
-
+  # -- Enable stable feature flags in RabbitMQ.
+  rabbitmq:
+    enabled: true
+    image:
+      registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
+      repository: codefresh/rabbitmqadmin
+      tag: 2.8.0
+    affinity: {}
+    nodeSelector: {}
+    podSecurityContext: {}
+    resources: {}
+    tolerations: []
 
 # -- Maintenance postgresql clean job.
 # Removes a certain number of the last records in the event store table.
@@ -470,7 +484,7 @@ postgresqlCleanJob:
   image:
     registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
     repository: codefresh/postgresql
-    tag: 17
+    tag: 17.5.0-debian-12-r20
   schedule:  "0 0 * * *"
   successfulJobsHistoryLimit: 1
   failedJobsHistoryLimit: 1
@@ -484,19 +498,19 @@ postgresqlCleanJob:
 # -- runtimeImages
 # @default -- See below
 runtimeImages:
-  COMPOSE_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/compose:v2.32.2-1.5.2
-  CONTAINER_LOGGER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-container-logger:1.12.5
-  DIND_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/dind:26.1.4-1.28.8
-  DOCKER_BUILDER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-docker-builder:1.4.4
-  DOCKER_PULLER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-docker-puller:8.0.20
-  DOCKER_PUSHER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-docker-pusher:6.0.17
-  DOCKER_TAG_PUSHER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-docker-tag-pusher:1.3.15
-  ENGINE_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/engine:1.177.8
-  FS_OPS_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/fs-ops:1.2.10
-  GIT_CLONE_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-git-cloner:10.2.0
-  KUBE_DEPLOY: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-deploy-kubernetes:16.2.6
-  PIPELINE_DEBUGGER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-debugger:1.3.9
-  TEMPLATE_ENGINE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/pikolo:0.14.3
+  COMPOSE_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/compose:v2.37.0-1.5.4@sha256:e74494370100678ccb1c1058e6ef3ddcf67b21fcd37da8b3482376c8282549ad
+  CONTAINER_LOGGER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-container-logger:1.12.8@sha256:6e376bb00e824827cb038e15160ccf0fead4f868197b75bbc80dbd6bc34af8d6
+  DIND_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/dind:26.1.4-1.28.8@sha256:33c343dd01e8a24f0b4a872bbe62884320719f9d9dc27b7a8fed9f7e9fc7e80e
+  DOCKER_BUILDER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-docker-builder:1.4.7@sha256:1d02df4dcf703a97c7a64b147cd2c3f6ec2c708aad16be5abbd337f3c13a48ad
+  DOCKER_PULLER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-docker-puller:8.0.22@sha256:914f071bcb1893bcb42c3f8907f8f3874f1f30db1a2ccaa4b825dab9bb157e60
+  DOCKER_PUSHER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-docker-pusher:6.0.20@sha256:bad3773029a68f33953f1dc245cb92c386b5311a996340eea41fe6b9cc52a96c
+  DOCKER_TAG_PUSHER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-docker-tag-pusher:1.3.19@sha256:ec4416525bbf4912786035fbb2e1f26ae04f94559c535f02232b48eb0a1c5fa7
+  ENGINE_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/engine:1.178.2@sha256:3e179cb065419699c0925bb1eccee1e1a9d3b6609859f801a85feeaef0b6c153
+  FS_OPS_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/fs-ops:1.2.10@sha256:70d53821b9314d88e3571dfb096e8f577caf3e4c2199253621b8d0c85d20b8ad
+  GIT_CLONE_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-git-cloner:10.3.2@sha256:2e09eef18d5caddae708058ec63247825ac4e4ee5e5763986f65e1312fbcc449
+  KUBE_DEPLOY: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-deploy-kubernetes:16.2.9@sha256:35649b14eb43717d3752d08597ada77d3737b2508f1b8e1f52f67b7a0e5ff263
+  PIPELINE_DEBUGGER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-debugger:1.3.9@sha256:37975653b4ef5378bd1e38d453c7dac4721cba1c1977a5ca6118a67b98a47925
+  TEMPLATE_ENGINE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/pikolo:0.14.6@sha256:b3f499fcf93037e69fba599d2f292cfc9f28a158052dd57d5de9cdf9756f1f60
   CR_6177_FIXER: docker.io/library/alpine:3.21
   GC_BUILDER_IMAGE: docker.io/library/alpine:3.21
 
@@ -734,6 +748,7 @@ cf-platform-analytics-etlstarter:
   container:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
+      repository: codefresh/cf-platform-analytics
     env:
       ENV: production
       DATASET_ID: etl
@@ -756,6 +771,10 @@ cf-platform-analytics-platform:
   redis:
     enabled: true
     nameOverride: redis-platform-analytics
+    image:
+      registry: quay.io
+      repository: codefresh/redis
+      tag: 7.4.3-debian-12-r0
   resources:
     requests:
       cpu: 100m
@@ -807,7 +826,7 @@ cfsign:
       image:
         registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
         repository: codefresh/curl
-        tag: 8.11.1
+        tag: 8.14.1
   affinity: {}
   nodeSelector: {}
   podSecurityContext: {}
@@ -892,6 +911,8 @@ cluster-providers:
 # Ref: https://github.com/bitnami/charts/blob/main/bitnami/consul/values.yaml
 consul:
   enabled: true
+  image:
+    repository: bitnamilegacy/consul
   datacenterName: codefresh-onprem
   replicaCount: 1
   extraEnvVars:
@@ -974,8 +995,8 @@ helm-repo-manager:
     ingress:
       enabled: false
     image:
-      repository: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/chartmuseum
-      tag: 8795e993
+      repository: ghcr.io/helm/chartmuseum
+      tag: v0.16.3
   resources:
     requests:
       cpu: 100m
@@ -1092,6 +1113,8 @@ kube-integration:
 mongodb:
   enabled: true
   architecture: standalone
+  image:
+    repository: bitnamilegacy/mongodb
   useStatefulSet: true
   auth:
     enabled: true
@@ -1102,14 +1125,16 @@ mongodb:
       cpu: 200m
       memory: 256Mi
   migration:
-    enabled: true
-    featureCompatibilityVersion: "6.0"
+    enabled: false
+    featureCompatibilityVersion: "7.0"
 
 # -- nats
 # @default -- See below
 # Ref: https://github.com/bitnami/charts/blob/main/bitnami/nats/values.yaml
 nats:
   enabled: true
+  image:
+    repository: bitnamilegacy/nats
   replicaCount: 1
   auth:
     enabled: false
@@ -1142,7 +1167,7 @@ postgresql:
   image:
     registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
     repository: codefresh/postgresql
-    tag: 17
+    tag: 17.5.0-debian-12-r20
   auth:
     enablePostgresUser: true
     postgresPassword: "eC9arYka4ZbH"
@@ -1198,6 +1223,10 @@ redis:
       requests:
         cpu: 200m
         memory: 256Mi
+  image:
+    registry: quay.io
+    repository: codefresh/redis
+    tag: 7.4.3-debian-12-r0
 
 # -- redis-ha
 ## Ref: https://github.com/DandyDeveloper/charts/blob/master/charts/redis-ha/values.yaml
@@ -1226,7 +1255,8 @@ redis-ha:
 rabbitmq:
   enabled: true
   image:
-    tag: "4.0"
+    repository: bitnamilegacy/rabbitmq
+    tag: "4.1.3"
   replicaCount: 1
   auth:
     username: user
@@ -1246,34 +1276,7 @@ builder:
       image:
         registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
         repository: codefresh/curl
-        tag: 8.11.1
-  container:
-    image:
-      registry: docker.io
-      repository: library/docker
-      tag: 28.0-dind
-  affinity: {}
-  nodeSelector: {}
-  podSecurityContext: {}
-  resources: {}
-  tolerations: []
-
-# -- runner
-# @default -- See below
-runner:
-  enabled: true
-  imagePullSecrets: []
-  initContainers:
-    register:
-      image:
-        registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
-        repository: codefresh/curl
-        tag: 8.11.1
-  container:
-    image:
-      registry: docker.io
-      repository: library/docker
-      tag: 28.0-dind
+        tag: 8.14.1
   affinity: {}
   nodeSelector: {}
   podSecurityContext: {}
@@ -1359,7 +1362,7 @@ argo-hub-platform:
   container:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
-      repository: codefresh-io/argo-hub-platform
+      repository: codefresh/argo-hub-platform
   imagePullSecrets: []
   resources:
     requests:
@@ -1422,7 +1425,7 @@ argo-platform:
       # -- Registry
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
       # -- Repository
-      repository: codefresh-io/argo-platform-api-graphql
+      repository: codefresh/argo-platform-api-graphql
     # -- Env vars
     # @default -- See below
     env:
@@ -1485,7 +1488,7 @@ argo-platform:
     kind: Deployment
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
-      repository: codefresh-io/argo-platform-abac
+      repository: codefresh/argo-platform-abac
     env:
       MONGODB_PROTOCOL: *mongodb-protocol
       MONGODB_OPTIONS: *mongodb-options
@@ -1521,7 +1524,7 @@ argo-platform:
     kind: Deployment
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
-      repository: codefresh-io/argo-platform-analytics-reporter
+      repository: codefresh/argo-platform-analytics-reporter
     env:
       ENABLED_DATABASE_TYPES: POSTGRES
       MONGODB_PROTOCOL: *mongodb-protocol
@@ -1570,7 +1573,7 @@ argo-platform:
     kind: Deployment
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
-      repository: codefresh-io/argo-platform-api-events
+      repository: codefresh/argo-platform-api-events
     env:
       RABBITMQ_PROTOCOL: *rabbitmq-protocol
       RABBITMQ_URLS: $(RABBITMQ_PROTOCOL)://$(RABBITMQ_USER):$(RABBITMQ_PASSWORD)@$(RABBITMQ_HOST)
@@ -1608,7 +1611,7 @@ argo-platform:
     kind: Deployment
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
-      repository: codefresh-io/argo-platform-audit
+      repository: codefresh/argo-platform-audit
     env:
       MONGODB_PROTOCOL: *mongodb-protocol
       MONGODB_OPTIONS: *mongodb-options
@@ -1651,7 +1654,7 @@ argo-platform:
     kind: Deployment
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
-      repository: codefresh-io/argo-platform-cron-executor
+      repository: codefresh/argo-platform-cron-executor
     env:
       MONGODB_PROTOCOL: *mongodb-protocol
       MONGODB_OPTIONS: *mongodb-options
@@ -1694,7 +1697,7 @@ argo-platform:
     kind: Deployment
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
-      repository: codefresh-io/argo-platform-event-handler
+      repository: codefresh/argo-platform-event-handler
     env:
       MONGODB_PROTOCOL: *mongodb-protocol
       MONGODB_OPTIONS: *mongodb-options
@@ -1747,7 +1750,7 @@ argo-platform:
     kind: Deployment
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
-      repository: codefresh-io/argo-platform-ui
+      repository: codefresh/argo-platform-ui
     resources:
       requests:
         cpu: 100m
@@ -1768,7 +1771,7 @@ argo-platform:
     kind: Deployment
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
-      repository: codefresh-io/argo-platform-broadcaster
+      repository: codefresh/argo-platform-broadcaster
     env:
       MONGODB_PROTOCOL: *mongodb-protocol
       MONGODB_OPTIONS: *mongodb-options
@@ -1776,6 +1779,8 @@ argo-platform:
       MONGODB_READMODELS_URI: '{{ include "argo-patform-libs.env-vars.mongodb-readmodels-uri-env-var-value" . }}'
       RABBITMQ_URLS: $(RABBITMQ_PROTOCOL)://$(RABBITMQ_USER):$(RABBITMQ_PASSWORD)@$(RABBITMQ_HOST)
     secrets:
+      v1-host: http://{{ .Release.Name }}-{{ .Values.global.cfapiEndpointsService }}
+      v1-internal-host: http://{{ .Release.Name }}-{{ .Values.global.cfapiService }}:{{ .Values.global.cfapiInternalPort }}
       mongodb-protocol: *mongodb-protocol
       mongodb-options: *mongodb-options
       mongodb-host: *mongodb-host
@@ -1809,7 +1814,7 @@ argo-platform:
     kind: Deployment
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
-      repository: codefresh-io/argo-platform-promotion-orchestrator
+      repository: codefresh/argo-platform-promotion-orchestrator
     env:
       MONGODB_PROTOCOL: *mongodb-protocol
       MONGODB_OPTIONS: *mongodb-options
