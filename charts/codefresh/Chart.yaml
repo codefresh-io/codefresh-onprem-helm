@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.8.14
+version: 2.8.15
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -19,7 +19,7 @@ annotations:
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'chore(cfapi): migrate to @node-saml/passport-saml to fix critical security vulnerability (#101)'
+      description: 'patch: cr 29499 and 30190 (#105)'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
