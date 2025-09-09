@@ -18,8 +18,10 @@ annotations:
   artifacthub.io/containsSecurityUpdates: "true"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |-
-    - kind: changed
-      description: 'patch: cr 29499 and 30190 (#105)'
+    - kind: fixed
+      description: 'engine: fixed cf_export command in Windows Runtime Environments.'
+    - kind: security
+      description: 'Contains security fixes.'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
