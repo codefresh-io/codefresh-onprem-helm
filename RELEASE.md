@@ -14,8 +14,8 @@ git checkout -b release-x.y main
 ```shell
 git checkout -b update-release-x.y release-x.y
 ```
-- **optional** Update subchart versions in `Chart.yaml` (if not already done in `codefresh(deps): bump subcharts` PR)
-- **optional** Update `values.yaml`, `templates/**` files if required
+- *optional* Update subchart versions in `Chart.yaml` (if not already done in `codefresh(deps): bump subcharts` PR)
+- *optional* Update `values.yaml`, `templates/**` files if required
 - Run `./scripts/helm-docs.sh` to update `README.md` files
 - Commit and push changes, trigger CI with `/test` comment, make sure all checks pass, then merge the PR
 - When the PR is merged, the release draft will be created automatically and `codefresh/x.y.z: prepare chart content for release` PR will be opened with the updated chart `.version` and `artifacthub.io/changes` annotation.
@@ -41,5 +41,5 @@ git checkout -b patch/something release-x.y
 
 - Every commit to `feat` branches creates `oci://quay.io/codefresh/dev/codefresh:0.0.0-<BRANCH_NAME_NORMALIZED>-<SHORT_SHA>` helm chart
 - Every commit to `main` branch creates `oci://quay.io/codefresh/dev/codefresh:0.0.0-<SHORT_SHA>` helm chart
-- Every commit to `release-x.y` branches creates `oci://quay.io/codefresh/dev/codefresh:x.y.z` helm chart
-- Every release publishes `oci://quay.io/codefresh/codefresh: x.y.z` helm chart
+- Every commit to `release-x.y` branches creates `oci://quay.io/codefresh/dev/codefresh:x.y.z` helm chart, where `x.y.z` is release draft version
+- Every release publishes `oci://quay.io/codefresh/codefresh: x.y.z` helm chart, where `x.y.z` is the released version
