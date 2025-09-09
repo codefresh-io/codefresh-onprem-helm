@@ -240,3 +240,19 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     version: 0.1.0
     condition: cf-oidc-provider.enabled
+  - name: mailer
+    version: "*"
+    repository: oci://quay.io/codefresh/charts
+    condition: mailer.enabled
+  - name: payments
+    version: "*"
+    repository: oci://quay.io/codefresh/charts
+    condition: payments.enabled
+  - name: segment-reporter
+    version: "*"
+    repository: oci://quay.io/codefresh/charts
+    condition: segment-reporter.enabled
+  - name: salesforce-reporter
+    version: "*"
+    repository: oci://quay.io/codefresh/charts
+    condition: salesforce-reporter.enabled
