@@ -16,7 +16,7 @@ git checkout -b update-release-x.y release-x.y
 ```
 - *optional* Update subchart versions in `Chart.yaml` (if not already done in `codefresh(deps): bump subcharts` PR)
 - *optional* Update `values.yaml`, `templates/**` files if required
-- Run `./scripts/update_re_images.sh` to update runtime images with latest from SAAS to `codefresh/values.yaml`
+- Run `./scripts/update_re_images.sh` to update runtime images with latest from SAAS to `values.yaml`
 - Run `./scripts/helm-docs.sh` to update `README.md` files
 - Commit and push changes, trigger CI with `/test` comment, make sure all checks pass, then merge the PR
 - When the PR is merged, the release draft will be created automatically and `codefresh/x.y.z: prepare chart content for release` PR will be opened with the updated chart `.version` and `artifacthub.io/changes` annotation.
