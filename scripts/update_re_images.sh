@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 MYDIR=$(dirname $0)
-CHARTDIR="${MYDIR}/../codefresh"
+CHARTDIR="${MYDIR}/../charts/codefresh"
 
 <<COMMENT
 Script updates runtime images from system/root runtime on SAAS to codefresh/values.yaml
