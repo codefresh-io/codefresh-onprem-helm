@@ -33,10 +33,10 @@ git checkout -b patch/something release-x.y
 ```
 - Make necessary changes to the chart like updating versions of **required** dependencies in `Chart.yaml`, updating `values.yaml`, `templates/**` files if required and etc.
 > **Note!** If these changes are required for the next major or minor release, make sure to cherry-pick them to the `main` branch as well with a separate PR.
-- Run `./scripts/helm-docs.sh` to update `README.md` files
 - Commit and push changes, open a PR against `release-x.y` branch, trigger CI with `/test` comment, make sure all checks pass, then merge the PR
 - When the PR is merged, the release draft will be created automatically with `codefresh/x.y.z: prepare chart content for release` PR
 - Review `codefresh/x.y.z: prepare chart content for release` PR. Update `artifacthub.io/changes` annotation if needed.
+- Run `./scripts/helm-docs.sh` to update `README.md` files
 - Review and update release notes in the corresponding release draft on GitHub.
 - Merge the PR to create a new release. Release will be published automatically.
 
