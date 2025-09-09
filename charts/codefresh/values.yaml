@@ -1260,6 +1260,11 @@ builder:
         registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
         repository: codefresh/curl
         tag: 8.14.1
+  container:
+    image:
+      registry: quay.io
+      repository: codefresh/dind
+      tag: 26.1.4-1.28.8
   affinity: {}
   nodeSelector: {}
   podSecurityContext: {}
