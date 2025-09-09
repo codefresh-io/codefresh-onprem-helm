@@ -81,6 +81,9 @@ See [Use OCI-based registries](https://helm.sh/docs/topics/registries/)
 
 **Important:** only helm 3.8.0+ is supported
 
+> ⚠️ The default chart configuration with embedded databases is **not intended for production usage**! You should use Cloud PaaS for MongoDB, PostgreSQL, Redis and RabbitMQ.
+See [Configuring external services](#configuring-external-services) section for details.
+
 Edit default `values.yaml` or create empty `cf-values.yaml`
 
 - Pass `sa.json` (as a single line) to `.Values.imageCredentials.password`
@@ -224,7 +227,7 @@ The chart contains required dependencies for the corresponding services
 - [bitnami/redis](https://github.com/bitnami/charts/tree/main/bitnami/redis)
 - [bitnami/rabbitmq](https://github.com/bitnami/charts/tree/main/bitnami/rabbitmq)
 
-However, you might need to use external services like [MongoDB Atlas Database](https://www.mongodb.com/atlas/database) or [Amazon RDS for PostgreSQL](https://aws.amazon.com/rds/postgresql/). In order to use them, adjust the values accordingly:
+To use external services like [MongoDB Atlas Database](https://www.mongodb.com/atlas/database) or [Amazon RDS for PostgreSQL](https://aws.amazon.com/rds/postgresql/) you need to adjust the values accordingly:
 
 #### External MongoDB
 
@@ -2457,7 +2460,7 @@ After platform upgrade, Consul fails with the error `refusing to rejoin cluster 
 | argo-platform.runtime-monitor | object | See below | runtime-monitor Don't enable! Not used in onprem! |
 | argo-platform.ui | object | See below | ui |
 | argo-platform.useExternalSecret | bool | `false` | Use regular k8s secret object. Keep `false`! |
-| builder | object | `{"affinity":{},"enabled":true,"imagePullSecrets":[],"initContainers":{"register":{"image":{"registry":"us-docker.pkg.dev/codefresh-inc/public-gcr-io","repository":"codefresh/curl","tag":"8.14.1"}}},"nodeSelector":{},"podSecurityContext":{},"resources":{},"tolerations":[]}` | builder |
+| builder | object | `{"affinity":{},"container":{"image":{"registry":"quay.io","repository":"codefresh/dind","tag":"26.1.4-1.28.8"}},"enabled":true,"imagePullSecrets":[],"initContainers":{"register":{"image":{"registry":"us-docker.pkg.dev/codefresh-inc/public-gcr-io","repository":"codefresh/curl","tag":"8.14.1"}}},"nodeSelector":{},"podSecurityContext":{},"resources":{},"tolerations":[]}` | builder |
 | cf-broadcaster | object | See below | broadcaster |
 | cf-oidc-provider | object | See below | cf-oidc-provider |
 | cf-platform-analytics-etlstarter | object | See below | etl-starter |

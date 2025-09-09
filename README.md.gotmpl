@@ -82,6 +82,9 @@ See [Use OCI-based registries](https://helm.sh/docs/topics/registries/)
 
 **Important:** only helm 3.8.0+ is supported
 
+> ⚠️ The default chart configuration with embedded databases is **not intended for production usage**! You should use Cloud PaaS for MongoDB, PostgreSQL, Redis and RabbitMQ.
+See [Configuring external services](#configuring-external-services) section for details.
+
 Edit default `values.yaml` or create empty `cf-values.yaml`
 
 - Pass `sa.json` (as a single line) to `.Values.imageCredentials.password`
@@ -225,7 +228,7 @@ The chart contains required dependencies for the corresponding services
 - [bitnami/redis](https://github.com/bitnami/charts/tree/main/bitnami/redis)
 - [bitnami/rabbitmq](https://github.com/bitnami/charts/tree/main/bitnami/rabbitmq)
 
-However, you might need to use external services like [MongoDB Atlas Database](https://www.mongodb.com/atlas/database) or [Amazon RDS for PostgreSQL](https://aws.amazon.com/rds/postgresql/). In order to use them, adjust the values accordingly:
+To use external services like [MongoDB Atlas Database](https://www.mongodb.com/atlas/database) or [Amazon RDS for PostgreSQL](https://aws.amazon.com/rds/postgresql/) you need to adjust the values accordingly:
 
 #### External MongoDB
 
