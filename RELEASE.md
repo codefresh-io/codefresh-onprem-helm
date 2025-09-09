@@ -21,6 +21,7 @@ git checkout -b update-release-x.y release-x.y
 - When the PR is merged, the release draft will be created automatically and `codefresh/x.y.z: prepare chart content for release` PR will be opened with the updated chart `.version` and `artifacthub.io/changes` annotation.
 > **Note!** If more changes are required before the release, repeat the steps above by creating a new PR against `release-x.y` branch. Release will not be published until `codefresh/x.y.z: prepare chart content for release` PR is merged!
 - Review `codefresh/x.y.z: prepare chart content for release` PR. Update `artifacthub.io/changes` annotation if needed.
+- Review and update release notes in the corresponding release draft on GitHub.
 - Merge the PR to create a new release. Release will be published automatically.
 
 For a **PATCH** release:
@@ -35,6 +36,7 @@ git checkout -b patch/something release-x.y
 - Commit and push changes, open a PR against `release-x.y` branch, trigger CI with `/test` comment, make sure all checks pass, then merge the PR
 - When the PR is merged, the release draft will be created automatically with `codefresh/x.y.z: prepare chart content for release` PR
 - Review `codefresh/x.y.z: prepare chart content for release` PR. Update `artifacthub.io/changes` annotation if needed.
+- Review and update release notes in the corresponding release draft on GitHub.
 - Merge the PR to create a new release. Release will be published automatically.
 
 ## Versioning in CI and Promote pipelines
