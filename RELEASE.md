@@ -42,4 +42,4 @@ git checkout -b patch/something release-x.y
 - Every commit to `feat` branches creates `oci://quay.io/codefresh/dev/codefresh:0.0.0-<BRANCH_NAME_NORMALIZED>-<SHORT_SHA>` helm chart
 - Every commit to `main` branch creates `oci://quay.io/codefresh/dev/codefresh:0.0.0-<SHORT_SHA>` helm chart
 - Every commit to `release-x.y` branches creates `oci://quay.io/codefresh/dev/codefresh:x.y.z` helm chart, where `x.y.z` is release draft version
-- Every release publishes `oci://quay.io/codefresh/codefresh: x.y.z` helm chart, where `x.y.z` is the released version
+- Every release publishes `oci://quay.io/codefresh/codefresh:x.y.z` helm chart, where `x.y.z` is the released version
