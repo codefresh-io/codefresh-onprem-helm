@@ -1,6 +1,6 @@
 #!/bin/bash
 SRCROOT="$(cd "$(dirname "$0")/.." && pwd)"
-CHARTDIR="codefresh"
+CHARTDIR="charts/codefresh"
 VALUESFILE="$CHARTDIR/.ci/values/values-all-images.yaml"
 OUTPUTFILE=$1
 
