@@ -444,7 +444,8 @@ hooks:
       repository: codefresh/mongosh
       tag: 2.5.0
     affinity: {}
-    nodeSelector: {}
+    nodeSelector:
+      kubernetes.io/arch: amd64
     podSecurityContext: {}
     resources: {}
     tolerations: []
@@ -468,7 +469,8 @@ hooks:
       repository: codefresh/rabbitmqadmin
       tag: 2.8.0
     affinity: {}
-    nodeSelector: {}
+    nodeSelector:
+      kubernetes.io/arch: amd64
     podSecurityContext: {}
     resources: {}
     tolerations: []

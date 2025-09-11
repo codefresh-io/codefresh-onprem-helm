@@ -1156,6 +1156,7 @@ tests:
           path: spec.template.spec.nodeSelector
           value:
             key: "value"
+            kubernetes.io/arch: amd64
       - equal:
           path: spec.template.spec.affinity
           value:
