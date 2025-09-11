@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 0.0.0
+version: 2.9.0
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -20,6 +20,14 @@ annotations:
   # artifacthub.io/changes: |
   #   - kind:
   #     description: ""
+
+  artifacthub.io/changes: |-
+    - kind: changed
+      description: 'feat: update runtime images (#108)'
+    - kind: changed
+      description: 'feat: update cf-builder to use codefresh/dind image'
+    - kind: changed
+      description: 'feat: remove nats subchart (#98)'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
