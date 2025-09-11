@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 0.0.0
+version: 2.9.0
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -20,6 +20,60 @@ annotations:
   # artifacthub.io/changes: |
   #   - kind:
   #     description: ""
+
+  artifacthub.io/changes: |-
+    - kind: changed
+      description: 'feat: update runtime images (#108)'
+    - kind: changed
+      description: 'chore(deps): bump subcharts (#99)'
+    - kind: changed
+      description: update RELEASE.md
+    - kind: changed
+      description: 'feat: add subcharts for e2e-platform (#104)'
+    - kind: changed
+      description: update README.md
+    - kind: changed
+      description: update README.md
+    - kind: changed
+      description: update RELEASE.md
+    - kind: changed
+      description: set image for builder
+    - kind: changed
+      description: fix update_re_images.sh script
+    - kind: changed
+      description: update RELEASE.md
+    - kind: changed
+      description: update RELEASE.md
+    - kind: changed
+      description: update pr-title action
+    - kind: changed
+      description: update CODEOWNERS
+    - kind: changed
+      description: update README.md
+    - kind: changed
+      description: update README.md
+    - kind: changed
+      description: update README.md
+    - kind: changed
+      description: update README.md
+    - kind: changed
+      description: update RELEASE.md
+    - kind: changed
+      description: update RELEASE.md
+    - kind: changed
+      description: fix README.md
+    - kind: changed
+      description: 'feat: remove nats subchart (#98)'
+    - kind: changed
+      description: 'feat: build latest 0.0.0 dev chart (#97)'
+    - kind: changed
+      description: 'feat(codefresh): remove Chart.lock'
+    - kind: changed
+      description: 'feat(codefresh): update Chart.yaml; pin dependencies'
+    - kind: changed
+      description: 'feat: update release lifecycle (#96)'
+    - kind: changed
+      description: 'feat: gitops-onprem (#77)'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
