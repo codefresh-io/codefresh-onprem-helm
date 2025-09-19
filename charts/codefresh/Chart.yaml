@@ -245,7 +245,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: mailer.enabled
   - name: payments
-    version: "*"
+    version: "2.25.0"
     repository: oci://quay.io/codefresh/charts
     condition: payments.enabled
   - name: segment-reporter
