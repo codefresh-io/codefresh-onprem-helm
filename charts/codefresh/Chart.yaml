@@ -257,7 +257,7 @@ dependencies:
     version: 0.1.0
     condition: cf-oidc-provider.enabled
   - name: mailer
-    version: "*"
+    version: "1.22.0"
     repository: oci://quay.io/codefresh/charts
     condition: mailer.enabled
   - name: payments
