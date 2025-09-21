@@ -1,44 +1,44 @@
 [
     {
-        "keys": {
+        "key": {
             "accountId": 1,
             "imageName": 1,
             "repositoryName": 1
         }
     },
     {
-        "keys": {
+        "key": {
             "accountId": 1,
             "repositoryName": 1,
             "gitRepository": 1
         }
     },
     {
-        "keys": {
+        "key": {
             "accountId": 1,
             "repositoryName": 1,
             "branch": 1
         }
     },
     {
-        "keys": {
+        "key": {
             "runtime.name": 1
         }
     },
     {
-        "keys": {
+        "key": {
             "accountId": 1,
             "repoDigest": 1
         }
     },
     {
-        "keys": {
+        "key": {
             "accountId": 1,
             "internalImageId": 1
         }
     },
     {
-        "keys": {
+        "key": {
             "accountId": 1,
             "binaryId": 1,
             "lastUpdate": -1,
@@ -46,23 +46,21 @@
         }
     },
     {
-        "keys": {
+        "key": {
             "accountId": 1,
             "imageName": 1
         },
-        "options": {
-            "collation": {
-                "locale": "en_US",
-                "caseLevel": false,
-                "caseFirst": "off",
-                "strength": 1,
-                "numericOrdering": false,
-                "alternate": "non-ignorable",
-                "maxVariable": "punct",
-                "normalization": false,
-                "backwards": false,
-                "version": "57.1"
-            }
+        "collation": {
+            "locale": "en_US",
+            "caseLevel": false,
+            "caseFirst": "off",
+            "strength": 1,
+            "numericOrdering": false,
+            "alternate": "non-ignorable",
+            "maxVariable": "punct",
+            "normalization": false,
+            "backwards": false,
+            "version": "57.1"
         }
     }
 ]

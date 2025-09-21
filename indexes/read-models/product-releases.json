@@ -1,105 +1,95 @@
 [
     {
-        "keys": {
+        "key": {
             "status": 1
         },
-        "options": {
-            "collation": {
-                "locale": "en_US",
-                "caseLevel": false,
-                "caseFirst": "off",
-                "strength": 1,
-                "numericOrdering": false,
-                "alternate": "non-ignorable",
-                "maxVariable": "punct",
-                "normalization": false,
-                "backwards": false,
-                "version": "57.1"
-            }
+        "collation": {
+            "locale": "en_US",
+            "caseLevel": false,
+            "caseFirst": "off",
+            "strength": 1,
+            "numericOrdering": false,
+            "alternate": "non-ignorable",
+            "maxVariable": "punct",
+            "normalization": false,
+            "backwards": false,
+            "version": "57.1"
         }
     },
     {
-        "keys": {
+        "key": {
             "accountId": 1,
             "updatedAt": -1
         },
-        "options": {
-            "collation": {
-                "locale": "en",
-                "caseLevel": false,
-                "caseFirst": "off",
-                "strength": 2,
-                "numericOrdering": false,
-                "alternate": "non-ignorable",
-                "maxVariable": "punct",
-                "normalization": false,
-                "backwards": false,
-                "version": "57.1"
-            }
+        "collation": {
+            "locale": "en",
+            "caseLevel": false,
+            "caseFirst": "off",
+            "strength": 2,
+            "numericOrdering": false,
+            "alternate": "non-ignorable",
+            "maxVariable": "punct",
+            "normalization": false,
+            "backwards": false,
+            "version": "57.1"
         }
     },
     {
-        "keys": {
+        "key": {
             "accountId": 1,
             "productName": 1,
             "triggerCommit.sha": 1
         },
-        "options": {
-            "collation": {
-                "locale": "en_US",
-                "caseLevel": false,
-                "caseFirst": "off",
-                "strength": 1,
-                "numericOrdering": false,
-                "alternate": "non-ignorable",
-                "maxVariable": "punct",
-                "normalization": false,
-                "backwards": false,
-                "version": "57.1"
-            }
+        "collation": {
+            "locale": "en_US",
+            "caseLevel": false,
+            "caseFirst": "off",
+            "strength": 1,
+            "numericOrdering": false,
+            "alternate": "non-ignorable",
+            "maxVariable": "punct",
+            "normalization": false,
+            "backwards": false,
+            "version": "57.1"
         }
     },
     {
-        "keys": {
+        "key": {
             "accountId": 1,
             "productName": 1,
             "status": 1,
             "triggerEnvironment": 1,
             "triggerCommit.sha": 1
         },
-        "options": {
-            "collation": {
-                "locale": "en_US",
-                "caseLevel": false,
-                "caseFirst": "off",
-                "strength": 1,
-                "numericOrdering": false,
-                "alternate": "non-ignorable",
-                "maxVariable": "punct",
-                "normalization": false,
-                "backwards": false,
-                "version": "57.1"
-            }
+        "collation": {
+            "locale": "en_US",
+            "caseLevel": false,
+            "caseFirst": "off",
+            "strength": 1,
+            "numericOrdering": false,
+            "alternate": "non-ignorable",
+            "maxVariable": "punct",
+            "normalization": false,
+            "backwards": false,
+            "version": "57.1"
         }
     },
     {
-        "keys": {
+        "key": {
             "accountId": 1,
             "productName": 1
         },
-        "options": {
-            "collation": {
-                "locale": "en_US",
-                "caseLevel": false,
-                "caseFirst": "off",
-                "strength": 1,
-                "numericOrdering": false,
-                "alternate": "non-ignorable",
-                "maxVariable": "punct",
-                "normalization": false,
-                "backwards": false,
-                "version": "57.1"
-            }
+        "collation": {
+            "locale": "en_US",
+            "caseLevel": false,
+            "caseFirst": "off",
+            "strength": 1,
+            "numericOrdering": false,
+            "alternate": "non-ignorable",
+            "maxVariable": "punct",
+            "normalization": false,
+            "backwards": false,
+            "version": "57.1"
         }
     }
 ]
