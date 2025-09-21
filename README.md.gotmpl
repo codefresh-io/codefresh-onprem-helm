@@ -2386,6 +2386,15 @@ For built-in RabbitMQ `bitnami/rabbitmq` subchart, pre-upgrade hook was added to
 
 - `.Values.runner` is removed
 
+#### Changes in MongoDB schema
+
+Changes in indexes: follow [Maintaining MongoDB indexes](#maintaining-mongodb-indexes) guide to meet index requirements *before* the upgrade process.
+
+Changes in collections: following collections can be safely dropped *after* the upgrade to 2.9.x if they exist:
+
+- `read-models.application-tree`
+- `read-models.<entity>-history` — every collection with `~-history` suffix, such as `read-models.applications-history`, `read-models.services-history`, etc.
+
 
 ## Troubleshooting
 
