@@ -2366,6 +2366,13 @@ For built-in RabbitMQ `bitnami/rabbitmq` subchart, pre-upgrade hook was added to
 
 ### To 2-9-0
 
+> [!WARNING]
+> **BREAKING CHANGES**
+> 
+> Default DinD image has been upgraded to 28.x, which removes support for pushing and pulling with legacy image manifest v2 schema 1 ([ref](https://docs.docker.com/engine/deprecated/#pushing-and-pulling-with-image-manifest-v2-schema-1)).
+>
+> Before upgrading Codefresh, please follow the instruction in [this doc](https://codefresh.io/docs/docs/kb/articles/upgrade-deprecated-docker-images/) to identify deprecated images, upgrade them, and then proceed with upgrading the platform.
+
 ####  Affected values
 
 - `.Values.runner` is removed
