@@ -205,14 +205,43 @@ helm show values codefresh/codefresh
 
 ### Persistent services
 
-The following table displays the list of **persistent** services created as part of the on-premises installation:
+The following table displays the list of **persistent** services created as part of the on-premises installation (for each Codefresh version):
 
-| Database  | Purpose | Recommended version   | Minimum supported version |
-| :---      | :----   | :---                  | :---                      |
-| MongoDB      | Stores all account data (account settings, users, projects, pipelines, builds etc.)       | 7.x  | 5.x |
-| Postgresql   | Stores data about events for the account (pipeline updates, deletes, etc.). The audit log uses the data from this database.        | 16.x \| 17.x  | 15.x |
+#### 2.9
+
+| Database  | Purpose | Recommended version   | Supported versions |
+| :---      | :----   | :---                  | :---               |
+| MongoDB      | Stores all account data (account settings, users, projects, pipelines, builds etc.)       | 7.x (`featureCompatibilityVersion: 7.0`)  | \>=4.2 \<=7.x |
+| Postgresql   | Stores data about events for the account (pipeline updates, deletes, etc.). The audit log uses the data from this database.        | 17.x  | \>= 16.x \<= 17.x |
+| Redis   | Used for caching, and as a key-value store for cron trigger manager.        | 7.4.x | \>= 7.0.x \<= 7.4.x |
+| RabbitMQ  | Used for message queueing.        | 4.1.x | 3.13.x \| 4.0.x \| 4.1.x |
+
+#### 2.8
+
+| Database  | Purpose | Recommended version   | Supported versions |
+| :---      | :----   | :---                  | :---               |
+| MongoDB      | Stores all account data (account settings, users, projects, pipelines, builds etc.)       | 7.x (`featureCompatibilityVersion: 6.0`)  | \>=4.2 \<=7.x |
+| Postgresql   | Stores data about events for the account (pipeline updates, deletes, etc.). The audit log uses the data from this database.        | 16.x \| 17.x  | \>= 13.x \<= 17.x |
+| Redis   | Used for caching, and as a key-value store for cron trigger manager.        | 7.4.x | \>= 7.0.x \<= 7.4.x |
+| RabbitMQ  | Used for message queueing.        | 4.0.x | 3.13.x \| 4.0.x \| 4.1.x |
+
+#### 2.7
+
+| Database  | Purpose | Recommended version   | Supported versions |
+| :---      | :----   | :---                  | :---               |
+| MongoDB      | Stores all account data (account settings, users, projects, pipelines, builds etc.)       | 6.x (`featureCompatibilityVersion: 6.0`)  | \>=4.2 \<=6.x |
+| Postgresql   | Stores data about events for the account (pipeline updates, deletes, etc.). The audit log uses the data from this database.        | 13.x  | 13.x |
 | Redis   | Used for caching, and as a key-value store for cron trigger manager.        | 7.0.x | 7.0.x |
-| RabbitMQ  | Used for message queueing.        | 3.13 \| 4.0.x \| 4.1.x  | 3.13 |
+| RabbitMQ  | Used for message queueing.        | 3.13.x | 3.13.x |
+
+#### 2.6
+
+| Database  | Purpose | Recommended version   | Supported versions |
+| :---      | :----   | :---                  | :---               |
+| MongoDB      | Stores all account data (account settings, users, projects, pipelines, builds etc.)       | 6.x (`featureCompatibilityVersion: 5.0`)  | \>=4.2 \<=6.x |
+| Postgresql   | Stores data about events for the account (pipeline updates, deletes, etc.). The audit log uses the data from this database.        | 13.x  | 13.x |
+| Redis   | Used for caching, and as a key-value store for cron trigger manager.        | 7.0.x | 7.0.x |
+| RabbitMQ  | Used for message queueing.        | 3.13.x | 3.13.x |
 
 > Running on netfs (nfs, cifs) is not recommended.
 
