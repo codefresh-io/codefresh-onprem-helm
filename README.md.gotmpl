@@ -1492,7 +1492,8 @@ Use [obtain-oidc-id-token](https://github.com/codefresh-io/steps/blob/822afc0a9a
 
 Sometimes, in new releases of Codefresh On-Prem, index requirements change. When this happens, it's mentioned in the [Upgrading section](#upgrading) for the specific release.
 
-> ℹ️ If you're upgrading from version `X` to version `Y`, and index requirements were updated in any of the intermediate versions, you only need to align your indexes with the index requirements of version `Y`. To do that, follow [Index alignment](#index-alignment) instructions.
+> [!TIP]
+> If you're upgrading from version `X` to version `Y`, and index requirements were updated in any of the intermediate versions, you only need to align your indexes with the index requirements of version `Y`. To do that, follow [Index alignment](#index-alignment) instructions.
 
 ### Index alignment
 
@@ -1515,11 +1516,12 @@ indexes
 **Overview of the index alignment process:**
 
 1. Identify the differences between the indexes in your MongoDB instance and the required index definitions.
-2. Create any missing indexes one by one. (It's important not to create them in bulk.)
+2. Create any missing indexes.
 3. Perform the upgrade of Codefresh On-Prem installation.
 4. Then remove any unnecessary indexes.
 
-> ⚠️ **Note! Any changes to indexes should be performed during a defined maintenance window or during periods of lowest traffic to MongoDB.**
+> [!IMPORTANT]
+> Any changes to indexes should be performed during a defined maintenance window or during periods of lowest traffic to MongoDB.**
 >
 > Building indexes during time periods where the target collection is under heavy write load can result in reduced write performance and longer index builds. ([*Source: MongoDB official documentation*](https://www.mongodb.com/docs/manual/core/index-creation/#index-build-impact-on-database-performance))
 >
@@ -1542,19 +1544,32 @@ mongosh "<connection_string>"
 db.getSiblingDB('<db_name>').getCollection('<collection_name>').getIndexes()
 ```
 
-- Compare your indexes with the required indexes for the target release, and adjust them by creating any missing indexes or removing any unnecessary ones
+- Compare your indexes with the required indexes for the target release, and adjust them by creating any missing indexes or removing any unnecessary ones.
 
 **Index creation**
 
-> ⚠ **Note! Always create indexes sequentially, one by one. Don't create them in bulk.**
+- To create an indexes, we recommend using the `createIndexes` command ([ref](https://www.mongodb.com/docs/manual/reference/command/createIndexes/)):
 
-- To create an index, use the `createIndex()` method:
+> [!IMPORTANT]
+> We recommend to create indexes in batches of 3 indexes at a time.
+> However, it's highly recommended before creating indexes in production DB to test performance impact on a staging instance with prod-like amount of data.
+>
+> Previous command should be completed before starting the next batch.
 
 ```js
-db.getSiblingDB('<db_name>').getCollection('<collection_name>').createIndex(<keys_object>, <options_object>)
+db.getSiblingDB('<db_name>').runCommand(
+  {
+    createIndexes: '<collection_name>',
+    indexes: [
+        { ... },  // Index definition from the doc above
+        { ... },  // Index definition from the doc above
+        { ... }   // Index definition from the doc above
+    ],
+  }
+)
 ```
 
-After executing the `createIndex()` command, you should see a result indicating that the index was created successfully.
+After executing the command, you should see a result indicating that the indexes were created successfully.
 
 **Index removal**
 
@@ -1568,7 +1583,8 @@ db.getSiblingDB('<db_name>').getCollection('<collection_name>').dropIndex('<inde
 
 If you're hosting MongoDB on [Atlas](https://www.mongodb.com/atlas/database), use the following [Manage Indexes](https://www.mongodb.com/docs/atlas/atlas-ui/indexes/) guide to View, Create or Remove indexes.
 
-> ⚠️ **Important!** In Atlas, for production environments, it is recommended to use rolling index builds by enabling the "Build index via rolling process" checkbox. ([*MongoDB official documentation*](https://www.mongodb.com/docs/v6.0/tutorial/build-indexes-on-replica-sets/))
+> [!IMPORTANT]
+> In Atlas, for production environments, it may be recommended to use rolling index builds by enabling the "Build index via rolling process" checkbox. ([*MongoDB official documentation*](https://www.mongodb.com/docs/v7.0/tutorial/build-indexes-on-replica-sets/))
 
 ## Upgrading
 
