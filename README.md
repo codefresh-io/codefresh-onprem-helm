@@ -2380,7 +2380,7 @@ For built-in RabbitMQ `bitnami/rabbitmq` subchart, pre-upgrade hook was added to
 
 Changes in indexes: follow [Maintaining MongoDB indexes](#maintaining-mongodb-indexes) guide to meet index requirements *before* the upgrade process.
 
-Changes in collections: following collections can be safely dropped *after* the upgrade to 2.9.x if they exist:
+Changes in collections: following collections can be safely dropped *after* the upgrade to 2.9.x if they exist. These collections are no longer used and should be removed to maintain optimal database performance and prevent the accumulation of obsolete data.
 
 - `read-models.application-tree`
 - `read-models.<entity>-history` — every collection with `~-history` suffix, such as `read-models.applications-history`, `read-models.services-history`, etc.
