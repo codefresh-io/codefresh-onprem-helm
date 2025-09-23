@@ -205,14 +205,21 @@ helm show values codefresh/codefresh
 
 ### Persistent services
 
-The following table displays the list of **persistent** services created as part of the on-premises installation:
+Codefresh relies on several persistent services to store its data:
 
-| Database      | Purpose | Required version     |
-| :---        | :----   |  :--- |
-| MongoDB      | Stores all account data (account settings, users, projects, pipelines, builds etc.)       | 7.x   |
-| Postgresql   | Stores data about events for the account (pipeline updates, deletes, etc.). The audit log uses the data from this database.        | 16.x or 17.x      |
-| Redis   | Used for caching, and as a key-value store for cron trigger manager.        | 7.0.x      |
-| RabbitMQ  | Used for message queueing.        | 3.13 \| 4.0.x      |
+- **MongoDB**: Stores all account data (account settings, users, projects, pipelines, builds etc.)
+- **PostgreSQL**: Stores data about events for the account (pipeline updates, deletes, etc.). The audit log uses the data from this database.
+- **Redis**: Used for caching, and as a key-value store for cron trigger manager.
+- **RabbitMQ**: Used for message queueing.
+
+The following table reflects the recommended and supported versions of these databases for different Codefresh releases:
+
+| Codefresh version | MongoDB | PostgreSQL | Redis | RabbitMQ |
+| :---              | :---    | :---       | :---  | :---     |
+| 2.9.x             | \>=4.2 \<=7.x <br> Recommended: 7.x (`featureCompatibilityVersion: 7.0`)| \>= 16.x \<= 17.x <br> Recommended: 17.x | \>= 7.0.x \<= 7.4.x <br> Recommended: 7.4.x | 3.13.x \| 4.0.x \| 4.1.x <br> Recommended: 4.1.x |
+| 2.8.x             | \>=4.2 \<=7.x <br> Recommended: 7.x (`featureCompatibilityVersion: 6.0`)| \>= 13.x \<= 17.x <br> Recommended: 16.x \| 17.x | \>= 7.0.x \<= 7.4.x <br> Recommended: 7.4.x | 3.13.x \| 4.0.x \| 4.1.x <br> Recommended: 4.0.x |
+| 2.7.x             | \>=4.2 \<=6.x <br> Recommended: 6.x (`featureCompatibilityVersion: 6.0`)| 13.x | 7.0.x | 3.13.x |
+| 2.6.x             | \>=4.2 \<=6.x <br> Recommended: 6.x (`featureCompatibilityVersion: 5.0`)| 13.x | 7.0.x | 3.13.x |
 
 > Running on netfs (nfs, cifs) is not recommended.
 
