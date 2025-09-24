@@ -125,6 +125,7 @@ mongosh ${MONGODB_ROOT_URI} ${MONGO_URI_EXTRA_PARAMS} --eval "db.getSiblingDB(\"
 mongosh ${MONGODB_ROOT_URI} ${MONGO_URI_EXTRA_PARAMS} --eval "db.getSiblingDB(\"codefresh\").changeUserPassword(\"${MONGODB_USER}\",\"${MONGODB_PASSWORD}\")" 2>&1 || true
 
 if [[ $DEVELOPMENT_CHART == "true" ]]; then
+    mongoimport --uri ${MONGO_URI} ${MONGOIMPORT_EXTRA_PARAMS} --collection idps --type json --legacy --file ${ASSETS_PATH}accounts-dev.json
     setSystemAdmin
     setPacks
 fi
