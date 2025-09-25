@@ -2521,6 +2521,7 @@ After platform upgrade, Consul fails with the error `refusing to rejoin cluster 
 | global.affinity | object | `{}` | Global affinity constraints Apply affinity to all Codefresh subcharts. Will not be applied on Bitnami subcharts. |
 | global.appProtocol | string | `"https"` | Application protocol. |
 | global.appUrl | string | `"onprem.codefresh.local"` | Application root url. Will be used in Ingress objects as hostname |
+| global.auditPostgresSchemaName | string | `"public"` | Set postgres schema name for audit database in plain text. |
 | global.broadcasterPort | int | `80` | Default broadcaster service port. |
 | global.broadcasterService | string | `"cf-broadcaster"` | Default broadcaster service name. |
 | global.builderService | string | `"builder"` | Default builder service name. |
@@ -2537,6 +2538,7 @@ After platform upgrade, Consul fails with the error `refusing to rejoin cluster 
 | global.consulService | string | `"consul-headless"` | Default Consul service name. |
 | global.contextManagerPort | int | `9000` | Default context-manager service port. |
 | global.contextManagerService | string | `"context-manager"` | Default context-manager service name. |
+| global.disablePostgresForEventbus | string | `"true"` | Disables saving events from eventbus into postgres. When it is set to “false” all events (workflows, jobs, user etc.) from eventbus are starting saving to postgres and following services (charts-manager, cluster-providers, context-manager, cfapi, cf-platform-analytics, gitops-dashboard-manager, pipeline-manager, kube-integration, tasker-kubernetes, runtime-environment-manager) start requiring postgres connection. |
 | global.dnsService | string | `"kube-dns"` | Definitions for internal-gateway nginx resolver |
 | global.env | object | `{}` | Global Env vars |
 | global.firebaseSecret | string | `""` | Firebase Secret in plain text |
