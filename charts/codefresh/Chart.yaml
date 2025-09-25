@@ -19,7 +19,7 @@ annotations:
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'added: ability to disable postgres store for eventbus and set schema name for audit (#116)'
+      description: 'added ability to disable postgres store for eventbus and set schema name for audit'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
