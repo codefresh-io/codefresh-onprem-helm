@@ -14,7 +14,7 @@ gencerts:
   image:
     registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
     repository: codefresh/kubectl
-    tag: 1.33.5
+    tag: 1.33.3
   rbac:
     enabled: true
   ttlSecondsAfterFinished: 300
@@ -455,7 +455,7 @@ hooks:
     image:
       registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
       repository: codefresh/kubectl
-      tag: 1.33.5
+      tag: 1.33.3
     affinity: {}
     nodeSelector: {}
     podSecurityContext: {}
