@@ -256,3 +256,7 @@ dependencies:
     version: "*"
     repository: oci://quay.io/codefresh/charts
     condition: salesforce-reporter.enabled
+  - name: nats
+    version: 9.0.22
+    repository: https://charts.bitnami.com/bitnami
+    condition: nats.enabled

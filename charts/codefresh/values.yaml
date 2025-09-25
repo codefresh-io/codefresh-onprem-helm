@@ -365,6 +365,10 @@ global:
   tlsSignService: cfsign
   # -- Default tls-sign service port.
   tlsSignPort: 4999
+  # -- Default nats service name.
+  natsService: nats
+  # -- Default nats service port.
+  natsPort: 4222
   # -- Default Consul service name.
   consulService: consul-headless
   # -- Default Consul service port.
@@ -1951,3 +1955,17 @@ segment-reporter:
 
 salesforce-reporter:
   enabled: false
+
+# -- nats
+# @default -- See below
+# Ref: https://github.com/bitnami/charts/blob/main/bitnami/nats/values.yaml
+nats:
+  enabled: true
+  image:
+    repository: bitnamilegacy/nats
+  replicaCount: 1
+  auth:
+    enabled: false
+  cluster:
+    auth:
+      enabled: false
