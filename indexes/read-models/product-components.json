@@ -1,0 +1,170 @@
+[
+  {
+    "key": {
+      "favorites": 1
+    },
+    "collation": {
+      "locale": "en_US",
+      "caseLevel": false,
+      "caseFirst": "off",
+      "strength": 1,
+      "numericOrdering": false,
+      "alternate": "non-ignorable",
+      "maxVariable": "punct",
+      "normalization": false,
+      "backwards": false
+    }
+  },
+  {
+    "key": {
+      "application.release.application.prs.type": 1
+    },
+    "collation": {
+      "locale": "en_US",
+      "caseLevel": false,
+      "caseFirst": "off",
+      "strength": 1,
+      "numericOrdering": false,
+      "alternate": "non-ignorable",
+      "maxVariable": "punct",
+      "normalization": false,
+      "backwards": false
+    }
+  },
+  {
+    "key": {
+      "application.release.application.issues.type": 1
+    },
+    "collation": {
+      "locale": "en_US",
+      "caseLevel": false,
+      "caseFirst": "off",
+      "strength": 1,
+      "numericOrdering": false,
+      "alternate": "non-ignorable",
+      "maxVariable": "punct",
+      "normalization": false,
+      "backwards": false
+    }
+  },
+  {
+    "key": {
+      "application.self.name": 1
+    },
+    "collation": {
+      "locale": "en_US",
+      "caseLevel": false,
+      "caseFirst": "off",
+      "strength": 1,
+      "numericOrdering": false,
+      "alternate": "non-ignorable",
+      "maxVariable": "punct",
+      "normalization": false,
+      "backwards": false
+    }
+  },
+  {
+    "key": {
+      "application.self.name": 1,
+      "application.self.kind": 1,
+      "application.self.namespace": 1,
+      "application.self.group": 1,
+      "application.self.version": 1
+    },
+    "collation": {
+      "locale": "en_US",
+      "caseLevel": false,
+      "caseFirst": "off",
+      "strength": 1,
+      "numericOrdering": false,
+      "alternate": "non-ignorable",
+      "maxVariable": "punct",
+      "normalization": false,
+      "backwards": false
+    }
+  },
+  {
+    "key": {
+      "application.self.name": 1,
+      "accountId": 1,
+      "type": 1,
+      "application.runtime": 1,
+      "application.self.group": 1,
+      "application.self.version": 1,
+      "application.self.kind": 1,
+      "application.self.cluster": 1,
+      "application.self.namespace": 1
+    },
+    "unique": true,
+    "collation": {
+      "locale": "en_US",
+      "caseLevel": false,
+      "caseFirst": "off",
+      "strength": 1,
+      "numericOrdering": false,
+      "alternate": "non-ignorable",
+      "maxVariable": "punct",
+      "normalization": false,
+      "backwards": false
+    }
+  },
+  {
+    "key": {
+      "accountId": 1,
+      "application.deployedTo.name": 1,
+      "application.deployedTo.server": 1,
+      "application.deployedTo.namespace": 1,
+      "application.runtime": 1
+    },
+    "collation": {
+      "locale": "en_US",
+      "caseLevel": false,
+      "caseFirst": "off",
+      "strength": 1,
+      "numericOrdering": false,
+      "alternate": "non-ignorable",
+      "maxVariable": "punct",
+      "normalization": false,
+      "backwards": false
+    }
+  },
+  {
+    "key": {
+      "accountId": 1,
+      "application.status.health": 1
+    },
+    "collation": {
+      "locale": "en_US",
+      "caseLevel": false,
+      "caseFirst": "off",
+      "strength": 1,
+      "numericOrdering": false,
+      "alternate": "non-ignorable",
+      "maxVariable": "punct",
+      "normalization": false,
+      "backwards": false
+    }
+  },
+  {
+    "key": {
+      "accountId": 1,
+      "application.release.appVersions.appVersion": 1
+    }
+  },
+  {
+    "key": {
+      "accountId": 1,
+      "application.runtime": 1,
+      "application.deployedTo.namespace": 1,
+      "application.deployedTo.name": 1
+    }
+  },
+  {
+    "key": {
+      "accountId": 1,
+      "application.runtime": 1,
+      "application.deployedTo.namespace": 1,
+      "application.deployedTo.server": 1
+    }
+  }
+]

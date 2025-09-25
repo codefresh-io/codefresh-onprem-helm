@@ -1,12 +1,12 @@
 [
     {
-        "keys": {
+        "key": {
             "account": 1,
             "_id": 1
         }
     },
     {
-        "keys": {
+        "key": {
             "role": 1,
             "account": 1,
             "_id": 1
