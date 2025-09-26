@@ -417,6 +417,13 @@ global:
   # -- Set postgres port number
   postgresPort: 5432
 
+  # -- Set postgres schema name for audit database in plain text.
+  auditPostgresSchemaName: "public"
+
+  # -- Disables saving events from eventbus into postgres.
+  # When it is set to “false” all events (workflows, jobs, user etc.) from eventbus are starting saving to postgres and following services (charts-manager, cluster-providers, context-manager, cfapi, cf-platform-analytics, gitops-dashboard-manager, pipeline-manager, kube-integration, tasker-kubernetes, runtime-environment-manager) start requiring postgres connection.
+  disablePostgresForEventbus: "true"
+
 postgresql:
   # -- Disable postgresql subchart installation
   enabled: false
@@ -2390,7 +2397,7 @@ For built-in RabbitMQ `bitnami/rabbitmq` subchart, pre-upgrade hook was added to
 
 > [!WARNING]
 > **BREAKING CHANGES**
-> 
+>
 > Default DinD image has been upgraded to 28.x, which removes support for pushing and pulling with legacy image manifest v2 schema 1 ([ref](https://docs.docker.com/engine/deprecated/#pushing-and-pulling-with-image-manifest-v2-schema-1)).
 >
 > Before upgrading Codefresh, please follow the instruction in [this doc](https://codefresh.io/docs/docs/kb/articles/upgrade-deprecated-docker-images/) to identify deprecated images, upgrade them, and then proceed with upgrading the platform.

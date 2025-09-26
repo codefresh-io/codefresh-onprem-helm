@@ -415,6 +415,13 @@ global:
   # -- Set postgres port number
   postgresPort: 5432
 
+  # -- Set postgres schema name for audit database in plain text.
+  auditPostgresSchemaName: "public"
+
+  # -- Disables saving events from eventbus into postgres.
+  # When it is set to “false” all events (workflows, jobs, user etc.) from eventbus are starting saving to postgres and following services (charts-manager, cluster-providers, context-manager, cfapi, cf-platform-analytics, gitops-dashboard-manager, pipeline-manager, kube-integration, tasker-kubernetes, runtime-environment-manager) start requiring postgres connection.
+  disablePostgresForEventbus: "true"
+
 postgresql:
   # -- Disable postgresql subchart installation
   enabled: false
