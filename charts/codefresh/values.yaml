@@ -139,6 +139,13 @@ global:
   # -- Application protocol.
   appProtocol: https
 
+  # -- Set postgres schema name for audit database in plain text.
+  auditPostgresSchemaName: "public"
+
+  # -- Disables saving events from eventbus into postgres.
+  # When it is set to “false” all events (workflows, jobs, user etc.) from eventbus are starting saving to postgres and following services (charts-manager, cluster-providers, context-manager, cfapi, cf-platform-analytics, gitops-dashboard-manager, pipeline-manager, kube-integration, tasker-kubernetes, runtime-environment-manager) start requiring postgres connection.
+  disablePostgresForEventbus: "true"
+
   # -- Firebase URL for logs streaming in plain text
   firebaseUrl: "https://codefresh-on-prem.firebaseio.com/on-prem"
   # -- Firebase URL for logs streaming from existing secret
