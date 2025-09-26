@@ -1,0 +1,20 @@
+[
+  {
+    "key": {
+      "accountId": 1,
+      "productName": 1,
+      "triggerCommit.sha": 1
+    },
+    "collation": {
+      "locale": "en_US",
+      "caseLevel": false,
+      "caseFirst": "off",
+      "strength": 1,
+      "numericOrdering": false,
+      "alternate": "non-ignorable",
+      "maxVariable": "punct",
+      "normalization": false,
+      "backwards": false
+    }
+  }
+]

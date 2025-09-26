@@ -1,6 +1,6 @@
 [
     {
-        "keys": {
+        "key": {
             "metadata.accountId": 1,
             "metadata.reIdentifier": 1,
             "metadata.shouldExecute": 1,
@@ -10,11 +10,9 @@
         }
     },
     {
-        "keys": {
+        "key": {
             "metadata.expireAt": 1
         },
-        "options": {
-            "expireAfterSeconds": 0
-        }
+        "expireAfterSeconds": 0
     }
 ]
