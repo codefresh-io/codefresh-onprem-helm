@@ -35,7 +35,7 @@ seed:
     enabled: true
     image:
       registry: quay.io
-      repository: codefresh/dev/mongosh
+      repository: codefresh/mongosh
       tag: 2.5.9-cf-1-fix-mongosh
     # -- Root user in plain text (required ONLY for seed job!).
     mongodbRootUser: "root"
@@ -441,7 +441,7 @@ hooks:
     enabled: true
     image:
       registry: quay.io
-      repository: codefresh/dev/mongosh
+      repository: codefresh/mongosh
       tag: 2.5.9-cf-1-fix-mongosh
     affinity: {}
     nodeSelector:
