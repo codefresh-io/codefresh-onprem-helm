@@ -34,9 +34,9 @@ seed:
   mongoSeedJob:
     enabled: true
     image:
-      registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
-      repository: codefresh/mongosh
-      tag: 2.5.8
+      registry: quay.io
+      repository: codefresh/dev/mongosh
+      tag: 2.5.9-cf-1-fix-mongosh
     # -- Root user in plain text (required ONLY for seed job!).
     mongodbRootUser: "root"
     # -- Root user from existing secret
@@ -440,9 +440,9 @@ hooks:
   mongodb:
     enabled: true
     image:
-      registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
-      repository: codefresh/mongosh
-      tag: 2.5.8
+      registry: quay.io
+      repository: codefresh/dev/mongosh
+      tag: 2.5.9-cf-1-fix-mongosh
     affinity: {}
     nodeSelector:
       kubernetes.io/arch: amd64
