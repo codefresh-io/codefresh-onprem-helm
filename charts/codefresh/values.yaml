@@ -14,7 +14,7 @@ gencerts:
   image:
     registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
     repository: codefresh/kubectl
-    tag: 1.33.3
+    tag: 1.33.5
   rbac:
     enabled: true
   ttlSecondsAfterFinished: 300
@@ -36,7 +36,7 @@ seed:
     image:
       registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
       repository: codefresh/mongosh
-      tag: 2.5.0
+      tag: 2.5.9-cf-1
     # -- Root user in plain text (required ONLY for seed job!).
     mongodbRootUser: "root"
     # -- Root user from existing secret
@@ -67,7 +67,7 @@ seed:
     image:
       registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
       repository: codefresh/postgresql
-      tag: 17.5.0-debian-12-r20
+      tag: 17.6.0-debian-12-r4
     # -- (optional) "postgres" admin user in plain text (required ONLY for seed job!)
     # Must be a privileged user allowed to create databases and grant roles.
     # If omitted, username and password from `.Values.global.postgresUser/postgresPassword` will be used.
@@ -442,7 +442,7 @@ hooks:
     image:
       registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
       repository: codefresh/mongosh
-      tag: 2.5.0
+      tag: 2.5.9-cf-1
     affinity: {}
     nodeSelector:
       kubernetes.io/arch: amd64
@@ -455,7 +455,7 @@ hooks:
     image:
       registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
       repository: codefresh/kubectl
-      tag: 1.33.3
+      tag: 1.33.5
     affinity: {}
     nodeSelector: {}
     podSecurityContext: {}
@@ -483,7 +483,7 @@ postgresqlCleanJob:
   image:
     registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
     repository: codefresh/postgresql
-    tag: 17.5.0-debian-12-r20
+    tag: 17.6.0-debian-12-r4
   schedule:  "0 0 * * *"
   successfulJobsHistoryLimit: 1
   failedJobsHistoryLimit: 1
@@ -1152,7 +1152,7 @@ postgresql:
   image:
     registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
     repository: codefresh/postgresql
-    tag: 17.5.0-debian-12-r20
+    tag: 17.6.0-debian-12-r4
   auth:
     enablePostgresUser: true
     postgresPassword: "eC9arYka4ZbH"
