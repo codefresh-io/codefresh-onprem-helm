@@ -36,7 +36,7 @@ seed:
     image:
       registry: quay.io
       repository: codefresh/mongosh
-      tag: 2.5.9-cf-1-fix-mongosh
+      tag: 8210e5c5e7c2aa02ae466f893b77d831633f0946
     # -- Root user in plain text (required ONLY for seed job!).
     mongodbRootUser: "root"
     # -- Root user from existing secret
@@ -442,7 +442,7 @@ hooks:
     image:
       registry: quay.io
       repository: codefresh/mongosh
-      tag: 2.5.9-cf-1-fix-mongosh
+      tag: 8210e5c5e7c2aa02ae466f893b77d831633f0946
     affinity: {}
     nodeSelector:
       kubernetes.io/arch: amd64
