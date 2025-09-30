@@ -23,6 +23,8 @@ annotations:
 
   artifacthub.io/changes: |-
     - kind: changed
+      description: 'fix: update cfapi chart (#123)'
+    - kind: changed
       description: 'chore: argo platform with security fixes (#122)'
     - kind: changed
       description: 'chore(CR-29499): bump kubectl, mongosh, postgres (#115)'
