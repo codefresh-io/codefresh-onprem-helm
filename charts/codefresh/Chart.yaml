@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 0.0.0
+version: 2.9.0
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -20,6 +20,21 @@ annotations:
   # artifacthub.io/changes: |
   #   - kind:
   #     description: ""
+  artifacthub.io/changes: |-
+    - kind: changed
+      description: 'chore: argo platform with security fixes (#122)'
+    - kind: changed
+      description: 'chore(CR-29499): bump kubectl, mongosh, postgres (#115)'
+    - kind: changed
+      description: added ability to disable postgres store for eventbus and set schema name for audit (#120)
+    - kind: changed
+      description: 'docs(2.9): document indexes and DBs compatibility (#119)'
+    - kind: changed
+      description: 'feat: update runtime images (#108)'
+    - kind: changed
+      description: 'chore(deps): bump subcharts (#99)'
+    - kind: changed
+      description: 'replace vanilla docker:dind image with codefresh/dind in builder'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
