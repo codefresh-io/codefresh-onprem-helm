@@ -15,14 +15,14 @@ appVersion: 0.0.0
 annotations:
   artifacthub.io/prerelease: "false"
   artifacthub.io/alternativeName: "codefresh-onprem"
-  artifacthub.io/containsSecurityUpdates: "false"
+  artifacthub.io/containsSecurityUpdates: "true"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   # artifacthub.io/changes: |
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
-    - kind: changed
-      description: 'fix: update cf-broadcaster helm chart (#126)'
+    - kind: security
+      description: 'fix: security vulnerability in cf-broadcaster'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
