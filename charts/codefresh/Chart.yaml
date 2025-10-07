@@ -73,11 +73,11 @@ dependencies:
     repository: https://kubernetes.github.io/ingress-nginx
     condition: ingress-nginx.enabled
   - name: cluster-providers
-    version: 1.18.1-onprem-267d484
+    version: 1.18.2-onprem-2a76f83
     repository: oci://quay.io/codefresh/charts
     condition: cluster-providers.enabled
   - name: kube-integration
-    version: 1.32.1-onprem-e1b55e3
+    version: 1.32.2-onprem-2d9b8f7
     repository: oci://quay.io/codefresh/charts
     condition: kube-integration.enabled
   - name: charts-manager
@@ -89,11 +89,11 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: cfsign.enabled
   - name: tasker-kubernetes
-    version: 1.27.1-onprem-8a7a655
+    version: 1.27.2-onprem-bc7ccff
     repository: oci://quay.io/codefresh/charts
     condition: tasker-kubernetes.enabled
   - name: context-manager
-    version: 2.34.6-onprem-f4603dc
+    version: 2.34.7-onprem-c8cb095
     repository: oci://quay.io/codefresh/charts
     condition: context-manager.enabled
   - name: pipeline-manager
@@ -101,7 +101,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: pipeline-manager.enabled
   - name: gitops-dashboard-manager
-    version: 1.15.1-onprem-4b34cf5
+    version: 1.15.2-onprem-12c9071
     repository: oci://quay.io/codefresh/charts
     condition: gitops-dashboard-manager.enabled
   - name: cfapi
@@ -203,7 +203,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: k8s-monitor.enabled
   - name: runtime-environment-manager
-    version: 3.41.6-onprem-7543bcf
+    version: 3.41.7-onprem-113f3d2
     repository: oci://quay.io/codefresh/charts
     condition: runtime-environment-manager.enabled
   - name: cf-broadcaster
