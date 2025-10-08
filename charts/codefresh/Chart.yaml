@@ -22,6 +22,8 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
+      description: 'chore: fix security vulnerabilities (#131)'
+    - kind: changed
       description: security patch (#129)
 dependencies:
   - name: cf-common
