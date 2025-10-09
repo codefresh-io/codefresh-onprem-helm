@@ -265,7 +265,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: payments.enabled
   - name: segment-reporter
-    version: "1.19.0"
+    version: "1.19.1"
     repository: oci://quay.io/codefresh/charts
     condition: segment-reporter.enabled
   - name: salesforce-reporter
