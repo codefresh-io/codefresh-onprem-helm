@@ -1,6 +1,6 @@
 # codefresh
 
-![Version: 2.9.1](https://img.shields.io/badge/Version-2.9.1-informational?style=flat-square) ![AppVersion: 0.0.0](https://img.shields.io/badge/AppVersion-0.0.0-informational?style=flat-square)
+![Version: 2.9.2](https://img.shields.io/badge/Version-2.9.2-informational?style=flat-square) ![AppVersion: 2.9.0](https://img.shields.io/badge/AppVersion-2.9.0-informational?style=flat-square)
 
 Helm Chart for Codefresh On-Prem
 
@@ -31,7 +31,7 @@ Helm Chart for Codefresh On-Prem
 | oci://quay.io/codefresh/charts | argo-hub-platform | 0.1.27 |
 | oci://quay.io/codefresh/charts | argo-platform | 1.3750.1-onprem-fe7a3d3 |
 | oci://quay.io/codefresh/charts | builder | 2.0.0 |
-| oci://quay.io/codefresh/charts | cf-broadcaster | 1.14.1 |
+| oci://quay.io/codefresh/charts | cf-broadcaster | 1.14.2-onprem-1a9194b |
 | oci://quay.io/codefresh/charts | cf-common | 0.18.1 |
 | oci://quay.io/codefresh/charts | cf-oidc-provider | 0.1.0 |
 | oci://quay.io/codefresh/charts | cf-platform-analytics-etlstarter(cf-platform-analytics) | 0.51.2-onprem-9ebeb58 |
@@ -54,7 +54,7 @@ Helm Chart for Codefresh On-Prem
 | oci://quay.io/codefresh/charts | cfapi-kubernetesresourcemonitor(cfapi) | 21.291.19-onprem-6333fdb |
 | oci://quay.io/codefresh/charts | cfapi-environments(cfapi) | 21.291.19-onprem-6333fdb |
 | oci://quay.io/codefresh/charts | cfapi-gitops-resource-receiver(cfapi) | 21.291.19-onprem-6333fdb |
-| oci://quay.io/codefresh/charts | cfsign | 1.8.11 |
+| oci://quay.io/codefresh/charts | cfsign | 1.8.11-onprem-1aece39 |
 | oci://quay.io/codefresh/charts | cfui | 14.99.39 |
 | oci://quay.io/codefresh/charts | charts-manager | 1.25.2-onprem-65c64d9 |
 | oci://quay.io/codefresh/charts | cluster-providers | 1.18.2-onprem-8125523 |
@@ -64,7 +64,7 @@ Helm Chart for Codefresh On-Prem
 | oci://quay.io/codefresh/charts | helm-repo-manager | 0.23.0 |
 | oci://quay.io/codefresh/charts | hermes | 0.21.21 |
 | oci://quay.io/codefresh/charts | internal-gateway | 0.11.0 |
-| oci://quay.io/codefresh/charts | k8s-monitor | 4.11.16 |
+| oci://quay.io/codefresh/charts | k8s-monitor | 4.11.17-onprem-710fd12 |
 | oci://quay.io/codefresh/charts | kube-integration | 1.32.2-onprem-b539a1d |
 | oci://quay.io/codefresh/charts | mailer | * |
 | oci://quay.io/codefresh/charts | nomios | 0.11.11 |
