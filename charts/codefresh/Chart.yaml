@@ -80,11 +80,11 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: kube-integration.enabled
   - name: charts-manager
-    version: 1.25.1-onprem-104a844
+    version: 1.25.2-onprem-65c64d9
     repository: oci://quay.io/codefresh/charts
     condition: charts-manager.enabled
   - name: cfsign
-    version: 1.8.10
+    version: 1.8.11
     repository: oci://quay.io/codefresh/charts
     condition: cfsign.enabled
   - name: tasker-kubernetes
@@ -96,7 +96,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: context-manager.enabled
   - name: pipeline-manager
-    version: 3.141.1-onprem-732296d
+    version: 3.141.2-onprem-7c354cc
     repository: oci://quay.io/codefresh/charts
     condition: pipeline-manager.enabled
   - name: gitops-dashboard-manager
@@ -227,12 +227,12 @@ dependencies:
     condition: hermes.enabled
   - name: cf-platform-analytics
     alias: cf-platform-analytics-platform
-    version: 0.51.1-onprem-b904655
+    version: 0.51.2-onprem-9ebeb58
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: cf-platform-analytics
     alias: cf-platform-analytics-etlstarter
-    version: 0.51.1-onprem-b904655
+    version: 0.51.2-onprem-9ebeb58
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
