@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.9.1
+version: 2.9.2
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -11,7 +11,7 @@ sources:
 maintainers:
   - name: codefresh
     url: https://codefresh-io.github.io/
-appVersion: 0.0.0
+appVersion: 2.9.0
 annotations:
   artifacthub.io/prerelease: "false"
   artifacthub.io/alternativeName: "codefresh-onprem"
@@ -22,7 +22,24 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: security
-      description: 'fix: security vulnerability in cf-broadcaster'
+      description: 'chore: updated classic services with security fixes -
+                            runtime-environment-manage, 
+                            gitops-dashboard-manager, 
+                            kube-integration,
+                            context-manager,
+                            tasker-kubernetes,
+                            cluster-providers,
+                            cfsign,
+                            k8s-monitor,
+                            cf-broadcaster'
+    - kind: security
+      description: 'chore: updated cf-runtime services with security fixes -
+                            compose,
+                            cf-container-logger
+                            cf-docker-builder
+                            cf-docker-pusher
+                            cf-docker-tag-pusher
+                            pikolo'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
