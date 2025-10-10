@@ -28,7 +28,10 @@ annotations:
                             kube-integration,
                             context-manager,
                             tasker-kubernetes,
-                            cluster-providers'
+                            cluster-providers,
+                            cfsign,
+                            k8s-monitor,
+                            cf-broadcaster'
     - kind: security
       description: 'chore: updated cf-runtime services with security fixes -
                             compose,
