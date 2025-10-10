@@ -21,10 +21,22 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
-    - kind: changed
-      description: 'chore: fix security vulnerabilities (#131)'
-    - kind: changed
-      description: security patch (#129)
+    - kind: security
+      description: 'chore: updated classic services with security fixes -
+                            runtime-environment-manage, 
+                            gitops-dashboard-manager, 
+                            kube-integration,
+                            context-manager,
+                            tasker-kubernetes,
+                            cluster-providers'
+    - kind: security
+      description: 'chore: updated cf-runtime services with security fixes -
+                            compose,
+                            cf-container-logger
+                            cf-docker-builder
+                            cf-docker-pusher
+                            cf-docker-tag-pusher
+                            pikolo'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
