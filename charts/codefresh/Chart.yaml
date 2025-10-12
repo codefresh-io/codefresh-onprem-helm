@@ -77,7 +77,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: cluster-providers.enabled
   - name: kube-integration
-    version: 1.32.1-onprem-e1b55e3
+    version: 1.32.2-onprem-2d9b8f7
     repository: oci://quay.io/codefresh/charts
     condition: kube-integration.enabled
   - name: charts-manager
@@ -101,7 +101,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: pipeline-manager.enabled
   - name: gitops-dashboard-manager
-    version: 1.15.1-onprem-4b34cf5
+    version: 1.15.2-onprem-12c9071
     repository: oci://quay.io/codefresh/charts
     condition: gitops-dashboard-manager.enabled
   - name: cfapi
@@ -203,7 +203,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: k8s-monitor.enabled
   - name: runtime-environment-manager
-    version: 3.41.6-onprem-7543bcf
+    version: 3.41.7-onprem-113f3d2
     repository: oci://quay.io/codefresh/charts
     condition: runtime-environment-manager.enabled
   - name: cf-broadcaster
