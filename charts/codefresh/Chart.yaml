@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.8.16
+version: 2.8.17
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -15,11 +15,14 @@ appVersion: 2.8.0
 annotations:
   artifacthub.io/prerelease: "false"
   artifacthub.io/alternativeName: "codefresh-onprem"
-  artifacthub.io/containsSecurityUpdates: "false"
+  artifacthub.io/containsSecurityUpdates: "true"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |-
-    - kind: added
-      description: 'ability to disable postgres store for eventbus and set schema name for audit'
+    - kind: changed
+      description: 'security fixes in :
+                    kube-integration,
+                    gitops-dashboard-manager,
+                    runtime-environment-manager'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
