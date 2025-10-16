@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.9.3
+version: 2.9.4
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -22,7 +22,7 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'fix: chart''s readme (#140)'
+      description: 'chore: CR-31292 fix security vulnerabilities (#141)'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
