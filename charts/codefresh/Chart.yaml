@@ -21,8 +21,8 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
-    - kind: changed
-      description: 'chore: CR-31292 fix security vulnerabilities (#141)'
+    - kind: security
+      description: updated services with security fixes in argo-platform, kubectl, mongosh
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -214,15 +214,15 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: helm-repo-manager.enabled
   - name: hermes
-    version: 0.21.21
+    version: 0.21.22
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
   - name: nomios
-    version: 0.11.11
+    version: 0.11.12
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
   - name: cronus
-    version: 0.8.12
+    version: 0.8.13
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
   - name: cf-platform-analytics
@@ -236,11 +236,11 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
-    version: 1.3750.1-onprem-fe7a3d3
+    version: 1.3750.1-onprem-3c27f8e
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform
-    version: 0.1.27
+    version: 0.1.28
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: cf-oidc-provider
