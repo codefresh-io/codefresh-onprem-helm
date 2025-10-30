@@ -21,8 +21,14 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
-    - kind: changed
-      description: 'chore: upd argo-platform, kubectl, mongosh (#144)'
+    - kind: security
+      description: 'contains security fixes in services:
+                    argo-platform, 
+                    kubectl,
+                    mongosh,
+                    cronus,
+                    nomios,
+                    hermes'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
