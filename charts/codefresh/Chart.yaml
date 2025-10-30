@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.9.4
+version: 2.9.5
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -21,8 +21,8 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
-    - kind: security
-      description: updated services with security fixes in argo-platform, kubectl, mongosh
+    - kind: changed
+      description: 'chore: upd argo-platform, kubectl, mongosh (#144)'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
