@@ -22,14 +22,7 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: security
-      description: 'contains security fixes in services:
-                    argo-platform, 
-                    kubectl,
-                    mongosh,
-                    cronus,
-                    nomios,
-                    hermes,
-                    argo-hub-platform'
+      description: 'contains security fixes in services: argo-platform, kubectl, mongosh, cronus, nomios, hermes, argo-hub-platform'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
