@@ -28,7 +28,8 @@ annotations:
                     mongosh,
                     cronus,
                     nomios,
-                    hermes'
+                    hermes,
+                    argo-hub-platform'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
