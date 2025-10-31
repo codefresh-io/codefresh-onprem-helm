@@ -510,16 +510,16 @@ postgresqlCleanJob:
 runtimeImages:
   COMPOSE_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/compose:v2.37.0-1.5.6@sha256:19f212e9aee62f112f8a1df474122f850357f1c85521e804dcfc9a48b69a840f
   CONTAINER_LOGGER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-container-logger:1.13.2@sha256:285c7f1c372edde9605d117bc60cffddeea282c0427f9a45bd6323465cf42b17
-  DIND_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/dind:28.3.3-3.0.2@sha256:0f2a83603e27e6d88768a6ab8ead3e2426eaf989cd93919fa1128d98a7c617c6
+  DIND_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/dind:28.5.1-3.0.5@sha256:3d823bcbdf7437fc4262f5b307e1ba2d0fa0c59afd43cbd0ad74198d11868d1c
   DOCKER_BUILDER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-docker-builder:1.4.9@sha256:3b87e3e4bd7ab76d94ca4dbee63317085a2e2e45779214ec3e42c5049ec2fbf8
   DOCKER_PULLER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-docker-puller:8.0.22@sha256:914f071bcb1893bcb42c3f8907f8f3874f1f30db1a2ccaa4b825dab9bb157e60
   DOCKER_PUSHER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-docker-pusher:6.0.22@sha256:69066b919c75a39a276f83ba1234036c7f8b97efaf8fc48a4550d18fa64f9d01
   DOCKER_TAG_PUSHER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-docker-tag-pusher:1.3.20@sha256:69b6154fe34cda7a48b2e44cfe7667acdd79a6a5901001b092f8cf485b75ff3f
-  ENGINE_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/engine:1.179.5@sha256:3a7126b17a4ca9d24b4b193f4a4578a3e65df21b72d08d5db3f82ff050d9c77e
-  FS_OPS_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/fs-ops:1.2.10@sha256:70d53821b9314d88e3571dfb096e8f577caf3e4c2199253621b8d0c85d20b8ad
-  GIT_CLONE_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-git-cloner:10.3.2@sha256:2e09eef18d5caddae708058ec63247825ac4e4ee5e5763986f65e1312fbcc449
+  ENGINE_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/engine:1.180.7@sha256:1919280cecc58d9e1001435f31fdd79fa4fb5627a5e490be5ade603d6a5c641d
+  FS_OPS_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/fs-ops:1.2.11@sha256:cade5ace4d05528dfd0cbdbb96bd99c6ccae79dfeebe14661a4b7808e2131dc9
+  GIT_CLONE_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-git-cloner:10.3.4@sha256:ce1e922b94bbf1e5bd224468a2ccfe969200661ca2b6f0182b26ee0ad06e1a6d
   KUBE_DEPLOY: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-deploy-kubernetes:16.2.9@sha256:35649b14eb43717d3752d08597ada77d3737b2508f1b8e1f52f67b7a0e5ff263
-  PIPELINE_DEBUGGER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-debugger:1.3.10@sha256:61eba0921344478f7e124e957b4eedcc8fea09ae562ee1f5e18773a93d66acd2
+  PIPELINE_DEBUGGER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-debugger:1.3.11@sha256:7f8867af5fd402a98159d674c30965d67861a4dc37e429db3ff0746a6454f88f
   TEMPLATE_ENGINE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/pikolo:0.14.8@sha256:37ec7bed4b09e4055c3600a7805f84e37cccf8d849fe0fdd5b29f079de15010c
   CR_6177_FIXER: docker.io/library/alpine:3.22
   GC_BUILDER_IMAGE: docker.io/library/alpine:3.22
@@ -1294,7 +1294,7 @@ builder:
     image:
       registry: quay.io
       repository: codefresh/dind
-      tag: 28.3.3-3.0.2
+      tag: 28.5.1-3.0.5
   affinity: {}
   nodeSelector: {}
   podSecurityContext: {}
