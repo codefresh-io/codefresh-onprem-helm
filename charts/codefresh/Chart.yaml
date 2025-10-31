@@ -21,8 +21,8 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
-    - kind: changed
-      description: 'fix: security fixes for cf-runtime images (#148)'
+    - kind: security
+      description: 'fix: security vulnerability fixes for cf-runtime images, such as: dind, engine, fs-ops, cf-git-cloner and cf-debugger (#148)'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
