@@ -672,6 +672,9 @@ cfapi-test-reporting:
 # @default -- See below
 internal-gateway:
   enabled: true
+  # -- Enable IPv6 support
+  ipv6:
+    enabled: true
   libraryMode: true
   controller:
     replicas: 2

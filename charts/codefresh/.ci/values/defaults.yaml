@@ -103,3 +103,7 @@ hooks:
   rabbitmq:
     nodeSelector:
       kubernetes.io/arch: amd64
+
+internal-gateway:
+  ipv6:
+    enabled: false
