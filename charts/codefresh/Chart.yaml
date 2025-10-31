@@ -29,7 +29,7 @@ dependencies:
     version: 0.18.1
   - name: internal-gateway
     repository: oci://quay.io/codefresh/charts
-    version: 0.11.0
+    version: 0.12.2
     condition: internal-gateway.enabled
   - name: consul
     version: 11.4.32
