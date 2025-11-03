@@ -9,6 +9,7 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
 - [Prerequisites](#prerequisites)
 - [Get Repo Info](#get-repo-info)
 - [Install Chart](#install-chart)
+- [Changes to the Bitnami catalog](#changes-to-the-bitnami-catalog)
 - [Chart Configuration](#chart-configuration)
   - [Persistent services](#persistent-services)
   - [Configuring external services](#configuring-external-services)
@@ -192,6 +193,65 @@ global:
   env:
     MONGOOSE_AUTO_INDEX: "false"
     MONGO_AUTOMATIC_INDEX_CREATION: "false"
+```
+
+## Changes to the Bitnami catalog
+
+Due to changes in the Bitnami catalog (Ref: [Upcoming changes to the Bitnami catalog (effective August 28th, 2025)(https://github.com/bitnami/containers/issues/83267)]), the following subcharts have been updated to use `docker.io/bitnamilegacy` repository:
+
+- MongoDB
+- PostgreSQL
+- Redis
+- RabbitMQ
+- Nats
+- Consul
+
+[Bitnami Legacy repository](https://hub.docker.com/u/bitnamilegacy) catalog will receive no further updates or support and should only be used for temporary evaluation purposes. For production usage, please consider externalizing these services as described in [Configuring external services](#configuring-external-services) section.
+
+If you have an option to use [Bitnami Secure Images](https://www.arrow.com/globalecs/uk/products/bitnami-secure-images/?utm_source=google&utm_medium=paidsearch&utm_campaign=bitnami&gad_source=1&gad_campaignid=22996675622), you need to override image repository and tag for each of Bitnami subcharts used in Codefresh chart and [provide a valid image pull secret](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#registry-secret-existing-credentials).
+
+```yaml
+mongodb:
+  image:
+    repository: bitnami/mongodb
+    tag: <version>
+  pullSecrets:
+    - my-bitnami-registry-secret
+
+redis:
+  image:
+    repository: bitnami/redis
+    tag: <version>
+  pullSecrets:
+    - my-bitnami-registry-secret
+
+postgresql:
+  image:
+    repository: bitnami/postgresql
+    tag: <version>
+  pullSecrets:
+    - my-bitnami-registry-secret
+
+rabbitmq:
+  image:
+    repository: bitnami/rabbitmq
+    tag: <version>
+  pullSecrets:
+    - my-bitnami-registry-secret
+
+nats:
+  image:
+    repository: bitnami/nats
+    tag: <version>
+  pullSecrets:
+    - my-bitnami-registry-secret
+
+consul:
+  image:
+    repository: bitnami/consul
+    tag: <version>
+  pullSecrets:
+    - my-bitnami-registry-secret
 ```
 
 ## Chart Configuration
