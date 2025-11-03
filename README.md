@@ -197,7 +197,7 @@ global:
 
 ## Changes to the Bitnami catalog
 
-Due to changes in the Bitnami catalog (Ref: [Upcoming changes to the Bitnami catalog (effective August 28th, 2025)(https://github.com/bitnami/containers/issues/83267)]), the following subcharts have been updated to use `docker.io/bitnamilegacy` repository:
+Due to changes in the Bitnami catalog (Ref: [Upcoming changes to the Bitnami catalog (effective August 28th, 2025)](https://github.com/bitnami/containers/issues/83267)), the following subcharts have been updated to use `docker.io/bitnamilegacy` repository:
 
 - MongoDB
 - PostgreSQL
