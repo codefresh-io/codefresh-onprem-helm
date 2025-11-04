@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.9.7
+version: 2.9.8
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -21,8 +21,8 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
-    - kind: security
-      description: 'fix: security vulnerability fixes for cf-runtime images, such as: dind, engine, fs-ops, cf-git-cloner and cf-debugger (#148)'
+    - kind: changed
+      description: 'chore(CR-31787): bump helm-repo-manager, runtime images (#153)'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
