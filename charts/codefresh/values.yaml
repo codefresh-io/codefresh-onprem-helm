@@ -508,12 +508,12 @@ postgresqlCleanJob:
 # -- runtimeImages
 # @default -- See below
 runtimeImages:
-  COMPOSE_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/compose:v2.37.0-1.5.6@sha256:19f212e9aee62f112f8a1df474122f850357f1c85521e804dcfc9a48b69a840f
-  CONTAINER_LOGGER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-container-logger:1.13.2@sha256:285c7f1c372edde9605d117bc60cffddeea282c0427f9a45bd6323465cf42b17
-  DIND_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/dind:28.5.1-3.0.5@sha256:3d823bcbdf7437fc4262f5b307e1ba2d0fa0c59afd43cbd0ad74198d11868d1c
+  COMPOSE_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/compose:v2.37.0-1.5.5@sha256:542a9711f17be40174c66263e7a289be9306ac031ddad8c6cb84773644865b5c
+  CONTAINER_LOGGER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-container-logger:1.13.3@sha256:e2ccf1aab9dc118d91a449843842f5d19b4cd25731b5409de412b4ade7a2a524
+  DIND_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/dind:28.5.1-3.0.4@sha256:89c9239f6692f81b2cbdb52554f3d4dbd25a8a5b476dd653837125a7d327f1c9
   DOCKER_BUILDER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-docker-builder:1.4.9@sha256:3b87e3e4bd7ab76d94ca4dbee63317085a2e2e45779214ec3e42c5049ec2fbf8
-  DOCKER_PULLER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-docker-puller:8.0.22@sha256:914f071bcb1893bcb42c3f8907f8f3874f1f30db1a2ccaa4b825dab9bb157e60
-  DOCKER_PUSHER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-docker-pusher:6.0.22@sha256:69066b919c75a39a276f83ba1234036c7f8b97efaf8fc48a4550d18fa64f9d01
+  DOCKER_PULLER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-docker-puller:8.0.24@sha256:09725c496f66cace02b523e1e3be7434519e751b5a1a5927c76cf95fbb0dc7d7
+  DOCKER_PUSHER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-docker-pusher:6.0.23@sha256:5bf734ffea8f3bb9cdafeabbdcff7f26a2db68552cf7a91d48a5eff2699a57a8
   DOCKER_TAG_PUSHER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-docker-tag-pusher:1.3.20@sha256:69b6154fe34cda7a48b2e44cfe7667acdd79a6a5901001b092f8cf485b75ff3f
   ENGINE_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/engine:1.180.7@sha256:1919280cecc58d9e1001435f31fdd79fa4fb5627a5e490be5ade603d6a5c641d
   FS_OPS_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/fs-ops:1.2.11@sha256:cade5ace4d05528dfd0cbdbb96bd99c6ccae79dfeebe14661a4b7808e2131dc9
