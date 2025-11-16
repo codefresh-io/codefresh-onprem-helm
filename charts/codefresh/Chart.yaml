@@ -21,8 +21,8 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
-    - kind: changed
-      description: 'chore(CR-31787): bump helm-repo-manager, runtime images (#153)'
+    - kind: security
+      description: 'bump helm-repo-manager, runtime images with security fixes'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
