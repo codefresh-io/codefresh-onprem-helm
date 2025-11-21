@@ -207,7 +207,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: cfui.enabled
   - name: k8s-monitor
-    version: 4.11.17
+    version: 4.11.18
     repository: oci://quay.io/codefresh/charts
     condition: k8s-monitor.enabled
   - name: runtime-environment-manager
