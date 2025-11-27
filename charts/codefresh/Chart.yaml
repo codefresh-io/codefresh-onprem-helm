@@ -22,6 +22,8 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
+      description: 'build: upgrade `cf-deploy-kubernetes` (#157)'
+    - kind: changed
       description: "Update \"cf-deploy-kubernetes\" to 17.0.0."
     - kind: security
       description: "Fix various CVE in \"cf-deploy-kubernetes\"."
