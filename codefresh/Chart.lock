@@ -49,7 +49,7 @@ dependencies:
   version: 1.19.3
 - name: cfsign
   repository: oci://quay.io/codefresh/charts
-  version: 1.8.9
+  version: 1.8.11
 - name: tasker-kubernetes
   repository: oci://quay.io/codefresh/charts
   version: 1.26.18
@@ -64,64 +64,64 @@ dependencies:
   version: 1.14.22
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.268.9
+  version: 21.268.10-onprem-32d8553
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.268.9
+  version: 21.268.10-onprem-32d8553
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.268.9
+  version: 21.268.10-onprem-32d8553
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.268.9
+  version: 21.268.10-onprem-32d8553
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.268.9
+  version: 21.268.10-onprem-32d8553
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.268.9
+  version: 21.268.10-onprem-32d8553
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.268.9
+  version: 21.268.10-onprem-32d8553
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.268.9
+  version: 21.268.10-onprem-32d8553
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.268.9
+  version: 21.268.10-onprem-32d8553
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.268.9
+  version: 21.268.10-onprem-32d8553
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.268.9
+  version: 21.268.10-onprem-32d8553
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.268.9
+  version: 21.268.10-onprem-32d8553
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.268.9
+  version: 21.268.10-onprem-32d8553
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.268.9
+  version: 21.268.10-onprem-32d8553
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.268.9
+  version: 21.268.10-onprem-32d8553
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.268.9
+  version: 21.268.10-onprem-32d8553
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.268.9
+  version: 21.268.10-onprem-32d8553
 - name: cfapi
   repository: oci://quay.io/codefresh/charts
-  version: 21.268.9
+  version: 21.268.10-onprem-32d8553
 - name: cfui
   repository: oci://quay.io/codefresh/charts
   version: 14.96.76
 - name: k8s-monitor
   repository: oci://quay.io/codefresh/charts
-  version: 4.11.14
+  version: 4.11.18
 - name: runtime-environment-manager
   repository: oci://quay.io/codefresh/charts
   version: 3.38.4
@@ -133,13 +133,13 @@ dependencies:
   version: 0.17.1
 - name: hermes
   repository: oci://quay.io/codefresh/charts
-  version: 0.21.18
+  version: 0.21.22
 - name: nomios
   repository: oci://quay.io/codefresh/charts
-  version: 0.11.10
+  version: 0.11.12
 - name: cronus
   repository: oci://quay.io/codefresh/charts
-  version: 0.8.10
+  version: 0.8.13
 - name: cf-platform-analytics
   repository: oci://quay.io/codefresh/charts
   version: 0.49.89
@@ -151,9 +151,9 @@ dependencies:
   version: 1.3169.1-onprem-915b48a
 - name: argo-hub-platform
   repository: oci://quay.io/codefresh/charts
-  version: 0.1.24
+  version: 0.1.28
 - name: cf-oidc-provider
   repository: oci://quay.io/codefresh/charts
   version: 0.0.16
-digest: sha256:38a2e4c9a8f3bea6db884abe1f41023b8c4d1b07d88160f31eb6bd230c315f6c
-generated: "2025-06-05T00:02:26.809881+03:00"
+digest: sha256:b15d3cf25e7a563f95a5ea3e8e0cf5f620d172f84694932cb194d2623ee981ab
+generated: "2025-11-28T10:10:48.099727+02:00"
