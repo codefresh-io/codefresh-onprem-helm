@@ -718,7 +718,7 @@ cf-platform-analytics-platform:
     enabled: true
     nameOverride: redis-platform-analytics
     image:
-      repository:: bitnamilegacy/redis
+      repository: bitnamilegacy/redis
   resources:
     requests:
       cpu: 100m
@@ -1152,7 +1152,7 @@ redis:
         cpu: 200m
         memory: 256Mi
   image:
-    repository:: bitnamilegacy/redis
+    repository: bitnamilegacy/redis
 
 # -- redis-ha
 ## Ref: https://github.com/DandyDeveloper/charts/blob/master/charts/redis-ha/values.yaml
