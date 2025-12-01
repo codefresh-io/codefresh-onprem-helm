@@ -104,6 +104,6 @@ mongosh ${MONGODB_ROOT_URI} ${MONGO_URI_EXTRA_PARAMS} --eval "db.getSiblingDB(\"
 mongosh ${MONGODB_ROOT_URI} ${MONGO_URI_EXTRA_PARAMS} --eval "db.getSiblingDB(\"codefresh\").grantRolesToUser( \"${MONGODB_USER}\", [ { role: \"readWrite\", db: \"platform-analytics-postgres\" } ] )" 2>&1 || true
 mongosh ${MONGODB_ROOT_URI} ${MONGO_URI_EXTRA_PARAMS} --eval "db.getSiblingDB(\"codefresh\").changeUserPassword(\"${MONGODB_USER}\",\"${MONGODB_PASSWORD}\")" 2>&1 || true
 
-mongoimport --uri ${MONGO_URI} ${MONGO_URI_EXTRA_PARAMS} --collection idps --type json --legacy --file ${ASSETS_PATH}idps.json
-mongoimport --uri ${MONGO_URI} ${MONGO_URI_EXTRA_PARAMS} --collection accounts --type json --legacy --file ${ASSETS_PATH}accounts.json
-mongoimport --uri ${MONGO_URI} ${MONGO_URI_EXTRA_PARAMS} --collection users --type json --legacy --file ${ASSETS_PATH}users.json
+mongoimport --uri ${MONGO_URI} ${MONGOIMPORT_EXTRA_PARAMS} --collection idps --type json --legacy --file ${ASSETS_PATH}idps.json
+mongoimport --uri ${MONGO_URI} ${MONGOIMPORT_EXTRA_PARAMS} --collection accounts --type json --legacy --file ${ASSETS_PATH}accounts.json
+mongoimport --uri ${MONGO_URI} ${MONGOIMPORT_EXTRA_PARAMS} --collection users --type json --legacy --file ${ASSETS_PATH}users.json
