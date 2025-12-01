@@ -96,6 +96,15 @@ rabbitmq:
   image:
     repository: bitnamilegacy/rabbitmq
 
+redis:
+  image:
+    repository: bitnamilegacy/redis
+
+cf-platform-analytics-platform:
+  redis:
+    image:
+      repository: bitnamilegacy/redis
+
 hooks:
   mongodb:
     nodeSelector:
