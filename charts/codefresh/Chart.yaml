@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.9.8
+version: 2.9.9
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -21,8 +21,19 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
+    - kind: changed
+      description: 'build: upgrade `cf-deploy-kubernetes` (#157)'
+    - kind: changed
+      description: "Update \"cf-deploy-kubernetes\" to 17.0.0."
     - kind: security
-      description: 'bump helm-repo-manager, runtime images with security fixes'
+      description: "Fix various CVE in \"cf-deploy-kubernetes\"."
+    - kind: added
+      description: "Support k8s 1.32, 1.33, 1.34 in \"deploy\" step."
+    - kind: deprecated
+      description: "Remove support for k8s older than 1.32 in \"deploy\" step."
+      links:
+        - name: Codefresh Docs - Deploy
+          url: https://codefresh.io/docs/docs/pipelines/steps/deploy/
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
