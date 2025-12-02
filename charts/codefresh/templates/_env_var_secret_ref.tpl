@@ -73,7 +73,9 @@ MONGO_SEED_URI env var value
 {{- /*
 Check for legacy global.mongoURI
 */}}
-  {{- if .Values.global.mongoURI }}
+  {{- if .Values.seed.mongoSeedJob.mongodbRootURI }}
+value: "$(MONGO_ROOT_URI)"
+  {{- else if .Values.global.mongoURI }}
 value: "$(MONGO_URI)"
 {{- /*
 New secret implementation

@@ -1,4 +1,3 @@
-
 seed-e2e:
   enabled: true
 
@@ -79,7 +78,7 @@ argo-platform:
 
 mongodb:
   migration:
-    enabled: true
+    enabled: false
   image:
     repository: bitnamilegacy/mongodb
   nodeSelector:
@@ -101,9 +100,6 @@ hooks:
   mongodb:
     nodeSelector:
       kubernetes.io/arch: amd64
-  nodeSelector:
-    kubernetes.io/arch: amd64
-
-seed:
-  nodeSelector:
-    kubernetes.io/arch: amd64
+  rabbitmq:
+    nodeSelector:
+      kubernetes.io/arch: amd64
