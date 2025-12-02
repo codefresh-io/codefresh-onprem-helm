@@ -15,7 +15,7 @@ appVersion: 2.8.0
 annotations:
   artifacthub.io/prerelease: "false"
   artifacthub.io/alternativeName: "codefresh-onprem"
-  artifacthub.io/containsSecurityUpdates: "true"
+  # artifacthub.io/containsSecurityUpdates: "true"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |-
     - kind: fixed
