@@ -19,7 +19,7 @@ annotations:
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |-
     - kind: fixed
-      description: "Fixed an issue with incorrect Github Enterprise branch list endpoint."
+      description: "Fixed an issue with incorrect Github Enterprise branch list endpoint"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
