@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.7.19
+version: 2.7.0
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -17,9 +17,55 @@ annotations:
   artifacthub.io/alternativeName: "codefresh-onprem"
   artifacthub.io/containsSecurityUpdates: "true"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
-  artifacthub.io/changes: |
-    - kind: fixed
-      description: "Fixed an issue with incorrect Github Enterprise branch list endpoint."
+  artifacthub.io/changes: |-
+    - kind: changed
+      description: 'feat: update dependencies (#167)'
+    - kind: changed
+      description: mv codefresh in charts/ folder
+    - kind: changed
+      description: bum dependencies (#161)
+    - kind: changed
+      description: 'onprem: 2.7.18 (#95)'
+    - kind: changed
+      description: 'docs(indexes): remove redundant TTL (#88)'
+    - kind: changed
+      description: onprem-2.7.17 (#85)
+    - kind: changed
+      description: 'onprem: 2.7.16 (#69)'
+    - kind: changed
+      description: 'fix: 2.7 docs mongo (#65)'
+    - kind: changed
+      description: 'onprem: 2.7.15 (#62)'
+    - kind: changed
+      description: 'onprem: 2.7.14 (#59)'
+    - kind: changed
+      description: 'onprem: 2.7.13 (#54)'
+    - kind: changed
+      description: 'onprem: 2.7.12 (#51)'
+    - kind: changed
+      description: 'onprem: 2.7.11 (#49)'
+    - kind: changed
+      description: 'onprem: 2.7.10 (#47)'
+    - kind: changed
+      description: onprem 2.7.9 (#44)
+    - kind: changed
+      description: 'onprem: 2.7.8 (#41)'
+    - kind: changed
+      description: 'onprem: 2.7.7 (#40)'
+    - kind: changed
+      description: 'onprem: 2.7.6 (#39)'
+    - kind: changed
+      description: 'onprem: 2.7.5 (#36)'
+    - kind: changed
+      description: 'onprem: 2.7.4 (#35)'
+    - kind: changed
+      description: 'onprem: 2.7.3 (#33)'
+    - kind: changed
+      description: 'onprem: 2.7.2 (#32)'
+    - kind: changed
+      description: 'onprem: 2.7.1 (#31)'
+    - kind: changed
+      description: 'onprem: create onprem-release-2.7 branch'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
