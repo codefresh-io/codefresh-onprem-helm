@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.6.15
+version: 2.6.0
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -17,9 +17,51 @@ annotations:
   artifacthub.io/alternativeName: "codefresh-onprem"
   artifacthub.io/containsSecurityUpdates: "false"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
-  artifacthub.io/changes: |
-    - kind: fixed
-      description: "Fixed an issue with incorrect Github Enterprise branch list endpoint."
+  artifacthub.io/changes: |-
+    - kind: changed
+      description: 'feat: update dependencies (#165)'
+    - kind: changed
+      description: 'tmp: revert version and changelog'
+    - kind: changed
+      description: mv codefresh in charts/ folder
+    - kind: changed
+      description: patch dependencies (#160)
+    - kind: changed
+      description: 'docs(indexes): remove redundant TTL (#89)'
+    - kind: changed
+      description: 'onprem: 2.6.14 (#70)'
+    - kind: changed
+      description: 'fix: 2.6 docs mongo (#66)'
+    - kind: changed
+      description: 'onprem: 2.6.13 (#48)'
+    - kind: changed
+      description: 'onprem: 2.6.12 (#45)'
+    - kind: changed
+      description: 'onprem: 2.6.11 (#37)'
+    - kind: changed
+      description: 'onprem: 2.6.10 (#34)'
+    - kind: changed
+      description: 'onprem: 2.6.9 (#29)'
+    - kind: changed
+      description: 'onprem: 2.6.8 (#27)'
+    - kind: changed
+      description: 'onprem: 2.6.7 security updates (#25)'
+    - kind: changed
+      description: 'onprem: 2.6.6 (#21)'
+    - kind: changed
+      description: Patch - 2.6.5 update open source components (#20)
+    - kind: changed
+      description: 'onprem: 2.6.4 (#19)'
+    - kind: changed
+      description: 'onprem: 2.6.3 (#18)'
+    - kind: changed
+      description: 'onprem: 2.6.2 (#17)'
+    - kind: changed
+      description: 'feat(onprem 2.6): add indexes'
+    - kind: changed
+      description: 'onprem: 2.6.1 (#16)'
+    - kind: changed
+      description: 'onprem: create onprem-release-2.6 branch'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
