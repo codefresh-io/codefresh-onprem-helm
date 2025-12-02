@@ -1,0 +1,118 @@
+seed-e2e:
+  enabled: true
+
+global:
+  appUrl: "" # placeholder
+  imagePullSecrets:
+    - codefresh-registry
+    - dockerhub-creds
+
+cfapi:
+  rbac:
+    namespaced: false
+  hpa:
+    enabled: true
+  resources:
+    requests:
+      cpu: 300m
+      memory: 1024Mi
+  container:
+    env:
+      DEFAULT_SYSTEM_TYPE: CLASSIC
+
+ingress:
+  enabled: true
+  ingressClassName: nginx
+  tls:
+    enabled: false
+
+ingress-nginx:
+  enabled: false
+
+argo-platform:
+  enabled: true
+
+  analytics-reporter:
+    hpa:
+      enabled: true
+
+  api-events:
+    hpa:
+      enabled: true
+
+  api-graphql:
+    hpa:
+      enabled: true
+    resources:
+      requests:
+        cpu: 300m
+        memory: 1024Mi
+
+  cron-executor:
+    hpa:
+      enabled: true
+
+  event-handler:
+    hpa:
+      enabled: true
+    resources:
+      requests:
+        cpu: 300m
+        memory: 1024Mi
+
+  ui:
+    hpa:
+      enabled: true
+
+  audit:
+    hpa:
+      enabled: true
+
+  abac:
+    hpa:
+      enabled: true
+
+  promotion-orchestrator:
+    hpa:
+      enabled: true
+
+mongodb:
+  migration:
+    enabled: false
+  image:
+    repository: bitnamilegacy/mongodb
+  nodeSelector:
+    kubernetes.io/arch: amd64
+
+consul:
+  image:
+    repository: bitnamilegacy/consul
+
+nats:
+  image:
+    repository: bitnamilegacy/nats
+
+rabbitmq:
+  image:
+    repository: bitnamilegacy/rabbitmq
+
+redis:
+  image:
+    repository: bitnamilegacy/redis
+
+cf-platform-analytics-platform:
+  redis:
+    image:
+      repository: bitnamilegacy/redis
+
+hooks:
+  mongodb:
+    nodeSelector:
+      kubernetes.io/arch: amd64
+  rabbitmq:
+    nodeSelector:
+      kubernetes.io/arch: amd64
+
+seed:
+  nodeSelector:
+    kubernetes.io/arch: amd64

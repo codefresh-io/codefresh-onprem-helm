@@ -717,6 +717,8 @@ cf-platform-analytics-platform:
   redis:
     enabled: true
     nameOverride: redis-platform-analytics
+    image:
+      repository: bitnamilegacy/redis
   resources:
     requests:
       cpu: 100m
@@ -1149,6 +1151,8 @@ redis:
       requests:
         cpu: 200m
         memory: 256Mi
+  image:
+    repository: bitnamilegacy/redis
 
 # -- redis-ha
 ## Ref: https://github.com/DandyDeveloper/charts/blob/master/charts/redis-ha/values.yaml
@@ -1305,7 +1309,7 @@ argo-hub-platform:
   container:
     image:
       registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
-      repository: codefresh-io/argo-hub-platform
+      repository: codefresh/argo-hub-platform
   imagePullSecrets:
     - '{{ .Release.Name }}-registry'
   resources:
