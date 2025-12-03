@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.9.9
+version: 2.9.10
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -21,19 +21,8 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
-    - kind: changed
-      description: 'build: upgrade `cf-deploy-kubernetes` (#157)'
-    - kind: changed
-      description: "Update \"cf-deploy-kubernetes\" to 17.0.0."
-    - kind: security
-      description: "Fix various CVE in \"cf-deploy-kubernetes\"."
-    - kind: added
-      description: "Support k8s 1.32, 1.33, 1.34 in \"deploy\" step."
-    - kind: deprecated
-      description: "Remove support for k8s older than 1.32 in \"deploy\" step."
-      links:
-        - name: Codefresh Docs - Deploy
-          url: https://codefresh.io/docs/docs/pipelines/steps/deploy/
+    - kind: fixed
+      description: "Fixed an issue with incorrect Github Enterprise branch list endpoint."
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -116,92 +105,92 @@ dependencies:
     condition: gitops-dashboard-manager.enabled
   - name: cfapi
     alias: cfapi
-    version: 21.291.21-2.9-onprem-b3c6f1d
+    version: 21.291.22-onprem-759dadf
     repository: oci://quay.io/codefresh/charts
     condition: cfapi.enabled
   - name: cfapi
     alias: cfapi-auth
-    version: 21.291.21-2.9-onprem-b3c6f1d
+    version: 21.291.22-onprem-759dadf
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-auth.enabled
   - name: cfapi
     alias: cfapi-internal
-    version: 21.291.21-2.9-onprem-b3c6f1d
+    version: 21.291.22-onprem-759dadf
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-internal.enabled
   - name: cfapi
     alias: cfapi-ws
-    version: 21.291.21-2.9-onprem-b3c6f1d
+    version: 21.291.22-onprem-759dadf
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-ws.enabled
   - name: cfapi
     alias: cfapi-admin
-    version: 21.291.21-2.9-onprem-b3c6f1d
+    version: 21.291.22-onprem-759dadf
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-admin.enabled
   - name: cfapi
     alias: cfapi-endpoints
-    version: 21.291.21-2.9-onprem-b3c6f1d
+    version: 21.291.22-onprem-759dadf
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-endpoints.enabled
   - name: cfapi
     alias: cfapi-terminators
-    version: 21.291.21-2.9-onprem-b3c6f1d
+    version: 21.291.22-onprem-759dadf
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-terminators.enabled
   - name: cfapi
     alias: cfapi-sso-group-synchronizer
-    version: 21.291.21-2.9-onprem-b3c6f1d
+    version: 21.291.22-onprem-759dadf
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-sso-group-synchronizer.enabled
   - name: cfapi
     alias: cfapi-buildmanager
-    version: 21.291.21-2.9-onprem-b3c6f1d
+    version: 21.291.22-onprem-759dadf
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-buildmanager.enabled
   - name: cfapi
     alias: cfapi-cacheevictmanager
-    version: 21.291.21-2.9-onprem-b3c6f1d
+    version: 21.291.22-onprem-759dadf
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-cacheevictmanager.enabled
   - name: cfapi
     alias: cfapi-eventsmanagersubscriptions
-    version: 21.291.21-2.9-onprem-b3c6f1d
+    version: 21.291.22-onprem-759dadf
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-eventsmanagersubscriptions.enabled
   - name: cfapi
     alias: cfapi-kubernetesresourcemonitor
-    version: 21.291.21-2.9-onprem-b3c6f1d
+    version: 21.291.22-onprem-759dadf
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-kubernetesresourcemonitor.enabled
   - name: cfapi
     alias: cfapi-environments
-    version: 21.291.21-2.9-onprem-b3c6f1d
+    version: 21.291.22-onprem-759dadf
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-environments.enabled
   - name: cfapi
     alias: cfapi-gitops-resource-receiver
-    version: 21.291.21-2.9-onprem-b3c6f1d
+    version: 21.291.22-onprem-759dadf
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-gitops-resource-receiver.enabled
   - name: cfapi
     alias: cfapi-downloadlogmanager
-    version: 21.291.21-2.9-onprem-b3c6f1d
+    version: 21.291.22-onprem-759dadf
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-downloadlogmanager.enabled
   - name: cfapi
     alias: cfapi-teams
-    version: 21.291.21-2.9-onprem-b3c6f1d
+    version: 21.291.22-onprem-759dadf
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-teams.enabled
   - name: cfapi
     alias: cfapi-kubernetes-endpoints
-    version: 21.291.21-2.9-onprem-b3c6f1d
+    version: 21.291.22-onprem-759dadf
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-kubernetes-endpoints.enabled
   - name: cfapi
     alias: cfapi-test-reporting
-    version: 21.291.21-2.9-onprem-b3c6f1d
+    version: 21.291.22-onprem-759dadf
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-test-reporting.enabled
   - name: cfui
