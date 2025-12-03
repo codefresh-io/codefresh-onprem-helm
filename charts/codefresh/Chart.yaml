@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.9.10
+version: 2.9.11
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -21,8 +21,8 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
-    - kind: fixed
-      description: "Fixed an issue with incorrect Github Enterprise branch list endpoint."
+    - kind: changed
+      description: 'chore: CR-31401 fix security vulnerabilities (#156)'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
