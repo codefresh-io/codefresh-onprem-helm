@@ -72,15 +72,15 @@ dependencies:
     repository: https://kubernetes.github.io/ingress-nginx
     condition: ingress-nginx.enabled
   - name: cluster-providers
-    version: 1.18.2-onprem-8125523
+    version: 1.18.3-2.9-onprem-267b1a1
     repository: oci://quay.io/codefresh/charts
     condition: cluster-providers.enabled
   - name: kube-integration
-    version: 1.32.2-onprem-b539a1d
+    version: 1.32.3-2.9-onprem-e2516d0
     repository: oci://quay.io/codefresh/charts
     condition: kube-integration.enabled
   - name: charts-manager
-    version: 1.25.2-onprem-65c64d9
+    version: 1.25.3-2.9-onprem-ff2738e
     repository: oci://quay.io/codefresh/charts
     condition: charts-manager.enabled
   - name: cfsign
@@ -88,109 +88,109 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: cfsign.enabled
   - name: tasker-kubernetes
-    version: 1.27.2-onprem-48f1754
+    version: 1.27.3-2.9-onprem-e23c7a9
     repository: oci://quay.io/codefresh/charts
     condition: tasker-kubernetes.enabled
   - name: context-manager
-    version: 2.36.2-onprem-f58347f
+    version: 2.36.3-2.9-onprem-8653952
     repository: oci://quay.io/codefresh/charts
     condition: context-manager.enabled
   - name: pipeline-manager
-    version: 3.141.2-onprem-7c354cc
+    version: 3.141.3-2.9-onprem-f2a2047
     repository: oci://quay.io/codefresh/charts
     condition: pipeline-manager.enabled
   - name: gitops-dashboard-manager
-    version: 1.15.2-onprem-ce2f390
+    version: 1.15.3-2.9-onprem-01a8176
     repository: oci://quay.io/codefresh/charts
     condition: gitops-dashboard-manager.enabled
   - name: cfapi
     alias: cfapi
-    version: 21.291.22-onprem-759dadf	
+    version: 21.291.22-onprem-759dadf
     repository: oci://quay.io/codefresh/charts
     condition: cfapi.enabled
   - name: cfapi
     alias: cfapi-auth
-    version: 21.291.22-onprem-759dadf	
+    version: 21.291.22-onprem-759dadf
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-auth.enabled
   - name: cfapi
     alias: cfapi-internal
-    version: 21.291.22-onprem-759dadf	
+    version: 21.291.22-onprem-759dadf
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-internal.enabled
   - name: cfapi
     alias: cfapi-ws
-    version: 21.291.22-onprem-759dadf	
+    version: 21.291.22-onprem-759dadf
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-ws.enabled
   - name: cfapi
     alias: cfapi-admin
-    version: 21.291.22-onprem-759dadf	
+    version: 21.291.22-onprem-759dadf
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-admin.enabled
   - name: cfapi
     alias: cfapi-endpoints
-    version: 21.291.22-onprem-759dadf	
+    version: 21.291.22-onprem-759dadf
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-endpoints.enabled
   - name: cfapi
     alias: cfapi-terminators
-    version: 21.291.22-onprem-759dadf	
+    version: 21.291.22-onprem-759dadf
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-terminators.enabled
   - name: cfapi
     alias: cfapi-sso-group-synchronizer
-    version: 21.291.22-onprem-759dadf	
+    version: 21.291.22-onprem-759dadf
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-sso-group-synchronizer.enabled
   - name: cfapi
     alias: cfapi-buildmanager
-    version: 21.291.22-onprem-759dadf	
+    version: 21.291.22-onprem-759dadf
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-buildmanager.enabled
   - name: cfapi
     alias: cfapi-cacheevictmanager
-    version: 21.291.22-onprem-759dadf	
+    version: 21.291.22-onprem-759dadf
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-cacheevictmanager.enabled
   - name: cfapi
     alias: cfapi-eventsmanagersubscriptions
-    version: 21.291.22-onprem-759dadf	
+    version: 21.291.22-onprem-759dadf
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-eventsmanagersubscriptions.enabled
   - name: cfapi
     alias: cfapi-kubernetesresourcemonitor
-    version: 21.291.22-onprem-759dadf	
+    version: 21.291.22-onprem-759dadf
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-kubernetesresourcemonitor.enabled
   - name: cfapi
     alias: cfapi-environments
-    version: 21.291.22-onprem-759dadf	
+    version: 21.291.22-onprem-759dadf
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-environments.enabled
   - name: cfapi
     alias: cfapi-gitops-resource-receiver
-    version: 21.291.22-onprem-759dadf	
+    version: 21.291.22-onprem-759dadf
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-gitops-resource-receiver.enabled
   - name: cfapi
     alias: cfapi-downloadlogmanager
-    version: 21.291.22-onprem-759dadf	
+    version: 21.291.22-onprem-759dadf
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-downloadlogmanager.enabled
   - name: cfapi
     alias: cfapi-teams
-    version: 21.291.22-onprem-759dadf	
+    version: 21.291.22-onprem-759dadf
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-teams.enabled
   - name: cfapi
     alias: cfapi-kubernetes-endpoints
-    version: 21.291.22-onprem-759dadf	
+    version: 21.291.22-onprem-759dadf
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-kubernetes-endpoints.enabled
   - name: cfapi
     alias: cfapi-test-reporting
-    version: 21.291.22-onprem-759dadf	
+    version: 21.291.22-onprem-759dadf
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-test-reporting.enabled
   - name: cfui
@@ -198,15 +198,15 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: cfui.enabled
   - name: k8s-monitor
-    version: 4.11.17-onprem-710fd12
+    version: 4.11.18-2.9-onprem-8587e92
     repository: oci://quay.io/codefresh/charts
     condition: k8s-monitor.enabled
   - name: runtime-environment-manager
-    version: 3.43.6-onprem-1c37f3d
+    version: 3.43.7-2.9-onprem-6acc833
     repository: oci://quay.io/codefresh/charts
     condition: runtime-environment-manager.enabled
   - name: cf-broadcaster
-    version: 1.14.2-onprem-1a9194b
+    version: 1.14.3-2.9-onprem-592a35e
     repository: oci://quay.io/codefresh/charts
     condition: cf-broadcaster.enabled
   - name: helm-repo-manager
