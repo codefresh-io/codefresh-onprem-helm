@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 0.0.0
+version: 2.10.0
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -22,16 +22,29 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: "Update \"cf-deploy-kubernetes\" to 17.0.0."
-    - kind: security
-      description: "Fix various CVE in \"cf-deploy-kubernetes\"."
-    - kind: added
-      description: "Support k8s 1.32, 1.33, 1.34 in \"deploy\" step."
-    - kind: deprecated
-      description: "Remove support for k8s older than 1.32 in \"deploy\" step."
-      links:
-        - name: Codefresh Docs - Deploy
-          url: https://codefresh.io/docs/docs/pipelines/steps/deploy/
+      description: 'onprem: 2.10.0 (#173)'
+    - kind: changed
+      description: 'chore(deps): bump subcharts (#107)'
+    - kind: changed
+      description: 'build: upgrade `cf-deploy-kubernetes` (#157) (#159)'
+    - kind: changed
+      description: 'feat(doc): bitnami notes update (#151)'
+    - kind: changed
+      description: 'fix: security fixes for cf-runtime images (#149)'
+    - kind: changed
+      description: 'fix: restore nats (#124)'
+    - kind: changed
+      description: 'docs: added ability to disable postgres store for eventbus and set schema name for audit (#121)'
+    - kind: changed
+      description: 'chore(CR-29499): bump kubectl, mongosh, postgres (#117)'
+    - kind: changed
+      description: 'docs: document 2.9 indexes and changes in schema (#112)'
+    - kind: changed
+      description: 'feat: add compatibility table for onprem services (#111)'
+    - kind: changed
+      description: 'doc: document `dind` breaking changes (#113)'
+    - kind: changed
+      description: 'fix: get-all-images.sh script'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
