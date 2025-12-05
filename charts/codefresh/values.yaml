@@ -508,19 +508,19 @@ postgresqlCleanJob:
 # -- runtimeImages
 # @default -- See below
 runtimeImages:
-  COMPOSE_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/compose:v2.37.0-1.5.4@sha256:e74494370100678ccb1c1058e6ef3ddcf67b21fcd37da8b3482376c8282549ad
-  CONTAINER_LOGGER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-container-logger:1.12.8@sha256:6e376bb00e824827cb038e15160ccf0fead4f868197b75bbc80dbd6bc34af8d6
-  DIND_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/dind:28.5.1-3.0.5@sha256:3d823bcbdf7437fc4262f5b307e1ba2d0fa0c59afd43cbd0ad74198d11868d1c
-  DOCKER_BUILDER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-docker-builder:1.4.7@sha256:1d02df4dcf703a97c7a64b147cd2c3f6ec2c708aad16be5abbd337f3c13a48ad
-  DOCKER_PULLER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-docker-puller:8.0.22@sha256:914f071bcb1893bcb42c3f8907f8f3874f1f30db1a2ccaa4b825dab9bb157e60
-  DOCKER_PUSHER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-docker-pusher:6.0.20@sha256:bad3773029a68f33953f1dc245cb92c386b5311a996340eea41fe6b9cc52a96c
-  DOCKER_TAG_PUSHER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-docker-tag-pusher:1.3.19@sha256:ec4416525bbf4912786035fbb2e1f26ae04f94559c535f02232b48eb0a1c5fa7
-  ENGINE_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/engine:1.180.7@sha256:1919280cecc58d9e1001435f31fdd79fa4fb5627a5e490be5ade603d6a5c641d
-  FS_OPS_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/fs-ops:1.2.11@sha256:cade5ace4d05528dfd0cbdbb96bd99c6ccae79dfeebe14661a4b7808e2131dc9
-  GIT_CLONE_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-git-cloner:10.3.4@sha256:ce1e922b94bbf1e5bd224468a2ccfe969200661ca2b6f0182b26ee0ad06e1a6d
-  KUBE_DEPLOY: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-deploy-kubernetes:17.0.0@sha256:ee9f56c8c5fc73dfd45511fb003dc53f35e0c46a78acdbb62ad386f33913b765
-  PIPELINE_DEBUGGER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-debugger:1.3.11@sha256:7f8867af5fd402a98159d674c30965d67861a4dc37e429db3ff0746a6454f88f
-  TEMPLATE_ENGINE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/pikolo:0.14.6@sha256:b3f499fcf93037e69fba599d2f292cfc9f28a158052dd57d5de9cdf9756f1f60
+  COMPOSE_IMAGE: quay.io/codefresh/compose:v2.37.0-1.5.6@sha256:19f212e9aee62f112f8a1df474122f850357f1c85521e804dcfc9a48b69a840f
+  CONTAINER_LOGGER_IMAGE: quay.io/codefresh/cf-container-logger:2.0.0@sha256:6459db2d486f89457ce347ecc1dc037d39c43fb0c1fb67ea6e9d6743e104642f
+  DIND_IMAGE: quay.io/codefresh/dind:28.5.1-3.0.5@sha256:3d823bcbdf7437fc4262f5b307e1ba2d0fa0c59afd43cbd0ad74198d11868d1c
+  DOCKER_BUILDER_IMAGE: quay.io/codefresh/cf-docker-builder:1.5.2@sha256:aee6cd939ce17708c6d1022bec4d799dfbf81844a6a36ae5fe56e4308ad6d4b1
+  DOCKER_PULLER_IMAGE: quay.io/codefresh/cf-docker-puller:8.0.24@sha256:09725c496f66cace02b523e1e3be7434519e751b5a1a5927c76cf95fbb0dc7d7
+  DOCKER_PUSHER_IMAGE: quay.io/codefresh/cf-docker-pusher:6.0.23@sha256:5bf734ffea8f3bb9cdafeabbdcff7f26a2db68552cf7a91d48a5eff2699a57a8
+  DOCKER_TAG_PUSHER_IMAGE: quay.io/codefresh/cf-docker-tag-pusher:1.3.20@sha256:69b6154fe34cda7a48b2e44cfe7667acdd79a6a5901001b092f8cf485b75ff3f
+  ENGINE_IMAGE: quay.io/codefresh/engine:2.0.0@sha256:ca1203291a7d36d4e34e8b4823549217fdaa68f8ded107869b396e38009ea962
+  FS_OPS_IMAGE: quay.io/codefresh/fs-ops:1.2.11@sha256:cade5ace4d05528dfd0cbdbb96bd99c6ccae79dfeebe14661a4b7808e2131dc9
+  GIT_CLONE_IMAGE: quay.io/codefresh/cf-git-cloner:10.3.4@sha256:ce1e922b94bbf1e5bd224468a2ccfe969200661ca2b6f0182b26ee0ad06e1a6d
+  KUBE_DEPLOY: quay.io/codefresh/cf-deploy-kubernetes:17.0.0@sha256:ee9f56c8c5fc73dfd45511fb003dc53f35e0c46a78acdbb62ad386f33913b765
+  PIPELINE_DEBUGGER_IMAGE: quay.io/codefresh/cf-debugger:1.3.11@sha256:7f8867af5fd402a98159d674c30965d67861a4dc37e429db3ff0746a6454f88f
+  TEMPLATE_ENGINE: quay.io/codefresh/pikolo:0.14.8@sha256:37ec7bed4b09e4055c3600a7805f84e37cccf8d849fe0fdd5b29f079de15010c
   CR_6177_FIXER: docker.io/library/alpine:3.21
   GC_BUILDER_IMAGE: docker.io/library/alpine:3.21
 
