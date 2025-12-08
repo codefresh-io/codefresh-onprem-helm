@@ -777,7 +777,7 @@ cf-platform-analytics-platform:
   container:
     image:
       registry: us-docker.pkg.dev/codefresh-inc/gcr.io
-      repository: codefresh/dev.cf-platform-analytics
+      repository: codefresh/dev/cf-platform-analytics
   redis:
     enabled: true
     nameOverride: redis-ha-platform-analytics
