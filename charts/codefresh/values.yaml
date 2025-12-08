@@ -781,6 +781,10 @@ cf-platform-analytics-platform:
   redis:
     enabled: true
     nameOverride: redis-ha-platform-analytics
+    haproxy:
+      enabled: true
+      servicePort: 6379
+    auth: false
   resources:
     requests:
       cpu: 100m
