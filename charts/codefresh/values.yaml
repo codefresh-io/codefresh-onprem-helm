@@ -776,15 +776,11 @@ cf-platform-analytics-platform:
   imagePullSecrets: []
   container:
     image:
-      registry: us-docker.pkg.dev/codefresh-enterprise/gcr.io
-      repository: codefresh/cf-platform-analytics
+      registry: us-docker.pkg.dev/codefresh-inc/gcr.io
+      repository: codefresh/dev.cf-platform-analytics
   redis:
     enabled: true
-    nameOverride: redis-platform-analytics
-    image:
-      registry: quay.io
-      repository: codefresh/redis
-      tag: 7.4.3-debian-12-r0
+    nameOverride: redis-ha-platform-analytics
   resources:
     requests:
       cpu: 100m
