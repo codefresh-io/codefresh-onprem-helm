@@ -35,6 +35,13 @@ function updateRESpec {
                     }
                 }
             )"
+        mongosh "$MONGO_URI_RE_MANAGER" --tls --tlsCertificateKeyFile /etc/ssl/mongodb/ca.pem --tlsAllowInvalidHostnames --tlsAllowInvalidCertificates --eval "db.getCollection('runtime-environment').updateOne(
+                {'metadata.name': '$1'},
+                { \$set: {
+                    \"runtimeScheduler.command\": \"[node, dist/server/index.js]\",
+                    }
+                }
+            )"
     else
         mongosh "$MONGO_URI_RE_MANAGER" --eval "db.getCollection('runtime-environment').updateOne(
                 {'metadata.name': '$1'},
@@ -54,6 +61,13 @@ function updateRESpec {
                     \"runtimeScheduler.envVars.PIPELINE_DEBUGGER_IMAGE\": \"$PIPELINE_DEBUGGER_IMAGE\",
                     \"runtimeScheduler.envVars.CR_6177_FIXER\": \"$CR_6177_FIXER\",
                     \"runtimeScheduler.envVars.GC_BUILDER_IMAGE\": \"$GC_BUILDER_IMAGE\",
+                    }
+                }
+            )"
+        mongosh "$MONGO_URI_RE_MANAGER" --eval "db.getCollection('runtime-environment').updateOne(
+                {'metadata.name': '$1'},
+                { \$set: {
+                    \"runtimeScheduler.command\": \"[node, dist/server/index.js]\",
                     }
                 }
             )"
