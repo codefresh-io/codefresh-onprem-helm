@@ -38,7 +38,7 @@ function updateRESpec {
         mongosh "$MONGO_URI_RE_MANAGER" --tls --tlsCertificateKeyFile /etc/ssl/mongodb/ca.pem --tlsAllowInvalidHostnames --tlsAllowInvalidCertificates --eval "db.getCollection('runtime-environment').updateOne(
                 {'metadata.name': '$1'},
                 { \$set: {
-                    \"runtimeScheduler.command\": \"[node, dist/server/index.js]\",
+                    \"runtimeScheduler.command\": ["node", "dist/server/index.js"],
                     }
                 }
             )"
@@ -65,12 +65,12 @@ function updateRESpec {
                 }
             )"
         mongosh "$MONGO_URI_RE_MANAGER" --eval "db.getCollection('runtime-environment').updateOne(
-                {'metadata.name': '$1'},
-                { \$set: {
-                    \"runtimeScheduler.command\": \"[node, dist/server/index.js]\",
-                    }
+            {'metadata.name': '$1'},
+            { \$set: {
+                \"runtimeScheduler.command\": [\"node\", \"dist/server/index.js\"]
                 }
-            )"
+            }
+        )"
     fi
 }
 
