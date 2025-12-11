@@ -453,7 +453,7 @@ hooks:
     image:
       registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
       repository: codefresh/mongosh
-      tag: 2.5.9-cf-2
+      tag: 2.5.10-cf-1
     affinity: {}
     nodeSelector:
       kubernetes.io/arch: amd64
