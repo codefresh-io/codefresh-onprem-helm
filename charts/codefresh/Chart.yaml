@@ -22,6 +22,8 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
+      description: upd argo-hub-platform and mongosh (#182)
+    - kind: changed
       description: 'fix: engine command (#178)'
     - kind: changed
       description: 'onprem: 2.10.0 (#173)'
