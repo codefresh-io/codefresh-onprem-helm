@@ -22,9 +22,9 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'updated mongosh to v2.5.10'
-    - kind: security
-      description: 'updated argo-hub-platform to v0.1.29 with security fixes'
+      description: 'chore: CR-31817 - fix security vulnerabilities (#183)'
+    - kind: changed
+      description: 'chore(codefresh/onprem 2.9.12): security fixes (#180)'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
