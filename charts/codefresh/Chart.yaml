@@ -21,10 +21,8 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
-    - kind: changed
-      description: 'chore: CR-31817 - fix security vulnerabilities (#183)'
-    - kind: changed
-      description: 'chore(codefresh/onprem 2.9.12): security fixes (#180)'
+    - kind: security
+      description: 'fix multiple security vulnerabilities'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
