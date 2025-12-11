@@ -78,7 +78,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: cluster-providers.enabled
   - name: kube-integration
-    version: 1.32.3-2.9-onprem-e2516d0
+    version: 1.32.4-2.9-onprem-8d5d282
     repository: oci://quay.io/codefresh/charts
     condition: kube-integration.enabled
   - name: charts-manager
@@ -229,12 +229,12 @@ dependencies:
     condition: hermes.enabled
   - name: cf-platform-analytics
     alias: cf-platform-analytics-platform
-    version: 0.51.2-onprem-9ebeb58
+    version: 0.51.3-onprem-27a92a8
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: cf-platform-analytics
     alias: cf-platform-analytics-etlstarter
-    version: 0.51.2-onprem-9ebeb58
+    version: 0.51.3-onprem-27a92a8
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
