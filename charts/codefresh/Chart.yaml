@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.9.11
+version: 2.9.12
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -21,8 +21,10 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
+    - kind: changed
+      description: 'updated mongosh to v2.5.10'
     - kind: security
-      description: 'fix multiple security vulnerabilities'
+      description: 'updated argo-hub-platform to v0.1.29 with security fixes'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -240,7 +242,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform
-    version: 0.1.28
+    version: 0.1.29
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: cf-oidc-provider
