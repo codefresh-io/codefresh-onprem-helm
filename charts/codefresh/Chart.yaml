@@ -22,6 +22,8 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
+      description: 'chore: CR-31401 fix secutiry vulnerabilities (#185)'
+    - kind: changed
       description: upd argo-hub-platform and mongosh (#182)
     - kind: changed
       description: 'fix: engine command (#178)'
