@@ -15,23 +15,20 @@ appVersion: 0.0.0
 annotations:
   artifacthub.io/prerelease: "false"
   artifacthub.io/alternativeName: "codefresh-onprem"
-  artifacthub.io/containsSecurityUpdates: "false"
+  artifacthub.io/containsSecurityUpdates: "true"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   # artifacthub.io/changes: |
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: "Update \"cf-deploy-kubernetes\" to 17.0.0."
+      description: 'Update "dind" to 28.5.2-3.0.7.'
+    - kind: changed
+      description: 'Update "compose" to 2.40.3-1.5.8.'
+    - kind: changed
+      description: 'Update "cf-docker-builder" to 1.5.3.'
     - kind: security
-      description: "Fix various CVE in \"cf-deploy-kubernetes\"."
-    - kind: added
-      description: "Support k8s 1.32, 1.33, 1.34 in \"deploy\" step."
-    - kind: deprecated
-      description: "Remove support for k8s older than 1.32 in \"deploy\" step."
-      links:
-        - name: Codefresh Docs - Deploy
-          url: https://codefresh.io/docs/docs/pipelines/steps/deploy/
+      description: 'Fix various security vulnerabilities in default Classic Runtime.'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
