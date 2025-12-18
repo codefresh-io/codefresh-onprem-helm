@@ -22,6 +22,8 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
+      description: 'build(classic): upgrade runtime images (#186)'
+    - kind: changed
       description: updated curl to 8.17.0 (#191)
 dependencies:
   - name: cf-common
