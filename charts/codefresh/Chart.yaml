@@ -22,6 +22,8 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
+      description: 'build: upgrade Classic Runtime (#189)'
+    - kind: changed
       description: updated curl to 8.17.0 (#192)
     - kind: changed
       description: 'chore: CR-32333 fix secutiry vulnerabilities (#187)'
