@@ -16,5 +16,76 @@
       "normalization": false,
       "backwards": false
     }
+  },
+  {
+    "key": {
+      "accountId": 1,
+      "productName": 1,
+      "triggerCommitInfo.commitSha": 1
+    },
+    "collation": {
+      "locale": "en_US",
+      "caseLevel": false,
+      "caseFirst": "off",
+      "strength": 1,
+      "numericOrdering": false,
+      "alternate": "non-ignorable",
+      "maxVariable": "punct",
+      "normalization": false,
+      "backwards": false
+    }
+  },
+  {
+    "key": {
+      "accountId": 1,
+      "productName": 1,
+      "createdAt": -1
+    },
+    "collation": {
+      "locale": "en_US",
+      "caseLevel": false,
+      "caseFirst": "off",
+      "strength": 1,
+      "numericOrdering": false,
+      "alternate": "non-ignorable",
+      "maxVariable": "punct",
+      "normalization": false,
+      "backwards": false
+    }
+  },
+  {
+    "key": {
+      "createdAt": 1
+    },
+    "expireAfterSeconds": 15552000,
+    "collation": {
+      "locale": "en_US",
+      "caseLevel": false,
+      "caseFirst": "off",
+      "strength": 1,
+      "numericOrdering": false,
+      "alternate": "non-ignorable",
+      "maxVariable": "punct",
+      "normalization": false,
+      "backwards": false
+    }
+  },
+  {
+    "key": {
+      "accountId": 1,
+      "createdAt": -1,
+      "_id": -1
+    },
+    "collation": {
+      "locale": "en_US",
+      "caseLevel": false,
+      "caseFirst": "off",
+      "strength": 1,
+      "numericOrdering": false,
+      "alternate": "non-ignorable",
+      "maxVariable": "punct",
+      "normalization": false,
+      "backwards": false
+    }
   }
 ]

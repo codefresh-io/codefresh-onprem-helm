@@ -2,7 +2,7 @@
   {
     "key": {
       "accountId": 1,
-      "productName": 1
+      "_id": 1
     },
     "collation": {
       "locale": "en_US",
@@ -19,10 +19,9 @@
   {
     "key": {
       "accountId": 1,
-      "productName": 1,
-      "status": 1,
-      "triggerEnvironment": 1,
-      "triggerCommit.sha": 1
+      "metadata.promotionId": 1,
+      "metadata.environment": 1,
+      "createdAt": -1
     },
     "collation": {
       "locale": "en_US",
@@ -39,41 +38,9 @@
   {
     "key": {
       "accountId": 1,
-      "productName": 1,
-      "triggerCommit.sha": 1
-    },
-    "collation": {
-      "locale": "en_US",
-      "caseLevel": false,
-      "caseFirst": "off",
-      "strength": 1,
-      "numericOrdering": false,
-      "alternate": "non-ignorable",
-      "maxVariable": "punct",
-      "normalization": false,
-      "backwards": false
-    }
-  },
-  {
-    "key": {
-      "accountId": 1,
-      "updatedAt": -1
-    },
-    "collation": {
-      "locale": "en",
-      "caseLevel": false,
-      "caseFirst": "off",
-      "strength": 2,
-      "numericOrdering": false,
-      "alternate": "non-ignorable",
-      "maxVariable": "punct",
-      "normalization": false,
-      "backwards": false
-    }
-  },
-  {
-    "key": {
-      "status": 1
+      "runtimeName": 1,
+      "spec.phase": 1,
+      "createdAt": -1
     },
     "collation": {
       "locale": "en_US",
@@ -91,14 +58,7 @@
     "key": {
       "createdAt": 1
     },
-    "expireAfterSeconds": 23328000
-  },
-  {
-    "key": {
-      "accountId": 1,
-      "createdAt": -1,
-      "_id": -1
-    },
+    "expireAfterSeconds": 15552000,
     "collation": {
       "locale": "en_US",
       "caseLevel": false,
