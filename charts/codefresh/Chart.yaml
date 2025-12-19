@@ -232,7 +232,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
   - name: nomios
-    version: 0.11.13-onprem-f0f4642
+    version: 0.11.14-onprem-6a8422e
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
   - name: cronus
