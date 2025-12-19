@@ -1,0 +1,73 @@
+[
+  {
+    "key": {
+      "accountId": 1,
+      "timestamp": -1
+    },
+    "name": "accountId_1_timestamp_-1"
+  },
+  {
+    "key": {
+      "accountId": 1,
+      "eventType": 1,
+      "timestamp": -1
+    },
+    "name": "accountId_1_eventType_1_timestamp_-1"
+  },
+  {
+    "key": {
+      "accountId": 1,
+      "entityType": 1,
+      "timestamp": -1
+    },
+    "name": "accountId_1_entityType_1_timestamp_-1"
+  },
+  {
+    "key": {
+      "accountId": 1,
+      "entityName": 1,
+      "timestamp": -1
+    },
+    "name": "accountId_1_entityName_1_timestamp_-1"
+  },
+  {
+    "key": {
+      "accountId": 1,
+      "status": 1,
+      "timestamp": -1
+    },
+    "name": "accountId_1_status_1_timestamp_-1"
+  },
+  {
+    "key": {
+      "accountId": 1,
+      "userId": 1,
+      "timestamp": -1
+    },
+    "name": "accountId_1_userId_1_timestamp_-1"
+  },
+  {
+    "key": {
+      "_id": 1
+    },
+    "name": "_id_"
+  },
+  {
+    "key": {
+      "inactive": 1,
+      "updatedAt": 1
+    },
+    "name": "inactive_1_updatedAt_1",
+    "collation": {
+      "locale": "en_US",
+      "caseLevel": false,
+      "caseFirst": "off",
+      "strength": 1,
+      "numericOrdering": false,
+      "alternate": "non-ignorable",
+      "maxVariable": "punct",
+      "normalization": false,
+      "backwards": false
+    }
+  }
+]
