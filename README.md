@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.9.1](https://img.shields.io/badge/Version-2.9.1-informational?style=flat-square) ![AppVersion: 0.0.0](https://img.shields.io/badge/AppVersion-0.0.0-informational?style=flat-square)
+![Version: 2.9.13](https://img.shields.io/badge/Version-2.9.13-informational?style=flat-square) ![AppVersion: 2.9.0](https://img.shields.io/badge/AppVersion-2.9.0-informational?style=flat-square)
 
 Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
@@ -50,6 +50,7 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
   - [To 2.7.0](#to-2-7-0)
   - [To 2.8.0](#to-2-8-0)
   - [To 2.9.0](#to-2-9-0)
+  - [To 2.9.9](#to-2-9-9)
 - [Rollback](#rollback)
 - [Troubleshooting](#troubleshooting)
 - [Values](#values)
@@ -2384,6 +2385,12 @@ For built-in RabbitMQ `bitnami/rabbitmq` subchart, pre-upgrade hook was added to
 > Default DinD image has been upgraded to 28.x, which removes support for pushing and pulling with legacy image manifest v2 schema 1 ([ref](https://docs.docker.com/engine/deprecated/#pushing-and-pulling-with-image-manifest-v2-schema-1)).
 >
 > Before upgrading Codefresh, please follow the instruction in [this doc](https://codefresh.io/docs/docs/kb/articles/upgrade-deprecated-docker-images/) to identify deprecated images, upgrade them, and then proceed with upgrading the platform.
+
+### To 2-9-9
+
+> **BREAKING CHANGES in Default Runtime**
+>
+> Default Runtime (`system/default`) drops support for Kubernetes versions older than 1.32 in `deploy` step ([docs](https://codefresh.io/docs/docs/pipelines/steps/deploy/)). Supported versions are: 1.34, 1.33, 1.32.
 
 ####  Affected values
 

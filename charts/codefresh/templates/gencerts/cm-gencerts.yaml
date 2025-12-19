@@ -1,7 +1,6 @@
 {{- $nameBuilder := printf "%s-%s" .Release.Name .Values.global.builderService }}
-{{- $nameRunner := printf "%s-%s" .Release.Name .Values.global.runnerService }}
 {{- $ns := .Release.Namespace }}
-{{- $namesList := list $nameBuilder $nameRunner }}
+{{- $namesList := list $nameBuilder }}
 ---
 {{- if or .Values.global.certsJobs .Values.gencerts.enabled }}
 apiVersion: v1

@@ -14,7 +14,7 @@ gencerts:
   image:
     registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
     repository: codefresh/kubectl
-    tag: 1.33.5
+    tag: 1.34.1
   rbac:
     enabled: true
   ttlSecondsAfterFinished: 300
@@ -36,7 +36,7 @@ seed:
     image:
       registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
       repository: codefresh/mongosh
-      tag: 2.5.9-cf-1
+      tag: 2.5.10-cf-1
     # -- Root user in plain text (required ONLY for seed job!).
     mongodbRootUser: "root"
     # -- Root user from existing secret
@@ -453,7 +453,7 @@ hooks:
     image:
       registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
       repository: codefresh/mongosh
-      tag: 2.5.9-cf-1
+      tag: 2.5.10-cf-1
     affinity: {}
     nodeSelector:
       kubernetes.io/arch: amd64
@@ -466,7 +466,7 @@ hooks:
     image:
       registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
       repository: codefresh/kubectl
-      tag: 1.33.5
+      tag: 1.34.1
     affinity: {}
     nodeSelector: {}
     podSecurityContext: {}
@@ -508,21 +508,21 @@ postgresqlCleanJob:
 # -- runtimeImages
 # @default -- See below
 runtimeImages:
-  COMPOSE_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/compose:v2.37.0-1.5.6@sha256:19f212e9aee62f112f8a1df474122f850357f1c85521e804dcfc9a48b69a840f
-  CONTAINER_LOGGER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-container-logger:1.13.2@sha256:285c7f1c372edde9605d117bc60cffddeea282c0427f9a45bd6323465cf42b17
-  DIND_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/dind:28.3.3-3.0.2@sha256:0f2a83603e27e6d88768a6ab8ead3e2426eaf989cd93919fa1128d98a7c617c6
-  DOCKER_BUILDER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-docker-builder:1.4.9@sha256:3b87e3e4bd7ab76d94ca4dbee63317085a2e2e45779214ec3e42c5049ec2fbf8
-  DOCKER_PULLER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-docker-puller:8.0.22@sha256:914f071bcb1893bcb42c3f8907f8f3874f1f30db1a2ccaa4b825dab9bb157e60
-  DOCKER_PUSHER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-docker-pusher:6.0.22@sha256:69066b919c75a39a276f83ba1234036c7f8b97efaf8fc48a4550d18fa64f9d01
-  DOCKER_TAG_PUSHER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-docker-tag-pusher:1.3.20@sha256:69b6154fe34cda7a48b2e44cfe7667acdd79a6a5901001b092f8cf485b75ff3f
-  ENGINE_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/engine:1.179.5@sha256:3a7126b17a4ca9d24b4b193f4a4578a3e65df21b72d08d5db3f82ff050d9c77e
-  FS_OPS_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/fs-ops:1.2.10@sha256:70d53821b9314d88e3571dfb096e8f577caf3e4c2199253621b8d0c85d20b8ad
-  GIT_CLONE_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-git-cloner:10.3.2@sha256:2e09eef18d5caddae708058ec63247825ac4e4ee5e5763986f65e1312fbcc449
-  KUBE_DEPLOY: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-deploy-kubernetes:16.2.9@sha256:35649b14eb43717d3752d08597ada77d3737b2508f1b8e1f52f67b7a0e5ff263
-  PIPELINE_DEBUGGER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-debugger:1.3.10@sha256:61eba0921344478f7e124e957b4eedcc8fea09ae562ee1f5e18773a93d66acd2
+  COMPOSE_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/compose:v2.40.3-1.5.8@sha256:a393db5c299ec21c24a9c09e2dd233d30a38a0b7d21eb955d5464572867d3860
+  CONTAINER_LOGGER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-container-logger:1.13.3@sha256:e2ccf1aab9dc118d91a449843842f5d19b4cd25731b5409de412b4ade7a2a524
+  DIND_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/dind:28.5.2-3.0.7@sha256:1c53d5dfb9428d2f917d6786f2fa13dc2e07192b71fe762e2a8280af4f12c90d
+  DOCKER_BUILDER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-docker-builder:1.5.3@sha256:5dc1194960b95b56096bbc97acd5593ceda9a9bc98afcc921dfe87e5fbfc68b3
+  DOCKER_PULLER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-docker-puller:8.0.24@sha256:09725c496f66cace02b523e1e3be7434519e751b5a1a5927c76cf95fbb0dc7d7
+  DOCKER_PUSHER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-docker-pusher:6.0.23@sha256:5bf734ffea8f3bb9cdafeabbdcff7f26a2db68552cf7a91d48a5eff2699a57a8
+  DOCKER_TAG_PUSHER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-docker-tag-pusher:1.3.21@sha256:2b3564825566b3ca66b5e63f36f1323ad24844a9fbc19f31194e5534d0b7bd36
+  ENGINE_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/engine:1.180.7@sha256:1919280cecc58d9e1001435f31fdd79fa4fb5627a5e490be5ade603d6a5c641d
+  FS_OPS_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/fs-ops:1.2.11@sha256:cade5ace4d05528dfd0cbdbb96bd99c6ccae79dfeebe14661a4b7808e2131dc9
+  GIT_CLONE_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-git-cloner:10.3.4@sha256:ce1e922b94bbf1e5bd224468a2ccfe969200661ca2b6f0182b26ee0ad06e1a6d
+  KUBE_DEPLOY: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-deploy-kubernetes:17.0.0@sha256:ee9f56c8c5fc73dfd45511fb003dc53f35e0c46a78acdbb62ad386f33913b765
+  PIPELINE_DEBUGGER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-debugger:1.3.12@sha256:f31592c1b9955e49bee62c0cde0ce4d2b0ee3519f0c2e4adb1a08d7babde7164
   TEMPLATE_ENGINE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/pikolo:0.14.8@sha256:37ec7bed4b09e4055c3600a7805f84e37cccf8d849fe0fdd5b29f079de15010c
-  CR_6177_FIXER: docker.io/library/alpine:3.21
-  GC_BUILDER_IMAGE: docker.io/library/alpine:3.21
+  CR_6177_FIXER: docker.io/library/alpine:3.22
+  GC_BUILDER_IMAGE: docker.io/library/alpine:3.22
 
 #--------------------
 # Codefresh subcharts
@@ -672,6 +672,9 @@ cfapi-test-reporting:
 # @default -- See below
 internal-gateway:
   enabled: true
+  # -- Enable IPv6 support
+  ipv6:
+    enabled: true
   libraryMode: true
   controller:
     replicas: 2
@@ -836,7 +839,7 @@ cfsign:
       image:
         registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
         repository: codefresh/curl
-        tag: 8.14.1
+        tag: 8.17.0
   affinity: {}
   nodeSelector: {}
   podSecurityContext: {}
@@ -1286,12 +1289,12 @@ builder:
       image:
         registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
         repository: codefresh/curl
-        tag: 8.14.1
+        tag: 8.17.0
   container:
     image:
       registry: quay.io
       repository: codefresh/dind
-      tag: 28.3.3-3.0.2
+      tag: 28.5.1-3.0.5
   affinity: {}
   nodeSelector: {}
   podSecurityContext: {}
