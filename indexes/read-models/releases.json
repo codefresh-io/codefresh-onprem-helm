@@ -1,138 +1,159 @@
 [
-    {
-        "key": {
-            "applicationMetadata.name": 1
-        }
-    },
-    {
-        "key": {
-            "applicationMetadata.labels": 1
-        }
-    },
-    {
-        "key": {
-            "application.prs.type": 1
-        }
-    },
-    {
-        "key": {
-            "application.prs.key": 1
-        }
-    },
-    {
-        "key": {
-            "application.prs.accountId": 1
-        }
-    },
-    {
-        "key": {
-            "application.issues.type": 1
-        }
-    },
-    {
-        "key": {
-            "application.issues.key": 1
-        }
-    },
-    {
-        "key": {
-            "application.issues.accountId": 1
-        }
-    },
-    {
-        "key": {
-            "applicationMetadata.accountId": 1,
-            "applicationMetadata.runtime": 1,
-            "applicationMetadata.name": 1,
-            "applicationMetadata.namespace": 1,
-            "application.issues.key": 1
-        }
-    },
-    {
-        "key": {
-            "applicationMetadata.accountId": 1,
-            "applicationMetadata.runtime": 1,
-            "applicationMetadata.name": 1,
-            "applicationMetadata.namespace": 1,
-            "application.prs.key": 1
-        }
-    },
-    {
-        "key": {
-            "applicationMetadata.accountId": 1,
-            "applicationMetadata.runtime": 1,
-            "applicationMetadata.name": 1,
-            "applicationMetadata.namespace": 1,
-            "application.committers.userName": 1
-        }
-    },
-    {
-        "key": {
-            "applicationMetadata.accountId": 1,
-            "applicationMetadata.runtime": 1,
-            "applicationMetadata.name": 1,
-            "applicationMetadata.namespace": 1,
-            "applicationMetadata.group": 1,
-            "applicationMetadata.version": 1,
-            "applicationMetadata.kind": 1,
-            "historyId": -1
-        },
-        "unique": true
-    },
-    {
-        "key": {
-            "applicationMetadata.accountId": 1,
-            "applicationMetadata.runtime": 1,
-            "applicationMetadata.name": 1,
-            "applicationMetadata.namespace": 1,
-            "applicationMetadata.group": 1,
-            "applicationMetadata.version": 1,
-            "reportedToJira": 1,
-            "historyId": 1,
-            "application.status.syncStartedAt": 1
-        }
-    },
-    {
-        "key": {
-            "fromState.services.revision": 1,
-            "fromState.services.name": 1,
-            "applicationMetadata.accountId": 1
-        }
-    },
-    {
-        "key": {
-            "syncOperationRevision": 1,
-            "applicationMetadata.name": 1,
-            "applicationMetadata.accountId": 1,
-            "historyId": -1
-        }
-    },
-    {
-        "key": {
-            "applicationMetadata.name": 1,
-            "applicationMetadata.accountId": 1,
-            "historyId": -1
-        }
-    },
-    {
-        "key": {
-            "applicationMetadata.name": 1,
-            "applicationMetadata.accountId": 1,
-            "application.status.healthStatus": 1
-        }
-    },
-    {
-        "key": {
-            "applicationMetadata.name": 1,
-            "applicationMetadata.accountId": 1,
-            "current": 1
-        }
-    },
-    {
-        "key": {
-            "application.status.revision": 1,
-            "applicationMetadata.name": 1,
-            "applicationMetadata.accountId": 1
-        }
+  {
+    "key": {
+      "applicationMetadata.name": 1
     }
+  },
+  {
+    "key": {
+      "applicationMetadata.labels": 1
+    }
+  },
+  {
+    "key": {
+      "application.prs.type": 1
+    }
+  },
+  {
+    "key": {
+      "application.prs.key": 1
+    }
+  },
+  {
+    "key": {
+      "application.prs.accountId": 1
+    }
+  },
+  {
+    "key": {
+      "application.issues.type": 1
+    }
+  },
+  {
+    "key": {
+      "application.issues.key": 1
+    }
+  },
+  {
+    "key": {
+      "application.issues.accountId": 1
+    }
+  },
+  {
+    "key": {
+      "applicationMetadata.accountId": 1,
+      "applicationMetadata.runtime": 1,
+      "applicationMetadata.name": 1,
+      "applicationMetadata.namespace": 1,
+      "application.issues.key": 1
+    }
+  },
+  {
+    "key": {
+      "applicationMetadata.accountId": 1,
+      "applicationMetadata.runtime": 1,
+      "applicationMetadata.name": 1,
+      "applicationMetadata.namespace": 1,
+      "application.prs.key": 1
+    }
+  },
+  {
+    "key": {
+      "applicationMetadata.accountId": 1,
+      "applicationMetadata.runtime": 1,
+      "applicationMetadata.name": 1,
+      "applicationMetadata.namespace": 1,
+      "application.committers.userName": 1
+    }
+  },
+  {
+    "key": {
+      "applicationMetadata.accountId": 1,
+      "applicationMetadata.runtime": 1,
+      "applicationMetadata.name": 1,
+      "applicationMetadata.namespace": 1,
+      "applicationMetadata.group": 1,
+      "applicationMetadata.version": 1,
+      "applicationMetadata.kind": 1,
+      "historyId": -1
+    },
+    "unique": true
+  },
+  {
+    "key": {
+      "applicationMetadata.accountId": 1,
+      "applicationMetadata.runtime": 1,
+      "applicationMetadata.name": 1,
+      "applicationMetadata.namespace": 1,
+      "applicationMetadata.group": 1,
+      "applicationMetadata.version": 1,
+      "reportedToJira": 1,
+      "historyId": 1,
+      "application.status.syncStartedAt": 1
+    }
+  },
+  {
+    "key": {
+      "fromState.services.revision": 1,
+      "fromState.services.name": 1,
+      "applicationMetadata.accountId": 1
+    }
+  },
+  {
+    "key": {
+      "syncOperationRevision": 1,
+      "applicationMetadata.name": 1,
+      "applicationMetadata.accountId": 1,
+      "historyId": -1
+    }
+  },
+  {
+    "key": {
+      "applicationMetadata.name": 1,
+      "applicationMetadata.accountId": 1,
+      "historyId": -1
+    }
+  },
+  {
+    "key": {
+      "applicationMetadata.name": 1,
+      "applicationMetadata.accountId": 1,
+      "application.status.healthStatus": 1
+    }
+  },
+  {
+    "key": {
+      "applicationMetadata.name": 1,
+      "applicationMetadata.accountId": 1,
+      "current": 1
+    }
+  },
+  {
+    "key": {
+      "application.status.revision": 1,
+      "applicationMetadata.name": 1,
+      "applicationMetadata.accountId": 1
+    }
+  },
+  {
+    "key": {
+      "applicationMetadata.accountId": 1,
+      "applicationMetadata.name": 1,
+      "applicationMetadata.runtime": 1,
+      "historyId": -1
+    }
+  },
+  {
+    "key": {
+      "applicationMetadata.timestamp": 1,
+      "_id": 1
+    }
+  },
+  {
+    "key": {
+      "applicationMetadata.accountId": 1,
+      "applicationMetadata.cluster": 1,
+      "applicationMetadata.runtime": 1
+    }
+  }
 ]
