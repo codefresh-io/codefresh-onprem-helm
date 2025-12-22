@@ -35,6 +35,7 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
   - [Enable session cookie](#enable-session-cookie)
   - [X-Frame-Options response header](#x-frame-options-response-header)
   - [Image digests in containers](#image-digests-in-containers)
+  - [Hermes configuration](#hermes-configuration)
 - [Configuring OIDC Provider](#configuring-oidc-provider)
 - [Maintaining MongoDB indexes](#maintaining-mongodb-indexes)
 - [Upgrading](#upgrading)
@@ -71,6 +72,7 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
 - Firebase [Realtime Database URL](https://firebase.google.com/docs/database/web/start#create_a_database) with [legacy token](https://firebase.google.com/docs/database/rest/auth#legacy_tokens). See [Firebase Configuration](#firebase-configuration)
 - Valid TLS certificates for Ingress
 - When [external](#external-postgressql) PostgreSQL is used, `pg_cron` and `pg_partman` extensions **must be enabled** for [analytics](https://codefresh.io/docs/docs/dashboards/home-dashboard/#pipelines-dashboard) to work (see [AWS RDS example](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/PostgreSQL_pg_cron.html#PostgreSQL_pg_cron.enable)). The `pg_cron` extension should be the 1.4 version or higher for Azure Postgres DB.
+- Redis persistent storage is required for CRON triggers in CI pipelines. Make sure that your external Redis instance supports persistence (AOF or RDB). It's recommended to deploy in-cluster Redis with persistence enabled (e.g. [bitnami/redis](https://github.com/bitnami/charts/tree/main/bitnami/redis) or [redis-ha](https://github.com/DandyDeveloper/charts/blob/master/charts/redis-ha/Chart.yaml)). See [Hermes configuration](#hermes-configuration) for more details.
 
 ## Get Repo Info
 
@@ -1364,6 +1366,22 @@ cfapi:
       tag: 21.268.1
       # -- Set empty tag for digest
       digest: ""
+```
+
+### Hermes configuration
+
+> **Note!** Unlike other services, `Hermes` requires Redis with persistent storage. ⚠️  **Thus, ElastiCache is not supported for Hermes!** It's recommended to deploy in-cluster Redis with persistence enabled (e.g. [bitnami/redis](https://github.com/bitnami/charts/tree/main/bitnami/redis) or [redis-ha](https://github.com/DandyDeveloper/charts/blob/master/charts/redis-ha/Chart.yaml)) and update the `REDIS_HOST` and `REDIS_PASSWORD` accordingly for `hermes` subchart.
+
+```yaml
+hermes:
+  container:
+    env:
+      REDIS_HOST: redis-ha-haproxy
+      REDIS_PASSWORD:
+        valueFrom:
+          secretKeyRef:
+            name: redis
+            key: REDIS_PASSWORD
 ```
 
 ## Configuring OIDC Provider
