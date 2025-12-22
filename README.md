@@ -1570,6 +1570,7 @@ The required index definitions for each release can be found at the following re
 - `2.7` <https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.7/indexes>
 - `2.8` <https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.8/indexes>
 - `2.9` <https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.9/indexes>
+- `2.10` <https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.10/indexes>
 
 The indexes specifications are stored in JSON files. The directory structure is:
 
