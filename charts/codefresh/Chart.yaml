@@ -26,7 +26,6 @@ annotations:
     - kind: changed
       description: bump ingress-nginx version (#199)
     - kind: changed
-      description: 'chore: added masontikhonov as codeowner (#197)'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
