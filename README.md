@@ -276,6 +276,7 @@ The following table reflects the recommended and supported versions of these dat
 
 | Codefresh version | MongoDB | PostgreSQL | Redis | RabbitMQ |
 | :---              | :---    | :---       | :---  | :---     |
+| 2.10.x            | \>=4.2 \<=7.x <br> Recommended: 7.x (`featureCompatibilityVersion: 7.0`)| \>= 16.x \<= 17.x <br> Recommended: 17.x | \>= 7.x \<= 8.x <br> Recommended: 8\.x | 3.13.x \| 4.0.x \| 4.1.x <br> Recommended: 4.1.x |
 | 2.9.x             | \>=4.2 \<=7.x <br> Recommended: 7.x (`featureCompatibilityVersion: 7.0`)| \>= 16.x \<= 17.x <br> Recommended: 17.x | \>= 7.0.x \<= 7.4.x <br> Recommended: 7.4.x | 3.13.x \| 4.0.x \| 4.1.x <br> Recommended: 4.1.x |
 | 2.8.x             | \>=4.2 \<=7.x <br> Recommended: 7.x (`featureCompatibilityVersion: 6.0`)| \>= 13.x \<= 17.x <br> Recommended: 16.x \| 17.x | \>= 7.0.x \<= 7.4.x <br> Recommended: 7.4.x | 3.13.x \| 4.0.x \| 4.1.x <br> Recommended: 4.0.x |
 | 2.7.x             | \>=4.2 \<=6.x <br> Recommended: 6.x (`featureCompatibilityVersion: 6.0`)| 13.x | 7.0.x | 3.13.x |
