@@ -22,6 +22,12 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
+      description: bump ingress-nginx (#200)
+    - kind: changed
+      description: 'chore: added masontikhonov as codeowner (#198)'
+    - kind: changed
+      description: 'docs: document index changes (#194)'
+    - kind: changed
       description: 'chore: CR-31401 fix secutiry vulnerabilities (#195)'
     - kind: changed
       description: 'build: upgrade Classic Runtime (#189)'
