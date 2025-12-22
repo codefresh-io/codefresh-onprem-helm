@@ -1377,7 +1377,7 @@ cfapi:
 
 ### Hermes configuration
 
-> **Note!** Unlike other services, `Hermes` requires Redis with persistent storage. Thus, ElastiCache is not supported for Hermes. It's recommended to deploy in-cluster Redis with persistence enabled (e.g. [bitnami/redis](https://github.com/bitnami/charts/tree/main/bitnami/redis) or [redis-ha](https://github.com/DandyDeveloper/charts/blob/master/charts/redis-ha/Chart.yaml)) and update the `REDIS_HOST` and `REDIS_PASSWORD` accordingly for `hermes` subchart.
+> **Note!** Unlike other services, `Hermes` requires Redis with persistent storage. ⚠️  **Thus, ElastiCache is not supported for Hermes!** It's recommended to deploy in-cluster Redis with persistence enabled (e.g. [bitnami/redis](https://github.com/bitnami/charts/tree/main/bitnami/redis) or [redis-ha](https://github.com/DandyDeveloper/charts/blob/master/charts/redis-ha/Chart.yaml)) and update the `REDIS_HOST` and `REDIS_PASSWORD` accordingly for `hermes` subchart.
 
 ```yaml
 hermes:
