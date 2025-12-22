@@ -22,6 +22,14 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
+      description: 'chore: promote argohub platform and engine to 2.10 (#209)'
+    - kind: changed
+      description: 'chore(codefresh/2.10.0): prepare chart content for release (#175)'
+    - kind: changed
+      description: 'build: upgrade `argo-platform` (#212)'
+    - kind: changed
+      description: 'docs: document external services compatibility (#210)'
+    - kind: changed
       description: bump ingress-nginx (#200)
     - kind: changed
       description: 'chore: added masontikhonov as codeowner (#198)'
