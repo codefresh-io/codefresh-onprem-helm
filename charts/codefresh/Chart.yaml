@@ -21,7 +21,8 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
-    []
+    - kind: changed
+      description: 'chore(CR-31244): updated kubectl to 1.35.0 (#206)'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
