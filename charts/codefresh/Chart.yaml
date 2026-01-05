@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.10.0
+version: 2.10.1
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -22,23 +22,7 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: bump ingress-nginx (#200)
-    - kind: changed
-      description: 'docs: document index changes (#194)'
-    - kind: changed
-      description: 'chore: CR-31401 fix secutiry vulnerabilities (#195)'
-    - kind: changed
-      description: 'build: upgrade Classic Runtime (#189)'
-    - kind: changed
-      description: updated curl to 8.17.0 (#192)
-    - kind: changed
-      description: 'chore: CR-32333 fix secutiry vulnerabilities (#187)'
-    - kind: changed
-      description: 'chore: CR-31401 fix secutiry vulnerabilities (#185)'
-    - kind: changed
-      description: upd argo-hub-platform and mongosh (#182)
-    - kind: changed
-      description: 'fix: engine command (#178)'
+      description: 'updated kubectl to 1.35.0 (#206)'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
