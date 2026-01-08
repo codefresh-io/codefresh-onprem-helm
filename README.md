@@ -19,6 +19,7 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
     - [External Redis](#external-redis)
     - [External Redis with MTLS](#external-redis-with-mtls)
     - [External RabbitMQ](#external-rabbitmq)
+    - [External Consul](#external-consul)
   - [Configuring Ingress-NGINX](#configuring-ingress-nginx)
     - [ELB with SSL Termination (Classic Load Balancer)](#elb-with-ssl-termination-classic-load-balancer)
     - [NLB (Network Load Balancer)](#nlb-network-load-balancer)
@@ -623,6 +624,19 @@ global:
 rabbitmq:
   # -- Disable rabbitmq subchart installation
   enabled: false
+```
+
+#### External Consul
+
+```yaml
+global:
+  # -- Set consul service address
+  consulHost: "my-consul-headless.namespace.svc.cluster.local"
+
+consul:
+  # -- Disable consul subchart installation
+  enabled: false
+
 ```
 
 ### Configuring Ingress-NGINX
