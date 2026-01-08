@@ -643,7 +643,7 @@ consul:
 
 ```yaml
 global:
-  # -- Set queue service address
+  # -- Set nats service address
   queueServers: "nats://my-nats.namespace.svc.cluster.local:4222"
 
 nats:
