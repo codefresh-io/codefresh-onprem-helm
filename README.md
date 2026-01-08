@@ -636,7 +636,6 @@ global:
 consul:
   # -- Disable consul subchart installation
   enabled: false
-
 ```
 
 ### Configuring Ingress-NGINX
