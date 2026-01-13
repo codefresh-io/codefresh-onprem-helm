@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.10.1
+version: 2.10.2
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -30,7 +30,7 @@ annotations:
     - kind: changed
       description: 'Update "cf-docker-builder" to 1.5.4.'
     - kind: security
-      description: 'Fix various security vulnerabilities in multiple runtime components.'
+      description: 'Fix various security vulnerabilities in multiple runtime components'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
