@@ -22,8 +22,6 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'build(classic): upgrade Classic Runtime components (#219)'
-    - kind: changed
       description: 'Update "dind" to 28.5.2-3.0.8.'
     - kind: changed
       description: 'Update "cf-deploy-kubernetes" to 17.0.1.'
@@ -32,7 +30,7 @@ annotations:
     - kind: changed
       description: 'Update "cf-docker-builder" to 1.5.4.'
     - kind: security
-      description: 'Fix various security vulnerabilities in multiple runtime components.'
+      description: 'Fix various security vulnerabilities in multiple runtime components'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
