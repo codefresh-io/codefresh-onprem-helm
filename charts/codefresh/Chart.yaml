@@ -218,7 +218,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: runtime-environment-manager.enabled
   - name: cf-broadcaster
-    version: 1.14.3-2.9-onprem-592a35e
+    version: 1.14.4-onprem-2bdbfa3
     repository: oci://quay.io/codefresh/charts
     condition: cf-broadcaster.enabled
   - name: helm-repo-manager
