@@ -22,6 +22,8 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
+      description: updated cf-api (#226)
+    - kind: changed
       description: security fix (#222)
 dependencies:
   - name: cf-common
