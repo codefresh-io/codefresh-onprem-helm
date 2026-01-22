@@ -102,7 +102,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: kube-integration.enabled
   - name: charts-manager
-    version: 1.27.0
+    version: 1.27.1
     repository: oci://quay.io/codefresh/charts
     condition: charts-manager.enabled
   - name: cfsign
