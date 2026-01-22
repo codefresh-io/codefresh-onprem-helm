@@ -282,6 +282,6 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: segment-reporter.enabled
   - name: salesforce-reporter
-    version: "1.32.1"
+    version: "1.32.2"
     repository: oci://quay.io/codefresh/charts
     condition: salesforce-reporter.enabled
