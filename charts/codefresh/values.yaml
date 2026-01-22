@@ -521,8 +521,8 @@ runtimeImages:
   KUBE_DEPLOY: quay.io/codefresh/cf-deploy-kubernetes:17.0.1@sha256:54e724d5ca2e9dda466b7d74e7aaf8b1fef0b49e82fd075b4def703037e9e778
   PIPELINE_DEBUGGER_IMAGE: quay.io/codefresh/cf-debugger:1.3.12@sha256:f31592c1b9955e49bee62c0cde0ce4d2b0ee3519f0c2e4adb1a08d7babde7164
   TEMPLATE_ENGINE: quay.io/codefresh/pikolo:0.14.8@sha256:37ec7bed4b09e4055c3600a7805f84e37cccf8d849fe0fdd5b29f079de15010c
-  CR_6177_FIXER: docker.io/library/alpine:3.21
-  GC_BUILDER_IMAGE: docker.io/library/alpine:3.21
+  CR_6177_FIXER: docker.io/library/alpine:3.23
+  GC_BUILDER_IMAGE: docker.io/library/alpine:3.23
 
 #--------------------
 # Codefresh subcharts
