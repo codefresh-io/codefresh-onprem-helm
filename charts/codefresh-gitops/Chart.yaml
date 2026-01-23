@@ -18,14 +18,14 @@ annotations:
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |
     - kind: changed
-      description: "Initial 0.1.0 release for Codefresh GitOps On-Prem"
+      description: 'Update "internal-gateway" to 0.12.2'      
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
     version: 0.27.0
   - name: internal-gateway
     repository: oci://quay.io/codefresh/charts
-    version: 0.10.4
+    version: 0.12.2
     condition: internal-gateway.enabled
   - name: mongodb
     version: 15.6.26
