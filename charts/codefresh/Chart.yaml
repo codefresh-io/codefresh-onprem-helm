@@ -127,92 +127,92 @@ dependencies:
     condition: gitops-dashboard-manager.enabled
   - name: cfapi
     alias: cfapi
-    version: 21.296.3
+    version: 22.0.0
     repository: oci://quay.io/codefresh/charts
     condition: cfapi.enabled
   - name: cfapi
     alias: cfapi-auth
-    version: 21.296.3
+    version: 22.0.0
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-auth.enabled
   - name: cfapi
     alias: cfapi-internal
-    version: 21.296.3
+    version: 22.0.0
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-internal.enabled
   - name: cfapi
     alias: cfapi-ws
-    version: 21.296.3
+    version: 22.0.0
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-ws.enabled
   - name: cfapi
     alias: cfapi-admin
-    version: 21.296.3
+    version: 22.0.0
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-admin.enabled
   - name: cfapi
     alias: cfapi-endpoints
-    version: 21.296.3
+    version: 22.0.0
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-endpoints.enabled
   - name: cfapi
     alias: cfapi-terminators
-    version: 21.296.3
+    version: 22.0.0
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-terminators.enabled
   - name: cfapi
     alias: cfapi-sso-group-synchronizer
-    version: 21.296.3
+    version: 22.0.0
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-sso-group-synchronizer.enabled
   - name: cfapi
     alias: cfapi-buildmanager
-    version: 21.296.3
+    version: 22.0.0
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-buildmanager.enabled
   - name: cfapi
     alias: cfapi-cacheevictmanager
-    version: 21.296.3
+    version: 22.0.0
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-cacheevictmanager.enabled
   - name: cfapi
     alias: cfapi-eventsmanagersubscriptions
-    version: 21.296.3
+    version: 22.0.0
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-eventsmanagersubscriptions.enabled
   - name: cfapi
     alias: cfapi-kubernetesresourcemonitor
-    version: 21.296.3
+    version: 22.0.0
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-kubernetesresourcemonitor.enabled
   - name: cfapi
     alias: cfapi-environments
-    version: 21.296.3
+    version: 22.0.0
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-environments.enabled
   - name: cfapi
     alias: cfapi-gitops-resource-receiver
-    version: 21.296.3
+    version: 22.0.0
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-gitops-resource-receiver.enabled
   - name: cfapi
     alias: cfapi-downloadlogmanager
-    version: 21.296.3
+    version: 22.0.0
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-downloadlogmanager.enabled
   - name: cfapi
     alias: cfapi-teams
-    version: 21.296.3
+    version: 22.0.0
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-teams.enabled
   - name: cfapi
     alias: cfapi-kubernetes-endpoints
-    version: 21.296.3
+    version: 22.0.0
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-kubernetes-endpoints.enabled
   - name: cfapi
     alias: cfapi-test-reporting
-    version: 21.296.3
+    version: 22.0.0
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-test-reporting.enabled
   - name: cfui
