@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.9.13
+version: 2.9.0
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -22,19 +22,91 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'Update "dind" to 28.5.2-3.0.7.'
+      description: security fix (#223)
     - kind: changed
-      description: 'Update "compose" to 2.40.3-1.5.8.'
+      description: updated kubectl to 1.35.0 (#205)
     - kind: changed
-      description: 'Update "cf-docker-builder" to 1.5.3.'
+      description: bump ingress-nginx version (#199)
     - kind: changed
-      description: 'Update "cf-debugger" to 1.3.12.'
+      description: 'chore: added masontikhonov as codeowner (#197)'
     - kind: changed
-      description: 'Update "cf-docker-tag-pusher" to 1.3.21.'
+      description: 'chore(codefresh/2.9.13): prepare chart content for release (#193)'
     - kind: changed
-      description: 'Update "curl" to 8.17.0'
-    - kind: security
-      description: 'Fix various security vulnerabilities in default Classic Runtime and "cfsign" service.'
+      description: 'build(classic): upgrade runtime images (#186)'
+    - kind: changed
+      description: updated curl to 8.17.0 (#191)
+    - kind: changed
+      description: 'chore(codefresh/2.9.12): prepare chart content for release (#184)'
+    - kind: changed
+      description: 'chore: CR-31817 - fix security vulnerabilities (#183)'
+    - kind: changed
+      description: 'chore(codefresh/onprem 2.9.12): security fixes (#180)'
+    - kind: changed
+      description: 'chore(codefresh/2.9.11): prepare chart content for release (#172)'
+    - kind: changed
+      description: 'chore: CR-31401 fix security vulnerabilities (#156)'
+    - kind: changed
+      description: bump dependencies (#163)
+    - kind: changed
+      description: 'chore(codefresh/2.9.9): prepare chart content for release (#158)'
+    - kind: changed
+      description: 'build: upgrade `cf-deploy-kubernetes` (#157)'
+    - kind: changed
+      description: 'chore(codefresh/2.9.8): prepare chart content for release (#155)'
+    - kind: changed
+      description: 'chore(CR-31787): bump helm-repo-manager, runtime images (#153)'
+    - kind: changed
+      description: 'chore(codefresh/2.9.7): prepare chart content for release (#150)'
+    - kind: changed
+      description: 'fix: security fixes for cf-runtime images (#148)'
+    - kind: changed
+      description: 'chore(codefresh/2.9.6): prepare chart content for release (#147)'
+    - kind: changed
+      description: 'feat(internal-gateway): optional ipv6 support (#146)'
+    - kind: changed
+      description: 'chore(codefresh/2.9.5): security fixes (#145)'
+    - kind: changed
+      description: 'chore: upd argo-platform, kubectl, mongosh (#144)'
+    - kind: changed
+      description: 'chore(codefresh/2.9.4): prepare chart content for release (#143)'
+    - kind: changed
+      description: 'chore: CR-31292 fix security vulnerabilities (#141)'
+    - kind: changed
+      description: 'chore(codefresh/2.9.3): prepare chart content for release (#142)'
+    - kind: changed
+      description: 'fix: chart''s readme (#140)'
+    - kind: changed
+      description: 'chore(codefresh/2.9.2): prepare chart content for release (#130)'
+    - kind: changed
+      description: 'chore: security fix (#135)'
+    - kind: changed
+      description: 'chore: added fixed services to 2.9.2 (#133)'
+    - kind: changed
+      description: 'chore: fix security vulnerabilities (#131)'
+    - kind: changed
+      description: security patch (#129)
+    - kind: changed
+      description: 'chore(codefresh/2.9.1): prepare chart content for release (#128)'
+    - kind: changed
+      description: 'fix: update cf-broadcaster helm chart (#126)'
+    - kind: changed
+      description: 'chore(codefresh/2.9.0): prepare chart content for release (#109)'
+    - kind: changed
+      description: 'fix: restore nats (#124) (#125)'
+    - kind: changed
+      description: 'fix: update cfapi chart (#123)'
+    - kind: changed
+      description: 'chore: argo platform with security fixes (#122)'
+    - kind: changed
+      description: 'chore(CR-29499): bump kubectl, mongosh, postgres (#115)'
+    - kind: changed
+      description: added ability to disable postgres store for eventbus and set schema name for audit (#120)
+    - kind: changed
+      description: 'docs(2.9): document indexes and DBs compatibility (#119)'
+    - kind: changed
+      description: 'fix: get-all-images.sh script'
+    - kind: changed
+      description: 'feat: update runtime images (#108)'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
