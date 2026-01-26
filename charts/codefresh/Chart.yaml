@@ -35,10 +35,14 @@ annotations:
       description: 'Update "curl" to 8.17.0'
     - kind: security
       description: 'Fix various security vulnerabilities in default Classic Runtime and "cfsign" service.'
+    - kind: changed
+      description: 'Update "cf-common" to 0.30.1.'
+    - kind: security
+      description: 'Fix "CVE-2025-15284" in: gitops-dashboard-manager, pipeline-manager, charts-manager, context-manager, cf-broadcaster.'    
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
-    version: 0.18.1
+    version: 0.30.1
   - name: internal-gateway
     repository: oci://quay.io/codefresh/charts
     version: 0.12.2
@@ -92,7 +96,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: kube-integration.enabled
   - name: charts-manager
-    version: 1.25.3-2.9-onprem-ff2738e
+    version: 1.25.4-onprem-ea0e7a0
     repository: oci://quay.io/codefresh/charts
     condition: charts-manager.enabled
   - name: cfsign
@@ -104,11 +108,11 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: tasker-kubernetes.enabled
   - name: context-manager
-    version: 2.36.3-2.9-onprem-8653952
+    version: 2.36.4-onprem-bb832aa
     repository: oci://quay.io/codefresh/charts
     condition: context-manager.enabled
   - name: pipeline-manager
-    version: 3.141.3-2.9-onprem-f2a2047
+    version: 3.141.4-onprem-1f0e72d
     repository: oci://quay.io/codefresh/charts
     condition: pipeline-manager.enabled
   - name: gitops-dashboard-manager
@@ -214,11 +218,11 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: k8s-monitor.enabled
   - name: runtime-environment-manager
-    version: 3.43.7-2.9-onprem-6acc833
+    version: 3.43.8-onprem-bd02d34
     repository: oci://quay.io/codefresh/charts
     condition: runtime-environment-manager.enabled
   - name: cf-broadcaster
-    version: 1.14.4-onprem-2bdbfa3
+    version: 1.14.5-onprem-9d6798a
     repository: oci://quay.io/codefresh/charts
     condition: cf-broadcaster.enabled
   - name: helm-repo-manager
