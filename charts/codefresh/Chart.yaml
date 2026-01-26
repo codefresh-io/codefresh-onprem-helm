@@ -36,13 +36,13 @@ annotations:
     - kind: security
       description: 'Fix various security vulnerabilities in default Classic Runtime and "cfsign" service.'
     - kind: changed
-      description: 'Update "cf-common" to 0.30.1.'
+      description: 'Update "cf-common" to 0.31.0.'
     - kind: security
       description: 'Fix "CVE-2025-15284" in: gitops-dashboard-manager, pipeline-manager, charts-manager, context-manager, cf-broadcaster.'    
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
-    version: 0.30.1
+    version: 0.31.0
   - name: internal-gateway
     repository: oci://quay.io/codefresh/charts
     version: 0.12.2
