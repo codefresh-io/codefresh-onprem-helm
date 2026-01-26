@@ -33,10 +33,12 @@ annotations:
       description: 'Fix various security vulnerabilities in multiple runtime components'
     - kind: changed
       description: 'Update "internal-gateway" to 0.12.2.'      
+    - kind: changed
+      description: 'Update "cf-common" to 0.30.1.'                          
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
-    version: 0.18.1
+    version: 0.30.1
   - name: internal-gateway
     repository: oci://quay.io/codefresh/charts
     version: 0.12.2
@@ -90,7 +92,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: kube-integration.enabled
   - name: charts-manager
-    version: 1.26.3-onprem-58cbba4
+    version: 1.26.4-onprem-7e6d100
     repository: oci://quay.io/codefresh/charts
     condition: charts-manager.enabled
   - name: cfsign
@@ -102,11 +104,11 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: tasker-kubernetes.enabled
   - name: context-manager
-    version: 2.37.3-onprem-121c861
+    version: 2.37.4-onprem-7b66875
     repository: oci://quay.io/codefresh/charts
     condition: context-manager.enabled
   - name: pipeline-manager
-    version: 3.143.2
+    version: 3.143.3-onprem-75509a1
     repository: oci://quay.io/codefresh/charts
     condition: pipeline-manager.enabled
   - name: gitops-dashboard-manager
@@ -212,11 +214,11 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: k8s-monitor.enabled
   - name: runtime-environment-manager
-    version: 3.44.3-onprem-c3a88ad
+    version: 3.44.4-onprem-0050513
     repository: oci://quay.io/codefresh/charts
     condition: runtime-environment-manager.enabled
   - name: cf-broadcaster
-    version: 1.14.4-onprem-d1f036f
+    version: 1.14.5-onprem-0dcf808
     repository: oci://quay.io/codefresh/charts
     condition: cf-broadcaster.enabled
   - name: helm-repo-manager

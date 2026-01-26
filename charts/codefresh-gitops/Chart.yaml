@@ -19,10 +19,12 @@ annotations:
   artifacthub.io/changes: |
     - kind: changed
       description: 'Update "internal-gateway" to 0.12.2.'  
+    - kind: changed
+      description: 'Update "cf-common" to 0.30.1.'        
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
-    version: 0.27.0
+    version: 0.30.1
   - name: internal-gateway
     repository: oci://quay.io/codefresh/charts
     version: 0.12.2
