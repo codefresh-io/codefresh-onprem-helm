@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.10.2
+version: 2.10.3
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -22,19 +22,48 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'Update "dind" to 28.5.2-3.0.8.'
+      description: 'Update Docker Engine to v29 in "dind" component. Containerd image store is disabled.'
+      links:
+        - name: Docker Engine v29 release notes
+          url: https://docs.docker.com/engine/release-notes/29/
+      links:
+        - name: Docker Engine deprecated features
+          url: https://docs.docker.com/engine/deprecated/
     - kind: changed
-      description: 'Update "cf-deploy-kubernetes" to 17.0.1.'
+      description: 'Update "compose" to v5.0.1-1.6.0.'
+      links:
+        - name: Docker Compose v5 release notes
+          url: https://github.com/docker/compose/releases/tag/v5.0.0
+    - kind: fixed
+      description: 'Fix compatibility of the "container-logger" with Docker Engine API v1.52.'
     - kind: changed
-      description: 'Update "cf-git-cloner" to 10.3.5.'
+      description: 'Optimize dependencies of the "container-logger" to reduce image size.'
+    - kind: fixed
+      description: 'Fix compatibility of the "engine" with Docker Engine API v1.52.'
+    - kind: fixed
+      description: 'Improve the retry mechanism in the "engine" when sending requests to a Docker daemon.'
+    - kind: fixed
+      description: 'Improve the resilience of the "engine" when writing files to Docker containers.'
     - kind: changed
-      description: 'Update "cf-docker-builder" to 1.5.4.'
+      description: 'Update "engine" to 2.1.8.'
+    - kind: changed
+      description: 'Update "dind" to 29.1.4-3.0.9.'
+    - kind: changed
+      description: 'Update "container-logger" to 2.0.6.'
+    - kind: changed
+      description: 'Update "cf-docker-builder" to 1.5.5.'
+    - kind: changed
+      description: 'Update "docker-puller" to 8.0.25.'
+    - kind: changed
+      description: 'Update "docker-tag-pusher" to 1.3.22.'    
+    - kind: changed
+      description: 'Update "kube-deploy" to 17.0.2.'    
     - kind: security
       description: 'Fix various security vulnerabilities in multiple runtime components'
+    - kind: security
+      description: 'Fix various security vulnerabilities in platform components'
     - kind: changed
-      description: 'Update "internal-gateway" to 0.12.2.'      
-    - kind: changed
-      description: 'Update "cf-common" to 0.31.0.'                          
+      description: 'Update "internal-gateway" to 0.12.2.'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
