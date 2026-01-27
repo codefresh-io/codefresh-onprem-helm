@@ -232,7 +232,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: cf-broadcaster.enabled
   - name: helm-repo-manager
-    version: 0.23.3
+    version: 0.23.4
     repository: oci://quay.io/codefresh/charts
     condition: helm-repo-manager.enabled
   - name: hermes
