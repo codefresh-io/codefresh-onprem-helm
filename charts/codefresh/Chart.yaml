@@ -236,7 +236,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: helm-repo-manager.enabled
   - name: hermes
-    version: 0.21.25
+    version: 0.21.26
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
   - name: nomios
