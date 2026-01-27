@@ -175,7 +175,8 @@ global:
   storageClass: ""
 
   # -- Global Env vars
-  env: {}
+  env: 
+    MONGO_ENABLE_ZSTD_NETWORK_COMPRESSION: false
 
   # -- Global tolerations constraints
   # Apply toleratons to all Codefresh subcharts. Will not be applied on Bitnami subcharts.
