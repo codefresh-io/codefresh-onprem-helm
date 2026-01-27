@@ -129,7 +129,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: cfsign.enabled
   - name: tasker-kubernetes
-    version: 1.28.3-onprem-8b19526
+    version: 1.28.4-onprem-7450ced
     repository: oci://quay.io/codefresh/charts
     condition: tasker-kubernetes.enabled
   - name: context-manager
