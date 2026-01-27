@@ -22,6 +22,10 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
+      description: 'chore: security fix (#233)'
+    - kind: changed
+      description: 'chore(CR-33749): update internal-gateway (#229)'
+    - kind: changed
       description: security fix (#223)
     - kind: changed
       description: updated kubectl to 1.35.0 (#205)
