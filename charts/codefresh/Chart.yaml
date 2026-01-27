@@ -22,6 +22,8 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
+      description: 'chore: Fix various security vulnerabilities in platform components (#235)'
+    - kind: changed
       description: 'chore: security fix (#232)'
     - kind: changed
       description: updated cfsign, kube-integration, platform-analytics (#234)
