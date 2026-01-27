@@ -122,7 +122,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: pipeline-manager.enabled
   - name: gitops-dashboard-manager
-    version: 1.16.5
+    version: 1.16.6
     repository: oci://quay.io/codefresh/charts
     condition: gitops-dashboard-manager.enabled
   - name: cfapi
