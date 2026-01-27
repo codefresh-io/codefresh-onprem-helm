@@ -141,7 +141,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: pipeline-manager.enabled
   - name: gitops-dashboard-manager
-    version: 1.16.3-onprem-6093ead
+    version: 1.16.4-onprem-48d7cb3
     repository: oci://quay.io/codefresh/charts
     condition: gitops-dashboard-manager.enabled
   - name: cfapi
@@ -255,7 +255,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: helm-repo-manager.enabled
   - name: hermes
-    version: 0.21.23-onprem-c3eac6a
+    version: 0.21.24-onprem-3955c67
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
   - name: nomios
