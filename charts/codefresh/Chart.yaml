@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.10.3
+version: 2.10.4
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -20,50 +20,29 @@ annotations:
   # artifacthub.io/changes: |
   #   - kind:
   #     description: ""
-  artifacthub.io/changes: |-
+  artifacthub.io/changes: |-    
     - kind: changed
-      description: 'Update Docker Engine to v29 in "dind" component. Containerd image store is disabled.'
-      links:
-        - name: Docker Engine v29 release notes
-          url: https://docs.docker.com/engine/release-notes/29/
-      links:
-        - name: Docker Engine deprecated features
-          url: https://docs.docker.com/engine/deprecated/
+      description: 'Update "cfsign" to 1.8.15.'
     - kind: changed
-      description: 'Update "compose" to v5.0.1-1.6.0.'
-      links:
-        - name: Docker Compose v5 release notes
-          url: https://github.com/docker/compose/releases/tag/v5.0.0
-    - kind: fixed
-      description: 'Fix compatibility of the "container-logger" with Docker Engine API v1.52.'
+      description: 'Update "kube-integration" to 1.33.6-onprem-813166a.'
     - kind: changed
-      description: 'Optimize dependencies of the "container-logger" to reduce image size.'
-    - kind: fixed
-      description: 'Fix compatibility of the "engine" with Docker Engine API v1.52.'
-    - kind: fixed
-      description: 'Improve the retry mechanism in the "engine" when sending requests to a Docker daemon.'
-    - kind: fixed
-      description: 'Improve the resilience of the "engine" when writing files to Docker containers.'
+      description: 'Update "platform-analytics" to 0.52.4-onprem-8313be2.'
     - kind: changed
-      description: 'Update "engine" to 2.1.8.'
+      description: 'Update "charts-manager" to 1.26.4-onprem-7e6d100.'
     - kind: changed
-      description: 'Update "dind" to 29.1.4-3.0.9.'
+      description: 'Update "context-manager" to 2.37.4-onprem-7b66875.'
     - kind: changed
-      description: 'Update "container-logger" to 2.0.6.'
+      description: 'Update "gitops-dashboard-manager" to 1.16.4-onprem-48d7cb3.'
     - kind: changed
-      description: 'Update "cf-docker-builder" to 1.5.5.'
+      description: 'Update "hermes" to 0.21.24-onprem-3955c67.'
     - kind: changed
-      description: 'Update "docker-puller" to 8.0.25.'
+      description: 'Update "cluster-providers" to 1.19.5-onprem-5b312e5.'
     - kind: changed
-      description: 'Update "docker-tag-pusher" to 1.3.22.'    
+      description: 'Update "pipeline-manager" to 3.143.3-onprem-75509a1.'    
     - kind: changed
-      description: 'Update "kube-deploy" to 17.0.2.'    
+      description: 'Update "cf-common" to 0.31.0.'    
     - kind: security
-      description: 'Fix various security vulnerabilities in multiple runtime components'
-    - kind: security
-      description: 'Fix various security vulnerabilities in platform components'
-    - kind: changed
-      description: 'Update "internal-gateway" to 0.12.2.'
+      description: 'chore: Fix various security vulnerabilities in platform components.'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
