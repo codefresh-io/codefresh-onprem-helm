@@ -20,13 +20,29 @@ annotations:
   # artifacthub.io/changes: |
   #   - kind:
   #     description: ""
-  artifacthub.io/changes: |-
+  artifacthub.io/changes: |-    
     - kind: changed
-      description: 'chore: Fix various security vulnerabilities in platform components (#235)'
+      description: 'Update "cfsign" to 1.8.15.'
     - kind: changed
-      description: 'chore: security fix (#232)'
+      description: 'Update "kube-integration" to 1.33.6-onprem-813166a.'
     - kind: changed
-      description: updated cfsign, kube-integration, platform-analytics (#234)
+      description: 'Update "platform-analytics" to 0.52.4-onprem-8313be2.'
+    - kind: changed
+      description: 'Update "charts-manager" to 1.26.4-onprem-7e6d100.'
+    - kind: changed
+      description: 'Update "context-manager" to 2.37.4-onprem-7b66875.'
+    - kind: changed
+      description: 'Update "gitops-dashboard-manager" to 1.16.4-onprem-48d7cb3.'
+    - kind: changed
+      description: 'Update "hermes" to 0.21.24-onprem-3955c67.'
+    - kind: changed
+      description: 'Update "cluster-providers" to 1.19.5-onprem-5b312e5.'
+    - kind: changed
+      description: 'Update "pipeline-manager" to 3.143.3-onprem-75509a1.'    
+    - kind: changed
+      description: 'Update "cf-common" to 0.31.0.'    
+    - kind: security
+      description: 'chore: Fix various security vulnerabilities in platform components.'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
