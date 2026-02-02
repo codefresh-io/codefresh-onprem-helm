@@ -20,29 +20,22 @@ annotations:
   # artifacthub.io/changes: |
   #   - kind:
   #     description: ""
-  artifacthub.io/changes: |-    
+  artifacthub.io/changes: |-
+    - kind: deprecated
+      description: '"push-tag" step is no longer supported.'
+    - kind: removed
+      description: 'Remove "docker-tag-pusher" image.'
     - kind: changed
-      description: 'Update "cfsign" to 1.8.15.'
+      description: 'Update "engine" to 3.0.1.'
     - kind: changed
-      description: 'Update "kube-integration" to 1.33.6-onprem-813166a.'
+      description: 'Update "cf-git-cloner" to 10.3.7.'
     - kind: changed
-      description: 'Update "platform-analytics" to 0.52.4-onprem-8313be2.'
-    - kind: changed
-      description: 'Update "charts-manager" to 1.26.4-onprem-7e6d100.'
-    - kind: changed
-      description: 'Update "context-manager" to 2.37.4-onprem-7b66875.'
-    - kind: changed
-      description: 'Update "gitops-dashboard-manager" to 1.16.4-onprem-48d7cb3.'
-    - kind: changed
-      description: 'Update "hermes" to 0.21.24-onprem-3955c67.'
-    - kind: changed
-      description: 'Update "cluster-providers" to 1.19.5-onprem-5b312e5.'
-    - kind: changed
-      description: 'Update "pipeline-manager" to 3.143.3-onprem-75509a1.'    
-    - kind: changed
-      description: 'Update "cf-common" to 0.31.0.'    
+      description: 'Update "dind" to 29.2.0-3.0.10 with Docker Engine v29.2.0.'
+      links:
+        - name: Docker Engine v29 release notes
+          url: https://docs.docker.com/engine/release-notes/29/
     - kind: security
-      description: 'chore: Fix various security vulnerabilities in platform components.'
+      description: 'Fix various security vulnerabilities in multiple runtime components.'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -116,7 +109,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: context-manager.enabled
   - name: pipeline-manager
-    version: 3.143.3-onprem-75509a1
+    version: 3.143.4-onprem-8582ab7
     repository: oci://quay.io/codefresh/charts
     condition: pipeline-manager.enabled
   - name: gitops-dashboard-manager
@@ -125,92 +118,92 @@ dependencies:
     condition: gitops-dashboard-manager.enabled
   - name: cfapi
     alias: cfapi
-    version: 21.293.10-onprem-45a2585
+    version: 21.293.11-onprem-1169fc9
     repository: oci://quay.io/codefresh/charts
     condition: cfapi.enabled
   - name: cfapi
     alias: cfapi-auth
-    version: 21.293.10-onprem-45a2585
+    version: 21.293.11-onprem-1169fc9
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-auth.enabled
   - name: cfapi
     alias: cfapi-internal
-    version: 21.293.10-onprem-45a2585
+    version: 21.293.11-onprem-1169fc9
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-internal.enabled
   - name: cfapi
     alias: cfapi-ws
-    version: 21.293.10-onprem-45a2585
+    version: 21.293.11-onprem-1169fc9
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-ws.enabled
   - name: cfapi
     alias: cfapi-admin
-    version: 21.293.10-onprem-45a2585
+    version: 21.293.11-onprem-1169fc9
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-admin.enabled
   - name: cfapi
     alias: cfapi-endpoints
-    version: 21.293.10-onprem-45a2585
+    version: 21.293.11-onprem-1169fc9
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-endpoints.enabled
   - name: cfapi
     alias: cfapi-terminators
-    version: 21.293.10-onprem-45a2585
+    version: 21.293.11-onprem-1169fc9
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-terminators.enabled
   - name: cfapi
     alias: cfapi-sso-group-synchronizer
-    version: 21.293.10-onprem-45a2585
+    version: 21.293.11-onprem-1169fc9
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-sso-group-synchronizer.enabled
   - name: cfapi
     alias: cfapi-buildmanager
-    version: 21.293.10-onprem-45a2585
+    version: 21.293.11-onprem-1169fc9
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-buildmanager.enabled
   - name: cfapi
     alias: cfapi-cacheevictmanager
-    version: 21.293.10-onprem-45a2585
+    version: 21.293.11-onprem-1169fc9
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-cacheevictmanager.enabled
   - name: cfapi
     alias: cfapi-eventsmanagersubscriptions
-    version: 21.293.10-onprem-45a2585
+    version: 21.293.11-onprem-1169fc9
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-eventsmanagersubscriptions.enabled
   - name: cfapi
     alias: cfapi-kubernetesresourcemonitor
-    version: 21.293.10-onprem-45a2585
+    version: 21.293.11-onprem-1169fc9
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-kubernetesresourcemonitor.enabled
   - name: cfapi
     alias: cfapi-environments
-    version: 21.293.10-onprem-45a2585
+    version: 21.293.11-onprem-1169fc9
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-environments.enabled
   - name: cfapi
     alias: cfapi-gitops-resource-receiver
-    version: 21.293.10-onprem-45a2585
+    version: 21.293.11-onprem-1169fc9
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-gitops-resource-receiver.enabled
   - name: cfapi
     alias: cfapi-downloadlogmanager
-    version: 21.293.10-onprem-45a2585
+    version: 21.293.11-onprem-1169fc9
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-downloadlogmanager.enabled
   - name: cfapi
     alias: cfapi-teams
-    version: 21.293.10-onprem-45a2585
+    version: 21.293.11-onprem-1169fc9
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-teams.enabled
   - name: cfapi
     alias: cfapi-kubernetes-endpoints
-    version: 21.293.10-onprem-45a2585
+    version: 21.293.11-onprem-1169fc9
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-kubernetes-endpoints.enabled
   - name: cfapi
     alias: cfapi-test-reporting
-    version: 21.293.10-onprem-45a2585
+    version: 21.293.11-onprem-1169fc9
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-test-reporting.enabled
   - name: cfui
@@ -222,7 +215,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: k8s-monitor.enabled
   - name: runtime-environment-manager
-    version: 3.44.4-onprem-0050513
+    version: 3.44.5-onprem-825697e
     repository: oci://quay.io/codefresh/charts
     condition: runtime-environment-manager.enabled
   - name: cf-broadcaster
