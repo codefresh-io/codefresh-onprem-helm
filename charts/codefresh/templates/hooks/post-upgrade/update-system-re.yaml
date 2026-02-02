@@ -59,8 +59,6 @@ spec:
             value: {{ include "codefresh.buildImageName" (dict "registry" .Values.global.imageRegistry "imageFullName" .Values.runtimeImages.CONTAINER_LOGGER_IMAGE) }}
           - name: GIT_CLONE_IMAGE
             value: {{ include "codefresh.buildImageName" (dict "registry" .Values.global.imageRegistry "imageFullName" .Values.runtimeImages.GIT_CLONE_IMAGE) }}
-          - name: DOCKER_TAG_PUSHER_IMAGE
-            value: {{ include "codefresh.buildImageName" (dict "registry" .Values.global.imageRegistry "imageFullName" .Values.runtimeImages.DOCKER_TAG_PUSHER_IMAGE) }}
           - name: FS_OPS_IMAGE
             value: {{ include "codefresh.buildImageName" (dict "registry" .Values.global.imageRegistry "imageFullName" .Values.runtimeImages.FS_OPS_IMAGE) }}
           - name: COMPOSE_IMAGE
