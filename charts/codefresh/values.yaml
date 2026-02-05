@@ -36,7 +36,7 @@ seed:
     image:
       registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
       repository: codefresh/mongosh
-      tag: 2.5.10-cf-1
+      tag: 2.5.10-cf-2
     # -- Root user in plain text (required ONLY for seed job!).
     mongodbRootUser: "root"
     # -- Root user from existing secret
@@ -453,7 +453,7 @@ hooks:
     image:
       registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
       repository: codefresh/mongosh
-      tag: 2.5.10-cf-1
+      tag: 2.5.10-cf-2
     affinity: {}
     nodeSelector:
       kubernetes.io/arch: amd64
@@ -478,7 +478,7 @@ hooks:
     image:
       registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
       repository: codefresh/rabbitmqadmin
-      tag: 2.8.0
+      tag: 2.8.1
     affinity: {}
     nodeSelector:
       kubernetes.io/arch: amd64

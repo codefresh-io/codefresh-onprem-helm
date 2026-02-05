@@ -21,19 +21,10 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
-    - kind: deprecated
-      description: '"push-tag" step is no longer supported.'
-    - kind: removed
-      description: 'Remove "docker-tag-pusher" image.'
     - kind: changed
-      description: 'Update "engine" to 3.0.1.'
+      description: 'Update "mongosh" to 2.5.10-cf-2.'
     - kind: changed
-      description: 'Update "cf-git-cloner" to 10.3.7.'
-    - kind: changed
-      description: 'Update "dind" to 29.2.0-3.0.10 with Docker Engine v29.2.0.'
-      links:
-        - name: Docker Engine v29 release notes
-          url: https://docs.docker.com/engine/release-notes/29/
+      description: 'Update "rabbitmqadmin" to 2.8.1.'
     - kind: security
       description: 'Fix various security vulnerabilities in multiple runtime components.'
 dependencies:
