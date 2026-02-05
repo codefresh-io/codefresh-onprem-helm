@@ -277,6 +277,8 @@ Codefresh relies on several persistent services to store its data:
 - **PostgreSQL**: Stores data about events for the account (pipeline updates, deletes, etc.). The audit log uses the data from this database.
 - **Redis**: Used for caching, and as a key-value store for cron trigger manager.
 - **RabbitMQ**: Used for message queueing.
+- **Consul**: Used for store data about Windows runtimes
+- **Cronus**: Used for storing CRON triggers data
 
 The following table reflects the recommended and supported versions of these databases for different Codefresh releases:
 
@@ -388,6 +390,16 @@ mongodb:
   enabled: false
 ```
 
+##### Migrating from built-in MongoDB to external MongoDB
+
+> **Note!** `MongoDB` is main database for Codefresh storing all the data about users, projects, pipelines, builds etc.
+
+We're recommending to use `mongodump` and `mongorestore` tools to migrate ALL the data from built-in MongoDB to external MongoDB.
+The connection string or `MONGODB_*` environment variables for built-in MongoDB can be obtained in `cfapi` secret.
+
+[mongodump](https://www.mongodb.com/docs/database-tools/mongodump/)
+[mongorestore](https://www.mongodb.com/docs/database-tools/mongorestore/)
+
 #### External MongoDB with MTLS
 
 In order to use MTLS (Mutual TLS) for MongoDB, you need:
@@ -496,6 +508,17 @@ postgresql:
   enabled: false
 ```
 
+##### Migrating from built-in PostgreSQL to external PostgreSQL
+
+> **Note!** `PostgreSQL` is storing audit logs and analytics data for Codefresh.
+
+We recommend using `pg_dumpall`/`pg_dump` and `psql`/`pg_restore` tools to migrate ALL the data from built-in PostgreSQL to external PostgreSQL.
+The connection string or `POSTGRES_*` environment variables for built-in PostgreSQL can be obtained in `cfapi` secret.
+
+[pg_dumpall](https://www.postgresql.org/docs/current/app-pg-dumpall.html)
+[pg_dump](https://www.postgresql.org/docs/current/app-pgdump.html)
+[pg_restore](https://www.postgresql.org/docs/current/app-pgrestore.html)
+
 ##### Using SSL with a PostgreSQL
 
 Provide the following env vars to enforce SSL connection to PostgresSQL:
@@ -576,7 +599,7 @@ redis-cli -a <REDIS_PASSWORD> SAVE
 - Copy the dump file from the pod to local machine
 
 ```console
-kubectl cp codefresh/pod/cf-redis-master-0:/bitnami/redis/data/dump.rdb ./dump.rdb
+kubectl -n codefresh cp pod/cf-redis-master-0:/data/dump.rdb ./dump.rdb
 ```
 
 - Import the dump file to external Redis (based on your Redis distribution)
@@ -711,6 +734,24 @@ global:
 nats:
   # -- Disable nats subchart installation
   enabled: false
+```
+
+#### BoltDB data in Cronus service
+
+`Cronus` service is using embedded `BoltDB` database to store CRON triggers data. The data is stored at `/var/boltdb/events.db` file inside the `cf-cronus` pod.
+There is no option to externalize `Cronus` storage at the moment.
+In case of migration to another k8s cluster, you may need to copy the `events.db` file from the existing `cf-cronus` pod and mount it to the new `cf-cronus` pod to preserve the CRON triggers data.
+
+- Copy `events.db` file from `cf-cronus` pod
+
+```console
+# Old cluster
+kubectl -n codefresh cp pod/cf-cronus-0:/var/boltdb/events.db ./events.db
+```
+
+```console
+# New cluster
+kubectl -n codefresh cp ./events.db pod/cf-cronus-0:/var/boltdb/events.db
 ```
 
 ### Configuring Ingress-NGINX
