@@ -639,6 +639,32 @@ consul:
   enabled: false
 ```
 
+##### Migrating from built-in Consul to external Consul
+
+- Port-forward to built-in Consul
+
+```console
+kubectl port-forward svc/cf-consul 8500:8500 -n codefresh
+```
+
+- Export data from built-in Consul
+
+```console
+curl -s http://localhost:8500/v1/snapshot > consul.backup
+```
+
+- Port-forward to external Consul
+
+```console
+kubectl port-forward svc/my-external-consul-service 8500:8500 -n my-namespace
+```
+
+- Import data to external Consul
+
+```console
+curl -v -T consul.backup http://localhost:8500/v1/snapshot
+```
+
 #### External Nats
 
 ```yaml
