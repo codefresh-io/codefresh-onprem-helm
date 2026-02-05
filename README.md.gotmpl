@@ -757,6 +757,8 @@ In case of migration to another k8s cluster, you may need to copy the `events.db
 kubectl -n codefresh cp pod/cf-cronus-0:/var/boltdb/events.db ./events.db
 ```
 
+- Copy `events.db` file to the new `cf-cronus` pod
+
 ```console
 # New cluster
 kubectl -n codefresh cp ./events.db pod/cf-cronus-0:/var/boltdb/events.db
