@@ -561,7 +561,7 @@ kubectl get secret cf-redis -n codefresh -o json | jq -r '.data["redis-password"
 
 - Exec into built-in Redis pod
 
-```
+```console
 kubectl -n codefresh --stdin --tty exec pod/cf-redis-master-0 -- /bin/bash
 
 # Create a dump of the existing data
