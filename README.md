@@ -21,6 +21,7 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
     - [External RabbitMQ](#external-rabbitmq)
     - [External Consul](#external-consul)
     - [External Nats](#external-nats)
+    - [BoltDB data in Cronus service](#boltdb-data-in-cronus-service)
   - [Configuring Ingress-NGINX](#configuring-ingress-nginx)
     - [ELB with SSL Termination (Classic Load Balancer)](#elb-with-ssl-termination-classic-load-balancer)
     - [NLB (Network Load Balancer)](#nlb-network-load-balancer)
