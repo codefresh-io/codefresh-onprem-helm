@@ -395,9 +395,11 @@ mongodb:
 > **Note!** `MongoDB` is main database for Codefresh storing all the data about users, projects, pipelines, builds etc.
 
 We're recommending to use `mongodump` and `mongorestore` tools to migrate ALL the data from built-in MongoDB to external MongoDB.
+
 The connection string or `MONGODB_*` environment variables for built-in MongoDB can be obtained in `cfapi` secret.
 
 [mongodump](https://www.mongodb.com/docs/database-tools/mongodump/)
+
 [mongorestore](https://www.mongodb.com/docs/database-tools/mongorestore/)
 
 #### External MongoDB with MTLS
