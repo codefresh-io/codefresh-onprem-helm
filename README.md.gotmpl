@@ -552,11 +552,37 @@ redis:
 
 > ⚠️ ElastiCache with **Cluster mode** is not supported!
 
-```yaml
-global:
-  env:
-    REDIS_TLS: true
+##### Migrating from built-in Redis to external Redis
+
+> **Note!** `Redis` among cache is storing data about CRON triggers.
+
+* assuming Codefresh is installed in `codefresh` namespace with `cf` release name
+
+- Get the redis password
+
+```console
+kubectl get secret cf-redis -n codefresh -o json | jq -r '.data["redis-password"]' | base64 -d
 ```
+
+- Exec into built-in Redis pod
+
+```
+kubectl -n codefresh --stdin --tty exec pod/cf-redis-master-0 -- /bin/bash
+
+# Create a dump of the existing data
+redis-cli -a <REDIS_PASSWORD> SAVE
+```
+
+- Copy the dump file from the pod to local machine
+
+```console
+kubectl cp codefresh/pod/cf-redis-master-0:/bitnami/redis/data/dump.rdb ./dump.rdb
+```
+
+- Import the dump file to external Redis (based on your Redis distribution)
+
+[Restore an RDB file](https://redis.io/tutorials/guides/import/#restore-an-rdb-file)
+
 
 #### External Redis with MTLS
 
@@ -646,6 +672,10 @@ consul:
 ```
 
 ##### Migrating from built-in Consul to external Consul
+
+> **Note!** `Consul` is containg data about Windows runtimes only. If you don't use Windows runtimes in your Codefresh instance, you can skip this migration.
+
+* assuming Codefresh is installed in `codefresh` namespace with `cf` release name
 
 - Port-forward to built-in Consul
 
