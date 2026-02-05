@@ -515,10 +515,13 @@ postgresql:
 > **Note!** `PostgreSQL` is storing audit logs and analytics data for Codefresh.
 
 We recommend using `pg_dumpall`/`pg_dump` and `psql`/`pg_restore` tools to migrate ALL the data from built-in PostgreSQL to external PostgreSQL.
+
 The connection string or `POSTGRES_*` environment variables for built-in PostgreSQL can be obtained in `cfapi` secret.
 
 [pg_dumpall](https://www.postgresql.org/docs/current/app-pg-dumpall.html)
+
 [pg_dump](https://www.postgresql.org/docs/current/app-pgdump.html)
+
 [pg_restore](https://www.postgresql.org/docs/current/app-pgrestore.html)
 
 ##### Using SSL with a PostgreSQL
