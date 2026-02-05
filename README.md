@@ -737,7 +737,9 @@ nats:
 #### BoltDB data in Cronus service
 
 `Cronus` service is using embedded `BoltDB` database to store CRON triggers data. The data is stored at `/var/boltdb/events.db` file inside the `cf-cronus` pod.
+
 There is no option to externalize `Cronus` storage at the moment.
+
 In case of migration to another k8s cluster, you may need to copy the `events.db` file from the existing `cf-cronus` pod and mount it to the new `cf-cronus` pod to preserve the CRON triggers data.
 
 - Copy `events.db` file from `cf-cronus` pod
