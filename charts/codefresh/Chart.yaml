@@ -39,6 +39,8 @@ annotations:
       description: 'Update "cf-platform-analytics" to 0.53.2.'
     - kind: changed
       description: 'Update "cf-broadcaster" to 1.15.2.'
+    - kind: changed
+      description: 'Update "cf-tls-sign" to 1.8.17.'
     - kind: security
       description: 'Fix various security vulnerabilities in multiple runtime components.'
 dependencies:
@@ -102,7 +104,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: charts-manager.enabled
   - name: cfsign
-    version: 1.8.11
+    version: 1.8.17
     repository: oci://quay.io/codefresh/charts
     condition: cfsign.enabled
   - name: tasker-kubernetes
