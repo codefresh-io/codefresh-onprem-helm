@@ -25,6 +25,10 @@ annotations:
       description: 'Update "mongosh" to 2.5.10-cf-2.'
     - kind: changed
       description: 'Update "rabbitmqadmin" to 2.8.1.'
+    - kind: changed
+      description: 'Update "kube-integration" to 1.33.8.'
+    - kind: changed
+      description: 'Update "argo-platform" to 1.3978.2.'
     - kind: security
       description: 'Fix various security vulnerabilities in multiple runtime components.'
 dependencies:
@@ -80,7 +84,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: cluster-providers.enabled
   - name: kube-integration
-    version: 1.33.4
+    version: 1.33.8
     repository: oci://quay.io/codefresh/charts
     condition: kube-integration.enabled
   - name: charts-manager
@@ -240,7 +244,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
-    version: 1.3978.0
+    version: 1.3978.2
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform
