@@ -25,6 +25,22 @@ annotations:
       description: 'Update "mongosh" to 2.5.10-cf-2.'
     - kind: changed
       description: 'Update "rabbitmqadmin" to 2.8.1.'
+    - kind: changed
+      description: 'Update "kube-integration" to 1.33.8.'
+    - kind: changed
+      description: 'Update "argo-platform" to 1.4051.0.'
+    - kind: changed
+      description: 'Update "context-manager" to 2.38.2.'
+    - kind: changed
+      description: 'Update "tasker-kubernetes" to 1.28.7.'
+    - kind: changed
+      description: 'Update "charts-manager" to 1.27.3.'
+    - kind: changed
+      description: 'Update "cf-platform-analytics" to 0.53.2.'
+    - kind: changed
+      description: 'Update "cf-broadcaster" to 1.15.2.'
+    - kind: changed
+      description: 'Update "cf-tls-sign" to 1.8.17.'
     - kind: security
       description: 'Fix various security vulnerabilities in multiple runtime components.'
 dependencies:
@@ -80,23 +96,23 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: cluster-providers.enabled
   - name: kube-integration
-    version: 1.33.4
+    version: 1.33.8
     repository: oci://quay.io/codefresh/charts
     condition: kube-integration.enabled
   - name: charts-manager
-    version: 1.26.2
+    version: 1.27.3
     repository: oci://quay.io/codefresh/charts
     condition: charts-manager.enabled
   - name: cfsign
-    version: 1.8.11
+    version: 1.8.17
     repository: oci://quay.io/codefresh/charts
     condition: cfsign.enabled
   - name: tasker-kubernetes
-    version: 1.28.2
+    version: 1.28.7
     repository: oci://quay.io/codefresh/charts
     condition: tasker-kubernetes.enabled
   - name: context-manager
-    version: 2.37.2
+    version: 2.38.2
     repository: oci://quay.io/codefresh/charts
     condition: context-manager.enabled
   - name: pipeline-manager
@@ -210,7 +226,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: runtime-environment-manager.enabled
   - name: cf-broadcaster
-    version: 1.14.2
+    version: 1.15.2
     repository: oci://quay.io/codefresh/charts
     condition: cf-broadcaster.enabled
   - name: helm-repo-manager
@@ -231,16 +247,16 @@ dependencies:
     condition: hermes.enabled
   - name: cf-platform-analytics
     alias: cf-platform-analytics-platform
-    version: 0.52.1
+    version: 0.53.2
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: cf-platform-analytics
     alias: cf-platform-analytics-etlstarter
-    version: 0.52.1
+    version: 0.53.2
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
-    version: 1.3978.0
+    version: 1.4051.0
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform
