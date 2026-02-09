@@ -22,6 +22,8 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
+      description: 'chore: update components for release 2.10 (#247)'
+    - kind: changed
       description: update mongosh and rabbitmqadmin (#245)
 dependencies:
   - name: cf-common
