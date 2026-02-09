@@ -22,9 +22,27 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'chore: update components for release 2.10 (#247)'
+      description: 'Update "mongosh" to 2.5.10-cf-2.'
     - kind: changed
-      description: update mongosh and rabbitmqadmin (#245)
+      description: 'Update "rabbitmqadmin" to 2.8.1.'
+    - kind: changed
+      description: 'Update "kube-integration" to 1.33.8.'
+    - kind: changed
+      description: 'Update "argo-platform" to 1.3978.2.'
+    - kind: changed
+      description: 'Update "context-manager" to 2.37.5.'
+    - kind: changed
+      description: 'Update "tasker-kubernetes" to 1.28.5.'
+    - kind: changed
+      description: 'Update "charts-manager" to 1.26.5.'
+    - kind: changed
+      description: 'Update "cf-platform-analytics" to 0.52.5.'
+    - kind: changed
+      description: 'Update "cf-broadcaster" to 1.14.6.'
+    - kind: changed
+      description: 'Update "cf-tls-sign" to 1.8.17.'
+    - kind: security
+      description: 'Fix various security vulnerabilities in multiple runtime components.'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
