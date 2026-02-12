@@ -510,16 +510,16 @@ postgresqlCleanJob:
 # @default -- See below
 runtimeImages:
   COMPOSE_IMAGE: quay.io/codefresh/compose:v5.0.1-1.6.0@sha256:235bd1f5c882cc1ad8eaf8ab34822f7cab4dc8282b998e8c5add5465224b4697
-  CONTAINER_LOGGER_IMAGE: quay.io/codefresh/cf-container-logger:2.0.6@sha256:2c9e594e227a2b8dc5d0a3dcff577503d19741eda88c2abd847e5ed30f5cef0b
+  CONTAINER_LOGGER_IMAGE: quay.io/codefresh/cf-container-logger:2.0.8@sha256:976ab33f6995de16a8b4b91a0286badee367fb82c2b3219347614b3778acc9ba
   DIND_IMAGE: quay.io/codefresh/dind:29.2.0-3.0.10@sha256:74ad041c4d6bbf200c48ed492eb255187f4e8a9df01cf4ff919b669ac53661fe
-  DOCKER_BUILDER_IMAGE: quay.io/codefresh/cf-docker-builder:1.5.5@sha256:1011245a5a8917d7327d340b2fff4df72d14b5cda197a33a71e600511a20862b
+  DOCKER_BUILDER_IMAGE: quay.io/codefresh/cf-docker-builder:1.5.6@sha256:b12fe181f39aa1b41baa0d2324ac3b6e8d5db705a468ff35c2c73e94fdf70a32
   DOCKER_PULLER_IMAGE: quay.io/codefresh/cf-docker-puller:8.0.25@sha256:9ecca92505ae5bdf49ba623f869d1e71ca59bf42b05902f45ef8d638f5da307b
-  DOCKER_PUSHER_IMAGE: quay.io/codefresh/cf-docker-pusher:6.0.23@sha256:5bf734ffea8f3bb9cdafeabbdcff7f26a2db68552cf7a91d48a5eff2699a57a8
-  ENGINE_IMAGE: quay.io/codefresh/engine:3.0.1@sha256:2fba9505476a4bce45754e6e67d8c60a3122755c0663b28c8a6ae03ce0788142
+  DOCKER_PUSHER_IMAGE: quay.io/codefresh/cf-docker-pusher:6.0.24@sha256:199053e81fbba18363f4f7081b48b6da61b02d794ff8a914707710cd867bed96
+  ENGINE_IMAGE: quay.io/codefresh/engine:3.0.3@sha256:ab84c6eebc1a58544879e9c97ead8ea70dbf0bee01f7a0388e8b7e3408568992
   FS_OPS_IMAGE: quay.io/codefresh/fs-ops:1.2.11@sha256:cade5ace4d05528dfd0cbdbb96bd99c6ccae79dfeebe14661a4b7808e2131dc9
-  GIT_CLONE_IMAGE: quay.io/codefresh/cf-git-cloner:10.3.7@sha256:95e98bc421c4c2df7062fce1021d4d861ead252b4a3128f8488ea9636a2f22c3
+  GIT_CLONE_IMAGE: quay.io/codefresh/cf-git-cloner:10.3.8@sha256:73fca875568d05611e7d55cdcaebdfbaf1934fa26c6750f8193b559b46770aab
   KUBE_DEPLOY: quay.io/codefresh/cf-deploy-kubernetes:17.0.2@sha256:35b461ca29b37d4012bc805c5b32f4c4f6a9947a4c57823dcec6692c16ca7b5a
-  PIPELINE_DEBUGGER_IMAGE: quay.io/codefresh/cf-debugger:1.3.12@sha256:f31592c1b9955e49bee62c0cde0ce4d2b0ee3519f0c2e4adb1a08d7babde7164
+  PIPELINE_DEBUGGER_IMAGE: quay.io/codefresh/cf-debugger:1.3.13@sha256:2dbf79a87f641507fc2111d4ff01e046954bca2f31e41ebc1e9cda96b1189780
   TEMPLATE_ENGINE: quay.io/codefresh/pikolo:0.14.8@sha256:37ec7bed4b09e4055c3600a7805f84e37cccf8d849fe0fdd5b29f079de15010c
   CR_6177_FIXER: docker.io/library/alpine:3.23
   GC_BUILDER_IMAGE: docker.io/library/alpine:3.23
