@@ -1975,3 +1975,17 @@ segment-reporter:
 
 salesforce-reporter:
   enabled: false
+
+# -- nats
+# @default -- See below
+# Ref: https://github.com/bitnami/charts/blob/main/bitnami/nats/values.yaml
+nats:
+  enabled: true
+  image:
+    repository: bitnamilegacy/nats
+  replicaCount: 1
+  auth:
+    enabled: false
+  cluster:
+    auth:
+      enabled: false
