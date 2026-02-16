@@ -1290,7 +1290,7 @@ builder:
     image:
       registry: quay.io
       repository: codefresh/dind
-      tag: 28.5.2-3.0.8
+      tag: 29.2.0-3.0.10
   affinity: {}
   nodeSelector: {}
   podSecurityContext: {}
