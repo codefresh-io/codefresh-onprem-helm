@@ -21,8 +21,8 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
-    - kind: changed
-      description: patch gitops-dashboard-manager (#252)
+    - kind: security
+      description: 'Fix security vulnerabilities in gitops-dashboard-manager.'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
