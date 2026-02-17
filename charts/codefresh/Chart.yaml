@@ -22,9 +22,17 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'Update "ingress-nginx" to version 4.14.3.'
+      description: 'Update "engine" to 3.0.5.'
+    - kind: changed
+      description: 'Update "cf-docker-puller" to 8.0.26.'
+    - kind: changed
+      description: 'Update "fs-ops" to 1.2.12.'
+    - kind: changed
+      description: 'Update "kubectl" to 1.35.1.'
+    - kind: changed
+      description: 'Update "ingress-nginx" to 4.14.3.'
     - kind: security
-      description: 'Fix security vulnerabilities in gitops-dashboard-manager.'
+      description: 'Fix various security vulnerabilities in multiple services and runtime components.'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
