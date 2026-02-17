@@ -21,8 +21,22 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
+    - kind: changed
+      description: 'Update "engine" to 3.0.5.'
+    - kind: changed
+      description: 'Update "cf-docker-puller" to 8.0.26.'
+    - kind: changed
+      description: 'Update "fs-ops" to 1.2.12.'
+    - kind: changed
+      description: 'Update "kubectl" to 1.35.1.'
+    - kind: changed
+      description: 'Update "ingress-nginx" to 4.14.3.'
+    - kind: changed
+      description: 'Update "pikolo" to 0.14.9.'
+    - kind: changed
+      description: 'Update "dind" to 29.2.0-3.0.10.'
     - kind: security
-      description: 'Fix security vulnerabilities in gitops-dashboard-manager.'
+      description: 'Fix various security vulnerabilities in multiple services and runtime components.'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -68,7 +82,7 @@ dependencies:
     condition: builder.enabled
     version: 2.0.0
   - name: ingress-nginx
-    version: 4.13.5
+    version: 4.14.3
     repository: https://kubernetes.github.io/ingress-nginx
     condition: ingress-nginx.enabled
   - name: cluster-providers
