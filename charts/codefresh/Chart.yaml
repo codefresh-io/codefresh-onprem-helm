@@ -31,6 +31,8 @@ annotations:
       description: 'Update "kubectl" to 1.35.1.'
     - kind: changed
       description: 'Update "ingress-nginx" to 4.14.3.'
+    - kind: changed
+      description: 'Update "pikolo" to 0.14.9.'
     - kind: security
       description: 'Fix various security vulnerabilities in multiple services and runtime components.'
 dependencies:
