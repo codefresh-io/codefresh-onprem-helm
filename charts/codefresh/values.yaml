@@ -510,7 +510,7 @@ postgresqlCleanJob:
 runtimeImages:
   COMPOSE_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/compose:v2.40.3-1.5.8@sha256:a393db5c299ec21c24a9c09e2dd233d30a38a0b7d21eb955d5464572867d3860
   CONTAINER_LOGGER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-container-logger:2.0.8@sha256:976ab33f6995de16a8b4b91a0286badee367fb82c2b3219347614b3778acc9ba
-  DIND_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/dind:29.2.0-3.0.12@sha256:81fdbe5a7e048484007126d961772b4ab31889c4139176c1af774c5f709d739e
+  DIND_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/dind:29.2.0-3.0.10@sha256:74ad041c4d6bbf200c48ed492eb255187f4e8a9df01cf4ff919b669ac53661fe
   DOCKER_BUILDER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-docker-builder:1.5.6@sha256:b12fe181f39aa1b41baa0d2324ac3b6e8d5db705a468ff35c2c73e94fdf70a32
   DOCKER_PULLER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-docker-puller:8.0.26@sha256:a518ca194d85d5f254954f201e33f6cd4cd1a82d552fce8cdceabbaf12786cb3
   DOCKER_PUSHER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-docker-pusher:6.0.24@sha256:199053e81fbba18363f4f7081b48b6da61b02d794ff8a914707710cd867bed96
@@ -1290,7 +1290,7 @@ builder:
     image:
       registry: quay.io
       repository: codefresh/dind
-      tag: 29.2.0-3.0.12
+      tag: 29.2.0-3.0.10
   affinity: {}
   nodeSelector: {}
   podSecurityContext: {}
