@@ -37,6 +37,8 @@ annotations:
       description: 'Update "context-manager" to 2.39.1.'
     - kind: changed
       description: 'Update "charts-manager" to 1.28.1.'
+    - kind: changed
+      description: 'Update "argo-platform" to 1.4058.0.'
     - kind: security
       description: 'Fix various security vulnerabilities in multiple services.'
 dependencies:
