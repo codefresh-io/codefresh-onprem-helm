@@ -40,7 +40,7 @@ annotations:
     - kind: changed
       description: 'Update "cluster-providers" to 1.19.8.'
     - kind: changed
-      description: 'Update "argo-platform" to 1.4058.0.'
+      description: 'Update "argo-platform" to 1.4059.0.'
     - kind: security
       description: 'Fix various security vulnerabilities in multiple services.'
 dependencies:
@@ -256,7 +256,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
-    version: 1.4058.0
+    version: 1.4059.0
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform
