@@ -22,17 +22,23 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'Update "engine" to 3.0.5.'
+      description: 'Update "helm-repo-manager" to 0.23.5.'
     - kind: changed
-      description: 'Update "cf-docker-puller" to 8.0.26.'
+      description: 'Update "cf-broadcaster" to 1.15.3.'
     - kind: changed
-      description: 'Update "fs-ops" to 1.2.12.'
+      description: 'Update "nomios" to 0.11.16.'
     - kind: changed
-      description: 'Update "kubectl" to 1.35.1.'
+      description: 'Update "hermes" to 0.21.28.'
     - kind: changed
-      description: 'Update "ingress-nginx" to 4.14.3.'
+      description: 'Update "cf-api" to 22.0.8.'
+    - kind: changed
+      description: 'Update "cronus" to 0.8.17.'
+    - kind: changed
+      description: 'Update "context-manager" to 2.39.1.'
+    - kind: changed
+      description: 'Update "charts-manager" to 1.28.1.'
     - kind: security
-      description: 'Fix various security vulnerabilities in multiple services and runtime components.'
+      description: 'Fix various security vulnerabilities in multiple services.'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -90,7 +96,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: kube-integration.enabled
   - name: charts-manager
-    version: 1.27.3
+    version: 1.28.1
     repository: oci://quay.io/codefresh/charts
     condition: charts-manager.enabled
   - name: cfsign
@@ -102,7 +108,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: tasker-kubernetes.enabled
   - name: context-manager
-    version: 2.38.2
+    version: 2.39.1
     repository: oci://quay.io/codefresh/charts
     condition: context-manager.enabled
   - name: pipeline-manager
@@ -115,92 +121,92 @@ dependencies:
     condition: gitops-dashboard-manager.enabled
   - name: cfapi
     alias: cfapi
-    version: 22.0.4
+    version: 22.0.8
     repository: oci://quay.io/codefresh/charts
     condition: cfapi.enabled
   - name: cfapi
     alias: cfapi-auth
-    version: 22.0.4
+    version: 22.0.8
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-auth.enabled
   - name: cfapi
     alias: cfapi-internal
-    version: 22.0.4
+    version: 22.0.8
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-internal.enabled
   - name: cfapi
     alias: cfapi-ws
-    version: 22.0.4
+    version: 22.0.8
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-ws.enabled
   - name: cfapi
     alias: cfapi-admin
-    version: 22.0.4
+    version: 22.0.8
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-admin.enabled
   - name: cfapi
     alias: cfapi-endpoints
-    version: 22.0.4
+    version: 22.0.8
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-endpoints.enabled
   - name: cfapi
     alias: cfapi-terminators
-    version: 22.0.4
+    version: 22.0.8
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-terminators.enabled
   - name: cfapi
     alias: cfapi-sso-group-synchronizer
-    version: 22.0.4
+    version: 22.0.8
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-sso-group-synchronizer.enabled
   - name: cfapi
     alias: cfapi-buildmanager
-    version: 22.0.4
+    version: 22.0.8
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-buildmanager.enabled
   - name: cfapi
     alias: cfapi-cacheevictmanager
-    version: 22.0.4
+    version: 22.0.8
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-cacheevictmanager.enabled
   - name: cfapi
     alias: cfapi-eventsmanagersubscriptions
-    version: 22.0.4
+    version: 22.0.8
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-eventsmanagersubscriptions.enabled
   - name: cfapi
     alias: cfapi-kubernetesresourcemonitor
-    version: 22.0.4
+    version: 22.0.8
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-kubernetesresourcemonitor.enabled
   - name: cfapi
     alias: cfapi-environments
-    version: 22.0.4
+    version: 22.0.8
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-environments.enabled
   - name: cfapi
     alias: cfapi-gitops-resource-receiver
-    version: 22.0.4
+    version: 22.0.8
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-gitops-resource-receiver.enabled
   - name: cfapi
     alias: cfapi-downloadlogmanager
-    version: 22.0.4
+    version: 22.0.8
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-downloadlogmanager.enabled
   - name: cfapi
     alias: cfapi-teams
-    version: 22.0.4
+    version: 22.0.8
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-teams.enabled
   - name: cfapi
     alias: cfapi-kubernetes-endpoints
-    version: 22.0.4
+    version: 22.0.8
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-kubernetes-endpoints.enabled
   - name: cfapi
     alias: cfapi-test-reporting
-    version: 22.0.4
+    version: 22.0.8
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-test-reporting.enabled
   - name: cfui
@@ -216,23 +222,23 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: runtime-environment-manager.enabled
   - name: cf-broadcaster
-    version: 1.15.2
+    version: 1.15.3
     repository: oci://quay.io/codefresh/charts
     condition: cf-broadcaster.enabled
   - name: helm-repo-manager
-    version: 0.23.1
+    version: 0.23.5
     repository: oci://quay.io/codefresh/charts
     condition: helm-repo-manager.enabled
   - name: hermes
-    version: 0.21.22
+    version: 0.21.28
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
   - name: nomios
-    version: 0.11.12
+    version: 0.11.16
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
   - name: cronus
-    version: 0.8.13
+    version: 0.8.17
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
   - name: cf-platform-analytics
