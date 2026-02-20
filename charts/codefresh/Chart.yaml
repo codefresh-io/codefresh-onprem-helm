@@ -69,6 +69,10 @@ annotations:
       description: 'Update "pikolo" to 0.14.10.'
     - kind: security
       description: 'Fix various security vulnerabilities in "pikolo".'
+    - kind: changed
+      description: 'Update "argo-platform" to 1.3978.4-onprem-809c5dc.'
+    - kind: security
+      description: 'Fix various security vulnerabilities in "argo-platform".'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -282,7 +286,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
-    version: 1.3978.2-onprem-070171b
+    version: 1.3978.4-onprem-809c5dc
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform
