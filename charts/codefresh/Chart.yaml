@@ -57,6 +57,18 @@ annotations:
       description: 'Update "cluster-providers" to 1.19.6.'
     - kind: security
       description: 'Fix various security vulnerabilities in "cluster-providers".'
+    - kind: changed
+      description: 'Update "engine" to 3.2.0.'
+    - kind: changed
+      description: 'Update engine to support a brand new API token authorization for Bitbucket Cloud.'
+    - kind: changed
+      description: 'Update "compose" to 5.0.1-1.6.1.'
+    - kind: security
+      description: 'Fix various security vulnerabilities in "compose".'
+    - kind: changed
+      description: 'Update "pikolo" to 0.14.10.'
+    - kind: security
+      description: 'Fix various security vulnerabilities in "pikolo".'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
