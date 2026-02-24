@@ -14,12 +14,12 @@
         "performedBy" : "System"
     },
     "allowedDomains" : [
-  
+
     ],
     "enabledAllowedDomains" : true,
     "admins" : [
         ObjectId("59009221c102763beda7cf04")
-    ], 
+    ],
     "environment" : NumberInt(1),
     "runtimeEnvironment" : "codefresh",
     "integrations" : {
@@ -48,7 +48,7 @@
             "exist" : false
         },
         "registries" : [
-  
+
         ]
     },
     "badgeToken" : "eyJhbGciOiJIUzI1NiJ9.NTkwMDkxMTdjMTAyNzYzYmVkYTdjZTcx.B0HOUL6HlpTRNr_e95pVucSRMRzP2cobe5kIoMtrDSc",
@@ -165,7 +165,7 @@
     "dedicatedInfrastructure" : false,
     "canUsePrivateRepos" : true,
     "features" : {
-        "launchDarklyManagement" : true
+        "launchDarklyManagement" : false
     },
     "supportPlan" : "PLATINUM",
     "increasedAttention" : false,
@@ -258,5 +258,5 @@
     },
     "localUserPasswordIDPEnabled" : true,
     "segment" : "ENTERPRISE",
-    "__v" : NumberInt(0) 
+    "__v" : NumberInt(0)
 }
