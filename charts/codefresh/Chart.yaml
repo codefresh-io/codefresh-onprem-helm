@@ -34,9 +34,9 @@ annotations:
     - kind: security
       description: 'Fix various security vulnerabilities in "nomios".'
     - kind: changed
-      description: 'Update "hermes" to 0.21.25.'
+      description: 'Update "hermes" to 0.21.26.'
     - kind: security
-      description: 'Fix various security vulnerabilities in "hermes".'
+      description: 'Migrate "hermes" to DHI'
     - kind: changed
       description: 'Update "cf-api" to 21.293.12.'
     - kind: security
@@ -264,7 +264,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: helm-repo-manager.enabled
   - name: hermes
-    version: 0.21.25-onprem-0803e57
+    version: 0.21.26-onprem-f7a192d
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
   - name: nomios
