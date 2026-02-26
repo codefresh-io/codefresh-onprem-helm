@@ -34,9 +34,9 @@ annotations:
     - kind: security
       description: 'Fix various security vulnerabilities in "nomios".'
     - kind: changed
-      description: 'Update "hermes" to 0.21.25.'
+      description: 'Update "hermes" to 0.21.26.'
     - kind: security
-      description: 'Fix various security vulnerabilities in "hermes".'
+      description: 'Migrate "hermes" to DHI'
     - kind: changed
       description: 'Update "cf-api" to 21.293.12.'
     - kind: security
@@ -122,7 +122,7 @@ dependencies:
     repository: https://kubernetes.github.io/ingress-nginx
     condition: ingress-nginx.enabled
   - name: cluster-providers
-    version: 1.19.6-onprem-5d7591d
+    version: 1.19.7-onprem-a02f68d
     repository: oci://quay.io/codefresh/charts
     condition: cluster-providers.enabled
   - name: kube-integration
@@ -248,7 +248,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: cfui.enabled
   - name: k8s-monitor
-    version: 4.11.21-onprem-3db2163
+    version: 4.11.22-onprem-166a0bf
     repository: oci://quay.io/codefresh/charts
     condition: k8s-monitor.enabled
   - name: runtime-environment-manager
@@ -264,7 +264,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: helm-repo-manager.enabled
   - name: hermes
-    version: 0.21.25-onprem-0803e57
+    version: 0.21.26-onprem-f7a192d
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
   - name: nomios
