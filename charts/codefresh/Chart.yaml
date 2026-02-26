@@ -23,6 +23,8 @@ annotations:
   artifacthub.io/changes: |-
     - kind: security
       description: 'Update "helm/chartmuseum" to 0.16.4.'
+    - kind: security
+      description: 'Update "hermes" to 0.21.26-onprem.'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -214,7 +216,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: helm-repo-manager.enabled
   - name: hermes
-    version: 0.21.25-onprem-0803e57
+    version: 0.21.26-onprem-f7a192d
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
   - name: nomios
