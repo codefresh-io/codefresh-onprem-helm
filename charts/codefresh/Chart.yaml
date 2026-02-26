@@ -21,58 +21,8 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
-    - kind: changed
-      description: 'Update "helm-repo-manager" to 0.23.3.'
     - kind: security
-      description: 'Fix various security vulnerabilities in "helm-repo-manager".'
-    - kind: changed
-      description: 'Update "cf-broadcaster" to 1.14.7.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in "cf-broadcaster".'
-    - kind: changed
-      description: 'Update "nomios" to 0.11.15.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in "nomios".'
-    - kind: changed
-      description: 'Update "hermes" to 0.21.25.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in "hermes".'
-    - kind: changed
-      description: 'Update "cf-api" to 21.293.12.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in "cf-api".'
-    - kind: changed
-      description: 'Update "cronus" to 0.8.15.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in "cronus".'
-    - kind: changed
-      description: 'Update "context-manager" to 2.37.6.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in "context-manager".'
-    - kind: changed
-      description: 'Update "charts-manager" to 1.26.6.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in "charts-manager".'
-    - kind: changed
-      description: 'Update "cluster-providers" to 1.19.6.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in "cluster-providers".'
-    - kind: changed
-      description: 'Update "engine" to 3.2.0.'
-    - kind: changed
-      description: 'Update engine to support a brand new API token authorization for Bitbucket Cloud.'
-    - kind: changed
-      description: 'Update "compose" to 5.0.1-1.6.1.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in "compose".'
-    - kind: changed
-      description: 'Update "pikolo" to 0.14.10.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in "pikolo".'
-    - kind: changed
-      description: 'Update "argo-platform" to 1.3978.4-onprem-809c5dc.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in "argo-platform".'
+      description: 'Update "helm/chartmuseum" to 0.16.4.'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
