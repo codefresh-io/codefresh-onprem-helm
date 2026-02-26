@@ -122,7 +122,7 @@ dependencies:
     repository: https://kubernetes.github.io/ingress-nginx
     condition: ingress-nginx.enabled
   - name: cluster-providers
-    version: 1.19.6-onprem-5d7591d
+    version: 1.19.7-onprem-a02f68d
     repository: oci://quay.io/codefresh/charts
     condition: cluster-providers.enabled
   - name: kube-integration
@@ -248,7 +248,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: cfui.enabled
   - name: k8s-monitor
-    version: 4.11.21-onprem-3db2163
+    version: 4.11.22-onprem-166a0bf
     repository: oci://quay.io/codefresh/charts
     condition: k8s-monitor.enabled
   - name: runtime-environment-manager
