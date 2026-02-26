@@ -21,8 +21,16 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
+    - kind: security
+      description: 'Fix various security vulnerabilities in platform components'
     - kind: changed
-      description: 'chore: Fix various security vulnerabilities in platform components (#260)'
+      description: 'Update "cluster-providers" to 1.19.7.'
+    - kind: changed
+      description: 'Update "hermes" to 0.21.26.'
+    - kind: changed
+      description: 'Update "k8s-monitor" to 4.11.22.'
+    - kind: changed
+      description: 'Update "chartmuseum" to 0.16.4.'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
