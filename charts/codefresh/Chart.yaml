@@ -252,7 +252,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
   - name: cronus
-    version: 0.9.2
+    version: 0.9.3
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
   - name: cf-platform-analytics
