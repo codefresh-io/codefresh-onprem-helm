@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.10.11
+version: 2.10.12
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -22,37 +22,7 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'Update "argo-platform" to 1.3978.5.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in argo-platform'
-    - kind: changed
-      description: 'Update "cf-ui" to 14.99.60.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in cf-ui'
-    - kind: changed
-      description: 'Update "cf-api" to 21.293.13.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in cf-api'
-    - kind: changed
-      description: 'Update "cf-platform-analytics" to 0.52.6.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in cf-platform-analytics'
-    - kind: changed
-      description: 'Update "cf-tls-sign" to 1.8.14.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in cf-tls-sign'
-    - kind: changed
-      description: 'Update "tasker-kubernetes" to 1.28.6.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in tasker-kubernetes'
-    - kind: changed
-      description: 'Update "engine" to 3.2.2.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in engine'
-    - kind: changed
-      description: 'Update "cf-container-logger" to 2.0.9.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in cf-container-logger'
+      description: 'chore: Fix various security vulnerabilities in gitops platform components (#265)'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
