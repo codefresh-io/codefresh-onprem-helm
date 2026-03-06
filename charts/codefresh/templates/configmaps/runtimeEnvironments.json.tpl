@@ -31,9 +31,8 @@
       },
       "image": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.imageRegistry "imageFullName" .Values.runtimeImages.ENGINE_IMAGE) }}",
       "command": [
-        "npm",
-        "run",
-        "start"
+        "node",
+        "dist/server/index.js"
       ],
       "envVars": {
         {{- if .Values.global.env }}
@@ -110,9 +109,8 @@
       "runtimeScheduler": {
           "image": "{{ include "codefresh.buildImageName" (dict "registry" .Values.global.imageRegistry "imageFullName" .Values.runtimeImages.ENGINE_IMAGE) }}",
           "command": [
-              "npm",
-              "run",
-              "start"
+            "node",
+            "dist/server/index.js"
           ],
           "envVars": {
               "CONTAINER_LOGGER_SHOW_PROGRESS": "true",
