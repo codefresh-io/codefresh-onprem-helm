@@ -1,0 +1,8 @@
+apiVersion: v2
+name: codefresh-infra
+version: 0.1.0
+description: Infra charts for Codefresh Onprem (mongodb/postgresql/redis/rabbitmq)
+dependencies:
+  - name: mongodb
+    version: 0.1.0
+    repository: oci://quay.io/codefresh/charts/dev
