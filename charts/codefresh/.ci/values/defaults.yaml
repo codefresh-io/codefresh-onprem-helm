@@ -7,6 +7,8 @@ global:
     - codefresh-registry
     - dockerhub-creds
 
+  mongodbHost: "mongodb"
+
 cfapi:
   rbac:
     namespaced: false
@@ -77,6 +79,7 @@ argo-platform:
       enabled: true
 
 mongodb:
+  enabled: false
   migration:
     enabled: false
   image:
