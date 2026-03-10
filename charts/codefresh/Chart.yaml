@@ -22,7 +22,13 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'chore: Fix various security vulnerabilities in argo-platform (#269)'
+      description: 'Update "argo-platform" to 1.3978.6.'
+    - kind: security
+      description: 'Fix various security vulnerabilities in argo-platform'
+    - kind: changed
+      description: 'Update "cronus" to 0.8.16.'
+    - kind: security
+      description: 'Fix various security vulnerabilities in cronus'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
