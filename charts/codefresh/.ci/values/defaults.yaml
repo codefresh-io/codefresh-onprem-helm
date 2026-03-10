@@ -24,7 +24,7 @@ cfapi:
 
 ingress:
   enabled: true
-  ingressClassName: nginx
+  ingressClassName: haproxy-ingress
   tls:
     enabled: false
 
