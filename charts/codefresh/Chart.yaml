@@ -252,7 +252,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
   - name: cronus
-    version: 0.8.15-onprem-3f197d8
+    version: 0.8.16-onprem-6e86eed
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
   - name: cf-platform-analytics
@@ -266,7 +266,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
-    version: 1.3978.5-onprem-e510e61
+    version: 1.3978.6-onprem-9a24c3a
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform
