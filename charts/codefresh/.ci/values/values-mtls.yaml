@@ -37,8 +37,8 @@ global:
   env:
     # Mongo MTLS
     MONGODB_SSL_ENABLED: true
-    MTLS_CERT_PATH: /etc/ssl/mongodb/ca.pem
-    RUNTIME_MTLS_CERT_PATH: /etc/ssl/mongodb/ca.pem
+    MTLS_CERT_PATH: /etc/ssl/mongodb/client.pem
+    RUNTIME_MTLS_CERT_PATH: /etc/ssl/mongodb/client.pem
     RUNTIME_MONGO_TLS: "true"
     RUNTIME_MONGO_TLS_VALIDATE: "false"
     MONGO_MTLS_VALIDATE: "false"
