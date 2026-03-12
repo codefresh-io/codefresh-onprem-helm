@@ -8,11 +8,11 @@ mongodb:
 
   container:
     volumeMounts:
-      mongodb-ca-cert:
+      ca-cert:
         path:
           - mountPath: /etc/ssl/ca.crt
             subPath: ca.crt
-      mongodb-server-cert:
+      server-cert:
         path:
           - mountPath: /etc/ssl/server.pem
             subPath: server.pem
