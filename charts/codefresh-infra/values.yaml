@@ -1,4 +1,4 @@
 mongodb:
   fullnameOverride: mongodb
   auth:
-    rootPassword: password
+    rootPassword: XT9nmM8dZD

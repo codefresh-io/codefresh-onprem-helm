@@ -1,7 +1,4 @@
 mongodb:
-  auth:
-    rootPassword: password
-
   config:
     net:
       tls:
