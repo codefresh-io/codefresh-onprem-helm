@@ -6,3 +6,6 @@ dependencies:
   - name: mongodb
     version: 0.1.0
     repository: oci://quay.io/codefresh/charts/dev
+  - name: postgresql
+    version: 0.1.0
+    repository: oci://quay.io/codefresh/charts/dev

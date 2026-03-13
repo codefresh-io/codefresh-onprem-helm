@@ -8,6 +8,7 @@ global:
     - dockerhub-creds
 
   mongodbHost: "mongodb"
+  postgresHostname: "postgresql"
 
 cfapi:
   rbac:
@@ -80,12 +81,9 @@ argo-platform:
 
 mongodb:
   enabled: false
-  migration:
-    enabled: false
-  image:
-    repository: bitnamilegacy/mongodb
-  nodeSelector:
-    kubernetes.io/arch: amd64
+
+postgresql:
+  enabled: false
 
 consul:
   image:

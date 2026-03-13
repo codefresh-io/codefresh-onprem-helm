@@ -2,3 +2,8 @@ mongodb:
   fullnameOverride: mongodb
   auth:
     rootPassword: XT9nmM8dZD
+
+postgresql:
+  fullnameOverride: postgresql
+  auth:
+    password: eC9arYka4ZbH
