@@ -18,20 +18,32 @@ global:
       type: secret
       optional: true
       nameOverride: mongodb-client-cert
-    redis-tls:
+    redis-cert:
       enabled: true
       type: secret
       optional: true
       nameOverride: redis-server-cert
+    redis-ca:
+      enabled: true
+      type: secret
+      optional: true
+      nameOverride: redis-ca-cert
 
   volumeMounts:
     mongodb-client-cert:
       path:
       - mountPath: /etc/ssl/mongodb/client.pem
         subPath: client.pem
-    redis-tls:
+    redis-cert:
       path:
-      - mountPath: /etc/ssl/redis
+      - mountPath: /etc/ssl/redis/tls.crt
+        subPath: tls.crt
+      - mountPath: /etc/ssl/redis/tls.key
+        subPath: tls.key
+    redis-ca:
+      path:
+      - mountPath: /etc/ssl/redis/ca.crt
+        subPath: ca.crt
 
   env:
     # Mongo MTLS
