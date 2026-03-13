@@ -92,7 +92,7 @@ redis:
 
   config:
     tls-port: 6380
-    tls-cert-file: /etc/redis/certs/server.crt
-    tls-key-file: /etc/redis/certs/server.key
+    tls-cert-file: /etc/redis/certs/tls.crt
+    tls-key-file: /etc/redis/certs/tls.key
     tls-ca-cert-file: /etc/redis/certs/ca.crt
     tls-auth-clients: "yes"
