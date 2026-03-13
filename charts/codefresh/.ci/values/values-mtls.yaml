@@ -1,0 +1,69 @@
+seed:
+  mongoSeedJob:
+    mongodbRootURI: mongodb://root:XT9nmM8dZD@mongodb:27017/?authSource=admin
+    mongodbRootOptions: authSource=admin
+    mongodbRootPassword: XT9nmM8dZD
+
+global:
+  appUrl: ""  # placeholder for ${CF_APP_HOST}
+  firebaseSecret: ""  # placeholder for ${FIREBASE_SECRET}
+
+  mongodbHost: mongodb
+  mongoURI: "mongodb://mongodb:27017/?ssl=true&authMechanism=MONGODB-X509&authSource=$external"
+  redisUrl: redis
+
+  volumes:
+    mongodb-client-cert:
+      enabled: true
+      type: secret
+      optional: true
+      nameOverride: mongodb-client-cert
+    redis-cert:
+      enabled: true
+      type: secret
+      optional: true
+      nameOverride: redis-server-cert
+    redis-ca:
+      enabled: true
+      type: secret
+      optional: true
+      nameOverride: redis-ca-cert
+
+  volumeMounts:
+    mongodb-client-cert:
+      path:
+      - mountPath: /etc/ssl/mongodb/client.pem
+        subPath: client.pem
+    redis-cert:
+      path:
+      - mountPath: /etc/ssl/redis/tls.crt
+        subPath: tls.crt
+      - mountPath: /etc/ssl/redis/tls.key
+        subPath: tls.key
+    redis-ca:
+      path:
+      - mountPath: /etc/ssl/redis/ca.crt
+        subPath: ca.crt
+
+  env:
+    # Mongo MTLS
+    MONGODB_SSL_ENABLED: true
+    MTLS_CERT_PATH: /etc/ssl/mongodb/client.pem
+    RUNTIME_MTLS_CERT_PATH: /etc/ssl/mongodb/client.pem
+    RUNTIME_MONGO_TLS: "true"
+    RUNTIME_MONGO_TLS_VALIDATE: "false"
+    MONGO_MTLS_VALIDATE: "false"
+    # Redis MTLS
+    REDIS_PORT: 6380
+    REDIS_TLS: true
+    REDIS_REJECT_UNAUTHORIZED: false
+    REDIS_TLS_SKIP_VERIFY: true
+    REDIS_CA_PATH: /etc/ssl/redis/ca.crt
+    REDIS_CLIENT_CERT_PATH : /etc/ssl/redis/tls.crt
+    REDIS_CLIENT_KEY_PATH: /etc/ssl/redis/tls.key
+
+mongodb:
+  enabled: false
+
+redis:
+  enabled: false

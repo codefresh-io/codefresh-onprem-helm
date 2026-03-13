@@ -1,7 +1,7 @@
 # -- checking postgresql password with special characters
 postgresql:
   auth:
-    postgresPassword: "()e%C9ar$Yka4Zb!H"
+    password: "()e%C9ar$Yka4Zb!H"
 
 global:
   postgresPassword: "()e%C9ar$Yka4Zb!H"
