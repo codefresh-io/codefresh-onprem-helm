@@ -11,6 +11,7 @@ global:
   mongodbHost: mongodb
   mongoURI: "mongodb://mongodb:27017/?ssl=true&authMechanism=MONGODB-X509&authSource=$external"
   redisUrl: redis
+  redisPort: 6380
 
   volumes:
     mongodb-client-cert:
