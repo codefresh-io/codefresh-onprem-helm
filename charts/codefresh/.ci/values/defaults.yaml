@@ -12,6 +12,9 @@ global:
   redisUrl: "redis"
   rabbitmqHostname: "rabbitmq:5672"
 
+  env:
+    REDIS_PORT: 6379
+
 cfapi:
   rbac:
     namespaced: false
