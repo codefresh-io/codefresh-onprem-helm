@@ -9,6 +9,7 @@ global:
 
   mongodbHost: "mongodb"
   postgresHostname: "postgresql"
+  redisUrl: "redis"
 
 cfapi:
   rbac:
@@ -83,6 +84,9 @@ mongodb:
   enabled: false
 
 postgresql:
+  enabled: false
+
+redis:
   enabled: false
 
 consul:

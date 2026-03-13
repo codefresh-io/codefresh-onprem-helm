@@ -7,3 +7,8 @@ postgresql:
   fullnameOverride: postgresql
   auth:
     password: eC9arYka4ZbH
+
+redis:
+  fullnameOverride: redis
+  config:
+    requirepass: hoC9szf7NtrU
