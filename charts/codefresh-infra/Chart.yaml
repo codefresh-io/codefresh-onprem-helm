@@ -12,3 +12,6 @@ dependencies:
   - name: redis
     version: 0.1.0
     repository: oci://quay.io/codefresh/charts/dev
+  - name: rabbitmq
+    version: 0.1.0
+    repository: oci://quay.io/codefresh/charts/dev

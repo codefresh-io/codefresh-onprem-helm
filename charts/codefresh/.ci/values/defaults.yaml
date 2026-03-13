@@ -10,6 +10,7 @@ global:
   mongodbHost: "mongodb"
   postgresHostname: "postgresql"
   redisUrl: "redis"
+  rabbitmqHostname: "rabbitmq:5672"
 
 cfapi:
   rbac:
@@ -89,6 +90,9 @@ postgresql:
 redis:
   enabled: false
 
+rabbitmq:
+  enabled: false
+
 consul:
   image:
     repository: bitnamilegacy/consul
@@ -96,10 +100,6 @@ consul:
 nats:
   image:
     repository: bitnamilegacy/nats
-
-rabbitmq:
-  image:
-    repository: bitnamilegacy/rabbitmq
 
 hooks:
   mongodb:
