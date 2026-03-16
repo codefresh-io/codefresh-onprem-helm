@@ -1,4 +1,0 @@
-# values provided for openshift cluster
-cfapi:
-  podSecurityContext:
-    runAsUser: 1000620000
