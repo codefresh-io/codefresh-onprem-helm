@@ -5,8 +5,8 @@ seed:
     mongodbRootPassword: XT9nmM8dZD
 
 global:
-  appUrl: ""  # placeholder for ${CF_APP_HOST}
-  firebaseSecret: ""  # placeholder for ${FIREBASE_SECRET}
+  appUrl: ""  # placeholder for ${ONPREM_INGRESS_HOSTNAME} set in CI pipeline
+  firebaseSecret: ""  # placeholder for ${FIREBASE_SECRET} set in CI pipeline
 
   mongodbHost: my-mongodb
   mongoURI: "mongodb://my-mongodb:27017/?ssl=true&authMechanism=MONGODB-X509&authSource=$external"
