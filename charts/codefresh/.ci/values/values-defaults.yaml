@@ -8,7 +8,7 @@ global:
     - dockerhub-creds
 
   mongodbHost: "mongodb"
-  postgresHostname: "postgres"
+  postgresHostname: "postgresql"
   redisUrl: "redis"
   rabbitmqHostname: "rabbitmq:5672"
 
