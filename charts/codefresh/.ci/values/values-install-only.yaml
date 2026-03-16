@@ -1,0 +1,17 @@
+global:
+  mongodbHost: "my-mongodb"
+  postgresHostname: "my-postgresql"
+  redisUrl: "my-redis"
+  rabbitmqHostname: "my-rabbitmq:5672"
+
+mongodb:
+  enabled: false
+
+postgresql:
+  enabled: false
+
+redis:
+  enabled: false
+
+rabbitmq:
+  enabled: false

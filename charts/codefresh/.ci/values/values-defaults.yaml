@@ -7,11 +7,6 @@ global:
     - codefresh-registry
     - dockerhub-creds
 
-  mongodbHost: "my-mongodb"
-  postgresHostname: "my-postgresql"
-  redisUrl: "my-redis"
-  rabbitmqHostname: "my-rabbitmq:5672"
-
 cfapi:
   rbac:
     namespaced: false
@@ -80,18 +75,6 @@ argo-platform:
   promotion-orchestrator:
     hpa:
       enabled: true
-
-mongodb:
-  enabled: false
-
-postgresql:
-  enabled: false
-
-redis:
-  enabled: false
-
-rabbitmq:
-  enabled: false
 
 consul:
   image:
