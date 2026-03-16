@@ -1,19 +1,19 @@
 mongodb:
-  fullnameOverride: mongodb
+  fullnameOverride: my-mongodb
   auth:
     rootPassword: XT9nmM8dZD
 
 postgresql:
-  fullnameOverride: postgresql
+  fullnameOverride: my-postgresql
   auth:
     password: eC9arYka4ZbH
 
 redis:
-  fullnameOverride: redis
+  fullnameOverride: my-redis
   config:
     requirepass: hoC9szf7NtrU
 
 rabbitmq:
-  fullnameOverride: rabbitmq
+  fullnameOverride: my-rabbitmq
   auth:
     password: cVz9ZdJKYm7u

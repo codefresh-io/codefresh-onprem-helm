@@ -1,6 +1,6 @@
 seed:
   mongoSeedJob:
-    mongodbRootURI: mongodb://root:XT9nmM8dZD@mongodb:27017/?authSource=admin
+    mongodbRootURI: mongodb://root:XT9nmM8dZD@my-mongodb:27017/?authSource=admin
     mongodbRootOptions: authSource=admin
     mongodbRootPassword: XT9nmM8dZD
 
@@ -8,9 +8,8 @@ global:
   appUrl: ""  # placeholder for ${CF_APP_HOST}
   firebaseSecret: ""  # placeholder for ${FIREBASE_SECRET}
 
-  mongodbHost: mongodb
-  mongoURI: "mongodb://mongodb:27017/?ssl=true&authMechanism=MONGODB-X509&authSource=$external"
-  redisUrl: redis
+  mongodbHost: my-mongodb
+  mongoURI: "mongodb://my-mongodb:27017/?ssl=true&authMechanism=MONGODB-X509&authSource=$external"
 
   volumes:
     mongodb-client-cert:
@@ -61,9 +60,3 @@ global:
     REDIS_CA_PATH: /etc/ssl/redis/ca.crt
     REDIS_CLIENT_CERT_PATH : /etc/ssl/redis/tls.crt
     REDIS_CLIENT_KEY_PATH: /etc/ssl/redis/tls.key
-
-mongodb:
-  enabled: false
-
-redis:
-  enabled: false

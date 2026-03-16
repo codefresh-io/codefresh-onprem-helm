@@ -7,14 +7,10 @@ global:
     - codefresh-registry
     - dockerhub-creds
 
-  mongodbHost: "mongodb"
-  postgresHostname: "postgresql"
-  redisUrl: "redis"
-  rabbitmqHostname: "rabbitmq:5672"
-
-  # -- fix for enableServiceLinks field in pod spec
-  env:
-    REDIS_PORT: 6379
+  mongodbHost: "my-mongodb"
+  postgresHostname: "my-postgresql"
+  redisUrl: "my-redis"
+  rabbitmqHostname: "my-rabbitmq:5672"
 
 cfapi:
   rbac:
