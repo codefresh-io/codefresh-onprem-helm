@@ -455,6 +455,8 @@ hooks:
       repository: codefresh/mongosh
       tag: 2.5.10-cf-2
     affinity: {}
+    nodeSelector:
+      kubernetes.io/arch: amd64
     podSecurityContext: {}
     resources: {}
     tolerations: []
