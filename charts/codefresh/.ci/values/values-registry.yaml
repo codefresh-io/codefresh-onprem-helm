@@ -1,4 +1,4 @@
 imageCredentials:
   registry: us-docker.pkg.dev
   username: _json_key
-  password: "" # placeholder for ${GCR_SA_KEY}
+  password: "" # placeholder for ${GCR_SA_KEY} set in CI pipeline
