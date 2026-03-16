@@ -1,0 +1,30 @@
+global:
+  appUrl: "" # placeholder for ${ONPREM_INGRESS_HOSTNAME} set in CI pipeline
+  imagePullSecrets:
+    - codefresh-registry
+    - dockerhub-creds
+
+ingress:
+  enabled: true
+  ingressClassName: haproxy-ingress
+  tls:
+    enabled: false
+
+ingress-nginx:
+  enabled: false
+
+consul:
+  image:
+    repository: bitnamilegacy/consul
+
+nats:
+  image:
+    repository: bitnamilegacy/nats
+
+hooks:
+  mongodb:
+    nodeSelector:
+      kubernetes.io/arch: amd64
+  rabbitmq:
+    nodeSelector:
+      kubernetes.io/arch: amd64
