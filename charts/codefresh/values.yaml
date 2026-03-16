@@ -451,9 +451,9 @@ hooks:
   mongodb:
     enabled: true
     image:
-      registry: docker.io
-      repository: mongo
-      tag: "7.0"
+      registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
+      repository: codefresh/mongosh
+      tag: 2.5.10-cf-2
     affinity: {}
     podSecurityContext: {}
     resources: {}

@@ -15,3 +15,11 @@ redis:
 
 rabbitmq:
   enabled: false
+
+hooks:
+  mongodb:
+    enabled: true
+    image:
+      registry: docker.io
+      repository: mongo
+      tag: "7.0"
