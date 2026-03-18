@@ -94,11 +94,11 @@ dependencies:
     repository: https://kubernetes.github.io/ingress-nginx
     condition: ingress-nginx.enabled
   - name: cluster-providers
-    version: 1.19.7-onprem-a02f68d
+    version: 1.19.8-onprem-1e76ed6
     repository: oci://quay.io/codefresh/charts
     condition: cluster-providers.enabled
   - name: kube-integration
-    version: 1.33.8-onprem-9a4ed69
+    version: 1.33.9-onprem-273f571
     repository: oci://quay.io/codefresh/charts
     condition: kube-integration.enabled
   - name: charts-manager
@@ -118,7 +118,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: context-manager.enabled
   - name: pipeline-manager
-    version: 3.143.5-onprem-d84638b
+    version: 3.143.6-onprem-4c46209
     repository: oci://quay.io/codefresh/charts
     condition: pipeline-manager.enabled
   - name: gitops-dashboard-manager
@@ -220,7 +220,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: cfui.enabled
   - name: k8s-monitor
-    version: 4.11.22-onprem-166a0bf
+    version: 4.11.23-onprem-0f618f9
     repository: oci://quay.io/codefresh/charts
     condition: k8s-monitor.enabled
   - name: runtime-environment-manager
@@ -262,7 +262,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform
-    version: 0.1.35
+    version: 0.1.36
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: cf-oidc-provider
