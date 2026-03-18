@@ -22,6 +22,8 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
+      description: 'chore: Fix various security vulnerabilities (#275)'
+    - kind: changed
       description: 'feat: drop bitnami charts (#273)'
 dependencies:
   - name: cf-common
