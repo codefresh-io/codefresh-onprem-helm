@@ -1,7 +1,6 @@
 #!/bin/bash
 SRCROOT="$(cd "$(dirname "$0")/.." && pwd)"
 CHARTDIR="charts/codefresh"
-VALUESFILE="$CHARTDIR/.ci/values/values-defaults.yaml"
 OUTPUTFILE=$1
 
 helm dep update $CHARTDIR
