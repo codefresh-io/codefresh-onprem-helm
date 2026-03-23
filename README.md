@@ -2632,6 +2632,10 @@ Changes in collections: following collections can be safely dropped *after* the 
 - Support for New Relic instrumentation is discontinued and disabled by default via `.Values.global.env.NEW_RELIC_ENABLED=false`. If you are relying on New Relic for monitoring, please reach out to Support team for alternatives.
 - Zstd compression is enabled by default for MongoDB traffic. Please ensure that Zstd compression is supported and enabled on your MongoDB server. If you'd like to opt out, you can disable it via `.Values.global.env.MONGO_ENABLE_ZSTD_NETWORK_COMPRESSION=false`.
 
+#### Changes in MongoDB schema:
+
+- Changes in indexes: follow [Maintaining MongoDB indexes](#maintaining-mongodb-indexes) guide to meet index requirements *before* the upgrade process.
+
 ## Troubleshooting
 
 ### Error: Failed to validate connection to Docker daemon; caused by Error: certificate has expired
