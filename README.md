@@ -317,6 +317,9 @@ To use external services like [MongoDB Atlas Database](https://www.mongodb.com/a
 > Ref: <br>
 > [Create Users in Atlas](https://www.mongodb.com/docs/atlas/security-add-mongodb-users/#configure-database-users)
 
+> [!IMPORTANT]
+> By default, Zstd network compression is enabled in Codefresh for MongodDB. Please ensure that Zstd compression is supported and enabled on your MongoDB server. If you'd like to opt out, you can disable it via `.Values.global.env.MONGO_ENABLE_ZSTD_NETWORK_COMPRESSION=false`. Disabling compression is not recommended however, as it may significantly increase amount of traffic and corresponding costs.
+
 `values.yaml` for external MongoDB:
 
 ```yaml
