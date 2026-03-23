@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 0.0.0
+version: 2.11.0
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -22,37 +22,57 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'Update "argo-platform" to 1.4068.0.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in argo-platform'
+      description: 'feat: create release-2.11 (#279)'
     - kind: changed
-      description: 'Update "cf-ui" to 14.100.1.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in cf-ui'
+      description: 'chore(deps): bump subcharts (#174)'
     - kind: changed
-      description: 'Update "cf-api" to 22.2.1.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in cf-api'
+      description: create release-2.11 branch
     - kind: changed
-      description: 'Update "cf-platform-analytics" to 0.53.3.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in cf-platform-analytics'
+      description: 'feat: drop bitnami charts (#268)'
     - kind: changed
-      description: 'Update "cf-tls-sign" to 1.8.18.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in cf-tls-sign'
+      description: update components (#266)
     - kind: changed
-      description: 'Update "tasker-kubernetes" to 1.28.8.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in tasker-kubernetes'
+      description: 'docs: add compatibility for Nats and Consul (#264)'
     - kind: changed
-      description: 'Update "engine" to 3.2.2.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in engine'
+      description: 'chore: update components (#257)'
     - kind: changed
-      description: 'Update "cf-container-logger" to 2.0.9.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in cf-container-logger'
+      description: 'chore(main): security release patch (#254)'
+    - kind: changed
+      description: update values for main branch (#249)
+    - kind: changed
+      description: 'chore: update components for main (#248)'
+    - kind: changed
+      description: update mongosh and rabbitmqadmin (#244)
+    - kind: changed
+      description: 'docs: add notes for migrations from built-in bitnami subcharts (#243)'
+    - kind: changed
+      description: 'chore: remove docker-tag-pusher; update components (main base) (#240)'
+    - kind: changed
+      description: 'build(classic): upgrade Classic Runtime components (#219) (#221)'
+    - kind: changed
+      description: 'chore: docs on nats (#218)'
+    - kind: changed
+      description: 'docs: add external consul  (#217)'
+    - kind: changed
+      description: 'chore: docs on hermes (#216)'
+    - kind: changed
+      description: 'chore: promote argo-hub platform and engine (#208)'
+    - kind: changed
+      description: 'docs: document external services compatibility (#211)'
+    - kind: changed
+      description: updated kubectl to 1.35.0 (#204)
+    - kind: changed
+      description: 'docs: document index changes (#194) (#203)'
+    - kind: changed
+      description: bump ingress-nginx (#201)
+    - kind: changed
+      description: 'chore: added masontikhonov as codeowner (#196)'
+    - kind: changed
+      description: updated curl to 8.17.0 (#190)
+    - kind: changed
+      description: 'build: upgrade runtime images (#188)'
+    - kind: changed
+      description: upd argo-hub-platform and mongosh (#181)
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
