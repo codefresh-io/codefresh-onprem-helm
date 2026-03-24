@@ -1,0 +1,139 @@
+[
+  {
+    "key": {
+      "accountId": 1,
+      "imageName": 1
+    },
+    "collation": {
+      "locale": "en_US",
+      "caseLevel": false,
+      "caseFirst": "off",
+      "strength": 1,
+      "numericOrdering": false,
+      "alternate": "non-ignorable",
+      "maxVariable": "punct",
+      "normalization": false,
+      "backwards": false
+    }
+  },
+  {
+    "key": {
+      "accountId": 1,
+      "imageName": 1,
+      "binaryId": 1
+    },
+    "collation": {
+      "locale": "en_US",
+      "caseLevel": false,
+      "caseFirst": "off",
+      "strength": 1,
+      "numericOrdering": false,
+      "alternate": "non-ignorable",
+      "maxVariable": "punct",
+      "normalization": false,
+      "backwards": false
+    }
+  },
+  {
+    "key": {
+      "accountId": 1,
+      "imageName": 1,
+      "tags.tag": 1
+    },
+    "collation": {
+      "locale": "en_US",
+      "caseLevel": false,
+      "caseFirst": "off",
+      "strength": 1,
+      "numericOrdering": false,
+      "alternate": "non-ignorable",
+      "maxVariable": "punct",
+      "normalization": false,
+      "backwards": false
+    }
+  },
+  {
+    "key": {
+      "accountId": 1,
+      "imageName": 1,
+      "registry.domain": 1
+    }
+  },
+  {
+    "key": {
+      "accountId": 1,
+      "repositoryName": 1
+    }
+  },
+  {
+    "key": {
+      "accountId": 1,
+      "repositoryName": 1,
+      "binaryId": 1
+    }
+  },
+  {
+    "key": {
+      "accountId": 1,
+      "repositoryName": 1,
+      "tags.tag": 1
+    }
+  },
+  {
+    "key": {
+      "accountId": 1,
+      "repositoryName": 1,
+      "registry.domain": 1
+    }
+  },
+  {
+    "key": {
+      "accountId": 1,
+      "repoDigest": 1
+    }
+  },
+  {
+    "key": {
+      "accountId": 1,
+      "repositoryName": 1,
+      "registry.domain": 1,
+      "tags.tag": 1
+    },
+    "collation": {
+      "locale": "en_US",
+      "caseLevel": false,
+      "caseFirst": "off",
+      "strength": 1,
+      "numericOrdering": false,
+      "alternate": "non-ignorable",
+      "maxVariable": "punct",
+      "normalization": false,
+      "backwards": false
+    }
+  },
+  {
+    "key": {
+      "_id": 1
+    }
+  },
+  {
+    "key": {
+      "accountId": 1,
+      "parentRepoDigest": 1,
+      "registry.domain": 1,
+      "repoDigest": 1,
+      "repositoryName": 1
+    },
+    "collation": {
+      "locale": "en_US",
+      "caseLevel": false,
+      "caseFirst": "off",
+      "strength": 1,
+      "numericOrdering": false,
+      "alternate": "non-ignorable",
+      "maxVariable": "punct",
+      "normalization": false,
+      "backwards": false
+    }
+  }
+]
