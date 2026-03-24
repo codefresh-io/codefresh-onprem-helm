@@ -284,6 +284,7 @@ The following table reflects the recommended and supported versions of these dat
 
 | Codefresh version | MongoDB | PostgreSQL | Redis | RabbitMQ | Nats | Consul |
 | :---              | :---    | :---       | :---  | :---     | :--- | :---   |
+| 2.11.x            | \>=4.2 \<=7.x <br> Recommended: 7.x (`featureCompatibilityVersion: 7.0`)| \>= 16.x \<= 17.x <br> Recommended: 17.x | \>= 7.x \<= 8.x <br> Recommended: 8\.x | 3.13.x \| 4.0.x \| 4.1.x <br> Recommended: 4.1.x | 2.11.x <br> Recommended: 2.11.x | 1.21.x <br> Recommended: 1.21.x |
 | 2.10.x            | \>=4.2 \<=7.x <br> Recommended: 7.x (`featureCompatibilityVersion: 7.0`)| \>= 16.x \<= 17.x <br> Recommended: 17.x | \>= 7.x \<= 8.x <br> Recommended: 8\.x | 3.13.x \| 4.0.x \| 4.1.x <br> Recommended: 4.1.x | 2.11.x <br> Recommended: 2.11.x | 1.21.x <br> Recommended: 1.21.x |
 | 2.9.x             | \>=4.2 \<=7.x <br> Recommended: 7.x (`featureCompatibilityVersion: 7.0`)| \>= 16.x \<= 17.x <br> Recommended: 17.x | \>= 7.0.x \<= 7.4.x <br> Recommended: 7.4.x | 3.13.x \| 4.0.x \| 4.1.x <br> Recommended: 4.1.x | 2.11.x <br> Recommended: 2.11.x | 1.21.x <br> Recommended: 1.21.x |
 | 2.8.x             | \>=4.2 \<=7.x <br> Recommended: 7.x (`featureCompatibilityVersion: 6.0`)| \>= 13.x \<= 17.x <br> Recommended: 16.x \| 17.x | \>= 7.0.x \<= 7.4.x <br> Recommended: 7.4.x | 3.13.x \| 4.0.x \| 4.1.x <br> Recommended: 4.0.x | 2.11.x <br> Recommended: 2.11.x | 1.21.x <br> Recommended: 1.21.x |
@@ -316,6 +317,9 @@ To use external services like [MongoDB Atlas Database](https://www.mongodb.com/a
 `.Values.seed.mongoSeedJob.mongodbRootPassword/mongodbRootPasswordSecretKeyRef` <br>
 > Ref: <br>
 > [Create Users in Atlas](https://www.mongodb.com/docs/atlas/security-add-mongodb-users/#configure-database-users)
+
+> [!IMPORTANT]
+> By default, Zstd network compression is enabled in Codefresh for MongodDB. Please ensure that Zstd compression is supported and enabled on your MongoDB server. If you'd like to opt out, you can disable it via `.Values.global.env.MONGO_ENABLE_ZSTD_NETWORK_COMPRESSION=false`. Disabling compression is not recommended however, as it may significantly increase amount of traffic and corresponding costs.
 
 `values.yaml` for external MongoDB:
 
@@ -2631,6 +2635,10 @@ Changes in collections: following collections can be safely dropped *after* the 
 
 - Support for New Relic instrumentation is discontinued and disabled by default via `.Values.global.env.NEW_RELIC_ENABLED=false`. If you are relying on New Relic for monitoring, please reach out to Support team for alternatives.
 - Zstd compression is enabled by default for MongoDB traffic. Please ensure that Zstd compression is supported and enabled on your MongoDB server. If you'd like to opt out, you can disable it via `.Values.global.env.MONGO_ENABLE_ZSTD_NETWORK_COMPRESSION=false`.
+
+#### Changes in MongoDB schema:
+
+- Changes in indexes: follow [Maintaining MongoDB indexes](#maintaining-mongodb-indexes) guide to meet index requirements *before* the upgrade process.
 
 ## Troubleshooting
 
