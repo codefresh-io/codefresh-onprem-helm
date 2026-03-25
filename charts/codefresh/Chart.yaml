@@ -22,37 +22,9 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'Update "argo-platform" to 1.4068.0.'
+      description: 'Update "cf-deploy-kubernetes" to 17.0.4.'
     - kind: security
-      description: 'Fix various security vulnerabilities in argo-platform'
-    - kind: changed
-      description: 'Update "cf-ui" to 14.100.1.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in cf-ui'
-    - kind: changed
-      description: 'Update "cf-api" to 22.2.1.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in cf-api'
-    - kind: changed
-      description: 'Update "cf-platform-analytics" to 0.53.3.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in cf-platform-analytics'
-    - kind: changed
-      description: 'Update "cf-tls-sign" to 1.8.18.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in cf-tls-sign'
-    - kind: changed
-      description: 'Update "tasker-kubernetes" to 1.28.8.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in tasker-kubernetes'
-    - kind: changed
-      description: 'Update "engine" to 3.2.2.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in engine'
-    - kind: changed
-      description: 'Update "cf-container-logger" to 2.0.9.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in cf-container-logger'
+      description: 'Fix various security vulnerabilities in cf-deploy-kubernetes'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
