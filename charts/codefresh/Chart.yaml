@@ -22,29 +22,9 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'Update "cluster-providers" to 1.19.8.'
+      description: 'Update "cf-deploy-kubernetes" to 17.0.4.'
     - kind: security
-      description: 'Fix various security vulnerabilities in cluster-providers'
-    - kind: changed
-      description: 'Update "engine" to 3.2.3.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in engine'
-    - kind: changed
-      description: 'Update "k8s-monitor" to 4.11.23.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in k8s-monitor'
-    - kind: changed
-      description: 'Update "kube-integration" to 1.33.9.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in kube-integration'
-    - kind: changed
-      description: 'Update "pipeline-manager" to 3.143.6.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in pipeline-manager'
-    - kind: changed
-      description: 'Update "argo-hub-platform" to 0.1.36.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in argo-hub-platform'
+      description: 'Fix various security vulnerabilities in cf-deploy-kubernetes'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
