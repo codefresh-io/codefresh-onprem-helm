@@ -22,9 +22,9 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: release to 2.10 (#289)
-    - kind: changed
-      description: 'fix:  removed  values file from script get-all-images.sh (#277)'
+      description: 'Update "cf-deploy-kubernetes" to 17.0.4.'
+    - kind: security
+      description: 'Fix various security vulnerabilities in cf-deploy-kubernetes'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
