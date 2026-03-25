@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.10.14
+version: 2.10.15
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -22,9 +22,9 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'Update "cf-deploy-kubernetes" to 17.0.4.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in cf-deploy-kubernetes'
+      description: release to 2.10 (#289)
+    - kind: changed
+      description: 'fix:  removed  values file from script get-all-images.sh (#277)'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
