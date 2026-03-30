@@ -21,10 +21,10 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
-    - kind: changed
-      description: 'Update "cf-deploy-kubernetes" to 17.0.4.'
     - kind: security
-      description: 'Fix various security vulnerabilities in cf-deploy-kubernetes'
+      description: 'Fix various security vulnerabilities in codefresh/mongosh' 
+    - kind: security
+      description: 'Fix various security vulnerabilities in codefresh/rabbitmqadmin'   
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
