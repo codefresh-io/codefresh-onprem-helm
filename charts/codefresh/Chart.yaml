@@ -22,7 +22,13 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'chore: update mongosh, rabbitmqadmin in onprem 2.10 (#291)'
+      description: 'Update mongosh to 2.5.10-cf-3'
+    - kind: security
+      description: 'Fix various security vulnerabilities in codefresh/mongosh' 
+    - kind: changed
+      description: 'Update rabbitmqadmin to 2.8.1-cf-1'
+    - kind: security
+      description: 'Fix various security vulnerabilities in codefresh/rabbitmqadmin'   
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
