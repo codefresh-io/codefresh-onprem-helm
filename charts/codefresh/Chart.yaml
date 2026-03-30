@@ -22,6 +22,10 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
+      description: security fixes (#292)
+    - kind: changed
+      description: 'docs: document changes in external services (#284)'
+    - kind: changed
       description: 'build: enable MongoDB compression; disable New relic (#282)'
     - kind: changed
       description: 'feat: create release-2.11 (#279)'
