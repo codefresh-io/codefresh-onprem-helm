@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.10.15
+version: 2.10.16
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -22,9 +22,7 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'Update "cf-deploy-kubernetes" to 17.0.4.'
-    - kind: security
-      description: 'Fix various security vulnerabilities in cf-deploy-kubernetes'
+      description: 'update tasker with security fixes'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -90,7 +88,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: cfsign.enabled
   - name: tasker-kubernetes
-    version: 1.28.6-onprem-59ab9d8
+    version: 1.28.7-onprem-99b7200
     repository: oci://quay.io/codefresh/charts
     condition: tasker-kubernetes.enabled
   - name: context-manager
