@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.10.15
+version: 2.10.16
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -21,8 +21,12 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
+    - kind: changed
+      description: 'Update mongosh to 2.5.10-cf-3'
     - kind: security
       description: 'Fix various security vulnerabilities in codefresh/mongosh' 
+    - kind: changed
+      description: 'Update rabbitmqadmin to 2.8.1-cf-1'
     - kind: security
       description: 'Fix various security vulnerabilities in codefresh/rabbitmqadmin'   
 dependencies:
