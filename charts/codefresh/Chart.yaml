@@ -22,6 +22,8 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
+      description: 'chore: fix various security vulnerabilities in cf-api (#298)'
+    - kind: changed
       description: 'chore: security fixes in tasker, docker-builder for onprem 2-11 (#295)'
     - kind: changed
       description: security fixes (#292)
