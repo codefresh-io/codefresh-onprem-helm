@@ -1007,7 +1007,7 @@ helm-repo-manager:
       enabled: false
     image:
       repository: ghcr.io/helm/chartmuseum
-      tag: v0.16.3
+      tag: v0.16.5
   resources:
     requests:
       cpu: 100m
