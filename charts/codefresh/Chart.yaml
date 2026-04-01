@@ -26,7 +26,9 @@ annotations:
     - kind: changed
       description: 'chore: update chartmuseum to v0.16.5 (#302)'
     - kind: changed
-      description: 'chore: update tasker-kubernetes, docker-builder for onprem 2-10 (#294)'
+      description: 'chore: update docker-builder to 1.5.7 (#294)'
+    - kind: changed
+      description: 'chore: update tasker-kubernetes to 1.28.9 (#294)'
     - kind: changed
       description: 'chore: fix various security vulnerabilities in cf-api (#299)'
 dependencies:
