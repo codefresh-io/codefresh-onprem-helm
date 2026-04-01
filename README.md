@@ -89,8 +89,9 @@ See [Use OCI-based registries](https://helm.sh/docs/topics/registries/)
 
 **Important:** only helm 3.8.0+ is supported
 
-> ⚠️ The default chart configuration with embedded databases is **not intended for production usage**! You should use Cloud PaaS for MongoDB, PostgreSQL, Redis and RabbitMQ.
-See [Configuring external services](#configuring-external-services) section for details.
+> [!WARNING]
+> The default chart configuration with embedded databases is **not intended for production usage**! You should use Cloud PaaS for MongoDB, PostgreSQL, Redis, RabbitMQ, Nats and Consul.
+> See [Configuring external services](#configuring-external-services) section for details.
 
 Edit default `values.yaml` or create empty `cf-values.yaml`
 
@@ -298,6 +299,9 @@ The following table reflects the recommended and supported versions of these dat
 All of them can be externalized. See the next sections.
 
 ### Configuring external services
+
+> [!WARNING]
+> The default chart configuration with embedded databases is **not intended for production usage**! You should use Cloud PaaS for MongoDB, PostgreSQL, Redis, RabbitMQ, Nats and Consul.
 
 The chart contains required dependencies for the corresponding services
 - [bitnami/mongodb](https://github.com/bitnami/charts/tree/main/bitnami/mongodb)
@@ -1727,6 +1731,7 @@ The required index definitions for each release can be found at the following re
 - `2.8` <https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.8/indexes>
 - `2.9` <https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.9/indexes>
 - `2.10` <https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.10/indexes>
+- `2.11` <https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.11/indexes>
 
 The indexes specifications are stored in JSON files. The directory structure is:
 
