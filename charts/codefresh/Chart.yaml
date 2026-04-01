@@ -22,13 +22,7 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'Update mongosh to 2.5.10-cf-3'
-    - kind: security
-      description: 'Fix various security vulnerabilities in codefresh/mongosh' 
-    - kind: changed
-      description: 'Update rabbitmqadmin to 2.8.1-cf-1'
-    - kind: security
-      description: 'Fix various security vulnerabilities in codefresh/rabbitmqadmin'
+      description: 'update tasker with security fixes'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -94,7 +88,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: cfsign.enabled
   - name: tasker-kubernetes
-    version: 1.28.6-onprem-59ab9d8
+    version: 1.28.7-onprem-99b7200
     repository: oci://quay.io/codefresh/charts
     condition: tasker-kubernetes.enabled
   - name: context-manager
