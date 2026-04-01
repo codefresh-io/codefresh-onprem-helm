@@ -36,7 +36,7 @@ seed:
     image:
       registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
       repository: codefresh/mongosh
-      tag: 2.5.10-cf-2
+      tag: 2.5.10-cf-3
     # -- Root user in plain text (required ONLY for seed job!).
     mongodbRootUser: "root"
     # -- Root user from existing secret
@@ -455,7 +455,7 @@ hooks:
     image:
       registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
       repository: codefresh/mongosh
-      tag: 2.5.10-cf-2
+      tag: 2.5.10-cf-3
     affinity: {}
     nodeSelector:
       kubernetes.io/arch: amd64
@@ -480,7 +480,7 @@ hooks:
     image:
       registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
       repository: codefresh/rabbitmqadmin
-      tag: 2.8.1
+      tag: 2.8.1-cf-1
     affinity: {}
     nodeSelector:
       kubernetes.io/arch: amd64
@@ -513,7 +513,7 @@ runtimeImages:
   COMPOSE_IMAGE: quay.io/codefresh/compose:v5.0.1-1.6.1@sha256:420add29b84665e5c03f51a065e16761253a7c1fe349f884c361e9a68c2c6d15
   CONTAINER_LOGGER_IMAGE: quay.io/codefresh/cf-container-logger:2.0.9@sha256:3d493cfab4b4a04668cc7842fb5a5cd321fcbf80d167837b5c9d7f2569da0594
   DIND_IMAGE: quay.io/codefresh/dind:29.2.0-3.0.12@sha256:81fdbe5a7e048484007126d961772b4ab31889c4139176c1af774c5f709d739e
-  DOCKER_BUILDER_IMAGE: quay.io/codefresh/cf-docker-builder:1.5.6@sha256:b12fe181f39aa1b41baa0d2324ac3b6e8d5db705a468ff35c2c73e94fdf70a32
+  DOCKER_BUILDER_IMAGE: quay.io/codefresh/cf-docker-builder:1.5.7@sha256:94a34c7e749392d7b6e7d7764d0c0b84abc6fff6811ffce29f5d2888770244ef
   DOCKER_PULLER_IMAGE: quay.io/codefresh/cf-docker-puller:8.0.26@sha256:a518ca194d85d5f254954f201e33f6cd4cd1a82d552fce8cdceabbaf12786cb3
   DOCKER_PUSHER_IMAGE: quay.io/codefresh/cf-docker-pusher:6.0.24@sha256:199053e81fbba18363f4f7081b48b6da61b02d794ff8a914707710cd867bed96
   ENGINE_IMAGE: quay.io/codefresh/engine:3.2.3@sha256:d426eb8ff28b8dd6fe3edf2770b55051f511358c5ec8207aeb4d999646ff583e
