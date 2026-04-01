@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.10.16
+version: 2.10.17
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -22,7 +22,15 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'update tasker with security fixes'
+      description: 'chore: update pikolo to v0.14.11 '
+    - kind: changed
+      description: 'chore: update chartmuseum to v0.16.5 (#302)'
+    - kind: changed
+      description: 'chore: update docker-builder to 1.5.7 (#294)'
+    - kind: changed
+      description: 'chore: update tasker-kubernetes to 1.28.9 (#294)'
+    - kind: changed
+      description: 'chore: fix various security vulnerabilities in cf-api (#299)'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
