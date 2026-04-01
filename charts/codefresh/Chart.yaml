@@ -22,6 +22,8 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
+      description: 'chore: update tasker-kubernetes, docker-builder for onprem 2-10 (#294)'
+    - kind: changed
       description: 'chore: fix various security vulnerabilities in cf-api (#299)'
 dependencies:
   - name: cf-common
