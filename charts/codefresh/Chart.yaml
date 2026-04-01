@@ -22,6 +22,8 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
+      description: 'chore: update chartmuseum to v0.16.5 (#302)'
+    - kind: changed
       description: 'chore: update tasker-kubernetes, docker-builder for onprem 2-10 (#294)'
     - kind: changed
       description: 'chore: fix various security vulnerabilities in cf-api (#299)'
