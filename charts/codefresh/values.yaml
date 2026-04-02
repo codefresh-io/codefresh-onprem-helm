@@ -521,7 +521,7 @@ runtimeImages:
   GIT_CLONE_IMAGE: quay.io/codefresh/cf-git-cloner:10.3.8@sha256:73fca875568d05611e7d55cdcaebdfbaf1934fa26c6750f8193b559b46770aab
   KUBE_DEPLOY: quay.io/codefresh/cf-deploy-kubernetes:17.0.4@sha256:beb578bbe5bbf66c034c51937c909d16faf473225815ce416188176d363ec15d
   PIPELINE_DEBUGGER_IMAGE: quay.io/codefresh/cf-debugger:1.3.13@sha256:2dbf79a87f641507fc2111d4ff01e046954bca2f31e41ebc1e9cda96b1189780
-  TEMPLATE_ENGINE: quay.io/codefresh/pikolo:0.14.10@sha256:4b7cb2e58d8f314ed2edcc3c864a86372eceaba5df4e326babf122be57de5c1b
+  TEMPLATE_ENGINE: quay.io/codefresh/pikolo:0.14.11@sha256:fc1dc409ceef47ffdc5a8779851ac201c8c0322fea1b80d0cb6a0a99da9c4c6b
   CR_6177_FIXER: docker.io/library/alpine:3.21
   GC_BUILDER_IMAGE: docker.io/library/alpine:3.21
 
@@ -1007,7 +1007,7 @@ helm-repo-manager:
       enabled: false
     image:
       repository: ghcr.io/helm/chartmuseum
-      tag: v0.16.3
+      tag: v0.16.5
   resources:
     requests:
       cpu: 100m
