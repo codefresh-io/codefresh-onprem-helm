@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 0.0.0
+version: 2.11.0-rc.1
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -13,22 +13,22 @@ maintainers:
     url: https://codefresh-io.github.io/
 appVersion: 0.0.0
 annotations:
-  artifacthub.io/prerelease: "false"
+  artifacthub.io/prerelease: "true"
   artifacthub.io/alternativeName: "codefresh-onprem"
   artifacthub.io/containsSecurityUpdates: "true"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   # artifacthub.io/changes: |
   #   - kind:
   #     description: ""
+  # ↓↓↓ ⚠️ Verify that the "Release Notes" URL is correct before releasing globally. ↓↓↓
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'Update "codefresh/mongosh" to 2.5.10-cf-3'
-    - kind: security
-      description: 'Fix various security vulnerabilities in codefresh/mongosh' 
-    - kind: changed
-      description: 'Update "codefresh/rabbitmqadmin" to 8.17.1-cf-1'
-    - kind: security
-      description: 'Fix various security vulnerabilities in codefresh/rabbitmqadmin'
+      description: 'Initial 2.11.0-rc.1 release'
+      links:
+        - name: Release notes
+          url: https://codefresh.io/docs/docs/whats-new/on-prem-release-notes/#on-premises-version-211
+        - name: How to upgrade to 2.11.0
+          url: https://github.com/codefresh-io/codefresh-onprem-helm?tab=readme-ov-file#to-2-11-0
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts

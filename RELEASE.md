@@ -40,6 +40,13 @@ git checkout -b patch/something release-x.y
 - Review and update release notes in the corresponding release draft on GitHub.
 - Merge the PR to create a new release. Release will be published automatically.
 
+## Creating release candidates
+
+The process of creating release candidates is the same as above. The only differences are:
+
+* release version should be suffixed with `-rc.N`, where `N` is the release candidate number (e.g. `2.11.0-rc.1`);
+* chart annotation `artifacthub.io/prerelease: "true"` should be added to `Chart.yaml` to mark the release as pre-release.
+
 ## Versioning in CI and Promote pipelines
 
 - Every commit to `feat` branches creates `oci://quay.io/codefresh/dev/codefresh:0.0.0-<BRANCH_NAME_NORMALIZED>-<SHORT_SHA>` helm chart
