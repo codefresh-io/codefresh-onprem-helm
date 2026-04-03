@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.11.0
+version: 2.11.0-rc.1
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -13,7 +13,7 @@ maintainers:
     url: https://codefresh-io.github.io/
 appVersion: 0.0.0
 annotations:
-  artifacthub.io/prerelease: "false"
+  artifacthub.io/prerelease: "true"
   artifacthub.io/alternativeName: "codefresh-onprem"
   artifacthub.io/containsSecurityUpdates: "true"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
@@ -22,67 +22,12 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'chore: fix various security vulnerabilities in cf-api (#298)'
-    - kind: changed
-      description: 'chore: security fixes in tasker, docker-builder for onprem 2-11 (#295)'
-    - kind: changed
-      description: security fixes (#292)
-    - kind: changed
-      description: 'docs: document changes in external services (#284)'
-    - kind: changed
-      description: 'build: enable MongoDB compression; disable New relic (#282)'
-    - kind: changed
-      description: 'feat: create release-2.11 (#279)'
-    - kind: changed
-      description: 'chore(deps): bump subcharts (#174)'
-    - kind: changed
-      description: create release-2.11 branch
-    - kind: changed
-      description: 'feat: drop bitnami charts (#268)'
-    - kind: changed
-      description: update components (#266)
-    - kind: changed
-      description: 'docs: add compatibility for Nats and Consul (#264)'
-    - kind: changed
-      description: 'chore: update components (#257)'
-    - kind: changed
-      description: 'chore(main): security release patch (#254)'
-    - kind: changed
-      description: update values for main branch (#249)
-    - kind: changed
-      description: 'chore: update components for main (#248)'
-    - kind: changed
-      description: update mongosh and rabbitmqadmin (#244)
-    - kind: changed
-      description: 'docs: add notes for migrations from built-in bitnami subcharts (#243)'
-    - kind: changed
-      description: 'chore: remove docker-tag-pusher; update components (main base) (#240)'
-    - kind: changed
-      description: 'build(classic): upgrade Classic Runtime components (#219) (#221)'
-    - kind: changed
-      description: 'chore: docs on nats (#218)'
-    - kind: changed
-      description: 'docs: add external consul  (#217)'
-    - kind: changed
-      description: 'chore: docs on hermes (#216)'
-    - kind: changed
-      description: 'chore: promote argo-hub platform and engine (#208)'
-    - kind: changed
-      description: 'docs: document external services compatibility (#211)'
-    - kind: changed
-      description: updated kubectl to 1.35.0 (#204)
-    - kind: changed
-      description: 'docs: document index changes (#194) (#203)'
-    - kind: changed
-      description: bump ingress-nginx (#201)
-    - kind: changed
-      description: 'chore: added masontikhonov as codeowner (#196)'
-    - kind: changed
-      description: updated curl to 8.17.0 (#190)
-    - kind: changed
-      description: 'build: upgrade runtime images (#188)'
-    - kind: changed
-      description: upd argo-hub-platform and mongosh (#181)
+      description: 'Initial 2.11.0 release'
+      links:
+        - name: Release notes
+          url: https://codefresh.io/docs/docs/whats-new/on-prem-release-notes/#on-premises-version-211
+        - name: How to upgrade to 2.11.0
+          url: https://github.com/codefresh-io/codefresh-onprem-helm?tab=readme-ov-file#to-2-11-0
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
