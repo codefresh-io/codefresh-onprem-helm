@@ -20,9 +20,10 @@ annotations:
   # artifacthub.io/changes: |
   #   - kind:
   #     description: ""
+  # ↓↓↓ ⚠️ Verify that the "Release Notes" URL is correct before releasing globally. ↓↓↓
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'Initial 2.11.0 release'
+      description: 'Initial 2.11.0-rc.1 release'
       links:
         - name: Release notes
           url: https://codefresh.io/docs/docs/whats-new/on-prem-release-notes/#on-premises-version-211
