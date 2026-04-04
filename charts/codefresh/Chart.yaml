@@ -20,15 +20,7 @@ annotations:
   # artifacthub.io/changes: |
   #   - kind:
   #     description: ""
-  artifacthub.io/changes: |-
-    - kind: changed
-      description: 'Update "codefresh/mongosh" to 2.5.10-cf-3'
-    - kind: security
-      description: 'Fix various security vulnerabilities in codefresh/mongosh'
-    - kind: changed
-      description: 'Update "codefresh/rabbitmqadmin" to 2.8.1-cf-1'
-    - kind: security
-      description: 'Fix various security vulnerabilities in codefresh/rabbitmqadmin' 
+  artifacthub.io/changes: "- kind: changed\n  description: 'Update \"codefresh/mongosh\" to 2.5.10-cf-3'\n- kind: security\n  description: 'Fix various security vulnerabilities in codefresh/mongosh'\n- kind: changed\n  description: 'Update \"codefresh/rabbitmqadmin\" to 2.8.1-cf-1'\n- kind: security\n  description: 'Fix various security vulnerabilities in codefresh/rabbitmqadmin' "
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -98,7 +90,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: tasker-kubernetes.enabled
   - name: context-manager
-    version: 2.40.0
+    version: 2.41.0
     repository: oci://quay.io/codefresh/charts
     condition: context-manager.enabled
   - name: pipeline-manager
@@ -200,7 +192,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-test-reporting.enabled
   - name: cfui
-    version: 14.100.4
+    version: 14.100.6
     repository: oci://quay.io/codefresh/charts
     condition: cfui.enabled
   - name: k8s-monitor
@@ -242,7 +234,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
-    version: 1.4073.0
+    version: 1.4077.0
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform
@@ -254,7 +246,7 @@ dependencies:
     version: 0.1.0
     condition: cf-oidc-provider.enabled
   - name: mailer
-    version: "1.22.4"
+    version: "1.23.0"
     repository: oci://quay.io/codefresh/charts
     condition: mailer.enabled
   - name: payments
