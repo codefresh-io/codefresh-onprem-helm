@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.10.0
+version: 2.10.18
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -19,136 +19,10 @@ annotations:
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   # artifacthub.io/changes: |
   #   - kind:
-  #     description: ""
+  #     description: " "
   artifacthub.io/changes: |-
-    - kind: changed
-      description: 'chore: fix various security vulnerabilities in argo-platform (#309)'
-    - kind: changed
-      description: 'chore(codefresh/2.10.17): prepare chart content for release (#300)'
-    - kind: changed
-      description: 'chore: update chartmuseum to v0.16.5 (#302)'
-    - kind: changed
-      description: 'chore: update tasker-kubernetes, docker-builder for onprem 2-10 (#294)'
-    - kind: changed
-      description: 'chore: fix various security vulnerabilities in cf-api (#299)'
-    - kind: changed
-      description: 'chore(codefresh/2.10.16): prepare chart content for release (#296)'
-    - kind: changed
-      description: 'chore: update mongosh, rabbitmqadmin in onprem 2.10 (#291)'
-    - kind: changed
-      description: 'chore(codefresh/2.10.15): prepare chart content for release (#290)'
-    - kind: changed
-      description: release to 2.10 (#289)
-    - kind: changed
-      description: 'fix:  removed  values file from script get-all-images.sh (#277)'
-    - kind: changed
-      description: 'chore(codefresh/2.10.14): prepare chart content for release (#274)'
-    - kind: changed
-      description: 'chore: Fix various security vulnerabilities (#275)'
-    - kind: changed
-      description: 'feat: drop bitnami charts (#273)'
-    - kind: changed
-      description: 'chore(codefresh/2.10.13): prepare chart content for release (#270)'
-    - kind: changed
-      description: 'chore: Fix various security vulnerabilities in argo-platform (#269)'
-    - kind: changed
-      description: 'chore(codefresh/2.10.12): prepare chart content for release (#267)'
-    - kind: changed
-      description: 'chore: Fix various security vulnerabilities in gitops platform components (#265)'
-    - kind: changed
-      description: 'chore(codefresh/2.10.11): prepare chart content for release (#263)'
-    - kind: changed
-      description: 'chore: Fix various security vulnerabilities in platform components (#260)'
-    - kind: changed
-      description: 'chore(codefresh/2.10.10): prepare chart content for release (#259)'
-    - kind: changed
-      description: 'chore: update components (#258)'
-    - kind: changed
-      description: 'chore(codefresh/2.10.9): prepare chart content for release (#256)'
-    - kind: changed
-      description: 'chore(release-2.10): update components for security patch (#255)'
-    - kind: changed
-      description: 'chore(codefresh/2.10.8): prepare chart content for release (#253)'
-    - kind: changed
-      description: patch gitops-dashboard-manager (#252)
-    - kind: changed
-      description: 'chore(codefresh/2.10.7): prepare chart content for release (#251)'
-    - kind: changed
-      description: 'chore(release-2.10): update components for security patch (#250)'
-    - kind: changed
-      description: 'chore(codefresh/2.10.6): prepare chart content for release (#246)'
-    - kind: changed
-      description: 'chore: update components for release 2.10 (#247)'
-    - kind: changed
-      description: update mongosh and rabbitmqadmin (#245)
-    - kind: changed
-      description: 'chore(codefresh/2.10.5): prepare chart content for release (#242)'
-    - kind: changed
-      description: remove docker-tag-pusher; update components (#241)
-    - kind: changed
-      description: 'chore(codefresh/2.10.4): prepare chart content for release (#236)'
-    - kind: changed
-      description: updated cluster-providers (#239)
-    - kind: changed
-      description: 'chore: Fix various security vulnerabilities in platform components (#238)'
-    - kind: changed
-      description: updated tasker kubernetes (#237)
-    - kind: changed
-      description: 'chore: Fix various security vulnerabilities in platform components (#235)'
-    - kind: changed
-      description: 'chore: security fix (#232)'
-    - kind: changed
-      description: updated cfsign, kube-integration, platform-analytics (#234)
-    - kind: changed
-      description: 'chore(codefresh/2.10.3): prepare chart content for release (#225)'
-    - kind: changed
-      description: 'chore: upgrade Classic Runtime components (#231)'
-    - kind: changed
-      description: update internal-gateway (#230)
-    - kind: changed
-      description: updated cf-api (#227)
-    - kind: changed
-      description: updated cf-api (#226)
-    - kind: changed
-      description: security fix (#222)
-    - kind: changed
-      description: 'chore(codefresh/2.10.2): prepare chart content for release (#220)'
-    - kind: changed
-      description: 'build(classic): upgrade Classic Runtime components (#219)'
-    - kind: changed
-      description: 'chore(codefresh/2.10.1): prepare chart content for release (#215)'
-    - kind: changed
-      description: 'chore(CR-31244): updated kubectl to 1.35.0 (#206)'
-    - kind: changed
-      description: 'chore: promote argohub platform and engine to 2.10 (#209)'
-    - kind: changed
-      description: 'chore(codefresh/2.10.0): prepare chart content for release (#175)'
-    - kind: changed
-      description: 'build: upgrade `argo-platform` (#212)'
-    - kind: changed
-      description: 'docs: document external services compatibility (#210)'
-    - kind: changed
-      description: bump ingress-nginx (#200)
-    - kind: changed
-      description: 'chore: added masontikhonov as codeowner (#198)'
-    - kind: changed
-      description: 'docs: document index changes (#194)'
-    - kind: changed
-      description: 'chore: CR-31401 fix secutiry vulnerabilities (#195)'
-    - kind: changed
-      description: 'build: upgrade Classic Runtime (#189)'
-    - kind: changed
-      description: updated curl to 8.17.0 (#192)
-    - kind: changed
-      description: 'chore: CR-32333 fix secutiry vulnerabilities (#187)'
-    - kind: changed
-      description: 'chore: CR-31401 fix secutiry vulnerabilities (#185)'
-    - kind: changed
-      description: upd argo-hub-platform and mongosh (#182)
-    - kind: changed
-      description: 'fix: engine command (#178)'
-    - kind: changed
-      description: 'onprem: 2.10.0 (#173)'
+    - kind: security
+      description: 'chore: fix various security vulnerabilities in argo-platform'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
