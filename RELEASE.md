@@ -24,6 +24,7 @@ git checkout -b update-release-x.y release-x.y
 - Review `codefresh/x.y.z: prepare chart content for release` PR. Update `artifacthub.io/changes` annotation if needed.
 - Review and update release notes in the corresponding release draft on GitHub.
 - Merge the PR to create a new release. Release will be published automatically.
+- Update `versions.json` at [e2e-desired-state](https://github.com/codefresh-io/e2e-desired-state/blob/main/versions.json) repository with the new release version with the corresponding `gitops-runtime` version (sync with FnM and Product team to get the correct `gitops-runtime` version)
 
 For a **PATCH** release:
 
