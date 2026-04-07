@@ -463,7 +463,7 @@ hooks:
     tolerations: []
   # -- Recreates `consul-headless` service due to duplicated ports in Service during the upgrade.
   consul:
-    enabled: true
+    enabled: false
     image:
       registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
       repository: codefresh/kubectl
@@ -1279,7 +1279,7 @@ rabbitmq:
 
 # -- builder
 builder:
-  enabled: true
+  enabled: false
   imagePullSecrets: []
   initContainers:
     register:
