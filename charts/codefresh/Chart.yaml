@@ -20,14 +20,18 @@ annotations:
   # artifacthub.io/changes: |
   #   - kind:
   #     description: ""
-  # ↓↓↓ ⚠️ Verify that the "Release Notes" URL is correct before releasing globally. ↓↓↓
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'feat: disable ingress-nginx (#312) (#314)'
-    - kind: changed
-      description: 'fix(jobs): upgrade `codefresh/mongosh` (#313)'
-    - kind: changed
-      description: remove rc suffix
+      description: 'Initial 2.11 release'
+      links:
+        - name: Release notes
+          url: https://codefresh.io/docs/docs/whats-new/on-prem-release-notes/#on-premises-version-211
+        - name: How to upgrade to 2.11.0
+          url: https://github.com/codefresh-io/codefresh-onprem-helm?tab=readme-ov-file#to-2-11-0
+    - kind: deprecated
+      description: 'Deprecate built-in Ingress NGINX'
+    - kind: deprecated
+      description: 'Deprecate support for New Relic'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
