@@ -23,6 +23,8 @@ annotations:
   # ↓↓↓ ⚠️ Verify that the "Release Notes" URL is correct before releasing globally. ↓↓↓
   artifacthub.io/changes: |-
     - kind: changed
+      description: 'feat: disable ingress-nginx (#312) (#314)'
+    - kind: changed
       description: 'fix(jobs): upgrade `codefresh/mongosh` (#313)'
     - kind: changed
       description: remove rc suffix
