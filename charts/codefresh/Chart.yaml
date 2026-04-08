@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.11.0
+version: 2.11.1
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -23,12 +23,9 @@ annotations:
   # ↓↓↓ ⚠️ Verify that the "Release Notes" URL is correct before releasing globally. ↓↓↓
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'Initial 2.11.0-rc.1 release'
-      links:
-        - name: Release notes
-          url: https://codefresh.io/docs/docs/whats-new/on-prem-release-notes/#on-premises-version-211
-        - name: How to upgrade to 2.11.0
-          url: https://github.com/codefresh-io/codefresh-onprem-helm?tab=readme-ov-file#to-2-11-0
+      description: 'fix(jobs): upgrade `codefresh/mongosh` (#313)'
+    - kind: changed
+      description: remove rc suffix
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
