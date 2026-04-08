@@ -2627,7 +2627,7 @@ Changes in collections: following collections can be safely dropped *after* the 
 
 - Support for New Relic instrumentation is discontinued and disabled by default via `.Values.global.env.NEW_RELIC_ENABLED=false`. If you are relying on New Relic for monitoring, please reach out to Support team for alternatives.
 - Zstd compression is enabled by default for MongoDB traffic. Please ensure that Zstd compression is supported and enabled on your MongoDB server. If you'd like to opt out, you can disable it via `.Values.global.env.MONGO_ENABLE_ZSTD_NETWORK_COMPRESSION=false`.
-- `ingress-nginx` subchart is disabled by default. If you are using it, please enable it explicitly via `.Values.ingress-nginx.enabled=true`.
+- `ingress-nginx` subchart is disabled by default and will be removed in future release. If you are using it, please enable it explicitly via `.Values.ingress-nginx.enabled=true`.
 
 #### Changes in MongoDB schema:
 
