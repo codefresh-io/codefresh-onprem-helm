@@ -748,7 +748,9 @@ kubectl -n codefresh cp ./events.db pod/cf-cronus-0:/var/boltdb/events.db
 
 ### Configuring Ingress-NGINX
 
-#### ⚠️ ⚠️ ⚠️ Ingress-NGINX is [deprecated](https://kubernetes.io/blog/2025/11/11/ingress-nginx-retirement/) since March 2026! It is DISABLED by default in the chart since version 2.11.0 and will be removed in the future releases!
+> [!WARNING]
+> **⚠️ ⚠️ ⚠️ Ingress-NGINX is [deprecated](https://kubernetes.io/blog/2025/11/11/ingress-nginx-retirement/) since March 2026!**
+> It is DISABLED by default in the chart since version 2.11.0 and will be removed in the future releases!
 
 **If enabled**, the chart deploys the [ingress-nginx](https://github.com/kubernetes/ingress-nginx/tree/main) and exposes controller behind a Service of `Type=LoadBalancer`
 
