@@ -1046,7 +1046,7 @@ hermes:
 # @default -- See below
 # Ref: https://github.com/kubernetes/ingress-nginx/blob/main/charts/ingress-nginx/values.yaml
 ingress-nginx:
-  enabled: true
+  enabled: false
   controller:
     enableAnnotationValidations: true
     allowSnippetAnnotations: false

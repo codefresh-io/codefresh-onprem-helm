@@ -139,16 +139,14 @@ global:
 
 ```
 
-- Specify `.Values.ingress.tls.cert` and `.Values.ingress.tls.key` OR `.Values.ingress.tls.existingSecret`
+- Specify `.Values.ingress.ingressClassName` with `.Values.ingress.tls.cert` and `.Values.ingress.tls.key` OR `.Values.ingress.tls.existingSecret`
 
 ```yaml
 ingress:
   # -- Enable the Ingress
   enabled: true
   # -- Set the ingressClass that is used for the ingress.
-  # Default `nginx-codefresh` is created from `ingress-nginx` controller subchart
-  # If you specify a different ingress class, disable `ingress-nginx` subchart (see below)
-  ingressClassName: nginx-codefresh
+  ingressClassName: your-ingress-class-name
   tls:
     # -- Enable TLS
     enabled: true
@@ -160,24 +158,6 @@ ingress:
     key: ""
     # -- Existing `kubernetes.io/tls` type secret with TLS certificates (keys: `tls.crt`, `tls.key`)
     existingSecret: ""
-
-ingress-nginx:
-  # -- Enable ingress-nginx controller
-  enabled: true
-```
-
-- *Or specify your own `.Values.ingress.ingressClassName` (disable built-in ingress-nginx subchart)*
-
-```yaml
-ingress:
-  # -- Enable the Ingress
-  enabled: true
-  # -- Set the ingressClass that is used for the ingress.
-  ingressClassName: nginx
-
-ingress-nginx:
-  # -- Disable ingress-nginx controller
-  enabled: false
 ```
 
 - Install the chart
@@ -768,7 +748,11 @@ kubectl -n codefresh cp ./events.db pod/cf-cronus-0:/var/boltdb/events.db
 
 ### Configuring Ingress-NGINX
 
-The chart deploys the [ingress-nginx](https://github.com/kubernetes/ingress-nginx/tree/main) and exposes controller behind a Service of `Type=LoadBalancer`
+> [!WARNING]
+> **⚠️ ⚠️ ⚠️ Ingress-NGINX is [deprecated](https://kubernetes.io/blog/2025/11/11/ingress-nginx-retirement/) since March 2026!**
+> It is DISABLED by default in the chart since version 2.11.0 and will be removed in the future releases!
+
+**If enabled**, the chart deploys the [ingress-nginx](https://github.com/kubernetes/ingress-nginx/tree/main) and exposes controller behind a Service of `Type=LoadBalancer`
 
 All installation options for `ingress-nginx` are described at [Configuration](https://github.com/kubernetes/ingress-nginx/tree/main/charts/ingress-nginx#configuration)
 
@@ -780,6 +764,7 @@ Relevant examples for Codefesh are below:
 
 ```yaml
 ingress-nginx:
+  enable: true
   controller:
     service:
       annotations:
@@ -804,6 +789,7 @@ ingress:
 
 ```yaml
 ingress-nginx:
+  enable: true
   controller:
     service:
       annotations:
@@ -832,10 +818,6 @@ ingress:
 *[Application Load Balancer](https://github.com/kubernetes-sigs/aws-load-balancer-controller/tree/main/helm/aws-load-balancer-controller) should be deployed to the cluster*
 
 ```yaml
-ingress-nginx:
-  # -- Disable ingress-nginx subchart installation
-  enabled: false
-
 ingress:
   # -- ALB contoller ingress class
   ingressClassName: alb
@@ -1197,11 +1179,6 @@ cfsign:
     volume-permissions:
       enabled: false
 
-ingress-nginx:
-  controller:
-    autoscaling:
-      enabled: true
-
 mongodb:
   architecture: replicaset
   replicaCount: 3
@@ -1310,9 +1287,6 @@ consul:
 cronus:
   podSecurityContext:
     enabled: false
-
-ingress-nginx:
-  enabled: false
 
 mongodb:
   podSecurityContext:
@@ -2640,6 +2614,7 @@ Changes in collections: following collections can be safely dropped *after* the 
 
 - Support for New Relic instrumentation is discontinued and disabled by default via `.Values.global.env.NEW_RELIC_ENABLED=false`. If you are relying on New Relic for monitoring, please reach out to Support team for alternatives.
 - Zstd compression is enabled by default for MongoDB traffic. Please ensure that Zstd compression is supported and enabled on your MongoDB server. If you'd like to opt out, you can disable it via `.Values.global.env.MONGO_ENABLE_ZSTD_NETWORK_COMPRESSION=false`.
+- `ingress-nginx` subchart is disabled by default and will be removed in future release. If you are using it, please enable it explicitly via `.Values.ingress-nginx.enabled=true`.
 
 #### Changes in MongoDB schema:
 
