@@ -78,11 +78,11 @@ dependencies:
     repository: https://kubernetes.github.io/ingress-nginx
     condition: ingress-nginx.enabled
   - name: cluster-providers
-    version: 1.19.12
+    version: 1.19.13
     repository: oci://quay.io/codefresh/charts
     condition: cluster-providers.enabled
   - name: kube-integration
-    version: 1.33.9
+    version: 1.34.1
     repository: oci://quay.io/codefresh/charts
     condition: kube-integration.enabled
   - name: charts-manager
@@ -98,15 +98,15 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: tasker-kubernetes.enabled
   - name: context-manager
-    version: 2.40.0
+    version: 2.41.1
     repository: oci://quay.io/codefresh/charts
     condition: context-manager.enabled
   - name: pipeline-manager
-    version: 4.1.3
+    version: 4.1.4
     repository: oci://quay.io/codefresh/charts
     condition: pipeline-manager.enabled
   - name: gitops-dashboard-manager
-    version: 1.16.7
+    version: 1.16.8
     repository: oci://quay.io/codefresh/charts
     condition: gitops-dashboard-manager.enabled
   - name: cfapi
@@ -200,7 +200,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-test-reporting.enabled
   - name: cfui
-    version: 14.100.4
+    version: 14.100.7
     repository: oci://quay.io/codefresh/charts
     condition: cfui.enabled
   - name: k8s-monitor
@@ -208,11 +208,11 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: k8s-monitor.enabled
   - name: runtime-environment-manager
-    version: 4.1.0
+    version: 4.1.1
     repository: oci://quay.io/codefresh/charts
     condition: runtime-environment-manager.enabled
   - name: cf-broadcaster
-    version: 1.15.3
+    version: 1.15.4
     repository: oci://quay.io/codefresh/charts
     condition: cf-broadcaster.enabled
   - name: helm-repo-manager
@@ -224,7 +224,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
   - name: nomios
-    version: 0.11.16
+    version: 0.12.0
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
   - name: cronus
@@ -233,16 +233,16 @@ dependencies:
     condition: hermes.enabled
   - name: cf-platform-analytics
     alias: cf-platform-analytics-platform
-    version: 0.53.3
+    version: 0.53.4
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: cf-platform-analytics
     alias: cf-platform-analytics-etlstarter
-    version: 0.53.3
+    version: 0.53.4
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
-    version: 1.4073.0
+    version: 1.4081.0
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform
@@ -254,7 +254,7 @@ dependencies:
     version: 0.1.0
     condition: cf-oidc-provider.enabled
   - name: mailer
-    version: "1.22.4"
+    version: "1.23.0"
     repository: oci://quay.io/codefresh/charts
     condition: mailer.enabled
   - name: payments
