@@ -22,7 +22,7 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: Update runtime image versions and clean up script (#317)
+      description: 'update runtime images (compose, dind, engine, git-cloner) with security fixes'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
