@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.11.1
+version: 2.11.2
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -22,16 +22,7 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'Initial 2.11 release'
-      links:
-        - name: Release notes
-          url: https://codefresh.io/docs/docs/whats-new/on-prem-release-notes/#on-premises-version-211
-        - name: How to upgrade to 2.11.0
-          url: https://github.com/codefresh-io/codefresh-onprem-helm?tab=readme-ov-file#to-2-11-0
-    - kind: deprecated
-      description: 'Deprecate built-in Ingress NGINX'
-    - kind: deprecated
-      description: 'Deprecate support for New Relic'
+      description: Update runtime image versions and clean up script (#317)
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
