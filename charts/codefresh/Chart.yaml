@@ -23,6 +23,14 @@ annotations:
   artifacthub.io/changes: |-
     - kind: changed
       description: 'update runtime images (compose, dind, engine, git-cloner) with security fixes'
+    - kind: security
+      description: 'Fix various security vulnerabilities in nomios'
+    - kind: changed
+      description: 'chore: update nomios to v0.11.17'
+    - kind: security
+      description: 'Fix various security vulnerabilities in charts-manager'
+    - kind: changed
+      description: 'chore: update charts-manager to v1.28.2'  
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -80,7 +88,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: kube-integration.enabled
   - name: charts-manager
-    version: 1.28.1
+    version: 1.28.2-onprem-3e51550
     repository: oci://quay.io/codefresh/charts
     condition: charts-manager.enabled
   - name: cfsign
@@ -218,7 +226,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
   - name: nomios
-    version: 0.11.16
+    version: 0.11.17-onprem-1a3b2e1
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
   - name: cronus
