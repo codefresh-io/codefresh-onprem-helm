@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.11.2
+version: 2.11.3
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -22,11 +22,7 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'update "cf-tls-sign" to 1.8.19'
-    - kind: changed
-      description: 'chore: update "cf-platform-analytics" to 0.53.5-onprem-c6b8c49'
-    - kind: security
-      description: 'update chart images [cf-tls-sign, cf-platform-analytics] with security fixes'
+      description: security fixes (#321)
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
