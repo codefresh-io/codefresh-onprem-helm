@@ -94,7 +94,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: context-manager.enabled
   - name: pipeline-manager
-    version: 4.1.4
+    version: 4.1.5
     repository: oci://quay.io/codefresh/charts
     condition: pipeline-manager.enabled
   - name: gitops-dashboard-manager
