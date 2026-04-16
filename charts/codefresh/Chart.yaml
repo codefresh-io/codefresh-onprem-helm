@@ -22,9 +22,25 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'chore: bump gitops-dashboard-manager, runtime-env-manager, broadcaster (#326)'
+      description: 'Update "k8s-monitor" to 4.11.26-onprem-222ba20'
     - kind: changed
-      description: security fixes (#321)
+      description: 'Update "pipeline-manager" to 4.1.5-onprem-c567de3'
+    - kind: changed
+      description: 'Update "helm-repo-manager" to 0.23.6-onprem-b0dbabf'
+    - kind: changed
+      description: 'Update "kube-integration" to 1.33.11-onprem-0aa428f'
+    - kind: changed
+      description: 'Update "cf-tls-sign" to 1.8.19'
+    - kind: changed
+      description: 'Update "cf-platform-analytics" to 0.53.5-onprem-c6b8c49'
+    - kind: changed
+      description: 'Update "gitops-dashboard-manager" to 1.16.9-onprem-77daa5d'
+    - kind: changed
+      description: 'Update "runtime-environment-manager" to 4.1.2-onprem-eb492d8'
+    - kind: changed
+      description: 'Update "cf-broadcaster" to 1.15.5-onprem-13817c9'
+    - kind: security
+      description: 'Fix security vulnerabilities'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -78,7 +94,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: cluster-providers.enabled
   - name: kube-integration
-    version: 1.33.10-onprem-d1546f6
+    version: 1.33.11-onprem-0aa428f
     repository: oci://quay.io/codefresh/charts
     condition: kube-integration.enabled
   - name: charts-manager
@@ -98,7 +114,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: context-manager.enabled
   - name: pipeline-manager
-    version: 4.1.4-onprem-d738984
+    version: 4.1.5-onprem-c567de3
     repository: oci://quay.io/codefresh/charts
     condition: pipeline-manager.enabled
   - name: gitops-dashboard-manager
@@ -200,7 +216,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: cfui.enabled
   - name: k8s-monitor
-    version: 4.11.25
+    version: 4.11.26-onprem-222ba20
     repository: oci://quay.io/codefresh/charts
     condition: k8s-monitor.enabled
   - name: runtime-environment-manager
@@ -212,7 +228,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: cf-broadcaster.enabled
   - name: helm-repo-manager
-    version: 0.23.5
+    version: 0.23.6-onprem-b0dbabf
     repository: oci://quay.io/codefresh/charts
     condition: helm-repo-manager.enabled
   - name: hermes
