@@ -22,6 +22,8 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
+      description: 'chore: bump gitops-dashboard-manager, runtime-env-manager, broadcaster (#326)'
+    - kind: changed
       description: security fixes (#321)
 dependencies:
   - name: cf-common
