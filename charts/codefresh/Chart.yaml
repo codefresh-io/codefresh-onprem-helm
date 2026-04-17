@@ -41,6 +41,10 @@ annotations:
       description: 'Update "cf-platform-analytics" to 0.53.6-onprem-b44df3b'
     - kind: changed
       description: 'Update "context-manager" to 2.40.3-onprem-a38007d'
+    - kind: changed
+      description: 'Update "argo-platform" to 1.4073.3-onprem-d3c712a'
+    - kind: changed
+      description: 'Update "cluster-provider" to 1.19.14-onprem-562f3ad'      
     - kind: security
       description: 'Fix security vulnerabilities'
 dependencies:
