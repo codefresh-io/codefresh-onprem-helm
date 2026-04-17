@@ -33,6 +33,10 @@ annotations:
       description: 'Update "cf-platform-analytics" to 0.53.5-onprem-c6b8c49'
     - kind: changed
       description: 'Update "kube-integration" to 1.33.11-onprem-0aa428f'
+    - kind: changed
+      description: 'Update "cf-platform-analytics" to 0.53.6-onprem-b44df3b'
+    - kind: changed
+      description: 'Update "context-manager" to 2.40.3-onprem-a38007d'
     - kind: security
       description: 'Fix security vulnerabilities'
 dependencies:
@@ -104,7 +108,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: tasker-kubernetes.enabled
   - name: context-manager
-    version: 2.40.1-onprem-e475e33
+    version: 2.40.3-onprem-a38007d
     repository: oci://quay.io/codefresh/charts
     condition: context-manager.enabled
   - name: pipeline-manager
@@ -239,12 +243,12 @@ dependencies:
     condition: hermes.enabled
   - name: cf-platform-analytics
     alias: cf-platform-analytics-platform
-    version: 0.53.5-onprem-c6b8c49
+    version: 0.53.6-onprem-b44df3b
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: cf-platform-analytics
     alias: cf-platform-analytics-etlstarter
-    version: 0.53.5-onprem-c6b8c49
+    version: 0.53.6-onprem-b44df3b
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
