@@ -511,7 +511,7 @@ postgresqlCleanJob:
 # @default -- See below
 runtimeImages:
   COMPOSE_IMAGE: quay.io/codefresh/compose:v5.1.1-1.6.2@sha256:af852ffa311163c614b340294547c72de9a275ef7350610fddb9ffeef15f754f
-  CONTAINER_LOGGER_IMAGE: quay.io/codefresh/cf-container-logger:2.0.9@sha256:3d493cfab4b4a04668cc7842fb5a5cd321fcbf80d167837b5c9d7f2569da0594
+  CONTAINER_LOGGER_IMAGE: quay.io/codefresh/cf-container-logger:2.0.10@sha256:d5c028973cdb9ec7250014a2ced1ed31106fc5c1010207a7d08cd7099058aaf2
   DIND_IMAGE: quay.io/codefresh/dind:29.4.0-3.0.13@sha256:6514b6d5f23cb12677914bb153364957094c7ec07e1dffa18d5a51edc7112968
   DOCKER_BUILDER_IMAGE: quay.io/codefresh/cf-docker-builder:1.5.7@sha256:94a34c7e749392d7b6e7d7764d0c0b84abc6fff6811ffce29f5d2888770244ef
   DOCKER_PULLER_IMAGE: quay.io/codefresh/cf-docker-puller:8.0.26@sha256:a518ca194d85d5f254954f201e33f6cd4cd1a82d552fce8cdceabbaf12786cb3
