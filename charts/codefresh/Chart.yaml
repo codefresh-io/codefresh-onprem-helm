@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.11.2
+version: 2.11.3
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -22,21 +22,29 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'Update "cf-tls-sign" to 1.8.19'
-    - kind: changed
       description: 'Update "k8s-monitor" to 4.11.26-onprem-222ba20'
     - kind: changed
       description: 'Update "pipeline-manager" to 4.1.5-onprem-c567de3'
     - kind: changed
       description: 'Update "helm-repo-manager" to 0.23.6-onprem-b0dbabf'
     - kind: changed
-      description: 'Update "cf-platform-analytics" to 0.53.5-onprem-c6b8c49'
-    - kind: changed
       description: 'Update "kube-integration" to 1.33.11-onprem-0aa428f'
+    - kind: changed
+      description: 'Update "cf-tls-sign" to 1.8.19'
+    - kind: changed
+      description: 'Update "gitops-dashboard-manager" to 1.16.9-onprem-77daa5d'
+    - kind: changed
+      description: 'Update "runtime-environment-manager" to 4.1.2-onprem-eb492d8'
+    - kind: changed
+      description: 'Update "cf-broadcaster" to 1.15.5-onprem-13817c9'
     - kind: changed
       description: 'Update "cf-platform-analytics" to 0.53.6-onprem-b44df3b'
     - kind: changed
       description: 'Update "context-manager" to 2.40.3-onprem-a38007d'
+    - kind: changed
+      description: 'Update "argo-platform" to 1.4073.3-onprem-d3c712a'
+    - kind: changed
+      description: 'Update "cluster-provider" to 1.19.14-onprem-562f3ad'      
     - kind: security
       description: 'Fix security vulnerabilities'
 dependencies:
