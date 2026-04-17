@@ -32,13 +32,15 @@ annotations:
     - kind: changed
       description: 'Update "cf-tls-sign" to 1.8.19'
     - kind: changed
-      description: 'Update "cf-platform-analytics" to 0.53.5-onprem-c6b8c49'
-    - kind: changed
       description: 'Update "gitops-dashboard-manager" to 1.16.9-onprem-77daa5d'
     - kind: changed
       description: 'Update "runtime-environment-manager" to 4.1.2-onprem-eb492d8'
     - kind: changed
       description: 'Update "cf-broadcaster" to 1.15.5-onprem-13817c9'
+    - kind: changed
+      description: 'Update "cf-platform-analytics" to 0.53.6-onprem-b44df3b'
+    - kind: changed
+      description: 'Update "context-manager" to 2.40.3-onprem-a38007d'
     - kind: security
       description: 'Fix security vulnerabilities'
 dependencies:
@@ -110,7 +112,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: tasker-kubernetes.enabled
   - name: context-manager
-    version: 2.40.1-onprem-e475e33
+    version: 2.40.3-onprem-a38007d
     repository: oci://quay.io/codefresh/charts
     condition: context-manager.enabled
   - name: pipeline-manager
@@ -245,12 +247,12 @@ dependencies:
     condition: hermes.enabled
   - name: cf-platform-analytics
     alias: cf-platform-analytics-platform
-    version: 0.53.5-onprem-c6b8c49
+    version: 0.53.6-onprem-b44df3b
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: cf-platform-analytics
     alias: cf-platform-analytics-etlstarter
-    version: 0.53.5-onprem-c6b8c49
+    version: 0.53.6-onprem-b44df3b
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
