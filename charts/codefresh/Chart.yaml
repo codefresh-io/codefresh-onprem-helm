@@ -38,7 +38,7 @@ annotations:
     - kind: changed
       description: 'Update "argo-hub-platform" to 0.1.37'      
     - kind: security
-      description: 'Fix security vulnerabilities'
+      description: 'Security fixes in different services (#332)'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
