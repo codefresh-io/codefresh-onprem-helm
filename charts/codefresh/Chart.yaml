@@ -22,7 +22,23 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'chore: fix various security vulnerabilities (#332)'
+      description: 'Update "tasker-kubernetes" to 1.28.10-onprem-1659125'
+    - kind: changed
+      description: 'Update "hermes" to 0.22.9-onprem-79c4755'
+    - kind: changed
+      description: 'Update "cf-ui" to 14.100.9-onprem-9a7db72'
+    - kind: changed
+      description: 'Update "cf-api" to 22.3.9-onprem-3f3b134'
+    - kind: changed
+      description: 'Update "charts-manager" to 1.28.3-onprem-b6e1760'
+    - kind: changed
+      description: 'Update "argo-platform" to 1.4073.4-onprem-89cee1c'
+    - kind: changed
+      description: 'Update "cluster-provider" to 1.19.15-onprem-8ba6ca2'      
+    - kind: changed
+      description: 'Update "argo-hub-platform" to 0.1.37'      
+    - kind: security
+      description: 'Fix security vulnerabilities'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
