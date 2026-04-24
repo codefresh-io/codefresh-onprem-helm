@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.11.5
+version: 2.11.6
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -21,8 +21,8 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
-    - kind: security
-      description: 'chore: update `engine` to version `3.2.5`. (#335)'
+    - kind: changed
+      description: 'chore: fix various security vulnerabilities (#338)'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
