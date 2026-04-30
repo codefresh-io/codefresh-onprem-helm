@@ -22,6 +22,8 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
+      description: 'chore: fix various security vulnerabilities in container-logger, docker-puller, docker-pusher, template-engine (#342)'
+    - kind: changed
       description: 'chore: fix various security vulnerabilities in cf-broadcaster (#340)'
 dependencies:
   - name: cf-common
