@@ -94,7 +94,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: tasker-kubernetes.enabled
   - name: context-manager
-    version: 2.40.3-onprem-a38007d
+    version: 2.40.4-onprem-16e3ecb
     repository: oci://quay.io/codefresh/charts
     condition: context-manager.enabled
   - name: pipeline-manager
@@ -102,7 +102,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: pipeline-manager.enabled
   - name: gitops-dashboard-manager
-    version: 1.16.9-onprem-77daa5d
+    version: 1.16.10-onprem-0bd2713
     repository: oci://quay.io/codefresh/charts
     condition: gitops-dashboard-manager.enabled
   - name: cfapi
@@ -204,7 +204,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: k8s-monitor.enabled
   - name: runtime-environment-manager
-    version: 4.1.2-onprem-eb492d8
+    version: 4.1.3-onprem-e9a3b21
     repository: oci://quay.io/codefresh/charts
     condition: runtime-environment-manager.enabled
   - name: cf-broadcaster
@@ -224,17 +224,17 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
   - name: cronus
-    version: 0.9.3
+    version: 0.9.4
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
   - name: cf-platform-analytics
     alias: cf-platform-analytics-platform
-    version: 0.53.6-onprem-b44df3b
+    version: 0.53.7-onprem-67a5b07
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: cf-platform-analytics
     alias: cf-platform-analytics-etlstarter
-    version: 0.53.6-onprem-b44df3b
+    version: 0.53.7-onprem-67a5b07
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
