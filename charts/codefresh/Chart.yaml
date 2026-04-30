@@ -42,9 +42,9 @@ annotations:
     - kind: changed
       description: 'update "template-engine" to 0.15.0'    
     - kind: security
-      description: 'fix various security vulnerabilities cf-runtime components'
+      description: 'fix various security vulnerabilities in cf-runtime components'
     - kind: security
-      description: 'fix various security vulnerabilities classic platform components'
+      description: 'fix various security vulnerabilities in classic platform components'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
