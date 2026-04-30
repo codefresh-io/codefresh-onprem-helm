@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.11.6
+version: 2.11.7
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -22,21 +22,7 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'update "argo-hub-platform" to 0.1.38'
-    - kind: changed
-      description: 'update "cfapi" to 22.3.10'
-    - kind: changed
-      description: 'update "tasker-kubernetes" to 1.28.11'    
-    - kind: security
-      description: 'fix various security vulnerabilities in classic platform components'
-    - kind: changed
-      description: 'update "cf-docker-builder" to 1.6.0'
-    - kind: changed
-      description: 'update "compose" to 5.1.3-1.6.3'
-    - kind: changed
-      description: 'update "dind" to 29.4.1-3.0.14'    
-    - kind: security
-      description: 'fix various security vulnerabilities in runtime components'
+      description: 'chore: fix various security vulnerabilities in cf-broadcaster (#340)'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
