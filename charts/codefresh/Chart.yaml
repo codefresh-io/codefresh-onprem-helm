@@ -240,7 +240,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
   - name: nomios
-    version: 0.11.17-onprem-1a3b2e1
+    version: 0.11.18-onprem-c56997d
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
   - name: cronus
@@ -258,7 +258,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
-    version: 1.4073.4-onprem-89cee1c
+    version: 1.4073.5-onprem-5dd22c3
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform
