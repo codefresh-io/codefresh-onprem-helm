@@ -20,7 +20,11 @@ annotations:
   # artifacthub.io/changes: |
   #   - kind:
   #     description: ""
-  artifacthub.io/changes: "- kind: changed\n  description: 'Update \"codefresh/mongosh\" to 2.5.10-cf-3'\n- kind: security\n  description: 'Fix various security vulnerabilities in codefresh/mongosh'\n- kind: changed\n  description: 'Update \"codefresh/rabbitmqadmin\" to 2.8.1-cf-1'\n- kind: security\n  description: 'Fix various security vulnerabilities in codefresh/rabbitmqadmin' "
+  artifacthub.io/changes: |
+    - kind: changed
+      description: "Update Classic Runtime images"
+    - kind: security
+      description: "Fix various vulnerabilities in Classic Runtime images"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
