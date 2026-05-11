@@ -22,9 +22,13 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |
     - kind: changed
-      description: "Update Classic Runtime images"
+      description: 'update "pipeline-manager" to 4.1.6'
     - kind: security
-      description: "Fix various vulnerabilities in Classic Runtime images"
+      description: 'fix various security vulnerabilities in pipeline-manager'
+    - kind: changed
+      description: 'update "cf-broadcaster" to 1.15.7'
+    - kind: security
+      description: 'fix various security vulnerabilities in cf-broadcaster'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -98,7 +102,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: context-manager.enabled
   - name: pipeline-manager
-    version: 4.1.5
+    version: 4.1.6
     repository: oci://quay.io/codefresh/charts
     condition: pipeline-manager.enabled
   - name: gitops-dashboard-manager
@@ -208,7 +212,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: runtime-environment-manager.enabled
   - name: cf-broadcaster
-    version: 1.15.5
+    version: 1.15.7
     repository: oci://quay.io/codefresh/charts
     condition: cf-broadcaster.enabled
   - name: helm-repo-manager
