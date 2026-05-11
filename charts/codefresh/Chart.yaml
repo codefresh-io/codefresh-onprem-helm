@@ -22,7 +22,13 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'chore: update components (#348)'
+      description: 'update "pipeline-manager" to 4.1.6'
+    - kind: changed
+      description: 'update "cf-broadcaster" to 1.15.7'
+    - kind: changed
+      description: 'update "cf-api" to 22.3.11'
+    - kind: security
+      description: 'fix various security vulnerabilities in multiple components'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
