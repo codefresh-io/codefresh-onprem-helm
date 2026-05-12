@@ -2688,7 +2688,7 @@ kubectl -n $NAMESPACE delete secret codefresh-certs-server
 
 For Windows runtimes, you must perform the following steps:
 
-1. Obtain a node registration token (you can generate it in any account with the privateNodes feature enabled).  
+1. Obtain a node registration token (you can generate it in any account with the "privateNodes" feature enabled).  
 2. Prepare the following parameters (the same for all Windows nodes):  
    * The node registration token  
    * The correct Docker root path (may vary)  
