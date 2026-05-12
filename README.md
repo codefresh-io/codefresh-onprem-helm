@@ -2688,18 +2688,18 @@ kubectl -n $NAMESPACE delete secret codefresh-certs-server
 
 For Windows runtimes, you must perform the following steps:
 
-1. Obtain a node registration token (you can generate it in any account with the "privateNodes" feature enabled).  
-2. Prepare the following parameters (the same for all Windows nodes):  
-   * The node registration token  
-   * The correct Docker root path (may vary)  
-   * The platform API address  
-3. On each Windows node, one by one:  
-   * Run the following PowerShell script:  
-     [docker-vm/hybrid/gen-docker-certs.ps1 at master · codefresh-io/docker-vm](https://github.com/codefresh-io/docker-vm/blob/master/hybrid/gen-docker-certs.ps1)  
-   * Provide the IP address of the specific node when running the script.  
+1. Obtain a node registration token (you can generate it in any account with the "privateNodes" feature enabled). 
+2. Prepare the following parameters (the same for all Windows nodes): 
+   * The node registration token 
+   * The correct Docker root path (may vary) 
+   * The platform API address 
+3. On each Windows node, one by one: 
+   * Run the following PowerShell script: 
+     [docker-vm/hybrid/gen-docker-certs.ps1 at master · codefresh-io/docker-vm](https://github.com/codefresh-io/docker-vm/blob/master/hybrid/gen-docker-certs.ps1) 
+   * Provide the IP address of the specific node when running the script. 
 4. After the script completes, restart the Docker service on the node to ensure the new certificates are applied.
 
-Repeat these steps for every Windows node in the runtime.  
+Repeat these steps for every Windows node in the runtime. 
 
 ### Consul Error: Refusing to rejoin cluster because the server has been offline for more than the configured server_rejoin_age_max
 
