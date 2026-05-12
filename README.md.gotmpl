@@ -56,6 +56,7 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
   - [To 2.8.0](#to-2-8-0)
   - [To 2.9.0](#to-2-9-0)
   - [To 2.9.9](#to-2-9-9)
+  - [To 2.11.0](#to-2-11-0)
 - [Rollback](#rollback)
 - [Troubleshooting](#troubleshooting)
 - [Values](#values)
@@ -89,8 +90,9 @@ See [Use OCI-based registries](https://helm.sh/docs/topics/registries/)
 
 **Important:** only helm 3.8.0+ is supported
 
-> ⚠️ The default chart configuration with embedded databases is **not intended for production usage**! You should use Cloud PaaS for MongoDB, PostgreSQL, Redis and RabbitMQ.
-See [Configuring external services](#configuring-external-services) section for details.
+> [!WARNING]
+> The default chart configuration with embedded databases is **not intended for production usage**! You should use Cloud PaaS for MongoDB, PostgreSQL, Redis, RabbitMQ, Nats and Consul.
+> See [Configuring external services](#configuring-external-services) section for details.
 
 Edit default `values.yaml` or create empty `cf-values.yaml`
 
@@ -138,16 +140,14 @@ global:
 
 ```
 
-- Specify `.Values.ingress.tls.cert` and `.Values.ingress.tls.key` OR `.Values.ingress.tls.existingSecret`
+- Specify `.Values.ingress.ingressClassName` with `.Values.ingress.tls.cert` and `.Values.ingress.tls.key` OR `.Values.ingress.tls.existingSecret`
 
 ```yaml
 ingress:
   # -- Enable the Ingress
   enabled: true
   # -- Set the ingressClass that is used for the ingress.
-  # Default `nginx-codefresh` is created from `ingress-nginx` controller subchart
-  # If you specify a different ingress class, disable `ingress-nginx` subchart (see below)
-  ingressClassName: nginx-codefresh
+  ingressClassName: your-ingress-class-name
   tls:
     # -- Enable TLS
     enabled: true
@@ -159,24 +159,6 @@ ingress:
     key: ""
     # -- Existing `kubernetes.io/tls` type secret with TLS certificates (keys: `tls.crt`, `tls.key`)
     existingSecret: ""
-
-ingress-nginx:
-  # -- Enable ingress-nginx controller
-  enabled: true
-```
-
-- *Or specify your own `.Values.ingress.ingressClassName` (disable built-in ingress-nginx subchart)*
-
-```yaml
-ingress:
-  # -- Enable the Ingress
-  enabled: true
-  # -- Set the ingressClass that is used for the ingress.
-  ingressClassName: nginx
-
-ingress-nginx:
-  # -- Disable ingress-nginx controller
-  enabled: false
 ```
 
 - Install the chart
@@ -285,6 +267,7 @@ The following table reflects the recommended and supported versions of these dat
 
 | Codefresh version | MongoDB | PostgreSQL | Redis | RabbitMQ | Nats | Consul |
 | :---              | :---    | :---       | :---  | :---     | :--- | :---   |
+| 2.11.x            | \>=4.2 \<=7.x <br> Recommended: 7.x (`featureCompatibilityVersion: 7.0`)| \>= 16.x \<= 17.x <br> Recommended: 17.x | \>= 7.x \<= 8.x <br> Recommended: 8\.x | 3.13.x \| 4.0.x \| 4.1.x <br> Recommended: 4.1.x | 2.11.x <br> Recommended: 2.11.x | 1.21.x <br> Recommended: 1.21.x |
 | 2.10.x            | \>=4.2 \<=7.x <br> Recommended: 7.x (`featureCompatibilityVersion: 7.0`)| \>= 16.x \<= 17.x <br> Recommended: 17.x | \>= 7.x \<= 8.x <br> Recommended: 8\.x | 3.13.x \| 4.0.x \| 4.1.x <br> Recommended: 4.1.x | 2.11.x <br> Recommended: 2.11.x | 1.21.x <br> Recommended: 1.21.x |
 | 2.9.x             | \>=4.2 \<=7.x <br> Recommended: 7.x (`featureCompatibilityVersion: 7.0`)| \>= 16.x \<= 17.x <br> Recommended: 17.x | \>= 7.0.x \<= 7.4.x <br> Recommended: 7.4.x | 3.13.x \| 4.0.x \| 4.1.x <br> Recommended: 4.1.x | 2.11.x <br> Recommended: 2.11.x | 1.21.x <br> Recommended: 1.21.x |
 | 2.8.x             | \>=4.2 \<=7.x <br> Recommended: 7.x (`featureCompatibilityVersion: 6.0`)| \>= 13.x \<= 17.x <br> Recommended: 16.x \| 17.x | \>= 7.0.x \<= 7.4.x <br> Recommended: 7.4.x | 3.13.x \| 4.0.x \| 4.1.x <br> Recommended: 4.0.x | 2.11.x <br> Recommended: 2.11.x | 1.21.x <br> Recommended: 1.21.x |
@@ -298,6 +281,9 @@ The following table reflects the recommended and supported versions of these dat
 All of them can be externalized. See the next sections.
 
 ### Configuring external services
+
+> [!WARNING]
+> The default chart configuration with embedded databases is **not intended for production usage**! You should use Cloud PaaS for MongoDB, PostgreSQL, Redis, RabbitMQ, Nats and Consul.
 
 The chart contains required dependencies for the corresponding services
 - [bitnami/mongodb](https://github.com/bitnami/charts/tree/main/bitnami/mongodb)
@@ -317,6 +303,9 @@ To use external services like [MongoDB Atlas Database](https://www.mongodb.com/a
 `.Values.seed.mongoSeedJob.mongodbRootPassword/mongodbRootPasswordSecretKeyRef` <br>
 > Ref: <br>
 > [Create Users in Atlas](https://www.mongodb.com/docs/atlas/security-add-mongodb-users/#configure-database-users)
+
+> [!IMPORTANT]
+> By default, Zstd network compression is enabled in Codefresh for MongodDB. Please ensure that Zstd compression is supported and enabled on your MongoDB server. If you'd like to opt out, you can disable it via `.Values.global.env.MONGO_ENABLE_ZSTD_NETWORK_COMPRESSION=false`. Disabling compression is not recommended however, as it may significantly increase amount of traffic and corresponding costs.
 
 `values.yaml` for external MongoDB:
 
@@ -766,7 +755,11 @@ kubectl -n codefresh cp ./events.db pod/cf-cronus-0:/var/boltdb/events.db
 
 ### Configuring Ingress-NGINX
 
-The chart deploys the [ingress-nginx](https://github.com/kubernetes/ingress-nginx/tree/main) and exposes controller behind a Service of `Type=LoadBalancer`
+> [!WARNING]
+> **⚠️ ⚠️ ⚠️ Ingress-NGINX is [deprecated](https://kubernetes.io/blog/2025/11/11/ingress-nginx-retirement/) since March 2026!**
+> It is DISABLED by default in the chart since version 2.11.0 and will be removed in the future releases!
+
+**If enabled**, the chart deploys the [ingress-nginx](https://github.com/kubernetes/ingress-nginx/tree/main) and exposes controller behind a Service of `Type=LoadBalancer`
 
 All installation options for `ingress-nginx` are described at [Configuration](https://github.com/kubernetes/ingress-nginx/tree/main/charts/ingress-nginx#configuration)
 
@@ -778,6 +771,7 @@ Relevant examples for Codefesh are below:
 
 ```yaml
 ingress-nginx:
+  enable: true
   controller:
     service:
       annotations:
@@ -802,6 +796,7 @@ ingress:
 
 ```yaml
 ingress-nginx:
+  enable: true
   controller:
     service:
       annotations:
@@ -830,10 +825,6 @@ ingress:
 *[Application Load Balancer](https://github.com/kubernetes-sigs/aws-load-balancer-controller/tree/main/helm/aws-load-balancer-controller) should be deployed to the cluster*
 
 ```yaml
-ingress-nginx:
-  # -- Disable ingress-nginx subchart installation
-  enabled: false
-
 ingress:
   # -- ALB contoller ingress class
   ingressClassName: alb
@@ -1195,11 +1186,6 @@ cfsign:
     volume-permissions:
       enabled: false
 
-ingress-nginx:
-  controller:
-    autoscaling:
-      enabled: true
-
 mongodb:
   architecture: replicaset
   replicaCount: 3
@@ -1309,9 +1295,6 @@ consul:
 cronus:
   podSecurityContext:
     enabled: false
-
-ingress-nginx:
-  enabled: false
 
 mongodb:
   podSecurityContext:
@@ -1732,6 +1715,7 @@ The required index definitions for each release can be found at the following re
 - `2.8` <https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.8/indexes>
 - `2.9` <https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.9/indexes>
 - `2.10` <https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.10/indexes>
+- `2.11` <https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.11/indexes>
 
 The indexes specifications are stored in JSON files. The directory structure is:
 
@@ -2638,6 +2622,18 @@ Changes in collections: following collections can be safely dropped *after* the 
 
 - `read-models.application-tree`
 - `read-models.<entity>-history` — every collection with `~-history` suffix, such as `read-models.applications-history`, `read-models.services-history`, etc.
+
+### To 2-11-0
+
+#### Notable changes:
+
+- Support for New Relic instrumentation is discontinued and disabled by default via `.Values.global.env.NEW_RELIC_ENABLED=false`. If you are relying on New Relic for monitoring, please reach out to Support team for alternatives.
+- Zstd compression is enabled by default for MongoDB traffic. Please ensure that Zstd compression is supported and enabled on your MongoDB server. If you'd like to opt out, you can disable it via `.Values.global.env.MONGO_ENABLE_ZSTD_NETWORK_COMPRESSION=false`.
+- `ingress-nginx` subchart is disabled by default and will be removed in future release. If you are using it, please enable it explicitly via `.Values.ingress-nginx.enabled=true`.
+
+#### Changes in MongoDB schema:
+
+- Changes in indexes: follow [Maintaining MongoDB indexes](#maintaining-mongodb-indexes) guide to meet index requirements *before* the upgrade process.
 
 
 ## Troubleshooting

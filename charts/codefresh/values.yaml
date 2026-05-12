@@ -36,7 +36,7 @@ seed:
     image:
       registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
       repository: codefresh/mongosh
-      tag: 2.5.10-cf-2
+      tag: 2.8.2-cf-1
     # -- Root user in plain text (required ONLY for seed job!).
     mongodbRootUser: "root"
     # -- Root user from existing secret
@@ -175,7 +175,9 @@ global:
   storageClass: ""
 
   # -- Global Env vars
-  env: {}
+  env:
+    NEW_RELIC_ENABLED: "false"
+    MONGO_ENABLE_ZSTD_NETWORK_COMPRESSION: "true"
 
   # -- Global tolerations constraints
   # Apply toleratons to all Codefresh subcharts. Will not be applied on Bitnami subcharts.
@@ -453,7 +455,7 @@ hooks:
     image:
       registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
       repository: codefresh/mongosh
-      tag: 2.5.10-cf-2
+      tag: 2.8.2-cf-1
     affinity: {}
     nodeSelector:
       kubernetes.io/arch: amd64
@@ -478,7 +480,7 @@ hooks:
     image:
       registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
       repository: codefresh/rabbitmqadmin
-      tag: 2.8.1
+      tag: 2.8.1-cf-1
     affinity: {}
     nodeSelector:
       kubernetes.io/arch: amd64
@@ -508,20 +510,20 @@ postgresqlCleanJob:
 # -- runtimeImages
 # @default -- See below
 runtimeImages:
-  COMPOSE_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/compose:v5.0.1-1.6.1@sha256:420add29b84665e5c03f51a065e16761253a7c1fe349f884c361e9a68c2c6d15
-  CONTAINER_LOGGER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-container-logger:2.0.9@sha256:3d493cfab4b4a04668cc7842fb5a5cd321fcbf80d167837b5c9d7f2569da0594
-  DIND_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/dind:29.2.0-3.0.12@sha256:81fdbe5a7e048484007126d961772b4ab31889c4139176c1af774c5f709d739e
-  DOCKER_BUILDER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-docker-builder:1.5.6@sha256:b12fe181f39aa1b41baa0d2324ac3b6e8d5db705a468ff35c2c73e94fdf70a32
-  DOCKER_PULLER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-docker-puller:8.0.26@sha256:a518ca194d85d5f254954f201e33f6cd4cd1a82d552fce8cdceabbaf12786cb3
-  DOCKER_PUSHER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-docker-pusher:6.0.24@sha256:199053e81fbba18363f4f7081b48b6da61b02d794ff8a914707710cd867bed96
-  ENGINE_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/engine:3.2.2@sha256:445280bb1460d9534ca90d1575284a8f7fe034f99cff442340677dcc5bdbffec
-  FS_OPS_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/fs-ops:1.2.12@sha256:5f954c1f4618dbcebf1c3ef7b9185c6e1c9bb14b0aad3d2830cfeb715541bf47
-  GIT_CLONE_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-git-cloner:10.3.8@sha256:73fca875568d05611e7d55cdcaebdfbaf1934fa26c6750f8193b559b46770aab
-  KUBE_DEPLOY: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-deploy-kubernetes:17.0.1@sha256:54e724d5ca2e9dda466b7d74e7aaf8b1fef0b49e82fd075b4def703037e9e778
-  PIPELINE_DEBUGGER_IMAGE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/cf-debugger:1.3.13@sha256:2dbf79a87f641507fc2111d4ff01e046954bca2f31e41ebc1e9cda96b1189780
-  TEMPLATE_ENGINE: us-docker.pkg.dev/codefresh-inc/public-gcr-io/codefresh/pikolo:0.14.10@sha256:4b7cb2e58d8f314ed2edcc3c864a86372eceaba5df4e326babf122be57de5c1b
-  CR_6177_FIXER: docker.io/library/alpine:3.21
-  GC_BUILDER_IMAGE: docker.io/library/alpine:3.21
+  COMPOSE_IMAGE: quay.io/codefresh/compose:v5.1.3-1.6.4@sha256:6b4413b99653b623112bd461f2c58ad30515b89254afe644f77474aa8325fbeb
+  CONTAINER_LOGGER_IMAGE: quay.io/codefresh/cf-container-logger:2.0.12@sha256:d666502f8bb95a00a1a598dd33ccdd10927ae73d32a5eed278d476bb1c7140a4
+  DIND_IMAGE: quay.io/codefresh/dind:29.4.1-3.0.15@sha256:fbeb4ee9a897ee2e70f83d709e9c04955feb645f07621f3a510a957f4d28f4f2
+  DOCKER_BUILDER_IMAGE: quay.io/codefresh/cf-docker-builder:1.6.1@sha256:817ebca78533e0bc3fd35e8c4498979fdd2f5435616ef0f2d495b94f8873563a
+  DOCKER_PULLER_IMAGE: quay.io/codefresh/cf-docker-puller:8.0.27@sha256:818773818053553505afbaf109bf67f1b22bdb80307e155d27d4f06eab3c3246
+  DOCKER_PUSHER_IMAGE: quay.io/codefresh/cf-docker-pusher:6.0.26@sha256:fdd6d80b02d9464689984208045ad09f217002f463aa2e4af60f8ad41d2cf611
+  ENGINE_IMAGE: quay.io/codefresh/engine:3.2.8@sha256:2e3a64076bfd9b33432701a07d5b5a2c3ee8a74c5d2f4d6b1203d0deda8e7909
+  FS_OPS_IMAGE: quay.io/codefresh/fs-ops:1.2.13@sha256:1f7ab2fddb3b8bb4153046261367e296c6c9ac3b224f48cd2028371a9f0e2bcf
+  GIT_CLONE_IMAGE: quay.io/codefresh/cf-git-cloner:10.3.11@sha256:77cb980509199c83a4a3e8030945ef0e90653be74d3c4d831598e5b825dc399b
+  KUBE_DEPLOY: quay.io/codefresh/cf-deploy-kubernetes:17.0.4@sha256:beb578bbe5bbf66c034c51937c909d16faf473225815ce416188176d363ec15d
+  PIPELINE_DEBUGGER_IMAGE: quay.io/codefresh/cf-debugger:1.3.14@sha256:7a5890afcfdad4a9aa4eec1a218cb468d52855540c847b3809085415751bbaa7
+  TEMPLATE_ENGINE: quay.io/codefresh/pikolo:0.15.1@sha256:fc273091b98392c447d90ab678fd9d217ccc9565701bd65708da3b2ec421798a
+  CR_6177_FIXER: docker.io/library/alpine:3.23
+  GC_BUILDER_IMAGE: docker.io/library/alpine:3.23
 
 #--------------------
 # Codefresh subcharts
@@ -1005,7 +1007,7 @@ helm-repo-manager:
       enabled: false
     image:
       repository: ghcr.io/helm/chartmuseum
-      tag: v0.16.3
+      tag: v0.16.5
   resources:
     requests:
       cpu: 100m
@@ -1044,7 +1046,7 @@ hermes:
 # @default -- See below
 # Ref: https://github.com/kubernetes/ingress-nginx/blob/main/charts/ingress-nginx/values.yaml
 ingress-nginx:
-  enabled: true
+  enabled: false
   controller:
     enableAnnotationValidations: true
     allowSnippetAnnotations: false
@@ -1290,7 +1292,7 @@ builder:
     image:
       registry: quay.io
       repository: codefresh/dind
-      tag: 29.2.0-3.0.12
+      tag: 29.4.0-3.0.13
   affinity: {}
   nodeSelector: {}
   podSecurityContext: {}
