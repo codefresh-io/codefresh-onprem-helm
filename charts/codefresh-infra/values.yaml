@@ -1,3 +1,13 @@
+global:
+  nodeSelector:
+    node-type: fast-image-pull
+
+  tolerations:
+  - key: codefresh.io
+    operator: Equal
+    value: fast-image-pull
+    effect: NoSchedule
+
 mongodb:
   fullnameOverride: my-mongodb
   auth:
