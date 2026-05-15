@@ -22,14 +22,6 @@ ingress:
 ingress-nginx:
   enabled: false
 
-consul:
-  image:
-    repository: bitnamilegacy/consul
-
-nats:
-  image:
-    repository: bitnamilegacy/nats
-
 hooks:
   mongodb:
     nodeSelector:
@@ -40,4 +32,66 @@ hooks:
 
 mongodb:
   nodeSelector:
+    node-type: fast-image-pull
     kubernetes.io/arch: amd64
+
+  tolerations:
+  - key: codefresh.io
+    operator: Equal
+    value: fast-image-pull
+    effect: NoSchedule
+
+# -- Binami subcharts
+postgresql:
+  nodeSelector:
+    node-type: fast-image-pull
+
+  tolerations:
+  - key: codefresh.io
+    operator: Equal
+    value: fast-image-pull
+    effect: NoSchedule
+
+rabbitmq:
+  nodeSelector:
+    node-type: fast-image-pull
+
+  tolerations:
+  - key: codefresh.io
+    operator: Equal
+    value: fast-image-pull
+    effect: NoSchedule
+
+redis:
+  nodeSelector:
+    node-type: fast-image-pull
+
+  tolerations:
+  - key: codefresh.io
+    operator: Equal
+    value: fast-image-pull
+    effect: NoSchedule
+
+nats:
+  image:
+    repository: bitnamilegacy/nats
+  nodeSelector:
+    node-type: fast-image-pull
+
+  tolerations:
+  - key: codefresh.io
+    operator: Equal
+    value: fast-image-pull
+    effect: NoSchedule
+
+consul:
+  image:
+    repository: bitnamilegacy/consul
+  nodeSelector:
+    node-type: fast-image-pull
+
+  tolerations:
+  - key: codefresh.io
+    operator: Equal
+    value: fast-image-pull
+    effect: NoSchedule
