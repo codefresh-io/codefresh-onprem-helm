@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.11.9](https://img.shields.io/badge/Version-2.11.9-informational?style=flat-square) ![AppVersion: 0.0.0](https://img.shields.io/badge/AppVersion-0.0.0-informational?style=flat-square)
+![Version: 2.11.10](https://img.shields.io/badge/Version-2.11.10-informational?style=flat-square) ![AppVersion: 0.0.0](https://img.shields.io/badge/AppVersion-0.0.0-informational?style=flat-square)
 
 Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
@@ -57,6 +57,7 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
   - [To 2.9.0](#to-2-9-0)
   - [To 2.9.9](#to-2-9-9)
   - [To 2.11.0](#to-2-11-0)
+  - [To 2.11.10](#to-2-11-10)
 - [Rollback](#rollback)
 - [Troubleshooting](#troubleshooting)
 - [Values](#values)
@@ -2619,6 +2620,12 @@ Changes in collections: following collections can be safely dropped *after* the 
 #### Changes in MongoDB schema:
 
 - Changes in indexes: follow [Maintaining MongoDB indexes](#maintaining-mongodb-indexes) guide to meet index requirements *before* the upgrade process.
+
+### To 2-11-10
+
+> **BREAKING CHANGES in Default Runtime**
+>
+> Default Runtime (`system/default`) drops support for 1.32 Kubernetes version in `deploy` step ([docs](https://codefresh.io/docs/docs/pipelines/steps/deploy/)). Supported versions are: 1.35, 1.34, 1.33.
 
 ## Troubleshooting
 
