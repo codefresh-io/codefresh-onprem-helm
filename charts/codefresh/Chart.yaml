@@ -37,7 +37,7 @@ annotations:
     - kind: changed
      description: 'update "rabbitmqadmin" to 2.8.1-cf-2'
     - kind: security
-    description: 'fix various security vulnerabilities in multiple components.'
+     description: 'fix various security vulnerabilities in multiple components.'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
