@@ -28,3 +28,7 @@ hooks:
   rabbitmq:
     nodeSelector:
       kubernetes.io/arch: amd64
+
+mongodb:
+  nodeSelector:
+    kubernetes.io/arch: amd64
