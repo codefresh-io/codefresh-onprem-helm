@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.11.9
+version: 2.11.10
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -22,13 +22,7 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'update "pipeline-manager" to 4.1.6'
-    - kind: changed
-      description: 'update "cf-broadcaster" to 1.15.7'
-    - kind: changed
-      description: 'update "cf-api" to 22.3.11'
-    - kind: security
-      description: 'fix various security vulnerabilities in multiple components.'
+      description: 'chore: update components (#352)'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
