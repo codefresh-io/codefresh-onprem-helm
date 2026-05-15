@@ -86,7 +86,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: kube-integration.enabled
   - name: charts-manager
-    version: 1.28.3-onprem-b6e1760
+    version: 1.28.4-onprem-2692681
     repository: oci://quay.io/codefresh/charts
     condition: charts-manager.enabled
   - name: cfsign
@@ -242,7 +242,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
-    version: 1.4073.5-onprem-5dd22c3
+    version: 1.4073.6-onprem-f7e4d49
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform

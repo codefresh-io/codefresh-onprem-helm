@@ -480,7 +480,7 @@ hooks:
     image:
       registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
       repository: codefresh/rabbitmqadmin
-      tag: 2.8.1-cf-1
+      tag: 2.8.1-cf-2
     affinity: {}
     nodeSelector:
       kubernetes.io/arch: amd64
@@ -519,7 +519,7 @@ runtimeImages:
   ENGINE_IMAGE: quay.io/codefresh/engine:3.2.8@sha256:2e3a64076bfd9b33432701a07d5b5a2c3ee8a74c5d2f4d6b1203d0deda8e7909
   FS_OPS_IMAGE: quay.io/codefresh/fs-ops:1.2.13@sha256:1f7ab2fddb3b8bb4153046261367e296c6c9ac3b224f48cd2028371a9f0e2bcf
   GIT_CLONE_IMAGE: quay.io/codefresh/cf-git-cloner:10.3.11@sha256:77cb980509199c83a4a3e8030945ef0e90653be74d3c4d831598e5b825dc399b
-  KUBE_DEPLOY: quay.io/codefresh/cf-deploy-kubernetes:17.0.4@sha256:beb578bbe5bbf66c034c51937c909d16faf473225815ce416188176d363ec15d
+  KUBE_DEPLOY: quay.io/codefresh/cf-deploy-kubernetes:18.0.0@sha256:1fb0d3f5be3ece52c7ad47ebdb60533854c8a647f761c7ecc0d29e0ee441e14f
   PIPELINE_DEBUGGER_IMAGE: quay.io/codefresh/cf-debugger:1.3.14@sha256:7a5890afcfdad4a9aa4eec1a218cb468d52855540c847b3809085415751bbaa7
   TEMPLATE_ENGINE: quay.io/codefresh/pikolo:0.15.1@sha256:fc273091b98392c447d90ab678fd9d217ccc9565701bd65708da3b2ec421798a
   CR_6177_FIXER: docker.io/library/alpine:3.23
