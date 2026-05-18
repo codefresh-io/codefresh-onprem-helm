@@ -43,14 +43,15 @@ mongodb:
 
 # -- Binami subcharts
 postgresql:
-  nodeSelector:
-    node-type: fast-image-pull
+  primary:
+    nodeSelector:
+      node-type: fast-image-pull
 
-  tolerations:
-  - key: codefresh.io
-    operator: Equal
-    value: fast-image-pull
-    effect: NoSchedule
+    tolerations:
+    - key: codefresh.io
+      operator: Equal
+      value: fast-image-pull
+      effect: NoSchedule
 
 rabbitmq:
   nodeSelector:
@@ -63,14 +64,15 @@ rabbitmq:
     effect: NoSchedule
 
 redis:
-  nodeSelector:
-    node-type: fast-image-pull
+  master:
+    nodeSelector:
+      node-type: fast-image-pull
 
-  tolerations:
-  - key: codefresh.io
-    operator: Equal
-    value: fast-image-pull
-    effect: NoSchedule
+    tolerations:
+    - key: codefresh.io
+      operator: Equal
+      value: fast-image-pull
+      effect: NoSchedule
 
 nats:
   image:
@@ -95,3 +97,7 @@ consul:
     operator: Equal
     value: fast-image-pull
     effect: NoSchedule
+
+cf-platform-analytics-platform:
+  redis:
+    enabled: false
