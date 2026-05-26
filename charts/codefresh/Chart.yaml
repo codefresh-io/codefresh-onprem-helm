@@ -103,7 +103,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: cfsign.enabled
   - name: tasker-kubernetes
-    version: 1.28.11-onprem-45bfebb
+    version: 1.28.12-onprem-e19d891
     repository: oci://quay.io/codefresh/charts
     condition: tasker-kubernetes.enabled
   - name: context-manager
@@ -120,92 +120,92 @@ dependencies:
     condition: gitops-dashboard-manager.enabled
   - name: cfapi
     alias: cfapi
-    version: 22.3.11-onprem-9c743de
+    version: 22.3.12-onprem-3b7b414
     repository: oci://quay.io/codefresh/charts
     condition: cfapi.enabled
   - name: cfapi
     alias: cfapi-auth
-    version: 22.3.11-onprem-9c743de
+    version: 22.3.12-onprem-3b7b414
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-auth.enabled
   - name: cfapi
     alias: cfapi-internal
-    version: 22.3.11-onprem-9c743de
+    version: 22.3.12-onprem-3b7b414
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-internal.enabled
   - name: cfapi
     alias: cfapi-ws
-    version: 22.3.11-onprem-9c743de
+    version: 22.3.12-onprem-3b7b414
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-ws.enabled
   - name: cfapi
     alias: cfapi-admin
-    version: 22.3.11-onprem-9c743de
+    version: 22.3.12-onprem-3b7b414
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-admin.enabled
   - name: cfapi
     alias: cfapi-endpoints
-    version: 22.3.11-onprem-9c743de
+    version: 22.3.12-onprem-3b7b414
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-endpoints.enabled
   - name: cfapi
     alias: cfapi-terminators
-    version: 22.3.11-onprem-9c743de
+    version: 22.3.12-onprem-3b7b414
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-terminators.enabled
   - name: cfapi
     alias: cfapi-sso-group-synchronizer
-    version: 22.3.11-onprem-9c743de
+    version: 22.3.12-onprem-3b7b414
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-sso-group-synchronizer.enabled
   - name: cfapi
     alias: cfapi-buildmanager
-    version: 22.3.11-onprem-9c743de
+    version: 22.3.12-onprem-3b7b414
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-buildmanager.enabled
   - name: cfapi
     alias: cfapi-cacheevictmanager
-    version: 22.3.11-onprem-9c743de
+    version: 22.3.12-onprem-3b7b414
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-cacheevictmanager.enabled
   - name: cfapi
     alias: cfapi-eventsmanagersubscriptions
-    version: 22.3.11-onprem-9c743de
+    version: 22.3.12-onprem-3b7b414
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-eventsmanagersubscriptions.enabled
   - name: cfapi
     alias: cfapi-kubernetesresourcemonitor
-    version: 22.3.11-onprem-9c743de
+    version: 22.3.12-onprem-3b7b414
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-kubernetesresourcemonitor.enabled
   - name: cfapi
     alias: cfapi-environments
-    version: 22.3.11-onprem-9c743de
+    version: 22.3.12-onprem-3b7b414
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-environments.enabled
   - name: cfapi
     alias: cfapi-gitops-resource-receiver
-    version: 22.3.11-onprem-9c743de
+    version: 22.3.12-onprem-3b7b414
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-gitops-resource-receiver.enabled
   - name: cfapi
     alias: cfapi-downloadlogmanager
-    version: 22.3.11-onprem-9c743de
+    version: 22.3.12-onprem-3b7b414
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-downloadlogmanager.enabled
   - name: cfapi
     alias: cfapi-teams
-    version: 22.3.11-onprem-9c743de
+    version: 22.3.12-onprem-3b7b414
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-teams.enabled
   - name: cfapi
     alias: cfapi-kubernetes-endpoints
-    version: 22.3.11-onprem-9c743de
+    version: 22.3.12-onprem-3b7b414
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-kubernetes-endpoints.enabled
   - name: cfapi
     alias: cfapi-test-reporting
-    version: 22.3.11-onprem-9c743de
+    version: 22.3.12-onprem-3b7b414
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-test-reporting.enabled
   - name: cfui
@@ -251,7 +251,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
-    version: 1.4073.6-onprem-f7e4d49
+    version: 1.4073.7-onprem-d6993a5
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform
