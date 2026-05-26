@@ -1,0 +1,14 @@
+charts/codefresh/Chart.yaml
+  h_e5037b46dfdc11 25,27-57
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "17ea14853331b5b10b2ccb86414327840f6d790a",
+  "prompts": {},
+  "humans": {
+    "h_e5037b46dfdc11": {
+      "author": "Zhenya Tikhonov <zhenya.tikhonov@octopus.com>"
+    }
+  }
+}
