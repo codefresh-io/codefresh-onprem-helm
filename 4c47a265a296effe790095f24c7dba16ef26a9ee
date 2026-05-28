@@ -1,0 +1,14 @@
+charts/codefresh-infra/values.yaml
+  h_bdc637847e5b6a 1-10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.8",
+  "base_commit_sha": "4c47a265a296effe790095f24c7dba16ef26a9ee",
+  "prompts": {},
+  "humans": {
+    "h_bdc637847e5b6a": {
+      "author": "Mikhail Klimko <mikhail.klimko@octopus.com>"
+    }
+  }
+}
