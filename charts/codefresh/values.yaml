@@ -131,6 +131,18 @@ ingress:
   # -- Set labels for ingress
   labels: {}
 
+# -- HTTPRoute
+httpRoute:
+  enabled: false
+  annotations: {}
+  labels: {}
+  parentRefs: []
+  hostnames:
+    - '{{ .Values.global.appUrl }}'
+  services:
+    internal-gateway:
+      - /
+
 # -- Global parameters
 # @default -- See below
 global:
