@@ -133,12 +133,24 @@ ingress:
 
 # -- HTTPRoute
 httpRoute:
+  # -- Enable the HTTPRoute
   enabled: false
+  # -- Set annotations for HTTPRoute.
   annotations: {}
+  # -- Set labels for HTTPRoute
   labels: {}
+  # -- Required! List of parent Gateway references this HTTPRoute should attach to
+  # ref: https://gateway-api.sigs.k8s.io/reference/api-spec/main/spec/#parentreference
+  # E.g.
+  # parentRefs:
+  #   - name: traefik-gateway
+  #     namespace: traefik
   parentRefs: []
+  # -- List of hostnames to be covered by this HTTPRoute
+  # ref: https://gateway-api.sigs.k8s.io/reference/api-spec/main/spec/#hostname
   hostnames:
     - '{{ .Values.global.appUrl }}'
+  # -- Default services and corresponding paths
   services:
     internal-gateway:
       - /
