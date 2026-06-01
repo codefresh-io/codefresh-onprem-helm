@@ -1,0 +1,77 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/helm-unittest/helm-unittest/main/schema/helm-testsuite.json
+suite: HTTPRoute tests
+templates:
+  - templates/httproute.yaml
+tests:
+  - it: should render correct HTTPRoute
+    template: templates/httproute.yaml
+    set:
+      global:
+        appUrl: mydomain.local
+      httpRoute:
+        enabled: true
+        parentRefs:
+        - name: traefik-gateway
+          namespace: traefik
+    asserts:
+      - equal:
+          path: spec.parentRefs
+          value:
+          - name: traefik-gateway
+            namespace: traefik
+      - equal:
+          path: spec.hostnames
+          value:
+          - mydomain.local
+
+  - it: should fail if httpRoute is enabled but parentRefs is not set
+    template: templates/httproute.yaml
+    set:
+      httpRoute:
+        enabled: true
+    asserts:
+      - failedTemplate:
+          errorMessage: "ERROR: httpRoute.parentRefs is required when httpRoute is enabled"
+
+  - it: should render correct metadata
+    template: templates/httproute.yaml
+    set:
+      global:
+        appUrl: mydomain.local
+      httpRoute:
+        enabled: true
+        nameOverride: custom-httproute
+        labels:
+          customLabel: customValue
+        annotations:
+          customAnnotation: customAnnotationValue
+        parentRefs:
+        - name: traefik-gateway
+          namespace: traefik
+    asserts:
+      - equal:
+          path: metadata.name
+          value: custom-httproute
+      - equal:
+          path: metadata.labels.customLabel
+          value: customValue
+      - equal:
+          path: metadata.annotations.customAnnotation
+          value: customAnnotationValue
+
+  - it: should render correct default backendRefs
+    template: templates/httproute.yaml
+    set:
+      global:
+        appUrl: mydomain.local
+      httpRoute:
+        enabled: true
+        parentRefs:
+        - name: traefik-gateway
+          namespace: traefik
+    asserts:
+      - equal:
+          path: spec.rules[0].backendRefs[0]
+          value:
+              name: RELEASE-NAME-internal-gateway
+              port: 80
