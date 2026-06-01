@@ -22,9 +22,9 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'feat: add httproute template (#361) (#362)'
-    - kind: changed
-      description: update cfapi, tasker-kubernetes, argo-platform version (#356)
+      description: 'update "argo-platform" to 1.4073.7'
+    - kind: security
+      description: 'fix various security vulnerabilities in argo-platform.'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
