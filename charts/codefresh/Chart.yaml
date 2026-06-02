@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.11.11
+version: 2.11.12
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -22,25 +22,7 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'update "cf-api" to 22.3.13'
-    - kind: changed
-      description: 'update "cluster-providers" to 1.19.16'
-    - kind: changed
-      description: 'update "cf-container-logger" to 2.0.16'
-    - kind: changed
-      description: 'update "engine" to 3.2.9'
-    - kind: changed
-      description: 'update "kube-integration" to 1.33.12'
-    - kind: changed
-      description: 'update "cf-platform-analytics" to 0.53.8'
-    - kind: changed
-      description: 'update "cf-k8s-monitor" to 4.11.27'
-    - kind: changed
-      description: 'update "cf-ui" to 14.100.10'
-    - kind: changed
-      description: 'update "argo-platform" to 1.4073.8'
-    - kind: security
-      description: 'fix various security vulnerabilities in multiple components'
+      description: 'chore(release-2.11): update components (#364)'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
