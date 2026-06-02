@@ -37,7 +37,8 @@ annotations:
       description: 'update "cf-k8s-monitor" to 4.11.27'
     - kind: changed
       description: 'update "cf-ui" to 14.100.10'
-
+    - kind: changed
+      description: 'update "argo-platform" to 1.4073.8'
     - kind: security
       description: 'fix various security vulnerabilities in multiple components'
 dependencies:
@@ -253,7 +254,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
-    version: 1.4073.7-onprem-326c5fe
+    version: 1.4073.8-onprem-0eb0b48
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform
