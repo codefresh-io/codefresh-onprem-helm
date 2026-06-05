@@ -22,7 +22,29 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: update components (#367)
+      description: 'update "pipeline-manager" to 4.1.7'
+    - kind: changed
+      description: 'update "context-manager" to 2.40.5'
+    - kind: changed
+      description: 'update "cf-ui" to 14.100.11'
+    - kind: changed
+      description: 'update "cf-broadcaster" to 1.15.8'
+    - kind: changed
+      description: 'update "hermes" to 0.22.10'
+    - kind: changed
+      description: 'update "cf-tls-sign" to 1.8.19'
+    - kind: changed
+      description: 'update "runtime-environment-manager" to 4.1.4'
+    - kind: changed
+      description: 'update "mongosh" to 2.8.3-cf-1'
+    - kind: changed
+      description: 'update "cf-git-cloner" to 10.3.12'
+    - kind: changed
+      description: 'update "compose" to 5.1.4-1.6.5'
+    - kind: changed
+      description: 'update "dind" to 29.5.2-3.0.16'
+    - kind: security
+      description: 'fix various security vulnerabilities in multiple components.'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
