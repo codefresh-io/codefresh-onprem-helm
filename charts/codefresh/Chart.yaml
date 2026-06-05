@@ -196,7 +196,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-test-reporting.enabled
   - name: cfui
-    version: 14.100.12
+    version: 14.100.13
     repository: oci://quay.io/codefresh/charts
     condition: cfui.enabled
   - name: k8s-monitor
