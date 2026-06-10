@@ -22,27 +22,27 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |
     - kind: changed
-      description: 'update "pipeline-manager" to 4.2.1'
+      description: 'update "cf-broadcaster" to 1.15.9'
     - kind: changed
-      description: 'update "context-manager" to 2.41.5'
+      description: 'update "pipeline-manager" to 4.2.2'
     - kind: changed
-      description: 'update "cf-ui" to 14.100.12'
+      description: 'update "context-manager" to 2.41.7'
     - kind: changed
-      description: 'update "cf-broadcaster" to 1.15.8'
+      description: 'update "charts-manager" to 1.28.5'
     - kind: changed
-      description: 'update "hermes" to 0.22.10'
+      description: 'update "runtime-environment-manager" to 4.1.5'
     - kind: changed
-      description: 'update "cf-tls-sign" to 1.8.20'
+      description: 'update "engine" to 3.2.11'
     - kind: changed
-      description: 'update "runtime-environment-manager" to 4.1.4'
+      description: 'update "cf-container-logger" to 2.0.17'
     - kind: changed
-      description: 'update "mongosh" to 2.8.3-cf-1'
+      description: 'update "cf-docker-puller" to 8.0.28'
     - kind: changed
-      description: 'update "cf-git-cloner" to 10.3.12'
+      description: 'update "cf-docker-pusher" to 6.0.27'
     - kind: changed
-      description: 'update "compose" to 5.1.4-1.6.5'
+      description: 'update "cf-deploy-kubernetes" to 18.0.1'
     - kind: changed
-      description: 'update "dind" to 29.5.2-3.0.16'
+      description: 'update "pikolo" to 0.15.2'
     - kind: security
       description: 'fix various security vulnerabilities in multiple components'
 dependencies:
@@ -102,7 +102,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: kube-integration.enabled
   - name: charts-manager
-    version: 1.28.4
+    version: 1.28.5
     repository: oci://quay.io/codefresh/charts
     condition: charts-manager.enabled
   - name: cfsign
@@ -114,11 +114,11 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: tasker-kubernetes.enabled
   - name: context-manager
-    version: 2.41.5
+    version: 2.41.7
     repository: oci://quay.io/codefresh/charts
     condition: context-manager.enabled
   - name: pipeline-manager
-    version: 4.2.1
+    version: 4.2.2
     repository: oci://quay.io/codefresh/charts
     condition: pipeline-manager.enabled
   - name: gitops-dashboard-manager
@@ -224,11 +224,11 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: k8s-monitor.enabled
   - name: runtime-environment-manager
-    version: 4.1.4
+    version: 4.1.5
     repository: oci://quay.io/codefresh/charts
     condition: runtime-environment-manager.enabled
   - name: cf-broadcaster
-    version: 1.15.8
+    version: 1.15.9
     repository: oci://quay.io/codefresh/charts
     condition: cf-broadcaster.enabled
   - name: helm-repo-manager
