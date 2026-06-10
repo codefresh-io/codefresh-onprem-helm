@@ -90,7 +90,7 @@ dependencies:
     condition: builder.enabled
     version: 2.0.0
   - name: ingress-nginx
-    version: 4.14.3
+    version: 4.15.1
     repository: https://kubernetes.github.io/ingress-nginx
     condition: ingress-nginx.enabled
   - name: cluster-providers
@@ -122,7 +122,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: pipeline-manager.enabled
   - name: gitops-dashboard-manager
-    version: 1.16.10-onprem-0bd2713
+    version: 1.16.11-onprem-56a26ac
     repository: oci://quay.io/codefresh/charts
     condition: gitops-dashboard-manager.enabled
   - name: cfapi
