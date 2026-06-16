@@ -21,8 +21,8 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
-    - kind: changed
-      description: 'build: upgrade `cfapi` (#372)'
+    - kind: security
+      description: 'Upgrade "cfapi" to 22.3.14-onprem-0acd021 with security fixes.'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
