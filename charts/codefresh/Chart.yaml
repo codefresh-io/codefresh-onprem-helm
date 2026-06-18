@@ -21,8 +21,16 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
-    - kind: changed
-      description: 'fix: various security vulnerabilities (#375)'
+    - kind: security
+      description: 'Update "dind" to version 29.5.3-3.0.17. Security fixes.'
+    - kind: security
+      description: 'Update "compose" to version v5.1.4-1.6.6. Security fixes.'
+    - kind: security
+      description: 'Update "cf-docker-builder" to version 1.6.2. Security fixes.'
+    - kind: security
+      description: 'Update "kubectl" to version 1.35.5. Security fixes.'
+    - kind: security
+      description: 'Update "engine" to version 3.2.14. Security fixes.'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
