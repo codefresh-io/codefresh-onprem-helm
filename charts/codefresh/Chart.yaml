@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.11.15
+version: 2.11.16
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -21,8 +21,8 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
-    - kind: security
-      description: 'Upgrade "cfapi" to 22.3.14-onprem-0acd021 with security fixes.'
+    - kind: changed
+      description: 'fix: various security vulnerabilities (#375)'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
