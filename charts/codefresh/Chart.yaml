@@ -21,8 +21,12 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
-    - kind: changed
-      description: 'chore: fix various security vulnerabilities in argo-platform, cfapi, cluster-providers (#381)'
+    - kind: security
+      description: 'Update "argo-platform" to version 1.4073.10-onprem-4997ac8. Security fixes.'
+    - kind: security
+      description: 'Update "cfapi" to version 22.3.15-onprem-73c51c2. Security fixes.'
+    - kind: security
+      description: 'Update "cluster-providers" to version 1.19.17-onprem-bc6038f. Security fixes.'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
