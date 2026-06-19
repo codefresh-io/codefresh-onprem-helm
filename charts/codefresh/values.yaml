@@ -1476,6 +1476,7 @@ argo-platform:
       MONGODB_READMODELS_URI: '{{ include "argo-patform-libs.env-vars.mongodb-readmodels-uri-env-var-value" . }}'
       MONGODB_AUDIT_URI: '{{ include "argo-patform-libs.env-vars.mongodb-audit-uri-env-var-value" . }}'
       RABBITMQ_URLS: $(RABBITMQ_PROTOCOL)://$(RABBITMQ_USER):$(RABBITMQ_PASSWORD)@$(RABBITMQ_HOST)
+      ON_PREMISE: true
     # -- Secrets
     # @default -- See below
     secrets:
