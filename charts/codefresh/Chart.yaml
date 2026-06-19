@@ -23,8 +23,6 @@ annotations:
   artifacthub.io/changes: |-
     - kind: security
       description: 'Update "argo-platform" to version 1.4073.9-onprem-dafd713. Security fixes.'
-    - kind: changed
-      description: 'Fix various security vulnerabilities in argo-platform'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
