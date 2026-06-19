@@ -1,0 +1,16 @@
+charts/codefresh/values.yaml
+  h_bdc637847e5b6a 136,138,140,142-147,149-150,153
+charts/codefresh/tests/httproute/httproute_test.yaml
+  h_bdc637847e5b6a 1-77
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "9350124a567ea4ae4ee19191291827a4a89889ec",
+  "prompts": {},
+  "humans": {
+    "h_bdc637847e5b6a": {
+      "author": "Mikhail Klimko <mikhail.klimko@octopus.com>"
+    }
+  }
+}
