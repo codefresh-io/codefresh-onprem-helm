@@ -1,0 +1,16 @@
+.gitignore
+  h_bdc637847e5b6a 30
+charts/codefresh/values.yaml
+  h_bdc637847e5b6a 134-145
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "299877db31765a71e04afc9a9ecfc1f1cb3f3f0a",
+  "prompts": {},
+  "humans": {
+    "h_bdc637847e5b6a": {
+      "author": "Mikhail Klimko <mikhail.klimko@octopus.com>"
+    }
+  }
+}
