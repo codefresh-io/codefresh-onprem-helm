@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.11.18
+version: 2.11.19
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -21,12 +21,8 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
-    - kind: security
-      description: 'Update "argo-platform" to version 1.4073.10-onprem-4997ac8. Security fixes.'
-    - kind: security
-      description: 'Update "cfapi" to version 22.3.15-onprem-73c51c2. Security fixes.'
-    - kind: security
-      description: 'Update "cluster-providers" to version 1.19.17-onprem-bc6038f. Security fixes.'
+    - kind: changed
+      description: 'fix(internal-gateway): bump for security fixes (#385)'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
