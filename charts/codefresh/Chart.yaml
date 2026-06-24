@@ -122,7 +122,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: charts-manager.enabled
   - name: cfsign
-    version: 1.8.19-onprem-a89b54d
+    version: 1.8.21-onprem-bffc6e1
     repository: oci://quay.io/codefresh/charts
     condition: cfsign.enabled
   - name: tasker-kubernetes
