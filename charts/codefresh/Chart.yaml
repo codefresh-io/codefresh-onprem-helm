@@ -22,9 +22,11 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |
     - kind: changed
-      description: 'update "cf-broadcaster" to 1.15.9'
+      description: 'update "cf-broadcaster" to 1.15.11'
     - kind: changed
-      description: 'update "pipeline-manager" to 4.2.2'
+      description: 'update "k8s-monitor" to 4.12.2'
+    - kind: changed
+      description: 'update "pipeline-manager" to 4.2.3'
     - kind: changed
       description: 'update "context-manager" to 2.41.7'
     - kind: changed
@@ -51,7 +53,7 @@ dependencies:
     version: 0.18.1
   - name: internal-gateway
     repository: oci://quay.io/codefresh/charts
-    version: 0.11.0
+    version: 0.12.3
     condition: internal-gateway.enabled
   - name: consul
     version: 11.4.32
@@ -98,7 +100,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: cluster-providers.enabled
   - name: kube-integration
-    version: 2.0.1
+    version: 2.1.2
     repository: oci://quay.io/codefresh/charts
     condition: kube-integration.enabled
   - name: charts-manager
@@ -110,7 +112,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: cfsign.enabled
   - name: tasker-kubernetes
-    version: 1.28.12
+    version: 1.29.1
     repository: oci://quay.io/codefresh/charts
     condition: tasker-kubernetes.enabled
   - name: context-manager
@@ -118,11 +120,11 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: context-manager.enabled
   - name: pipeline-manager
-    version: 4.2.2
+    version: 4.2.3
     repository: oci://quay.io/codefresh/charts
     condition: pipeline-manager.enabled
   - name: gitops-dashboard-manager
-    version: 1.16.9
+    version: 1.16.12
     repository: oci://quay.io/codefresh/charts
     condition: gitops-dashboard-manager.enabled
   - name: cfapi
@@ -220,7 +222,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: cfui.enabled
   - name: k8s-monitor
-    version: 4.12.1
+    version: 4.12.2
     repository: oci://quay.io/codefresh/charts
     condition: k8s-monitor.enabled
   - name: runtime-environment-manager
@@ -228,7 +230,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: runtime-environment-manager.enabled
   - name: cf-broadcaster
-    version: 1.15.9
+    version: 1.15.11
     repository: oci://quay.io/codefresh/charts
     condition: cf-broadcaster.enabled
   - name: helm-repo-manager
@@ -236,11 +238,11 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: helm-repo-manager.enabled
   - name: hermes
-    version: 0.22.10
+    version: 0.22.11
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
   - name: nomios
-    version: 0.12.0
+    version: 0.12.2
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
   - name: cronus
@@ -249,20 +251,20 @@ dependencies:
     condition: hermes.enabled
   - name: cf-platform-analytics
     alias: cf-platform-analytics-platform
-    version: 0.54.6
+    version: 0.54.7
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: cf-platform-analytics
     alias: cf-platform-analytics-etlstarter
-    version: 0.54.6
+    version: 0.54.7
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
-    version: 1.4098.0
+    version: 1.4109.0
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform
-    version: 0.1.35
+    version: 0.1.41
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: cf-oidc-provider
