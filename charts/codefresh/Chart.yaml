@@ -21,8 +21,8 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
-    - kind: changed
-      description: 'chore: update cfsign chart to 1.8.21-onprem-bffc6e1 (#388)'
+    - kind: security
+      description: 'Update "cfsign" chart to 1.8.21-onprem-bffc6e1. Security fixes.'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
