@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.11.19
+version: 2.11.20
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -22,45 +22,7 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: security
-      description: 'Update "internal-gateway" to version 0.12.3. Security fixes.'
-    - kind: security
-      description: 'Update "kube-integration" to version 1.33.13-onprem-dde68ae. Security fixes.'
-    - kind: security
-      description: 'Update "tasker-kubernetes" to version 1.28.13-onprem-6546827. Security fixes.'
-    - kind: security
-      description: 'Update "pipeline-manager" to version 4.1.9-onprem-4183d71. Security fixes.'
-    - kind: security
-      description: 'Update "gitops-dashboard-manager" to version 1.16.12-onprem-d8aa1ec. Security fixes.'
-    - kind: security
-      description: 'Update "k8s-monitor" to version 4.11.28-onprem-0314e70. Security fixes.'
-    - kind: security
-      description: 'Update "cf-broadcaster" to version 1.15.10-onprem-46297d5. Security fixes.'
-    - kind: security
-      description: 'Update "hermes" to version 0.22.11-onprem-10611bd. Security fixes.'
-    - kind: security
-      description: 'Update "nomios" to version 0.11.19-onprem-0e21875. Security fixes.'
-    - kind: security
-      description: 'Update "cf-platform-analytics" to version 0.53.9-onprem-7104ca5. Security fixes.'
-    - kind: security
-      description: 'Update "argo-platform" to version 1.4073.10-onprem-1c4292b. Security fixes.'
-    - kind: security
-      description: 'Update "argo-hub-platform" to version 0.1.41. Security fixes.'
-    - kind: security
-      description: 'Update "cf-container-logger" to version 2.0.24. Security fixes.'
-    - kind: security
-      description: 'Update "cf-docker-builder" to version 1.6.4. Security fixes.'
-    - kind: security
-      description: 'Update "cf-docker-pusher" to version 6.0.28. Security fixes.'
-    - kind: security
-      description: 'Update "engine" to version 3.2.20. Security fixes.'
-    - kind: security
-      description: 'Update "cf-deploy-kubernetes" to version 18.0.2. Security fixes.'
-    - kind: security
-      description: 'Update "cf-git-cloner" to version 10.3.13. Security fixes.'
-    - kind: security
-      description: 'Update "pikolo" to version 0.15.3. Security fixes.'
-    - kind: security
-      description: 'Update "curl" to version 8.20.0. Security fixes.'
+      description: 'Update "cfsign" chart to 1.8.21-onprem-bffc6e1. Security fixes.'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
