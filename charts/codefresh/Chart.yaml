@@ -92,7 +92,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: cfsign.enabled
   - name: tasker-kubernetes
-    version: 1.28.12-onprem-e19d891
+    version: 1.28.13-onprem-6546827
     repository: oci://quay.io/codefresh/charts
     condition: tasker-kubernetes.enabled
   - name: context-manager
@@ -100,7 +100,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: context-manager.enabled
   - name: pipeline-manager
-    version: 4.1.8-onprem-bc05059
+    version: 4.1.9-onprem-4183d71
     repository: oci://quay.io/codefresh/charts
     condition: pipeline-manager.enabled
   - name: gitops-dashboard-manager
@@ -202,7 +202,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: cfui.enabled
   - name: k8s-monitor
-    version: 4.11.27-onprem-834be86
+    version: 4.11.28-onprem-0314e70
     repository: oci://quay.io/codefresh/charts
     condition: k8s-monitor.enabled
   - name: runtime-environment-manager
@@ -210,7 +210,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: runtime-environment-manager.enabled
   - name: cf-broadcaster
-    version: 1.15.9-onprem-cf9132d
+    version: 1.15.10-onprem-46297d5
     repository: oci://quay.io/codefresh/charts
     condition: cf-broadcaster.enabled
   - name: helm-repo-manager
@@ -244,7 +244,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform
-    version: 0.1.38
+    version: 0.1.41
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: cf-oidc-provider
