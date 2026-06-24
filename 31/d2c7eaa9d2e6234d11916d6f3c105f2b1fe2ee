@@ -1,0 +1,14 @@
+charts/codefresh/Chart.yaml
+  h_92c13165ae0139 24-25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.11",
+  "base_commit_sha": "31d2c7eaa9d2e6234d11916d6f3c105f2b1fe2ee",
+  "prompts": {},
+  "humans": {
+    "h_92c13165ae0139": {
+      "author": "Vasil Sudakov <vasil.sudakov@octopus.com>"
+    }
+  }
+}
