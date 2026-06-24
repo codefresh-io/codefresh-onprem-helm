@@ -22,9 +22,11 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |
     - kind: changed
-      description: 'update "cf-broadcaster" to 1.15.9'
+      description: 'update "cf-broadcaster" to 1.15.11'
     - kind: changed
-      description: 'update "pipeline-manager" to 4.2.2'
+      description: 'update "k8s-monitor" to 4.12.2'
+    - kind: changed
+      description: 'update "pipeline-manager" to 4.2.3'
     - kind: changed
       description: 'update "context-manager" to 2.41.7'
     - kind: changed
@@ -110,7 +112,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: cfsign.enabled
   - name: tasker-kubernetes
-    version: 1.28.12
+    version: 1.29.1
     repository: oci://quay.io/codefresh/charts
     condition: tasker-kubernetes.enabled
   - name: context-manager
@@ -118,7 +120,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: context-manager.enabled
   - name: pipeline-manager
-    version: 4.2.2
+    version: 4.2.3
     repository: oci://quay.io/codefresh/charts
     condition: pipeline-manager.enabled
   - name: gitops-dashboard-manager
@@ -220,7 +222,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: cfui.enabled
   - name: k8s-monitor
-    version: 4.12.1
+    version: 4.12.2
     repository: oci://quay.io/codefresh/charts
     condition: k8s-monitor.enabled
   - name: runtime-environment-manager
@@ -228,7 +230,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: runtime-environment-manager.enabled
   - name: cf-broadcaster
-    version: 1.15.9
+    version: 1.15.11
     repository: oci://quay.io/codefresh/charts
     condition: cf-broadcaster.enabled
   - name: helm-repo-manager
@@ -262,7 +264,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform
-    version: 0.1.35
+    version: 0.1.41
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: cf-oidc-provider
