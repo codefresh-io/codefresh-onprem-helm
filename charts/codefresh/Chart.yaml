@@ -22,31 +22,9 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |
     - kind: changed
-      description: 'update "cf-broadcaster" to 1.15.11'
-    - kind: changed
-      description: 'update "k8s-monitor" to 4.12.2'
-    - kind: changed
-      description: 'update "pipeline-manager" to 4.2.3'
-    - kind: changed
-      description: 'update "context-manager" to 2.41.7'
-    - kind: changed
-      description: 'update "charts-manager" to 1.28.5'
-    - kind: changed
-      description: 'update "runtime-environment-manager" to 4.1.5'
-    - kind: changed
-      description: 'update "engine" to 3.2.11'
-    - kind: changed
-      description: 'update "cf-container-logger" to 2.0.17'
-    - kind: changed
-      description: 'update "cf-docker-puller" to 8.0.28'
-    - kind: changed
-      description: 'update "cf-docker-pusher" to 6.0.27'
-    - kind: changed
-      description: 'update "cf-deploy-kubernetes" to 18.0.1'
-    - kind: changed
-      description: 'update "pikolo" to 0.15.2'
+      description: 'update "cf-platform-analytics" to 0.54.8'
     - kind: security
-      description: 'fix various security vulnerabilities in multiple components'
+      description: 'fix various security vulnerabilities'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -251,12 +229,12 @@ dependencies:
     condition: hermes.enabled
   - name: cf-platform-analytics
     alias: cf-platform-analytics-platform
-    version: 0.54.7
+    version: 0.54.8
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: cf-platform-analytics
     alias: cf-platform-analytics-etlstarter
-    version: 0.54.7
+    version: 0.54.8
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
