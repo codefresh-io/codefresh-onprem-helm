@@ -1,0 +1,19 @@
+charts/codefresh/Chart.yaml
+  s_311873cb946570::t_ecf4a8189fb476 24-63
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.11",
+  "base_commit_sha": "6f4e2eaba2c6bea0effbd1150ba5c2f8e4767e4c",
+  "prompts": {},
+  "sessions": {
+    "s_311873cb946570": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4f1d3553-2c32-4e7f-a321-a9a038c50f49",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Vasil Sudakov <vasil.sudakov@octopus.com>"
+    }
+  }
+}
