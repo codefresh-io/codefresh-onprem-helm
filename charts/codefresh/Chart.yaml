@@ -21,8 +21,8 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
-    - kind: changed
-      description: bump for security fixes (#391)
+    - kind: security
+      description: 'Update "cf-platform-analytics" chart to 0.53.10-onprem-4d18f1a. Security fixes.'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
