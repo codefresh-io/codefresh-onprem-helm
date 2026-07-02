@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.11.22
+version: 2.11.23
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -22,11 +22,7 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'Update "cf-ui" to 14.100.12.'
-    - kind: changed
-      description: 'Update "argo-platform" to 1.4073.10.'
-    - kind: fixed
-      description: 'Update documentation helper window configuration.'
+      description: 'chore: fix various security vulnerabilities (#395)'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
