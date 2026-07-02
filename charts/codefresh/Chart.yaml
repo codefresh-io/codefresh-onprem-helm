@@ -242,7 +242,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform
-    version: 0.1.41
+    version: 0.1.42
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: cf-oidc-provider
