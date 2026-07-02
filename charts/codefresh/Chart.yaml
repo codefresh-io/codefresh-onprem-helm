@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.11.22
+version: 2.11.23
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -15,18 +15,16 @@ appVersion: 0.0.0
 annotations:
   artifacthub.io/prerelease: "false"
   artifacthub.io/alternativeName: "codefresh-onprem"
-  artifacthub.io/containsSecurityUpdates: "false"
+  artifacthub.io/containsSecurityUpdates: "true"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   # artifacthub.io/changes: |
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
-    - kind: changed
-      description: 'Update "cf-ui" to 14.100.12.'
-    - kind: changed
-      description: 'Update "argo-platform" to 1.4073.10.'
-    - kind: fixed
-      description: 'Update documentation helper window configuration.'
+    - kind: security
+      description: 'Update "argo-platform" to version 1.4073.11. Security fixes.'
+    - kind: security
+      description: 'Update "gitops-dashboard-manager" to version 1.16.14. Security fixes.'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
