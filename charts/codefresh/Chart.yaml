@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.11.23
+version: 2.11.24
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -56,7 +56,7 @@ annotations:
     - kind: security
       description: 'Update "cf-docker-pusher" to version 6.0.32. Security fixes.'
     - kind: security
-      description: 'Update "pikolo" to version 0.15.4. Security fixes'
+      description: 'Update "pikolo" to version 0.15.4. Security fixes.'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
