@@ -261,12 +261,12 @@ dependencies:
     condition: hermes.enabled
   - name: cf-platform-analytics
     alias: cf-platform-analytics-platform
-    version: 0.53.10-onprem-4d18f1a
+    version: 0.53.11-onprem-06e4dc5
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: cf-platform-analytics
     alias: cf-platform-analytics-etlstarter
-    version: 0.53.10-onprem-4d18f1a
+    version: 0.53.11-onprem-06e4dc5
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
