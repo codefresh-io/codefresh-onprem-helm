@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.11.24
+version: 2.11.25
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -22,41 +22,7 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: security
-      description: 'Update "argo-hub-platform" to version 0.1.42. Security fixes.'
-    - kind: security
-      description: 'Update "context-manager" to version 2.40.7. Security fixes.'
-    - kind: security
-      description: 'Update "runtime-environment-manager" to version 4.1.6. Security fixes.'
-    - kind: security
-      description: 'Update "cf-ui" to version 14.100.13. Security fixes.'
-    - kind: security
-      description: 'Update "charts-manager" to version 1.28.6. Security fixes.'
-    - kind: security
-      description: 'Update "kube-integration" to version 1.33.14. Security fixes.'
-    - kind: security
-      description: 'Update "tasker-kubernetes" to version 1.28.14. Security fixes.'
-    - kind: security
-      description: 'Update "cf-api" to version 22.3.16. Security fixes.'
-    - kind: security
-      description: 'Update "cf-tls-sign" to version 1.8.22. Security fixes.'
-    - kind: security
-      description: 'Update "pipeline-manager" to version 4.1.10. Security fixes.'
-    - kind: security
-      description: 'Update "dind" to version 29.6.1-3.0.19. Security fixes.'
-    - kind: security
-      description: 'Update "engine" to version 3.2.25. Security fixes.'
-    - kind: security
-      description: 'Update "compose" to version v5.2.0-1.6.7. Security fixes.'
-    - kind: security
-      description: 'Update "cf-container-logger" to version 2.0.29. Security fixes.'
-    - kind: security
-      description: 'Update "cf-docker-builder" to version 1.6.7. Security fixes.'
-    - kind: security
-      description: 'Update "cf-docker-puller" to version 8.0.39. Security fixes.'
-    - kind: security
-      description: 'Update "cf-docker-pusher" to version 6.0.32. Security fixes.'
-    - kind: security
-      description: 'Update "pikolo" to version 0.15.4. Security fixes.'
+      description: 'Update "cf-platform-analytics" to version 0.53.11. Security fixes.'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
