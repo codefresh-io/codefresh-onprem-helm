@@ -1448,6 +1448,18 @@ cfapi:
     USE_SHA256_GITHUB_SIGNATURE: "true"
 ```
 
+### Webhook base URL for externally-reachable Git providers
+
+```yaml
+cfapi:
+  env:
+    # By default Codefresh registers webhooks using CF_HOST_NAME/EXTERNAL_URL (the same hostname used for the UI/API).
+    # If that hostname is internal-only and unreachable by the Git provider (e.g. Azure DevOps), set WEBHOOK_BASE_URL
+    # to an externally-reachable hostname; it is used only for webhook registration, everything else keeps using CF_HOST_NAME/EXTERNAL_URL.
+    # Note: this only affects webhooks registered after the change - existing triggers must be deleted and recreated.
+    # WEBHOOK_BASE_URL: "https://external.mydomain.com"
+```
+
 ### Image digests in containers
 
 In Codefresh On-Prem 2.6.x all Codefresh owner microservices include image digests in the default subchart values.
