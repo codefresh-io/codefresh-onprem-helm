@@ -15,14 +15,16 @@ appVersion: 0.0.0
 annotations:
   artifacthub.io/prerelease: "false"
   artifacthub.io/alternativeName: "codefresh-onprem"
-  artifacthub.io/containsSecurityUpdates: "false"
+  artifacthub.io/containsSecurityUpdates: "true"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   # artifacthub.io/changes: |
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
-    - kind: security
+    - kind: changed
       description: 'Update "engine" to version "3.2.26" tag. Dependency fixes.'
+    - kind: security
+      description: 'Update "pikolo" to "0.15.7" tag. Security fixes.'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
