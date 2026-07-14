@@ -1462,7 +1462,8 @@ cfapi:
 By default Codefresh registers webhooks using CF_HOST_NAME/EXTERNAL_URL (the same hostname used for the UI/API).
  If that hostname is internal-only and unreachable by the Git provider, set WEBHOOK_BASE_URL
 to an externally-reachable hostname; it is used only for webhook registration, everything else keeps using CF_HOST_NAME/EXTERNAL_URL.
-> **Note!** this only affects webhooks registered after the change - existing triggers must be deleted and recreated.
+> [!IMPORTANT]
+> This only affects webhooks registered after the change - existing triggers must be deleted and recreated.
 
 ```yaml
 cfapi:
