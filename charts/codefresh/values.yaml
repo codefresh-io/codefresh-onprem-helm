@@ -585,8 +585,8 @@ cfapi: &cf-api
       OIDC_PROVIDER_PROTOCOL: '{{ .Values.global.oidcProviderProtocol }}'
       OIDC_PROVIDER_TOKEN_ENDPOINT: '{{ .Values.global.oidcProviderTokenEndpoint }}'
       DEFAULT_SYSTEM_TYPE: PROJECT_ONE
-      # Set to an externally-reachable hostname to register webhooks with a different URL than CF_HOST_NAME
-      # WEBHOOK_BASE_URL: ""
+      # Configure platform URL for Git webhooks
+      WEBHOOK_BASE_URL: ""
   # -- Secrets configuration
   secrets:
     secret:
