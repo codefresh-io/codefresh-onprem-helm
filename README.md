@@ -37,6 +37,7 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
   - [Projects pipelines limit](#projects-pipelines-limit)
   - [Enable session cookie](#enable-session-cookie)
   - [X-Frame-Options response header](#x-frame-options-response-header)
+  - [Configure platform URL for Git webhooks](#configure-platform-url-for-git-webhooks)
   - [Image digests in containers](#image-digests-in-containers)
   - [Hermes configuration](#hermes-configuration)
 - [Configuring OIDC Provider](#configuring-oidc-provider)
