@@ -15,14 +15,16 @@ appVersion: 0.0.0
 annotations:
   artifacthub.io/prerelease: "false"
   artifacthub.io/alternativeName: "codefresh-onprem"
-  artifacthub.io/containsSecurityUpdates: "true"
+  artifacthub.io/containsSecurityUpdates: "false"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   # artifacthub.io/changes: |
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: update cf-ui (#408)
+      description: update cf-ui to 14.100.14
+    - kind: fixed
+      description: added "nodes" section to accounts admin panel
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
