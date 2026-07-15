@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.11.25
+version: 2.11.27
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -105,93 +105,93 @@ dependencies:
     condition: gitops-dashboard-manager.enabled
   - name: cfapi
     alias: cfapi
-    version: 22.3.16-onprem-fe07bee
-    repository: oci://quay.io/codefresh/charts
+    version: 22.8.4-cf-2090-onprem-visa
+    repository: oci://quay.io/codefresh/dev/charts
     condition: cfapi.enabled
   - name: cfapi
     alias: cfapi-auth
-    version: 22.3.16-onprem-fe07bee
-    repository: oci://quay.io/codefresh/charts
+    version: 22.8.4-cf-2090-onprem-visa
+    repository: oci://quay.io/codefresh/dev/charts
     condition: cfapi-auth.enabled
   - name: cfapi
     alias: cfapi-internal
-    version: 22.3.16-onprem-fe07bee
-    repository: oci://quay.io/codefresh/charts
+    version: 22.8.4-cf-2090-onprem-visa
+    repository: oci://quay.io/codefresh/dev/charts
     condition: cfapi-internal.enabled
   - name: cfapi
     alias: cfapi-ws
-    version: 22.3.16-onprem-fe07bee
-    repository: oci://quay.io/codefresh/charts
+    version: 22.8.4-cf-2090-onprem-visa
+    repository: oci://quay.io/codefresh/dev/charts
     condition: cfapi-ws.enabled
   - name: cfapi
     alias: cfapi-admin
-    version: 22.3.16-onprem-fe07bee
-    repository: oci://quay.io/codefresh/charts
+    version: 22.8.4-cf-2090-onprem-visa
+    repository: oci://quay.io/codefresh/dev/charts
     condition: cfapi-admin.enabled
   - name: cfapi
     alias: cfapi-endpoints
-    version: 22.3.16-onprem-fe07bee
-    repository: oci://quay.io/codefresh/charts
+    version: 22.8.4-cf-2090-onprem-visa
+    repository: oci://quay.io/codefresh/dev/charts
     condition: cfapi-endpoints.enabled
   - name: cfapi
     alias: cfapi-terminators
-    version: 22.3.16-onprem-fe07bee
-    repository: oci://quay.io/codefresh/charts
+    version: 22.8.4-cf-2090-onprem-visa
+    repository: oci://quay.io/codefresh/dev/charts
     condition: cfapi-terminators.enabled
   - name: cfapi
     alias: cfapi-sso-group-synchronizer
-    version: 22.3.16-onprem-fe07bee
-    repository: oci://quay.io/codefresh/charts
+    version: 22.8.4-cf-2090-onprem-visa
+    repository: oci://quay.io/codefresh/dev/charts
     condition: cfapi-sso-group-synchronizer.enabled
   - name: cfapi
     alias: cfapi-buildmanager
-    version: 22.3.16-onprem-fe07bee
-    repository: oci://quay.io/codefresh/charts
+    version: 22.8.4-cf-2090-onprem-visa
+    repository: oci://quay.io/codefresh/dev/charts
     condition: cfapi-buildmanager.enabled
   - name: cfapi
     alias: cfapi-cacheevictmanager
-    version: 22.3.16-onprem-fe07bee
-    repository: oci://quay.io/codefresh/charts
+    version: 22.8.4-cf-2090-onprem-visa
+    repository: oci://quay.io/codefresh/dev/charts
     condition: cfapi-cacheevictmanager.enabled
   - name: cfapi
     alias: cfapi-eventsmanagersubscriptions
-    version: 22.3.16-onprem-fe07bee
-    repository: oci://quay.io/codefresh/charts
+    version: 22.8.4-cf-2090-onprem-visa
+    repository: oci://quay.io/codefresh/dev/charts
     condition: cfapi-eventsmanagersubscriptions.enabled
   - name: cfapi
     alias: cfapi-kubernetesresourcemonitor
-    version: 22.3.16-onprem-fe07bee
-    repository: oci://quay.io/codefresh/charts
+    version: 22.8.4-cf-2090-onprem-visa
+    repository: oci://quay.io/codefresh/dev/charts
     condition: cfapi-kubernetesresourcemonitor.enabled
   - name: cfapi
     alias: cfapi-environments
-    version: 22.3.16-onprem-fe07bee
-    repository: oci://quay.io/codefresh/charts
+    version: 22.8.4-cf-2090-onprem-visa
+    repository: oci://quay.io/codefresh/dev/charts
     condition: cfapi-environments.enabled
   - name: cfapi
     alias: cfapi-gitops-resource-receiver
-    version: 22.3.16-onprem-fe07bee
-    repository: oci://quay.io/codefresh/charts
+    version: 22.8.4-cf-2090-onprem-visa
+    repository: oci://quay.io/codefresh/dev/charts
     condition: cfapi-gitops-resource-receiver.enabled
   - name: cfapi
     alias: cfapi-downloadlogmanager
-    version: 22.3.16-onprem-fe07bee
-    repository: oci://quay.io/codefresh/charts
+    version: 22.8.4-cf-2090-onprem-visa
+    repository: oci://quay.io/codefresh/dev/charts
     condition: cfapi-downloadlogmanager.enabled
   - name: cfapi
     alias: cfapi-teams
-    version: 22.3.16-onprem-fe07bee
-    repository: oci://quay.io/codefresh/charts
+    version: 22.8.4-cf-2090-onprem-visa
+    repository: oci://quay.io/codefresh/dev/charts
     condition: cfapi-teams.enabled
   - name: cfapi
     alias: cfapi-kubernetes-endpoints
-    version: 22.3.16-onprem-fe07bee
-    repository: oci://quay.io/codefresh/charts
+    version: 22.8.4-cf-2090-onprem-visa
+    repository: oci://quay.io/codefresh/dev/charts
     condition: cfapi-kubernetes-endpoints.enabled
   - name: cfapi
     alias: cfapi-test-reporting
-    version: 22.3.16-onprem-fe07bee
-    repository: oci://quay.io/codefresh/charts
+    version: 22.8.4-cf-2090-onprem-visa
+    repository: oci://quay.io/codefresh/dev/charts
     condition: cfapi-test-reporting.enabled
   - name: cfui
     version: 14.100.13-onprem-cb1bb2f
