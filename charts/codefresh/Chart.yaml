@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 0.0.0
+version: 2.12.0
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -20,11 +20,9 @@ annotations:
   # artifacthub.io/changes: |
   #   - kind:
   #     description: ""
-  artifacthub.io/changes: |
+  artifacthub.io/changes: |-
     - kind: changed
-      description: 'update "cf-platform-analytics" to 0.54.8'
-    - kind: security
-      description: 'fix various security vulnerabilities'
+      description: update release-2.12 (#413)
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
