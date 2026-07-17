@@ -1973,20 +1973,5 @@ webTLS:
   cert: ""
   key: ""
 
-# -- CI
-seed-e2e:
-  enabled: false
-  image:
-    registry: docker.io
-    repository: mongo
-    tag: latest
-  ttlSecondsAfterFinished: 300
-  backoffLimit: 10
-  affinity: {}
-  nodeSelector: {}
-  podSecurityContext: {}
-  resources: {}
-  tolerations: []
-
 ci:
   enabled: false
