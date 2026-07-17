@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.11.25
+version: 2.11.26
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -15,7 +15,7 @@ appVersion: 0.0.0
 annotations:
   artifacthub.io/prerelease: "false"
   artifacthub.io/alternativeName: "codefresh-onprem"
-  artifacthub.io/containsSecurityUpdates: "true"
+  artifacthub.io/containsSecurityUpdates: "false"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   # artifacthub.io/changes: |
   #   - kind:
@@ -200,7 +200,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-test-reporting.enabled
   - name: cfui
-    version: 14.100.13-onprem-cb1bb2f
+    version: 14.100.14-onprem-d8b299d
     repository: oci://quay.io/codefresh/charts
     condition: cfui.enabled
   - name: k8s-monitor
