@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.11.26
+version: 2.11.27
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -26,7 +26,7 @@ annotations:
     - kind: fixed
       description: 'ECR integration with Service Account uses the region of integration.'
     - kind: changed
-      description: 'Update "engine" to "3.3.0"'
+      description: 'Update "engine" to "3.3.0".'
     - kind: security
       description: 'Update "pikolo" to "0.15.7" tag. Security fixes.'
 dependencies:
