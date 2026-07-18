@@ -27,7 +27,7 @@ annotations:
       description: 'ECR integration with Service Account uses the region of integration.'
     - kind: changed
       description: 'Update "engine" to "3.3.0"'
-    - kind: security 
+    - kind: security
       description: 'Update "pikolo" to "0.15.7" tag. Security fixes.'
 dependencies:
   - name: cf-common
