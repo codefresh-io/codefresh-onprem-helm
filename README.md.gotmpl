@@ -37,6 +37,7 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
   - [Projects pipelines limit](#projects-pipelines-limit)
   - [Enable session cookie](#enable-session-cookie)
   - [X-Frame-Options response header](#x-frame-options-response-header)
+  - [Configure platform URL for Git webhooks](#configure-platform-url-for-git-webhooks)
   - [Image digests in containers](#image-digests-in-containers)
   - [Hermes configuration](#hermes-configuration)
 - [Configuring OIDC Provider](#configuring-oidc-provider)
@@ -1455,6 +1456,20 @@ For detailed information, see the [Securing your webhooks](https://docs.github.c
 cfapi:
   env:
     USE_SHA256_GITHUB_SIGNATURE: "true"
+```
+
+### Configure platform URL for Git webhooks
+
+By default Codefresh registers webhooks using CF_HOST_NAME/EXTERNAL_URL (the same hostname used for the UI/API).
+ If that hostname is internal-only and unreachable by the Git provider, set WEBHOOK_BASE_URL
+to an externally-reachable hostname; it is used only for webhook registration, everything else keeps using CF_HOST_NAME/EXTERNAL_URL.
+> [!IMPORTANT]
+> This only affects webhooks registered after the change - existing triggers must be deleted and recreated.
+
+```yaml
+cfapi:
+  env:
+    WEBHOOK_BASE_URL: "https://external.mydomain.com"
 ```
 
 ### Image digests in containers
