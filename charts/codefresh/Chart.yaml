@@ -21,8 +21,14 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
+    - kind: fixed
+      description: 'Fixes the bug in the default Classic Runtime that was causing steps of type "deploy" to fail while pulling secrets.'
+    - kind: fixed
+      description: 'ECR integration with Service Account uses the region of integration.'
     - kind: changed
-      description: 'fix: onprem 2.11.26 update engine with fixed dependency ''kube-integration'' (#405)'
+      description: 'Update "engine" to "3.3.0"'
+    - kind: security 
+      description: 'Update "pikolo" to "0.15.7" tag. Security fixes.'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
