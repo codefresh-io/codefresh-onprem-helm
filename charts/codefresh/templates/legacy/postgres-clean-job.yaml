@@ -8,7 +8,7 @@
 {{- $nodeSelector := .Values.postgresqlCleanJob.nodeSelector | default dict }}
 {{- $globalNodeSelector := .Values.global.nodeSelector | default dict }}
 {{- $allNodeSelector := mergeOverwrite $globalNodeSelector $nodeSelector }}
-{{- if and .Values.postgresqlCleanJob.enabled }}
+{{- if and .Values.postgresqlCleanJob.enabled (ne .Values.global.disablePostgresForEventbus "true") }}
 ---
 apiVersion: batch/v1
 kind: CronJob
