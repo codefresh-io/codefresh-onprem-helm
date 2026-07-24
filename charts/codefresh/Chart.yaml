@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.11.27
+version: 2.11.28
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -21,14 +21,8 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
-    - kind: fixed
-      description: 'Fixes the bug in the default Classic Runtime that was causing steps of type "deploy" to fail while pulling secrets.'
-    - kind: fixed
-      description: 'ECR integration with Service Account uses the region of integration.'
     - kind: changed
-      description: 'Update "engine" to "3.3.0".'
-    - kind: security
-      description: 'Update "pikolo" to "0.15.7" tag. Security fixes.'
+      description: 'Disable postgres-clean-job when the disablePostgresForEventbus option is enabled'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts

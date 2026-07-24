@@ -1,6 +1,6 @@
 # codefresh
 
-![Version: 2.11.25](https://img.shields.io/badge/Version-2.11.25-informational?style=flat-square) ![AppVersion: 0.0.0](https://img.shields.io/badge/AppVersion-0.0.0-informational?style=flat-square)
+![Version: 2.11.28](https://img.shields.io/badge/Version-2.11.28-informational?style=flat-square) ![AppVersion: 0.0.0](https://img.shields.io/badge/AppVersion-0.0.0-informational?style=flat-square)
 
 Helm Chart for Codefresh On-Prem
 
@@ -55,7 +55,7 @@ Helm Chart for Codefresh On-Prem
 | oci://quay.io/codefresh/charts | cfapi-environments(cfapi) | 22.3.16-onprem-fe07bee |
 | oci://quay.io/codefresh/charts | cfapi-gitops-resource-receiver(cfapi) | 22.3.16-onprem-fe07bee |
 | oci://quay.io/codefresh/charts | cfsign | 1.8.22-onprem-89a82ee |
-| oci://quay.io/codefresh/charts | cfui | 14.100.13-onprem-cb1bb2f |
+| oci://quay.io/codefresh/charts | cfui | 14.100.14-onprem-d8b299d |
 | oci://quay.io/codefresh/charts | charts-manager | 1.28.6-onprem-dde519d |
 | oci://quay.io/codefresh/charts | cluster-providers | 1.19.17-onprem-bc6038f |
 | oci://quay.io/codefresh/charts | context-manager | 2.40.7-onprem-7abd7a9 |
@@ -118,9 +118,9 @@ Helm Chart for Codefresh On-Prem
 | cf-platform-analytics-etlstarter.redis.enabled | bool | `false` | Disable redis subchart |
 | cf-platform-analytics-etlstarter.system-etl-postgres | object | `{"container":{"env":{"BLUE_GREEN_ENABLED":true}},"controller":{"cronjob":{"ttlSecondsAfterFinished":300}},"enabled":true}` | Only postgres ETL should be running in onprem |
 | cf-platform-analytics-platform | object | See below | platform-analytics |
-| cfapi | object | `{"affinity":{},"container":{"env":{"AUDIT_AUTO_CREATE_DB":true,"DEFAULT_SYSTEM_TYPE":"PROJECT_ONE","GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","OIDC_PROVIDER_PORT":"{{ .Values.global.oidcProviderPort }}","OIDC_PROVIDER_PROTOCOL":"{{ .Values.global.oidcProviderProtocol }}","OIDC_PROVIDER_TOKEN_ENDPOINT":"{{ .Values.global.oidcProviderTokenEndpoint }}","OIDC_PROVIDER_URI":"{{ .Values.global.oidcProviderService }}","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh","RUNTIME_REDIS_DB":0},"image":{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}},"controller":{"replicas":2},"enabled":true,"hpa":{"enabled":false,"maxReplicas":10,"minReplicas":2,"targetCPUUtilizationPercentage":70},"imagePullSecrets":[],"nodeSelector":{},"pdb":{"enabled":false,"minAvailable":"50%"},"podSecurityContext":{},"resources":{"limits":{},"requests":{"cpu":"200m","memory":"256Mi"}},"secrets":{"secret":{"enabled":true,"stringData":{"OIDC_PROVIDER_CLIENT_ID":"{{ .Values.global.oidcProviderClientId }}","OIDC_PROVIDER_CLIENT_SECRET":"{{ .Values.global.oidcProviderClientSecret }}"},"type":"Opaque"}},"tolerations":[]}` | cf-api |
+| cfapi | object | `{"affinity":{},"container":{"env":{"AUDIT_AUTO_CREATE_DB":true,"DEFAULT_SYSTEM_TYPE":"PROJECT_ONE","GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","OIDC_PROVIDER_PORT":"{{ .Values.global.oidcProviderPort }}","OIDC_PROVIDER_PROTOCOL":"{{ .Values.global.oidcProviderProtocol }}","OIDC_PROVIDER_TOKEN_ENDPOINT":"{{ .Values.global.oidcProviderTokenEndpoint }}","OIDC_PROVIDER_URI":"{{ .Values.global.oidcProviderService }}","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh","RUNTIME_REDIS_DB":0,"WEBHOOK_BASE_URL":""},"image":{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}},"controller":{"replicas":2},"enabled":true,"hpa":{"enabled":false,"maxReplicas":10,"minReplicas":2,"targetCPUUtilizationPercentage":70},"imagePullSecrets":[],"nodeSelector":{},"pdb":{"enabled":false,"minAvailable":"50%"},"podSecurityContext":{},"resources":{"limits":{},"requests":{"cpu":"200m","memory":"256Mi"}},"secrets":{"secret":{"enabled":true,"stringData":{"OIDC_PROVIDER_CLIENT_ID":"{{ .Values.global.oidcProviderClientId }}","OIDC_PROVIDER_CLIENT_SECRET":"{{ .Values.global.oidcProviderClientSecret }}"},"type":"Opaque"}},"tolerations":[]}` | cf-api |
 | cfapi-internal.<<.affinity | object | `{}` | Affinity configuration |
-| cfapi-internal.<<.container | object | `{"env":{"AUDIT_AUTO_CREATE_DB":true,"DEFAULT_SYSTEM_TYPE":"PROJECT_ONE","GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","OIDC_PROVIDER_PORT":"{{ .Values.global.oidcProviderPort }}","OIDC_PROVIDER_PROTOCOL":"{{ .Values.global.oidcProviderProtocol }}","OIDC_PROVIDER_TOKEN_ENDPOINT":"{{ .Values.global.oidcProviderTokenEndpoint }}","OIDC_PROVIDER_URI":"{{ .Values.global.oidcProviderService }}","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh","RUNTIME_REDIS_DB":0},"image":{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}}` | Container configuration |
+| cfapi-internal.<<.container | object | `{"env":{"AUDIT_AUTO_CREATE_DB":true,"DEFAULT_SYSTEM_TYPE":"PROJECT_ONE","GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","OIDC_PROVIDER_PORT":"{{ .Values.global.oidcProviderPort }}","OIDC_PROVIDER_PROTOCOL":"{{ .Values.global.oidcProviderProtocol }}","OIDC_PROVIDER_TOKEN_ENDPOINT":"{{ .Values.global.oidcProviderTokenEndpoint }}","OIDC_PROVIDER_URI":"{{ .Values.global.oidcProviderService }}","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh","RUNTIME_REDIS_DB":0,"WEBHOOK_BASE_URL":""},"image":{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}}` | Container configuration |
 | cfapi-internal.<<.container.env | object | See below | Env vars |
 | cfapi-internal.<<.container.image | object | `{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}` | Image |
 | cfapi-internal.<<.container.image.registry | string | `"us-docker.pkg.dev/codefresh-enterprise/gcr.io"` | Registry prefix |
@@ -144,7 +144,7 @@ Helm Chart for Codefresh On-Prem
 | cfapi-internal.<<.tolerations | list | `[]` | Tolerations configuration |
 | cfapi-internal.enabled | bool | `false` |  |
 | cfapi.affinity | object | `{}` | Affinity configuration |
-| cfapi.container | object | `{"env":{"AUDIT_AUTO_CREATE_DB":true,"DEFAULT_SYSTEM_TYPE":"PROJECT_ONE","GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","OIDC_PROVIDER_PORT":"{{ .Values.global.oidcProviderPort }}","OIDC_PROVIDER_PROTOCOL":"{{ .Values.global.oidcProviderProtocol }}","OIDC_PROVIDER_TOKEN_ENDPOINT":"{{ .Values.global.oidcProviderTokenEndpoint }}","OIDC_PROVIDER_URI":"{{ .Values.global.oidcProviderService }}","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh","RUNTIME_REDIS_DB":0},"image":{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}}` | Container configuration |
+| cfapi.container | object | `{"env":{"AUDIT_AUTO_CREATE_DB":true,"DEFAULT_SYSTEM_TYPE":"PROJECT_ONE","GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","OIDC_PROVIDER_PORT":"{{ .Values.global.oidcProviderPort }}","OIDC_PROVIDER_PROTOCOL":"{{ .Values.global.oidcProviderProtocol }}","OIDC_PROVIDER_TOKEN_ENDPOINT":"{{ .Values.global.oidcProviderTokenEndpoint }}","OIDC_PROVIDER_URI":"{{ .Values.global.oidcProviderService }}","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh","RUNTIME_REDIS_DB":0,"WEBHOOK_BASE_URL":""},"image":{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}}` | Container configuration |
 | cfapi.container.env | object | See below | Env vars |
 | cfapi.container.image | object | `{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}` | Image |
 | cfapi.container.image.registry | string | `"us-docker.pkg.dev/codefresh-enterprise/gcr.io"` | Registry prefix |
