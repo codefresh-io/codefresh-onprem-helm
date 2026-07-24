@@ -22,7 +22,7 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'fix: Disable postgres-clean-job when the disablePostgresForEventbus option is enabled (#420)'
+      description: 'Disable postgres-clean-job when the disablePostgresForEventbus option is enabled'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
