@@ -22,6 +22,8 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
+      description: 'fix: Disable postgres-clean-job when the disablePostgresForEventbus option is enabled (#421)'
+    - kind: changed
       description: 'docs: updated readme with WEBHOOK_BASE_URL variable'
     - kind: changed
       description: update release-2.12 (#413)
