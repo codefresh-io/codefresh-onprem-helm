@@ -246,7 +246,7 @@ dependencies:
     tags:
       - cf-internal
   - name: cfui
-    version: 14.100.24
+    version: 14.100.25
     repository: oci://quay.io/codefresh/charts
     condition: cfui.enabled
     tags:
