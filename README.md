@@ -58,6 +58,7 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
   - [To 2.9.0](#to-2-9-0)
   - [To 2.9.9](#to-2-9-9)
   - [To 2.11.0](#to-2-11-0)
+  - [To 2.12.0](#to-2-12-0)
 - [Rollback](#rollback)
 - [Troubleshooting](#troubleshooting)
 - [Values](#values)
@@ -1740,6 +1741,7 @@ The required index definitions for each release can be found at the following re
 - `2.9` <https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.9/indexes>
 - `2.10` <https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.10/indexes>
 - `2.11` <https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.11/indexes>
+- `2.12` No changes in schema/indexes compared to `2.11`
 
 The indexes specifications are stored in JSON files. The directory structure is:
 
@@ -2653,6 +2655,12 @@ Changes in collections: following collections can be safely dropped *after* the 
 #### Changes in MongoDB schema:
 
 - Changes in indexes: follow [Maintaining MongoDB indexes](#maintaining-mongodb-indexes) guide to meet index requirements *before* the upgrade process.
+
+### To 2-12-0
+
+#### Changes in MongoDB schema:
+
+- No changes in schema/indexes compared to 2.11.x. If you're upgrading from earlier versions, please follow [Maintaining MongoDB indexes](#maintaining-mongodb-indexes) guide to ensure that your indexes are up-to-date and meet the requirements for optimal performance.
 
 ## Troubleshooting
 
