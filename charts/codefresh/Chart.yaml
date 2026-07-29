@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.11.28
+version: 2.11.29
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -21,8 +21,8 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
-    - kind: security
-      description: 'Fix various security vulnerabilities in cfapi, hermes, nomios, cronus, helm-repo-manager, argo-platform, runtime images'
+    - kind: changed
+      description: 'chore: update chart components (#425)'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
