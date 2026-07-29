@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.11.28
+version: 2.11.29
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -15,14 +15,25 @@ appVersion: 0.0.0
 annotations:
   artifacthub.io/prerelease: "false"
   artifacthub.io/alternativeName: "codefresh-onprem"
-  artifacthub.io/containsSecurityUpdates: "false"
+  artifacthub.io/containsSecurityUpdates: "true"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
-  # artifacthub.io/changes: |
-  #   - kind:
-  #     description: ""
   artifacthub.io/changes: |-
+    - kind: changed
+      description: 'chore: update chart components (#425)'
     - kind: security
-      description: 'Fix various security vulnerabilities in cfapi, hermes, nomios, cronus, helm-repo-manager, argo-platform, runtime images'
+      description: 'Update cfapi up to 22.3.17-onprem-e422050. Fix various security vulnerabilities'
+    - kind: security
+      description: 'Update hermes up to 0.22.12. Fix various security vulnerabilities'
+    - kind: security
+      description: 'Update nomios up to 0.12.3. Fix various security vulnerabilities'
+    - kind: security
+      description: 'Update cronus up to 0.9.5. Fix various security vulnerabilities'
+    - kind: security
+      description: 'Update helm-repo-manager up to 0.23.7. Fix various security vulnerabilities'
+    - kind: security
+      description: 'Update argo-platform up to 1.4073.11-onprem-b44185d. Fix various security vulnerabilities'
+    - kind: security
+      description: 'Update runtime images up to codfresh-runtime 10.4.1.'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
