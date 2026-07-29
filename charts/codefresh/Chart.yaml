@@ -22,7 +22,7 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: security
-      description: 'Fix various security vulnerabilities in cfapi, hermes, nomios, cronus, helm-repo-manager'
+      description: 'Fix various security vulnerabilities in cfapi, hermes, nomios, cronus, helm-repo-manager, argo-platform, runtime images'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -236,7 +236,7 @@ dependencies:
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-platform
-    version: 1.4073.11-onprem-1306557
+    version: 1.4073.11-onprem-b44185d
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
   - name: argo-hub-platform
