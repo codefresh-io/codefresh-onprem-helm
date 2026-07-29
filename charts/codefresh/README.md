@@ -1,6 +1,6 @@
 # codefresh
 
-![Version: 2.11.28](https://img.shields.io/badge/Version-2.11.28-informational?style=flat-square) ![AppVersion: 0.0.0](https://img.shields.io/badge/AppVersion-0.0.0-informational?style=flat-square)
+![Version: 2.11.29](https://img.shields.io/badge/Version-2.11.29-informational?style=flat-square) ![AppVersion: 0.0.0](https://img.shields.io/badge/AppVersion-0.0.0-informational?style=flat-square)
 
 Helm Chart for Codefresh On-Prem
 
@@ -29,45 +29,45 @@ Helm Chart for Codefresh On-Prem
 | https://dandydeveloper.github.io/charts | redis-ha | 4.26.1 |
 | https://kubernetes.github.io/ingress-nginx | ingress-nginx | 4.15.1 |
 | oci://quay.io/codefresh/charts | argo-hub-platform | 0.1.42 |
-| oci://quay.io/codefresh/charts | argo-platform | 1.4073.11-onprem-1306557 |
+| oci://quay.io/codefresh/charts | argo-platform | 1.4073.11-onprem-b44185d |
 | oci://quay.io/codefresh/charts | builder | 2.0.0 |
 | oci://quay.io/codefresh/charts | cf-broadcaster | 1.15.10-onprem-46297d5 |
 | oci://quay.io/codefresh/charts | cf-common | 0.18.1 |
 | oci://quay.io/codefresh/charts | cf-oidc-provider | 0.1.0 |
 | oci://quay.io/codefresh/charts | cf-platform-analytics-etlstarter(cf-platform-analytics) | 0.53.11-onprem-06e4dc5 |
 | oci://quay.io/codefresh/charts | cf-platform-analytics-platform(cf-platform-analytics) | 0.53.11-onprem-06e4dc5 |
-| oci://quay.io/codefresh/charts | cfapi-admin(cfapi) | 22.3.16-onprem-fe07bee |
-| oci://quay.io/codefresh/charts | cfapi-sso-group-synchronizer(cfapi) | 22.3.16-onprem-fe07bee |
-| oci://quay.io/codefresh/charts | cfapi-test-reporting(cfapi) | 22.3.16-onprem-fe07bee |
-| oci://quay.io/codefresh/charts | cfapi-kubernetes-endpoints(cfapi) | 22.3.16-onprem-fe07bee |
-| oci://quay.io/codefresh/charts | cfapi(cfapi) | 22.3.16-onprem-fe07bee |
-| oci://quay.io/codefresh/charts | cfapi-auth(cfapi) | 22.3.16-onprem-fe07bee |
-| oci://quay.io/codefresh/charts | cfapi-internal(cfapi) | 22.3.16-onprem-fe07bee |
-| oci://quay.io/codefresh/charts | cfapi-ws(cfapi) | 22.3.16-onprem-fe07bee |
-| oci://quay.io/codefresh/charts | cfapi-teams(cfapi) | 22.3.16-onprem-fe07bee |
-| oci://quay.io/codefresh/charts | cfapi-endpoints(cfapi) | 22.3.16-onprem-fe07bee |
-| oci://quay.io/codefresh/charts | cfapi-terminators(cfapi) | 22.3.16-onprem-fe07bee |
-| oci://quay.io/codefresh/charts | cfapi-downloadlogmanager(cfapi) | 22.3.16-onprem-fe07bee |
-| oci://quay.io/codefresh/charts | cfapi-buildmanager(cfapi) | 22.3.16-onprem-fe07bee |
-| oci://quay.io/codefresh/charts | cfapi-cacheevictmanager(cfapi) | 22.3.16-onprem-fe07bee |
-| oci://quay.io/codefresh/charts | cfapi-eventsmanagersubscriptions(cfapi) | 22.3.16-onprem-fe07bee |
-| oci://quay.io/codefresh/charts | cfapi-kubernetesresourcemonitor(cfapi) | 22.3.16-onprem-fe07bee |
-| oci://quay.io/codefresh/charts | cfapi-environments(cfapi) | 22.3.16-onprem-fe07bee |
-| oci://quay.io/codefresh/charts | cfapi-gitops-resource-receiver(cfapi) | 22.3.16-onprem-fe07bee |
+| oci://quay.io/codefresh/charts | cfapi-admin(cfapi) | 22.3.17-onprem-e422050 |
+| oci://quay.io/codefresh/charts | cfapi-sso-group-synchronizer(cfapi) | 22.3.17-onprem-e422050 |
+| oci://quay.io/codefresh/charts | cfapi-test-reporting(cfapi) | 22.3.17-onprem-e422050 |
+| oci://quay.io/codefresh/charts | cfapi-kubernetes-endpoints(cfapi) | 22.3.17-onprem-e422050 |
+| oci://quay.io/codefresh/charts | cfapi(cfapi) | 22.3.17-onprem-e422050 |
+| oci://quay.io/codefresh/charts | cfapi-auth(cfapi) | 22.3.17-onprem-e422050 |
+| oci://quay.io/codefresh/charts | cfapi-internal(cfapi) | 22.3.17-onprem-e422050 |
+| oci://quay.io/codefresh/charts | cfapi-ws(cfapi) | 22.3.17-onprem-e422050 |
+| oci://quay.io/codefresh/charts | cfapi-teams(cfapi) | 22.3.17-onprem-e422050 |
+| oci://quay.io/codefresh/charts | cfapi-endpoints(cfapi) | 22.3.17-onprem-e422050 |
+| oci://quay.io/codefresh/charts | cfapi-terminators(cfapi) | 22.3.17-onprem-e422050 |
+| oci://quay.io/codefresh/charts | cfapi-downloadlogmanager(cfapi) | 22.3.17-onprem-e422050 |
+| oci://quay.io/codefresh/charts | cfapi-buildmanager(cfapi) | 22.3.17-onprem-e422050 |
+| oci://quay.io/codefresh/charts | cfapi-cacheevictmanager(cfapi) | 22.3.17-onprem-e422050 |
+| oci://quay.io/codefresh/charts | cfapi-eventsmanagersubscriptions(cfapi) | 22.3.17-onprem-e422050 |
+| oci://quay.io/codefresh/charts | cfapi-kubernetesresourcemonitor(cfapi) | 22.3.17-onprem-e422050 |
+| oci://quay.io/codefresh/charts | cfapi-environments(cfapi) | 22.3.17-onprem-e422050 |
+| oci://quay.io/codefresh/charts | cfapi-gitops-resource-receiver(cfapi) | 22.3.17-onprem-e422050 |
 | oci://quay.io/codefresh/charts | cfsign | 1.8.22-onprem-89a82ee |
 | oci://quay.io/codefresh/charts | cfui | 14.100.14-onprem-d8b299d |
 | oci://quay.io/codefresh/charts | charts-manager | 1.28.6-onprem-dde519d |
 | oci://quay.io/codefresh/charts | cluster-providers | 1.19.17-onprem-bc6038f |
 | oci://quay.io/codefresh/charts | context-manager | 2.40.7-onprem-7abd7a9 |
-| oci://quay.io/codefresh/charts | cronus | 0.9.4 |
+| oci://quay.io/codefresh/charts | cronus | 0.9.5 |
 | oci://quay.io/codefresh/charts | gitops-dashboard-manager | 1.16.14-onprem-305dd79 |
-| oci://quay.io/codefresh/charts | helm-repo-manager | 0.23.6-onprem-b0dbabf |
-| oci://quay.io/codefresh/charts | hermes | 0.22.11-onprem-10611bd |
+| oci://quay.io/codefresh/charts | helm-repo-manager | 0.23.7 |
+| oci://quay.io/codefresh/charts | hermes | 0.22.12 |
 | oci://quay.io/codefresh/charts | internal-gateway | 0.12.3 |
 | oci://quay.io/codefresh/charts | k8s-monitor | 4.11.28-onprem-0314e70 |
 | oci://quay.io/codefresh/charts | kube-integration | 1.33.14-onprem-675d340 |
 | oci://quay.io/codefresh/charts | mailer | 1.22.4 |
-| oci://quay.io/codefresh/charts | nomios | 0.11.19-onprem-0e21875 |
+| oci://quay.io/codefresh/charts | nomios | 0.12.3 |
 | oci://quay.io/codefresh/charts | payments | 2.26.2 |
 | oci://quay.io/codefresh/charts | pipeline-manager | 4.1.10-onprem-bc48dd2 |
 | oci://quay.io/codefresh/charts | postgresql-ha | 12.0.4 |
