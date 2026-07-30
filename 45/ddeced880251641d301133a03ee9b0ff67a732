@@ -1,0 +1,33 @@
+charts/codefresh/values.yaml
+  s_1a65030281101a::t_4f8858b375a00d 592
+  h_0abc1f0694f983 590-591
+README.md.gotmpl
+  s_1a65030281101a::t_6bd9730c67ac31 1475-1480,1482-1485,1488-1490,1492-1501
+  s_1a65030281101a::t_4745c8587784ea 41
+  s_1a65030281101a::t_35d9c625c61b0d 1481,1486-1487,1491
+README.md
+  s_1a65030281101a::t_379f5e1ad06e8a 1466-1471,1473-1476,1479-1481,1483-1492
+  s_1a65030281101a::t_aba7b486473805 1472,1477-1478,1482
+  s_1a65030281101a::t_c971e19622e534 41
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.17",
+  "base_commit_sha": "45ddeced880251641d301133a03ee9b0ff67a732",
+  "prompts": {},
+  "humans": {
+    "h_0abc1f0694f983": {
+      "author": "Denys Melnyk <denis.melnyk@octopus.com>"
+    }
+  },
+  "sessions": {
+    "s_1a65030281101a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0ec478b5-326b-44f3-981c-28859324cc7a",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Denys Melnyk <denis.melnyk@octopus.com>"
+    }
+  }
+}
