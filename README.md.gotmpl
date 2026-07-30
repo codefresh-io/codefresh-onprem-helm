@@ -38,6 +38,7 @@ Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/
   - [Enable session cookie](#enable-session-cookie)
   - [X-Frame-Options response header](#x-frame-options-response-header)
   - [Configure platform URL for Git webhooks](#configure-platform-url-for-git-webhooks)
+  - [API keys IP allowlist](#api-keys-ip-allowlist)
   - [Image digests in containers](#image-digests-in-containers)
   - [Hermes configuration](#hermes-configuration)
 - [Configuring OIDC Provider](#configuring-oidc-provider)
@@ -1470,6 +1471,33 @@ cfapi:
   env:
     WEBHOOK_BASE_URL: "https://external.mydomain.com"
 ```
+
+### API keys IP allowlist
+
+Account admins can restrict API-key usage to an account-level allowlist of IP addresses and CIDR ranges (**Account Settings → API Keys → IP Allowlist**). With the allowlist turned on, any API-key request from an address matching no **enabled** entry is rejected with `403`. Browser sessions are never restricted.
+
+1. Enable the `enableApiKeysIpAllowlist` feature flag. While the flag is off, the feature is hidden and nothing is enforced.
+
+2. Check the number of trusted proxies for `cf-api`. Enforcement uses the client IP derived from `X-Forwarded-For`, trusting exactly `TRUSTED_PROXY_COUNT` proxy hops in front of `cf-api`. The chart default is `2`, matching the default topology — ingress controller (Ingress-NGINX or ALB) → `internal-gateway` → `cf-api`. Override it only when your chain differs:
+
+```yaml
+cfapi:
+  env:
+    # e.g. 3 = an extra L7 proxy of your own in front of the ingress
+    TRUSTED_PROXY_COUNT: "3"
+```
+
+> [!IMPORTANT]
+> Count only proxies that append to `X-Forwarded-For`: the chart's ingress controller (or ALB) and the `internal-gateway`. Add `1` for every L7 proxy of your own in front of the ingress, and set `use-forwarded-headers: "true"` in the Ingress-NGINX configuration so the header is passed through. TCP/L4 load balancers do not append to the header and must not be counted.
+
+3. Verify the derived address **before** turning the allowlist on — from an admin workstation and from every network that runs builds (runtimes, runners, external CI):
+
+```bash
+curl https://<your-onprem-domain>/api/whereami
+# {"ip":"<the caller's public egress IP>"}
+```
+
+If the returned IP is an internal address (ingress or pod IP), `TRUSTED_PROXY_COUNT` is too low. If it is not the caller's real egress address, the value is too high and the derived IP is client-forgeable. In both cases fix the value first — arming the allowlist with a wrong count blocks legitimate API keys (including build runtimes) or makes the check spoofable.
 
 ### Image digests in containers
 
