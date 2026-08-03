@@ -1467,7 +1467,7 @@ cfapi:
 
 Account admins can restrict API-key usage to an account-level allowlist of IP addresses and CIDR ranges (**Account Settings → API Keys → IP Allowlist**). With the allowlist turned on, any API-key request from an address matching no **enabled** entry is rejected with `403`. Browser sessions are never restricted.
 
-1. Enable the `enableApiKeysIpAllowlist` feature flag. See [feature management](https://codefresh.io/docs/docs/installation/on-premises/on-prem-feature-management). While the flag is off, the feature is hidden and nothing is enforced.
+1. Enable the `enableApiKeysIpAllowlist` feature flag. While the flag is off, the feature is hidden and nothing is enforced.
 
 2. Check the number of trusted proxies for `cf-api`. Enforcement uses the client IP derived from `X-Forwarded-For`, trusting exactly `TRUSTED_PROXY_COUNT` proxy hops in front of `cf-api`. The chart default is `2`, matching the default topology — ingress controller (Ingress-NGINX or ALB) → `internal-gateway` → `cf-api`. Override it only when your chain differs:
 
