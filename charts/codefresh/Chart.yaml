@@ -22,6 +22,8 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
+      description: 'feat: api keys allowlist (#428)'
+    - kind: changed
       description: update components (#427)
     - kind: changed
       description: 'fix: Disable postgres-clean-job when the disablePostgresForEventbus option is enabled (#421)'
