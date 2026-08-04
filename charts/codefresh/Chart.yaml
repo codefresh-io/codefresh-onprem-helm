@@ -22,7 +22,7 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'chore: fix various security vulnerabilities in cfapi (#430)'
+      description: 'chore: fix various security vulnerabilities in cfapi'
     - kind: security
       description: 'Upgrade "cfapi" to 22.8.8-onprem-22512d4 with security fixes.'
 dependencies:
