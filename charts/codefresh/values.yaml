@@ -587,6 +587,9 @@ cfapi: &cf-api
       DEFAULT_SYSTEM_TYPE: PROJECT_ONE
       # Configure platform URL for Git webhooks
       WEBHOOK_BASE_URL: ""
+      # Number of trusted proxies in front of cf-api, controls how the client IP is derived
+      # from X-Forwarded-For for the API keys IP allowlist.
+      TRUSTED_PROXY_COUNT: "2"
   # -- Secrets configuration
   secrets:
     secret:
