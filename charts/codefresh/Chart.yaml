@@ -20,9 +20,7 @@ annotations:
   # artifacthub.io/changes: |
   #   - kind:
   #     description: ""
-  artifacthub.io/changes: |
-    - kind: changed
-      description: 'update "chartmuseum" to v0.16.6 with security fixes'
+  artifacthub.io/changes: "- kind: added\n  description: 'Add support for API keys IP allowlist. Early access.'\n- kind: changed\n  description: 'update \"cfapi\" to 22.8.7-onprem-13bae1c'\n- kind: changed\n  description: 'update \"cfui\" to 14.100.20-onprem-f7d5126'      \n- kind: changed\n  description: 'update \"argo-platform\" to 1.4119.0-onprem-502b2fe'      \n- kind: security\n  description: 'Update \"cf-platform-analytics\" to 0.54.8. Fix various security vulnerabilities'\n- kind: security\n  description: 'Update hermes up to 0.22.12. Fix various security vulnerabilities'\n- kind: security\n  description: 'Update nomios up to 0.12.3. Fix various security vulnerabilities'\n- kind: security\n  description: 'Update cronus up to 0.9.5. Fix various security vulnerabilities'\n- kind: security\n  description: 'Update helm-repo-manager up to 0.23.7. Fix various security vulnerabilities'\n"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -308,7 +306,7 @@ dependencies:
     tags:
       - cf-internal
   - name: argo-platform
-    version: 1.4121.0
+    version: 1.4122.0
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
     tags:
