@@ -20,9 +20,9 @@ annotations:
   # artifacthub.io/changes: |
   #   - kind:
   #     description: ""
-  artifacthub.io/changes: |
-    - kind: security
-      description: 'Upgrade "cfapi" to 22.8.8-onprem-22512d4 with security fixes.'
+  artifacthub.io/changes: |-
+    - kind: changed
+      description: 'chore: fix various security vulnerabilities in cfapi (#430)'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
