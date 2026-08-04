@@ -21,20 +21,8 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |
-    - kind: changed
-      description: 'update "cf-platform-analytics" to 0.54.8'
     - kind: security
-      description: 'fix various security vulnerabilities'
-    - kind: security
-      description: 'Update hermes up to 0.22.12. Fix various security vulnerabilities'
-    - kind: security
-      description: 'Update nomios up to 0.12.3. Fix various security vulnerabilities'
-    - kind: security
-      description: 'Update cronus up to 0.9.5. Fix various security vulnerabilities'
-    - kind: security
-      description: 'Update helm-repo-manager up to 0.23.7. Fix various security vulnerabilities'
-    - kind: security
-      description: 'Update argo-platform up to 1.4118.0. Fix various security vulnerabilities'
+      description: 'Upgrade "cfapi" to 22.8.8-onprem-22512d4 with security fixes.'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
