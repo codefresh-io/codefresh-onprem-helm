@@ -1,0 +1,14 @@
+README.md
+  h_0abc1f0694f983 1470
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "57977e772f6f2e4c0eb77852b8400d10d4480430",
+  "prompts": {},
+  "humans": {
+    "h_0abc1f0694f983": {
+      "author": "Denys Melnyk <denis.melnyk@octopus.com>"
+    }
+  }
+}
