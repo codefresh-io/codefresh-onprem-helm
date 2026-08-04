@@ -21,14 +21,8 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |
-    - kind: added
-      description: 'Add support for API keys IP allowlist. Early access.'
     - kind: changed
-      description: 'update "cfapi" to 22.8.7-onprem-13bae1c'
-    - kind: changed
-      description: 'update "cfui" to 14.100.20-onprem-f7d5126'      
-    - kind: changed
-      description: 'Initial 2.12 release'
+      description: 'Release 2.12'
       links:
         - name: 'Release notes'
           url: 'https://codefresh.io/docs/docs/whats-new/on-prem-release-notes/#on-premises-version-212'
