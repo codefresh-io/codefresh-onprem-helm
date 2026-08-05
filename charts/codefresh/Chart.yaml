@@ -82,7 +82,7 @@ dependencies:
     tags:
       - cf-internal
   - name: charts-manager
-    version: 1.28.6
+    version: 1.28.7
     repository: oci://quay.io/codefresh/charts
     condition: charts-manager.enabled
     tags:
