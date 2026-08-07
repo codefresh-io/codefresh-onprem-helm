@@ -22,7 +22,7 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: security
-      description: 'Upgrade "cfapi" to 22.8.9-onprem-eeb96bb with security fixes.'
+      description: 'Upgrade "cfapi" to 22.8.9-onprem-eeb96bb with security fixes'
     - kind: security
       description: 'Upgrade "cluster-providers" to 1.20.3-onprem-bd0d14f with security fixes.'
     - kind: security
