@@ -22,7 +22,7 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'chore: fix various security vulnerabilities (#445)'
+      description: 'chore: fix various security vulnerabilities'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
