@@ -21,8 +21,6 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
-    - kind: changed
-      description: 'chore: fix various security vulnerabilities'
     - kind: security
       description: 'Upgrade "cfapi" to 22.8.9-onprem-eeb96bb with security fixes.'
     - kind: security
