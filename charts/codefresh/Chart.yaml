@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.12.2
+version: 2.12.3
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -22,31 +22,9 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: security
-      description: 'Upgrade "cfapi" to 22.8.9-onprem-eeb96bb with security fixes'
+      description: 'Upgrade "argo-platform" to 1.4120.0-onprem-e2a0d36 with security fixes'
     - kind: security
-      description: 'Upgrade "cluster-providers" to 1.20.3-onprem-bd0d14f with security fixes.'
-    - kind: security
-      description: 'Upgrade "kube-integration" to 2.1.5-onprem-4f624f8 with security fixes.'
-    - kind: security
-      description: 'Upgrade "charts-manager" to 1.28.8-onprem-4e7146e with security fixes.'
-    - kind: security
-      description: 'Upgrade "tasker-kubernetes" to 1.29.3-onprem-7c6ca88 with security fixes.'
-    - kind: security
-      description: 'Upgrade "context-manager" to 2.41.10-onprem-d85d9cf with security fixes.'
-    - kind: security
-      description: 'Upgrade "pipeline-manager" to 4.2.6-onprem-716f03e with security fixes.'
-    - kind: security
-      description: 'Upgrade "cfui" to 14.100.21-onprem-877f439 with security fixes.'
-    - kind: security
-      description: 'Upgrade "k8s-monitor" to 4.12.3-onprem-172a85f with security fixes.'
-    - kind: security
-      description: 'Upgrade "runtime-environment-manager" to 4.1.8-onprem-fc31ac3 with security fixes.'
-    - kind: security
-      description: 'Upgrade "cf-broadcaster" to 1.15.12-onprem-fcd22e7 with security fixes.'
-    - kind: security
-      description: 'Upgrade "cf-platform-analytics" to 0.54.10-onprem-d0c57ee with security fixes.'
-    - kind: security
-      description: 'Upgrade "argo-hub-platform" to 0.1.43 with security fixes.'
+      description: 'Upgrade "gitops-dashboard-manager" to 1.16.14-onprem-8706966 with security fixes.'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -138,7 +116,7 @@ dependencies:
     tags:
       - cf-internal
   - name: gitops-dashboard-manager
-    version: 1.16.13
+    version: 1.16.14-onprem-8706966
     repository: oci://quay.io/codefresh/charts
     condition: gitops-dashboard-manager.enabled
     tags:
@@ -332,7 +310,7 @@ dependencies:
     tags:
       - cf-internal
   - name: argo-platform
-    version: 1.4119.0-onprem-502b2fe
+    version: 1.4120.0-onprem-e2a0d36
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
     tags:
