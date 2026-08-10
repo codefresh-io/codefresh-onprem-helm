@@ -24,7 +24,7 @@ annotations:
     - kind: security
       description: 'Upgrade "argo-platform" to 1.4120.0-onprem-e2a0d36 with security fixes'
     - kind: security
-      description: 'Upgrade "gitops-dashboard-manager" to 1.16.14-onprem-8706966 with security fixes.'
+      description: 'Upgrade "gitops-dashboard-manager" to 1.16.14-onprem-8706966 with security fixes'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
