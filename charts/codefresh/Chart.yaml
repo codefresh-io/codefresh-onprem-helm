@@ -21,8 +21,12 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
-    - kind: changed
-      description: 'build(2.12): prepare new release (#449)'
+    - kind: fixed
+      description: 'Fix an issue preventing Classic Builds from starting when stale "kubeconfig" was cached by the "cfapi" service'
+    - kind: fixed
+      description: 'Fix a bug in the default Classic Runtime causing "panic: Error response from daemon: client version 1.35 is too old" when running in-dind cleaner'
+    - kind: fixed
+      description: 'Fix various security vulnerabilities in the default Classic Runtime'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
