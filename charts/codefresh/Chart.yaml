@@ -18,8 +18,8 @@ annotations:
   artifacthub.io/containsSecurityUpdates: "false"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |-
-    - kind: changed
-      description: 'build(2.11): prepare new release (#452)'
+    - kind: fixed
+      description: 'Fix an issue preventing Classic Builds from starting when stale "kubeconfig" was cached by the "cfapi" service'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
