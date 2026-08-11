@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.12.3
+version: 2.12.4
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -23,6 +23,10 @@ annotations:
   artifacthub.io/changes: |-
     - kind: fixed
       description: 'Fix an issue preventing Classic Builds from starting when stale "kubeconfig" was cached by the "cfapi" service'
+    - kind: fixed
+      description: 'Fix a bug in the default Classic Runtime causing "panic: Error response from daemon: client version 1.35 is too old" when running in-dind cleaner'
+    - kind: fixed
+      description: 'Fix various security vulnerabilities in the default Classic Runtime'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
