@@ -21,6 +21,10 @@ nats:
   image:
     repository: bitnamilegacy/nats
 
+mongodb:
+  nodeSelector:
+    kubernetes.io/arch: amd64
+
 hooks:
   mongodb:
     nodeSelector:
