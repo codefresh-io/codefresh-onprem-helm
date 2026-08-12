@@ -28,7 +28,7 @@ annotations:
     - kind: security
       description: 'Upgrade "pipeline-manager" to 4.2.7-onprem-510f7e8 with security fixes.'
     - kind: security
-      description: 'Upgrade "cf-platform-analytics" to 0.54.11-onprem-641d6a9 with security fixes.'
+      description: 'Upgrade "cf-platform-analytics" to 0.54.12-onprem-abcfa0d with security fixes.'
     - kind: security
       description: 'Upgrade "argo-hub-platform" to 0.1.44 with security fixes.'
 dependencies:
@@ -303,14 +303,14 @@ dependencies:
       - cf-internal
   - name: cf-platform-analytics
     alias: cf-platform-analytics-platform
-    version: 0.54.11-onprem-641d6a9
+    version: 0.54.12-onprem-abcfa0d
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
     tags:
       - cf-internal
   - name: cf-platform-analytics
     alias: cf-platform-analytics-etlstarter
-    version: 0.54.11-onprem-641d6a9
+    version: 0.54.12-onprem-abcfa0d
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
     tags:
