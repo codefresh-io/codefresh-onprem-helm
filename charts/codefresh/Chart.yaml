@@ -21,18 +21,8 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
-    - kind: security
-      description: 'Upgrade "charts-manager" to 1.28.9-onprem-bb53e7e with security fixes.'
-    - kind: security
-      description: 'Upgrade "tasker-kubernetes" to 1.29.4-onprem-cf2923a with security fixes.'
-    - kind: security
-      description: 'Upgrade "pipeline-manager" to 4.2.7-onprem-510f7e8 with security fixes.'
-    - kind: security
-      description: 'Upgrade "cf-platform-analytics" to 0.54.12-onprem-abcfa0d with security fixes.'
-    - kind: security
-      description: 'Upgrade "argo-hub-platform" to 0.1.44 with security fixes.'
-    - kind: security
-      description: 'Upgrade "cf-broadcaster" to 1.15.13-onprem-022289e with security fixes.'
+    - kind: changed
+      description: 'chore: fix security vulnerabilities (#456)'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
