@@ -32,7 +32,7 @@ annotations:
     - kind: security
       description: 'Upgrade "argo-hub-platform" to 0.1.44 with security fixes.'
     - kind: security
-      description: 'Upgrade "cf-broadcaster" to 1.15.13-onprem-022289e with security fixes.'
+      description: 'Upgrade "cf-broadcaster" to 1.15.13-onprem-022289e with security fixes'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
