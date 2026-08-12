@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.12.4
+version: 2.12.5
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -21,12 +21,16 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
-    - kind: fixed
-      description: 'Fix an issue preventing Classic Builds from starting when stale "kubeconfig" was cached by the "cfapi" service'
-    - kind: fixed
-      description: 'Fix a bug in the default Classic Runtime causing "panic: Error response from daemon: client version 1.35 is too old" when running in-dind cleaner'
-    - kind: fixed
-      description: 'Fix various security vulnerabilities in the default Classic Runtime'
+    - kind: security
+      description: 'Upgrade "charts-manager" to 1.28.9-onprem-bb53e7e with security fixes.'
+    - kind: security
+      description: 'Upgrade "tasker-kubernetes" to 1.29.4-onprem-cf2923a with security fixes.'
+    - kind: security
+      description: 'Upgrade "pipeline-manager" to 4.2.7-onprem-510f7e8 with security fixes.'
+    - kind: security
+      description: 'Upgrade "cf-platform-analytics" to 0.54.11-onprem-641d6a9 with security fixes.'
+    - kind: security
+      description: 'Upgrade "argo-hub-platform" to 0.1.44 with security fixes.'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -88,7 +92,7 @@ dependencies:
     tags:
       - cf-internal
   - name: charts-manager
-    version: 1.28.8-onprem-4e7146e
+    version: 1.28.9-onprem-bb53e7e
     repository: oci://quay.io/codefresh/charts
     condition: charts-manager.enabled
     tags:
@@ -100,7 +104,7 @@ dependencies:
     tags:
       - cf-internal
   - name: tasker-kubernetes
-    version: 1.29.3-onprem-7c6ca88
+    version: 1.29.4-onprem-cf2923a
     repository: oci://quay.io/codefresh/charts
     condition: tasker-kubernetes.enabled
     tags:
@@ -112,7 +116,7 @@ dependencies:
     tags:
       - cf-internal
   - name: pipeline-manager
-    version: 4.2.6-onprem-716f03e
+    version: 4.2.7-onprem-510f7e8
     repository: oci://quay.io/codefresh/charts
     condition: pipeline-manager.enabled
     tags:
@@ -299,14 +303,14 @@ dependencies:
       - cf-internal
   - name: cf-platform-analytics
     alias: cf-platform-analytics-platform
-    version: 0.54.10-onprem-d0c57ee
+    version: 0.54.11-onprem-641d6a9
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
     tags:
       - cf-internal
   - name: cf-platform-analytics
     alias: cf-platform-analytics-etlstarter
-    version: 0.54.10-onprem-d0c57ee
+    version: 0.54.11-onprem-641d6a9
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
     tags:
@@ -318,7 +322,7 @@ dependencies:
     tags:
       - cf-internal
   - name: argo-hub-platform
-    version: 0.1.43
+    version: 0.1.44
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
     tags:
