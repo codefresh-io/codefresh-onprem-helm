@@ -31,6 +31,8 @@ annotations:
       description: 'Upgrade "cf-platform-analytics" to 0.54.12-onprem-abcfa0d with security fixes.'
     - kind: security
       description: 'Upgrade "argo-hub-platform" to 0.1.44 with security fixes.'
+    - kind: security
+      description: 'Upgrade "cf-broadcaster" to 1.15.13-onprem-022289e with security fixes.'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -272,7 +274,7 @@ dependencies:
     tags:
       - cf-internal
   - name: cf-broadcaster
-    version: 1.15.12-onprem-fcd22e7
+    version: 1.15.13-onprem-022289e
     repository: oci://quay.io/codefresh/charts
     condition: cf-broadcaster.enabled
     tags:
