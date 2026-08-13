@@ -293,14 +293,14 @@ dependencies:
       - cf-internal
   - name: cf-platform-analytics
     alias: cf-platform-analytics-platform
-    version: 0.55.5
+    version: 0.55.6
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
     tags:
       - cf-internal
   - name: cf-platform-analytics
     alias: cf-platform-analytics-etlstarter
-    version: 0.55.5
+    version: 0.55.6
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
     tags:
