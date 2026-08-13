@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.12.5
+version: 2.12.6
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -20,19 +20,11 @@ annotations:
   # artifacthub.io/changes: |
   #   - kind:
   #     description: ""
-  artifacthub.io/changes: |-
+  artifacthub.io/changes: |
+    - kind: changed
+      description: "Upgrade default Classic Runtime (`system/default`)"
     - kind: security
-      description: 'Upgrade "charts-manager" to 1.28.9-onprem-bb53e7e with security fixes.'
-    - kind: security
-      description: 'Upgrade "tasker-kubernetes" to 1.29.4-onprem-cf2923a with security fixes.'
-    - kind: security
-      description: 'Upgrade "pipeline-manager" to 4.2.7-onprem-510f7e8 with security fixes.'
-    - kind: security
-      description: 'Upgrade "cf-platform-analytics" to 0.54.12-onprem-abcfa0d with security fixes.'
-    - kind: security
-      description: 'Upgrade "argo-hub-platform" to 0.1.44 with security fixes.'
-    - kind: security
-      description: 'Upgrade "cf-broadcaster" to 1.15.13-onprem-022289e with security fixes'
+      description: "Fix various vulnerabilities in default Classic Runtime (`system/default`)"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
