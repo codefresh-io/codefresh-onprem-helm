@@ -13,7 +13,4 @@ docker run \
     --entrypoint /bin/sh \
     jnorwood/helm-docs:v1.9.1 \
     -c \
-    helm-docs \
-    --chart-search-root=charts/codefresh \
-    --template-files=../../README.md.gotmpl \
-    --output-file=../../README.md \
+    "helm-docs --chart-search-root=charts/codefresh --template-files=../../README.md.gotmpl --output-file=../../README.md"
