@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 0.0.0
+version: 0.0.1
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -26,9 +26,9 @@ annotations:
     - kind: changed
       description: 'update "cfapi" to 22.11.1'
     - kind: changed
-      description: 'update "cfui" to 14.100.20-onprem-f7d5126'      
+      description: 'update "cfui" to 14.100.20-onprem-f7d5126'
     - kind: changed
-      description: 'update "argo-platform" to 1.4119.0-onprem-502b2fe'      
+      description: 'update "argo-platform" to 1.4119.0-onprem-502b2fe'
     - kind: security
       description: 'Update "cf-platform-analytics" to 0.54.8. Fix various security vulnerabilities'
     - kind: security
