@@ -100,7 +100,7 @@ dependencies:
     tags:
       - cf-internal
   - name: context-manager
-    version: 2.41.10
+    version: 2.41.11
     repository: oci://quay.io/codefresh/charts
     condition: context-manager.enabled
     tags:
