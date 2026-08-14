@@ -312,7 +312,7 @@ dependencies:
     tags:
       - cf-internal
   - name: argo-hub-platform
-    version: 0.1.46
+    version: 0.1.47
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
     tags:
