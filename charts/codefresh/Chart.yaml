@@ -22,9 +22,9 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: fixed
-      description: 'Upgrade "cf-platform-analytics" to 0.54.14-onprem-1ce2774 with security fixes.'
+      description: 'Update "cf-platform-analytics", fix regression bug with ETL container run introduced in onprem 2.12.5.'
     - kind: security
-      description: 'Migrate "argo-hub-platform" to to DHI image.'
+      description: 'Update "argo-hub-platform" with security fixes.'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
