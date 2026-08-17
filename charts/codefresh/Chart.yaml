@@ -21,18 +21,10 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
+    - kind: fixed
+      description: 'Update "cf-platform-analytics", fix regression bug with ETL container run introduced in onprem 2.12.5.'
     - kind: security
-      description: 'Upgrade "charts-manager" to 1.28.9-onprem-bb53e7e with security fixes.'
-    - kind: security
-      description: 'Upgrade "tasker-kubernetes" to 1.29.4-onprem-cf2923a with security fixes.'
-    - kind: security
-      description: 'Upgrade "pipeline-manager" to 4.2.7-onprem-510f7e8 with security fixes.'
-    - kind: security
-      description: 'Upgrade "cf-platform-analytics" to 0.54.12-onprem-abcfa0d with security fixes.'
-    - kind: security
-      description: 'Upgrade "argo-hub-platform" to 0.1.44 with security fixes.'
-    - kind: security
-      description: 'Upgrade "cf-broadcaster" to 1.15.13-onprem-022289e with security fixes'
+      description: 'Update "argo-hub-platform" with security fixes.'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -305,14 +297,14 @@ dependencies:
       - cf-internal
   - name: cf-platform-analytics
     alias: cf-platform-analytics-platform
-    version: 0.54.12-onprem-abcfa0d
+    version: 0.54.14-onprem-1ce2774
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
     tags:
       - cf-internal
   - name: cf-platform-analytics
     alias: cf-platform-analytics-etlstarter
-    version: 0.54.12-onprem-abcfa0d
+    version: 0.54.14-onprem-1ce2774
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
     tags:
@@ -324,7 +316,7 @@ dependencies:
     tags:
       - cf-internal
   - name: argo-hub-platform
-    version: 0.1.44
+    version: 0.1.47
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
     tags:
