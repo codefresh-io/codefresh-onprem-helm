@@ -20,7 +20,11 @@ annotations:
   # artifacthub.io/changes: |
   #   - kind:
   #     description: ""
-  artifacthub.io/changes: |
+  artifacthub.io/changes: |-
+    - kind: fixed
+      description: 'Update "cf-platform-analytics", fix regression bug with ETL container run introduced in onprem 2.12.5.'
+    - kind: security
+      description: 'Update "argo-hub-platform" with security fixes.'
     - kind: changed
       description: "Upgrade default Classic Runtime (`system/default`)"
     - kind: security
@@ -307,14 +311,14 @@ dependencies:
       - cf-internal
   - name: cf-platform-analytics
     alias: cf-platform-analytics-platform
-    version: 0.54.12-onprem-abcfa0d
+    version: 0.54.14-onprem-1ce2774
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
     tags:
       - cf-internal
   - name: cf-platform-analytics
     alias: cf-platform-analytics-etlstarter
-    version: 0.54.12-onprem-abcfa0d
+    version: 0.54.14-onprem-1ce2774
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
     tags:
@@ -326,7 +330,7 @@ dependencies:
     tags:
       - cf-internal
   - name: argo-hub-platform
-    version: 0.1.44
+    version: 0.1.47
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
     tags:
