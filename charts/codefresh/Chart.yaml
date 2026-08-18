@@ -21,24 +21,20 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |
-    - kind: added
-      description: 'Add support for API keys IP allowlist. Early access.'
     - kind: changed
-      description: 'update "cfapi" to 22.11.1'
-    - kind: changed
-      description: 'update "cfui" to 14.100.20-onprem-f7d5126'      
-    - kind: changed
-      description: 'update "argo-platform" to 1.4119.0-onprem-502b2fe'      
+      description: "Upgrade default Classic Runtime (`system/default`)"
     - kind: security
-      description: 'Update "cf-platform-analytics" to 0.54.8. Fix various security vulnerabilities'
+      description: "Fix various vulnerabilities in default Classic Runtime (`system/default`)"
     - kind: security
-      description: 'Update hermes up to 0.22.12. Fix various security vulnerabilities'
+      description: 'Update cf-ui up to 14.100.31. Fix various security vulnerabilities'
     - kind: security
-      description: 'Update nomios up to 0.12.3. Fix various security vulnerabilities'
+      description: 'Update cf-api up to 22.11.5. Fix various security vulnerabilities'
     - kind: security
-      description: 'Update cronus up to 0.9.5. Fix various security vulnerabilities'
+      description: 'Update runtime-environment-manager up to 4.1.9. Fix various security vulnerabilities'
     - kind: security
-      description: 'Update helm-repo-manager up to 0.23.7. Fix various security vulnerabilities'
+      description: 'Update kube-integration up to 2.1.6. Fix various security vulnerabilities'
+    - kind: security
+      description: 'Update context-manager up to 2.41.11. Fix various security vulnerabilities'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -94,7 +90,7 @@ dependencies:
     tags:
       - cf-internal
   - name: kube-integration
-    version: 2.1.4
+    version: 2.1.6
     repository: oci://quay.io/codefresh/charts
     condition: kube-integration.enabled
     tags:
@@ -118,7 +114,7 @@ dependencies:
     tags:
       - cf-internal
   - name: context-manager
-    version: 2.41.8
+    version: 2.41.11
     repository: oci://quay.io/codefresh/charts
     condition: context-manager.enabled
     tags:
@@ -137,132 +133,132 @@ dependencies:
       - cf-internal
   - name: cfapi
     alias: cfapi
-    version: 22.11.1
+    version: 22.11.5
     repository: oci://quay.io/codefresh/charts
     condition: cfapi.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-auth
-    version: 22.11.1
+    version: 22.11.5
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-auth.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-internal
-    version: 22.11.1
+    version: 22.11.5
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-internal.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-ws
-    version: 22.11.1
+    version: 22.11.5
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-ws.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-admin
-    version: 22.11.1
+    version: 22.11.5
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-admin.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-endpoints
-    version: 22.11.1
+    version: 22.11.5
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-endpoints.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-terminators
-    version: 22.11.1
+    version: 22.11.5
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-terminators.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-sso-group-synchronizer
-    version: 22.11.1
+    version: 22.11.5
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-sso-group-synchronizer.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-buildmanager
-    version: 22.11.1
+    version: 22.11.5
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-buildmanager.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-cacheevictmanager
-    version: 22.11.1
+    version: 22.11.5
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-cacheevictmanager.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-eventsmanagersubscriptions
-    version: 22.11.1
+    version: 22.11.5
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-eventsmanagersubscriptions.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-kubernetesresourcemonitor
-    version: 22.11.1
+    version: 22.11.5
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-kubernetesresourcemonitor.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-environments
-    version: 22.11.1
+    version: 22.11.5
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-environments.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-gitops-resource-receiver
-    version: 22.11.1
+    version: 22.11.5
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-gitops-resource-receiver.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-downloadlogmanager
-    version: 22.11.1
+    version: 22.11.5
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-downloadlogmanager.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-teams
-    version: 22.11.1
+    version: 22.11.5
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-teams.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-kubernetes-endpoints
-    version: 22.11.1
+    version: 22.11.5
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-kubernetes-endpoints.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-test-reporting
-    version: 22.11.1
+    version: 22.11.5
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-test-reporting.enabled
     tags:
       - cf-internal
   - name: cfui
-    version: 14.100.20-onprem-f7d5126
+    version: 14.100.31
     repository: oci://quay.io/codefresh/charts
     condition: cfui.enabled
     tags:
@@ -274,7 +270,7 @@ dependencies:
     tags:
       - cf-internal
   - name: runtime-environment-manager
-    version: 4.1.6
+    version: 4.1.9
     repository: oci://quay.io/codefresh/charts
     condition: runtime-environment-manager.enabled
     tags:
