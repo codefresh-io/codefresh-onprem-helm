@@ -22,19 +22,10 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |
     - kind: changed
-      description: "Upgrade default Classic Runtime (`system/default`)"
-    - kind: security
-      description: "Fix various vulnerabilities in default Classic Runtime (`system/default`)"
-    - kind: security
-      description: 'Update cf-ui up to 14.100.31. Fix various security vulnerabilities'
-    - kind: security
-      description: 'Update cf-api up to 22.11.5. Fix various security vulnerabilities'
-    - kind: security
-      description: 'Update runtime-environment-manager up to 4.1.9. Fix various security vulnerabilities'
-    - kind: security
-      description: 'Update kube-integration up to 2.1.6. Fix various security vulnerabilities'
-    - kind: security
-      description: 'Update context-manager up to 2.41.11. Fix various security vulnerabilities'
+      description: 'Release 2.12.7'
+      links:
+        - name: 'Release notes'
+          url: 'https://github.com/codefresh-io/codefresh-onprem-helm/releases/tag/codefresh-2.12.7'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
