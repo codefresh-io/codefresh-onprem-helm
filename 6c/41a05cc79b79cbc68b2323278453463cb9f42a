@@ -1,0 +1,17 @@
+charts/codefresh/Chart.yaml
+  h_0abc1f0694f983 24-25,27-35,37-41,140,147,154,161,168,175,182,189,196,203,210,217,224,231,238,245,252,259,265,289,295,301,307,327
+  h_0abc1f0694f983 343
+charts/codefresh/values.yaml
+  h_0abc1f0694f983 590-592
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "6c41a05cc79b79cbc68b2323278453463cb9f42a",
+  "prompts": {},
+  "humans": {
+    "h_0abc1f0694f983": {
+      "author": "Denys Melnyk <denis.melnyk@octopus.com>"
+    }
+  }
+}
