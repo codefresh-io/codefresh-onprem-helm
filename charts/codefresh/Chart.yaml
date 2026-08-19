@@ -22,10 +22,7 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |
     - kind: changed
-      description: 'Release 2.12.7'
-      links:
-        - name: 'Release notes'
-          url: 'https://github.com/codefresh-io/codefresh-onprem-helm/releases/tag/codefresh-2.12.7'
+      description: 'update "chartmuseum" to v0.16.6 with security fixes'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
