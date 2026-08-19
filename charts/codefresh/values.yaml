@@ -124,10 +124,7 @@ ingress:
       - /
   # -- Set annotations for ingress.
   # @default -- See below
-  annotations:
-    nginx.ingress.kubernetes.io/service-upstream: "true"
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
-    nginx.org/redirect-to-https: "false"
+  annotations: {}
   # -- Set labels for ingress
   labels: {}
 
