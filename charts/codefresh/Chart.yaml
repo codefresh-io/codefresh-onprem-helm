@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.12.6
+version: 2.12.7
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -21,24 +21,11 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |-
-    - kind: fixed
-      description: 'Update "cf-platform-analytics", fix regression bug with ETL container run introduced in onprem 2.12.5.'
-    - kind: security
-      description: 'Update "argo-hub-platform" with security fixes.'
     - kind: changed
-      description: "Upgrade default Classic Runtime (`system/default`)"
-    - kind: security
-      description: "Fix various vulnerabilities in default Classic Runtime (`system/default`)"
-    - kind: security
-      description: 'Update cf-ui up to 14.100.22. Fix various security vulnerabilities'
-    - kind: security
-      description: 'Update cf-api up to 22.8.11. Fix various security vulnerabilities'
-    - kind: security
-      description: 'Update runtime-environment-manager up to 4.1.9. Fix various security vulnerabilities'
-    - kind: security
-      description: 'Update kube-integration up to 2.1.6. Fix various security vulnerabilities'
-    - kind: security
-      description: 'Update context-manager up to 2.41.11. Fix various security vulnerabilities'
+      description: 'Release 2.12.7'
+      links:
+        - name: 'Release notes'
+          url: 'https://github.com/codefresh-io/codefresh-onprem-helm/releases/tag/codefresh-2.12.7'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -324,7 +311,7 @@ dependencies:
     tags:
       - cf-internal
   - name: argo-platform
-    version: 1.4120.0-onprem-e2a0d36
+    version: 1.4121.0-onprem-fa26186
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
     tags:
