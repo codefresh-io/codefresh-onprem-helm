@@ -311,7 +311,7 @@ dependencies:
     tags:
       - cf-internal
   - name: argo-platform
-    version: 1.4120.0-onprem-e2a0d36
+    version: 1.4121.0-onprem-fa26186
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
     tags:
