@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.8.18](https://img.shields.io/badge/Version-2.8.18-informational?style=flat-square) ![AppVersion: 2.8.0](https://img.shields.io/badge/AppVersion-2.8.0-informational?style=flat-square)
+![Version: 2.8.19](https://img.shields.io/badge/Version-2.8.19-informational?style=flat-square) ![AppVersion: 2.8.0](https://img.shields.io/badge/AppVersion-2.8.0-informational?style=flat-square)
 
 Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
@@ -2458,6 +2458,222 @@ After platform upgrade, Consul fails with the error `refusing to rejoin cluster 
 | cf-platform-analytics-etlstarter.system-etl-postgres | object | `{"container":{"env":{"BLUE_GREEN_ENABLED":true}},"controller":{"cronjob":{"ttlSecondsAfterFinished":300}},"enabled":true}` | Only postgres ETL should be running in onprem |
 | cf-platform-analytics-platform | object | See below | platform-analytics |
 | cfapi | object | `{"affinity":{},"container":{"env":{"AUDIT_AUTO_CREATE_DB":true,"DEFAULT_SYSTEM_TYPE":"PROJECT_ONE","GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","OIDC_PROVIDER_PORT":"{{ .Values.global.oidcProviderPort }}","OIDC_PROVIDER_PROTOCOL":"{{ .Values.global.oidcProviderProtocol }}","OIDC_PROVIDER_TOKEN_ENDPOINT":"{{ .Values.global.oidcProviderTokenEndpoint }}","OIDC_PROVIDER_URI":"{{ .Values.global.oidcProviderService }}","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh","RUNTIME_REDIS_DB":0},"image":{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}},"controller":{"replicas":2},"enabled":true,"hpa":{"enabled":false,"maxReplicas":10,"minReplicas":2,"targetCPUUtilizationPercentage":70},"imagePullSecrets":[],"nodeSelector":{},"pdb":{"enabled":false,"minAvailable":"50%"},"podSecurityContext":{},"resources":{"limits":{},"requests":{"cpu":"200m","memory":"256Mi"}},"secrets":{"secret":{"enabled":true,"stringData":{"OIDC_PROVIDER_CLIENT_ID":"{{ .Values.global.oidcProviderClientId }}","OIDC_PROVIDER_CLIENT_SECRET":"{{ .Values.global.oidcProviderClientSecret }}"},"type":"Opaque"}},"tolerations":[]}` | cf-api |
+| cfapi-admin.<<.affinity | object | `{}` | Affinity configuration |
+| cfapi-admin.<<.container | object | `{"env":{"AUDIT_AUTO_CREATE_DB":true,"DEFAULT_SYSTEM_TYPE":"PROJECT_ONE","GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","OIDC_PROVIDER_PORT":"{{ .Values.global.oidcProviderPort }}","OIDC_PROVIDER_PROTOCOL":"{{ .Values.global.oidcProviderProtocol }}","OIDC_PROVIDER_TOKEN_ENDPOINT":"{{ .Values.global.oidcProviderTokenEndpoint }}","OIDC_PROVIDER_URI":"{{ .Values.global.oidcProviderService }}","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh","RUNTIME_REDIS_DB":0},"image":{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}}` | Container configuration |
+| cfapi-admin.<<.container.env | object | See below | Env vars |
+| cfapi-admin.<<.container.image | object | `{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}` | Image |
+| cfapi-admin.<<.container.image.registry | string | `"us-docker.pkg.dev/codefresh-enterprise/gcr.io"` | Registry prefix |
+| cfapi-admin.<<.container.image.repository | string | `"codefresh/cf-api"` | Repository |
+| cfapi-admin.<<.controller | object | `{"replicas":2}` | Controller configuration |
+| cfapi-admin.<<.controller.replicas | int | `2` | Replicas number |
+| cfapi-admin.<<.enabled | bool | `true` | Enable cf-api |
+| cfapi-admin.<<.hpa | object | `{"enabled":false,"maxReplicas":10,"minReplicas":2,"targetCPUUtilizationPercentage":70}` | Autoscaler configuration |
+| cfapi-admin.<<.hpa.enabled | bool | `false` | Enable HPA |
+| cfapi-admin.<<.hpa.maxReplicas | int | `10` | Maximum number of replicas |
+| cfapi-admin.<<.hpa.minReplicas | int | `2` | Minimum number of replicas |
+| cfapi-admin.<<.hpa.targetCPUUtilizationPercentage | int | `70` | Average CPU utilization percentage |
+| cfapi-admin.<<.imagePullSecrets | list | `[]` | Image pull secrets |
+| cfapi-admin.<<.nodeSelector | object | `{}` | Node selector configuration |
+| cfapi-admin.<<.pdb | object | `{"enabled":false,"minAvailable":"50%"}` | Pod disruption budget configuration |
+| cfapi-admin.<<.pdb.enabled | bool | `false` | Enable PDB |
+| cfapi-admin.<<.pdb.minAvailable | string | `"50%"` | Minimum number of replicas in percentage |
+| cfapi-admin.<<.podSecurityContext | object | `{}` | Pod security context configuration |
+| cfapi-admin.<<.resources | object | `{"limits":{},"requests":{"cpu":"200m","memory":"256Mi"}}` | Resource requests and limits |
+| cfapi-admin.<<.secrets | object | `{"secret":{"enabled":true,"stringData":{"OIDC_PROVIDER_CLIENT_ID":"{{ .Values.global.oidcProviderClientId }}","OIDC_PROVIDER_CLIENT_SECRET":"{{ .Values.global.oidcProviderClientSecret }}"},"type":"Opaque"}}` | Secrets configuration |
+| cfapi-admin.<<.tolerations | list | `[]` | Tolerations configuration |
+| cfapi-admin.enabled | bool | `false` |  |
+| cfapi-auth.<<.affinity | object | `{}` | Affinity configuration |
+| cfapi-auth.<<.container | object | `{"env":{"AUDIT_AUTO_CREATE_DB":true,"DEFAULT_SYSTEM_TYPE":"PROJECT_ONE","GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","OIDC_PROVIDER_PORT":"{{ .Values.global.oidcProviderPort }}","OIDC_PROVIDER_PROTOCOL":"{{ .Values.global.oidcProviderProtocol }}","OIDC_PROVIDER_TOKEN_ENDPOINT":"{{ .Values.global.oidcProviderTokenEndpoint }}","OIDC_PROVIDER_URI":"{{ .Values.global.oidcProviderService }}","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh","RUNTIME_REDIS_DB":0},"image":{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}}` | Container configuration |
+| cfapi-auth.<<.container.env | object | See below | Env vars |
+| cfapi-auth.<<.container.image | object | `{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}` | Image |
+| cfapi-auth.<<.container.image.registry | string | `"us-docker.pkg.dev/codefresh-enterprise/gcr.io"` | Registry prefix |
+| cfapi-auth.<<.container.image.repository | string | `"codefresh/cf-api"` | Repository |
+| cfapi-auth.<<.controller | object | `{"replicas":2}` | Controller configuration |
+| cfapi-auth.<<.controller.replicas | int | `2` | Replicas number |
+| cfapi-auth.<<.enabled | bool | `true` | Enable cf-api |
+| cfapi-auth.<<.hpa | object | `{"enabled":false,"maxReplicas":10,"minReplicas":2,"targetCPUUtilizationPercentage":70}` | Autoscaler configuration |
+| cfapi-auth.<<.hpa.enabled | bool | `false` | Enable HPA |
+| cfapi-auth.<<.hpa.maxReplicas | int | `10` | Maximum number of replicas |
+| cfapi-auth.<<.hpa.minReplicas | int | `2` | Minimum number of replicas |
+| cfapi-auth.<<.hpa.targetCPUUtilizationPercentage | int | `70` | Average CPU utilization percentage |
+| cfapi-auth.<<.imagePullSecrets | list | `[]` | Image pull secrets |
+| cfapi-auth.<<.nodeSelector | object | `{}` | Node selector configuration |
+| cfapi-auth.<<.pdb | object | `{"enabled":false,"minAvailable":"50%"}` | Pod disruption budget configuration |
+| cfapi-auth.<<.pdb.enabled | bool | `false` | Enable PDB |
+| cfapi-auth.<<.pdb.minAvailable | string | `"50%"` | Minimum number of replicas in percentage |
+| cfapi-auth.<<.podSecurityContext | object | `{}` | Pod security context configuration |
+| cfapi-auth.<<.resources | object | `{"limits":{},"requests":{"cpu":"200m","memory":"256Mi"}}` | Resource requests and limits |
+| cfapi-auth.<<.secrets | object | `{"secret":{"enabled":true,"stringData":{"OIDC_PROVIDER_CLIENT_ID":"{{ .Values.global.oidcProviderClientId }}","OIDC_PROVIDER_CLIENT_SECRET":"{{ .Values.global.oidcProviderClientSecret }}"},"type":"Opaque"}}` | Secrets configuration |
+| cfapi-auth.<<.tolerations | list | `[]` | Tolerations configuration |
+| cfapi-auth.enabled | bool | `false` |  |
+| cfapi-buildmanager.<<.affinity | object | `{}` | Affinity configuration |
+| cfapi-buildmanager.<<.container | object | `{"env":{"AUDIT_AUTO_CREATE_DB":true,"DEFAULT_SYSTEM_TYPE":"PROJECT_ONE","GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","OIDC_PROVIDER_PORT":"{{ .Values.global.oidcProviderPort }}","OIDC_PROVIDER_PROTOCOL":"{{ .Values.global.oidcProviderProtocol }}","OIDC_PROVIDER_TOKEN_ENDPOINT":"{{ .Values.global.oidcProviderTokenEndpoint }}","OIDC_PROVIDER_URI":"{{ .Values.global.oidcProviderService }}","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh","RUNTIME_REDIS_DB":0},"image":{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}}` | Container configuration |
+| cfapi-buildmanager.<<.container.env | object | See below | Env vars |
+| cfapi-buildmanager.<<.container.image | object | `{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}` | Image |
+| cfapi-buildmanager.<<.container.image.registry | string | `"us-docker.pkg.dev/codefresh-enterprise/gcr.io"` | Registry prefix |
+| cfapi-buildmanager.<<.container.image.repository | string | `"codefresh/cf-api"` | Repository |
+| cfapi-buildmanager.<<.controller | object | `{"replicas":2}` | Controller configuration |
+| cfapi-buildmanager.<<.controller.replicas | int | `2` | Replicas number |
+| cfapi-buildmanager.<<.enabled | bool | `true` | Enable cf-api |
+| cfapi-buildmanager.<<.hpa | object | `{"enabled":false,"maxReplicas":10,"minReplicas":2,"targetCPUUtilizationPercentage":70}` | Autoscaler configuration |
+| cfapi-buildmanager.<<.hpa.enabled | bool | `false` | Enable HPA |
+| cfapi-buildmanager.<<.hpa.maxReplicas | int | `10` | Maximum number of replicas |
+| cfapi-buildmanager.<<.hpa.minReplicas | int | `2` | Minimum number of replicas |
+| cfapi-buildmanager.<<.hpa.targetCPUUtilizationPercentage | int | `70` | Average CPU utilization percentage |
+| cfapi-buildmanager.<<.imagePullSecrets | list | `[]` | Image pull secrets |
+| cfapi-buildmanager.<<.nodeSelector | object | `{}` | Node selector configuration |
+| cfapi-buildmanager.<<.pdb | object | `{"enabled":false,"minAvailable":"50%"}` | Pod disruption budget configuration |
+| cfapi-buildmanager.<<.pdb.enabled | bool | `false` | Enable PDB |
+| cfapi-buildmanager.<<.pdb.minAvailable | string | `"50%"` | Minimum number of replicas in percentage |
+| cfapi-buildmanager.<<.podSecurityContext | object | `{}` | Pod security context configuration |
+| cfapi-buildmanager.<<.resources | object | `{"limits":{},"requests":{"cpu":"200m","memory":"256Mi"}}` | Resource requests and limits |
+| cfapi-buildmanager.<<.secrets | object | `{"secret":{"enabled":true,"stringData":{"OIDC_PROVIDER_CLIENT_ID":"{{ .Values.global.oidcProviderClientId }}","OIDC_PROVIDER_CLIENT_SECRET":"{{ .Values.global.oidcProviderClientSecret }}"},"type":"Opaque"}}` | Secrets configuration |
+| cfapi-buildmanager.<<.tolerations | list | `[]` | Tolerations configuration |
+| cfapi-buildmanager.enabled | bool | `false` |  |
+| cfapi-cacheevictmanager.<<.affinity | object | `{}` | Affinity configuration |
+| cfapi-cacheevictmanager.<<.container | object | `{"env":{"AUDIT_AUTO_CREATE_DB":true,"DEFAULT_SYSTEM_TYPE":"PROJECT_ONE","GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","OIDC_PROVIDER_PORT":"{{ .Values.global.oidcProviderPort }}","OIDC_PROVIDER_PROTOCOL":"{{ .Values.global.oidcProviderProtocol }}","OIDC_PROVIDER_TOKEN_ENDPOINT":"{{ .Values.global.oidcProviderTokenEndpoint }}","OIDC_PROVIDER_URI":"{{ .Values.global.oidcProviderService }}","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh","RUNTIME_REDIS_DB":0},"image":{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}}` | Container configuration |
+| cfapi-cacheevictmanager.<<.container.env | object | See below | Env vars |
+| cfapi-cacheevictmanager.<<.container.image | object | `{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}` | Image |
+| cfapi-cacheevictmanager.<<.container.image.registry | string | `"us-docker.pkg.dev/codefresh-enterprise/gcr.io"` | Registry prefix |
+| cfapi-cacheevictmanager.<<.container.image.repository | string | `"codefresh/cf-api"` | Repository |
+| cfapi-cacheevictmanager.<<.controller | object | `{"replicas":2}` | Controller configuration |
+| cfapi-cacheevictmanager.<<.controller.replicas | int | `2` | Replicas number |
+| cfapi-cacheevictmanager.<<.enabled | bool | `true` | Enable cf-api |
+| cfapi-cacheevictmanager.<<.hpa | object | `{"enabled":false,"maxReplicas":10,"minReplicas":2,"targetCPUUtilizationPercentage":70}` | Autoscaler configuration |
+| cfapi-cacheevictmanager.<<.hpa.enabled | bool | `false` | Enable HPA |
+| cfapi-cacheevictmanager.<<.hpa.maxReplicas | int | `10` | Maximum number of replicas |
+| cfapi-cacheevictmanager.<<.hpa.minReplicas | int | `2` | Minimum number of replicas |
+| cfapi-cacheevictmanager.<<.hpa.targetCPUUtilizationPercentage | int | `70` | Average CPU utilization percentage |
+| cfapi-cacheevictmanager.<<.imagePullSecrets | list | `[]` | Image pull secrets |
+| cfapi-cacheevictmanager.<<.nodeSelector | object | `{}` | Node selector configuration |
+| cfapi-cacheevictmanager.<<.pdb | object | `{"enabled":false,"minAvailable":"50%"}` | Pod disruption budget configuration |
+| cfapi-cacheevictmanager.<<.pdb.enabled | bool | `false` | Enable PDB |
+| cfapi-cacheevictmanager.<<.pdb.minAvailable | string | `"50%"` | Minimum number of replicas in percentage |
+| cfapi-cacheevictmanager.<<.podSecurityContext | object | `{}` | Pod security context configuration |
+| cfapi-cacheevictmanager.<<.resources | object | `{"limits":{},"requests":{"cpu":"200m","memory":"256Mi"}}` | Resource requests and limits |
+| cfapi-cacheevictmanager.<<.secrets | object | `{"secret":{"enabled":true,"stringData":{"OIDC_PROVIDER_CLIENT_ID":"{{ .Values.global.oidcProviderClientId }}","OIDC_PROVIDER_CLIENT_SECRET":"{{ .Values.global.oidcProviderClientSecret }}"},"type":"Opaque"}}` | Secrets configuration |
+| cfapi-cacheevictmanager.<<.tolerations | list | `[]` | Tolerations configuration |
+| cfapi-cacheevictmanager.enabled | bool | `false` |  |
+| cfapi-downloadlogmanager.<<.affinity | object | `{}` | Affinity configuration |
+| cfapi-downloadlogmanager.<<.container | object | `{"env":{"AUDIT_AUTO_CREATE_DB":true,"DEFAULT_SYSTEM_TYPE":"PROJECT_ONE","GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","OIDC_PROVIDER_PORT":"{{ .Values.global.oidcProviderPort }}","OIDC_PROVIDER_PROTOCOL":"{{ .Values.global.oidcProviderProtocol }}","OIDC_PROVIDER_TOKEN_ENDPOINT":"{{ .Values.global.oidcProviderTokenEndpoint }}","OIDC_PROVIDER_URI":"{{ .Values.global.oidcProviderService }}","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh","RUNTIME_REDIS_DB":0},"image":{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}}` | Container configuration |
+| cfapi-downloadlogmanager.<<.container.env | object | See below | Env vars |
+| cfapi-downloadlogmanager.<<.container.image | object | `{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}` | Image |
+| cfapi-downloadlogmanager.<<.container.image.registry | string | `"us-docker.pkg.dev/codefresh-enterprise/gcr.io"` | Registry prefix |
+| cfapi-downloadlogmanager.<<.container.image.repository | string | `"codefresh/cf-api"` | Repository |
+| cfapi-downloadlogmanager.<<.controller | object | `{"replicas":2}` | Controller configuration |
+| cfapi-downloadlogmanager.<<.controller.replicas | int | `2` | Replicas number |
+| cfapi-downloadlogmanager.<<.enabled | bool | `true` | Enable cf-api |
+| cfapi-downloadlogmanager.<<.hpa | object | `{"enabled":false,"maxReplicas":10,"minReplicas":2,"targetCPUUtilizationPercentage":70}` | Autoscaler configuration |
+| cfapi-downloadlogmanager.<<.hpa.enabled | bool | `false` | Enable HPA |
+| cfapi-downloadlogmanager.<<.hpa.maxReplicas | int | `10` | Maximum number of replicas |
+| cfapi-downloadlogmanager.<<.hpa.minReplicas | int | `2` | Minimum number of replicas |
+| cfapi-downloadlogmanager.<<.hpa.targetCPUUtilizationPercentage | int | `70` | Average CPU utilization percentage |
+| cfapi-downloadlogmanager.<<.imagePullSecrets | list | `[]` | Image pull secrets |
+| cfapi-downloadlogmanager.<<.nodeSelector | object | `{}` | Node selector configuration |
+| cfapi-downloadlogmanager.<<.pdb | object | `{"enabled":false,"minAvailable":"50%"}` | Pod disruption budget configuration |
+| cfapi-downloadlogmanager.<<.pdb.enabled | bool | `false` | Enable PDB |
+| cfapi-downloadlogmanager.<<.pdb.minAvailable | string | `"50%"` | Minimum number of replicas in percentage |
+| cfapi-downloadlogmanager.<<.podSecurityContext | object | `{}` | Pod security context configuration |
+| cfapi-downloadlogmanager.<<.resources | object | `{"limits":{},"requests":{"cpu":"200m","memory":"256Mi"}}` | Resource requests and limits |
+| cfapi-downloadlogmanager.<<.secrets | object | `{"secret":{"enabled":true,"stringData":{"OIDC_PROVIDER_CLIENT_ID":"{{ .Values.global.oidcProviderClientId }}","OIDC_PROVIDER_CLIENT_SECRET":"{{ .Values.global.oidcProviderClientSecret }}"},"type":"Opaque"}}` | Secrets configuration |
+| cfapi-downloadlogmanager.<<.tolerations | list | `[]` | Tolerations configuration |
+| cfapi-downloadlogmanager.enabled | bool | `false` |  |
+| cfapi-endpoints.<<.affinity | object | `{}` | Affinity configuration |
+| cfapi-endpoints.<<.container | object | `{"env":{"AUDIT_AUTO_CREATE_DB":true,"DEFAULT_SYSTEM_TYPE":"PROJECT_ONE","GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","OIDC_PROVIDER_PORT":"{{ .Values.global.oidcProviderPort }}","OIDC_PROVIDER_PROTOCOL":"{{ .Values.global.oidcProviderProtocol }}","OIDC_PROVIDER_TOKEN_ENDPOINT":"{{ .Values.global.oidcProviderTokenEndpoint }}","OIDC_PROVIDER_URI":"{{ .Values.global.oidcProviderService }}","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh","RUNTIME_REDIS_DB":0},"image":{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}}` | Container configuration |
+| cfapi-endpoints.<<.container.env | object | See below | Env vars |
+| cfapi-endpoints.<<.container.image | object | `{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}` | Image |
+| cfapi-endpoints.<<.container.image.registry | string | `"us-docker.pkg.dev/codefresh-enterprise/gcr.io"` | Registry prefix |
+| cfapi-endpoints.<<.container.image.repository | string | `"codefresh/cf-api"` | Repository |
+| cfapi-endpoints.<<.controller | object | `{"replicas":2}` | Controller configuration |
+| cfapi-endpoints.<<.controller.replicas | int | `2` | Replicas number |
+| cfapi-endpoints.<<.enabled | bool | `true` | Enable cf-api |
+| cfapi-endpoints.<<.hpa | object | `{"enabled":false,"maxReplicas":10,"minReplicas":2,"targetCPUUtilizationPercentage":70}` | Autoscaler configuration |
+| cfapi-endpoints.<<.hpa.enabled | bool | `false` | Enable HPA |
+| cfapi-endpoints.<<.hpa.maxReplicas | int | `10` | Maximum number of replicas |
+| cfapi-endpoints.<<.hpa.minReplicas | int | `2` | Minimum number of replicas |
+| cfapi-endpoints.<<.hpa.targetCPUUtilizationPercentage | int | `70` | Average CPU utilization percentage |
+| cfapi-endpoints.<<.imagePullSecrets | list | `[]` | Image pull secrets |
+| cfapi-endpoints.<<.nodeSelector | object | `{}` | Node selector configuration |
+| cfapi-endpoints.<<.pdb | object | `{"enabled":false,"minAvailable":"50%"}` | Pod disruption budget configuration |
+| cfapi-endpoints.<<.pdb.enabled | bool | `false` | Enable PDB |
+| cfapi-endpoints.<<.pdb.minAvailable | string | `"50%"` | Minimum number of replicas in percentage |
+| cfapi-endpoints.<<.podSecurityContext | object | `{}` | Pod security context configuration |
+| cfapi-endpoints.<<.resources | object | `{"limits":{},"requests":{"cpu":"200m","memory":"256Mi"}}` | Resource requests and limits |
+| cfapi-endpoints.<<.secrets | object | `{"secret":{"enabled":true,"stringData":{"OIDC_PROVIDER_CLIENT_ID":"{{ .Values.global.oidcProviderClientId }}","OIDC_PROVIDER_CLIENT_SECRET":"{{ .Values.global.oidcProviderClientSecret }}"},"type":"Opaque"}}` | Secrets configuration |
+| cfapi-endpoints.<<.tolerations | list | `[]` | Tolerations configuration |
+| cfapi-endpoints.enabled | bool | `false` |  |
+| cfapi-environments.<<.affinity | object | `{}` | Affinity configuration |
+| cfapi-environments.<<.container | object | `{"env":{"AUDIT_AUTO_CREATE_DB":true,"DEFAULT_SYSTEM_TYPE":"PROJECT_ONE","GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","OIDC_PROVIDER_PORT":"{{ .Values.global.oidcProviderPort }}","OIDC_PROVIDER_PROTOCOL":"{{ .Values.global.oidcProviderProtocol }}","OIDC_PROVIDER_TOKEN_ENDPOINT":"{{ .Values.global.oidcProviderTokenEndpoint }}","OIDC_PROVIDER_URI":"{{ .Values.global.oidcProviderService }}","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh","RUNTIME_REDIS_DB":0},"image":{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}}` | Container configuration |
+| cfapi-environments.<<.container.env | object | See below | Env vars |
+| cfapi-environments.<<.container.image | object | `{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}` | Image |
+| cfapi-environments.<<.container.image.registry | string | `"us-docker.pkg.dev/codefresh-enterprise/gcr.io"` | Registry prefix |
+| cfapi-environments.<<.container.image.repository | string | `"codefresh/cf-api"` | Repository |
+| cfapi-environments.<<.controller | object | `{"replicas":2}` | Controller configuration |
+| cfapi-environments.<<.controller.replicas | int | `2` | Replicas number |
+| cfapi-environments.<<.enabled | bool | `true` | Enable cf-api |
+| cfapi-environments.<<.hpa | object | `{"enabled":false,"maxReplicas":10,"minReplicas":2,"targetCPUUtilizationPercentage":70}` | Autoscaler configuration |
+| cfapi-environments.<<.hpa.enabled | bool | `false` | Enable HPA |
+| cfapi-environments.<<.hpa.maxReplicas | int | `10` | Maximum number of replicas |
+| cfapi-environments.<<.hpa.minReplicas | int | `2` | Minimum number of replicas |
+| cfapi-environments.<<.hpa.targetCPUUtilizationPercentage | int | `70` | Average CPU utilization percentage |
+| cfapi-environments.<<.imagePullSecrets | list | `[]` | Image pull secrets |
+| cfapi-environments.<<.nodeSelector | object | `{}` | Node selector configuration |
+| cfapi-environments.<<.pdb | object | `{"enabled":false,"minAvailable":"50%"}` | Pod disruption budget configuration |
+| cfapi-environments.<<.pdb.enabled | bool | `false` | Enable PDB |
+| cfapi-environments.<<.pdb.minAvailable | string | `"50%"` | Minimum number of replicas in percentage |
+| cfapi-environments.<<.podSecurityContext | object | `{}` | Pod security context configuration |
+| cfapi-environments.<<.resources | object | `{"limits":{},"requests":{"cpu":"200m","memory":"256Mi"}}` | Resource requests and limits |
+| cfapi-environments.<<.secrets | object | `{"secret":{"enabled":true,"stringData":{"OIDC_PROVIDER_CLIENT_ID":"{{ .Values.global.oidcProviderClientId }}","OIDC_PROVIDER_CLIENT_SECRET":"{{ .Values.global.oidcProviderClientSecret }}"},"type":"Opaque"}}` | Secrets configuration |
+| cfapi-environments.<<.tolerations | list | `[]` | Tolerations configuration |
+| cfapi-environments.enabled | bool | `false` |  |
+| cfapi-eventsmanagersubscriptions.<<.affinity | object | `{}` | Affinity configuration |
+| cfapi-eventsmanagersubscriptions.<<.container | object | `{"env":{"AUDIT_AUTO_CREATE_DB":true,"DEFAULT_SYSTEM_TYPE":"PROJECT_ONE","GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","OIDC_PROVIDER_PORT":"{{ .Values.global.oidcProviderPort }}","OIDC_PROVIDER_PROTOCOL":"{{ .Values.global.oidcProviderProtocol }}","OIDC_PROVIDER_TOKEN_ENDPOINT":"{{ .Values.global.oidcProviderTokenEndpoint }}","OIDC_PROVIDER_URI":"{{ .Values.global.oidcProviderService }}","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh","RUNTIME_REDIS_DB":0},"image":{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}}` | Container configuration |
+| cfapi-eventsmanagersubscriptions.<<.container.env | object | See below | Env vars |
+| cfapi-eventsmanagersubscriptions.<<.container.image | object | `{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}` | Image |
+| cfapi-eventsmanagersubscriptions.<<.container.image.registry | string | `"us-docker.pkg.dev/codefresh-enterprise/gcr.io"` | Registry prefix |
+| cfapi-eventsmanagersubscriptions.<<.container.image.repository | string | `"codefresh/cf-api"` | Repository |
+| cfapi-eventsmanagersubscriptions.<<.controller | object | `{"replicas":2}` | Controller configuration |
+| cfapi-eventsmanagersubscriptions.<<.controller.replicas | int | `2` | Replicas number |
+| cfapi-eventsmanagersubscriptions.<<.enabled | bool | `true` | Enable cf-api |
+| cfapi-eventsmanagersubscriptions.<<.hpa | object | `{"enabled":false,"maxReplicas":10,"minReplicas":2,"targetCPUUtilizationPercentage":70}` | Autoscaler configuration |
+| cfapi-eventsmanagersubscriptions.<<.hpa.enabled | bool | `false` | Enable HPA |
+| cfapi-eventsmanagersubscriptions.<<.hpa.maxReplicas | int | `10` | Maximum number of replicas |
+| cfapi-eventsmanagersubscriptions.<<.hpa.minReplicas | int | `2` | Minimum number of replicas |
+| cfapi-eventsmanagersubscriptions.<<.hpa.targetCPUUtilizationPercentage | int | `70` | Average CPU utilization percentage |
+| cfapi-eventsmanagersubscriptions.<<.imagePullSecrets | list | `[]` | Image pull secrets |
+| cfapi-eventsmanagersubscriptions.<<.nodeSelector | object | `{}` | Node selector configuration |
+| cfapi-eventsmanagersubscriptions.<<.pdb | object | `{"enabled":false,"minAvailable":"50%"}` | Pod disruption budget configuration |
+| cfapi-eventsmanagersubscriptions.<<.pdb.enabled | bool | `false` | Enable PDB |
+| cfapi-eventsmanagersubscriptions.<<.pdb.minAvailable | string | `"50%"` | Minimum number of replicas in percentage |
+| cfapi-eventsmanagersubscriptions.<<.podSecurityContext | object | `{}` | Pod security context configuration |
+| cfapi-eventsmanagersubscriptions.<<.resources | object | `{"limits":{},"requests":{"cpu":"200m","memory":"256Mi"}}` | Resource requests and limits |
+| cfapi-eventsmanagersubscriptions.<<.secrets | object | `{"secret":{"enabled":true,"stringData":{"OIDC_PROVIDER_CLIENT_ID":"{{ .Values.global.oidcProviderClientId }}","OIDC_PROVIDER_CLIENT_SECRET":"{{ .Values.global.oidcProviderClientSecret }}"},"type":"Opaque"}}` | Secrets configuration |
+| cfapi-eventsmanagersubscriptions.<<.tolerations | list | `[]` | Tolerations configuration |
+| cfapi-eventsmanagersubscriptions.enabled | bool | `false` |  |
+| cfapi-gitops-resource-receiver.<<.affinity | object | `{}` | Affinity configuration |
+| cfapi-gitops-resource-receiver.<<.container | object | `{"env":{"AUDIT_AUTO_CREATE_DB":true,"DEFAULT_SYSTEM_TYPE":"PROJECT_ONE","GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","OIDC_PROVIDER_PORT":"{{ .Values.global.oidcProviderPort }}","OIDC_PROVIDER_PROTOCOL":"{{ .Values.global.oidcProviderProtocol }}","OIDC_PROVIDER_TOKEN_ENDPOINT":"{{ .Values.global.oidcProviderTokenEndpoint }}","OIDC_PROVIDER_URI":"{{ .Values.global.oidcProviderService }}","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh","RUNTIME_REDIS_DB":0},"image":{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}}` | Container configuration |
+| cfapi-gitops-resource-receiver.<<.container.env | object | See below | Env vars |
+| cfapi-gitops-resource-receiver.<<.container.image | object | `{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}` | Image |
+| cfapi-gitops-resource-receiver.<<.container.image.registry | string | `"us-docker.pkg.dev/codefresh-enterprise/gcr.io"` | Registry prefix |
+| cfapi-gitops-resource-receiver.<<.container.image.repository | string | `"codefresh/cf-api"` | Repository |
+| cfapi-gitops-resource-receiver.<<.controller | object | `{"replicas":2}` | Controller configuration |
+| cfapi-gitops-resource-receiver.<<.controller.replicas | int | `2` | Replicas number |
+| cfapi-gitops-resource-receiver.<<.enabled | bool | `true` | Enable cf-api |
+| cfapi-gitops-resource-receiver.<<.hpa | object | `{"enabled":false,"maxReplicas":10,"minReplicas":2,"targetCPUUtilizationPercentage":70}` | Autoscaler configuration |
+| cfapi-gitops-resource-receiver.<<.hpa.enabled | bool | `false` | Enable HPA |
+| cfapi-gitops-resource-receiver.<<.hpa.maxReplicas | int | `10` | Maximum number of replicas |
+| cfapi-gitops-resource-receiver.<<.hpa.minReplicas | int | `2` | Minimum number of replicas |
+| cfapi-gitops-resource-receiver.<<.hpa.targetCPUUtilizationPercentage | int | `70` | Average CPU utilization percentage |
+| cfapi-gitops-resource-receiver.<<.imagePullSecrets | list | `[]` | Image pull secrets |
+| cfapi-gitops-resource-receiver.<<.nodeSelector | object | `{}` | Node selector configuration |
+| cfapi-gitops-resource-receiver.<<.pdb | object | `{"enabled":false,"minAvailable":"50%"}` | Pod disruption budget configuration |
+| cfapi-gitops-resource-receiver.<<.pdb.enabled | bool | `false` | Enable PDB |
+| cfapi-gitops-resource-receiver.<<.pdb.minAvailable | string | `"50%"` | Minimum number of replicas in percentage |
+| cfapi-gitops-resource-receiver.<<.podSecurityContext | object | `{}` | Pod security context configuration |
+| cfapi-gitops-resource-receiver.<<.resources | object | `{"limits":{},"requests":{"cpu":"200m","memory":"256Mi"}}` | Resource requests and limits |
+| cfapi-gitops-resource-receiver.<<.secrets | object | `{"secret":{"enabled":true,"stringData":{"OIDC_PROVIDER_CLIENT_ID":"{{ .Values.global.oidcProviderClientId }}","OIDC_PROVIDER_CLIENT_SECRET":"{{ .Values.global.oidcProviderClientSecret }}"},"type":"Opaque"}}` | Secrets configuration |
+| cfapi-gitops-resource-receiver.<<.tolerations | list | `[]` | Tolerations configuration |
+| cfapi-gitops-resource-receiver.enabled | bool | `false` |  |
 | cfapi-internal.<<.affinity | object | `{}` | Affinity configuration |
 | cfapi-internal.<<.container | object | `{"env":{"AUDIT_AUTO_CREATE_DB":true,"DEFAULT_SYSTEM_TYPE":"PROJECT_ONE","GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","OIDC_PROVIDER_PORT":"{{ .Values.global.oidcProviderPort }}","OIDC_PROVIDER_PROTOCOL":"{{ .Values.global.oidcProviderProtocol }}","OIDC_PROVIDER_TOKEN_ENDPOINT":"{{ .Values.global.oidcProviderTokenEndpoint }}","OIDC_PROVIDER_URI":"{{ .Values.global.oidcProviderService }}","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh","RUNTIME_REDIS_DB":0},"image":{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}}` | Container configuration |
 | cfapi-internal.<<.container.env | object | See below | Env vars |
@@ -2482,6 +2698,174 @@ After platform upgrade, Consul fails with the error `refusing to rejoin cluster 
 | cfapi-internal.<<.secrets | object | `{"secret":{"enabled":true,"stringData":{"OIDC_PROVIDER_CLIENT_ID":"{{ .Values.global.oidcProviderClientId }}","OIDC_PROVIDER_CLIENT_SECRET":"{{ .Values.global.oidcProviderClientSecret }}"},"type":"Opaque"}}` | Secrets configuration |
 | cfapi-internal.<<.tolerations | list | `[]` | Tolerations configuration |
 | cfapi-internal.enabled | bool | `false` |  |
+| cfapi-kubernetes-endpoints.<<.affinity | object | `{}` | Affinity configuration |
+| cfapi-kubernetes-endpoints.<<.container | object | `{"env":{"AUDIT_AUTO_CREATE_DB":true,"DEFAULT_SYSTEM_TYPE":"PROJECT_ONE","GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","OIDC_PROVIDER_PORT":"{{ .Values.global.oidcProviderPort }}","OIDC_PROVIDER_PROTOCOL":"{{ .Values.global.oidcProviderProtocol }}","OIDC_PROVIDER_TOKEN_ENDPOINT":"{{ .Values.global.oidcProviderTokenEndpoint }}","OIDC_PROVIDER_URI":"{{ .Values.global.oidcProviderService }}","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh","RUNTIME_REDIS_DB":0},"image":{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}}` | Container configuration |
+| cfapi-kubernetes-endpoints.<<.container.env | object | See below | Env vars |
+| cfapi-kubernetes-endpoints.<<.container.image | object | `{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}` | Image |
+| cfapi-kubernetes-endpoints.<<.container.image.registry | string | `"us-docker.pkg.dev/codefresh-enterprise/gcr.io"` | Registry prefix |
+| cfapi-kubernetes-endpoints.<<.container.image.repository | string | `"codefresh/cf-api"` | Repository |
+| cfapi-kubernetes-endpoints.<<.controller | object | `{"replicas":2}` | Controller configuration |
+| cfapi-kubernetes-endpoints.<<.controller.replicas | int | `2` | Replicas number |
+| cfapi-kubernetes-endpoints.<<.enabled | bool | `true` | Enable cf-api |
+| cfapi-kubernetes-endpoints.<<.hpa | object | `{"enabled":false,"maxReplicas":10,"minReplicas":2,"targetCPUUtilizationPercentage":70}` | Autoscaler configuration |
+| cfapi-kubernetes-endpoints.<<.hpa.enabled | bool | `false` | Enable HPA |
+| cfapi-kubernetes-endpoints.<<.hpa.maxReplicas | int | `10` | Maximum number of replicas |
+| cfapi-kubernetes-endpoints.<<.hpa.minReplicas | int | `2` | Minimum number of replicas |
+| cfapi-kubernetes-endpoints.<<.hpa.targetCPUUtilizationPercentage | int | `70` | Average CPU utilization percentage |
+| cfapi-kubernetes-endpoints.<<.imagePullSecrets | list | `[]` | Image pull secrets |
+| cfapi-kubernetes-endpoints.<<.nodeSelector | object | `{}` | Node selector configuration |
+| cfapi-kubernetes-endpoints.<<.pdb | object | `{"enabled":false,"minAvailable":"50%"}` | Pod disruption budget configuration |
+| cfapi-kubernetes-endpoints.<<.pdb.enabled | bool | `false` | Enable PDB |
+| cfapi-kubernetes-endpoints.<<.pdb.minAvailable | string | `"50%"` | Minimum number of replicas in percentage |
+| cfapi-kubernetes-endpoints.<<.podSecurityContext | object | `{}` | Pod security context configuration |
+| cfapi-kubernetes-endpoints.<<.resources | object | `{"limits":{},"requests":{"cpu":"200m","memory":"256Mi"}}` | Resource requests and limits |
+| cfapi-kubernetes-endpoints.<<.secrets | object | `{"secret":{"enabled":true,"stringData":{"OIDC_PROVIDER_CLIENT_ID":"{{ .Values.global.oidcProviderClientId }}","OIDC_PROVIDER_CLIENT_SECRET":"{{ .Values.global.oidcProviderClientSecret }}"},"type":"Opaque"}}` | Secrets configuration |
+| cfapi-kubernetes-endpoints.<<.tolerations | list | `[]` | Tolerations configuration |
+| cfapi-kubernetes-endpoints.enabled | bool | `false` |  |
+| cfapi-kubernetesresourcemonitor.<<.affinity | object | `{}` | Affinity configuration |
+| cfapi-kubernetesresourcemonitor.<<.container | object | `{"env":{"AUDIT_AUTO_CREATE_DB":true,"DEFAULT_SYSTEM_TYPE":"PROJECT_ONE","GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","OIDC_PROVIDER_PORT":"{{ .Values.global.oidcProviderPort }}","OIDC_PROVIDER_PROTOCOL":"{{ .Values.global.oidcProviderProtocol }}","OIDC_PROVIDER_TOKEN_ENDPOINT":"{{ .Values.global.oidcProviderTokenEndpoint }}","OIDC_PROVIDER_URI":"{{ .Values.global.oidcProviderService }}","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh","RUNTIME_REDIS_DB":0},"image":{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}}` | Container configuration |
+| cfapi-kubernetesresourcemonitor.<<.container.env | object | See below | Env vars |
+| cfapi-kubernetesresourcemonitor.<<.container.image | object | `{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}` | Image |
+| cfapi-kubernetesresourcemonitor.<<.container.image.registry | string | `"us-docker.pkg.dev/codefresh-enterprise/gcr.io"` | Registry prefix |
+| cfapi-kubernetesresourcemonitor.<<.container.image.repository | string | `"codefresh/cf-api"` | Repository |
+| cfapi-kubernetesresourcemonitor.<<.controller | object | `{"replicas":2}` | Controller configuration |
+| cfapi-kubernetesresourcemonitor.<<.controller.replicas | int | `2` | Replicas number |
+| cfapi-kubernetesresourcemonitor.<<.enabled | bool | `true` | Enable cf-api |
+| cfapi-kubernetesresourcemonitor.<<.hpa | object | `{"enabled":false,"maxReplicas":10,"minReplicas":2,"targetCPUUtilizationPercentage":70}` | Autoscaler configuration |
+| cfapi-kubernetesresourcemonitor.<<.hpa.enabled | bool | `false` | Enable HPA |
+| cfapi-kubernetesresourcemonitor.<<.hpa.maxReplicas | int | `10` | Maximum number of replicas |
+| cfapi-kubernetesresourcemonitor.<<.hpa.minReplicas | int | `2` | Minimum number of replicas |
+| cfapi-kubernetesresourcemonitor.<<.hpa.targetCPUUtilizationPercentage | int | `70` | Average CPU utilization percentage |
+| cfapi-kubernetesresourcemonitor.<<.imagePullSecrets | list | `[]` | Image pull secrets |
+| cfapi-kubernetesresourcemonitor.<<.nodeSelector | object | `{}` | Node selector configuration |
+| cfapi-kubernetesresourcemonitor.<<.pdb | object | `{"enabled":false,"minAvailable":"50%"}` | Pod disruption budget configuration |
+| cfapi-kubernetesresourcemonitor.<<.pdb.enabled | bool | `false` | Enable PDB |
+| cfapi-kubernetesresourcemonitor.<<.pdb.minAvailable | string | `"50%"` | Minimum number of replicas in percentage |
+| cfapi-kubernetesresourcemonitor.<<.podSecurityContext | object | `{}` | Pod security context configuration |
+| cfapi-kubernetesresourcemonitor.<<.resources | object | `{"limits":{},"requests":{"cpu":"200m","memory":"256Mi"}}` | Resource requests and limits |
+| cfapi-kubernetesresourcemonitor.<<.secrets | object | `{"secret":{"enabled":true,"stringData":{"OIDC_PROVIDER_CLIENT_ID":"{{ .Values.global.oidcProviderClientId }}","OIDC_PROVIDER_CLIENT_SECRET":"{{ .Values.global.oidcProviderClientSecret }}"},"type":"Opaque"}}` | Secrets configuration |
+| cfapi-kubernetesresourcemonitor.<<.tolerations | list | `[]` | Tolerations configuration |
+| cfapi-kubernetesresourcemonitor.enabled | bool | `false` |  |
+| cfapi-sso-group-synchronizer.<<.affinity | object | `{}` | Affinity configuration |
+| cfapi-sso-group-synchronizer.<<.container | object | `{"env":{"AUDIT_AUTO_CREATE_DB":true,"DEFAULT_SYSTEM_TYPE":"PROJECT_ONE","GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","OIDC_PROVIDER_PORT":"{{ .Values.global.oidcProviderPort }}","OIDC_PROVIDER_PROTOCOL":"{{ .Values.global.oidcProviderProtocol }}","OIDC_PROVIDER_TOKEN_ENDPOINT":"{{ .Values.global.oidcProviderTokenEndpoint }}","OIDC_PROVIDER_URI":"{{ .Values.global.oidcProviderService }}","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh","RUNTIME_REDIS_DB":0},"image":{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}}` | Container configuration |
+| cfapi-sso-group-synchronizer.<<.container.env | object | See below | Env vars |
+| cfapi-sso-group-synchronizer.<<.container.image | object | `{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}` | Image |
+| cfapi-sso-group-synchronizer.<<.container.image.registry | string | `"us-docker.pkg.dev/codefresh-enterprise/gcr.io"` | Registry prefix |
+| cfapi-sso-group-synchronizer.<<.container.image.repository | string | `"codefresh/cf-api"` | Repository |
+| cfapi-sso-group-synchronizer.<<.controller | object | `{"replicas":2}` | Controller configuration |
+| cfapi-sso-group-synchronizer.<<.controller.replicas | int | `2` | Replicas number |
+| cfapi-sso-group-synchronizer.<<.enabled | bool | `true` | Enable cf-api |
+| cfapi-sso-group-synchronizer.<<.hpa | object | `{"enabled":false,"maxReplicas":10,"minReplicas":2,"targetCPUUtilizationPercentage":70}` | Autoscaler configuration |
+| cfapi-sso-group-synchronizer.<<.hpa.enabled | bool | `false` | Enable HPA |
+| cfapi-sso-group-synchronizer.<<.hpa.maxReplicas | int | `10` | Maximum number of replicas |
+| cfapi-sso-group-synchronizer.<<.hpa.minReplicas | int | `2` | Minimum number of replicas |
+| cfapi-sso-group-synchronizer.<<.hpa.targetCPUUtilizationPercentage | int | `70` | Average CPU utilization percentage |
+| cfapi-sso-group-synchronizer.<<.imagePullSecrets | list | `[]` | Image pull secrets |
+| cfapi-sso-group-synchronizer.<<.nodeSelector | object | `{}` | Node selector configuration |
+| cfapi-sso-group-synchronizer.<<.pdb | object | `{"enabled":false,"minAvailable":"50%"}` | Pod disruption budget configuration |
+| cfapi-sso-group-synchronizer.<<.pdb.enabled | bool | `false` | Enable PDB |
+| cfapi-sso-group-synchronizer.<<.pdb.minAvailable | string | `"50%"` | Minimum number of replicas in percentage |
+| cfapi-sso-group-synchronizer.<<.podSecurityContext | object | `{}` | Pod security context configuration |
+| cfapi-sso-group-synchronizer.<<.resources | object | `{"limits":{},"requests":{"cpu":"200m","memory":"256Mi"}}` | Resource requests and limits |
+| cfapi-sso-group-synchronizer.<<.secrets | object | `{"secret":{"enabled":true,"stringData":{"OIDC_PROVIDER_CLIENT_ID":"{{ .Values.global.oidcProviderClientId }}","OIDC_PROVIDER_CLIENT_SECRET":"{{ .Values.global.oidcProviderClientSecret }}"},"type":"Opaque"}}` | Secrets configuration |
+| cfapi-sso-group-synchronizer.<<.tolerations | list | `[]` | Tolerations configuration |
+| cfapi-sso-group-synchronizer.enabled | bool | `false` |  |
+| cfapi-teams.<<.affinity | object | `{}` | Affinity configuration |
+| cfapi-teams.<<.container | object | `{"env":{"AUDIT_AUTO_CREATE_DB":true,"DEFAULT_SYSTEM_TYPE":"PROJECT_ONE","GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","OIDC_PROVIDER_PORT":"{{ .Values.global.oidcProviderPort }}","OIDC_PROVIDER_PROTOCOL":"{{ .Values.global.oidcProviderProtocol }}","OIDC_PROVIDER_TOKEN_ENDPOINT":"{{ .Values.global.oidcProviderTokenEndpoint }}","OIDC_PROVIDER_URI":"{{ .Values.global.oidcProviderService }}","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh","RUNTIME_REDIS_DB":0},"image":{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}}` | Container configuration |
+| cfapi-teams.<<.container.env | object | See below | Env vars |
+| cfapi-teams.<<.container.image | object | `{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}` | Image |
+| cfapi-teams.<<.container.image.registry | string | `"us-docker.pkg.dev/codefresh-enterprise/gcr.io"` | Registry prefix |
+| cfapi-teams.<<.container.image.repository | string | `"codefresh/cf-api"` | Repository |
+| cfapi-teams.<<.controller | object | `{"replicas":2}` | Controller configuration |
+| cfapi-teams.<<.controller.replicas | int | `2` | Replicas number |
+| cfapi-teams.<<.enabled | bool | `true` | Enable cf-api |
+| cfapi-teams.<<.hpa | object | `{"enabled":false,"maxReplicas":10,"minReplicas":2,"targetCPUUtilizationPercentage":70}` | Autoscaler configuration |
+| cfapi-teams.<<.hpa.enabled | bool | `false` | Enable HPA |
+| cfapi-teams.<<.hpa.maxReplicas | int | `10` | Maximum number of replicas |
+| cfapi-teams.<<.hpa.minReplicas | int | `2` | Minimum number of replicas |
+| cfapi-teams.<<.hpa.targetCPUUtilizationPercentage | int | `70` | Average CPU utilization percentage |
+| cfapi-teams.<<.imagePullSecrets | list | `[]` | Image pull secrets |
+| cfapi-teams.<<.nodeSelector | object | `{}` | Node selector configuration |
+| cfapi-teams.<<.pdb | object | `{"enabled":false,"minAvailable":"50%"}` | Pod disruption budget configuration |
+| cfapi-teams.<<.pdb.enabled | bool | `false` | Enable PDB |
+| cfapi-teams.<<.pdb.minAvailable | string | `"50%"` | Minimum number of replicas in percentage |
+| cfapi-teams.<<.podSecurityContext | object | `{}` | Pod security context configuration |
+| cfapi-teams.<<.resources | object | `{"limits":{},"requests":{"cpu":"200m","memory":"256Mi"}}` | Resource requests and limits |
+| cfapi-teams.<<.secrets | object | `{"secret":{"enabled":true,"stringData":{"OIDC_PROVIDER_CLIENT_ID":"{{ .Values.global.oidcProviderClientId }}","OIDC_PROVIDER_CLIENT_SECRET":"{{ .Values.global.oidcProviderClientSecret }}"},"type":"Opaque"}}` | Secrets configuration |
+| cfapi-teams.<<.tolerations | list | `[]` | Tolerations configuration |
+| cfapi-teams.enabled | bool | `false` |  |
+| cfapi-terminators.<<.affinity | object | `{}` | Affinity configuration |
+| cfapi-terminators.<<.container | object | `{"env":{"AUDIT_AUTO_CREATE_DB":true,"DEFAULT_SYSTEM_TYPE":"PROJECT_ONE","GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","OIDC_PROVIDER_PORT":"{{ .Values.global.oidcProviderPort }}","OIDC_PROVIDER_PROTOCOL":"{{ .Values.global.oidcProviderProtocol }}","OIDC_PROVIDER_TOKEN_ENDPOINT":"{{ .Values.global.oidcProviderTokenEndpoint }}","OIDC_PROVIDER_URI":"{{ .Values.global.oidcProviderService }}","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh","RUNTIME_REDIS_DB":0},"image":{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}}` | Container configuration |
+| cfapi-terminators.<<.container.env | object | See below | Env vars |
+| cfapi-terminators.<<.container.image | object | `{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}` | Image |
+| cfapi-terminators.<<.container.image.registry | string | `"us-docker.pkg.dev/codefresh-enterprise/gcr.io"` | Registry prefix |
+| cfapi-terminators.<<.container.image.repository | string | `"codefresh/cf-api"` | Repository |
+| cfapi-terminators.<<.controller | object | `{"replicas":2}` | Controller configuration |
+| cfapi-terminators.<<.controller.replicas | int | `2` | Replicas number |
+| cfapi-terminators.<<.enabled | bool | `true` | Enable cf-api |
+| cfapi-terminators.<<.hpa | object | `{"enabled":false,"maxReplicas":10,"minReplicas":2,"targetCPUUtilizationPercentage":70}` | Autoscaler configuration |
+| cfapi-terminators.<<.hpa.enabled | bool | `false` | Enable HPA |
+| cfapi-terminators.<<.hpa.maxReplicas | int | `10` | Maximum number of replicas |
+| cfapi-terminators.<<.hpa.minReplicas | int | `2` | Minimum number of replicas |
+| cfapi-terminators.<<.hpa.targetCPUUtilizationPercentage | int | `70` | Average CPU utilization percentage |
+| cfapi-terminators.<<.imagePullSecrets | list | `[]` | Image pull secrets |
+| cfapi-terminators.<<.nodeSelector | object | `{}` | Node selector configuration |
+| cfapi-terminators.<<.pdb | object | `{"enabled":false,"minAvailable":"50%"}` | Pod disruption budget configuration |
+| cfapi-terminators.<<.pdb.enabled | bool | `false` | Enable PDB |
+| cfapi-terminators.<<.pdb.minAvailable | string | `"50%"` | Minimum number of replicas in percentage |
+| cfapi-terminators.<<.podSecurityContext | object | `{}` | Pod security context configuration |
+| cfapi-terminators.<<.resources | object | `{"limits":{},"requests":{"cpu":"200m","memory":"256Mi"}}` | Resource requests and limits |
+| cfapi-terminators.<<.secrets | object | `{"secret":{"enabled":true,"stringData":{"OIDC_PROVIDER_CLIENT_ID":"{{ .Values.global.oidcProviderClientId }}","OIDC_PROVIDER_CLIENT_SECRET":"{{ .Values.global.oidcProviderClientSecret }}"},"type":"Opaque"}}` | Secrets configuration |
+| cfapi-terminators.<<.tolerations | list | `[]` | Tolerations configuration |
+| cfapi-terminators.enabled | bool | `false` |  |
+| cfapi-test-reporting.<<.affinity | object | `{}` | Affinity configuration |
+| cfapi-test-reporting.<<.container | object | `{"env":{"AUDIT_AUTO_CREATE_DB":true,"DEFAULT_SYSTEM_TYPE":"PROJECT_ONE","GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","OIDC_PROVIDER_PORT":"{{ .Values.global.oidcProviderPort }}","OIDC_PROVIDER_PROTOCOL":"{{ .Values.global.oidcProviderProtocol }}","OIDC_PROVIDER_TOKEN_ENDPOINT":"{{ .Values.global.oidcProviderTokenEndpoint }}","OIDC_PROVIDER_URI":"{{ .Values.global.oidcProviderService }}","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh","RUNTIME_REDIS_DB":0},"image":{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}}` | Container configuration |
+| cfapi-test-reporting.<<.container.env | object | See below | Env vars |
+| cfapi-test-reporting.<<.container.image | object | `{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}` | Image |
+| cfapi-test-reporting.<<.container.image.registry | string | `"us-docker.pkg.dev/codefresh-enterprise/gcr.io"` | Registry prefix |
+| cfapi-test-reporting.<<.container.image.repository | string | `"codefresh/cf-api"` | Repository |
+| cfapi-test-reporting.<<.controller | object | `{"replicas":2}` | Controller configuration |
+| cfapi-test-reporting.<<.controller.replicas | int | `2` | Replicas number |
+| cfapi-test-reporting.<<.enabled | bool | `true` | Enable cf-api |
+| cfapi-test-reporting.<<.hpa | object | `{"enabled":false,"maxReplicas":10,"minReplicas":2,"targetCPUUtilizationPercentage":70}` | Autoscaler configuration |
+| cfapi-test-reporting.<<.hpa.enabled | bool | `false` | Enable HPA |
+| cfapi-test-reporting.<<.hpa.maxReplicas | int | `10` | Maximum number of replicas |
+| cfapi-test-reporting.<<.hpa.minReplicas | int | `2` | Minimum number of replicas |
+| cfapi-test-reporting.<<.hpa.targetCPUUtilizationPercentage | int | `70` | Average CPU utilization percentage |
+| cfapi-test-reporting.<<.imagePullSecrets | list | `[]` | Image pull secrets |
+| cfapi-test-reporting.<<.nodeSelector | object | `{}` | Node selector configuration |
+| cfapi-test-reporting.<<.pdb | object | `{"enabled":false,"minAvailable":"50%"}` | Pod disruption budget configuration |
+| cfapi-test-reporting.<<.pdb.enabled | bool | `false` | Enable PDB |
+| cfapi-test-reporting.<<.pdb.minAvailable | string | `"50%"` | Minimum number of replicas in percentage |
+| cfapi-test-reporting.<<.podSecurityContext | object | `{}` | Pod security context configuration |
+| cfapi-test-reporting.<<.resources | object | `{"limits":{},"requests":{"cpu":"200m","memory":"256Mi"}}` | Resource requests and limits |
+| cfapi-test-reporting.<<.secrets | object | `{"secret":{"enabled":true,"stringData":{"OIDC_PROVIDER_CLIENT_ID":"{{ .Values.global.oidcProviderClientId }}","OIDC_PROVIDER_CLIENT_SECRET":"{{ .Values.global.oidcProviderClientSecret }}"},"type":"Opaque"}}` | Secrets configuration |
+| cfapi-test-reporting.<<.tolerations | list | `[]` | Tolerations configuration |
+| cfapi-test-reporting.enabled | bool | `false` |  |
+| cfapi-ws.<<.affinity | object | `{}` | Affinity configuration |
+| cfapi-ws.<<.container | object | `{"env":{"AUDIT_AUTO_CREATE_DB":true,"DEFAULT_SYSTEM_TYPE":"PROJECT_ONE","GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","OIDC_PROVIDER_PORT":"{{ .Values.global.oidcProviderPort }}","OIDC_PROVIDER_PROTOCOL":"{{ .Values.global.oidcProviderProtocol }}","OIDC_PROVIDER_TOKEN_ENDPOINT":"{{ .Values.global.oidcProviderTokenEndpoint }}","OIDC_PROVIDER_URI":"{{ .Values.global.oidcProviderService }}","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh","RUNTIME_REDIS_DB":0},"image":{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}}` | Container configuration |
+| cfapi-ws.<<.container.env | object | See below | Env vars |
+| cfapi-ws.<<.container.image | object | `{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}` | Image |
+| cfapi-ws.<<.container.image.registry | string | `"us-docker.pkg.dev/codefresh-enterprise/gcr.io"` | Registry prefix |
+| cfapi-ws.<<.container.image.repository | string | `"codefresh/cf-api"` | Repository |
+| cfapi-ws.<<.controller | object | `{"replicas":2}` | Controller configuration |
+| cfapi-ws.<<.controller.replicas | int | `2` | Replicas number |
+| cfapi-ws.<<.enabled | bool | `true` | Enable cf-api |
+| cfapi-ws.<<.hpa | object | `{"enabled":false,"maxReplicas":10,"minReplicas":2,"targetCPUUtilizationPercentage":70}` | Autoscaler configuration |
+| cfapi-ws.<<.hpa.enabled | bool | `false` | Enable HPA |
+| cfapi-ws.<<.hpa.maxReplicas | int | `10` | Maximum number of replicas |
+| cfapi-ws.<<.hpa.minReplicas | int | `2` | Minimum number of replicas |
+| cfapi-ws.<<.hpa.targetCPUUtilizationPercentage | int | `70` | Average CPU utilization percentage |
+| cfapi-ws.<<.imagePullSecrets | list | `[]` | Image pull secrets |
+| cfapi-ws.<<.nodeSelector | object | `{}` | Node selector configuration |
+| cfapi-ws.<<.pdb | object | `{"enabled":false,"minAvailable":"50%"}` | Pod disruption budget configuration |
+| cfapi-ws.<<.pdb.enabled | bool | `false` | Enable PDB |
+| cfapi-ws.<<.pdb.minAvailable | string | `"50%"` | Minimum number of replicas in percentage |
+| cfapi-ws.<<.podSecurityContext | object | `{}` | Pod security context configuration |
+| cfapi-ws.<<.resources | object | `{"limits":{},"requests":{"cpu":"200m","memory":"256Mi"}}` | Resource requests and limits |
+| cfapi-ws.<<.secrets | object | `{"secret":{"enabled":true,"stringData":{"OIDC_PROVIDER_CLIENT_ID":"{{ .Values.global.oidcProviderClientId }}","OIDC_PROVIDER_CLIENT_SECRET":"{{ .Values.global.oidcProviderClientSecret }}"},"type":"Opaque"}}` | Secrets configuration |
+| cfapi-ws.<<.tolerations | list | `[]` | Tolerations configuration |
+| cfapi-ws.enabled | bool | `false` |  |
 | cfapi.affinity | object | `{}` | Affinity configuration |
 | cfapi.container | object | `{"env":{"AUDIT_AUTO_CREATE_DB":true,"DEFAULT_SYSTEM_TYPE":"PROJECT_ONE","GITHUB_API_PATH_PREFIX":"/api/v3","LOGGER_LEVEL":"debug","OIDC_PROVIDER_PORT":"{{ .Values.global.oidcProviderPort }}","OIDC_PROVIDER_PROTOCOL":"{{ .Values.global.oidcProviderProtocol }}","OIDC_PROVIDER_TOKEN_ENDPOINT":"{{ .Values.global.oidcProviderTokenEndpoint }}","OIDC_PROVIDER_URI":"{{ .Values.global.oidcProviderService }}","ON_PREMISE":true,"RUNTIME_MONGO_DB":"codefresh","RUNTIME_REDIS_DB":0},"image":{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/cf-api"}}` | Container configuration |
 | cfapi.container.env | object | See below | Env vars |
@@ -2644,7 +3028,7 @@ After platform upgrade, Consul fails with the error `refusing to rejoin cluster 
 | postgresqlCleanJob | object | See below | Maintenance postgresql clean job. Removes a certain number of the last records in the event store table. |
 | rabbitmq | object | See below | rabbitmq Ref: https://github.com/bitnami/charts/blob/main/bitnami/rabbitmq/values.yaml |
 | redis | object | See below | redis Ref: https://github.com/bitnami/charts/blob/main/bitnami/redis/values.yaml |
-| redis-ha | object | `{"auth":true,"enabled":false,"haproxy":{"enabled":true,"resources":{"requests":{"cpu":"100m","memory":"128Mi"}}},"persistentVolume":{"enabled":true,"size":"10Gi"},"redis":{"resources":{"requests":{"cpu":"100m","memory":"128Mi"}}},"redisPassword":"hoC9szf7NtrU"}` | redis-ha # Ref: https://github.com/DandyDeveloper/charts/blob/master/charts/redis-ha/values.yaml |
+| redis-ha | object | `{"auth":true,"enabled":false,"haproxy":{"enabled":true,"resources":{"requests":{"cpu":"100m","memory":"128Mi"}}},"persistentVolume":{"enabled":true,"size":"10Gi"},"redis":{"resources":{"requests":{"cpu":"100m","memory":"128Mi"}}},"redisPassword":"hoC9szf7NtrU"}` | redis-ha |
 | runner | object | See below | runner |
 | runtime-environment-manager | object | See below | runtime-environment-manager |
 | runtimeImages | object | See below | runtimeImages |
@@ -2660,10 +3044,10 @@ After platform upgrade, Consul fails with the error `refusing to rejoin cluster 
 | seed.mongoSeedJob.mongodbRootUser | string | `"root"` | Root user in plain text (required ONLY for seed job!). |
 | seed.mongoSeedJob.mongodbRootUserSecretKeyRef | object | `{}` | Root user from existing secret |
 | seed.postgresSeedJob | object | See below | Postgres Seed Job. Required at first install. Creates required user and databases. |
-| seed.postgresSeedJob.postgresPassword | optional | `""` | Password for "postgres" admin user (required ONLY for seed job!) |
-| seed.postgresSeedJob.postgresPasswordSecretKeyRef | optional | `{}` | Password for "postgres" admin user from existing secret |
-| seed.postgresSeedJob.postgresUser | optional | `""` | "postgres" admin user in plain text (required ONLY for seed job!) Must be a privileged user allowed to create databases and grant roles. If omitted, username and password from `.Values.global.postgresUser/postgresPassword` will be used. |
-| seed.postgresSeedJob.postgresUserSecretKeyRef | optional | `{}` | "postgres" admin user from exising secret |
+| seed.postgresSeedJob.postgresPassword | string | `""` | (optional) Password for "postgres" admin user (required ONLY for seed job!) |
+| seed.postgresSeedJob.postgresPasswordSecretKeyRef | object | `{}` | (optional) Password for "postgres" admin user from existing secret |
+| seed.postgresSeedJob.postgresUser | string | `""` | (optional) "postgres" admin user in plain text (required ONLY for seed job!) Must be a privileged user allowed to create databases and grant roles. If omitted, username and password from `.Values.global.postgresUser/postgresPassword` will be used. |
+| seed.postgresSeedJob.postgresUserSecretKeyRef | object | `{}` | (optional) "postgres" admin user from exising secret |
 | segment-reporter.enabled | bool | `false` |  |
 | tasker-kubernetes | object | `{"affinity":{},"container":{"image":{"registry":"us-docker.pkg.dev/codefresh-enterprise/gcr.io","repository":"codefresh/tasker-kubernetes"}},"enabled":true,"hpa":{"enabled":false},"imagePullSecrets":[],"nodeSelector":{},"pdb":{"enabled":false},"podSecurityContext":{},"resources":{"limits":{},"requests":{"cpu":"100m","memory":"128Mi"}},"tolerations":[]}` | tasker-kubernetes |
 | webTLS | object | `{"cert":"","enabled":false,"key":"","secretName":"star.codefresh.io"}` | DEPRECATED - Use `.Values.ingress.tls` instead TLS secret for Ingress |

@@ -1,11 +1,25 @@
-# -- checking postgresql password with special characters
-postgresql:
-  auth:
-    postgresPassword: "()e%C9ar$Yka4Zb!H"
-
 global:
-  postgresPassword: "()e%C9ar$Yka4Zb!H"
+  mongodbHost: "my-mongodb"
+  postgresHostname: "my-postgresql"
+  redisUrl: "my-redis"
+  rabbitmqHostname: "my-rabbitmq:5672"
 
-seed:
-  postgresSeedJob:
-    postgresPassword: "()e%C9ar$Yka4Zb!H"
+mongodb:
+  enabled: false
+
+postgresql:
+  enabled: false
+
+redis:
+  enabled: false
+
+rabbitmq:
+  enabled: false
+
+hooks:
+  mongodb:
+    enabled: true
+    image:
+      registry: docker.io
+      repository: mongo
+      tag: "7.0"

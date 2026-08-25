@@ -1,0 +1,2 @@
+creation_rules:
+  - kms: arn:aws:kms:us-east-1:734022025880:alias/sops/shared-services

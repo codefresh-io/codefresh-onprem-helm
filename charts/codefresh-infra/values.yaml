@@ -1,0 +1,29 @@
+global:
+  nodeSelector:
+    node-type: fast-image-pull
+
+  tolerations:
+  - key: codefresh.io
+    operator: Equal
+    value: fast-image-pull
+    effect: NoSchedule
+
+mongodb:
+  fullnameOverride: my-mongodb
+  auth:
+    rootPassword: XT9nmM8dZD
+
+postgresql:
+  fullnameOverride: my-postgresql
+  auth:
+    password: eC9arYka4ZbH
+
+redis:
+  fullnameOverride: my-redis
+  config:
+    requirepass: hoC9szf7NtrU
+
+rabbitmq:
+  fullnameOverride: my-rabbitmq
+  auth:
+    password: cVz9ZdJKYm7u
