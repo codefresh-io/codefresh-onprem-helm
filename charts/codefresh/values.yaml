@@ -534,12 +534,12 @@ postgresqlCleanJob:
 # -- runtimeImages
 # @default -- See below
 runtimeImages:
-  COMPOSE_IMAGE: quay.io/codefresh/compose:1.6.9@sha256:c4adbdb4a6ee5da6333552729efff45c2fd3f781fa1ed0800474fc58003ef1c5
+  COMPOSE_IMAGE: quay.io/codefresh/compose:1.6.10@sha256:00be823909a6bb20e2c45f379942494fb433cc88977da40ad171a8119227e199
   CONTAINER_LOGGER_IMAGE: quay.io/codefresh/cf-container-logger:2.0.41@sha256:88b4d3b2610419daaf4223bccc85cbc8e09312aab2f84c04fd6bf69ecb5e56d9
   DIND_IMAGE: quay.io/codefresh/dind:3.0.25@sha256:0885ab519dace9799fdef732edc4a092a3e86f3244b4585b698f5d81a3f86e38
-  DOCKER_BUILDER_IMAGE: quay.io/codefresh/cf-docker-builder:1.6.18@sha256:8c19043ac1aad31cd45022e50a5ded886ed3728b821cf75be22068d6e8c5ef72
+  DOCKER_BUILDER_IMAGE: quay.io/codefresh/cf-docker-builder:1.6.21@sha256:4e26c91fcb80b5e82b3481fe29f9d81a380ba928e6e75ff92b8615342aa0385c
   DOCKER_PULLER_IMAGE: quay.io/codefresh/cf-docker-puller:8.0.48@sha256:9b75ab05e4cf965a662e180b6ea8a1c2329862a8a0dc0f8042950cd8e155692e
-  DOCKER_PUSHER_IMAGE: quay.io/codefresh/cf-docker-pusher:6.0.42@sha256:8c07d0ec8d2ed5b745e296e3ee13f8027218ad5892c55b2b38c69961c921d7de
+  DOCKER_PUSHER_IMAGE: quay.io/codefresh/cf-docker-pusher:6.0.43@sha256:37352200bca280ca0b9a11a55e4f6dccc36ff8677569f6a7fbc13b3c2434111a
   ENGINE_IMAGE: quay.io/codefresh/engine:3.3.13@sha256:ff57bea0a8fe271f5f9bde22e8eaa92f11570e4f6efc11629ce82cf55426dd59
   FS_OPS_IMAGE: quay.io/codefresh/fs-ops:1.2.13@sha256:1f7ab2fddb3b8bb4153046261367e296c6c9ac3b224f48cd2028371a9f0e2bcf
   GIT_CLONE_IMAGE: quay.io/codefresh/cf-git-cloner:10.3.13@sha256:d5eae428c4896847795202036645a90fdad5f2f68a3eb08bf8ca7e65e450b5ed
