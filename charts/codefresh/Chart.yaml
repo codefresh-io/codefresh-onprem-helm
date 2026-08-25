@@ -22,7 +22,7 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |
     - kind: changed
-      description: 'update "chartmuseum" to v0.16.6 with security fixes'
+      description: "Upgrade default Classic Runtime (`system/default`)"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
