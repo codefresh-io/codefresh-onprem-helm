@@ -1,0 +1,19 @@
+charts/codefresh-infra/values.yaml
+  h_48b74706cf95a4 1-10
+charts/codefresh/.ci/values/values-defaults.yaml
+  h_48b74706cf95a4 7-15,32-76,80-88,92-104
+  h_48b74706cf95a4 77-79,89-91
+scripts/helm-docs.sh
+  h_48b74706cf95a4 3-19
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "cf2bfe089c346101e0b2c21074600e2c2c766d2a",
+  "prompts": {},
+  "humans": {
+    "h_48b74706cf95a4": {
+      "author": "Bohdan Pysarenko <bohdan.pisarenko@octopus.com>"
+    }
+  }
+}
