@@ -22,7 +22,7 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |
     - kind: changed
-      description: 'update "chartmuseum" to v0.16.6 with security fixes'
+      description: "Upgrade cf-runrime images, classic images with security fixes"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -276,19 +276,19 @@ dependencies:
     tags:
       - cf-internal
   - name: hermes
-    version: 0.22.12
+    version: 0.22.13
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
     tags:
       - cf-internal
   - name: nomios
-    version: 0.12.3
+    version: 0.12.4
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
     tags:
       - cf-internal
   - name: cronus
-    version: 0.9.5
+    version: 0.9.6
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
     tags:
