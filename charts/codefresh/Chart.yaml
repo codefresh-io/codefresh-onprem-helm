@@ -22,9 +22,10 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'Update "cfapi" to 21.293.17-onprem-9d17cf5'
-    - kind: fixed
-      description: "Fixed an issue with broken proxy over Github Octokit" 
+      description: 'Release 2.10.20'
+      links:
+        - name: 'Release notes'
+          url: 'https://github.com/codefresh-io/codefresh-onprem-helm/releases/tag/codefresh-2.10.20'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
