@@ -22,7 +22,10 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |
     - kind: changed
-      description: "Upgrade default Classic Runtime (`system/default`)"
+      description: 'Release 2.12.8'
+      links:
+        - name: 'Release notes'
+          url: 'https://github.com/codefresh-io/codefresh-onprem-helm/releases/tag/codefresh-2.12.8'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
