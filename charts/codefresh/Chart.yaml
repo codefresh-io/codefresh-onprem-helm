@@ -19,9 +19,10 @@ annotations:
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'Update "cfapi" to 22.3.19'
-    - kind: fixed
-      description: "Fixed an issue with broken proxy over Github Octokit" 
+      description: 'Release 2.11.31'
+      links:
+        - name: 'Release notes'
+          url: 'https://github.com/codefresh-io/codefresh-onprem-helm/releases/tag/codefresh-2.11.31'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
