@@ -22,7 +22,7 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |
     - kind: changed
-      description: "Upgrade default Classic Runtime (`system/default`)"
+      description: "Upgrade cf-runrime images, classic images with security fixes"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
