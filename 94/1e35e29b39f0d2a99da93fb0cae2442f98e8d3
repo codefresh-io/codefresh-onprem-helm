@@ -1,0 +1,14 @@
+charts/codefresh/Chart.yaml
+  h_48b74706cf95a4 22-25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "941e35e29b39f0d2a99da93fb0cae2442f98e8d3",
+  "prompts": {},
+  "humans": {
+    "h_48b74706cf95a4": {
+      "author": "Bohdan Pysarenko <bohdan.pisarenko@octopus.com>"
+    }
+  }
+}
