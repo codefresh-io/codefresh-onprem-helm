@@ -20,7 +20,7 @@ annotations:
   # artifacthub.io/changes: |
   #   - kind:
   #     description: ""
-  artifacthub.io/changes: |
+  artifacthub.io/changes: |-
     - kind: changed
       description: 'Release 2.12.8'
       links:
