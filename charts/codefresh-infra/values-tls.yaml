@@ -1,0 +1,73 @@
+mongodb:
+  config:
+    net:
+      tls:
+        mode: allowTLS
+        certificateKeyFile: /etc/ssl/server.pem
+        CAFile: /etc/ssl/ca.crt
+
+  container:
+    volumeMounts:
+      ca-cert:
+        path:
+          - mountPath: /etc/ssl/ca.crt
+            subPath: ca.crt
+      server-cert:
+        path:
+          - mountPath: /etc/ssl/server.pem
+            subPath: server.pem
+
+  volumes:
+    ca-cert:
+      enabled: true
+      optional: true
+      type: secret
+      nameOverride: mongodb-ca-cert
+    server-cert:
+      enabled: true
+      optional: true
+      type: secret
+      nameOverride: mongodb-server-cert
+
+redis:
+  container:
+    volumeMounts:
+      ca-cert:
+        path:
+          - mountPath: /etc/redis/certs/ca.crt
+            subPath: ca.crt
+      server-cert:
+        path:
+          - mountPath: /etc/redis/certs/tls.crt
+            subPath: tls.crt
+          - mountPath: /etc/redis/certs/tls.key
+            subPath: tls.key
+
+  volumes:
+    ca-cert:
+      enabled: true
+      optional: true
+      type: secret
+      nameOverride: redis-ca-cert
+    server-cert:
+      enabled: true
+      optional: true
+      type: secret
+      nameOverride: redis-server-cert
+
+  service:
+    main:
+      enabled: true
+      primary: true
+      type: ClusterIP
+      ports:
+        redis-tls:
+          port: 6380
+          protocol: TCP
+
+  config:
+    tls-port: 6380
+    tls-cert-file: /etc/redis/certs/tls.crt
+    tls-key-file: /etc/redis/certs/tls.key
+    tls-ca-cert-file: /etc/redis/certs/ca.crt
+    tls-auth-clients: "yes"

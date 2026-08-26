@@ -1,0 +1,103 @@
+global:
+  appUrl: "" # placeholder for ${ONPREM_INGRESS_HOSTNAME} set in CI pipeline
+  imagePullSecrets:
+    - codefresh-registry
+    - dockerhub-creds
+
+  nodeSelector:
+    node-type: fast-image-pull
+
+  tolerations:
+  - key: codefresh.io
+    operator: Equal
+    value: fast-image-pull
+    effect: NoSchedule
+
+ingress:
+  enabled: true
+  ingressClassName: haproxy-ingress
+  tls:
+    enabled: false
+
+ingress-nginx:
+  enabled: false
+
+hooks:
+  mongodb:
+    nodeSelector:
+      kubernetes.io/arch: amd64
+  rabbitmq:
+    nodeSelector:
+      kubernetes.io/arch: amd64
+
+mongodb:
+  nodeSelector:
+    node-type: fast-image-pull
+    kubernetes.io/arch: amd64
+
+  tolerations:
+  - key: codefresh.io
+    operator: Equal
+    value: fast-image-pull
+    effect: NoSchedule
+
+# -- Binami subcharts
+postgresql:
+  primary:
+    nodeSelector:
+      node-type: fast-image-pull
+
+    tolerations:
+    - key: codefresh.io
+      operator: Equal
+      value: fast-image-pull
+      effect: NoSchedule
+
+rabbitmq:
+  nodeSelector:
+    node-type: fast-image-pull
+
+  tolerations:
+  - key: codefresh.io
+    operator: Equal
+    value: fast-image-pull
+    effect: NoSchedule
+
+redis:
+  master:
+    nodeSelector:
+      node-type: fast-image-pull
+
+    tolerations:
+    - key: codefresh.io
+      operator: Equal
+      value: fast-image-pull
+      effect: NoSchedule
+
+nats:
+  image:
+    repository: bitnamilegacy/nats
+  nodeSelector:
+    node-type: fast-image-pull
+
+  tolerations:
+  - key: codefresh.io
+    operator: Equal
+    value: fast-image-pull
+    effect: NoSchedule
+
+consul:
+  image:
+    repository: bitnamilegacy/consul
+  nodeSelector:
+    node-type: fast-image-pull
+
+  tolerations:
+  - key: codefresh.io
+    operator: Equal
+    value: fast-image-pull
+    effect: NoSchedule
+
+cf-platform-analytics-platform:
+  redis:
+    enabled: false
