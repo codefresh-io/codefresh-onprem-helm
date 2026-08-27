@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.12.9
+version: 2.12.10
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -20,12 +20,11 @@ annotations:
   # artifacthub.io/changes: |
   #   - kind:
   #     description: ""
-  artifacthub.io/changes: |-
+  artifacthub.io/changes: |
     - kind: changed
-      description: 'Release 2.12.9'
-      links:
-        - name: 'Release notes'
-          url: 'https://github.com/codefresh-io/codefresh-onprem-helm/releases/tag/codefresh-2.12.9'
+      description: "Upgrade default Classic Runtime (`system/default`)"
+    - kind: security
+      description: "Fix various vulnerabilities in default Classic Runtime (`system/default`)"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
