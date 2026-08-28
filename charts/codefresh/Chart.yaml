@@ -94,7 +94,7 @@ dependencies:
     tags:
       - cf-internal
   - name: tasker-kubernetes
-    version: 1.29.4
+    version: 1.29.5
     repository: oci://quay.io/codefresh/charts
     condition: tasker-kubernetes.enabled
     tags:
