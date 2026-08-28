@@ -112,7 +112,7 @@ dependencies:
     tags:
       - cf-internal
   - name: gitops-dashboard-manager
-    version: 1.16.14
+    version: 1.16.15
     repository: oci://quay.io/codefresh/charts
     condition: gitops-dashboard-manager.enabled
     tags:
