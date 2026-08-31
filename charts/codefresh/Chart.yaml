@@ -81,7 +81,7 @@ dependencies:
     tags:
       - cf-internal
   - name: kube-integration
-    version: 2.1.6-onprem-b27a946
+    version: 2.1.7-onprem-3eb7586
     repository: oci://quay.io/codefresh/charts
     condition: kube-integration.enabled
     tags:
