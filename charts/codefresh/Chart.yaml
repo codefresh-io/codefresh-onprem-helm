@@ -262,7 +262,7 @@ dependencies:
     tags:
       - cf-internal
   - name: cf-broadcaster
-    version: 1.15.13
+    version: 1.15.14
     repository: oci://quay.io/codefresh/charts
     condition: cf-broadcaster.enabled
     tags:
