@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.12.9
+version: 2.12.10
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -22,17 +22,17 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'Release 2.12.9'
+      description: 'Release 2.12.10'
       links:
         - name: 'Release notes'
-          url: 'https://github.com/codefresh-io/codefresh-onprem-helm/releases/tag/codefresh-2.12.9'
+          url: 'https://github.com/codefresh-io/codefresh-onprem-helm/releases/tag/codefresh-2.12.10'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
     version: 0.18.1
   - name: internal-gateway
     repository: oci://quay.io/codefresh/charts
-    version: 0.12.3
+    version: 0.12.4
     condition: internal-gateway.enabled
   - name: consul
     version: 11.4.32
@@ -81,7 +81,7 @@ dependencies:
     tags:
       - cf-internal
   - name: kube-integration
-    version: 2.1.6-onprem-b27a946
+    version: 2.1.7-onprem-3eb7586
     repository: oci://quay.io/codefresh/charts
     condition: kube-integration.enabled
     tags:
@@ -99,7 +99,7 @@ dependencies:
     tags:
       - cf-internal
   - name: tasker-kubernetes
-    version: 1.29.4-onprem-cf2923a
+    version: 1.29.5-onprem-12ee864
     repository: oci://quay.io/codefresh/charts
     condition: tasker-kubernetes.enabled
     tags:
@@ -117,7 +117,7 @@ dependencies:
     tags:
       - cf-internal
   - name: gitops-dashboard-manager
-    version: 1.16.14-onprem-8706966
+    version: 1.16.15-onprem-80311d6
     repository: oci://quay.io/codefresh/charts
     condition: gitops-dashboard-manager.enabled
     tags:
