@@ -22,10 +22,10 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'Release 2.12.10'
+      description: 'Release 2.12.11'
       links:
         - name: 'Release notes'
-          url: 'https://github.com/codefresh-io/codefresh-onprem-helm/releases/tag/codefresh-2.12.10'
+          url: 'https://github.com/codefresh-io/codefresh-onprem-helm/releases/tag/codefresh-2.12.11'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -311,7 +311,7 @@ dependencies:
     tags:
       - cf-internal
   - name: argo-platform
-    version: 1.4121.0-onprem-fa26186
+    version: 1.4122.0-onprem-d836e29
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
     tags:
