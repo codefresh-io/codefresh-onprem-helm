@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.12.11
+version: 2.12.12
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -22,10 +22,10 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'Release 2.12.11'
+      description: 'Release 2.12.12'
       links:
         - name: 'Release notes'
-          url: 'https://github.com/codefresh-io/codefresh-onprem-helm/releases/tag/codefresh-2.12.11'
+          url: 'https://github.com/codefresh-io/codefresh-onprem-helm/releases/tag/codefresh-2.12.12'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
