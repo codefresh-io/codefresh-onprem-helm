@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.11.31](https://img.shields.io/badge/Version-2.11.31-informational?style=flat-square) ![AppVersion: 0.0.0](https://img.shields.io/badge/AppVersion-0.0.0-informational?style=flat-square)
+![Version: 2.11.32](https://img.shields.io/badge/Version-2.11.32-informational?style=flat-square) ![AppVersion: 0.0.0](https://img.shields.io/badge/AppVersion-0.0.0-informational?style=flat-square)
 
 Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
