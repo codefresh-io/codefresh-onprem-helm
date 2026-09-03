@@ -19,7 +19,7 @@ annotations:
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   artifacthub.io/changes: |-
     - kind: changed
-      description: 'Release 2.11.31'
+      description: 'Release 2.11.32'
       links:
         - name: 'Release notes'
           url: 'https://github.com/codefresh-io/codefresh-onprem-helm/releases/tag/codefresh-2.11.32'
