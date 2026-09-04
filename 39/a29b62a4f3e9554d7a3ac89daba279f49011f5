@@ -1,0 +1,21 @@
+charts/codefresh/Chart.yaml
+  h_e5037b46dfdc11 24-25,27-29,135,142,149,156,163,170,177,184,191,198,205,212,219,226,233,240,247,254,260,284,290,296,302,322
+  h_e5037b46dfdc11 26
+README.md
+  h_e5037b46dfdc11 41,1466-1492
+README.md.gotmpl
+  h_e5037b46dfdc11 41,1475-1501
+charts/codefresh/values.yaml
+  h_e5037b46dfdc11 590-592
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "39a29b62a4f3e9554d7a3ac89daba279f49011f5",
+  "prompts": {},
+  "humans": {
+    "h_e5037b46dfdc11": {
+      "author": "Zhenya Tikhonov <zhenya.tikhonov@octopus.com>"
+    }
+  }
+}
