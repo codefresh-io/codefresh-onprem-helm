@@ -15,14 +15,17 @@ appVersion: 0.0.0
 annotations:
   artifacthub.io/prerelease: "false"
   artifacthub.io/alternativeName: "codefresh-onprem"
-  artifacthub.io/containsSecurityUpdates: "false"
+  artifacthub.io/containsSecurityUpdates: "true"
   # supported kinds are added, changed, deprecated, removed, fixed and security.
   # artifacthub.io/changes: |
   #   - kind:
   #     description: ""
-  artifacthub.io/changes: |
+  artifacthub.io/changes: |-
     - kind: changed
-      description: "Upgrade default Classic Runtime (`system/default`)"
+      description: 'Release 2.12.13'
+      links:
+        - name: 'Release notes'
+          url: 'https://github.com/codefresh-io/codefresh-onprem-helm/releases/tag/codefresh-2.12.13'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
