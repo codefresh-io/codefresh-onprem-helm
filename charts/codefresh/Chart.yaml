@@ -274,7 +274,7 @@ dependencies:
     tags:
       - cf-internal
   - name: hermes
-    version: 0.22.13
+    version: 0.22.14
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
     tags:
