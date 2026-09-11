@@ -280,7 +280,7 @@ dependencies:
     tags:
       - cf-internal
   - name: nomios
-    version: 0.12.4
+    version: 0.12.5
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
     tags:
