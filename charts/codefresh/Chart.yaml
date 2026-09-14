@@ -22,7 +22,7 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |
     - kind: changed
-      description: "Upgrade default Classic Runtime (`system/default`)"
+      description: "Upgrade classic images with security fixes"
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -72,7 +72,7 @@ dependencies:
     repository: https://kubernetes.github.io/ingress-nginx
     condition: ingress-nginx.enabled
   - name: cluster-providers
-    version: 1.20.2
+    version: 1.20.5
     repository: oci://quay.io/codefresh/charts
     condition: cluster-providers.enabled
     tags:
@@ -102,13 +102,13 @@ dependencies:
     tags:
       - cf-internal
   - name: context-manager
-    version: 2.41.11
+    version: 2.41.12
     repository: oci://quay.io/codefresh/charts
     condition: context-manager.enabled
     tags:
       - cf-internal
   - name: pipeline-manager
-    version: 4.2.5
+    version: 4.2.9
     repository: oci://quay.io/codefresh/charts
     condition: pipeline-manager.enabled
     tags:
@@ -121,7 +121,7 @@ dependencies:
       - cf-internal
   - name: cfapi
     alias: cfapi
-    version: 22.11.20
+    version: 22.11.27
     repository: oci://quay.io/codefresh/charts
     condition: cfapi.enabled
     tags:
@@ -252,13 +252,13 @@ dependencies:
     tags:
       - cf-internal
   - name: k8s-monitor
-    version: 4.12.2
+    version: 4.12.4
     repository: oci://quay.io/codefresh/charts
     condition: k8s-monitor.enabled
     tags:
       - cf-internal
   - name: runtime-environment-manager
-    version: 4.1.9
+    version: 4.1.10
     repository: oci://quay.io/codefresh/charts
     condition: runtime-environment-manager.enabled
     tags:
@@ -276,39 +276,39 @@ dependencies:
     tags:
       - cf-internal
   - name: hermes
-    version: 0.22.13
+    version: 0.22.14
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
     tags:
       - cf-internal
   - name: nomios
-    version: 0.12.4
+    version: 0.12.5
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
     tags:
       - cf-internal
   - name: cronus
-    version: 0.9.6
+    version: 0.9.7
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
     tags:
       - cf-internal
   - name: cf-platform-analytics
     alias: cf-platform-analytics-platform
-    version: 0.54.9
+    version: 0.55.10
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
     tags:
       - cf-internal
   - name: cf-platform-analytics
     alias: cf-platform-analytics-etlstarter
-    version: 0.54.9
+    version: 0.55.10
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
     tags:
       - cf-internal
   - name: argo-platform
-    version: 1.4121.0-onprem-fa26186
+    version: 1.4122.0-onprem-757017c
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
     tags:
