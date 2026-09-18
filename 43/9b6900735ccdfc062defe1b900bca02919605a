@@ -1,0 +1,14 @@
+charts/codefresh/README.md
+  h_51acfbafc7319b 1-5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "439b6900735ccdfc062defe1b900bca02919605a",
+  "prompts": {},
+  "humans": {
+    "h_51acfbafc7319b": {
+      "author": "vitaliichyrka <vitalii.chyrka@codefresh.io>"
+    }
+  }
+}
