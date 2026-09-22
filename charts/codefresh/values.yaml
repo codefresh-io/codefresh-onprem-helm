@@ -866,7 +866,7 @@ cfsign:
       image:
         registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
         repository: codefresh/curl
-        tag: 8.20.0
+        tag: 8.22.0
   affinity: {}
   nodeSelector: {}
   podSecurityContext: {}
@@ -1316,7 +1316,7 @@ builder:
       image:
         registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
         repository: codefresh/curl
-        tag: 8.20.0
+        tag: 8.22.0
   container:
     image:
       registry: quay.io
