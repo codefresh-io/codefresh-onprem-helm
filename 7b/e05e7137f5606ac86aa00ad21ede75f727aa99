@@ -1,0 +1,14 @@
+charts/codefresh/Chart.yaml
+  h_9fd7d1a18c4091 252,276
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "7be05e7137f5606ac86aa00ad21ede75f727aa99",
+  "prompts": {},
+  "humans": {
+    "h_9fd7d1a18c4091": {
+      "author": "Alina <alina.shportiuk@codefresh.io>"
+    }
+  }
+}
