@@ -249,7 +249,7 @@ dependencies:
     tags:
       - cf-internal
   - name: cfui
-    version: 14.100.22-onprem-f51832b
+    version: 14.100.23-onprem-6391a08
     repository: oci://quay.io/codefresh/charts
     condition: cfui.enabled
     tags:
@@ -273,7 +273,7 @@ dependencies:
     tags:
       - cf-internal
   - name: helm-repo-manager
-    version: 0.23.7
+    version: 0.23.7-onprem-2ccb379
     repository: oci://quay.io/codefresh/charts
     condition: helm-repo-manager.enabled
     tags:
