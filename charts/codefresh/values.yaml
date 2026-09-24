@@ -14,7 +14,7 @@ gencerts:
   image:
     registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
     repository: codefresh/kubectl
-    tag: 1.36.4
+    tag: 1.37.0
   rbac:
     enabled: true
   ttlSecondsAfterFinished: 300
@@ -492,7 +492,7 @@ hooks:
     image:
       registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
       repository: codefresh/kubectl
-      tag: 1.36.4
+      tag: 1.37.0
     affinity: {}
     nodeSelector: {}
     podSecurityContext: {}
@@ -866,7 +866,7 @@ cfsign:
       image:
         registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
         repository: codefresh/curl
-        tag: 8.20.0
+        tag: 8.22.0
   affinity: {}
   nodeSelector: {}
   podSecurityContext: {}
@@ -1316,7 +1316,7 @@ builder:
       image:
         registry: us-docker.pkg.dev/codefresh-inc/public-gcr-io
         repository: codefresh/curl
-        tag: 8.20.0
+        tag: 8.22.0
   container:
     image:
       registry: quay.io
