@@ -1,0 +1,16 @@
+README.md
+  h_9fd7d1a18c4091 3
+charts/codefresh/Chart.yaml
+  h_9fd7d1a18c4091 4,25,28
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "86e98c1293f6813701c69e3cfd12fca444898cdd",
+  "prompts": {},
+  "humans": {
+    "h_9fd7d1a18c4091": {
+      "author": "Alina <alina.shportiuk@codefresh.io>"
+    }
+  }
+}
