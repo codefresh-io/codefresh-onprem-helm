@@ -540,7 +540,7 @@ runtimeImages:
   DOCKER_BUILDER_IMAGE: quay.io/codefresh/cf-docker-builder:1.7.0@sha256:5f6898b2c4cd276f988581a838e30e41056c2fb62e5968335e7e4d365c7b78dc
   DOCKER_PULLER_IMAGE: quay.io/codefresh/cf-docker-puller:8.0.54@sha256:5b8cea6929563cb9e03118fa60f10974f88e1cddaef2ce756cd206d631a3cbab
   DOCKER_PUSHER_IMAGE: quay.io/codefresh/cf-docker-pusher:6.0.45@sha256:12c41aa8f01debbdcd18925e0581cffd6d11c145518824767961a33a837d62c1
-  ENGINE_IMAGE: quay.io/codefresh/engine:3.3.21@sha256:94cd9eedb373408f9b534cd1061d309b2cdef2ef8bdf54895998560ebe616545
+  ENGINE_IMAGE: quay.io/codefresh/engine:3.3.22@sha256:e11df712187f945f63c8d0023948bf4e6b856b35d0b5cf0ed29766b77aa4b6ee
   FS_OPS_IMAGE: quay.io/codefresh/fs-ops:1.2.14@sha256:967d9b0d5676818da2103c93f1aa26f46b2d77b8f0194de844de6fc5f0f2f7bd
   GIT_CLONE_IMAGE: quay.io/codefresh/cf-git-cloner:10.3.15@sha256:c68ea9a7fa13d86ee6f349e54582583db06ea58a37708aa8eff5fe02377a9ed7
   KUBE_DEPLOY: quay.io/codefresh/cf-deploy-kubernetes:18.0.3@sha256:8b314972510c41fe8ae87716e9fad08186d78359ff021b135a1215ba5695c29d
