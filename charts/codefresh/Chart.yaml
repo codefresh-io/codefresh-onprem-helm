@@ -279,19 +279,19 @@ dependencies:
     tags:
       - cf-internal
   - name: hermes
-    version: 0.22.13-onprem-b0e7023
+    version: 0.22.14-onprem-aa9f39c
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
     tags:
       - cf-internal
   - name: nomios
-    version: 0.12.5-onprem-1fd6b3a
+    version: 0.12.6-onprem-2b5d493
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
     tags:
       - cf-internal
   - name: cronus
-    version: 0.9.7-onprem-9b4f304
+    version: 0.9.8-onprem-8b64dee
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
     tags:
