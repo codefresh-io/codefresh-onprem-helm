@@ -1,0 +1,14 @@
+charts/codefresh/values.yaml
+  h_51acfbafc7319b 546
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a7949582c435b3950ffe751916c3ba0393628c9a",
+  "prompts": {},
+  "humans": {
+    "h_51acfbafc7319b": {
+      "author": "vitaliichyrka <vitalii.chyrka@codefresh.io>"
+    }
+  }
+}
