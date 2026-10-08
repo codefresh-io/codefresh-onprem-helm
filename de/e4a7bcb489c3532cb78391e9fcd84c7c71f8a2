@@ -1,0 +1,16 @@
+charts/codefresh/Chart.yaml
+  h_9fee6e699064f1 125,251
+charts/codefresh/values.yaml
+  h_9fee6e699064f1 178,1009
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "dee4a7bcb489c3532cb78391e9fcd84c7c71f8a2",
+  "prompts": {},
+  "humans": {
+    "h_9fee6e699064f1": {
+      "author": "Vadim Kharin <vadim.kharin@codefresh.io>"
+    }
+  }
+}
