@@ -1,0 +1,23 @@
+charts/codefresh/Chart.yaml
+  989fe106b9846f94 39,41,43-57,59-62
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.8",
+  "base_commit_sha": "082ef0b402cc2ed27e5bc4c46ec347c47ee8668e",
+  "prompts": {
+    "989fe106b9846f94": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a9bec672-3149-4cb5-aaed-c56bab3943d7",
+        "model": "claude-sonnet-4-5-20250929"
+      },
+      "human_author": "vitaliichyrka",
+      "messages": [],
+      "total_additions": 22,
+      "total_deletions": 4,
+      "accepted_lines": 22,
+      "overriden_lines": 0
+    }
+  }
+}

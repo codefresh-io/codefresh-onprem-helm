@@ -1,0 +1,19 @@
+charts/codefresh/templates/legacy/postgres-clean-job.yaml
+  s_ab396fb8f55bfe::t_577a4cd6d8407b 11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "96078b1012555915dcd559663e98c95cfbe4bedd",
+  "prompts": {},
+  "sessions": {
+    "s_ab396fb8f55bfe": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "95e61fd2-f3a8-4d2b-8914-e5727b376de5",
+        "model": "unknown"
+      },
+      "human_author": "andrii-codefresh <andrii@codefresh.io>"
+    }
+  }
+}

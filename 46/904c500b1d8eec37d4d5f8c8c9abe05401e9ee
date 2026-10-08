@@ -1,0 +1,14 @@
+charts/codefresh/Chart.yaml
+  h_86ffe77adf8985 24-27
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "46904c500b1d8eec37d4d5f8c8c9abe05401e9ee",
+  "prompts": {},
+  "humans": {
+    "h_86ffe77adf8985": {
+      "author": "andrii-codefresh <andrii@codefresh.io>"
+    }
+  }
+}

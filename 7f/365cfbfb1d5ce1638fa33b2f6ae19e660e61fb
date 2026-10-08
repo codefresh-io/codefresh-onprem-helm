@@ -1,0 +1,27 @@
+charts/codefresh/values.yaml
+  s_18287d33ea2cc2::t_e9a0c27d570699 589
+  h_51acfbafc7319b 548,588
+README.md
+  s_18287d33ea2cc2::t_05e4fab0f3a9a1 1451-1462
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.13",
+  "base_commit_sha": "7f365cfbfb1d5ce1638fa33b2f6ae19e660e61fb",
+  "prompts": {},
+  "humans": {
+    "h_51acfbafc7319b": {
+      "author": "vitaliichyrka <vitalii.chyrka@codefresh.io>"
+    }
+  },
+  "sessions": {
+    "s_18287d33ea2cc2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "cd7f9102-0ddc-4038-a4df-5e7c1e7f1586",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "vitaliichyrka <vitalii.chyrka@codefresh.io>"
+    }
+  }
+}

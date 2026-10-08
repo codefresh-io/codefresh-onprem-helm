@@ -1,0 +1,19 @@
+charts/codefresh/Chart.yaml
+  s_d285987ee08696::t_2f3390534e68d7 4,24-33,95,107,119,306,313,325
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "9c778013b8d7acc5edc968214fad94c6f9aea8b3",
+  "prompts": {},
+  "sessions": {
+    "s_d285987ee08696": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6a721560-f9d0-40a1-9b4d-82494ec4da73",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Alina <alina.shportiuk@codefresh.io>"
+    }
+  }
+}

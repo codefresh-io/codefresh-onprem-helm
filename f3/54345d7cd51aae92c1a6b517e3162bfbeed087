@@ -1,0 +1,14 @@
+charts/codefresh/Chart.yaml
+  h_0abc1f0694f983 24-25,27-31,33
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "f354345d7cd51aae92c1a6b517e3162bfbeed087",
+  "prompts": {},
+  "humans": {
+    "h_0abc1f0694f983": {
+      "author": "Denys Melnyk <denis.melnyk@octopus.com>"
+    }
+  }
+}

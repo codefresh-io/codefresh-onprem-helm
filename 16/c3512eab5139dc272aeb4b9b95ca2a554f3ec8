@@ -1,0 +1,14 @@
+README.md.gotmpl
+  h_e5037b46dfdc11 272
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "16c3512eab5139dc272aeb4b9b95ca2a554f3ec8",
+  "prompts": {},
+  "humans": {
+    "h_e5037b46dfdc11": {
+      "author": "Zhenya Tikhonov <zhenya.tikhonov@octopus.com>"
+    }
+  }
+}

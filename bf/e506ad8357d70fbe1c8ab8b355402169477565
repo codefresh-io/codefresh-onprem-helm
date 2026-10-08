@@ -1,0 +1,20 @@
+README.md
+  h_9fd7d1a18c4091 3,41,1466-1492
+README.md.gotmpl
+  h_9fd7d1a18c4091 41,1475-1501
+charts/codefresh/Chart.yaml
+  h_9fd7d1a18c4091 249,311
+charts/codefresh/values.yaml
+  h_9fd7d1a18c4091 590-592
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "bfe506ad8357d70fbe1c8ab8b355402169477565",
+  "prompts": {},
+  "humans": {
+    "h_9fd7d1a18c4091": {
+      "author": "Alina <alina.shportiuk@codefresh.io>"
+    }
+  }
+}
