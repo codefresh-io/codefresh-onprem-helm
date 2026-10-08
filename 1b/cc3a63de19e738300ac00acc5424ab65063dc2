@@ -1,0 +1,14 @@
+indexes/codefresh/users.json
+  h_9fee6e699064f1 1-19
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "1bcc3a63de19e738300ac00acc5424ab65063dc2",
+  "prompts": {},
+  "humans": {
+    "h_9fee6e699064f1": {
+      "author": "Vadim Kharin <vadim.kharin@codefresh.io>"
+    }
+  }
+}
