@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.12.20
+version: 2.12.21
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -81,7 +81,7 @@ dependencies:
     tags:
       - cf-internal
   - name: kube-integration
-    version: 2.1.9-onprem-10742f6
+    version: 2.1.10-onprem-35bf750
     repository: oci://quay.io/codefresh/charts
     condition: kube-integration.enabled
     tags:
@@ -105,7 +105,7 @@ dependencies:
     tags:
       - cf-internal
   - name: context-manager
-    version: 2.41.12-onprem-64a094f
+    version: 2.41.13-onprem-c002da3
     repository: oci://quay.io/codefresh/charts
     condition: context-manager.enabled
     tags:
@@ -117,7 +117,7 @@ dependencies:
     tags:
       - cf-internal
   - name: gitops-dashboard-manager
-    version: 1.16.16-onprem-65ad72e
+    version: 1.16.17-onprem-7926bc5
     repository: oci://quay.io/codefresh/charts
     condition: gitops-dashboard-manager.enabled
     tags:
@@ -249,7 +249,7 @@ dependencies:
     tags:
       - cf-internal
   - name: cfui
-    version: 14.100.23-onprem-6391a08
+    version: 14.100.24-onprem-c5b8df3
     repository: oci://quay.io/codefresh/charts
     condition: cfui.enabled
     tags:
