@@ -1,0 +1,14 @@
+codefresh/Chart.lock
+  h_9fee6e699064f1 46,136,142,170-171
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "fa47928de004ac1c230f5d02e142da671ee5d52e",
+  "prompts": {},
+  "humans": {
+    "h_9fee6e699064f1": {
+      "author": "Vadim Kharin <vadim.kharin@codefresh.io>"
+    }
+  }
+}
