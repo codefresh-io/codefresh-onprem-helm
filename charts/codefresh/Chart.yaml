@@ -22,10 +22,10 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |
     - kind: changed
-      description: 'Release 2.12.20'
+      description: 'Release 2.12.21'
       links:
         - name: 'Release notes'
-          url: 'https://github.com/codefresh-io/codefresh-onprem-helm/releases/tag/codefresh-2.12.20'
+          url: 'https://github.com/codefresh-io/codefresh-onprem-helm/releases/tag/codefresh-2.12.21'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -81,13 +81,13 @@ dependencies:
     tags:
       - cf-internal
   - name: kube-integration
-    version: 2.1.10-onprem-35bf750
+    version: 2.1.11-onprem-db12fab
     repository: oci://quay.io/codefresh/charts
     condition: kube-integration.enabled
     tags:
       - cf-internal
   - name: charts-manager
-    version: 1.28.9-onprem-bb53e7e
+    version: 1.28.10-onprem-3eff428
     repository: oci://quay.io/codefresh/charts
     condition: charts-manager.enabled
     tags:
@@ -99,7 +99,7 @@ dependencies:
     tags:
       - cf-internal
   - name: tasker-kubernetes
-    version: 1.29.7-onprem-44f8dce
+    version: 1.29.8-onprem-e9bd580
     repository: oci://quay.io/codefresh/charts
     condition: tasker-kubernetes.enabled
     tags:
@@ -111,7 +111,7 @@ dependencies:
     tags:
       - cf-internal
   - name: pipeline-manager
-    version: 4.2.8-onprem-bfe2885
+    version: 4.2.9-onprem-9c246b2
     repository: oci://quay.io/codefresh/charts
     condition: pipeline-manager.enabled
     tags:
@@ -261,13 +261,13 @@ dependencies:
     tags:
       - cf-internal
   - name: runtime-environment-manager
-    version: 4.1.10-onprem-d8c0c4d
+    version: 4.1.11-onprem-95e1163
     repository: oci://quay.io/codefresh/charts
     condition: runtime-environment-manager.enabled
     tags:
       - cf-internal
   - name: cf-broadcaster
-    version: 1.15.14-onprem-4c3812b
+    version: 1.15.16-onprem-8f670ad
     repository: oci://quay.io/codefresh/charts
     condition: cf-broadcaster.enabled
     tags:
