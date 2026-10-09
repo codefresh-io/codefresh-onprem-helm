@@ -21,10 +21,8 @@ annotations:
   #   - kind:
   #     description: ""
   artifacthub.io/changes: |
-    - kind: fixed
-      description: 'Fixes health check requests after the connection to the platform is restored'
     - kind: security
-      description: 'Some security vulnerabilities have been fixed in default Classic Runtime (system/default)'
+      description: 'Security fixes'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -80,13 +78,13 @@ dependencies:
     tags:
       - cf-internal
   - name: kube-integration
-    version: 2.1.9-onprem-10742f6
+    version: 2.1.11-onprem-db12fab
     repository: oci://quay.io/codefresh/charts
     condition: kube-integration.enabled
     tags:
       - cf-internal
   - name: charts-manager
-    version: 1.28.9-onprem-bb53e7e
+    version: 1.28.10-onprem-3eff428
     repository: oci://quay.io/codefresh/charts
     condition: charts-manager.enabled
     tags:
@@ -98,25 +96,25 @@ dependencies:
     tags:
       - cf-internal
   - name: tasker-kubernetes
-    version: 1.29.7-onprem-44f8dce
+    version: 1.29.8-onprem-e9bd580
     repository: oci://quay.io/codefresh/charts
     condition: tasker-kubernetes.enabled
     tags:
       - cf-internal
   - name: context-manager
-    version: 2.41.12-onprem-64a094f
+    version: 2.41.13-onprem-c002da3
     repository: oci://quay.io/codefresh/charts
     condition: context-manager.enabled
     tags:
       - cf-internal
   - name: pipeline-manager
-    version: 4.2.8-onprem-bfe2885
+    version: 4.2.9-onprem-9c246b2
     repository: oci://quay.io/codefresh/charts
     condition: pipeline-manager.enabled
     tags:
       - cf-internal
   - name: gitops-dashboard-manager
-    version: 1.16.16-onprem-65ad72e
+    version: 1.16.17-onprem-7926bc5
     repository: oci://quay.io/codefresh/charts
     condition: gitops-dashboard-manager.enabled
     tags:
@@ -248,7 +246,7 @@ dependencies:
     tags:
       - cf-internal
   - name: cfui
-    version: 14.100.23-onprem-6391a08
+    version: 14.100.24-onprem-c5b8df3
     repository: oci://quay.io/codefresh/charts
     condition: cfui.enabled
     tags:
@@ -260,13 +258,13 @@ dependencies:
     tags:
       - cf-internal
   - name: runtime-environment-manager
-    version: 4.1.10-onprem-d8c0c4d
+    version: 4.1.11-onprem-95e1163
     repository: oci://quay.io/codefresh/charts
     condition: runtime-environment-manager.enabled
     tags:
       - cf-internal
   - name: cf-broadcaster
-    version: 1.15.14-onprem-4c3812b
+    version: 1.15.16-onprem-8f670ad
     repository: oci://quay.io/codefresh/charts
     condition: cf-broadcaster.enabled
     tags:
