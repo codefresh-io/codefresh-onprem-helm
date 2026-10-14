@@ -75,7 +75,7 @@ dependencies:
     repository: https://kubernetes.github.io/ingress-nginx
     condition: ingress-nginx.enabled
   - name: cluster-providers
-    version: 1.20.5-onprem-01c13a8
+    version: 1.20.6-onprem-59c96c1
     repository: oci://quay.io/codefresh/charts
     condition: cluster-providers.enabled
     tags:
@@ -99,7 +99,7 @@ dependencies:
     tags:
       - cf-internal
   - name: tasker-kubernetes
-    version: 1.29.8-onprem-e9bd580
+    version: 1.29.9-onprem-673f08f
     repository: oci://quay.io/codefresh/charts
     condition: tasker-kubernetes.enabled
     tags:
@@ -255,7 +255,7 @@ dependencies:
     tags:
       - cf-internal
   - name: k8s-monitor
-    version: 4.12.4-onprem-20160ad
+    version: 4.12.5-onprem-0454158
     repository: oci://quay.io/codefresh/charts
     condition: k8s-monitor.enabled
     tags:
@@ -298,14 +298,14 @@ dependencies:
       - cf-internal
   - name: cf-platform-analytics
     alias: cf-platform-analytics-platform
-    version: 0.54.16-onprem-fee3eef
+    version: 0.54.17-onprem-6a651fa
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
     tags:
       - cf-internal
   - name: cf-platform-analytics
     alias: cf-platform-analytics-etlstarter
-    version: 0.54.16-onprem-fee3eef
+    version: 0.54.17-onprem-6a651fa
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
     tags:
