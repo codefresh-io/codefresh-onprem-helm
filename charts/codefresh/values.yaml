@@ -536,7 +536,7 @@ postgresqlCleanJob:
 runtimeImages:
   COMPOSE_IMAGE: quay.io/codefresh/compose:1.6.15@sha256:77ac39180aaf9d44338cd3c0576318b20a40d8c9c5ce76b48275920f50397207
   CONTAINER_LOGGER_IMAGE: quay.io/codefresh/cf-container-logger:2.0.50@sha256:d04068bc3b87a33b31547a64381f3f73b214b85e410f690aebb7a9ba628c2f26
-  DIND_IMAGE: quay.io/codefresh/dind:3.0.30@sha256:981f2e583aafc7f18ed9181c7973f670cdc227893c9817b430f081687cbc413f
+  DIND_IMAGE: quay.io/codefresh/dind:3.0.33@sha256:feef93b16baa903c3bfaa2d5c4b9613abbfe861984bd845339897a5f9b71f016
   DOCKER_BUILDER_IMAGE: quay.io/codefresh/cf-docker-builder:1.7.6@sha256:41a7796084b866c17d5ff909b3d9d366cb13db1d2859d8ef6da2a974bb74f020
   DOCKER_PULLER_IMAGE: quay.io/codefresh/cf-docker-puller:8.0.60@sha256:f8e9cd9e0f417cc19814d124bcbf559ccd4fb0eec7f62ec433b9ce60911ef4ae
   DOCKER_PUSHER_IMAGE: quay.io/codefresh/cf-docker-pusher:6.0.52@sha256:c413a22d7f4220b21522f73b844f4ff95ab65ff4980c2c53c0e403545148974a
@@ -1321,7 +1321,7 @@ builder:
     image:
       registry: quay.io
       repository: codefresh/dind
-      tag: 3.0.25
+      tag: 3.0.33
   affinity: {}
   nodeSelector: {}
   podSecurityContext: {}
