@@ -87,13 +87,13 @@ dependencies:
     tags:
       - cf-internal
   - name: charts-manager
-    version: 1.28.10-onprem-3eff428
+    version: 1.28.11-onprem-f4863af
     repository: oci://quay.io/codefresh/charts
     condition: charts-manager.enabled
     tags:
       - cf-internal
   - name: cfsign
-    version: 1.8.23-onprem-8952a52
+    version: 1.8.24-onprem-5f0bac2
     repository: oci://quay.io/codefresh/charts
     condition: cfsign.enabled
     tags:
@@ -111,7 +111,7 @@ dependencies:
     tags:
       - cf-internal
   - name: pipeline-manager
-    version: 4.2.9-onprem-9c246b2
+    version: 4.2.10-onprem-474b3dc
     repository: oci://quay.io/codefresh/charts
     condition: pipeline-manager.enabled
     tags:
@@ -261,7 +261,7 @@ dependencies:
     tags:
       - cf-internal
   - name: runtime-environment-manager
-    version: 4.1.11-onprem-95e1163
+    version: 4.1.12-onprem-3b6ee4b
     repository: oci://quay.io/codefresh/charts
     condition: runtime-environment-manager.enabled
     tags:
@@ -317,7 +317,7 @@ dependencies:
     tags:
       - cf-internal
   - name: argo-hub-platform
-    version: 0.1.51
+    version: 0.1.52
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
     tags:
