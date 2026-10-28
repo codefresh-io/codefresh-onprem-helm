@@ -75,19 +75,19 @@ dependencies:
     repository: https://kubernetes.github.io/ingress-nginx
     condition: ingress-nginx.enabled
   - name: cluster-providers
-    version: 1.20.6-onprem-59c96c1
+    version: 1.20.7-onprem-8f1382f
     repository: oci://quay.io/codefresh/charts
     condition: cluster-providers.enabled
     tags:
       - cf-internal
   - name: kube-integration
-    version: 2.1.11-onprem-db12fab
+    version: 2.1.13-onprem-bb01080
     repository: oci://quay.io/codefresh/charts
     condition: kube-integration.enabled
     tags:
       - cf-internal
   - name: charts-manager
-    version: 1.28.11-onprem-f4863af
+    version: 1.28.12-onprem-4515bdd
     repository: oci://quay.io/codefresh/charts
     condition: charts-manager.enabled
     tags:
@@ -99,25 +99,25 @@ dependencies:
     tags:
       - cf-internal
   - name: tasker-kubernetes
-    version: 1.29.9-onprem-673f08f
+    version: 1.29.11-onprem-940ec93
     repository: oci://quay.io/codefresh/charts
     condition: tasker-kubernetes.enabled
     tags:
       - cf-internal
   - name: context-manager
-    version: 2.41.13-onprem-c002da3
+    version: 2.41.14-onprem-d4ba82a
     repository: oci://quay.io/codefresh/charts
     condition: context-manager.enabled
     tags:
       - cf-internal
   - name: pipeline-manager
-    version: 4.2.10-onprem-474b3dc
+    version: 4.2.11-onprem-5b309a0
     repository: oci://quay.io/codefresh/charts
     condition: pipeline-manager.enabled
     tags:
       - cf-internal
   - name: gitops-dashboard-manager
-    version: 1.16.17-onprem-7926bc5
+    version: 1.16.18-onprem-92ec520
     repository: oci://quay.io/codefresh/charts
     condition: gitops-dashboard-manager.enabled
     tags:
@@ -249,25 +249,25 @@ dependencies:
     tags:
       - cf-internal
   - name: cfui
-    version: 14.100.24-onprem-c5b8df3
+    version: 14.100.25-onprem-b2c1223
     repository: oci://quay.io/codefresh/charts
     condition: cfui.enabled
     tags:
       - cf-internal
   - name: k8s-monitor
-    version: 4.12.5-onprem-0454158
+    version: 4.12.6-onprem-9013ac6
     repository: oci://quay.io/codefresh/charts
     condition: k8s-monitor.enabled
     tags:
       - cf-internal
   - name: runtime-environment-manager
-    version: 4.1.12-onprem-3b6ee4b
+    version: 4.1.13-onprem-33f86a9
     repository: oci://quay.io/codefresh/charts
     condition: runtime-environment-manager.enabled
     tags:
       - cf-internal
   - name: cf-broadcaster
-    version: 1.15.16-onprem-8f670ad
+    version: 1.15.17-onprem-5ba7bbf
     repository: oci://quay.io/codefresh/charts
     condition: cf-broadcaster.enabled
     tags:
@@ -279,45 +279,45 @@ dependencies:
     tags:
       - cf-internal
   - name: hermes
-    version: 0.22.15-onprem-65b60b1
+    version: 0.22.16-onprem-deb82d6
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
     tags:
       - cf-internal
   - name: nomios
-    version: 0.12.7-onprem-1202dff
+    version: 0.12.8-onprem-fc771e7
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
     tags:
       - cf-internal
   - name: cronus
-    version: 0.9.9-onprem-f5d57a4
+    version: 0.9.10-onprem-a7d4162
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
     tags:
       - cf-internal
   - name: cf-platform-analytics
     alias: cf-platform-analytics-platform
-    version: 0.54.17-onprem-6a651fa
+    version: 0.54.18-onprem-aef7e9b
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
     tags:
       - cf-internal
   - name: cf-platform-analytics
     alias: cf-platform-analytics-etlstarter
-    version: 0.54.17-onprem-6a651fa
+    version: 0.54.18-onprem-aef7e9b
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
     tags:
       - cf-internal
   - name: argo-platform
-    version: 1.4123.4-onprem-a07f298
+    version: 1.4123.4-onprem-bf45c94
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
     tags:
       - cf-internal
   - name: argo-hub-platform
-    version: 0.1.52
+    version: 0.1.53
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
     tags:
