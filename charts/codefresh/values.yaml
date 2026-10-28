@@ -708,7 +708,7 @@ internal-gateway:
   container:
     image:
       registry: docker.io
-      repository: nginxinc/nginx-unprivileged
+      repository: nginx/nginx-unprivileged
   nginx:
     config:
       locations:
