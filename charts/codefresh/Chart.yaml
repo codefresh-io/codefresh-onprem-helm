@@ -273,7 +273,7 @@ dependencies:
     tags:
       - cf-internal
   - name: helm-repo-manager
-    version: 0.23.7-onprem-2ccb379
+    version: 0.23.8-onprem-9ea157c
     repository: oci://quay.io/codefresh/charts
     condition: helm-repo-manager.enabled
     tags:
@@ -311,7 +311,7 @@ dependencies:
     tags:
       - cf-internal
   - name: argo-platform
-    version: 1.4123.4-onprem-bf45c94
+    version: 1.4123.5-onprem-b6bf3aa
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
     tags:
