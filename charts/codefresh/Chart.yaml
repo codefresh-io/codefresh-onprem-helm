@@ -22,10 +22,10 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |
     - kind: changed
-      description: 'Release 2.12.24'
+      description: 'Release 2.12.25'
       links:
         - name: 'Release notes'
-          url: 'https://github.com/codefresh-io/codefresh-onprem-helm/releases/tag/codefresh-2.12.24'
+          url: 'https://github.com/codefresh-io/codefresh-onprem-helm/releases/tag/codefresh-2.12.25'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
