@@ -99,7 +99,7 @@ dependencies:
     tags:
       - cf-internal
   - name: tasker-kubernetes
-    version: 1.29.11-onprem-940ec93
+    version: 1.29.12-onprem-b9f0ae1
     repository: oci://quay.io/codefresh/charts
     condition: tasker-kubernetes.enabled
     tags:
