@@ -1,7 +1,7 @@
 apiVersion: v2
 description: Helm Chart for Codefresh On-Prem
 name: codefresh
-version: 2.12.25
+version: 2.12.26
 keywords:
   - codefresh
 home: https://codefresh.io/
@@ -22,10 +22,10 @@ annotations:
   #     description: ""
   artifacthub.io/changes: |
     - kind: changed
-      description: 'Release 2.12.25'
+      description: 'Release 2.12.26'
       links:
         - name: 'Release notes'
-          url: 'https://github.com/codefresh-io/codefresh-onprem-helm/releases/tag/codefresh-2.12.25'
+          url: 'https://github.com/codefresh-io/codefresh-onprem-helm/releases/tag/codefresh-2.12.26'
 dependencies:
   - name: cf-common
     repository: oci://quay.io/codefresh/charts
@@ -75,43 +75,43 @@ dependencies:
     repository: https://kubernetes.github.io/ingress-nginx
     condition: ingress-nginx.enabled
   - name: cluster-providers
-    version: 1.20.8-onprem-ed7913a
+    version: 1.20.9-onprem-a4fefcd
     repository: oci://quay.io/codefresh/charts
     condition: cluster-providers.enabled
     tags:
       - cf-internal
   - name: kube-integration
-    version: 2.1.14-onprem-ca0d0f6
+    version: 2.1.15-onprem-be4823e
     repository: oci://quay.io/codefresh/charts
     condition: kube-integration.enabled
     tags:
       - cf-internal
   - name: charts-manager
-    version: 1.28.13-onprem-800066a
+    version: 1.28.14-onprem-508ae32
     repository: oci://quay.io/codefresh/charts
     condition: charts-manager.enabled
     tags:
       - cf-internal
   - name: cfsign
-    version: 1.8.25-onprem-76ff3cb
+    version: 1.8.26-onprem-5f4db08
     repository: oci://quay.io/codefresh/charts
     condition: cfsign.enabled
     tags:
       - cf-internal
   - name: tasker-kubernetes
-    version: 1.29.12-onprem-b9f0ae1
+    version: 1.29.13-onprem-ab118e9
     repository: oci://quay.io/codefresh/charts
     condition: tasker-kubernetes.enabled
     tags:
       - cf-internal
   - name: context-manager
-    version: 2.41.14-onprem-d4ba82a
+    version: 2.41.15-onprem-e4c5870
     repository: oci://quay.io/codefresh/charts
     condition: context-manager.enabled
     tags:
       - cf-internal
   - name: pipeline-manager
-    version: 4.2.11-onprem-5b309a0
+    version: 4.2.12-onprem-2ca1745
     repository: oci://quay.io/codefresh/charts
     condition: pipeline-manager.enabled
     tags:
@@ -124,138 +124,138 @@ dependencies:
       - cf-internal
   - name: cfapi
     alias: cfapi
-    version: 22.8.22-onprem-4b63d04
+    version: 22.8.23-onprem-2cf9525
     repository: oci://quay.io/codefresh/charts
     condition: cfapi.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-auth
-    version: 22.8.22-onprem-4b63d04
+    version: 22.8.23-onprem-2cf9525
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-auth.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-internal
-    version: 22.8.22-onprem-4b63d04
+    version: 22.8.23-onprem-2cf9525
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-internal.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-ws
-    version: 22.8.22-onprem-4b63d04
+    version: 22.8.23-onprem-2cf9525
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-ws.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-admin
-    version: 22.8.22-onprem-4b63d04
+    version: 22.8.23-onprem-2cf9525
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-admin.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-endpoints
-    version: 22.8.22-onprem-4b63d04
+    version: 22.8.23-onprem-2cf9525
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-endpoints.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-terminators
-    version: 22.8.22-onprem-4b63d04
+    version: 22.8.23-onprem-2cf9525
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-terminators.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-sso-group-synchronizer
-    version: 22.8.22-onprem-4b63d04
+    version: 22.8.23-onprem-2cf9525
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-sso-group-synchronizer.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-buildmanager
-    version: 22.8.22-onprem-4b63d04
+    version: 22.8.23-onprem-2cf9525
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-buildmanager.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-cacheevictmanager
-    version: 22.8.22-onprem-4b63d04
+    version: 22.8.23-onprem-2cf9525
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-cacheevictmanager.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-eventsmanagersubscriptions
-    version: 22.8.22-onprem-4b63d04
+    version: 22.8.23-onprem-2cf9525
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-eventsmanagersubscriptions.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-kubernetesresourcemonitor
-    version: 22.8.22-onprem-4b63d04
+    version: 22.8.23-onprem-2cf9525
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-kubernetesresourcemonitor.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-environments
-    version: 22.8.22-onprem-4b63d04
+    version: 22.8.23-onprem-2cf9525
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-environments.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-gitops-resource-receiver
-    version: 22.8.22-onprem-4b63d04
+    version: 22.8.23-onprem-2cf9525
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-gitops-resource-receiver.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-downloadlogmanager
-    version: 22.8.22-onprem-4b63d04
+    version: 22.8.23-onprem-2cf9525
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-downloadlogmanager.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-teams
-    version: 22.8.22-onprem-4b63d04
+    version: 22.8.23-onprem-2cf9525
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-teams.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-kubernetes-endpoints
-    version: 22.8.22-onprem-4b63d04
+    version: 22.8.23-onprem-2cf9525
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-kubernetes-endpoints.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-test-reporting
-    version: 22.8.22-onprem-4b63d04
+    version: 22.8.23-onprem-2cf9525
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-test-reporting.enabled
     tags:
       - cf-internal
   - name: cfui
-    version: 14.100.26-onprem-f1c9df0
+    version: 14.100.27-onprem-30eb810
     repository: oci://quay.io/codefresh/charts
     condition: cfui.enabled
     tags:
       - cf-internal
   - name: k8s-monitor
-    version: 4.12.6-onprem-9013ac6
+    version: 4.12.7-onprem-3462901
     repository: oci://quay.io/codefresh/charts
     condition: k8s-monitor.enabled
     tags:
@@ -298,14 +298,14 @@ dependencies:
       - cf-internal
   - name: cf-platform-analytics
     alias: cf-platform-analytics-platform
-    version: 0.54.19-onprem-bd63e20
+    version: 0.54.20-onprem-bcee3dc
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
     tags:
       - cf-internal
   - name: cf-platform-analytics
     alias: cf-platform-analytics-etlstarter
-    version: 0.54.19-onprem-bd63e20
+    version: 0.54.20-onprem-bcee3dc
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
     tags:
