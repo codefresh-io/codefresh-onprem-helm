@@ -268,7 +268,7 @@ dependencies:
     tags:
       - cf-internal
   - name: helm-repo-manager
-    version: 0.23.9
+    version: 0.23.10
     repository: oci://quay.io/codefresh/charts
     condition: helm-repo-manager.enabled
     tags:
