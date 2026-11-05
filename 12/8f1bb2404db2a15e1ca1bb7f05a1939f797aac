@@ -1,0 +1,18 @@
+README.md
+  h_9fee6e699064f1 418-424
+README.md.gotmpl
+  h_9fee6e699064f1 420-426,2400
+charts/codefresh/values.yaml
+  h_9fee6e699064f1 142-148
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "128f1bb2404db2a15e1ca1bb7f05a1939f797aac",
+  "prompts": {},
+  "humans": {
+    "h_9fee6e699064f1": {
+      "author": "Vadim Kharin <vadim.kharin@codefresh.io>"
+    }
+  }
+}
