@@ -1,0 +1,16 @@
+charts/codefresh/values.yaml
+  h_51acfbafc7319b 869,1319,1324
+charts/codefresh/Chart.yaml
+  h_51acfbafc7319b 35,78,84,90,96,102,108,114,120,127,134,141,148,155,162,169,176,183,190,197,204,211,218,225,232,239,246,252,258,264,270,282,288,294,301,308,320
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a52297752bfac99df3750ef0602d8a48aaf6a994",
+  "prompts": {},
+  "humans": {
+    "h_51acfbafc7319b": {
+      "author": "vitaliichyrka <vitalii.chyrka@codefresh.io>"
+    }
+  }
+}
