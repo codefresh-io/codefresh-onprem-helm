@@ -289,6 +289,7 @@ The following table reflects the recommended and supported versions of these dat
 
 | Codefresh version | MongoDB | PostgreSQL | Redis | RabbitMQ | Nats | Consul |
 | :---              | :---    | :---       | :---  | :---     | :--- | :---   |
+| 2.13.x            | \>=4.4 \<=7.x <br> Recommended: 7.x (`featureCompatibilityVersion: 7.0`)| \>= 16.x \<= 17.x <br> Recommended: 17.x | \>= 7.x \<= 8.x <br> Recommended: 8\.x | 3.13.x \| \>= 4.0.x \<= 4.2.x <br> Recommended: 4.2.x | 2.11.x <br> Recommended: 2.11.x | 1.21.x <br> Recommended: 1.21.x |
 | 2.12.x            | \>=4.2 \<=7.x <br> Recommended: 7.x (`featureCompatibilityVersion: 7.0`)| \>= 16.x \<= 17.x <br> Recommended: 17.x | \>= 7.x \<= 8.x <br> Recommended: 8\.x | 3.13.x \| \>= 4.0.x \<= 4.2.x <br> Recommended: 4.2.x | 2.11.x <br> Recommended: 2.11.x | 1.21.x <br> Recommended: 1.21.x |
 | 2.11.x            | \>=4.2 \<=7.x <br> Recommended: 7.x (`featureCompatibilityVersion: 7.0`)| \>= 16.x \<= 17.x <br> Recommended: 17.x | \>= 7.x \<= 8.x <br> Recommended: 8\.x | 3.13.x \| 4.0.x \| 4.1.x <br> Recommended: 4.1.x | 2.11.x <br> Recommended: 2.11.x | 1.21.x <br> Recommended: 1.21.x |
 | 2.10.x            | \>=4.2 \<=7.x <br> Recommended: 7.x (`featureCompatibilityVersion: 7.0`)| \>= 16.x \<= 17.x <br> Recommended: 17.x | \>= 7.x \<= 8.x <br> Recommended: 8\.x | 3.13.x \| 4.0.x \| 4.1.x <br> Recommended: 4.1.x | 2.11.x <br> Recommended: 2.11.x | 1.21.x <br> Recommended: 1.21.x |
@@ -1773,6 +1774,7 @@ The required index definitions for each release can be found at the following re
 - `2.10` <https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.10/indexes>
 - `2.11` <https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.11/indexes>
 - `2.12` No changes in schema/indexes compared to `2.11`
+- `2.13` <https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.13/indexes>
 
 The indexes specifications are stored in JSON files. The directory structure is:
 
