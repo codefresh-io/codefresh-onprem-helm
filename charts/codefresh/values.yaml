@@ -590,6 +590,18 @@ cfapi: &cf-api
       # Number of trusted proxies in front of cf-api, controls how the client IP is derived
       # from X-Forwarded-For for the API keys IP allowlist.
       TRUSTED_PROXY_COUNT: "2"
+      
+      # -- Feature store configuration
+      # If enabled, the results of reading feature sources from the database will be cached in memory
+      # for the duration specified by DB_FEATURE_SOURCES_CACHE_TTL_MS.
+      DB_FEATURE_SOURCES_CACHE_ENABLE: "true"
+      # The amount of time, in ms, that results of reading feature sources from the database should remain in an in-memory cache.
+      # This is only relevant if DB_FEATURE_SOURCES_CACHE_ENABLE is set to "true".
+      DB_FEATURE_SOURCES_CACHE_TTL_MS: "300000"
+      # How long a fully evaluated per-account feature map stays in memory.
+      ACCOUNT_FEATURES_CACHE_TTL_MS: "30000"
+      # Maximum number of per-account feature maps held in memory (oldest insertion is evicted first).
+      ACCOUNT_FEATURES_CACHE_MAX_SIZE: "1000"
   # -- Secrets configuration
   secrets:
     secret:
