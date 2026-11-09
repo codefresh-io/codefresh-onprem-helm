@@ -1,0 +1,19 @@
+indexes/read-models/applications.json
+  h_e5037b46dfdc11 5-6,12,29,53,69-71,75-76,78-82,98-100,102
+  h_e5037b46dfdc11 72-74,77
+indexes/codefresh/annotations.json
+  h_e5037b46dfdc11 1-55
+indexes/codefresh/apikeyblockedrequestcounters.json
+  h_e5037b46dfdc11 1-25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "f42178f2fe6ae8978fafc6f8c178e54c790c6d67",
+  "prompts": {},
+  "humans": {
+    "h_e5037b46dfdc11": {
+      "author": "Zhenya Tikhonov <zhenya.tikhonov@octopus.com>"
+    }
+  }
+}
