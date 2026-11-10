@@ -76,7 +76,7 @@ dependencies:
     tags:
       - cf-internal
   - name: kube-integration
-    version: 2.1.19
+    version: 2.1.20
     repository: oci://quay.io/codefresh/charts
     condition: kube-integration.enabled
     tags:
