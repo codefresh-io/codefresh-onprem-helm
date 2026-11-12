@@ -547,6 +547,8 @@ global:
   env:
     # More info in the official docs: https://www.postgresql.org/docs/current/libpq-envars.html
     PGSSLMODE: "require"
+    # @codefresh-io/audit passes an explicit ssl flag to pg, which overrides PGSSLMODE
+    POSTGRES_SSL_ENABLE: "true"
 
 helm-repo-manager:
   env:
