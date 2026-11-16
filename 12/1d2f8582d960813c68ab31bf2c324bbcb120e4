@@ -1,0 +1,19 @@
+README.md.gotmpl
+  s_6b0685cb73f726::t_fe520219b2b823 201-202
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "121d2f8582d960813c68ab31bf2c324bbcb120e4",
+  "prompts": {},
+  "sessions": {
+    "s_6b0685cb73f726": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8802f0ab-97ae-452f-97b8-bdfa7c075526",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Zhenya Tikhonov <zhenya.tikhonov@octopus.com>"
+    }
+  }
+}
