@@ -1,6 +1,6 @@
 ## Codefresh On-Premises
 
-![Version: 2.13.0-rc.4](https://img.shields.io/badge/Version-2.13.0--rc.4-informational?style=flat-square) ![AppVersion: 0.0.0](https://img.shields.io/badge/AppVersion-0.0.0-informational?style=flat-square)
+![Version: 2.13.0](https://img.shields.io/badge/Version-2.13.0-informational?style=flat-square) ![AppVersion: 0.0.0](https://img.shields.io/badge/AppVersion-0.0.0-informational?style=flat-square)
 
 Helm chart for deploying [Codefresh On-Premises](https://codefresh.io/docs/docs/getting-started/intro-to-codefresh/) to Kubernetes.
 
@@ -196,6 +196,8 @@ httpRoute:
   ```
 
 > **Note:** Default username and password is: AdminCF/AdminCF. You must change the default password via Admin Panel immediately after installation.
+
+> **Note:** The default `admin-cf` account created during installation is for administration and provisioning only. It doesn't have the default **Users** and **Admins** teams, so don't run workloads in it. Create a separate account for your teams and pipelines.
 
 ### ⚠️ **MANDATORY** Post-Installation Action Items
 
