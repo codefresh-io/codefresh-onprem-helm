@@ -319,7 +319,7 @@ dependencies:
       - cf-internal
   - name: cf-oidc-provider
     repository: oci://quay.io/codefresh/charts
-    version: 0.1.0
+    version: 0.1.1
     condition: cf-oidc-provider.enabled
     tags:
       - cf-internal
