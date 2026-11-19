@@ -1,0 +1,16 @@
+codefresh/README.md
+  h_9fee6e699064f1 3
+codefresh/README.md.gotmpl
+  h_9fee6e699064f1 70
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "65a2181becfc8a8648c7b9f1a748ea99b253995c",
+  "prompts": {},
+  "humans": {
+    "h_9fee6e699064f1": {
+      "author": "Vadim Kharin <vadim.kharin@codefresh.io>"
+    }
+  }
+}

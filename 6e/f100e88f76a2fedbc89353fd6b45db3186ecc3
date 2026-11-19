@@ -1,0 +1,25 @@
+charts/codefresh/Chart.yaml
+  s_62e8185ff5e210::t_aa0fa64cf1359a 314
+  h_51acfbafc7319b 276
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "6ef100e88f76a2fedbc89353fd6b45db3186ecc3",
+  "prompts": {},
+  "humans": {
+    "h_51acfbafc7319b": {
+      "author": "vitaliichyrka <vitalii.chyrka@codefresh.io>"
+    }
+  },
+  "sessions": {
+    "s_62e8185ff5e210": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b761bb4c-670a-4e03-86b5-1fa78cf1a12a",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "vitaliichyrka <vitalii.chyrka@codefresh.io>"
+    }
+  }
+}

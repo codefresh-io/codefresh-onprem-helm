@@ -1,0 +1,20 @@
+codefresh/Chart.lock
+  h_9fee6e699064f1 67,70,73,76,79,82,85,88,91,94,97,100,103,106,109,112,115,118,145,148,173-174
+codefresh/Chart.yaml
+  h_9fee6e699064f1 4,22-24
+codefresh/README.md
+  h_9fee6e699064f1 1146
+codefresh/README.md.gotmpl
+  h_9fee6e699064f1 1151,1271
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "4397b243c2986b982825e8224836dc71efb37315",
+  "prompts": {},
+  "humans": {
+    "h_9fee6e699064f1": {
+      "author": "Vadim Kharin <vadim.kharin@codefresh.io>"
+    }
+  }
+}
