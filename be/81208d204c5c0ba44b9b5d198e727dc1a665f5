@@ -1,0 +1,16 @@
+README.md
+  h_86ffe77adf8985 3
+charts/codefresh/Chart.yaml
+  h_86ffe77adf8985 4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "be81208d204c5c0ba44b9b5d198e727dc1a665f5",
+  "prompts": {},
+  "humans": {
+    "h_86ffe77adf8985": {
+      "author": "andrii-codefresh <andrii@codefresh.io>"
+    }
+  }
+}
