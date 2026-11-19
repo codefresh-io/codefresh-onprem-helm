@@ -249,7 +249,7 @@ dependencies:
     tags:
       - cf-internal
   - name: cfui
-    version: 14.102.8
+    version: 14.102.13-onprem-f884022
     repository: oci://quay.io/codefresh/charts
     condition: cfui.enabled
     tags:
