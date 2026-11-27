@@ -117,133 +117,133 @@ dependencies:
     tags:
       - cf-internal
   - name: gitops-dashboard-manager
-    version: 1.16.20-onprem-1be045b
+    version: 1.16.21-onprem-08bddde
     repository: oci://quay.io/codefresh/charts
     condition: gitops-dashboard-manager.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi
-    version: 22.16.3-onprem-78b298b
+    version: 22.16.5-onprem-eab51fe
     repository: oci://quay.io/codefresh/charts
     condition: cfapi.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-auth
-    version: 22.16.3-onprem-78b298b
+    version: 22.16.5-onprem-eab51fe
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-auth.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-internal
-    version: 22.16.3-onprem-78b298b
+    version: 22.16.5-onprem-eab51fe
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-internal.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-ws
-    version: 22.16.3-onprem-78b298b
+    version: 22.16.5-onprem-eab51fe
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-ws.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-admin
-    version: 22.16.3-onprem-78b298b
+    version: 22.16.5-onprem-eab51fe
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-admin.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-endpoints
-    version: 22.16.3-onprem-78b298b
+    version: 22.16.5-onprem-eab51fe
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-endpoints.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-terminators
-    version: 22.16.3-onprem-78b298b
+    version: 22.16.5-onprem-eab51fe
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-terminators.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-sso-group-synchronizer
-    version: 22.16.3-onprem-78b298b
+    version: 22.16.5-onprem-eab51fe
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-sso-group-synchronizer.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-buildmanager
-    version: 22.16.3-onprem-78b298b
+    version: 22.16.5-onprem-eab51fe
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-buildmanager.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-cacheevictmanager
-    version: 22.16.3-onprem-78b298b
+    version: 22.16.5-onprem-eab51fe
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-cacheevictmanager.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-eventsmanagersubscriptions
-    version: 22.16.3-onprem-78b298b
+    version: 22.16.5-onprem-eab51fe
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-eventsmanagersubscriptions.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-kubernetesresourcemonitor
-    version: 22.16.3-onprem-78b298b
+    version: 22.16.5-onprem-eab51fe
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-kubernetesresourcemonitor.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-environments
-    version: 22.16.3-onprem-78b298b
+    version: 22.16.5-onprem-eab51fe
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-environments.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-gitops-resource-receiver
-    version: 22.16.3-onprem-78b298b
+    version: 22.16.5-onprem-eab51fe
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-gitops-resource-receiver.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-downloadlogmanager
-    version: 22.16.3-onprem-78b298b
+    version: 22.16.5-onprem-eab51fe
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-downloadlogmanager.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-teams
-    version: 22.16.3-onprem-78b298b
+    version: 22.16.5-onprem-eab51fe
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-teams.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-kubernetes-endpoints
-    version: 22.16.3-onprem-78b298b
+    version: 22.16.5-onprem-eab51fe
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-kubernetes-endpoints.enabled
     tags:
       - cf-internal
   - name: cfapi
     alias: cfapi-test-reporting
-    version: 22.16.3-onprem-78b298b
+    version: 22.16.5-onprem-eab51fe
     repository: oci://quay.io/codefresh/charts
     condition: cfapi-test-reporting.enabled
     tags:
@@ -279,33 +279,33 @@ dependencies:
     tags:
       - cf-internal
   - name: hermes
-    version: 0.22.18
+    version: 0.22.21
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
     tags:
       - cf-internal
   - name: nomios
-    version: 0.12.9
+    version: 0.12.13
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
     tags:
       - cf-internal
   - name: cronus
-    version: 0.9.11
+    version: 0.9.14
     repository: oci://quay.io/codefresh/charts
     condition: hermes.enabled
     tags:
       - cf-internal
   - name: cf-platform-analytics
     alias: cf-platform-analytics-platform
-    version: 0.55.23-onprem-f6966c4
+    version: 0.55.25-onprem-33a6757
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
     tags:
       - cf-internal
   - name: cf-platform-analytics
     alias: cf-platform-analytics-etlstarter
-    version: 0.55.23-onprem-f6966c4
+    version: 0.55.25-onprem-33a6757
     repository: oci://quay.io/codefresh/charts
     condition: argo-platform.enabled
     tags:
