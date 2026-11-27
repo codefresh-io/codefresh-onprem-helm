@@ -87,7 +87,7 @@ dependencies:
     tags:
       - cf-internal
   - name: charts-manager
-    version: 1.28.17-onprem-00ef2fb
+    version: 1.28.18-onprem-5aa1ec5
     repository: oci://quay.io/codefresh/charts
     condition: charts-manager.enabled
     tags:
@@ -99,7 +99,7 @@ dependencies:
     tags:
       - cf-internal
   - name: tasker-kubernetes
-    version: 1.29.15-onprem-de45703
+    version: 1.29.16-onprem-23b9094
     repository: oci://quay.io/codefresh/charts
     condition: tasker-kubernetes.enabled
     tags:
@@ -267,7 +267,7 @@ dependencies:
     tags:
       - cf-internal
   - name: cf-broadcaster
-    version: 1.15.22-onprem-9a454c9
+    version: 1.15.23-onprem-bb05a96
     repository: oci://quay.io/codefresh/charts
     condition: cf-broadcaster.enabled
     tags:
